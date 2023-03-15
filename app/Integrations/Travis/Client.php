@@ -4,21 +4,23 @@ declare(strict_types=1);
 
 namespace App\Integrations\Travis;
 
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
-final class Client extends Controller
+final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function com(string $owner, string $repo, ?string $branch): string
     {
-        $this->client = Http::baseUrl('')->throw();
+        return Http::baseUrl('https://api.travis-ci.com')
+            ->get("{$owner}/{$repo}.svg", ['branch' => $branch])
+            ->throw()
+            ->body();
     }
 
-    public function get(string $package): array
+    public function org(string $owner, string $repo, ?string $branch): string
     {
-        return $this->client->get($package)->json();
+        return Http::baseUrl('https://api.travis-ci.org')
+            ->get("{$owner}/{$repo}.svg", ['branch' => $branch])
+            ->throw()
+            ->body();
     }
 }

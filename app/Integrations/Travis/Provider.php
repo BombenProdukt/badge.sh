@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Integrations\Travis;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\Travis\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('travis')->group(function (): void {
-            //
+            Route::get('{owner}/{repo}/{branch?}', StatusController::class);
         });
     }
 

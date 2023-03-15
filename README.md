@@ -52,7 +52,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [scoop](https://github.com/badgen/badgen.net/blob/master/api/scoop.ts)
 - [ ] [shards](https://github.com/badgen/badgen.net/blob/master/api/shards.ts)
 - [ ] [snapcraft](https://github.com/badgen/badgen.net/blob/master/api/snapcraft.ts)
-- [ ] [travis](https://github.com/badgen/badgen.net/blob/master/api/travis.ts)
 - [ ] [twitter](https://github.com/badgen/badgen.net/blob/master/api/twitter.ts)
 - [ ] [uptime-robot](https://github.com/badgen/badgen.net/blob/master/api/uptime-robot.ts)
 - [ ] [vs-marketplace](https://github.com/badgen/badgen.net/blob/master/api/vs-marketplace.ts)
