@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://img.badgesize.io/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $compression, string $path): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("{$path}.json", $compression !== 'normal' ? ['compression' => $compression] : [])->json();
     }
 }

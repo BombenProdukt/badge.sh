@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Integrations\Badgesize;
 
+use App\Integrations\Badgesize\Controllers\GitHubController;
+use App\Integrations\Badgesize\Controllers\UrlController;
 use App\Integrations\Contracts\IntegrationProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +19,9 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('badgesize')->group(function (): void {
-            //
+            Route::get('/{compression}/file-url/{path}', UrlController::class)->where('path', '.+');
+            Route::get('/{compression}/{path}', UrlController::class)->where('path', '.+');
+            Route::get('/{compression}/{owner}/{repo}/{path}', GitHubController::class)->where('path', '.+');
         });
     }
 

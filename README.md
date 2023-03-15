@@ -21,7 +21,6 @@ This project is very much a work in progress. Here is a list of features we plan
 
 - [ ] [apm](https://github.com/badgen/badgen.net/blob/master/api/apm.ts)
 - [ ] [azure-pipelines](https://github.com/badgen/badgen.net/blob/master/api/azure-pipelines.ts)
-- [ ] [badgesize](https://github.com/badgen/badgen.net/blob/master/api/badgesize.ts)
 - [ ] [chrome-web-store](https://github.com/badgen/badgen.net/blob/master/api/chrome-web-store.ts)
 - [ ] [codeclimate](https://github.com/badgen/badgen.net/blob/master/api/codeclimate.ts)
 - [ ] [cpan](https://github.com/badgen/badgen.net/blob/master/api/cpan.ts)
