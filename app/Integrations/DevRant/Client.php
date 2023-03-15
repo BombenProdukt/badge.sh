@@ -14,11 +14,16 @@ final class Client extends Controller
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://devrant.com/api')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $userId): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("users/{$userId}", ['app' => 3])->json('profile');
+    }
+
+    public function getUserIdFromName(string $username): string
+    {
+        return (string) $this->client->get('get-user-id', ['username' => $username, 'app' => 3])->json('user_id');
     }
 }

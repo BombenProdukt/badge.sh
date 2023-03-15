@@ -31,7 +31,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [ctan](https://github.com/badgen/badgen.net/blob/master/api/ctan.ts)
 - [ ] [david](https://github.com/badgen/badgen.net/blob/master/api/david.ts)
 - [ ] [deepscan](https://github.com/badgen/badgen.net/blob/master/api/deepscan.ts)
-- [ ] [devrant](https://github.com/badgen/badgen.net/blob/master/api/devrant.ts)
 - [ ] [discord](https://github.com/badgen/badgen.net/blob/master/api/discord.ts)
 - [ ] [docker](https://github.com/badgen/badgen.net/blob/master/api/docker.ts)
 - [ ] [dub](https://github.com/badgen/badgen.net/blob/master/api/dub.ts)
