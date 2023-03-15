@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Integrations\RunKit;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\RunKit\Controllers\NotebookController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('runkit')->group(function (): void {
-            //
+            Route::get('{owner}/{notebook}/{path}', NotebookController::class)->where('path', '.+');
         });
     }
 

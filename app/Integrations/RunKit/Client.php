@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://runkit.io/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $owner, string $notebook, string $path): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("{$owner}/{$notebook}/branches/master/{$path}")->json();
     }
 }
