@@ -19,9 +19,7 @@ Check [badger.preem.studio](https://badger.preem.studio) for a list of all avail
 
 This project is very much a work in progress. Here is a list of features we plan to implement:
 
-- [ ] [amo](https://github.com/badgen/badgen.net/blob/master/api/amo.ts)
 - [ ] [apm](https://github.com/badgen/badgen.net/blob/master/api/apm.ts)
-- [ ] [appveyor](https://github.com/badgen/badgen.net/blob/master/api/appveyor.ts)
 - [ ] [azure-pipelines](https://github.com/badgen/badgen.net/blob/master/api/azure-pipelines.ts)
 - [ ] [badgesize](https://github.com/badgen/badgen.net/blob/master/api/badgesize.ts)
 - [ ] [chrome-web-store](https://github.com/badgen/badgen.net/blob/master/api/chrome-web-store.ts)

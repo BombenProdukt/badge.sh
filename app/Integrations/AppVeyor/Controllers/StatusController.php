@@ -14,14 +14,15 @@ final class StatusController extends Controller
         //
     }
 
-    public function __invoke(string $package): array
+    public function __invoke(string $account, string $project, ?string $branch = null): array
     {
-        $version = $this->client->get($package);
+        $branch = $branch ? "/branch/{$branch}" : '';
+        $status = $this->client->get($account, $project, $branch)['build']['status'];
 
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'       => 'appveyor',
+            'status'      => $status,
+            'statusColor' => $status === 'success' ? 'green.600' : 'red.600',
         ];
     }
 }

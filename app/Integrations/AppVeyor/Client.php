@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://ci.appveyor.com/api')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $account, string $project, string $branch): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("projects/{$account}/{$project}{$branch}")->json();
     }
 }

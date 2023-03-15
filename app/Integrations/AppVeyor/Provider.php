@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Integrations\AppVeyor;
 
+use App\Integrations\AppVeyor\Controllers\StatusController;
 use App\Integrations\Contracts\IntegrationProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('appveyor')->group(function (): void {
-            //
+            Route::get('ci/{account}/{project}/{branch?}', StatusController::class);
         });
     }
 
