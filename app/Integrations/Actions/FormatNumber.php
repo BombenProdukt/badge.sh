@@ -6,7 +6,7 @@ namespace App\Integrations\Actions;
 
 final class FormatNumber
 {
-    public static function execute(float $value): string
+    public static function execute(float|int $value): string
     {
         $units = ['', 'K', 'M', 'B', 'T'];
 

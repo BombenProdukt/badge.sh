@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace App\Integrations\Shardbox;
 
 use App\Integrations\Contracts\IntegrationProvider;
-use Closure;
+use App\Integrations\Shardbox\Controllers\CrystalController;
+use App\Integrations\Shardbox\Controllers\DependentsController;
+use App\Integrations\Shardbox\Controllers\LicenseController;
+use App\Integrations\Shardbox\Controllers\VersionController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,10 +20,12 @@ final class Provider implements IntegrationProvider
 
     public function register(): void
     {
-        Route::prefix('shardbox')->group($this->routes());
-
-        // Backwards compatibility with old badge URLs!
-        Route::prefix('shards')->group($this->routes());
+        Route::prefix('shards')->group(function (): void {
+            Route::get('v/{shard}', VersionController::class);
+            Route::get('license/{shard}', LicenseController::class);
+            Route::get('crystal/{shard}', CrystalController::class);
+            Route::get('dependents/{shard}', DependentsController::class);
+        });
     }
 
     public function examples(): array
@@ -31,12 +36,5 @@ final class Provider implements IntegrationProvider
             '/shards/crystal/amber'    => 'crystal version',
             '/shards/dependents/lucky' => 'dependents',
         ];
-    }
-
-    private function routes(): Closure
-    {
-        return function (): void {
-            Route::get('{shardbox}', 'ShardboxController@show');
-        };
     }
 }
