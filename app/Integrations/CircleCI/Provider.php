@@ -18,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('circleci')->group(function (): void {
-            Route::get('/{vcs}/{owner}/{repo}/{branch?}', StatusController::class)->whereIn('vcs', ['github', 'gitlab']);
+            Route::get('{vcs}/{owner}/{repo}/{branch?}', StatusController::class)->whereIn('vcs', ['github', 'gitlab']);
         });
     }
 

@@ -25,17 +25,17 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('bundlephobia')->group(function (): void {
-            Route::get('/min/{name}', MinController::class);
-            Route::get('/min/{scope}/{name}', MinWithScopeController::class);
+            Route::get('min/{name}', MinController::class);
+            Route::get('min/{scope}/{name}', MinWithScopeController::class);
 
-            Route::get('/minzip/{name}', MinzipController::class);
-            Route::get('/minzip/{scope}/{name}', MinzipWithScopeController::class);
+            Route::get('minzip/{name}', MinzipController::class);
+            Route::get('minzip/{scope}/{name}', MinzipWithScopeController::class);
 
-            Route::get('/dependency-count/{name}', DependencyCountController::class);
-            Route::get('/dependency-count/{scope}/{name}', DependencyCountWithScopeController::class);
+            Route::get('dependency-count/{name}', DependencyCountController::class);
+            Route::get('dependency-count/{scope}/{name}', DependencyCountWithScopeController::class);
 
-            Route::get('/tree-shaking/{name}', TreeShakingController::class);
-            Route::get('/tree-shaking/{scope}/{name}', TreeShakingWithScopeController::class);
+            Route::get('tree-shaking/{name}', TreeShakingController::class);
+            Route::get('tree-shaking/{scope}/{name}', TreeShakingWithScopeController::class);
         });
     }
 

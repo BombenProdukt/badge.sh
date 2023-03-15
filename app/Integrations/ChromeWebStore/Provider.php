@@ -23,12 +23,12 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('chrome-web-store')->group(function (): void {
-            Route::get('/v/{itemId}', VersionController::class);
-            Route::get('/users/{itemId}', UsersController::class);
-            Route::get('/price/{itemId}', PriceController::class);
-            Route::get('/stars/{itemId}', StarsController::class);
-            Route::get('/rating/{itemId}', RatingController::class);
-            Route::get('/rating-count/{itemId}', RatingCountController::class);
+            Route::get('v/{itemId}', VersionController::class);
+            Route::get('users/{itemId}', UsersController::class);
+            Route::get('price/{itemId}', PriceController::class);
+            Route::get('stars/{itemId}', StarsController::class);
+            Route::get('rating/{itemId}', RatingController::class);
+            Route::get('rating-count/{itemId}', RatingCountController::class);
         });
     }
 

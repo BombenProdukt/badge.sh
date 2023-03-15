@@ -20,10 +20,10 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('elm-package')->group(function (): void {
-            Route::get('/v/{owner}/{name}', VersionController::class);
-            Route::get('/version/{owner}/{name}', VersionController::class);
-            Route::get('/license/{owner}/{name}', LicenseController::class);
-            Route::get('/elm/{owner}/{name}', ElmVersionController::class);
+            Route::get('v/{owner}/{name}', VersionController::class);
+            Route::get('version/{owner}/{name}', VersionController::class);
+            Route::get('license/{owner}/{name}', LicenseController::class);
+            Route::get('elm/{owner}/{name}', ElmVersionController::class);
         });
     }
 

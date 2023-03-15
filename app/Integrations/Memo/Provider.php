@@ -19,7 +19,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('memo')->group(function (): void {
-            Route::get('/{name}', ShowBadgeController::class);
+            Route::get('{name}', ShowBadgeController::class);
             Route::put('/{name}', UpdateBadgeController::class);
         });
     }

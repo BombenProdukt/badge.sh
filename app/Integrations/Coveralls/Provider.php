@@ -18,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('coveralls')->group(function (): void {
-            Route::get('/c/{vcs}/{owner}/{repo}/{branch?}', CoverageController::class)->whereIn('vcs', ['github', 'bitbucket']);
+            Route::get('c/{vcs}/{owner}/{repo}/{branch?}', CoverageController::class)->whereIn('vcs', ['github', 'bitbucket']);
         });
     }
 

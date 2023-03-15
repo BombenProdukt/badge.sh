@@ -18,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('dependabot')->group(function (): void {
-            Route::get('/{owner}/{repo}/{identifier?}', StatusController::class);
+            Route::get('{owner}/{repo}/{identifier?}', StatusController::class);
         });
     }
 

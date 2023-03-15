@@ -18,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('gitter')->group(function (): void {
-            Route::get('/members/{org}/{room}', MemberCountController::class);
+            Route::get('members/{org}/{room}', MemberCountController::class);
         });
     }
 

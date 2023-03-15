@@ -23,14 +23,14 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('xo')->group(function (): void {
-            Route::get('/status/{name}', StatusController::class);
-            Route::get('/status/{scope}/{name}', StatusWithScopeController::class);
+            Route::get('status/{name}', StatusController::class);
+            Route::get('status/{scope}/{name}', StatusWithScopeController::class);
 
-            Route::get('/indent/{name}', IndentController::class);
-            Route::get('/indent/{scope}/{name}', IndentWithScopeController::class);
+            Route::get('indent/{name}', IndentController::class);
+            Route::get('indent/{scope}/{name}', IndentWithScopeController::class);
 
-            Route::get('/semi/{name}', SemiController::class);
-            Route::get('/semi/{scope}/{name}', SemiWithScopeController::class);
+            Route::get('semi/{name}', SemiController::class);
+            Route::get('semi/{scope}/{name}', SemiWithScopeController::class);
         });
     }
 

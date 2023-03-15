@@ -18,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('tidelift')->group(function (): void {
-            Route::get('/{platform}/{name}', StatusController::class);
+            Route::get('{platform}/{name}', StatusController::class);
         });
     }
 

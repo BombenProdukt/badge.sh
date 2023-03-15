@@ -18,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('snyk')->group(function (): void {
-            Route::get('/{owner}/{repo}/{branch?}/{targetFile?}', StatusController::class);
+            Route::get('{owner}/{repo}/{branch?}/{targetFile?}', StatusController::class);
         });
     }
 

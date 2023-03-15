@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace App\Integrations\GitHub;
 
 use GrahamCampbell\GitHub\Facades\GitHub;
-use Illuminate\Routing\Controller;
 
-final class Client extends Controller
+final class Client
 {
     public function makeRepoQuery(string $owner, string $repo, string $query): array
     {

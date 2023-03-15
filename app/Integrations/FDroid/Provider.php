@@ -19,8 +19,8 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('f-droid')->group(function (): void {
-            Route::get('/v/{appId}', VersionController::class);
-            Route::get('/license/{appId}', LicenseController::class);
+            Route::get('v/{appId}', VersionController::class);
+            Route::get('license/{appId}', LicenseController::class);
         });
     }
 

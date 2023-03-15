@@ -19,8 +19,8 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('codacy')->group(function (): void {
-            Route::get('/coverage/{projectId}/{branch?}', CoverageController::class);
-            Route::get('/grade/{projectId}/{branch?}', GradeController::class);
+            Route::get('coverage/{projectId}/{branch?}', CoverageController::class);
+            Route::get('grade/{projectId}/{branch?}', GradeController::class);
         });
     }
 

@@ -19,8 +19,8 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('opam')->group(function (): void {
-            Route::get('/v/{name}', VersionController::class);
-            Route::get('/license/{name}', LicenseController::class);
+            Route::get('v/{name}', VersionController::class);
+            Route::get('license/{name}', LicenseController::class);
         });
     }
 

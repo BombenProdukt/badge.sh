@@ -23,17 +23,17 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('homebrew')->group(function (): void {
-            Route::get('/v/{package}', VersionForFormulaController::class);
-            Route::get('/dm/{package}', MonthlyDownloadsForFormulaController::class);
-            Route::get('/dy/{package}', YearlyDownloadsForFormulaController::class);
+            Route::get('v/{package}', VersionForFormulaController::class);
+            Route::get('dm/{package}', MonthlyDownloadsForFormulaController::class);
+            Route::get('dy/{package}', YearlyDownloadsForFormulaController::class);
 
-            Route::get('/formula/v/{package}', VersionForFormulaController::class);
-            Route::get('/formula/dm/{package}', MonthlyDownloadsForFormulaController::class);
-            Route::get('/formula/dy/{package}', YearlyDownloadsForFormulaController::class);
+            Route::get('formula/v/{package}', VersionForFormulaController::class);
+            Route::get('formula/dm/{package}', MonthlyDownloadsForFormulaController::class);
+            Route::get('formula/dy/{package}', YearlyDownloadsForFormulaController::class);
 
-            Route::get('/cask/v/{package}', VersionForCaskController::class);
-            Route::get('/cask/dm/{package}', MonthlyDownloadsForCaskController::class);
-            Route::get('/cask/dy/{package}', YearlyDownloadsForCaskController::class);
+            Route::get('cask/v/{package}', VersionForCaskController::class);
+            Route::get('cask/dm/{package}', MonthlyDownloadsForCaskController::class);
+            Route::get('cask/dy/{package}', YearlyDownloadsForCaskController::class);
         });
     }
 

@@ -18,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('keybase')->group(function (): void {
-            Route::get('/pgp/{username}', KeyController::class);
+            Route::get('pgp/{username}', KeyController::class);
         });
     }
 

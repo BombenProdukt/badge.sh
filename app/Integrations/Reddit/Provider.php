@@ -21,14 +21,14 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('reddit')->group(function (): void {
-            Route::get('/karma/{user}', TotalKarmaController::class);
-            Route::get('/karma/u/{user}', TotalKarmaController::class);
-            Route::get('/comment-karma/{user}', CommentKarmaController::class);
-            Route::get('/comment-karma/u/{user}', CommentKarmaController::class);
-            Route::get('/post-karma/{user}', PostKarmaController::class);
-            Route::get('/post-karma/u/{user}', PostKarmaController::class);
-            Route::get('/subscribers/r/{subreddit}', SubscribersController::class);
-            Route::get('/subscribers/{subreddit}', SubscribersController::class);
+            Route::get('karma/{user}', TotalKarmaController::class);
+            Route::get('karma/u/{user}', TotalKarmaController::class);
+            Route::get('comment-karma/{user}', CommentKarmaController::class);
+            Route::get('comment-karma/u/{user}', CommentKarmaController::class);
+            Route::get('post-karma/{user}', PostKarmaController::class);
+            Route::get('post-karma/u/{user}', PostKarmaController::class);
+            Route::get('subscribers/r/{subreddit}', SubscribersController::class);
+            Route::get('subscribers/{subreddit}', SubscribersController::class);
         });
     }
 

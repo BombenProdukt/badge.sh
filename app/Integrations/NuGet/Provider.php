@@ -19,8 +19,8 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('nuget')->group(function (): void {
-            Route::get('/v/{project}/{channel?}', VersionController::class);
-            Route::get('/dt/{project}', TotalDownloadsController::class);
+            Route::get('v/{project}/{channel?}', VersionController::class);
+            Route::get('dt/{project}', TotalDownloadsController::class);
         });
     }
 

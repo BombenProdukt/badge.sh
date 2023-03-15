@@ -18,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('https')->group(function (): void {
-            Route::get('/{host}/{path?}', RequestController::class);
+            Route::get('{host}/{path?}', RequestController::class);
         });
     }
 

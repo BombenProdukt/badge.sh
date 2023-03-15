@@ -32,22 +32,22 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('packagist')->group(function (): void {
-            Route::get('/dd/{vendor}/{package}', DailyDownloadsController::class);
-            Route::get('/dependents/{vendor}/{package}', DependentsController::class);
-            Route::get('/dm/{vendor}/{package}', MonthlyDownloadsController::class);
-            Route::get('/dt/{vendor}/{package}', TotalDownloadsController::class);
-            Route::get('/favers/{vendor}/{package}', FaversController::class);
-            Route::get('/ghf/{vendor}/{package}', GitHubForksController::class);
-            Route::get('/ghi/{vendor}/{package}', GitHubIssuesController::class);
-            Route::get('/ghs/{vendor}/{package}', GitHubStarsController::class);
-            Route::get('/ghw/{vendor}/{package}', GitHubWatchersController::class);
-            Route::get('/lang/{vendor}/{package}', LanguageController::class);
-            Route::get('/license/{vendor}/{package}/{channel?}', LicenseController::class);
-            Route::get('/n/{vendor}/{package}', NameController::class);
-            Route::get('/name/{vendor}/{package}', NameController::class);
-            Route::get('/php/{vendor}/{package}/{channel?}', PhpVersionController::class);
-            Route::get('/suggesters/{vendor}/{package}', SuggestersController::class);
-            Route::get('/v/{vendor}/{package}/{channel?}', VersionController::class);
+            Route::get('dd/{vendor}/{package}', DailyDownloadsController::class);
+            Route::get('dependents/{vendor}/{package}', DependentsController::class);
+            Route::get('dm/{vendor}/{package}', MonthlyDownloadsController::class);
+            Route::get('dt/{vendor}/{package}', TotalDownloadsController::class);
+            Route::get('favers/{vendor}/{package}', FaversController::class);
+            Route::get('ghf/{vendor}/{package}', GitHubForksController::class);
+            Route::get('ghi/{vendor}/{package}', GitHubIssuesController::class);
+            Route::get('ghs/{vendor}/{package}', GitHubStarsController::class);
+            Route::get('ghw/{vendor}/{package}', GitHubWatchersController::class);
+            Route::get('lang/{vendor}/{package}', LanguageController::class);
+            Route::get('license/{vendor}/{package}/{channel?}', LicenseController::class);
+            Route::get('n/{vendor}/{package}', NameController::class);
+            Route::get('name/{vendor}/{package}', NameController::class);
+            Route::get('php/{vendor}/{package}/{channel?}', PhpVersionController::class);
+            Route::get('suggesters/{vendor}/{package}', SuggestersController::class);
+            Route::get('v/{vendor}/{package}/{channel?}', VersionController::class);
         });
     }
 

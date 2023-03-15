@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Integrations\JSDelivr;
 
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
-final class Client extends Controller
+final class Client
 {
     public function data(string $type, string $name): array
     {

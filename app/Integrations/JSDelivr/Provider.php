@@ -20,9 +20,9 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('jsdelivr')->group(function (): void {
-            Route::get('/hits/{platform}/{package}', HitsController::class)->where('package', '.+');
-            Route::get('/rank/{platform}/{package}', RankController::class)->where('package', '.+');
-            Route::get('/v/npm/{package}', VersionController::class)->where('package', '.+');
+            Route::get('hits/{platform}/{package}', HitsController::class)->where('package', '.+');
+            Route::get('rank/{platform}/{package}', RankController::class)->where('package', '.+');
+            Route::get('v/npm/{package}', VersionController::class)->where('package', '.+');
         });
     }
 

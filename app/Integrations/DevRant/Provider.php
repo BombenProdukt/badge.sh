@@ -19,8 +19,8 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('devrant')->group(function (): void {
-            Route::get('/score/{userId}', UserIdController::class)->whereNumber('userId');
-            Route::get('/score/{username}', UsernameController::class);
+            Route::get('score/{userId}', UserIdController::class)->whereNumber('userId');
+            Route::get('score/{username}', UsernameController::class);
         });
     }
 

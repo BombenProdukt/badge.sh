@@ -21,11 +21,11 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('packagephobia')->group(function (): void {
-            Route::get('/install/{name}', InstallController::class);
-            Route::get('/install/{scope}/{name}', InstallWithScopeController::class);
+            Route::get('install/{name}', InstallController::class);
+            Route::get('install/{scope}/{name}', InstallWithScopeController::class);
 
-            Route::get('/publish/{name}', PublishController::class);
-            Route::get('/publish/{scope}/{name}', PublishWithScopeController::class);
+            Route::get('publish/{name}', PublishController::class);
+            Route::get('publish/{scope}/{name}', PublishWithScopeController::class);
         });
     }
 

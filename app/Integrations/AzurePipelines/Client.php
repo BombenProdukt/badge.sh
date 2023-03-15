@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Integrations\AzurePipelines;
 
 use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
-final class Client extends Controller
+final class Client
 {
     private PendingRequest $client;
 

@@ -19,8 +19,8 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('cocoapods')->group(function (): void {
-            Route::get('/v/{pod}', VersionController::class);
-            Route::get('/p/{pod}', PlatformController::class);
+            Route::get('v/{pod}', VersionController::class);
+            Route::get('p/{pod}', PlatformController::class);
         });
     }
 
