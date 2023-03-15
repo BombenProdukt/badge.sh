@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Integrations\ElmPackage;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\ElmPackage\Controllers\ElmVersionController;
+use App\Integrations\ElmPackage\Controllers\LicenseController;
+use App\Integrations\ElmPackage\Controllers\VersionController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,7 +20,10 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('elm-package')->group(function (): void {
-            //
+            Route::get('/v/{owner}/{name}', VersionController::class);
+            Route::get('/version/{owner}/{name}', VersionController::class);
+            Route::get('/license/{owner}/{name}', LicenseController::class);
+            Route::get('/elm/{owner}/{name}', ElmVersionController::class);
         });
     }
 

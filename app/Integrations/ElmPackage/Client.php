@@ -14,11 +14,11 @@ final class Client extends Controller
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://package.elm-lang.org/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $owner, string $name): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("packages/{$owner}/{$name}/latest/elm.json")->json();
     }
 }
