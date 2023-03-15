@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://open-vsx.org/api/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $namespace, string $package): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("{$namespace}/{$package}")->json();
     }
 }
