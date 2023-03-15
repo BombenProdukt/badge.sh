@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://cdn.syndication.twimg.com/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $username): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get('widgets/followbutton/info.json', ['screen_names' => $username])->json();
     }
 }

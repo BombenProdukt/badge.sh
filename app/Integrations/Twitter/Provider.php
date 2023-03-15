@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Integrations\Twitter;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\Twitter\Controllers\FollowController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('twitter')->group(function (): void {
-            //
+            Route::get('follow/{username}', FollowController::class);
         });
     }
 
