@@ -4,20 +4,23 @@ declare(strict_types=1);
 
 namespace App\Integrations\Scoop;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function main(string $app): array
     {
-        $this->client = Http::baseUrl('')->throw();
+        return Http::baseUrl('https://github.com/ScoopInstaller/Main/raw/master/bucket/')
+            ->get("{$app}.json")
+            ->throw()
+            ->json();
     }
 
-    public function get(string $package): array
+    public function extra(string $app): array
     {
-        return $this->client->get($package)->json();
+        return Http::baseUrl('https://github.com/lukesampson/scoop-extras/raw/master/bucket/')
+            ->get("{$app}.json")
+            ->throw()
+            ->json();
     }
 }
