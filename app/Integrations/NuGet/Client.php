@@ -14,11 +14,11 @@ final class Client extends Controller
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.nuget.org/v3-flatcontainer')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $project): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get(strtolower($project).'/index.json')->json();
     }
 }

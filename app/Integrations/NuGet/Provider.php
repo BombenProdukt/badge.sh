@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Integrations\NuGet;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\NuGet\Controllers\TotalDownloadsController;
+use App\Integrations\NuGet\Controllers\VersionController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,7 +19,8 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('nuget')->group(function (): void {
-            //
+            Route::get('/v/{project}/{channel?}', VersionController::class);
+            Route::get('/dt/{project}', TotalDownloadsController::class);
         });
     }
 

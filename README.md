@@ -64,7 +64,7 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [melpa](https://github.com/badgen/badgen.net/blob/master/api/melpa.ts)
 - [ ] [memo](https://github.com/badgen/badgen.net/blob/master/api/memo.ts)
 - [ ] [npm](https://github.com/badgen/badgen.net/blob/master/api/npm.ts)
-- [ ] [nuget](https://github.com/badgen/badgen.net/blob/master/api/nuget.ts)
+- [x] [nuget](https://github.com/badgen/badgen.net/blob/master/api/nuget.ts)
 - [x] [opam](https://github.com/badgen/badgen.net/blob/master/api/opam.ts)
 - [ ] [open-vsx](https://github.com/badgen/badgen.net/blob/master/api/open-vsx.ts)
 - [ ] [opencollective](https://github.com/badgen/badgen.net/blob/master/api/opencollective.ts)
