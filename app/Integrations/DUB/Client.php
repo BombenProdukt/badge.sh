@@ -14,10 +14,10 @@ final class Client extends Controller
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://code.dlang.org/api/packages/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $package)
     {
         return $this->client->get($package)->json();
     }

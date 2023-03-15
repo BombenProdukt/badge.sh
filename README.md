@@ -33,7 +33,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [deepscan](https://github.com/badgen/badgen.net/blob/master/api/deepscan.ts)
 - [ ] [discord](https://github.com/badgen/badgen.net/blob/master/api/discord.ts)
 - [ ] [docker](https://github.com/badgen/badgen.net/blob/master/api/docker.ts)
-- [ ] [dub](https://github.com/badgen/badgen.net/blob/master/api/dub.ts)
 - [ ] [gitlab](https://github.com/badgen/badgen.net/blob/master/api/gitlab.ts)
 - [ ] [hackage](https://github.com/badgen/badgen.net/blob/master/api/hackage.ts)
 - [ ] [haxelib](https://github.com/badgen/badgen.net/blob/master/api/haxelib.ts)

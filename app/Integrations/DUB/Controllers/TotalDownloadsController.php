@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Integrations\DUB\Controllers;
 
+use App\Integrations\Actions\FormatNumber;
 use App\Integrations\DUB\Client;
 use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class TotalDownloadsController extends Controller
 {
     public function __construct(private readonly Client $client)
     {
@@ -16,12 +17,12 @@ final class StatusController extends Controller
 
     public function __invoke(string $package): array
     {
-        $version = $this->client->get($package);
+        $downloads = $this->client->get("{$package}/stats")['downloads'];
 
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'       => 'downloads',
+            'status'      => FormatNumber::execute($downloads['total']),
+            'statusColor' => 'green.600',
         ];
     }
 }
