@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://rubygems.org/api/v1/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $path): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("{$path}.json")->json();
     }
 }

@@ -41,7 +41,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [npm](https://github.com/badgen/badgen.net/blob/master/api/npm.ts)
 - [ ] [peertube](https://github.com/badgen/badgen.net/blob/master/api/peertube.ts)
 - [ ] [pypi](https://github.com/badgen/badgen.net/blob/master/api/pypi.ts)
-- [ ] [rubygems](https://github.com/badgen/badgen.net/blob/master/api/rubygems.ts)
 - [ ] [runkit](https://github.com/badgen/badgen.net/blob/master/api/runkit.ts)
 - [ ] [scoop](https://github.com/badgen/badgen.net/blob/master/api/scoop.ts)
 - [ ] [shards](https://github.com/badgen/badgen.net/blob/master/api/shards.ts)
