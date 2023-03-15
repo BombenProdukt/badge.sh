@@ -4,21 +4,13 @@ declare(strict_types=1);
 
 namespace App\Integrations\HTTPS;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
 final class Client extends Controller
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function get(string $host, ?string $path): array
     {
-        $this->client = Http::baseUrl('')->throw();
-    }
-
-    public function get(string $package): array
-    {
-        return $this->client->get($package)->json();
+        return Http::baseUrl($host)->get($path ?: '/')->json();
     }
 }
