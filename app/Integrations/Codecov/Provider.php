@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Integrations\Codecov;
 
+use App\Integrations\Codecov\Controllers\StatusController;
 use App\Integrations\Contracts\IntegrationProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('codecov')->group(function (): void {
-            //
+            Route::get('/c/{vcs}/{owner}/{repo}/{branch?}', StatusController::class)->whereIn('vcs', ['gh', 'github', 'bitbucket', 'gitlab']);
         });
     }
 

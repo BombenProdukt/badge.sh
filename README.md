@@ -32,7 +32,7 @@ This project is very much a work in progress. Here is a list of features we plan
 - [x] [cocoapods](https://github.com/badgen/badgen.net/blob/master/api/cocoapods.ts)
 - [ ] [codacy](https://github.com/badgen/badgen.net/blob/master/api/codacy.ts)
 - [ ] [codeclimate](https://github.com/badgen/badgen.net/blob/master/api/codeclimate.ts)
-- [ ] [codecov](https://github.com/badgen/badgen.net/blob/master/api/codecov.ts)
+- [x] [codecov](https://github.com/badgen/badgen.net/blob/master/api/codecov.ts)
 - [x] [coveralls](https://github.com/badgen/badgen.net/blob/master/api/coveralls.ts)
 - [ ] [cpan](https://github.com/badgen/badgen.net/blob/master/api/cpan.ts)
 - [ ] [cran](https://github.com/badgen/badgen.net/blob/master/api/cran.ts)

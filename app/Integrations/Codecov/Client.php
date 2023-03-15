@@ -14,11 +14,11 @@ final class Client extends Controller
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://codecov.io/api')->retry(5)->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $vcs, string $owner, string $repo, ?string $branch): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get(implode('/', array_filter([$vcs, $owner, $repo, $branch])))->json();
     }
 }
