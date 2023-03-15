@@ -14,11 +14,11 @@ final class Client extends Controller
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://melpa.org')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $package): string
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("packages/{$package}-badge.svg")->body();
     }
 }

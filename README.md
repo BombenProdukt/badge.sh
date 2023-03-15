@@ -43,7 +43,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [mastodon](https://github.com/badgen/badgen.net/blob/master/api/mastodon.ts)
 - [ ] [matrix](https://github.com/badgen/badgen.net/blob/master/api/matrix.ts)
 - [ ] [maven](https://github.com/badgen/badgen.net/blob/master/api/maven.ts)
-- [ ] [melpa](https://github.com/badgen/badgen.net/blob/master/api/melpa.ts)
 - [ ] [npm](https://github.com/badgen/badgen.net/blob/master/api/npm.ts)
 - [ ] [open-vsx](https://github.com/badgen/badgen.net/blob/master/api/open-vsx.ts)
 - [ ] [opencollective](https://github.com/badgen/badgen.net/blob/master/api/opencollective.ts)
