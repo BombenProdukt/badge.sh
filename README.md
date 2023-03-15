@@ -45,7 +45,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [open-vsx](https://github.com/badgen/badgen.net/blob/master/api/open-vsx.ts)
 - [ ] [opencollective](https://github.com/badgen/badgen.net/blob/master/api/opencollective.ts)
 - [ ] [peertube](https://github.com/badgen/badgen.net/blob/master/api/peertube.ts)
-- [ ] [pub](https://github.com/badgen/badgen.net/blob/master/api/pub.ts)
 - [ ] [pypi](https://github.com/badgen/badgen.net/blob/master/api/pypi.ts)
 - [ ] [rubygems](https://github.com/badgen/badgen.net/blob/master/api/rubygems.ts)
 - [ ] [runkit](https://github.com/badgen/badgen.net/blob/master/api/runkit.ts)

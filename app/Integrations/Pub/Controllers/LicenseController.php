@@ -7,7 +7,7 @@ namespace App\Integrations\Pub\Controllers;
 use App\Integrations\Pub\Client;
 use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class LicenseController extends Controller
 {
     public function __construct(private readonly Client $client)
     {
@@ -16,12 +16,14 @@ final class StatusController extends Controller
 
     public function __invoke(string $package): array
     {
-        $version = $this->client->get($package);
+        $response = $this->client->web("packages/{$package}");
+
+        preg_match('/License<\/h3>\s*<p>([^(]+)\(/i', $response, $matches);
 
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'       => 'license',
+            'status'      => trim(strip_tags($matches[1])),
+            'statusColor' => 'blue.600',
         ];
     }
 }

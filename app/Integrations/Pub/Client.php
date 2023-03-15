@@ -4,20 +4,24 @@ declare(strict_types=1);
 
 namespace App\Integrations\Pub;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function api(string $package): array
     {
-        $this->client = Http::baseUrl('')->throw();
+        return Http::baseUrl('https://pub.dev/api/')
+            ->get($package)
+            ->throw()
+            ->json();
     }
 
-    public function get(string $package): array
+    public function web(string $package): string
     {
-        return $this->client->get($package)->json();
+        return Http::baseUrl('https://pub.dev/')
+            ->withoutRedirecting()
+            ->get($package)
+            ->throw()
+            ->body();
     }
 }

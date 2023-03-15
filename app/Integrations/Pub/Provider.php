@@ -5,7 +5,14 @@ declare(strict_types=1);
 namespace App\Integrations\Pub;
 
 use App\Integrations\Contracts\IntegrationProvider;
-use Closure;
+use App\Integrations\Pub\Controllers\DartPlatformController;
+use App\Integrations\Pub\Controllers\FlutterPlatformController;
+use App\Integrations\Pub\Controllers\LicenseController;
+use App\Integrations\Pub\Controllers\LikesController;
+use App\Integrations\Pub\Controllers\PointsController;
+use App\Integrations\Pub\Controllers\PopularityController;
+use App\Integrations\Pub\Controllers\SdkVersionController;
+use App\Integrations\Pub\Controllers\VersionController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,10 +24,17 @@ final class Provider implements IntegrationProvider
 
     public function register(): void
     {
-        Route::prefix('dart')->group($this->routes());
-
-        // Backwards compatibility with old badge URLs!
-        Route::prefix('pub')->group($this->routes());
+        Route::prefix('pub')->group(function (): void {
+            Route::get('v/{package}', VersionController::class);
+            Route::get('version/{package}', VersionController::class);
+            Route::get('sdk-version/{package}', SdkVersionController::class);
+            Route::get('likes/{package}', LikesController::class);
+            Route::get('points/{package}', PointsController::class);
+            Route::get('popularity/{package}', PopularityController::class);
+            Route::get('dart-platform/{package}', DartPlatformController::class);
+            Route::get('flutter-platform/{package}', FlutterPlatformController::class);
+            Route::get('license/{package}', LicenseController::class);
+        });
     }
 
     public function examples(): array
@@ -37,12 +51,5 @@ final class Provider implements IntegrationProvider
             '/pub/dart-platform/google_sign_in' => 'dart-platform',
             '/pub/flutter-platform/xml'         => 'flutter-platform',
         ];
-    }
-
-    private function routes(): Closure
-    {
-        return function (): void {
-            Route::get('{shardbox}', 'ShardboxController@show');
-        };
     }
 }
