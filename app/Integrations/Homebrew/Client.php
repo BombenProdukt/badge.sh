@@ -14,11 +14,11 @@ final class Client extends Controller
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://formulae.brew.sh/api/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $type, string $package): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("{$type}/{$package}.json")->json();
     }
 }

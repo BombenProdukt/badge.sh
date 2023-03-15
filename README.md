@@ -39,7 +39,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [gitlab](https://github.com/badgen/badgen.net/blob/master/api/gitlab.ts)
 - [ ] [hackage](https://github.com/badgen/badgen.net/blob/master/api/hackage.ts)
 - [ ] [haxelib](https://github.com/badgen/badgen.net/blob/master/api/haxelib.ts)
-- [ ] [homebrew](https://github.com/badgen/badgen.net/blob/master/api/homebrew.ts)
 - [ ] [https](https://github.com/badgen/badgen.net/blob/master/api/https.ts)
 - [ ] [jenkins](https://github.com/badgen/badgen.net/blob/master/api/jenkins.ts)
 - [ ] [keybase](https://github.com/badgen/badgen.net/blob/master/api/keybase.ts)
