@@ -14,11 +14,11 @@ final class Client extends Controller
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://gitter.im/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $org, string $room): string
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("{$org}/{$room}")->body();
     }
 }

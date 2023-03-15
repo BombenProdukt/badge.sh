@@ -48,7 +48,7 @@ This project is very much a work in progress. Here is a list of features we plan
 - [x] [f-droid](https://github.com/badgen/badgen.net/blob/master/api/f-droid.ts)
 - [x] [github](https://github.com/badgen/badgen.net/blob/master/api/github.ts)
 - [ ] [gitlab](https://github.com/badgen/badgen.net/blob/master/api/gitlab.ts)
-- [ ] [gitter](https://github.com/badgen/badgen.net/blob/master/api/gitter.ts)
+- [x] [gitter](https://github.com/badgen/badgen.net/blob/master/api/gitter.ts)
 - [ ] [hackage](https://github.com/badgen/badgen.net/blob/master/api/hackage.ts)
 - [ ] [haxelib](https://github.com/badgen/badgen.net/blob/master/api/haxelib.ts)
 - [ ] [homebrew](https://github.com/badgen/badgen.net/blob/master/api/homebrew.ts)
