@@ -30,7 +30,7 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [chrome-web-store](https://github.com/badgen/badgen.net/blob/master/api/chrome-web-store.ts)
 - [x] [circleci](https://github.com/badgen/badgen.net/blob/master/api/circleci.ts)
 - [x] [cocoapods](https://github.com/badgen/badgen.net/blob/master/api/cocoapods.ts)
-- [ ] [codacy](https://github.com/badgen/badgen.net/blob/master/api/codacy.ts)
+- [x] [codacy](https://github.com/badgen/badgen.net/blob/master/api/codacy.ts)
 - [ ] [codeclimate](https://github.com/badgen/badgen.net/blob/master/api/codeclimate.ts)
 - [x] [codecov](https://github.com/badgen/badgen.net/blob/master/api/codecov.ts)
 - [x] [coveralls](https://github.com/badgen/badgen.net/blob/master/api/coveralls.ts)

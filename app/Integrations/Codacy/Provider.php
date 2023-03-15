@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Integrations\Codacy;
 
+use App\Integrations\Codacy\Controllers\CoverageController;
+use App\Integrations\Codacy\Controllers\GradeController;
 use App\Integrations\Contracts\IntegrationProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +19,8 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('codacy')->group(function (): void {
-            //
+            Route::get('/coverage/{projectId}/{branch?}', CoverageController::class);
+            Route::get('/grade/{projectId}/{branch?}', GradeController::class);
         });
     }
 

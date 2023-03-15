@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Integrations\Codecov\Controllers;
 
 use App\Integrations\Actions\ExtractCoverageColor;
+use App\Integrations\Actions\FormatPercentage;
 use App\Integrations\Codecov\Client;
 use Illuminate\Routing\Controller;
 
@@ -22,7 +23,7 @@ final class StatusController extends Controller
 
         return [
             'label'       => 'coverage',
-            'status'      => number_format($coverage, 2).'%',
+            'status'      => FormatPercentage::execute($coverage),
             'statusColor' => ExtractCoverageColor::execute($coverage),
         ];
     }

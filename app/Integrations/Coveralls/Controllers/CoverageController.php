@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Integrations\Coveralls\Controllers;
 
 use App\Integrations\Actions\ExtractCoverageColor;
+use App\Integrations\Actions\FormatPercentage;
 use App\Integrations\Coveralls\Client;
 use Illuminate\Routing\Controller;
 
@@ -31,7 +32,7 @@ final class CoverageController extends Controller
 
         return [
             'label'       => 'coverage',
-            'status'      => number_format((float) $matches[1], 2).'%',
+            'status'      => FormatPercentage::execute($matches[1]),
             'statusColor' => ExtractCoverageColor::execute((float) $matches[1]),
         ];
     }
