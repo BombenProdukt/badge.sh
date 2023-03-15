@@ -14,11 +14,14 @@ final class Client extends Controller
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://keybase.io/_/api/1.0/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $username): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get('user/lookup.json', [
+            'username' => $username,
+            'fields'   => 'public_keys',
+        ])->json();
     }
 }

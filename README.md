@@ -41,7 +41,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [haxelib](https://github.com/badgen/badgen.net/blob/master/api/haxelib.ts)
 - [ ] [https](https://github.com/badgen/badgen.net/blob/master/api/https.ts)
 - [ ] [jenkins](https://github.com/badgen/badgen.net/blob/master/api/jenkins.ts)
-- [ ] [keybase](https://github.com/badgen/badgen.net/blob/master/api/keybase.ts)
 - [ ] [lgtm](https://github.com/badgen/badgen.net/blob/master/api/lgtm.ts)
 - [ ] [liberapay](https://github.com/badgen/badgen.net/blob/master/api/liberapay.ts)
 - [ ] [mastodon](https://github.com/badgen/badgen.net/blob/master/api/mastodon.ts)
