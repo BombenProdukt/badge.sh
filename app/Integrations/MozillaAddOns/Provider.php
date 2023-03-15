@@ -17,7 +17,11 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('amo')->group(function (): void {
-            //
+            Route::get('v/{package}', Controllers\VersionController::class);
+            Route::get('users/{package}', Controllers\UsersController::class);
+            Route::get('rating/{package}', Controllers\RatingController::class);
+            Route::get('stars/{package}', Controllers\StarsController::class);
+            Route::get('reviews/{package}', Controllers\ReviewsController::class);
         });
     }
 

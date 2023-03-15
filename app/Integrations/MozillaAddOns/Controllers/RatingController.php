@@ -7,7 +7,7 @@ namespace App\Integrations\MozillaAddOns\Controllers;
 use App\Integrations\MozillaAddOns\Client;
 use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class RatingController extends Controller
 {
     public function __construct(private readonly Client $client)
     {
@@ -16,12 +16,12 @@ final class StatusController extends Controller
 
     public function __invoke(string $package): array
     {
-        $version = $this->client->get($package);
+        $response = $this->client->get($package);
 
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'       => 'rating',
+            'status'      => (string) $response['ratings']['count'],
+            'statusColor' => 'green.600',
         ];
     }
 }
