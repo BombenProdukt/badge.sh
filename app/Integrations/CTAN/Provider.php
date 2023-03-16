@@ -17,7 +17,10 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('ctan')->group(function (): void {
-            //
+            Route::get('v/{package}', Controllers\VersionController::class);
+            Route::get('license/{package}', Controllers\LicenseController::class);
+            Route::get('rating/{package}', Controllers\RatingController::class);
+            Route::get('stars/{package}', Controllers\StarsController::class);
         });
     }
 

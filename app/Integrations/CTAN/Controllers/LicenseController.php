@@ -7,7 +7,7 @@ namespace App\Integrations\CTAN\Controllers;
 use App\Integrations\CTAN\Client;
 use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class LicenseController extends Controller
 {
     public function __construct(private readonly Client $client)
     {
@@ -16,12 +16,10 @@ final class StatusController extends Controller
 
     public function __invoke(string $package): array
     {
-        $version = $this->client->get($package);
-
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'       => 'license',
+            'status'      => $this->client->api($package)['license'],
+            'statusColor' => 'green.600',
         ];
     }
 }

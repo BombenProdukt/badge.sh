@@ -4,20 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\CTAN;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function api(string $package): array
     {
-        $this->client = Http::baseUrl('')->throw();
+        return Http::baseUrl('https://ctan.org/json/2.0/')->throw()->get("pkg/{$package}")->json();
     }
 
-    public function get(string $package): array
+    public function web(string $package): string
     {
-        return $this->client->get($package)->json();
+        return Http::baseUrl('https://ctan.org/')->throw()->get('vote/ajaxSummary', ['pkg' => $package])->body();
     }
 }
