@@ -13,11 +13,13 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.snapcraft.io/v2/snaps/')
+            ->withHeaders(['Snap-Device-Series' => '16'])
+            ->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $snap, array $fields = []): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("info/{$snap}", $fields ? ['fields' => $fields] : null)->json();
     }
 }

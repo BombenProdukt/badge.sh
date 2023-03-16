@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace App\Integrations\Snapcraft;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\Snapcraft\Controllers\ArchitectureController;
+use App\Integrations\Snapcraft\Controllers\LicenseController;
+use App\Integrations\Snapcraft\Controllers\SizeController;
+use App\Integrations\Snapcraft\Controllers\VersionController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,7 +21,13 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('snapcraft')->group(function (): void {
-            //
+            Route::get('v/{snap}/{architecture?}/{channel?}', VersionController::class);
+            Route::get('version/{snap}/{architecture?}/{channel?}', VersionController::class);
+            Route::get('l/{snap}', LicenseController::class);
+            Route::get('license/{snap}', LicenseController::class);
+            Route::get('size/{snap}/{architecture?}/{channel?}', SizeController::class);
+            Route::get('arch/{snap}', ArchitectureController::class);
+            Route::get('architecture/{snap}', ArchitectureController::class);
         });
     }
 
