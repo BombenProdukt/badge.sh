@@ -4,20 +4,27 @@ declare(strict_types=1);
 
 namespace App\Integrations\NPM;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function registry(string $package): array
     {
-        $this->client = Http::baseUrl('')->throw();
+        return Http::baseUrl('https://registry.npmjs.org')->throw()->get($package)->json();
     }
 
-    public function get(string $package): array
+    public function api(string $package): array
     {
-        return $this->client->get($package)->json();
+        return Http::baseUrl('https://api.npmjs.org/')->throw()->get($package)->json();
+    }
+
+    public function web(string $package): string
+    {
+        return Http::baseUrl('https://www.npmjs.com/')->throw()->get($package)->body();
+    }
+
+    public function unpkg(string $package): array
+    {
+        return Http::baseUrl('https://unpkg.com/')->throw()->get($package)->json();
     }
 }
