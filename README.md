@@ -16,7 +16,7 @@ We recommend deploying the project using [Laravel Forge](https://forge.laravel.c
 
 ## Usage
 
-Check [badger.preem.studio](https://badger.preem.studio) for a list of all available badges. **We accept pull requests for new badges, so if you don't see one you need, feel free to add it!**
+Check [badge.sh](https://badge.sh) for a list of all available badges. **We accept pull requests for new badges, so if you don't see one you need, feel free to add it!**
 
 ## Roadmap
 
