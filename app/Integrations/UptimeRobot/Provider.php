@@ -17,7 +17,11 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('uptime-robot')->group(function (): void {
-            //
+            Route::get('status/{apiKey}', Controllers\StatusController::class);
+            Route::get('day/{apiKey}', Controllers\DayController::class);
+            Route::get('week/{apiKey}', Controllers\WeekController::class);
+            Route::get('month/{apiKey}', Controllers\MonthController::class);
+            Route::get('response/{apiKey}', Controllers\ResponseController::class);
         });
     }
 

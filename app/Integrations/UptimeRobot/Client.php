@@ -13,11 +13,16 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.uptimerobot.com/v2')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $apiKey): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->post('getMonitors', [
+            'api_key'              => $apiKey,
+            'custom_uptime_ratios' => '1-7-30',
+            'response_times'       => 1,
+            'response_times_limit' => 12,
+        ])->json('monitors.0');
     }
 }
