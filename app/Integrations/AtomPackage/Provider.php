@@ -17,7 +17,12 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('apm')->group(function (): void {
-            //
+            Route::get('v/{package}', Controllers\VersionController::class);
+            Route::get('version/{package}', Controllers\VersionController::class);
+            Route::get('stars/{package}', Controllers\StarsController::class);
+            Route::get('license/{package}', Controllers\LicenseController::class);
+            Route::get('dl/{package}', Controllers\DownloadsController::class);
+            Route::get('downloads/{package}', Controllers\DownloadsController::class);
         });
     }
 
