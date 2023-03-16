@@ -61,6 +61,7 @@ final class IntegrationServiceProvider extends ServiceProvider
         \App\Integrations\MozillaAddOns\Provider::class,
         \App\Integrations\NPM\Provider::class,
         \App\Integrations\NuGet\Provider::class,
+        \App\Integrations\OhDear\Provider::class,
         \App\Integrations\OPAM\Provider::class,
         \App\Integrations\OpenCollective\Provider::class,
         \App\Integrations\OpenVSX\Provider::class,
