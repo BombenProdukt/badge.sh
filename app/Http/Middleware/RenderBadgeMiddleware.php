@@ -44,6 +44,10 @@ final class RenderBadgeMiddleware
             $badge = Badger::from($response->getOriginalContent());
             $badge->withStyle($request->query('style', 'flat'));
 
+            if ($request->has('hideLabel')) {
+                $badge->withLabel('');
+            }
+
             if ($request->has('icon')) {
                 $icon = $request->query('icon');
 
