@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://discord.com/api/v8/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $inviteCode): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("invites/{$inviteCode}", ['with_counts' => true])->json();
     }
 }

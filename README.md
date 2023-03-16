@@ -27,7 +27,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [chrome-web-store](https://github.com/badgen/badgen.net/blob/master/api/chrome-web-store.ts)
 - [ ] [david](https://github.com/badgen/badgen.net/blob/master/api/david.ts)
 - [ ] [deepscan](https://github.com/badgen/badgen.net/blob/master/api/deepscan.ts)
-- [ ] [discord](https://github.com/badgen/badgen.net/blob/master/api/discord.ts)
 - [ ] [docker](https://github.com/badgen/badgen.net/blob/master/api/docker.ts)
 - [ ] [gitlab](https://github.com/badgen/badgen.net/blob/master/api/gitlab.ts)
 - [ ] [haxelib](https://github.com/badgen/badgen.net/blob/master/api/haxelib.ts)
