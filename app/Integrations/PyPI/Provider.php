@@ -17,7 +17,9 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('pypi')->group(function (): void {
-            //
+            Route::get('v/{project}', Controllers\VersionController::class);
+            Route::get('license/{project}', Controllers\LicenseController::class);
+            Route::get('python/{project}', Controllers\PythonController::class);
         });
     }
 

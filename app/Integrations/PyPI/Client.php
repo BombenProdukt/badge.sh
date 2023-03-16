@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://pypi.org/pypi/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $project): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("{$project}/json")->json('info');
     }
 }

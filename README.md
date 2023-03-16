@@ -35,7 +35,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [matrix](https://github.com/badgen/badgen.net/blob/master/api/matrix.ts)
 - [ ] [maven](https://github.com/badgen/badgen.net/blob/master/api/maven.ts)
 - [ ] [npm](https://github.com/badgen/badgen.net/blob/master/api/npm.ts)
-- [ ] [pypi](https://github.com/badgen/badgen.net/blob/master/api/pypi.ts)
 
 ## Testing
 
