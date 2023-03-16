@@ -23,7 +23,6 @@ Check [badge.sh](https://badge.sh) for a list of all available badges. **We acce
 This project is very much a work in progress. Here is a list of features we plan to implement:
 
 - [ ] [azure-pipelines](https://github.com/badgen/badgen.net/blob/master/api/azure-pipelines.ts)
-- [ ] [gitlab](https://github.com/badgen/badgen.net/blob/master/api/gitlab.ts)
 - [ ] [jenkins](https://github.com/badgen/badgen.net/blob/master/api/jenkins.ts)
 
 ## Testing

@@ -42,7 +42,7 @@ final class IntegrationServiceProvider extends ServiceProvider
         \App\Integrations\ElmPackage\Provider::class,
         \App\Integrations\FDroid\Provider::class,
         \App\Integrations\GitHub\Provider::class,
-        \App\Integrations\Gitlab\Provider::class,
+        \App\Integrations\GitLab\Provider::class,
         \App\Integrations\Gitter\Provider::class,
         \App\Integrations\Hackage\Provider::class,
         \App\Integrations\Haxelib\Provider::class,

@@ -42,13 +42,13 @@ return [
 
         'main' => [
             'method'  => 'token',
-            'token'   => env('GITHUB_V3_TOKEN'),
+            'token'   => env('GITHUB_TOKEN'),
             'version' => 'v3',
         ],
 
         'graphql' => [
             'method'  => 'token',
-            'token'   => env('GITHUB_V4_TOKEN'),
+            'token'   => env('GITHUB_TOKEN'),
             'version' => 'v4',
         ],
 

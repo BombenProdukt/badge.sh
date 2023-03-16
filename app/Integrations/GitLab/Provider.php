@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Integrations\Gitlab;
+namespace App\Integrations\GitLab;
 
 use App\Integrations\Contracts\IntegrationProvider;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +17,24 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('gitlab')->group(function (): void {
-            //
+            Route::get('stars/{owner}/{repo}', Controllers\StarsController::class);
+            Route::get('forks/{owner}/{repo}', Controllers\ForksController::class);
+            Route::get('issues/{owner}/{repo}', Controllers\IssuesController::class);
+            Route::get('open-issues/{owner}/{repo}', Controllers\OpenIssuesController::class);
+            Route::get('closed-issues/{owner}/{repo}', Controllers\ClosedIssuesController::class);
+            Route::get('mrs/{owner}/{repo}', Controllers\MergeRequestsController::class);
+            Route::get('open-mrs/{owner}/{repo}', Controllers\OpenMergeRequestsController::class);
+            Route::get('closed-mrs/{owner}/{repo}', Controllers\ClosedMergeRequestsController::class);
+            Route::get('merged-mrs/{owner}/{repo}', Controllers\MergedMergeRequestsController::class);
+            Route::get('branches/{owner}/{repo}', Controllers\BranchesController::class);
+            Route::get('releases/{owner}/{repo}', Controllers\ReleasesController::class);
+            Route::get('release/{owner}/{repo}', Controllers\ReleaseController::class);
+            Route::get('tags/{owner}/{repo}', Controllers\TagsController::class);
+            Route::get('license/{owner}/{repo}', Controllers\LicenseController::class);
+            Route::get('contributors/{owner}/{repo}', Controllers\ContributorsController::class);
+            Route::get('label-issues/{owner}/{repo}/{label}/{state?}', Controllers\LabelsController::class);
+            Route::get('commits/{owner}/{repo}/{ref?}', Controllers\CommitsController::class);
+            Route::get('last-commit/{owner}/{repo}/{ref?}', Controllers\LastCommitController::class);
         });
     }
 
