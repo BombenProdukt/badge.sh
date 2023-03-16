@@ -14,7 +14,7 @@ final class NameController extends Controller
         //
     }
 
-    public function __invoke(string $vendor, string $package, string $channel): array
+    public function __invoke(string $vendor, string $package, ?string $channel = null): array
     {
         $packageMeta = $this->client->get($vendor, $package);
 

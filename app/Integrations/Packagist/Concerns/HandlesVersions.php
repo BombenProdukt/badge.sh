@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 trait HandlesVersions
 {
-    protected function getVersion(array $packageMeta, string $channel): string
+    protected function getVersion(array $packageMeta, ?string $channel): string
     {
         $versions = collect(array_keys($packageMeta['versions']));
 
