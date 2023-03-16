@@ -16,7 +16,7 @@ final class PriceController extends Controller
 
     public function __invoke(string $itemId): array
     {
-        $version = $this->client->get($itemId);
+        $response = $this->client->get($itemId);
 
         return [
             'label'       => 'TODO',

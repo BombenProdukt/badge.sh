@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Integrations\ChromeWebStore\Controllers;
 
+use App\Integrations\Actions\ExtractVersion;
+use App\Integrations\Actions\ExtractVersionColor;
 use App\Integrations\ChromeWebStore\Client;
 use Illuminate\Routing\Controller;
 
@@ -16,12 +18,12 @@ final class VersionController extends Controller
 
     public function __invoke(string $itemId): array
     {
-        $version = $this->client->get($itemId);
+        preg_match('|<span class="C-b-p-D-Xe h-C-b-p-D-md">(.*?)</span>|', $this->client->get($itemId), $matches);
 
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'       => 'chrome web store',
+            'status'      => ExtractVersion::execute($matches[1]),
+            'statusColor' => ExtractVersionColor::execute($matches[1]),
         ];
     }
 }

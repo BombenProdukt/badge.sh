@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://chrome.google.com/webstore/detail/')->throw();
     }
 
-    public function get(string $itemId): array
+    public function get(string $itemId): string
     {
-        return $this->client->get($itemId)->json();
+        return $this->client->get($itemId)->body();
     }
 }
