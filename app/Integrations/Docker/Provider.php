@@ -17,7 +17,11 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('docker')->group(function (): void {
-            //
+            Route::get('stars/{scope}/{name}', Controllers\StarsController::class);
+            Route::get('pulls/{scope}/{name}', Controllers\PullsController::class);
+            Route::get('size/{scope}/{name}/{tag?}/{architecture?}/{variant?}', Controllers\SizeController::class);
+            Route::get('layers/{scope}/{name}/{tag?}/{architecture?}/{variant?}', Controllers\LayersController::class);
+            Route::get('metadata/{type}/{scope}/{name}/{tag?}/{architecture?}/{variant?}', Controllers\MetadataController::class);
         });
     }
 
