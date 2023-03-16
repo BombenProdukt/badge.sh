@@ -69,7 +69,7 @@ final class RenderBadgeMiddleware
                 $badge->withIcon('data:image/svg+xml;base64,'.$icon);
             }
 
-            return response($badge->render());
+            return response($badge->render())->header('Content-Type', 'image/svg+xml;charset=utf-8');
         }
 
         return $response;
