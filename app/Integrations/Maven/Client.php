@@ -4,20 +4,26 @@ declare(strict_types=1);
 
 namespace App\Integrations\Maven;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function get(string $repo, string $path): string
     {
-        $this->client = Http::baseUrl('')->throw();
+        if ($repo === 'maven-central') {
+            return $this->maven($path);
+        }
+
+        return $this->jcenter($path);
     }
 
-    public function get(string $package): array
+    private function maven(string $path): string
     {
-        return $this->client->get($package)->json();
+        return Http::baseUrl('https://repo1.maven.org/maven2/')->throw()->get($path)->body();
+    }
+
+    private function jcenter(string $path): string
+    {
+        return Http::baseUrl('https://jcenter.bintray.com/')->throw()->get($path)->body();
     }
 }

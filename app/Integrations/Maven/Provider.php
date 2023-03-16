@@ -17,7 +17,15 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('maven')->group(function (): void {
-            //
+            Route::get('/v/{repo}/{group}/{artifact}', Controllers\RepoController::class)
+                ->whereIn('repo', ['maven-central', 'jcenter'])
+                ->where('pathname', '.+');
+
+            Route::get('/v/metadata-url/{protocol}/{hostname}/{pathname}', Controllers\UrlWithProtocolController::class)
+                ->where('pathname', '.+');
+
+            Route::get('/v/metadata-url/{hostname}/{pathname}', Controllers\UrlController::class)
+                ->where('pathname', '.+');
         });
     }
 
