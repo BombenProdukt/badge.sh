@@ -17,7 +17,12 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('azure-pipelines')->group(function (): void {
-            //
+            Route::get('build/status/{org}/{project}/{definition}/{branch?}', Controllers\BuildStatusController::class);
+            Route::get('build/version/{org}/{project}/{definition}/{branch?}', Controllers\BuildVersionController::class);
+            Route::get('build/test/{org}/{project}/{definition}/{branch?}', Controllers\BuildTestResultController::class);
+            Route::get('release/version/{org}/{project}/{definition}/{environment?}', Controllers\ReleaseController::class);
+            Route::get('deployment/version/{org}/{project}/{definition}/{environment?}', Controllers\DeploymentController::class);
+            Route::get('{org}/{project}/{definition}/{branch?}', Controllers\StatusController::class);
         });
     }
 
