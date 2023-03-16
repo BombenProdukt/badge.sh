@@ -17,7 +17,9 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('jenkins')->group(function (): void {
-            //
+            Route::get('last-build/{hostname}/{job}', Controllers\LastBuildController::class)->where('job', '.+');
+            Route::get('fix-time/{hostname}/{job}', Controllers\FixTimeController::class)->where('job', '.+');
+            Route::get('broken-build/{hostname}/{job}', Controllers\BrokenBuildController::class)->where('job', '.+');
         });
     }
 

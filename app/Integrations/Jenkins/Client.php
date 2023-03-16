@@ -4,20 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\Jenkins;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function get(string $hostname, string $job, string $path): array
     {
-        $this->client = Http::baseUrl('')->throw();
+        return Http::get("https://{$hostname}/{$job}/{$path}")->throw()->json();
     }
 
-    public function get(string $package): array
+    public function builds(string $hostname, string $job): array
     {
-        return $this->client->get($package)->json();
+        return Http::get("https://{$hostname}/{$job}/api/json?tree=builds[number,status,timestamp,id,result]")->throw()->json('builds');
     }
 }

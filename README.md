@@ -18,12 +18,6 @@ We recommend deploying the project using [Laravel Forge](https://forge.laravel.c
 
 Check [badge.sh](https://badge.sh) for a list of all available badges. **We accept pull requests for new badges, so if you don't see one you need, feel free to add it!**
 
-## Roadmap
-
-This project is very much a work in progress. Here is a list of features we plan to implement:
-
-- [ ] [jenkins](https://github.com/badgen/badgen.net/blob/master/api/jenkins.ts)
-
 ## Testing
 
 ```bash
