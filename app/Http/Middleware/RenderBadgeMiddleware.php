@@ -6,6 +6,7 @@ namespace App\Http\Middleware;
 
 use BladeUI\Icons\Factory;
 use Closure;
+use Iconify\IconsJSON\Finder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
@@ -55,6 +56,14 @@ final class RenderBadgeMiddleware
                     $icon = app(Factory::class)->svg($icon)->contents();
                     $icon = str_replace('stroke="currentColor"', 'stroke="#fff"', $icon);
                     $icon = base64_encode($icon);
+                }
+
+                if (str_starts_with($icon, 'iconify')) {
+                    [,$set,$name] = explode('-', $icon, 3);
+
+                    $icon = json_decode(file_get_contents(Finder::locate($set)), true, JSON_THROW_ON_ERROR)['icons'][$name]['body'];
+                    $icon = str_replace('fill="currentColor"', 'fill="#fff"', $icon);
+                    $icon = base64_encode('<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">'.$icon.'</svg>');
                 }
 
                 $badge->withIcon('data:image/svg+xml;base64,'.$icon);

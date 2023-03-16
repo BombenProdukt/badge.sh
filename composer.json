@@ -9,6 +9,7 @@
         "blade-ui-kit/blade-heroicons": "^2.1",
         "graham-campbell/github": "^12.2",
         "guzzlehttp/guzzle": "^7.2",
+        "iconify/json": "^2.2",
         "laravel/framework": "^10.0",
         "laravel/jetstream": "^3.0",
         "laravel/sanctum": "^3.2",

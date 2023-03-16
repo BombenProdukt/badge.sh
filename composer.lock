@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b91929abe7f6a408e3c90d38cd0990f3",
+    "content-hash": "3c657f38cdbe59d918c4b061cb4327eb",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1707,6 +1707,38 @@
                 }
             ],
             "time": "2021-10-07T12:57:01+00:00"
+        },
+        {
+            "name": "iconify/json",
+            "version": "2.2.35",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iconify/icon-sets.git",
+                "reference": "984e21eba59b7c294acbe221c8ee20c4d8e6deab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iconify/icon-sets/zipball/984e21eba59b7c294acbe221c8ee20c4d8e6deab",
+                "reference": "984e21eba59b7c294acbe221c8ee20c4d8e6deab",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Iconify\\IconsJSON\\": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Iconify icons collection in JSON format",
+            "homepage": "https://iconify.design/icon-sets/",
+            "support": {
+                "issues": "https://github.com/iconify/icon-sets/issues",
+                "source": "https://github.com/iconify/icon-sets/tree/2.2.35"
+            },
+            "time": "2023-03-15T06:39:42+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",
