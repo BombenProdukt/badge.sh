@@ -24,7 +24,6 @@ This project is very much a work in progress. Here is a list of features we plan
 
 - [ ] [apm](https://github.com/badgen/badgen.net/blob/master/api/apm.ts)
 - [ ] [azure-pipelines](https://github.com/badgen/badgen.net/blob/master/api/azure-pipelines.ts)
-- [ ] [david](https://github.com/badgen/badgen.net/blob/master/api/david.ts)
 - [ ] [gitlab](https://github.com/badgen/badgen.net/blob/master/api/gitlab.ts)
 - [ ] [haxelib](https://github.com/badgen/badgen.net/blob/master/api/haxelib.ts)
 - [ ] [jenkins](https://github.com/badgen/badgen.net/blob/master/api/jenkins.ts)

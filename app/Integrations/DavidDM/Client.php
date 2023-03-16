@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://david-dm.org/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $owner, string $repo, string $path, string $prefix = ''): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->get("{$owner}/{$repo}/{$prefix}info.json", ['path' => $path])->json();
     }
 }
