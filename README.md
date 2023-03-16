@@ -37,7 +37,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [npm](https://github.com/badgen/badgen.net/blob/master/api/npm.ts)
 - [ ] [pypi](https://github.com/badgen/badgen.net/blob/master/api/pypi.ts)
 - [ ] [uptime-robot](https://github.com/badgen/badgen.net/blob/master/api/uptime-robot.ts)
-- [ ] [vs-marketplace](https://github.com/badgen/badgen.net/blob/master/api/vs-marketplace.ts)
 
 ## Testing
 

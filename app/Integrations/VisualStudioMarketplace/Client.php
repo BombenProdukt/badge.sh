@@ -13,11 +13,14 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://marketplace.visualstudio.com/_apis/public/gallery/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $extension): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->post('extensionquery?api-version=3.0-preview.1', [
+            'filters' => [['criteria' => [['filterType' => 7, 'value' => $extension]]]],
+            'flags'   => 914,
+        ])->json('results.0.extensions.0');
     }
 }
