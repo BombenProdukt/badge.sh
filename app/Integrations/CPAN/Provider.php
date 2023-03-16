@@ -17,7 +17,12 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('cpan')->group(function (): void {
-            //
+            Route::get('v/{distribution}', Controllers\VersionController::class);
+            Route::get('license/{distribution}', Controllers\LicenseController::class);
+            Route::get('perl/{distribution}', Controllers\PerlController::class);
+            Route::get('size/{distribution}', Controllers\SizeController::class);
+            Route::get('dependents/{distribution}', Controllers\DependentsController::class);
+            Route::get('likes/{distribution}', Controllers\LikesController::class);
         });
     }
 
