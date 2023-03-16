@@ -13,11 +13,15 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://registry.wapm.io/')->throw();
     }
 
-    public function get(string $package): array
+    public function get(string $package, string $namespace = '_'): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->post('graphql', [
+            'query'         => 'query packageQuery($name: String!, $version: String) { packageVersion: getPackageVersion(name: $name, version: $version) { version license createdAt distribution { size } commands { command module { name } } modules { name abi } } }',
+            'operationName' => 'packageQuery',
+            'variables'     => ['name' => "{$namespace}/{$package}"],
+        ])->json('data.packageVersion');
     }
 }

@@ -17,7 +17,17 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('wapm')->group(function (): void {
-            //
+            Route::get('v/{package}', Controllers\VersionController::class);
+            Route::get('v/{namespace}/{package}', Controllers\VersionFromNamespaceController::class);
+
+            Route::get('license/{package}', Controllers\LicenseController::class);
+            Route::get('license/{namespace}/{package}', Controllers\LicenseFromNamespaceController::class);
+
+            Route::get('size/{package}', Controllers\SizeController::class);
+            Route::get('size/{namespace}/{package}', Controllers\SizeFromNamespaceController::class);
+
+            Route::get('abi/{package}', Controllers\ABIController::class);
+            Route::get('abi/{namespace}/{package}', Controllers\ABIFromNamespaceController::class);
         });
     }
 
