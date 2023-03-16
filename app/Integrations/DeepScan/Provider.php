@@ -17,7 +17,9 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('deepscan')->group(function (): void {
-            //
+            Route::get('grade/team/{teamId}/project/{projectId}/branch/{branchId}', Controllers\GradeController::class);
+            Route::get('issues/team/{teamId}/project/{projectId}/branch/{branchId}', Controllers\IssuesController::class);
+            Route::get('lines/team/{teamId}/project/{projectId}/branch/{branchId}', Controllers\LinesController::class);
         });
     }
 
