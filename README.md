@@ -8,6 +8,7 @@ This project is a port of the popular [badgen/badgen.net](https://github.com/bad
 - Standardized development process by leveraging the Laravel ecosystem
 - Standardized API to be more consistent and predictable
 - Standardized color palette to be more consistent and predictable
+- Standardized test suite to ensure functionality of all components
 
 ## Installation
 
@@ -38,7 +39,6 @@ This project is very much a work in progress. Here is a list of features we plan
 - [ ] [matrix](https://github.com/badgen/badgen.net/blob/master/api/matrix.ts)
 - [ ] [maven](https://github.com/badgen/badgen.net/blob/master/api/maven.ts)
 - [ ] [npm](https://github.com/badgen/badgen.net/blob/master/api/npm.ts)
-- [ ] [peertube](https://github.com/badgen/badgen.net/blob/master/api/peertube.ts)
 - [ ] [pypi](https://github.com/badgen/badgen.net/blob/master/api/pypi.ts)
 - [ ] [snapcraft](https://github.com/badgen/badgen.net/blob/master/api/snapcraft.ts)
 - [ ] [uptime-robot](https://github.com/badgen/badgen.net/blob/master/api/uptime-robot.ts)

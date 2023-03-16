@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace App\Integrations\PeerTube;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\PeerTube\Controllers\CommentsController;
+use App\Integrations\PeerTube\Controllers\FollowersController;
+use App\Integrations\PeerTube\Controllers\ViewsController;
+use App\Integrations\PeerTube\Controllers\VotesController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,7 +21,10 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('peertube')->group(function (): void {
-            //
+            Route::get('{instance}/comments/{video}', CommentsController::class);
+            Route::get('{instance}/views/{video}', ViewsController::class);
+            Route::get('{instance}/votes/{video}/{format?}', VotesController::class);
+            Route::get('{instance}/followers/{account}/{channel?}', FollowersController::class);
         });
     }
 

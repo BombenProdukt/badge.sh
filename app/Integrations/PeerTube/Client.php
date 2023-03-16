@@ -4,20 +4,12 @@ declare(strict_types=1);
 
 namespace App\Integrations\PeerTube;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function get(string $instance, string $path): array
     {
-        $this->client = Http::baseUrl('')->throw();
-    }
-
-    public function get(string $package): array
-    {
-        return $this->client->get($package)->json();
+        return Http::baseUrl("https://{$instance}/api/v1")->get($path)->throw()->json();
     }
 }
