@@ -17,7 +17,14 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('cran')->group(function (): void {
-            //
+            Route::get('v/{package}', Controllers\VersionController::class);
+            Route::get('license/{package}', Controllers\LicenseController::class);
+            Route::get('r/{package}', Controllers\RVersionController::class);
+            Route::get('dependents/{package}', Controllers\DependentsController::class);
+            Route::get('dt/{package}', Controllers\TotalDownloadsController::class);
+            Route::get('dd/{package}', Controllers\DailyDownloadsController::class);
+            Route::get('dw/{package}', Controllers\WeeklyDownloadsController::class);
+            Route::get('dm/{package}', Controllers\MonthlyDownloadsController::class);
         });
     }
 

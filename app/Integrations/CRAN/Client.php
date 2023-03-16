@@ -16,8 +16,13 @@ final class Client
         $this->client = Http::baseUrl('')->throw();
     }
 
-    public function get(string $package): array
+    public function db(string $package): array
     {
-        return $this->client->get($package)->json();
+        return Http::baseUrl('https://crandb.r-pkg.org/')->get($package)->throw()->json();
+    }
+
+    public function logs(string $package): array
+    {
+        return Http::baseUrl('https://cranlogs.r-pkg.org/')->get($package)->throw()->json();
     }
 }
