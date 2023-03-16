@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
 {
+    private array $providers = [
+        'g', 'github',
+        'b', 'bitbucket',
+        'gl', 'gitlab',
+    ];
+
     public function name(): string
     {
         return 'LGTM';
@@ -17,7 +23,10 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('lgtm')->group(function (): void {
-            //
+            Route::get('alerts/{provider}/{owner}/{name}/{language?}', Controllers\AlertsController::class)->whereIn('provider', $this->providers);
+            Route::get('grade/{provider}/{owner}/{name}/{language?}', Controllers\GradeController::class)->whereIn('provider', $this->providers);
+            Route::get('lines/{provider}/{owner}/{name}/{language?}', Controllers\LinesController::class)->whereIn('provider', $this->providers);
+            Route::get('langs/{provider}/{owner}/{name}/{language?}', Controllers\LangsController::class)->whereIn('provider', $this->providers);
         });
     }
 
