@@ -13,7 +13,7 @@ final class Provider implements IntegrationProvider
 {
     public function name(): string
     {
-        return 'OhDear';
+        return 'Oh Dear';
     }
 
     public function register(): void
