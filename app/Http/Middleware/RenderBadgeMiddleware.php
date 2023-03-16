@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use BladeUI\Icons\Factory;
 use Closure;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -40,11 +41,22 @@ final class RenderBadgeMiddleware
         // }
 
         if ($response instanceof JsonResponse) {
-            return response(
-                Badger::from($response->getOriginalContent())
-                    ->withStyle($request->query('style', 'flat'))
-                    ->render()
-            );
+            $badge = Badger::from($response->getOriginalContent());
+            $badge->withStyle($request->query('style', 'flat'));
+
+            if ($request->has('icon')) {
+                $icon = $request->query('icon');
+
+                if (str_starts_with($icon, 'heroicon')) {
+                    $icon = app(Factory::class)->svg($icon)->contents();
+                    $icon = str_replace('stroke="currentColor"', 'stroke="#fff"', $icon);
+                    $icon = base64_encode($icon);
+                }
+
+                $badge->withIcon('data:image/svg+xml;base64,'.$icon);
+            }
+
+            return response($badge->render());
         }
 
         return $response;
