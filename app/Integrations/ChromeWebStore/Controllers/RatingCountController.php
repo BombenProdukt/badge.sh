@@ -7,6 +7,9 @@ namespace App\Integrations\ChromeWebStore\Controllers;
 use App\Integrations\ChromeWebStore\Client;
 use Illuminate\Routing\Controller;
 
+/**
+ * @TODO
+ */
 final class RatingCountController extends Controller
 {
     public function __construct(private readonly Client $client)

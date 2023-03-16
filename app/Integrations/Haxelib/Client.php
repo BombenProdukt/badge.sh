@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://lib.haxe.org/api/3.0/index.n')->throw();
     }
 
     public function get(string $package): array
     {
-        return $this->client->get($package)->json();
+        return $this->client->post('/', ['api', 'infos', $package])->json();
     }
 }

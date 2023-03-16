@@ -7,16 +7,19 @@ namespace App\Integrations\Haxelib\Controllers;
 use App\Integrations\Haxelib\Client;
 use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+/**
+ * @TODO
+ */
+final class LicenseController extends Controller
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $package): array
+    public function __invoke(string $project): array
     {
-        $version = $this->client->get($package);
+        $response = $this->client->get($project);
 
         return [
             'label'       => 'TODO',

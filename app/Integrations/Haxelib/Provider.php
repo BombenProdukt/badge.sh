@@ -17,7 +17,10 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('haxelib')->group(function (): void {
-            //
+            Route::get('v/{project}', Controllers\VersionController::class);
+            Route::get('license/{project}', Controllers\LicenseController::class);
+            Route::get('d/{project}', Controllers\TotalDownloadsController::class);
+            Route::get('dl/{project}', Controllers\LatestDownloadsController::class);
         });
     }
 
