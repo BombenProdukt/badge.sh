@@ -20,8 +20,8 @@ final class LabelsController extends AbstractController
 
         return [
             'label'       => $label,
-            'status'      => $result['label'] ? $result['label']['issues']['totalCount'] : 0,
-            'statusColor' => $result['label'] ? $result['label']['color'] : 'grey.600',
+            'status'      => strval($result['label'] ? $result['label']['issues']['totalCount'] : 0),
+            'statusColor' => $result['label'] ? $result['label']['color'] : 'gray.600',
         ];
     }
 

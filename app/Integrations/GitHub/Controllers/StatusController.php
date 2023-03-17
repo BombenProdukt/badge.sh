@@ -8,6 +8,7 @@ use App\Integrations\AbstractController;
 use App\Integrations\GitHub\Actions\CombineStates;
 use App\Integrations\GitHub\Client;
 use GrahamCampbell\GitHub\Facades\GitHub;
+use Illuminate\Support\Collection;
 
 final class StatusController extends AbstractController
 {
@@ -16,24 +17,22 @@ final class StatusController extends AbstractController
         //
     }
 
-    protected function handleRequest(string $owner, string $repo, ?string $reference = '', ?string $context = ''): array
+    protected function handleRequest(string $owner, string $repo, ?string $reference = null, ?string $context = null): array
     {
         if (empty($reference)) {
             $response  = GitHub::connection('main')->api('repo')->show($owner, $repo);
             $reference = $response['default_branch'];
         }
 
-        $response = GitHub::connection('main')->api('repo')->statuses()->show($owner, $repo, $reference);
+        $response = GitHub::connection('main')->api('repo')->statuses()->combined($owner, $repo, $reference);
 
         if (is_string($context)) {
-            $state = collect($response['statuses'])->filter(function (array $check) use ($context): bool {
-                return str_contains(strtolower($check['context']), $context);
-            });
+            $state = collect($response['statuses'])->filter(fn (array $check) => str_contains(strtolower($check['context']), $context));
         } else {
-            $state = collect($response['state']);
+            $state = $response['state'];
         }
 
-        if ($state->isNotEmpty()) {
+        if ($state instanceof Collection) {
             $state = CombineStates::execute($state, 'state');
         }
 
@@ -46,7 +45,7 @@ final class StatusController extends AbstractController
                     'success' => 'green.600',
                     'failure' => 'red.600',
                     'error'   => 'red.600',
-                    'unknown' => 'grey.600',
+                    'unknown' => 'gray.600',
                 ][$state],
             ];
         }
@@ -54,7 +53,7 @@ final class StatusController extends AbstractController
         return [
             'label'       => 'status',
             'status'      => 'unknown',
-            'statusColor' => 'grey.600',
+            'statusColor' => 'gray.600',
         ];
     }
 }

@@ -24,7 +24,7 @@ final class DownloadsController extends AbstractController
             return [
                 'label'       => 'downloads',
                 'status'      => 'no assets',
-                'statusColor' => 'grey.600',
+                'statusColor' => 'gray.600',
             ];
         }
 

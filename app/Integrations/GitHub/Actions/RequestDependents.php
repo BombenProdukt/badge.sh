@@ -24,7 +24,7 @@ final class RequestDependents
             return [
                 'label'       => $subject,
                 'status'      => 'invalid',
-                'statusColor' => 'grey.600',
+                'statusColor' => 'gray.600',
             ];
         }
 

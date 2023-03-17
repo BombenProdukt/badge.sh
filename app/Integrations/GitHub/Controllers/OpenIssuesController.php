@@ -22,7 +22,7 @@ final class OpenIssuesController extends AbstractController
         return [
             'label'       => 'open issues',
             'status'      => FormatNumber::execute($result['issues']['totalCount']),
-            'statusColor' => $result['issues']['totalCount'] === 0 ? 'green' : 'orange',
+            'statusColor' => $result['issues']['totalCount'] === 0 ? 'green.600' : 'orange.600',
         ];
     }
 }

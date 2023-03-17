@@ -7,6 +7,7 @@ namespace App\Integrations\GitHub\Controllers;
 use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\GitHub\Client;
+use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class CommitsController extends AbstractController
 {
@@ -15,9 +16,13 @@ final class CommitsController extends AbstractController
         //
     }
 
-    protected function handleRequest(string $owner, string $repo, string $reference = ''): array
+    protected function handleRequest(string $owner, string $repo, ?string $reference = null): array
     {
-        $reference ??= 'main';
+        if (empty($reference)) {
+            $response  = GitHub::connection('main')->api('repo')->show($owner, $repo);
+            $reference = $response['default_branch'];
+        }
+
         $result = $this->client->makeRepoQuery($owner, $repo, "branch: ref(qualifiedName: \"{$reference}\") { target { ... on Commit { history(first: 0) { totalCount } } } }");
 
         return [

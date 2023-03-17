@@ -21,7 +21,7 @@ final class LicenseController extends AbstractController
         return [
             'label'       => 'license',
             'status'      => $result['licenseInfo'] ? $result['licenseInfo']['spdxId'] : 'no license',
-            'statusColor' => $result['licenseInfo'] ? 'blue.600' : 'grey.600',
+            'statusColor' => $result['licenseInfo'] ? 'blue.600' : 'gray.600',
         ];
     }
 }

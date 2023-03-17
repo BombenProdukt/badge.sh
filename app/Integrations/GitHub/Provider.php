@@ -61,7 +61,7 @@ final class Provider implements IntegrationProvider
             Route::get('last-commit/{owner}/{repo}/{reference?}', LastCommitController::class);
             Route::get('license/{owner}/{repo}', LicenseController::class);
             Route::get('merged-prs/{owner}/{repo}', MergedPullRequestsController::class);
-            Route::get('milestones/{owner}/{repo}/{milestone_number}', MilestonesController::class);
+            Route::get('milestones/{owner}/{repo}/{milestoneNumber}', MilestonesController::class);
             Route::get('open-issues/{owner}/{repo}', OpenIssuesController::class);
             Route::get('open-prs/{owner}/{repo}', OpenPullRequestsController::class);
             Route::get('prs/{owner}/{repo}', PullRequestsController::class);

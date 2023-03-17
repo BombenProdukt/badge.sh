@@ -18,7 +18,7 @@ final class ReleaseController extends AbstractController
 
     protected function handleRequest(string $owner, string $repo, ?string $channel = 'stable'): array
     {
-        $releases = GitHub::api('repo')->releases()->show($owner, $repo);
+        $releases = GitHub::api('repo')->releases()->all($owner, $repo);
 
         if (empty($releases)) {
             return [
@@ -33,7 +33,7 @@ final class ReleaseController extends AbstractController
 
             return [
                 'label'       => 'release',
-                'status'      => ExtractVersion::execute($stable ? $stable['name'] ?? $stable['tag_name'] : null),
+                'status'      => ExtractVersion::execute($stable['name'] ?: $stable['tag_name']),
                 'statusColor' => 'blue.600',
             ];
         }

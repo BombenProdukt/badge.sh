@@ -7,6 +7,7 @@ namespace App\Integrations\GitHub\Controllers;
 use App\Integrations\AbstractController;
 use App\Integrations\GitHub\Actions\CombineStates;
 use GrahamCampbell\GitHub\Facades\GitHub;
+use Illuminate\Support\Collection;
 
 final class ChecksController extends AbstractController
 {
@@ -30,7 +31,7 @@ final class ChecksController extends AbstractController
             });
         }
 
-        if ($state->isNotEmpty()) {
+        if ($state instanceof Collection) {
             $state = CombineStates::execute($state, 'conclusion');
         }
 
@@ -43,7 +44,7 @@ final class ChecksController extends AbstractController
                     'success' => 'green.600',
                     'failure' => 'red.600',
                     'error'   => 'red.600',
-                    'unknown' => 'grey.600',
+                    'unknown' => 'gray.600',
                 ][$state],
             ];
         }
@@ -51,7 +52,7 @@ final class ChecksController extends AbstractController
         return [
             'label'       => 'checks',
             'status'      => 'unknown',
-            'statusColor' => 'grey.600',
+            'statusColor' => 'gray.600',
         ];
     }
 }
