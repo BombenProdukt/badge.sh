@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Integrations\LGTM;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\DeprecatedController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -23,10 +24,10 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('lgtm')->group(function (): void {
-            Route::get('alerts/{provider}/{owner}/{name}/{language?}', Controllers\AlertsController::class)->whereIn('provider', $this->providers);
-            Route::get('grade/{provider}/{owner}/{name}/{language?}', Controllers\GradeController::class)->whereIn('provider', $this->providers);
-            Route::get('lines/{provider}/{owner}/{name}/{language?}', Controllers\LinesController::class)->whereIn('provider', $this->providers);
-            Route::get('langs/{provider}/{owner}/{name}/{language?}', Controllers\LangsController::class)->whereIn('provider', $this->providers);
+            Route::get('alerts/{provider}/{owner}/{name}/{language?}', DeprecatedController::class)->whereIn('provider', $this->providers);
+            Route::get('grade/{provider}/{owner}/{name}/{language?}', DeprecatedController::class)->whereIn('provider', $this->providers);
+            Route::get('lines/{provider}/{owner}/{name}/{language?}', DeprecatedController::class)->whereIn('provider', $this->providers);
+            Route::get('langs/{provider}/{owner}/{name}/{language?}', DeprecatedController::class)->whereIn('provider', $this->providers);
         });
     }
 
