@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Actions\MakeBadgeResponse;
+use App\Integrations\Contracts\Badge;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 final class RouteServiceProvider extends ServiceProvider
 {
@@ -35,6 +38,17 @@ final class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+        });
+
+        Route::macro('badge', function (string $handler): void {
+            Route::middleware(CacheResponse::class)->group(function () use ($handler): void {
+                /** @var Badge */
+                $handler = app($handler);
+
+                foreach ($handler->routePaths() as $path) {
+                    $handler->routeConstraints(Route::get($path, fn (Request $request) => MakeBadgeResponse::execute($request, $handler)));
+                }
+            });
         });
     }
 

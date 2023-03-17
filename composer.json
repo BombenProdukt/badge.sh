@@ -18,7 +18,7 @@
         "livewire/livewire": "^2.11",
         "moneyphp/money": "^4.1",
         "preemstudio/laravel-badger": "^1.0",
-        "spatie/laravel-data": "^3.1",
+        "spatie/laravel-data": "^3.2",
         "spatie/laravel-responsecache": "^7.4",
         "spiral/roadrunner": "^2.8.2",
         "symfony/yaml": "^6.2"

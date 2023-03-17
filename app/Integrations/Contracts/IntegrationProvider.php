@@ -10,5 +10,5 @@ interface IntegrationProvider
 
     public function register(): void;
 
-    public function examples(): array;
+    // public function examples(): array;
 }

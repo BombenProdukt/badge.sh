@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Integrations\BadgeService;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Spatie\ResponseCache\Middlewares\CacheResponse;
@@ -93,11 +94,7 @@ final class IntegrationServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        Route::middleware(CacheResponse::class)->group(function (): void {
-            foreach (IntegrationServiceProvider::$integrations as $integration) {
-                app()->make($integration)->register();
-            }
-        });
+        $this->app->singleton('badge.service', fn () => new BadgeService);
     }
 
     /**
@@ -105,9 +102,20 @@ final class IntegrationServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Route::middleware(CacheResponse::class)->group(function (): void {
+            foreach (IntegrationServiceProvider::$integrations as $integration) {
+                app()->make($integration)->register();
+            }
+
+            foreach (app('badge.service')->all() as $badge) {
+                Route::badge($badge::class);
+            }
+        });
     }
 
+    /**
+     * @todo Replace this with a view composer or component.
+     */
     public static function examples(): array
     {
         $result = [];
@@ -115,9 +123,14 @@ final class IntegrationServiceProvider extends ServiceProvider
         foreach (IntegrationServiceProvider::$integrations as $integration) {
             $integration = app()->make($integration);
 
-            $result[$integration->name()] = $integration->examples();
+            if (method_exists($integration, 'examples')) {
+                $result[$integration->name()] = $integration->examples();
+            }
         }
 
-        return $result;
+        return [
+            ...$result,
+            ...app('badge.service')->dynamicPreviews(),
+        ];
     }
 }
