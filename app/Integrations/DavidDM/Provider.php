@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Integrations\DavidDM;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\DeprecatedController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,10 +18,10 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('david')->group(function (): void {
-            Route::get('dep/{owner}/{repo}/{path?}', Controllers\DepController::class)->where('path', '.+');
-            Route::get('dev/{owner}/{repo}/{path?}', Controllers\DevController::class)->where('path', '.+');
-            Route::get('peer/{owner}/{repo}/{path?}', Controllers\PeerController::class)->where('path', '.+');
-            Route::get('optional/{owner}/{repo}/{path?}', Controllers\OptionalController::class)->where('path', '.+');
+            Route::get('dep/{owner}/{repo}/{path?}', DeprecatedController::class)->where('path', '.+');
+            Route::get('dev/{owner}/{repo}/{path?}', DeprecatedController::class)->where('path', '.+');
+            Route::get('peer/{owner}/{repo}/{path?}', DeprecatedController::class)->where('path', '.+');
+            Route::get('optional/{owner}/{repo}/{path?}', DeprecatedController::class)->where('path', '.+');
         });
     }
 
