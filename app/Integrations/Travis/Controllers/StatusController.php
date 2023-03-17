@@ -33,7 +33,7 @@ final class StatusController extends AbstractController
     {
         return collect([
             ['broken', 'red.600'],
-            ['canceled', 'grey.600'],
+            ['canceled', 'gray.600'],
             ['error', 'red.600'],
             ['errored', 'red.600'],
             ['failed', 'red.600'],

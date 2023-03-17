@@ -21,7 +21,7 @@ final class RankController extends AbstractController
         return [
             'label'       => 'jsDelivr rank',
             'status'      => $rank ? "#{$rank}" : 'none',
-            'statusColor' => $rank ? 'blue.600' : 'grey.600',
+            'statusColor' => $rank ? 'blue.600' : 'gray.600',
         ];
     }
 }

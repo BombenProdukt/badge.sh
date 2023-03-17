@@ -21,7 +21,7 @@ final class StatusController extends AbstractController
         return [
             'label'       => 'circleci',
             'status'      => str_replace('_', ' ', $status),
-            'statusColor' => ['failed'  => 'red.600', 'success' => 'green.600'][$status] ?? 'grey.600',
+            'statusColor' => ['failed'  => 'red.600', 'success' => 'green.600'][$status] ?? 'gray.600',
         ];
     }
 }

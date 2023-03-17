@@ -26,7 +26,7 @@ final class CoverageController extends AbstractController
             return [
                 'subject'     => 'coverage',
                 'status'      => 'invalid',
-                'statusColor' => 'grey.600',
+                'statusColor' => 'gray.600',
             ];
         }
 
