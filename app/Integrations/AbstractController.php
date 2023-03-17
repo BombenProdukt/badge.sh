@@ -41,7 +41,7 @@ abstract class AbstractController extends Controller
                     $icon = base64_encode('<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">'.$icon.'</svg>');
                 }
 
-                // $badge->withIcon('data:image/svg+xml;base64,'.$icon);
+                $badge->withIcon('data:image/svg+xml;base64,'.$icon);
             }
 
             return response($badge->render())
