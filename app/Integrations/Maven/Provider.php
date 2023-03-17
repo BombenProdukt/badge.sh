@@ -22,6 +22,7 @@ final class Provider implements IntegrationProvider
                 ->where('pathname', '.+');
 
             Route::get('/v/metadata-url/{protocol}/{hostname}/{pathname}', Controllers\UrlWithProtocolController::class)
+                ->where('protocol', 'https?:?')
                 ->where('pathname', '.+');
 
             Route::get('/v/metadata-url/{hostname}/{pathname}', Controllers\UrlController::class)
