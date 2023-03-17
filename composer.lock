@@ -1791,16 +1791,16 @@
         },
         {
             "name": "iconify/json",
-            "version": "2.2.35",
+            "version": "2.2.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iconify/icon-sets.git",
-                "reference": "984e21eba59b7c294acbe221c8ee20c4d8e6deab"
+                "reference": "78d41f6b2efca13219cd7a6085ac4c06be30da5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iconify/icon-sets/zipball/984e21eba59b7c294acbe221c8ee20c4d8e6deab",
-                "reference": "984e21eba59b7c294acbe221c8ee20c4d8e6deab",
+                "url": "https://api.github.com/repos/iconify/icon-sets/zipball/78d41f6b2efca13219cd7a6085ac4c06be30da5d",
+                "reference": "78d41f6b2efca13219cd7a6085ac4c06be30da5d",
                 "shasum": ""
             },
             "type": "library",
@@ -1817,9 +1817,9 @@
             "homepage": "https://iconify.design/icon-sets/",
             "support": {
                 "issues": "https://github.com/iconify/icon-sets/issues",
-                "source": "https://github.com/iconify/icon-sets/tree/2.2.35"
+                "source": "https://github.com/iconify/icon-sets/tree/2.2.36"
             },
-            "time": "2023-03-15T06:39:42+00:00"
+            "time": "2023-03-17T06:24:45+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",
@@ -5412,16 +5412,16 @@
         },
         {
             "name": "preemstudio/laravel-jetpack",
-            "version": "1.2.9",
+            "version": "1.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PreemStudio/laravel-jetpack.git",
-                "reference": "0503901aeefacf43fabc833f0452e30ca66ba664"
+                "reference": "b893e0e644738723bdc5d5c090b31a20e554c923"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PreemStudio/laravel-jetpack/zipball/0503901aeefacf43fabc833f0452e30ca66ba664",
-                "reference": "0503901aeefacf43fabc833f0452e30ca66ba664",
+                "url": "https://api.github.com/repos/PreemStudio/laravel-jetpack/zipball/b893e0e644738723bdc5d5c090b31a20e554c923",
+                "reference": "b893e0e644738723bdc5d5c090b31a20e554c923",
                 "shasum": ""
             },
             "require": {
@@ -5475,9 +5475,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PreemStudio/laravel-jetpack/issues",
-                "source": "https://github.com/PreemStudio/laravel-jetpack/tree/1.2.9"
+                "source": "https://github.com/PreemStudio/laravel-jetpack/tree/1.2.10"
             },
-            "time": "2023-03-14T12:55:43+00:00"
+            "time": "2023-03-17T11:29:05+00:00"
         },
         {
             "name": "psr/cache",
@@ -7207,16 +7207,16 @@
         },
         {
             "name": "spatie/laravel-data",
-            "version": "3.1.3",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-data.git",
-                "reference": "eb323c6edebabfc2b78f3c27cd3e80e107069bfb"
+                "reference": "c4f632924870e52beefe982aa50a88ff59250bfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-data/zipball/eb323c6edebabfc2b78f3c27cd3e80e107069bfb",
-                "reference": "eb323c6edebabfc2b78f3c27cd3e80e107069bfb",
+                "url": "https://api.github.com/repos/spatie/laravel-data/zipball/c4f632924870e52beefe982aa50a88ff59250bfd",
+                "reference": "c4f632924870e52beefe982aa50a88ff59250bfd",
                 "shasum": ""
             },
             "require": {
@@ -7278,7 +7278,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-data/issues",
-                "source": "https://github.com/spatie/laravel-data/tree/3.1.3"
+                "source": "https://github.com/spatie/laravel-data/tree/3.2.0"
             },
             "funding": [
                 {
@@ -7286,7 +7286,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-16T14:19:06+00:00"
+            "time": "2023-03-17T09:48:15+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
