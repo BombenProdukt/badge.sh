@@ -18,10 +18,11 @@ final class LicenseController extends AbstractController
     protected function handleRequest(string $appId): array
     {
         $document = Yaml::parse(base64_decode($this->client->get($appId)['content']));
+        $document = Yaml::parse(base64_decode($this->client->locale($appId, $document['PackageVersion'], $document['DefaultLocale'])['content']));
 
         return [
             'label'        => 'license',
-            'status'       => $document['License'] ?? 'unknown',
+            'status'       => str_replace(' License', '', $document['License']),
             'statusColor'  => 'blue.600',
         ];
     }
