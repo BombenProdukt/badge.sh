@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\CPAN\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\CPAN\Client;
-use Illuminate\Routing\Controller;
 
-final class LicenseController extends Controller
+final class LicenseController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $distribution): array
+    protected function handleRequest(string $distribution): array
     {
         return [
             'label'       => 'license',

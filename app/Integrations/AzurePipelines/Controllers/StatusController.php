@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\AzurePipelines\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\AzurePipelines\Client;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
-final class StatusController extends Controller
+final class StatusController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $org, string $project, string $definition, ?string $branch = null): array
+    protected function handleRequest(string $org, string $project, string $definition, ?string $branch = null): array
     {
         $svg = Http::get("https://dev.azure.com/{$org}/{$project}/_apis/build/status/{$definition}", ['branchName' => $branch])->body();
 

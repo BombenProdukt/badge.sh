@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Integrations\Memo\Controllers;
 
+use App\Integrations\AbstractController;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cache;
 
-final class UpdateBadgeController extends Controller
+final class UpdateBadgeController extends AbstractController
 {
-    public function __invoke(Request $request, string $name): array
+    protected function handleRequest(Request $request, string $name): array
     {
         $badge = [
             'label'       => $request->input('label'),

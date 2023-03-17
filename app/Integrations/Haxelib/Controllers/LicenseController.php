@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace App\Integrations\Haxelib\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Haxelib\Client;
-use Illuminate\Routing\Controller;
 
 /**
  * @TODO
  */
-final class LicenseController extends Controller
+final class LicenseController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $project): array
+    protected function handleRequest(string $project): array
     {
         $response = $this->client->get($project);
 

@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\Mastodon\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Mastodon\Client;
-use Illuminate\Routing\Controller;
 
-final class AccountController extends Controller
+final class AccountController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $account): array
+    protected function handleRequest(string $account): array
     {
         [$username, $instance] = explode('@', $account);
         $version               = $this->client->get($instance, 'instance')['version'];

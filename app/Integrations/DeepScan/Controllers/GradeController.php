@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\DeepScan\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\DeepScan\Client;
-use Illuminate\Routing\Controller;
 
-final class GradeController extends Controller
+final class GradeController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $teamId, string $projectId, string $branchId): array
+    protected function handleRequest(string $teamId, string $projectId, string $branchId): array
     {
         $response = $this->client->get($teamId, $projectId, $branchId);
 

@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Integrations\CPAN\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\ExtractVersion;
 use App\Integrations\Actions\ExtractVersionColor;
 use App\Integrations\CPAN\Client;
-use Illuminate\Routing\Controller;
 
-final class VersionController extends Controller
+final class VersionController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $distribution): array
+    protected function handleRequest(string $distribution): array
     {
         $version = $this->normalizeVersion($this->client->get("release/{$distribution}")['version']);
 

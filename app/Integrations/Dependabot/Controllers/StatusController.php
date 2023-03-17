@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\Dependabot\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Dependabot\Client;
-use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class StatusController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $owner, string $repo, ?string $identifier = null): array
+    protected function handleRequest(string $owner, string $repo, ?string $identifier = null): array
     {
         $response = $this->client->get($owner, $repo, $identifier);
 

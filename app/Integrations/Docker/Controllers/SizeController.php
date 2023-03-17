@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\Docker\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Docker\Client;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
-final class SizeController extends Controller
+final class SizeController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(
+    protected function handleRequest(
         string $scope,
         string $name,
         string $tag = 'latest',

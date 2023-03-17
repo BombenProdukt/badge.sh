@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\GitHub\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\GitHub\Client;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
-final class DependabotStatusController extends Controller
+final class DependabotStatusController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $owner, string $repo): array
+    protected function handleRequest(string $owner, string $repo): array
     {
         // Since there is no API to get dependabot status, for now check if file exists
         $request = Http::get("https://api.github.com/repos/{$owner}/{$repo}/contents/.github/dependabot.yml");

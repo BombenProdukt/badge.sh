@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\GitLab\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\GitLab\Client;
-use Illuminate\Routing\Controller;
 
-final class LicenseController extends Controller
+final class LicenseController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $owner, string $repo): array
+    protected function handleRequest(string $owner, string $repo): array
     {
         $response = $this->client->rest($owner, $repo, '?license=true');
 

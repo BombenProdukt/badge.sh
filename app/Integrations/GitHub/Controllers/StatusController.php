@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Integrations\GitHub\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\GitHub\Actions\CombineStates;
 use App\Integrations\GitHub\Client;
 use GrahamCampbell\GitHub\Facades\GitHub;
-use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class StatusController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $owner, string $repo, ?string $reference = '', ?string $context = ''): array
+    protected function handleRequest(string $owner, string $repo, ?string $reference = '', ?string $context = ''): array
     {
         if (empty($reference)) {
             $response  = GitHub::connection('main')->api('repo')->show($owner, $repo);

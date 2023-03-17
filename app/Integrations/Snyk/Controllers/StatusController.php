@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\Snyk\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Snyk\Client;
-use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class StatusController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $owner, string $repo, ?string $branch = null, ?string $targetFile = null): array
+    protected function handleRequest(string $owner, string $repo, ?string $branch = null, ?string $targetFile = null): array
     {
         $svg = $this->client->get(implode('/', [$owner, $repo, $branch]), $targetFile);
 

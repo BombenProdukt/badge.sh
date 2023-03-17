@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Integrations\UptimeRobot\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\UptimeRobot\Client;
-use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class StatusController extends AbstractController
 {
     private array $statuses = [
         '0' => ['paused', 'yellow.600'],
@@ -22,7 +22,7 @@ final class StatusController extends Controller
         //
     }
 
-    public function __invoke(string $apiKey): array
+    protected function handleRequest(string $apiKey): array
     {
         $response = $this->client->get($apiKey);
 

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Integrations\LGTM\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\LGTM\Client;
-use Illuminate\Routing\Controller;
 
-final class GradeController extends Controller
+final class GradeController extends AbstractController
 {
     private array $languages = [
         'cpp'        => 'c/c++',
@@ -20,7 +20,7 @@ final class GradeController extends Controller
         //
     }
 
-    public function __invoke(string $provider, string $owner, string $name, ?string $language = null): array
+    protected function handleRequest(string $provider, string $owner, string $name, ?string $language = null): array
     {
         $response = $this->client->get($provider, $owner, $name, $language);
 

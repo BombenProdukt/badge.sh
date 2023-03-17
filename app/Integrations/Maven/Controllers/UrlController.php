@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace App\Integrations\Maven\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\ExtractVersion;
 use App\Integrations\Actions\ExtractVersionColor;
 use App\Integrations\Maven\Client;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
-final class UrlController extends Controller
+final class UrlController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $hostname, string $pathname): array
+    protected function handleRequest(string $hostname, string $pathname): array
     {
         $response = Http::get("https://{$hostname}/{$pathname}")->throw()->body();
 

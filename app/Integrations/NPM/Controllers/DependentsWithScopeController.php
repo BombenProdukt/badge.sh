@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\NPM\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\NPM\Client;
-use Illuminate\Routing\Controller;
 
-final class DependentsWithScopeController extends Controller
+final class DependentsWithScopeController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $scope, string $package, string $tag = 'latest'): array
+    protected function handleRequest(string $scope, string $package, string $tag = 'latest'): array
     {
         $response = $this->client->web("package/{$scope}/{$package}");
 

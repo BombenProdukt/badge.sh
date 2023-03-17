@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Integrations\ElmPackage\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\ExtractVersion;
 use App\Integrations\Actions\ExtractVersionColor;
 use App\Integrations\ElmPackage\Client;
-use Illuminate\Routing\Controller;
 
-final class VersionController extends Controller
+final class VersionController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $owner, string $name): array
+    protected function handleRequest(string $owner, string $name): array
     {
         $version = $this->client->get($owner, $name)['version'];
 

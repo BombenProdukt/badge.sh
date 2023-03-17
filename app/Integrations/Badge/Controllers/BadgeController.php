@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Integrations\Badge\Controllers;
 
-use Illuminate\Routing\Controller;
+use App\Integrations\AbstractController;
 
-final class BadgeController extends Controller
+final class BadgeController extends AbstractController
 {
-    public function __invoke(string $label, string $status, ?string $statusColor = null): array
+    protected function handleRequest(string $label, string $status, ?string $statusColor = null): array
     {
         return [
             'label'       => $label,

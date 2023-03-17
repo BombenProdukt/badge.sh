@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\Docker\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Docker\Client;
-use Illuminate\Routing\Controller;
 
-final class MetadataController extends Controller
+final class MetadataController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(
+    protected function handleRequest(
         string $type,
         string $scope,
         string $name,

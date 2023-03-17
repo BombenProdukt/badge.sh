@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\XO\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\XO\Client;
-use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class StatusController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $name): array
+    protected function handleRequest(string $name): array
     {
         $response = $this->client->get($name);
 

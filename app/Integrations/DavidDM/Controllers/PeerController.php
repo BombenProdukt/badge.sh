@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Integrations\DavidDM\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\DavidDM\Client;
-use Illuminate\Routing\Controller;
 
-final class PeerController extends Controller
+final class PeerController extends AbstractController
 {
     private array $statusInfo = [
         'insecure'      => ['insecure', 'red'],
@@ -22,7 +22,7 @@ final class PeerController extends Controller
         //
     }
 
-    public function __invoke(string $owner, string $repo, string $path): array
+    protected function handleRequest(string $owner, string $repo, string $path): array
     {
         $status = $this->client->get($owner, $repo, $path, 'peer-')['status'];
 

@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\Jenkins\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\Jenkins\Client;
-use Illuminate\Routing\Controller;
 
-final class BrokenBuildController extends Controller
+final class BrokenBuildController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $hostname, string $job): array
+    protected function handleRequest(string $hostname, string $job): array
     {
         $builds = collect($this->client->builds($hostname, $job))->filter(fn (array $build) => strtolower($build['result']) !== 'success');
 

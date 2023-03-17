@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Integrations\Coveralls\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\ExtractCoverageColor;
 use App\Integrations\Actions\FormatPercentage;
 use App\Integrations\Coveralls\Client;
-use Illuminate\Routing\Controller;
 
-final class CoverageController extends Controller
+final class CoverageController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $vcs, string $owner, string $repo, ?string $branch = null): array
+    protected function handleRequest(string $vcs, string $owner, string $repo, ?string $branch = null): array
     {
         $response = $this->client->get($vcs, $owner, $repo, $branch);
 

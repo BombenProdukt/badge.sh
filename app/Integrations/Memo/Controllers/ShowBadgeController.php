@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Integrations\Memo\Controllers;
 
-use Illuminate\Routing\Controller;
+use App\Integrations\AbstractController;
 use Illuminate\Support\Facades\Cache;
 
-final class ShowBadgeController extends Controller
+final class ShowBadgeController extends AbstractController
 {
-    public function __invoke(string $name): array
+    protected function handleRequest(string $name): array
     {
         return Cache::get($name);
     }

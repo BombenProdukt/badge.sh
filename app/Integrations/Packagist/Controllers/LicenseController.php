@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Integrations\Packagist\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Packagist\Client;
 use App\Integrations\Packagist\Concerns\HandlesVersions;
-use Illuminate\Routing\Controller;
 
-final class LicenseController extends Controller
+final class LicenseController extends AbstractController
 {
     use HandlesVersions;
 
@@ -17,7 +17,7 @@ final class LicenseController extends Controller
         //
     }
 
-    public function __invoke(string $vendor, string $package, ?string $channel = null): array
+    protected function handleRequest(string $vendor, string $package, ?string $channel = null): array
     {
         $packageMeta = $this->client->get($vendor, $package);
 

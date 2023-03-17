@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\PeerTube\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\PeerTube\Client;
-use Illuminate\Routing\Controller;
 
-final class VotesController extends Controller
+final class VotesController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $instance, string $video, ?string $format = null): array
+    protected function handleRequest(string $instance, string $video, ?string $format = null): array
     {
         $response = $this->client->get($instance, "videos/{$video}");
 

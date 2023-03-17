@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Integrations\CRAN\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\CRAN\Client;
 use Carbon\Carbon;
-use Illuminate\Routing\Controller;
 
-final class TotalDownloadsController extends Controller
+final class TotalDownloadsController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $package): array
+    protected function handleRequest(string $package): array
     {
         $genesis = explode('T', Carbon::createFromTimestamp(0)->toISOString())[0];
 

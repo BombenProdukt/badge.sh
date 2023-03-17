@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\Scoop\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Scoop\Client;
-use Illuminate\Routing\Controller;
 
-final class LicenseFromBucketController extends Controller
+final class LicenseFromBucketController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $bucket, string $app): array
+    protected function handleRequest(string $bucket, string $app): array
     {
         $response = $bucket === 'main' ? $this->client->main($app) : $this->client->extra($app);
 

@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Integrations\CodeClimate\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\ExtractCoverageColor;
 use App\Integrations\Actions\FormatPercentage;
 use App\Integrations\CodeClimate\Client;
-use Illuminate\Routing\Controller;
 
-final class CoverageController extends Controller
+final class CoverageController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $owner, string $repo): array
+    protected function handleRequest(string $owner, string $repo): array
     {
         $response = $this->client->get($owner, $repo, 'test_reports');
 

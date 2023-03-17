@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\Travis\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Travis\Client;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
 
-final class StatusController extends Controller
+final class StatusController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $owner, string $repo, ?string $branch = null): array
+    protected function handleRequest(string $owner, string $repo, ?string $branch = null): array
     {
         $org = $this->client->org($owner, $repo, $branch);
         $com = $this->client->com($owner, $repo, $branch);

@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\UptimeRobot\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\UptimeRobot\Client;
-use Illuminate\Routing\Controller;
 
-final class ResponseController extends Controller
+final class ResponseController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $apiKey): array
+    protected function handleRequest(string $apiKey): array
     {
         return [
             'label'       => 'response',

@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\CircleCI\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\CircleCI\Client;
-use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class StatusController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $vcs, string $owner, string $repo, ?string $branch = null): array
+    protected function handleRequest(string $vcs, string $owner, string $repo, ?string $branch = null): array
     {
         $status = $this->client->get($vcs, $owner, $repo, $branch)[0]['status'];
 

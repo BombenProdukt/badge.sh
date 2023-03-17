@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\ChromeWebStore\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\ChromeWebStore\Client;
-use Illuminate\Routing\Controller;
 
-final class UsersController extends Controller
+final class UsersController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $itemId): array
+    protected function handleRequest(string $itemId): array
     {
         preg_match('|<span class="e-f-ih" title="(.*?)">(.*?)</span>|', $this->client->get($itemId), $matches);
 

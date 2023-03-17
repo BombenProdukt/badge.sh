@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Integrations\RubyGems\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\ExtractVersion;
 use App\Integrations\Actions\ExtractVersionColor;
 use App\Integrations\RubyGems\Client;
-use Illuminate\Routing\Controller;
 
-final class VersionController extends Controller
+final class VersionController extends AbstractController
 {
     private array $preConditions = ['.rc', '.beta', '-rc', '-beta'];
 
@@ -18,7 +18,7 @@ final class VersionController extends Controller
         //
     }
 
-    public function __invoke(string $gem, ?string $channel = null): array
+    protected function handleRequest(string $gem, ?string $channel = null): array
     {
         $versions = array_column($this->client->get("versions/{$gem}"), 'number');
         rsort($versions);

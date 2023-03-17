@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\Jenkins\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Jenkins\Client;
-use Illuminate\Routing\Controller;
 
-final class LastBuildController extends Controller
+final class LastBuildController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $hostname, string $job): array
+    protected function handleRequest(string $hostname, string $job): array
     {
         $response = $this->client->get($hostname, $job, 'lastBuild/api/json?tree=result,timestamp,estimatedDuration');
 

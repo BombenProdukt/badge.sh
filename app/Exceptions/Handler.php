@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\Request;
-use PreemStudio\Badger\Badger;
 use Throwable;
 
 final class Handler extends ExceptionHandler
@@ -48,15 +46,5 @@ final class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
-
-        // $this->renderable(function (Throwable $e, Request $request) {
-        //     return Badger::make()
-        //         ->withLabel('badger')
-        //         ->withLabelColor('slate.900')
-        //         ->withStatus('400')
-        //         ->withStatusColor('red.600')
-        //         ->withStyle($request->query('style', 'flat'))
-        //         ->render();
-        // });
     }
 }

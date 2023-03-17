@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\XO\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\XO\Client;
-use Illuminate\Routing\Controller;
 
-final class SemiWithScopeController extends Controller
+final class SemiWithScopeController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $scope, string $name): array
+    protected function handleRequest(string $scope, string $name): array
     {
         $response = $this->client->get("{$scope}/{$name}");
 

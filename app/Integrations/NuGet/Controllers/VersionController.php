@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Integrations\NuGet\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\ExtractVersion;
 use App\Integrations\Actions\ExtractVersionColor;
 use App\Integrations\NuGet\Client;
-use Illuminate\Routing\Controller;
 
-final class VersionController extends Controller
+final class VersionController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $package, ?string $channel = null): array
+    protected function handleRequest(string $package, ?string $channel = null): array
     {
         $versions = $this->client->get($package)['versions'];
 

@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\Badgesize\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Badgesize\Client;
-use Illuminate\Routing\Controller;
 
-final class UrlController extends Controller
+final class UrlController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $compression, string $path): array
+    protected function handleRequest(string $compression, string $path): array
     {
         $response = $this->client->get($compression, $path);
 

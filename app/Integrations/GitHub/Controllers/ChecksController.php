@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Integrations\GitHub\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\GitHub\Actions\CombineStates;
 use GrahamCampbell\GitHub\Facades\GitHub;
-use Illuminate\Routing\Controller;
 
-final class ChecksController extends Controller
+final class ChecksController extends AbstractController
 {
-    public function __invoke(string $owner, string $repo, ?string $reference = '', ?string $context = '')
+    protected function handleRequest(string $owner, string $repo, ?string $reference = '', ?string $context = '')
     {
         if (empty($reference)) {
             $response  = GitHub::connection('main')->api('repo')->show($owner, $repo);

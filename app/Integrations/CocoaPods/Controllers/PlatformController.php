@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\CocoaPods\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\CocoaPods\Client;
-use Illuminate\Routing\Controller;
 
-final class PlatformController extends Controller
+final class PlatformController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $pod): array
+    protected function handleRequest(string $pod): array
     {
         return [
             'label'       => 'platform',

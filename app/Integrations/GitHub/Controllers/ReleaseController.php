@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Integrations\GitHub\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\ExtractVersion;
 use App\Integrations\GitHub\Client;
 use GrahamCampbell\GitHub\Facades\GitHub;
-use Illuminate\Routing\Controller;
 
-final class ReleaseController extends Controller
+final class ReleaseController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $owner, string $repo, ?string $channel = 'stable'): array
+    protected function handleRequest(string $owner, string $repo, ?string $channel = 'stable'): array
     {
         $releases = GitHub::api('repo')->releases()->show($owner, $repo);
 

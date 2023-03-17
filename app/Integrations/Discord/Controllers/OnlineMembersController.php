@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\Discord\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\Discord\Client;
-use Illuminate\Routing\Controller;
 
-final class OnlineMembersController extends Controller
+final class OnlineMembersController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $inviteCode): array
+    protected function handleRequest(string $inviteCode): array
     {
         $response = $this->client->get($inviteCode);
 

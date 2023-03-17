@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Integrations\AzurePipelines\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\AzurePipelines\Client;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
-final class BuildTestResultController extends Controller
+final class BuildTestResultController extends AbstractController
 {
     private array $colors = [
         'completed'          => 'green.600',
@@ -23,7 +23,7 @@ final class BuildTestResultController extends Controller
         //
     }
 
-    public function __invoke(string $org, string $project, string $definition, ?string $branch = null): array
+    protected function handleRequest(string $org, string $project, string $definition, ?string $branch = null): array
     {
         $latestBuild = Http::get("https://dev.azure.com/{$org}/{$project}/_apis/build/builds", array_merge([
             'api-version'  => '6.0',

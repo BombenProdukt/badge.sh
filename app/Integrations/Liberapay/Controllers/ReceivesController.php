@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\Liberapay\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatMoney;
 use App\Integrations\Liberapay\Client;
-use Illuminate\Routing\Controller;
 
-final class ReceivesController extends Controller
+final class ReceivesController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $username): array
+    protected function handleRequest(string $username): array
     {
         $response = $this->client->get($username);
 

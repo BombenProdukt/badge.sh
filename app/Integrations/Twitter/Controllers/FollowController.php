@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\Twitter\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\Twitter\Client;
-use Illuminate\Routing\Controller;
 
-final class FollowController extends Controller
+final class FollowController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $username): array
+    protected function handleRequest(string $username): array
     {
         $response = $this->client->get($username);
 

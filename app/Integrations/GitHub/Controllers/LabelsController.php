@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\GitHub\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\GitHub\Client;
-use Illuminate\Routing\Controller;
 
-final class LabelsController extends Controller
+final class LabelsController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $owner, string $repo, string $label, ?string $states = ''): array
+    protected function handleRequest(string $owner, string $repo, string $label, ?string $states = ''): array
     {
         $result = $this->client->makeRepoQuery($owner, $repo, $this->getQueryBody($label, $states));
 

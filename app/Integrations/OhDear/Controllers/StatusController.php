@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\OhDear\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\OhDear\Client;
-use Illuminate\Routing\Controller;
 
-final class StatusController extends Controller
+final class StatusController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $domain, string $label): array
+    protected function handleRequest(string $domain, string $label): array
     {
         $site = collect($this->client->get($domain)['sites'])->flatten(1)->firstWhere('label', $label);
 

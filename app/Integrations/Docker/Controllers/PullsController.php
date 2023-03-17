@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\Docker\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\Docker\Client;
-use Illuminate\Routing\Controller;
 
-final class PullsController extends Controller
+final class PullsController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $scope, string $name): array
+    protected function handleRequest(string $scope, string $name): array
     {
         return [
             'label'       => 'docker pulls',

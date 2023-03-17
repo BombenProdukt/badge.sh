@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\RubyGems\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\RubyGems\Client;
-use Illuminate\Routing\Controller;
 
-final class TotalDownloadsController extends Controller
+final class TotalDownloadsController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $gem): array
+    protected function handleRequest(string $gem): array
     {
         return [
             'label'       => 'downloads',

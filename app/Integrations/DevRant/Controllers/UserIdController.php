@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Integrations\DevRant\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\Actions\FormatNumber;
 use App\Integrations\DevRant\Client;
-use Illuminate\Routing\Controller;
 
-final class UserIdController extends Controller
+final class UserIdController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $userId): array
+    protected function handleRequest(string $userId): array
     {
         $profile = $this->client->get($userId);
 

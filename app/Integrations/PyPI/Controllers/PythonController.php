@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Integrations\PyPI\Controllers;
 
+use App\Integrations\AbstractController;
 use App\Integrations\PyPI\Client;
-use Illuminate\Routing\Controller;
 
-final class PythonController extends Controller
+final class PythonController extends AbstractController
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function __invoke(string $project): array
+    protected function handleRequest(string $project): array
     {
         $versions = collect($this->client->get($project)['classifiers'])
             ->map(function (string $classifier) {
