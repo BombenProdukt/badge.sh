@@ -23,9 +23,15 @@ final class FollowersController extends AbstractController
             $response = $this->client->get($instance, "accounts/{$account}");
         }
 
+        if (isset($response['followersCount'])) {
+            $followersCount = $response['followersCount'];
+        } else {
+            $followersCount = collect($response['data']['followersCount'])->sum('followersCount');
+        }
+
         return [
             'label'       => 'followers',
-            'status'      => FormatNumber::execute(collect($response['data'])->sum('followersCount')),
+            'status'      => FormatNumber::execute($followersCount),
             'statusColor' => 'F1680D',
         ];
     }
