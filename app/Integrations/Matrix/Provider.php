@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Integrations\Matrix;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\DeprecatedController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,6 +18,8 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('matrix')->group(function (): void {
+            Route::get('members/{room}/gitter', DeprecatedController::class);
+            Route::get('members/{room}/gitter.im', DeprecatedController::class);
             Route::get('members/{room}/{server?}', Controllers\MemberController::class);
         });
     }
