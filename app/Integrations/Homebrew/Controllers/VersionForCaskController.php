@@ -18,7 +18,13 @@ final class VersionForCaskController extends AbstractController
 
     protected function handleRequest(string $package): array
     {
-        $version = $this->client->get('cask', $package)['version'];
+        $response = $this->client->get('cask', $package);
+
+        if (isset($response['version'])) {
+            $version = $response['version'];
+        } else {
+            $version = $response['versions']['stable'];
+        }
 
         return [
             'label'       => 'homebrew cask',
