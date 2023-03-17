@@ -23,10 +23,10 @@ final class FollowersController extends AbstractController
             $response = $this->client->get($instance, "accounts/{$account}");
         }
 
-        if (isset($response['followersCount'])) {
-            $followersCount = $response['followersCount'];
+        if (isset($response['data'])) {
+            $followersCount = collect($response['data'])->sum('followersCount');
         } else {
-            $followersCount = collect($response['data']['followersCount'])->sum('followersCount');
+            $followersCount = $response['followersCount'];
         }
 
         return [
