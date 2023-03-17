@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Integrations\Gitter;
 
 use App\Integrations\Contracts\IntegrationProvider;
-use App\Integrations\Gitter\Controllers\MemberCountController;
+use App\Integrations\DeprecatedController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -18,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('gitter')->group(function (): void {
-            Route::get('members/{org}/{room}', MemberCountController::class);
+            Route::get('members/{org}/{room}', DeprecatedController::class);
         });
     }
 
