@@ -18,13 +18,13 @@ final class SizeController extends AbstractController
 
     protected function handleRequest(string $snap, ?string $architecture = null, ?string $channel = null): array
     {
-        $response = $this->client->get($snap, ['size']);
+        $channels = collect($this->client->get($snap, ['size'])['channel-map']);
 
-        if ($architecture) {
-            $channel = collect($response['channel-map'])->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture && Arr::get($item, 'channel.name') === $channel);
-        } else {
-            $channel = $response['channel-map'][0];
-        }
+        $channel = match (true) {
+            $architecture && $channel => $channels->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture && Arr::get($item, 'channel.name') === $channel),
+            $architecture             => $channels->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture),
+            default                   => $channels->first(),
+        };
 
         return [
             'label'        => 'distrib size',
