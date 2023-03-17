@@ -18,7 +18,7 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('codecov')->group(function (): void {
-            Route::get('c/{vcs}/{owner}/{repo}/{branch?}', StatusController::class)->whereIn('vcs', ['gh', 'github', 'bitbucket', 'gitlab']);
+            Route::get('c/{service}/{owner}/{repo}/{branch?}', StatusController::class)->whereIn('service', ['gh', 'github', 'bitbucket', 'gitlab']);
         });
     }
 

@@ -16,9 +16,9 @@ final class StatusController extends AbstractController
         //
     }
 
-    protected function handleRequest(string $vcs, string $owner, string $repo, ?string $branch = null): array
+    protected function handleRequest(string $service, string $owner, string $repo, ?string $branch = null): array
     {
-        $response = $this->client->get($vcs, $owner, $repo, $branch);
+        $response = $this->client->get($service, $owner, $repo, $branch);
         $coverage = (float) $response['commit']['totals']['c'];
 
         return [

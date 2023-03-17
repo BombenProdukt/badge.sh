@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('https://codecov.io/api')->retry(5)->throw();
+        $this->client = Http::baseUrl('https://codecov.io/api')->retry(3, 100)->throw();
     }
 
-    public function get(string $vcs, string $owner, string $repo, ?string $branch): array
+    public function get(string $service, string $owner, string $repo, ?string $branch): array
     {
-        return $this->client->get(implode('/', array_filter([$vcs, $owner, $repo, $branch])))->json();
+        return $this->client->get("{$service}/{$owner}/{$repo}", ['branch' => $branch])->json();
     }
 }
