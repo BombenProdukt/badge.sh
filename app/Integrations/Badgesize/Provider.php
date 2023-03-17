@@ -19,9 +19,12 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('badgesize')->group(function (): void {
+            Route::get('/{compression}/{owner}/{repo}/{path}', GitHubController::class)
+                ->where('owner', '^(?!.*\bfile-url\b).*$')
+                ->where('path', '.+');
+
             Route::get('/{compression}/file-url/{path}', UrlController::class)->where('path', '.+');
             Route::get('/{compression}/{path}', UrlController::class)->where('path', '.+');
-            Route::get('/{compression}/{owner}/{repo}/{path}', GitHubController::class)->where('path', '.+');
         });
     }
 

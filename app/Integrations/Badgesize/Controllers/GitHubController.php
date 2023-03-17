@@ -16,7 +16,7 @@ final class GitHubController extends AbstractController
 
     protected function handleRequest(string $compression, string $owner, string $repo, string $path): array
     {
-        $response = $this->client->get($compression, implode('/', [$owner, $repo, $path]));
+        $response = $this->client->get($compression, "{$owner}/{$repo}/{$path}");
 
         return [
             'label'       => $compression === 'normal' ? 'size' : "{$compression} size",

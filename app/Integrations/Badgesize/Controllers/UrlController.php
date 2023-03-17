@@ -16,7 +16,7 @@ final class UrlController extends AbstractController
 
     protected function handleRequest(string $compression, string $path): array
     {
-        $response = $this->client->get($compression, $path);
+        $response = $this->client->get($compression, 'https:/'.str_replace(['https://', 'https/'], '', $path));
 
         return [
             'label'       => $compression === 'normal' ? 'size' : "{$compression} size",
