@@ -14,7 +14,7 @@ final class IntegrationServiceProvider extends ServiceProvider
      *
      * @var array<string>
      */
-    private array $integrations = [
+    private static array $integrations = [
         \App\Integrations\AppVeyor\Provider::class,
         \App\Integrations\AtomPackage\Provider::class,
         \App\Integrations\AzurePipelines\Provider::class,
@@ -93,7 +93,7 @@ final class IntegrationServiceProvider extends ServiceProvider
     public function register(): void
     {
         Route::middleware('badge')->group(function (): void {
-            foreach ($this->integrations as $integration) {
+            foreach (IntegrationServiceProvider::$integrations as $integration) {
                 app()->make($integration)->register();
             }
         });
@@ -105,5 +105,18 @@ final class IntegrationServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+    }
+
+    public static function examples(): array
+    {
+        $result = [];
+
+        foreach (IntegrationServiceProvider::$integrations as $integration) {
+            $integration = app()->make($integration);
+
+            $result[$integration->name()] = $integration->examples();
+        }
+
+        return $result;
     }
 }
