@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Integrations\AtomPackage;
 
 use App\Integrations\Contracts\IntegrationProvider;
+use App\Integrations\DeprecatedController;
 use Illuminate\Support\Facades\Route;
 
 final class Provider implements IntegrationProvider
@@ -17,12 +18,12 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('apm')->group(function (): void {
-            Route::get('v/{package}', Controllers\VersionController::class);
-            Route::get('version/{package}', Controllers\VersionController::class);
-            Route::get('stars/{package}', Controllers\StarsController::class);
-            Route::get('license/{package}', Controllers\LicenseController::class);
-            Route::get('dl/{package}', Controllers\TotalDownloadsController::class);
-            Route::get('downloads/{package}', Controllers\TotalDownloadsController::class);
+            Route::get('v/{package}', DeprecatedController::class);
+            Route::get('version/{package}', DeprecatedController::class);
+            Route::get('stars/{package}', DeprecatedController::class);
+            Route::get('license/{package}', DeprecatedController::class);
+            Route::get('dl/{package}', DeprecatedController::class);
+            Route::get('downloads/{package}', DeprecatedController::class);
         });
     }
 
