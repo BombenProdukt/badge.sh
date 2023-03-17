@@ -16,7 +16,7 @@ final class PointsController extends AbstractController
 
     protected function handleRequest(string $package): array
     {
-        $response = (float) $this->client->api("packages/{$package}/score");
+        $response = $this->client->api("packages/{$package}/score");
 
         return [
             'label'       => 'popularity',

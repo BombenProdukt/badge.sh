@@ -37,17 +37,15 @@ final class BuildTestResultController extends AbstractController
             'buildId'      => $latestBuild['id'],
         ])->json('aggregatedResultsAnalysis');
 
-        $passed  = $resultsByOutcome['Passed']['count'] ?? 0;
-        $failed  = $resultsByOutcome['Failed']['count'] ?? 0;
-        $ignored = $resultsByOutcome['NotExecuted']['count'] ?? $response['totalTests'] - $passed - $failed;
+        $passed  = $response['resultsByOutcome']['Passed']['count'] ?? 0;
+        $failed  = $response['resultsByOutcome']['Failed']['count'] ?? 0;
+        $ignored = $response['resultsByOutcome']['NotExecuted']['count'] ?? $response['totalTests'] - $passed - $failed;
 
-        $status = array_filter([
+        $status = collect([
             $passed ? FormatNumber::execute($passed).' passed' : null,
             $failed ? FormatNumber::execute($failed).' failed' : null,
             $ignored ? FormatNumber::execute($ignored).' skipped' : null,
-        ]);
-
-        $status = implode(', ', $status);
+        ])->filter()->implode(', ') ?: 'unknown';
 
         if ($response['totalTests'] === $passed) {
             $color = $this->colors['succeeded'];

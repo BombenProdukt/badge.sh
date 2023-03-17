@@ -20,7 +20,7 @@ final class ReviewsController extends AbstractController
 
         return [
             'label'       => 'reviews',
-            'status'      => $response['reviewCount'],
+            'status'      => (string) $response['reviewCount'],
             'statusColor' => 'green.600',
         ];
     }

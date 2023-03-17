@@ -13,7 +13,7 @@ final class BadgeController extends AbstractController
         return [
             'label'       => $label,
             'status'      => $status,
-            'statusColor' => $statusColor ?? 'green.600',
+            'statusColor' => $statusColor ? "{$statusColor}.600" : 'green.600',
         ];
     }
 }

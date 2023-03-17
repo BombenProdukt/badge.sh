@@ -43,15 +43,23 @@ abstract class AbstractController extends Controller
 
                 // $badge->withIcon('data:image/svg+xml;base64,'.$icon);
             }
-        } catch (Throwable) {
+
+            return response($badge->render())
+                ->setStatusCode(200)
+                ->header('Content-Type', 'image/svg+xml;charset=base64');
+        } catch (Throwable $th) {
+            // dd($th, $request->route()->parameters());
+
             $badge = Badger::make();
-            $badge->withLabel('badger');
+            $badge->withLabel($request->segment(1));
             $badge->withLabelColor('slate.900');
             $badge->withStatus('400');
             $badge->withStatusColor('red.600');
             $badge->withStyle($request->query('style', 'flat'));
-        }
 
-        return response($badge->render())->header('Content-Type', 'image/svg+xml;charset=base64');
+            return response($badge->render())
+                ->setStatusCode(400)
+                ->header('Content-Type', 'image/svg+xml;charset=base64');
+        }
     }
 }

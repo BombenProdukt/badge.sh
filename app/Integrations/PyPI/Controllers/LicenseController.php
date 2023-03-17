@@ -14,11 +14,11 @@ final class LicenseController extends AbstractController
         //
     }
 
-    protected function handleRequest(string $package): array
+    protected function handleRequest(string $project): array
     {
         return [
             'label'       => 'license',
-            'status'      => $this->client->get($package)['license'],
+            'status'      => $this->client->get($project)['license'],
             'statusColor' => 'blue.600',
         ];
     }

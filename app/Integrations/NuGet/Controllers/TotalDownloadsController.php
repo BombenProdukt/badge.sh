@@ -16,10 +16,10 @@ final class TotalDownloadsController extends AbstractController
         //
     }
 
-    protected function handleRequest(string $package): array
+    protected function handleRequest(string $project): array
     {
         $totalDownloads = Http::get('https://azuresearch-usnc.nuget.org/query', [
-            'q'           => 'packageid:'.strtolower($package),
+            'q'           => 'packageid:'.strtolower($project),
             'prerelease'  => 'true',
             'semVerLevel' => 2,
         ])->throw()->json('data.0.totalDownloads');

@@ -20,13 +20,13 @@ final class AccountController extends AbstractController
         $version               = $this->client->get($instance, 'instance')['version'];
 
         if (preg_match('/\bPleroma\b/i', $version) !== 0) {
-            return (new UserIdController($this->client))($username, $instance);
+            return (new UserIdController($this->client))->handleRequest($username, $instance);
         }
 
         $userId = $this->parseFeed($this->client->rss($instance, $username));
 
         if (is_string($userId)) {
-            return (new UserIdController($this->client))($userId, $instance);
+            return (new UserIdController($this->client))->handleRequest($userId, $instance);
         }
 
         return [

@@ -25,15 +25,15 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('dub')->group(function (): void {
-            Route::get('v/{pkg}', VersionController::class);
-            Route::get('version/{pkg}', VersionController::class);
-            Route::get('license/{pkg}', LicenseController::class);
-            Route::get('dd/{pkg}', DailyDownloadsController::class);
-            Route::get('dw/{pkg}', WeeklyDownloadsController::class);
-            Route::get('dm/{pkg}', MonthlyDownloadsController::class);
-            Route::get('dt/{pkg}', TotalDownloadsController::class);
-            Route::get('rating/{pkg}', RatingController::class);
-            Route::get('stars/{pkg}', StarsController::class);
+            Route::get('v/{package}', VersionController::class);
+            Route::get('version/{package}', VersionController::class);
+            Route::get('license/{package}', LicenseController::class);
+            Route::get('dd/{package}', DailyDownloadsController::class);
+            Route::get('dw/{package}', WeeklyDownloadsController::class);
+            Route::get('dm/{package}', MonthlyDownloadsController::class);
+            Route::get('dt/{package}', TotalDownloadsController::class);
+            Route::get('rating/{package}', RatingController::class);
+            Route::get('stars/{package}', StarsController::class);
         });
     }
 

@@ -53,7 +53,7 @@ final class Provider implements IntegrationProvider
             '/gitlab/open-mrs/edouardklein/falsisign'                                                => 'open MRs',
             '/gitlab/closed-mrs/edouardklein/falsisign'                                              => 'closed MRs',
             '/gitlab/merged-mrs/edouardklein/falsisign'                                              => 'merged MRs',
-            '/gitlab/branches/gitlab-org%2fgitter/webapp'                                            => 'branches',
+            '/gitlab/branches/gitterHQ/webapp'                                                       => 'branches',
             '/gitlab/releases/AuroraOSS/AuroraStore'                                                 => 'release',
             '/gitlab/release/veloren/veloren'                                                        => 'latest release',
             '/gitlab/tags/commento/commento'                                                         => 'tags',

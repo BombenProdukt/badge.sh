@@ -16,9 +16,9 @@ final class VersionController extends AbstractController
         //
     }
 
-    protected function handleRequest(string $package): array
+    protected function handleRequest(string $project): array
     {
-        $version = $this->client->get($package)['version'];
+        $version = $this->client->get($project)['version'];
 
         return [
             'label'        => 'pypi',

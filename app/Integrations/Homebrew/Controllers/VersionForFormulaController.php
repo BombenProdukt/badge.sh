@@ -18,7 +18,7 @@ final class VersionForFormulaController extends AbstractController
 
     protected function handleRequest(string $package): array
     {
-        $version = $this->client->get('formula', $package)['versions']['stable'];
+        $version = $this->client->get('formula', $package)['version'];
 
         return [
             'label'       => 'homebrew',

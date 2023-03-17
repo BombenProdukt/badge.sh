@@ -23,7 +23,7 @@ final class MemberController extends AbstractController
         return [
             'label'       => "#{$room}:{$server}",
             'status'      => FormatNumber::execute($count).' '.Str::plural('member', $count),
-            'statusColor' => 'black',
+            'statusColor' => 'blue.600',
         ];
     }
 }

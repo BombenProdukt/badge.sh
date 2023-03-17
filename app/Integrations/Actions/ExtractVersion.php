@@ -12,9 +12,7 @@ final class ExtractVersion
             return 'unknown';
         }
 
-        $firstChar = substr($version, 0, 1);
-
-        if ($firstChar === 'v' || blank($firstChar, 10)) {
+        if (substr($version, 0, 1) === 'v') {
             return $version;
         }
 

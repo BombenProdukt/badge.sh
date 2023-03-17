@@ -18,16 +18,14 @@ final class FollowersController extends AbstractController
     protected function handleRequest(string $instance, string $account, ?string $channel = null): array
     {
         if (empty($channel)) {
-            return [
-                'label'       => 'followers',
-                'status'      => FormatNumber::execute($this->client->get($instance, "video-channels/{$channel}")['followersCount']),
-                'statusColor' => 'F1680D',
-            ];
+            $response = $this->client->get($instance, "video-channels/{$channel}");
+        } else {
+            $response = $this->client->get($instance, "accounts/{$account}");
         }
 
         return [
             'label'       => 'followers',
-            'status'      => FormatNumber::execute($this->client->get($instance, "accounts/{$account}")['followersCount']),
+            'status'      => FormatNumber::execute(collect($response['data'])->sum('followersCount')),
             'statusColor' => 'F1680D',
         ];
     }

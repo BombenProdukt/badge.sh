@@ -6,6 +6,7 @@ namespace App\Integrations\XO\Controllers;
 
 use App\Integrations\AbstractController;
 use App\Integrations\XO\Client;
+use Illuminate\Support\Arr;
 
 final class SemiController extends AbstractController
 {
@@ -28,7 +29,7 @@ final class SemiController extends AbstractController
 
         return [
             'label'       => 'semicolons',
-            'status'      => $response['xo']['semicolon'] ? 'enabled' : 'disabled',
+            'status'      => Arr::get($response, 'xo.semicolon') ? 'enabled' : 'disabled',
             'statusColor' => '5ED9C7',
         ];
     }

@@ -16,9 +16,9 @@ final class VersionController extends AbstractController
         //
     }
 
-    protected function handleRequest(string $package, ?string $channel = null): array
+    protected function handleRequest(string $project, ?string $channel = null): array
     {
-        $versions = $this->client->get($package)['versions'];
+        $versions = $this->client->get($project)['versions'];
 
         if ($channel === 'latest') {
             $version = $this->latest($versions);

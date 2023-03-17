@@ -16,7 +16,7 @@ final class LicenseController extends AbstractController
 
     protected function handleRequest(string $package): array
     {
-        $license = $this->client->get("{$package}/latest/info")['info'];
+        $license = $this->client->get("{$package}/latest/info")['info']['license'];
 
         return [
             'label'       => 'license',

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Integrations\Shardbox\Controllers;
 
 use App\Integrations\AbstractController;
-use App\Integrations\Actions\ExtractVersion;
 use App\Integrations\Shardbox\Client;
 
 final class CrystalController extends AbstractController
@@ -21,7 +20,7 @@ final class CrystalController extends AbstractController
 
         return [
             'label'       => 'crystal',
-            'status'      => ExtractVersion::execute($matches[1]),
+            'status'      => html_entity_decode($matches[1]),
             'statusColor' => 'green.600',
         ];
     }

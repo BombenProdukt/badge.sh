@@ -15,9 +15,9 @@ final class ContributorsController extends AbstractController
         //
     }
 
-    protected function handleRequest(string $package): array
+    protected function handleRequest(string $slug): array
     {
-        $response = $this->client->get($package);
+        $response = $this->client->get($slug);
 
         return [
             'label'       => 'contributors',

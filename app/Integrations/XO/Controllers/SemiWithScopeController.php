@@ -28,7 +28,7 @@ final class SemiWithScopeController extends AbstractController
 
         return [
             'label'       => 'semicolons',
-            'status'      => $response['xo']['semicolon'] ? 'enabled' : 'disabled',
+            'status'      => Arr::get($response, 'xo.semicolon') ? 'enabled' : 'disabled',
             'statusColor' => '5ED9C7',
         ];
     }

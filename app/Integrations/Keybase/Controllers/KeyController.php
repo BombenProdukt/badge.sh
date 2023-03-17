@@ -14,9 +14,9 @@ final class KeyController extends AbstractController
         //
     }
 
-    protected function handleRequest(string $package): array
+    protected function handleRequest(string $username): array
     {
-        $response = $this->client->get($package);
+        $response = $this->client->get($username);
 
         return [
             'label'       => 'PGP',

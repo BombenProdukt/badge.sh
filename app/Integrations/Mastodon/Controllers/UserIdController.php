@@ -15,7 +15,8 @@ final class UserIdController extends AbstractController
         //
     }
 
-    protected function handleRequest(string $userId, ?string $instance = 'mastodon.social'): array
+    // This function is public because it is called from AccountController
+    public function handleRequest(string $userId, ?string $instance = 'mastodon.social'): array
     {
         $response = $this->client->get($instance, "accounts/{$userId}");
         $account  = $response['username']."@{$instance}";

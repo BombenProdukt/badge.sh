@@ -18,16 +18,16 @@ final class Provider implements IntegrationProvider
     public function register(): void
     {
         Route::prefix('snyk')->group(function (): void {
-            Route::get('{owner}/{repo}/{branch?}/{targetFile?}', StatusController::class);
+            Route::get('{owner}/{repo}/{branch?}/{targetFile?}', StatusController::class)->where('targetFile', '.+');
         });
     }
 
     public function examples(): array
     {
         return [
-            '/snyk/badgen/badgen.net'                                     => 'vulnerability scan',
-            '/snyk/babel/babel/6.x'                                       => 'vulnerability scan (branch)',
-            '/snyk/rollup/plugins/master/packages%2Falias%2Fpackage.json' => 'vulnerability scan (custom path)',
+            '/snyk/badgen/badgen.net'                                 => 'vulnerability scan',
+            '/snyk/babel/babel/6.x'                                   => 'vulnerability scan (branch)',
+            '/snyk/rollup/plugins/master/packages/alias/package.json' => 'vulnerability scan (custom path)',
         ];
     }
 }

@@ -25,8 +25,8 @@ final class Provider implements IntegrationProvider
     public function examples(): array
     {
         return [
-            '/circleci/github/nuxt/nuxt.js'        => 'build',
-            '/circleci/github/nuxt/nuxt.js/master' => 'build (branch)',
+            '/circleci/github/circleci/ex'      => 'build',
+            '/circleci/github/circleci/ex/main' => 'build (branch)',
         ];
     }
 }

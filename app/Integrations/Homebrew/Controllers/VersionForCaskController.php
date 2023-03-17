@@ -18,10 +18,10 @@ final class VersionForCaskController extends AbstractController
 
     protected function handleRequest(string $package): array
     {
-        $version = $this->client->get('cask', $package)['versions']['stable'];
+        $version = $this->client->get('cask', $package)['version'];
 
         return [
-            'label'       => 'homebrew',
+            'label'       => 'homebrew cask',
             'status'      => ExtractVersion::execute($version),
             'statusColor' => ExtractVersionColor::execute($version),
         ];

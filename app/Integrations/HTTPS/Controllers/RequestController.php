@@ -19,9 +19,9 @@ final class RequestController extends AbstractController
         $response = $this->client->get($host, $path);
 
         return [
-            'label'       => $response['label'],
+            'label'       => $response['label'] ?? $response['subject'],
             'status'      => $response['status'],
-            'statusColor' => $response['statusColor'],
+            'statusColor' => $response['statusColor'] ?? $response['color'].'.600',
         ];
     }
 }

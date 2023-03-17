@@ -18,8 +18,8 @@ final class Client
             ->withoutRedirecting();
     }
 
-    public function get(string $platform, string $name): array
+    public function get(string $name): array
     {
-        return $this->client->get("{$platform}/{$name}")->json();
+        return $this->client->get("{$name}/package.json")->json();
     }
 }
