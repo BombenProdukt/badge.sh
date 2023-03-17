@@ -29,10 +29,10 @@ final class Provider implements IntegrationProvider
     public function examples(): array
     {
         return [
-            '/winget/v/GitHub.cli'            => 'version',
-            '/winget/v/Balena.Etcher'         => 'version',
-            '/winget/license/Arduino.Arduino' => 'license',
-            '/winget/size/GitHub.cli'         => 'size',
+            '/winget/v/GitHub.cli'       => 'version',
+            '/winget/v/Balena.Etcher'    => 'version',
+            '/winget/license/GitHub.cli' => 'license',
+            '/winget/size/GitHub.cli'    => 'size',
         ];
     }
 }

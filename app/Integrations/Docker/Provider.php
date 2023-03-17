@@ -28,20 +28,20 @@ final class Provider implements IntegrationProvider
     public function examples(): array
     {
         return [
-            '/docker/pulls/library/ubuntu'                                            => 'pulls (library)',
-            '/docker/stars/library/ubuntu'                                            => 'stars (library)',
-            '/docker/size/library/ubuntu'                                             => 'size (library)',
-            '/docker/pulls/amio/node-chrome'                                          => 'pulls (scoped)',
-            '/docker/stars/library/mongo?icon=docker&label=stars'                     => 'stars (icon & label)',
-            '/docker/size/lukechilds/bitcoind/latest/amd64'                           => 'size (scoped/tag/architecture)',
-            '/docker/size/lucashalbert/curl/latest/arm/v6'                            => 'size (scoped/tag/architecture/variant)',
-            '/docker/layers/lucashalbert/curl/latest/arm/v7'                          => 'layers (size)',
-            '/docker/layers/lucashalbert/curl/latest/arm/v7?icon=docker&label=layers' => 'layers (icon & label)',
-            '/docker/layers/lucashalbert/curl/latest/arm/v7?label=docker%20layers'    => 'layers (label)',
-            '/docker/metadata/version/lucashalbert/curl/latest/arm64/v8'              => 'metadata (version)',
-            '/docker/metadata/architecture/lucashalbert/curl/latest/arm64/v8'         => 'metadata (architecture)',
-            '/docker/metadata/build-date/lucashalbert/curl/latest/arm64/v8'           => 'metadata (build-date)',
-            '/docker/metadata/maintainer/lucashalbert/curl/latest/arm64/v8'           => 'metadata (maintainer)',
+            '/docker/pulls/library/ubuntu'                                    => 'pulls (library)',
+            '/docker/stars/library/ubuntu'                                    => 'stars (library)',
+            '/docker/size/library/ubuntu'                                     => 'size (library)',
+            '/docker/pulls/amio/node-chrome'                                  => 'pulls (scoped)',
+            '/docker/stars/library/mongo'                                     => 'stars (icon & label)',
+            '/docker/size/lukechilds/bitcoind/latest/amd64'                   => 'size (scoped/tag/architecture)',
+            '/docker/size/lucashalbert/curl/latest/arm/v6'                    => 'size (scoped/tag/architecture/variant)',
+            '/docker/layers/lucashalbert/curl/latest/arm/v7'                  => 'layers (size)',
+            '/docker/layers/lucashalbert/curl/latest/arm/v7'                  => 'layers (icon & label)',
+            '/docker/layers/lucashalbert/curl/latest/arm/v7'                  => 'layers (label)',
+            '/docker/metadata/version/lucashalbert/curl/latest/arm64/v8'      => 'metadata (version)',
+            '/docker/metadata/architecture/lucashalbert/curl/latest/arm64/v8' => 'metadata (architecture)',
+            '/docker/metadata/build-date/lucashalbert/curl/latest/arm64/v8'   => 'metadata (build-date)',
+            '/docker/metadata/maintainer/lucashalbert/curl/latest/arm64/v8'   => 'metadata (maintainer)',
         ];
     }
 }

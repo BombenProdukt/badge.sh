@@ -27,8 +27,8 @@ final class Provider implements IntegrationProvider
     public function examples(): array
     {
         return [
-            '/devrant/score/22941?icon=devrant'   => 'score',
-            '/devrant/score/Linuxxx?icon=devrant' => 'score',
+            '/devrant/score/22941'   => 'score',
+            '/devrant/score/Linuxxx' => 'score',
         ];
     }
 }

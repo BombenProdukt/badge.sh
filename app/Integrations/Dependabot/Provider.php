@@ -25,8 +25,8 @@ final class Provider implements IntegrationProvider
     public function examples(): array
     {
         return [
-            '/dependabot/thepracticaldev/dev.to?icon=dependabot'     => 'status',
-            '/dependabot/dependabot/dependabot-core?icon=dependabot' => 'status',
+            '/dependabot/thepracticaldev/dev.to'     => 'status',
+            '/dependabot/dependabot/dependabot-core' => 'status',
         ];
     }
 }
