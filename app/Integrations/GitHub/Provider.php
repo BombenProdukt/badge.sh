@@ -46,7 +46,7 @@ final class Provider implements IntegrationProvider
         Route::prefix('github')->group(function (): void {
             Route::get('assets-dl/{owner}/{repo}/{tag?}', DownloadsController::class);
             Route::get('branches/{owner}/{repo}', BranchesController::class);
-            Route::get('checks/{owner}/{repo}/{reference?}/{context?}', ChecksController::class);
+            Route::get('checks/{owner}/{repo}/{reference?}/{context?}', ChecksController::class)->where('context', '.+');
             Route::get('closed-issues/{owner}/{repo}', ClosedIssuesController::class);
             Route::get('closed-prs/{owner}/{repo}', ClosedPullRequestsController::class);
             Route::get('commits/{owner}/{repo}/{reference?}', CommitsController::class);
@@ -68,7 +68,7 @@ final class Provider implements IntegrationProvider
             Route::get('release/{owner}/{repo}/{channel?}', ReleaseController::class);
             Route::get('releases/{owner}/{repo}', ReleasesController::class);
             Route::get('stars/{owner}/{repo}', StarsController::class);
-            Route::get('status/{owner}/{repo}/{reference?}/{context?}', StatusController::class);
+            Route::get('status/{owner}/{repo}/{reference?}/{context?}', StatusController::class)->where('context', '.+');
             Route::get('tag/{owner}/{repo}', TagController::class);
             Route::get('tags/{owner}/{repo}', TagsController::class);
             Route::get('watchers/{owner}/{repo}', WatchersController::class);
