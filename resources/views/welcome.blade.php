@@ -56,8 +56,8 @@
                     </div>
                 </div>
 
-                <h1>Badgers</h1>
-                <p class="lead">Utilize the Badgers API to showcase pertinent details to your users, such as statuses,
+                <h1>Badge</h1>
+                <p class="lead">Utilize the Badge API to showcase pertinent details to your users, such as statuses,
                     versions, deployments, or any other applicable data. Moreover, you can entirely personalize the
                     badges to align with your preferred use-case and visual aesthetics!</p>
 
