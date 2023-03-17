@@ -31,21 +31,21 @@
                             <svg aria-hidden="true"
                                 class="absolute inset-x-0 inset-y-[-50%] h-[200%] w-full skew-y-[-18deg] fill-black/40 stroke-black/50 mix-blend-overlay dark:fill-white/2.5 dark:stroke-white/5">
                                 <defs>
-                                    <pattern id=":R11d6:" width="72" height="56"
-                                        patternUnits="userSpaceOnUse" x="-12" y="4">
+                                    <pattern id=":R11d6:" width="72" height="56" patternUnits="userSpaceOnUse"
+                                        x="-12" y="4">
                                         <path d="M.5 56V.5H72" fill="none"></path>
                                     </pattern>
                                 </defs>
                                 <rect width="100%" height="100%" stroke-width="0" fill="url(#:R11d6:)">
                                 </rect><svg x="-12" y="4" class="overflow-visible">
-                                    <rect stroke-width="0" width="73" height="57" x="288"
-                                        y="168"></rect>
-                                    <rect stroke-width="0" width="73" height="57" x="144"
-                                        y="56"></rect>
-                                    <rect stroke-width="0" width="73" height="57" x="504"
-                                        y="168"></rect>
-                                    <rect stroke-width="0" width="73" height="57" x="720"
-                                        y="336"></rect>
+                                    <rect stroke-width="0" width="73" height="57" x="288" y="168">
+                                    </rect>
+                                    <rect stroke-width="0" width="73" height="57" x="144" y="56">
+                                    </rect>
+                                    <rect stroke-width="0" width="73" height="57" x="504" y="168">
+                                    </rect>
+                                    <rect stroke-width="0" width="73" height="57" x="720" y="336">
+                                    </rect>
                                 </svg>
                             </svg>
                         </div><svg viewBox="0 0 1113 440" aria-hidden="true"
@@ -57,8 +57,9 @@
                 </div>
 
                 <h1>Badgers</h1>
-                <p class="lead">Utilize the Badgers API to effectively communicate relevant status updates and
-                    information to your devoted users through seamlessly rendered SVG badges.</p>
+                <p class="lead">Utilize the Badgers API to showcase pertinent details to your users, such as statuses,
+                    versions, deployments, or any other applicable data. Moreover, you can entirely personalize the
+                    badges to align with your preferred use-case and visual aesthetics!</p>
 
                 <div class="my-16 xl:max-w-none">
                     @foreach (\App\Providers\IntegrationServiceProvider::examples() as $group => $examples)
@@ -87,8 +88,7 @@
                                 <div class="space-y-1">
                                     @foreach ($examples as $link => $label)
                                         <div class="grid gap-8 grid-cols-3 justify-center items-center">
-                                            <h3
-                                                class="text-sm text-right font-semibold text-zinc-900 dark:text-white">
+                                            <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">
                                                 {{ $label }}</h3>
                                             <img src="{{ $link }}" />
                                             <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500"
@@ -97,8 +97,8 @@
                                                 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"
                                                     class="mt-0.5 h-5 w-5 relative top-px -mr-1">
                                                     <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        d="m11.5 6.5 3 3.5m0 0-3 3.5m3-3.5h-9"></path>
+                                                        stroke-linejoin="round" d="m11.5 6.5 3 3.5m0 0-3 3.5m3-3.5h-9">
+                                                    </path>
                                                 </svg>
                                             </a>
                                         </div>
