@@ -63,7 +63,7 @@ final class MakeBadgeResponse
                     'stale-while-revalidate' => 86400,
                 ]);
         } catch (Throwable $th) {
-            dd($th, $request->route()->parameters());
+            // dd($th, $request->route()->parameters());
 
             $badge = Badger::make();
             $badge->withLabel($request->segment(1));
