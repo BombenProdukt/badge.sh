@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use PreemStudio\Badger\Badger;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 final class Handler extends ExceptionHandler
@@ -45,6 +47,16 @@ final class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+        $this->renderable(function (NotFoundHttpException $e) {
+            return response(
+                Badger::from([
+                    'label'       => 'badge.sh',
+                    'status'      => 'not found',
+                    'statusColor' => 'red.600',
+                ])->render()
+            )->setStatusCode(200)->header('Content-Type', 'image/svg+xml;charset=base64');
         });
     }
 }

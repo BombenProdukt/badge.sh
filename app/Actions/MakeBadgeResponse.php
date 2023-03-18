@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
-use App\Integrations\Contracts\Badge;
+use App\Contracts\Badge;
 use BladeUI\Icons\Factory;
 use Iconify\IconsJSON\Finder;
 use Illuminate\Http\Request;
@@ -17,8 +17,16 @@ final class MakeBadgeResponse
     public static function execute(Request $request, Badge $badge): Response
     {
         try {
-            // $badge = Badger::from($this->handleRequest(...$request->route()->parameters()));
-            $badge = Badger::from($badge->handle(...$request->route()->parameters()));
+            if ($badge->deprecated()) {
+                $badge = Badger::from([
+                    'label'       => $request->segment(1),
+                    'status'      => 'deprecated',
+                    'statusColor' => 'red.600',
+                ]);
+            } else {
+                $badge = Badger::from($badge->handle(...$request->route()->parameters()));
+            }
+
             $badge->withStyle($request->query('style', 'flat'));
 
             if ($request->has('hideLabel')) {
