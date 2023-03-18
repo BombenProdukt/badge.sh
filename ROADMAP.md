@@ -1,6 +1,16 @@
 # Roadmap
 
-## Integrations
+## Architecture
+
+- [x] Use [Laravel](https://laravel.com) as the framework
+- [x] Use [Tailwind CSS](https://tailwindcss.com) for styling
+- [ ] Use [Inertia](https://inertiajs.com) for the frontend
+- [x] Standardize development process by leveraging the Laravel ecosystem
+- [ ] Standardize API to be more consistent and predictable
+- [ ] Standardize color palette to be more consistent and predictable
+- [ ] Standardize test suite to ensure functionality of all components
+
+## Badges
 
 - [x] [amo](https://github.com/badgen/badgen.net/tree/master/api/amo.ts)
 - [ ] [amo](https://github.com/badges/shields/tree/master/services/amo)
