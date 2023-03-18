@@ -55,7 +55,13 @@ final class MakeBadgeResponse
 
             return response($badge->render())
                 ->setStatusCode(200)
-                ->header('Content-Type', 'image/svg+xml;charset=base64');
+                ->header('Content-Type', 'image/svg+xml;charset=base64')
+                ->setCache([
+                    'public'                 => true,
+                    'max_age'                => 120,
+                    's_maxage'               => $request->query('s_maxage', 21600),
+                    'stale-while-revalidate' => 86400,
+                ]);
         } catch (Throwable $th) {
             dd($th, $request->route()->parameters());
 
@@ -68,7 +74,12 @@ final class MakeBadgeResponse
 
             return response($badge->render())
                 ->setStatusCode(400)
-                ->header('Content-Type', 'image/svg+xml;charset=base64');
+                ->header('Content-Type', 'image/svg+xml;charset=base64')
+                ->setCache([
+                    'public'   => true,
+                    'max_age'  => 60,
+                    's_maxage' => 60,
+                ]);
         }
     }
 }
