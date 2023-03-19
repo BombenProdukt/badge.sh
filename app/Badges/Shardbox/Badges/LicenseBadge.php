@@ -43,7 +43,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/shards/license/{shard}',
+            '/shards/{shard}/license',
         ];
     }
 
@@ -69,7 +69,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/shards/license/clear' => 'license',
+            '/shards/clear/license' => 'license',
         ];
     }
 

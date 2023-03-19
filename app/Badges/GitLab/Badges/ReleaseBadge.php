@@ -6,6 +6,7 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Badges\GitLab\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class ReleaseBadge implements Badge
@@ -15,9 +16,9 @@ final class ReleaseBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo): array
+    public function handle(string $repo): array
     {
-        $response = $this->client->rest($owner, $repo, 'releases')->json(0);
+        $response = $this->client->rest($repo, 'releases')->json(0);
 
         if (empty($response)) {
             return [
@@ -54,7 +55,7 @@ final class ReleaseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/release/{owner}/{repo}',
+            '/gitlab/{repo}/releases/latest',
         ];
     }
 
@@ -67,7 +68,7 @@ final class ReleaseBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -80,8 +81,7 @@ final class ReleaseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/release/veloren/veloren' => 'latest release',
-
+            '/gitlab/veloren/veloren/releases/latest' => 'latest release',
         ];
     }
 

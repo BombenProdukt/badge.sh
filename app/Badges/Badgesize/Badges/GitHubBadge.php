@@ -6,6 +6,7 @@ namespace App\Badges\Badgesize\Badges;
 
 use App\Badges\Badgesize\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class GitHubBadge implements Badge
@@ -15,9 +16,9 @@ final class GitHubBadge implements Badge
         //
     }
 
-    public function handle(string $compression, string $owner, string $repo, string $path): array
+    public function handle(string $compression, string $repo, string $path): array
     {
-        $response = $this->client->get($compression, "{$owner}/{$repo}/{$path}");
+        $response = $this->client->get($compression, "{$repo}/{$path}");
 
         return [
             'label'       => $compression === 'normal' ? 'size' : "{$compression} size",
@@ -46,7 +47,8 @@ final class GitHubBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/badgesize/{compression}/{owner}/{repo}/{path}',
+            // TODO: here the prefix makes sense but it breaks the standards pattern
+            '/badgesize/{compression}/{repo}/{path}',
         ];
     }
 
@@ -59,8 +61,9 @@ final class GitHubBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('owner', '^(?!.*\bfile-url\b).*$');
-        $route->where('path', '.+');
+        $route->whereIn('compression', ['brotli', 'gzip', 'normal']);
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
+        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array

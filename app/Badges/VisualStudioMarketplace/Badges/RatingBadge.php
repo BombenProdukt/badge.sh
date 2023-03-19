@@ -48,7 +48,7 @@ final class RatingBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/rating/{extension}',
+            '/vs-marketplace/{extension}/rating',
         ];
     }
 
@@ -74,7 +74,7 @@ final class RatingBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/rating/vscodevim.vim' => 'rating',
+            '/vs-marketplace/vscodevim.vim/rating' => 'rating',
         ];
     }
 

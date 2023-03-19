@@ -47,7 +47,7 @@ final class LikesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pub/likes/{package}',
+            '/pub/{package}/likes',
         ];
     }
 
@@ -73,7 +73,7 @@ final class LikesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pub/likes/firebase_core' => 'likes',
+            '/pub/firebase_core/likes' => 'likes',
         ];
     }
 

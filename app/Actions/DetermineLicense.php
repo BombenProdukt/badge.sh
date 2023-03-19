@@ -9,10 +9,14 @@ use Spatie\Regex\Regex;
 
 final class DetermineLicense
 {
-    public static function execute(?string $value): string
+    public static function execute(mixed $value): string
     {
         if (empty($value)) {
             return 'unknown';
+        }
+
+        if (is_array($value)) {
+            $value = $value[0];
         }
 
         $value      = trim(strip_tags($value));
@@ -24,7 +28,7 @@ final class DetermineLicense
             return $value;
         }
 
-        $expression = Regex::matchAll('/'.$licenseIds->map(fn (string $licenseId) => preg_quote($licenseId))->implode('|').'/', $value);
+        $expression = Regex::matchAll('/'.$licenseIds->map(fn (string $licenseId) => preg_quote($licenseId))->implode('|').'/i', $value);
 
         if ($expression->hasMatch()) {
             return collect($expression->results())
@@ -32,6 +36,6 @@ final class DetermineLicense
                 ->implode(' or ');
         }
 
-        return 'unknown';
+        return $value;
     }
 }

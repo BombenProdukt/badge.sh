@@ -6,6 +6,7 @@ namespace App\Badges\RunKit\Badges;
 
 use App\Badges\RunKit\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class NotebookBadge implements Badge
@@ -59,7 +60,7 @@ final class NotebookBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('path', '.+');
+        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array

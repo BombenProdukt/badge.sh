@@ -6,6 +6,7 @@ namespace App\Badges\AzurePipelines\Badges;
 
 use App\Badges\AzurePipelines\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -16,9 +17,9 @@ final class DeploymentBadge implements Badge
         //
     }
 
-    public function handle(string $org, string $project, string $definition, ?string $environment = null): array
+    public function handle(string $project, string $definition, ?string $environment = null): array
     {
-        $response = Http::get("https://vsrm.dev.azure.com/{$org}/{$project}/_apis/release/deployments", array_merge([
+        $response = Http::get("https://vsrm.dev.azure.com/{$project}/_apis/release/deployments", array_merge([
             'api-version'      => '6.0',
             '$top'             => '1',
             'definitionId'     => $definition,
@@ -56,7 +57,7 @@ final class DeploymentBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/deployment/version/{org}/{project}/{definition}/{environment?}',
+            '/azure-pipelines/{project}/deployment/version/{definition}/{environment?}',
         ];
     }
 
@@ -69,7 +70,7 @@ final class DeploymentBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -82,7 +83,7 @@ final class DeploymentBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/deployment/version/azuredevops-powershell/azuredevops-powershell/1' => 'deployment version',
+            '/azure-pipelines/azuredevops-powershell/azuredevops-powershell/deployment/version/1' => 'deployment version',
         ];
     }
 

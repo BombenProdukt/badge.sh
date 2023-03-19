@@ -6,6 +6,7 @@ namespace App\Badges\DavidDM\Badges;
 
 use App\Badges\DavidDM\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class DevBadge implements Badge
@@ -23,9 +24,9 @@ final class DevBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo, string $path): array
+    public function handle(string $repo, string $path): array
     {
-        $status = $this->client->get($owner, $repo, $path, 'dev-')['status'];
+        $status = $this->client->get($repo, $path, 'dev-')['status'];
 
         return [
             'label'       => 'devDependencies',
@@ -54,7 +55,7 @@ final class DevBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/david/dev/{owner}/{repo}/{path?}',
+            '/david/{repo}/dev/{path?}',
         ];
     }
 
@@ -67,7 +68,8 @@ final class DevBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('path', '.+');
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
+        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -80,7 +82,7 @@ final class DevBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/david/dev/zeit/pkg' => 'dev dependencies',
+            '/david/zeit/pkg/dev' => 'dev dependencies',
         ];
     }
 

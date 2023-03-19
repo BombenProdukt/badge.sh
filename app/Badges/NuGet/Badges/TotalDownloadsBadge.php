@@ -48,7 +48,7 @@ final class TotalDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/nuget/dt/{project}',
+            '/nuget/{project}/downloads',
         ];
     }
 
@@ -74,7 +74,7 @@ final class TotalDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/nuget/dt/Newtonsoft.Json' => 'total downloads',
+            '/nuget/Newtonsoft.Json/downloads' => 'total downloads',
         ];
     }
 

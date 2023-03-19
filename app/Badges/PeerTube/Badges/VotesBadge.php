@@ -63,7 +63,7 @@ final class VotesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/peertube/{instance}/votes/{video}/{format?}',
+            '/peertube/{instance}/{video}/votes/{format?}',
         ];
     }
 
@@ -82,9 +82,11 @@ final class VotesBadge implements Badge
     public function staticPreviews(): array
     {
         return [
-            '/peertube/framatube.org/votes/9c9de5e8-0a1e-484a-b099-e80766180a6d'          => 'votes (combined)',
-            '/peertube/framatube.org/votes/9c9de5e8-0a1e-484a-b099-e80766180a6d/likes'    => 'votes (likes)',
-            '/peertube/framatube.org/votes/9c9de5e8-0a1e-484a-b099-e80766180a6d/dislikes' => 'votes (dislikes)',
+            '/peertube/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d/votes'          => 'votes (combined)',
+            // TODO: extract into a likes badge
+            '/peertube/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d/votes/likes'    => 'votes (likes)',
+            // TODO: extract into a dislikes badge
+            '/peertube/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d/votes/dislikes' => 'votes (dislikes)',
         ];
     }
 

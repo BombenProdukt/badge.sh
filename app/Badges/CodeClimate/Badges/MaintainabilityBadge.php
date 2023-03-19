@@ -7,6 +7,7 @@ namespace App\Badges\CodeClimate\Badges;
 use App\Badges\CodeClimate\Client;
 use App\Badges\Templates\GradeTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class MaintainabilityBadge implements Badge
@@ -16,9 +17,9 @@ final class MaintainabilityBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo): array
+    public function handle(string $project): array
     {
-        $response = $this->client->get($owner, $repo, 'snapshots');
+        $response = $this->client->get($project, 'snapshots');
 
         return GradeTemplate::make('maintainability', $response['attributes']['ratings'][0]['letter']);
     }
@@ -43,7 +44,7 @@ final class MaintainabilityBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codeclimate/maintainability/{owner}/{repo}',
+            '/codeclimate/{project}/maintainability',
         ];
     }
 
@@ -56,7 +57,7 @@ final class MaintainabilityBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('project', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -69,7 +70,7 @@ final class MaintainabilityBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codeclimate/maintainability/codeclimate/codeclimate' => 'maintainability',
+            '/codeclimate/codeclimate/codeclimate/maintainability' => 'maintainability',
         ];
     }
 

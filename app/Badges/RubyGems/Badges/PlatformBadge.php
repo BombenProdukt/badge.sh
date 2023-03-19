@@ -44,7 +44,7 @@ final class PlatformBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/rubygems/p/{gem}',
+            '/rubygems/{gem}/platform',
         ];
     }
 
@@ -70,7 +70,7 @@ final class PlatformBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/rubygems/p/rails' => 'platform',
+            '/rubygems/rails/platform' => 'platform',
         ];
     }
 

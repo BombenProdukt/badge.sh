@@ -41,8 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/snapcraft/l/{snap}',
-            'snapcraft/license/{snap}',
+            '/snapcraft/{snap}/license',
         ];
     }
 
@@ -68,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/snapcraft/license/okular' => 'license',
+            '/snapcraft/okular/license' => 'license',
         ];
     }
 

@@ -7,6 +7,7 @@ namespace App\Badges\Packagist\Badges;
 use App\Badges\Packagist\Client;
 use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class TotalDownloadsBadge implements Badge
@@ -16,9 +17,9 @@ final class TotalDownloadsBadge implements Badge
         //
     }
 
-    public function handle(string $vendor, string $package, ?string $channel = null): array
+    public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($vendor, $package);
+        $packageMeta = $this->client->get($package);
 
         return DownloadsTemplate::make($packageMeta['downloads']['total']);
     }
@@ -43,7 +44,7 @@ final class TotalDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/dt/{vendor}/{package}',
+            '/packagist/{package}/downloads',
         ];
     }
 
@@ -56,7 +57,7 @@ final class TotalDownloadsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -69,7 +70,7 @@ final class TotalDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/dt/monolog/monolog' => 'total downloads',
+            '/packagist/monolog/monolog/downloads' => 'total downloads',
         ];
     }
 

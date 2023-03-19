@@ -16,9 +16,9 @@ final class LicenseBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $name): array
+    public function handle(string $project): array
     {
-        return LicenseTemplate::make($this->client->get($owner, $name)['license']);
+        return LicenseTemplate::make($this->client->get($project)['license']);
     }
 
     public function service(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/elm-package/license/{owner}/{name}',
+            '/elm-package/{project}/license',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/elm-package/license/mdgriffith/elm-ui' => 'license',
+            '/elm-package/mdgriffith/elm-ui/license' => 'license',
         ];
     }
 

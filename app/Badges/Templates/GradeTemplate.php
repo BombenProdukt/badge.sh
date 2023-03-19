@@ -8,7 +8,7 @@ use PreemStudio\Formatter\FormatPercentage;
 
 final class GradeTemplate
 {
-    public static function make(string $label, string $value, ?string $grade = null): array
+    public static function make(string $label, mixed $value, ?string $grade = null): array
     {
         return [
             'label'       => $label,

@@ -45,7 +45,7 @@ final class StarsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/apm/stars/{package}',
+            '/apm/{package}/stars',
         ];
     }
 
@@ -71,7 +71,7 @@ final class StarsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/apm/stars/linter' => 'stars',
+            '/apm/linter/stars' => 'stars',
         ];
     }
 

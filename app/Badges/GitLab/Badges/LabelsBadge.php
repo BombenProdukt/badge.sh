@@ -6,6 +6,7 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Badges\GitLab\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -16,10 +17,10 @@ final class LabelsBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo, string $label, ?string $state = null): array
+    public function handle(string $repo, string $label, ?string $state = null): array
     {
         $stateFilter = $state ? 'state:'.strtolower($state) : '';
-        $response    = $this->client->graphql($owner, $repo, "issues(labelName:\"{$label}\", {$stateFilter}) { count } label(title: \"{$label}\"){ color }");
+        $response    = $this->client->graphql($repo, "issues(labelName:\"{$label}\", {$stateFilter}) { count } label(title: \"{$label}\"){ color }");
 
         return [
             'label'       => $label,
@@ -48,7 +49,7 @@ final class LabelsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/label-issues/{owner}/{repo}/{label}/{state?}',
+            '/gitlab/{repo}/issues/filter/label/{label}/{state?}',
         ];
     }
 
@@ -61,7 +62,7 @@ final class LabelsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -74,9 +75,9 @@ final class LabelsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/label-issues/NickBusey/HomelabOS/Bug'                  => 'issues by label',
-            '/gitlab/label-issues/NickBusey/HomelabOS/Enhancement/opened'   => 'open issues by label',
-            '/gitlab/label-issues/NickBusey/HomelabOS/Help%20wanted/closed' => 'closed issues by label',
+            '/gitlab/NickBusey/HomelabOS/issues/filter/label/Bug'                  => 'issues by label',
+            '/gitlab/NickBusey/HomelabOS/issues/filter/label/Enhancement/opened'   => 'open issues by label',
+            '/gitlab/NickBusey/HomelabOS/issues/filter/label/Help%20wanted/closed' => 'closed issues by label',
         ];
     }
 

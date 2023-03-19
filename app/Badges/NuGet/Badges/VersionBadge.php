@@ -55,7 +55,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/nuget/v/{project}/{channel?}',
+            '/nuget/{project}/version/{channel?}',
         ];
     }
 
@@ -81,9 +81,9 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/nuget/v/Newtonsoft.Json'        => 'version (stable channel)',
-            '/nuget/v/Newtonsoft.Json/pre'    => 'version (pre channel)',
-            '/nuget/v/Newtonsoft.Json/latest' => 'version (latest channel)',
+            '/nuget/Newtonsoft.Json/version'        => 'version (stable channel)',
+            '/nuget/Newtonsoft.Json/version/pre'    => 'version (pre channel)',
+            '/nuget/Newtonsoft.Json/version/latest' => 'version (latest channel)',
         ];
     }
 

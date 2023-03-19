@@ -6,6 +6,7 @@ namespace App\Badges\PackagePhobia\Badges;
 
 use App\Badges\PackagePhobia\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class InstallBadge implements Badge
@@ -46,7 +47,7 @@ final class InstallBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagephobia/install/{name}',
+            '/packagephobia/{name}/installation/size',
         ];
     }
 
@@ -59,7 +60,7 @@ final class InstallBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('name', '.+');
+        $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -72,8 +73,8 @@ final class InstallBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagephobia/install/webpack'               => 'install size',
-            '/packagephobia/install/@tusbar/cache-control' => 'install size',
+            '/packagephobia/webpack/installation/size'               => 'install size',
+            '/packagephobia/@tusbar/cache-control/installation/size' => 'install size',
         ];
     }
 

@@ -16,7 +16,7 @@ final class Client
         $this->client = Http::baseUrl('https://package.elm-lang.org/')->throw();
     }
 
-    public function get(string $owner, string $name): array
+    public function get(string $project): array
     {
         return $this->client->get("packages/{$owner}/{$name}/latest/elm.json")->json();
     }

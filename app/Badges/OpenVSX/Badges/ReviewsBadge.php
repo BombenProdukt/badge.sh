@@ -46,7 +46,7 @@ final class ReviewsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/open-vsx/reviews/{namespace}/{package}',
+            '/open-vsx/{namespace}/{package}/reviews',
         ];
     }
 
@@ -72,7 +72,7 @@ final class ReviewsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/open-vsx/reviews/idleberg/electron-builder' => 'reviews',
+            '/open-vsx/idleberg/electron-builder/reviews' => 'reviews',
         ];
     }
 

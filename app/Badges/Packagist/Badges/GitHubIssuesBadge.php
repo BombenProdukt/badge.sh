@@ -6,6 +6,7 @@ namespace App\Badges\Packagist\Badges;
 
 use App\Badges\Packagist\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -16,9 +17,9 @@ final class GitHubIssuesBadge implements Badge
         //
     }
 
-    public function handle(string $vendor, string $package, ?string $channel = null): array
+    public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($vendor, $package);
+        $packageMeta = $this->client->get($package);
 
         return [
             'label'       => 'issues',
@@ -47,7 +48,7 @@ final class GitHubIssuesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/ghi/{vendor}/{package}',
+            '/packagist/{package}/github/issues/open',
         ];
     }
 
@@ -60,7 +61,7 @@ final class GitHubIssuesBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -73,7 +74,7 @@ final class GitHubIssuesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/ghi/monolog/monolog' => 'github issues',
+            '/packagist/monolog/monolog/github/issues/open' => 'github issues',
         ];
     }
 

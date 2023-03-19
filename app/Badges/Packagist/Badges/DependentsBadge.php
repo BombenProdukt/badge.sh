@@ -6,6 +6,7 @@ namespace App\Badges\Packagist\Badges;
 
 use App\Badges\Packagist\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -16,9 +17,9 @@ final class DependentsBadge implements Badge
         //
     }
 
-    public function handle(string $vendor, string $package, ?string $channel = null): array
+    public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($vendor, $package);
+        $packageMeta = $this->client->get($package);
 
         return [
             'label'       => 'dependents',
@@ -47,7 +48,7 @@ final class DependentsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/dependents/{vendor}/{package}',
+            '/packagist/{package}/dependents',
         ];
     }
 
@@ -60,7 +61,7 @@ final class DependentsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -73,7 +74,7 @@ final class DependentsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/dependents/monolog/monolog' => 'dependents',
+            '/packagist/monolog/monolog/dependents' => 'dependents',
         ];
     }
 

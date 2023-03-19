@@ -6,6 +6,7 @@ namespace App\Badges\AzurePipelines\Badges;
 
 use App\Badges\AzurePipelines\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -16,9 +17,9 @@ final class BuildVersionBadge implements Badge
         //
     }
 
-    public function handle(string $org, string $project, string $definition, ?string $branch = null): array
+    public function handle(string $project, string $definition, ?string $branch = null): array
     {
-        $response = Http::get("https://dev.azure.com/{$org}/{$project}/_apis/build/builds", array_merge([
+        $response = Http::get("https://dev.azure.com/{$project}/_apis/build/builds", array_merge([
             'api-version'  => '6.0',
             '$top'         => '1',
             'definitionId' => $definition,
@@ -57,7 +58,7 @@ final class BuildVersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/build/version/{org}/{project}/{definition}/{branch?}',
+            '/azure-pipelines/{project}/build/version/{definition}/{branch?}',
         ];
     }
 
@@ -70,7 +71,7 @@ final class BuildVersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -83,7 +84,7 @@ final class BuildVersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/build/version/dnceng/public/51' => 'build version',
+            '/azure-pipelines/dnceng/public/build/version/51' => 'build version',
         ];
     }
 

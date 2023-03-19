@@ -43,8 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/dub/v/{package}',
-            '/dub/version/{package}',
+            '/dub/{package}/version',
         ];
     }
 
@@ -70,7 +69,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/dub/v/dub' => 'version',
+            '/dub/dub/version' => 'version',
         ];
     }
 

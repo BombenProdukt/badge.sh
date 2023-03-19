@@ -7,6 +7,7 @@ namespace App\Badges\Maven\Badges;
 use App\Badges\Maven\Client;
 use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -46,6 +47,7 @@ final class UrlBadge implements Badge
     public function routePaths(): array
     {
         return [
+            // TODO
             '/maven/v/metadata-url/{hostname}/{pathname}',
         ];
     }
@@ -59,7 +61,7 @@ final class UrlBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('pathname', '.+');
+        $route->where('pathname', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array

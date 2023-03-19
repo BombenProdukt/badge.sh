@@ -47,7 +47,7 @@ final class BranchesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/branches/{owner}/{repo}',
+            '/github/{owner}/{repo}/branches',
         ];
     }
 
@@ -73,8 +73,7 @@ final class BranchesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/branches/micromatch/micromatch' => 'branches',
-
+            '/github/micromatch/micromatch/branches' => 'branches',
         ];
     }
 

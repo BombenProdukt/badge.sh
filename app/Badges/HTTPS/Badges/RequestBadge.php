@@ -6,6 +6,7 @@ namespace App\Badges\HTTPS\Badges;
 
 use App\Badges\HTTPS\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class RequestBadge implements Badge
@@ -59,7 +60,7 @@ final class RequestBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('path', '.+');
+        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array

@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/ctan/v/{package}',
+            '/ctan/{package}/version',
         ];
     }
 
@@ -69,7 +69,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/ctan/v/latexindent' => 'version',
+            '/ctan/latexindent/version' => 'version',
         ];
     }
 

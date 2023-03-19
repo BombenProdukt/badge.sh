@@ -6,6 +6,7 @@ namespace App\Badges\Jenkins\Badges;
 
 use App\Badges\Jenkins\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class FixTimeBadge implements Badge
@@ -74,7 +75,7 @@ final class FixTimeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jenkins/fix-time/{hostname}/{job}',
+            '/jenkins/{hostname}/{job}/fix-time',
         ];
     }
 
@@ -87,7 +88,7 @@ final class FixTimeBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('job', '.+');
+        $route->where('job', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -100,7 +101,7 @@ final class FixTimeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jenkins/fix-time/jenkins.mono-project.com/job/test-mono-mainline/' => 'Time taken to fix a broken build',
+            '/jenkins/jenkins.mono-project.com/job/test-mono-mainline/fix-time' => 'Time taken to fix a broken build',
         ];
     }
 

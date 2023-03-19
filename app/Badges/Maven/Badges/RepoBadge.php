@@ -7,6 +7,7 @@ namespace App\Badges\Maven\Badges;
 use App\Badges\Maven\Client;
 use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class RepoBadge implements Badge
@@ -45,7 +46,7 @@ final class RepoBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/maven/v/{repo}/{group}/{artifact}',
+            '/maven/{repo}/{group}/{artifact}/version',
         ];
     }
 
@@ -59,7 +60,7 @@ final class RepoBadge implements Badge
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('repo', ['maven-central', 'jcenter']);
-        $route->where('pathname', '.+');
+        $route->where('pathname', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -72,8 +73,8 @@ final class RepoBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/maven/v/maven-central/com.google.code.gson/gson' => 'version (maven-central)',
-            '/maven/v/jcenter/com.squareup.okhttp3/okhttp'     => 'version (jcenter)',
+            '/maven/maven-central/com.google.code.gson/gson/version' => 'version (maven-central)',
+            '/maven/jcenter/com.squareup.okhttp3/okhttp/version'     => 'version (jcenter)',
         ];
     }
 

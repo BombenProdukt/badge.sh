@@ -52,7 +52,7 @@ final class MetadataBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/docker/metadata/{type}/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
+            '/docker/{scope}/{name}/metadata/{type}/{tag?}/{architecture?}/{variant?}',
         ];
     }
 
@@ -78,10 +78,10 @@ final class MetadataBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/docker/metadata/version/lucashalbert/curl/latest/arm64/v8'      => 'metadata (version)',
-            '/docker/metadata/architecture/lucashalbert/curl/latest/arm64/v8' => 'metadata (architecture)',
-            '/docker/metadata/build-date/lucashalbert/curl/latest/arm64/v8'   => 'metadata (build-date)',
-            '/docker/metadata/maintainer/lucashalbert/curl/latest/arm64/v8'   => 'metadata (maintainer)',
+            '/docker/lucashalbert/curl/metadata/version/latest/arm64/v8'      => 'metadata (version)',
+            '/docker/lucashalbert/curl/metadata/architecture/latest/arm64/v8' => 'metadata (architecture)',
+            '/docker/lucashalbert/curl/metadata/build-date/latest/arm64/v8'   => 'metadata (build-date)',
+            '/docker/lucashalbert/curl/metadata/maintainer/latest/arm64/v8'   => 'metadata (maintainer)',
         ];
     }
 

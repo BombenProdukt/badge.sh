@@ -45,7 +45,7 @@ final class DependentsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cpan/dependents/{distribution}',
+            '/cpan/{distribution}/dependents',
         ];
     }
 
@@ -71,7 +71,7 @@ final class DependentsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cpan/dependents/DateTime' => 'dependents',
+            '/cpan/DateTime/dependents' => 'dependents',
         ];
     }
 

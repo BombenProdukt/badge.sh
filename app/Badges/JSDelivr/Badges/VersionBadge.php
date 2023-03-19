@@ -7,6 +7,7 @@ namespace App\Badges\JSDelivr\Badges;
 use App\Badges\JSDelivr\Client;
 use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class VersionBadge implements Badge
@@ -43,7 +44,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jsdelivr/v/npm/{package}',
+            '/jsdelivr/npm/{package}/version',
         ];
     }
 
@@ -56,7 +57,7 @@ final class VersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('package', '.+');
+        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -69,7 +70,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jsdelivr/v/npm/lodash' => 'version',
+            '/jsdelivr/npm/lodash/version' => 'version',
         ];
     }
 

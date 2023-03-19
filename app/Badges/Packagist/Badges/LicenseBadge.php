@@ -8,6 +8,7 @@ use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
 use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge implements Badge
@@ -19,9 +20,9 @@ final class LicenseBadge implements Badge
         //
     }
 
-    public function handle(string $vendor, string $package, ?string $channel = null): array
+    public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($vendor, $package);
+        $packageMeta = $this->client->get($package);
 
         return LicenseTemplate::make($packageMeta['versions'][$this->getVersion($packageMeta, $channel)]['license'][0]);
     }
@@ -46,7 +47,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/license/{vendor}/{package}/{channel?}',
+            '/packagist/{package}/license/{channel?}',
         ];
     }
 
@@ -59,7 +60,7 @@ final class LicenseBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -72,7 +73,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/license/monolog/monolog' => 'license',
+            '/packagist/monolog/monolog/license' => 'license',
         ];
     }
 

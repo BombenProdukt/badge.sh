@@ -47,7 +47,7 @@ final class FollowBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/twitter/follow/{username}',
+            '/twitter/{username}/follow',
         ];
     }
 
@@ -73,8 +73,8 @@ final class FollowBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/twitter/follow/rustlang' => 'followers count',
-            '/twitter/follow/golang'   => 'followers count',
+            '/twitter/rustlang/follow' => 'followers count',
+            '/twitter/golang/follow'   => 'followers count',
         ];
     }
 

@@ -22,11 +22,11 @@ final class Client
         $this->client = Http::baseUrl('https://lgtm.com/api/v1.0/')->throw();
     }
 
-    public function get(string $provider, string $owner, string $name, ?string $language): array
+    public function get(string $provider, string $project, ?string $language): array
     {
         $provider = $this->providers[$provider] ?? $provider;
 
-        return $this->detailsByLang($this->client->get("projects/{$provider}/{$owner}/{$name}")->json(), $language);
+        return $this->detailsByLang($this->client->get("projects/{$provider}/{$project}")->json(), $language);
     }
 
     private function detailsByLang(array $data, ?string $lang): mixed

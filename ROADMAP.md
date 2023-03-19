@@ -9,6 +9,8 @@
 - [x] Standardize color palette to be more consistent and predictable
 - [ ] Standardize test suite to ensure functionality of all components
 
+version/X => platform/X
+
 ## Badges
 
 - [x] [amo](https://github.com/badgen/badgen.net/tree/master/api/amo.ts)

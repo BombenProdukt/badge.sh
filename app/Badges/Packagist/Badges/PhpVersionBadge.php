@@ -8,6 +8,7 @@ use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
 use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
@@ -20,9 +21,9 @@ final class PhpVersionBadge implements Badge
         //
     }
 
-    public function handle(string $vendor, string $package, ?string $channel = null): array
+    public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($vendor, $package);
+        $packageMeta = $this->client->get($package);
 
         $pkg = Arr::get($packageMeta['versions'], $this->getVersion($packageMeta, $channel));
 
@@ -49,7 +50,7 @@ final class PhpVersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/php/{vendor}/{package}/{channel?}',
+            '/packagist/{package}/version/php/{channel?}',
         ];
     }
 
@@ -62,7 +63,7 @@ final class PhpVersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -75,7 +76,7 @@ final class PhpVersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/php/monolog/monolog' => 'php',
+            '/packagist/monolog/monolog/version/php' => 'php',
         ];
     }
 

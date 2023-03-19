@@ -43,7 +43,7 @@ final class MonthlyDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/dub/dm/{package}',
+            '/dub/{package}/downloads/monthly',
         ];
     }
 
@@ -69,7 +69,7 @@ final class MonthlyDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/dub/dm/vibe-d' => 'monthly downloads',
+            '/dub/vibe-d/downloads/monthly' => 'monthly downloads',
         ];
     }
 

@@ -49,7 +49,7 @@ final class DownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/d/{extension}',
+            '/vs-marketplace/{extension}/downloads',
         ];
     }
 
@@ -75,7 +75,7 @@ final class DownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/i/vscodevim.vim' => 'installs',
+            '/vs-marketplace/vscodevim.vim/downloads' => 'downloads',
         ];
     }
 

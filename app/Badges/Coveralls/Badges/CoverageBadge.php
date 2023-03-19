@@ -7,6 +7,7 @@ namespace App\Badges\Coveralls\Badges;
 use App\Badges\Coveralls\Client;
 use App\Badges\Templates\CoverageTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class CoverageBadge implements Badge
@@ -16,9 +17,9 @@ final class CoverageBadge implements Badge
         //
     }
 
-    public function handle(string $vcs, string $owner, string $repo, ?string $branch = null): array
+    public function handle(string $vcs, string $repo, ?string $branch = null): array
     {
-        $response = $this->client->get($vcs, $owner, $repo, $branch);
+        $response = $this->client->get($vcs, $repo, $branch);
 
         preg_match('/_(\d+)\.svg/', $response, $matches);
 
@@ -53,7 +54,7 @@ final class CoverageBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/coveralls/c/{vcs}/{owner}/{repo}/{branch?}',
+            '/coveralls/{vcs}/{repo}/coverage/{branch?}',
         ];
     }
 
@@ -67,6 +68,7 @@ final class CoverageBadge implements Badge
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('vcs', ['github', 'bitbucket']);
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -79,10 +81,10 @@ final class CoverageBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/coveralls/c/github/jekyll/jekyll'           => 'coverage (github)',
-            '/coveralls/c/github/jekyll/jekyll/master'    => 'coverage (github, branch)',
-            '/coveralls/c/bitbucket/pyKLIP/pyklip'        => 'coverage (bitbucket)',
-            '/coveralls/c/bitbucket/pyKLIP/pyklip/master' => 'coverage (bitbucket, branch)',
+            '/coveralls/github/jekyll/jekyll/coverage'           => 'coverage (github)',
+            '/coveralls/github/jekyll/jekyll/coverage/master'    => 'coverage (github, branch)',
+            '/coveralls/bitbucket/pyKLIP/pyklip/coverage'        => 'coverage (bitbucket)',
+            '/coveralls/bitbucket/pyKLIP/pyklip/coverage/master' => 'coverage (bitbucket, branch)',
         ];
     }
 

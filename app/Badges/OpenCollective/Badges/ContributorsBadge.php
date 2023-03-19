@@ -47,7 +47,7 @@ final class ContributorsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/opencollective/contributors/{slug}',
+            '/opencollective/{slug}/contributors',
         ];
     }
 
@@ -73,7 +73,7 @@ final class ContributorsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/opencollective/contributors/webpack' => 'contributors',
+            '/opencollective/webpack/contributors' => 'contributors',
         ];
     }
 

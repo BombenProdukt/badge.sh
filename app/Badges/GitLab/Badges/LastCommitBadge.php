@@ -6,6 +6,7 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Badges\GitLab\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Carbon\Carbon;
 use Illuminate\Routing\Route;
 
@@ -16,9 +17,9 @@ final class LastCommitBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo, ?string $ref = null): array
+    public function handle(string $repo, ?string $ref = null): array
     {
-        $response = $this->client->rest($owner, $repo, $ref ? "repository/commits?ref={$ref}" : 'repository/commits')->json('0');
+        $response = $this->client->rest($repo, $ref ? "repository/commits?ref={$ref}" : 'repository/commits')->json('0');
 
         return [
             'label'       => 'last commit',
@@ -47,7 +48,7 @@ final class LastCommitBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/last-commit/{owner}/{repo}/{ref?}',
+            '/gitlab/{repo}/commits/latest/{ref?}',
         ];
     }
 
@@ -60,7 +61,7 @@ final class LastCommitBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -73,9 +74,9 @@ final class LastCommitBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/last-commit/gitlab-org/gitlab-development-kit'                                  => 'last commit',
-            '/gitlab/last-commit/gitlab-org/gitlab-development-kit/updating-chromedriver-install-v2' => 'last commit (branch ref)',
-            '/gitlab/last-commit/gitlab-org/gitlab-development-kit/v0.2.5'                           => 'last commit (tag ref)',
+            '/gitlab/gitlab-org/gitlab-development-kit/commits/latest'                                  => 'last commit',
+            '/gitlab/gitlab-org/gitlab-development-kit/commits/latest/updating-chromedriver-install-v2' => 'last commit (branch ref)',
+            '/gitlab/gitlab-org/gitlab-development-kit/commits/latest/v0.2.5'                           => 'last commit (tag ref)',
         ];
     }
 

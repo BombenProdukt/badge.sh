@@ -44,7 +44,7 @@ final class TotalDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cran/dt/{package}',
+            '/cran/{package}/downloads',
         ];
     }
 
@@ -70,7 +70,7 @@ final class TotalDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cran/dt/Rcpp' => 'total downloads',
+            '/cran/Rcpp/downloads' => 'total downloads',
         ];
     }
 

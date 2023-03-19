@@ -6,6 +6,7 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Badges\GitLab\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -16,9 +17,9 @@ final class CommitsBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo, ?string $ref = null): array
+    public function handle(string $repo, ?string $ref = null): array
     {
-        $response = $this->client->rest($owner, $repo, $ref ? "repository/commits?ref={$ref}" : 'repository/commits');
+        $response = $this->client->rest($repo, $ref ? "repository/commits?ref={$ref}" : 'repository/commits');
 
         return [
             'label'       => 'commits',
@@ -47,7 +48,7 @@ final class CommitsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/commits/{owner}/{repo}/{ref?}',
+            '/gitlab/{repo}/commits/{ref?}',
         ];
     }
 
@@ -60,7 +61,7 @@ final class CommitsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -73,9 +74,9 @@ final class CommitsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/commits/cryptsetup/cryptsetup'                                                  => 'commits count',
-            '/gitlab/commits/cryptsetup/cryptsetup/coverity_scan'                                    => 'commits count (branch ref)',
-            '/gitlab/commits/cryptsetup/cryptsetup/v2.2.2'                                           => 'commits count (tag ref)',
+            '/gitlab/cryptsetup/cryptsetup/commits'                                                  => 'commits count',
+            '/gitlab/cryptsetup/cryptsetup/commits/coverity_scan'                                    => 'commits count (branch ref)',
+            '/gitlab/cryptsetup/cryptsetup/commits/v2.2.2'                                           => 'commits count (tag ref)',
         ];
     }
 

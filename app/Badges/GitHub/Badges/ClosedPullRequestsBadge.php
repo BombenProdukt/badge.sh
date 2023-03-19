@@ -47,7 +47,7 @@ final class ClosedPullRequestsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/closed-prs/{owner}/{repo}',
+            '/github/{owner}/{repo}/pull-requests/closed',
         ];
     }
 
@@ -73,7 +73,7 @@ final class ClosedPullRequestsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/closed-prs/micromatch/micromatch' => 'closed PRs',
+            '/github/micromatch/micromatch/pull-requests/closed' => 'closed PRs',
 
         ];
     }

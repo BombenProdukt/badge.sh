@@ -8,6 +8,7 @@ use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
 use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class VersionBadge implements Badge
@@ -19,9 +20,9 @@ final class VersionBadge implements Badge
         //
     }
 
-    public function handle(string $vendor, string $package, ?string $channel = null): array
+    public function handle(string $package, ?string $channel = null): array
     {
-        $version = $this->getVersion($this->client->get($vendor, $package), $channel);
+        $version = $this->getVersion($this->client->get($package), $channel);
 
         return VersionTemplate::make($this->service(), $version);
     }
@@ -46,7 +47,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/v/{vendor}/{package}/{channel?}',
+            '/packagist/{package}/version/{channel?}',
         ];
     }
 
@@ -59,7 +60,7 @@ final class VersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -72,9 +73,9 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/v/monolog/monolog'        => 'version',
-            '/packagist/v/monolog/monolog/pre'    => 'version (pre)',
-            '/packagist/v/monolog/monolog/latest' => 'version (latest)',
+            '/packagist/monolog/monolog/version'        => 'version',
+            '/packagist/monolog/monolog/version/pre'    => 'version (pre)',
+            '/packagist/monolog/monolog/version/latest' => 'version (latest)',
         ];
     }
 

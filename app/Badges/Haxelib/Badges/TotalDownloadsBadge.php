@@ -43,7 +43,7 @@ final class TotalDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/haxelib/d/{project}',
+            '/haxelib/{project}/downloads',
         ];
     }
 
@@ -69,7 +69,7 @@ final class TotalDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/haxelib/d/hxnodejs' => 'downloads',
+            '/haxelib/hxnodejs/downloads' => 'total downloads',
         ];
     }
 

@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hackage/v/{package}',
+            '/hackage/{package}/version',
         ];
     }
 
@@ -69,8 +69,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hackage/v/abt'   => 'version',
-            '/hackage/v/Cabal' => 'version',
+            '/hackage/abt/version'   => 'version',
+            '/hackage/Cabal/version' => 'version',
         ];
     }
 

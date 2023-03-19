@@ -6,6 +6,7 @@ namespace App\Badges\JSDelivr\Badges;
 
 use App\Badges\JSDelivr\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class RankBadge implements Badge
@@ -46,7 +47,7 @@ final class RankBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jsdelivr/rank/{platform}/{package}',
+            '/jsdelivr/{platform}/{package}/rank',
         ];
     }
 
@@ -59,7 +60,7 @@ final class RankBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('package', '.+');
+        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -72,7 +73,7 @@ final class RankBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jsdelivr/rank/npm/lodash' => 'rank',
+            '/jsdelivr/npm/lodash/rank' => 'rank',
         ];
     }
 

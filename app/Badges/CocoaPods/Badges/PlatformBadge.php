@@ -44,7 +44,7 @@ final class PlatformBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cocoapods/p/{pod}',
+            '/cocoapods/{pod}/platform',
         ];
     }
 
@@ -70,7 +70,7 @@ final class PlatformBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cocoapods/p/AFNetworking' => 'platform',
+            '/cocoapods/AFNetworking/platform' => 'platform',
         ];
     }
 

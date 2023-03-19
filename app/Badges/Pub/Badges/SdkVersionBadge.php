@@ -43,7 +43,7 @@ final class SdkVersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pub/sdk-version/{package}',
+            '/pub/{package}/version/sdk',
         ];
     }
 
@@ -69,7 +69,7 @@ final class SdkVersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pub/sdk-version/uuid' => 'sdk-version',
+            '/pub/uuid/version/sdk' => 'sdk-version',
         ];
     }
 

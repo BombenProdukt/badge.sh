@@ -48,7 +48,7 @@ final class UserIdBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/mastodon/follow/{userId}/{instance?}',
+            '/mastodon/{userId}/follow/{instance?}',
         ];
     }
 

@@ -6,6 +6,7 @@ namespace App\Badges\PackagePhobia\Badges;
 
 use App\Badges\PackagePhobia\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class PublishBadge implements Badge
@@ -46,7 +47,7 @@ final class PublishBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagephobia/publish/{name}',
+            '/packagephobia/{name}/publish',
         ];
     }
 
@@ -59,7 +60,7 @@ final class PublishBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('name', '.+');
+        $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -72,8 +73,8 @@ final class PublishBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagephobia/publish/webpack'               => 'publish size',
-            '/packagephobia/publish/@tusbar/cache-control' => '(scoped pkg) publish size',
+            '/packagephobia/webpack/publish'               => 'publish size',
+            '/packagephobia/@tusbar/cache-control/publish' => '(scoped pkg) publish size',
         ];
     }
 

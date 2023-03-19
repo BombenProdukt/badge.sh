@@ -41,7 +41,7 @@ final class WeeklyDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cran/dw/{package}',
+            '/cran/{package}/downloads/weekly',
         ];
     }
 
@@ -67,7 +67,7 @@ final class WeeklyDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cran/dw/Rcpp' => 'weekly downloads',
+            '/cran/Rcpp/downloads/weekly' => 'weekly downloads',
         ];
     }
 

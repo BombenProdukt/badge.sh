@@ -43,7 +43,7 @@ final class VersionFromBucketBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/scoop/{bucket}/v/{app}',
+            '/scoop/{bucket}/{app}/version',
         ];
     }
 
@@ -69,8 +69,8 @@ final class VersionFromBucketBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/scoop/extras/v/age'        => 'version',
-            '/scoop/extras/v/codeblocks' => 'version',
+            '/scoop/extras/age/version'        => 'version',
+            '/scoop/extras/codeblocks/version' => 'version',
         ];
     }
 

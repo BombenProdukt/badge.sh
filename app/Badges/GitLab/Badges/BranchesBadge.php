@@ -6,6 +6,7 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Badges\GitLab\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -16,9 +17,9 @@ final class BranchesBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo): array
+    public function handle(string $repo): array
     {
-        $response = $this->client->rest($owner, $repo, 'repository/branches');
+        $response = $this->client->rest($repo, 'repository/branches');
 
         return [
             'label'       => 'branches',
@@ -47,7 +48,7 @@ final class BranchesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/branches/{owner}/{repo}',
+            '/gitlab/{repo}/branches',
         ];
     }
 
@@ -60,7 +61,7 @@ final class BranchesBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -73,7 +74,7 @@ final class BranchesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/branches/gitterHQ/webapp' => 'branches',
+            '/gitlab/gitterHQ/webapp/branches' => 'branches',
         ];
     }
 

@@ -49,7 +49,7 @@ final class MilestonesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/milestones/{owner}/{repo}/{milestoneNumber}',
+            '/github/{owner}/{repo}/milestones/{milestoneNumber}',
         ];
     }
 
@@ -75,7 +75,7 @@ final class MilestonesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/milestones/chrislgarry/Apollo-11/1' => 'milestone percentage',
+            '/github/chrislgarry/Apollo-11/milestones/1' => 'milestone percentage',
 
         ];
     }

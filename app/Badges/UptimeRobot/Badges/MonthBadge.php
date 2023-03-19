@@ -55,7 +55,7 @@ final class MonthBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/uptime-robot/month/{apiKey}',
+            '/uptime-robot/{apiKey}/month',
         ];
     }
 
@@ -81,7 +81,7 @@ final class MonthBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/uptime-robot/month/m780862024-50db2c44c703e5c68d6b1ebb' => '(past month) uptime',
+            '/uptime-robot/m780862024-50db2c44c703e5c68d6b1ebb/month' => '(past month) uptime',
         ];
     }
 

@@ -8,18 +8,18 @@ use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    public function com(string $owner, string $repo, ?string $branch): string
+    public function com(string $project, ?string $branch): string
     {
         return Http::baseUrl('https://api.travis-ci.com')
-            ->get("{$owner}/{$repo}.svg", ['branch' => $branch])
+            ->get("{$project}.svg", ['branch' => $branch])
             ->throw()
             ->body();
     }
 
-    public function org(string $owner, string $repo, ?string $branch): string
+    public function org(string $project, ?string $branch): string
     {
         return Http::baseUrl('https://api.travis-ci.org')
-            ->get("{$owner}/{$repo}.svg", ['branch' => $branch])
+            ->get("{$project}.svg", ['branch' => $branch])
             ->throw()
             ->body();
     }

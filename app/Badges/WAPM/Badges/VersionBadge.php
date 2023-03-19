@@ -7,6 +7,7 @@ namespace App\Badges\WAPM\Badges;
 use App\Badges\Templates\VersionTemplate;
 use App\Badges\WAPM\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class VersionBadge implements Badge
@@ -43,7 +44,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wapm/v/{package}',
+            '/wapm/{package}/version',
         ];
     }
 
@@ -56,7 +57,7 @@ final class VersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('package', '.+');
+        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -69,8 +70,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wapm/v/zamfofex/greg' => 'version',
-            '/wapm/v/cowsay'        => 'version',
+            '/wapm/zamfofex/greg/version' => 'version',
+            '/wapm/cowsay/version'        => 'version',
         ];
     }
 

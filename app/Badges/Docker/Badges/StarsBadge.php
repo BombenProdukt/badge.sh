@@ -45,7 +45,7 @@ final class StarsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/docker/stars/{scope}/{name}',
+            '/docker/{scope}/{name}/stars',
         ];
     }
 
@@ -71,8 +71,8 @@ final class StarsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/docker/stars/library/ubuntu' => 'stars (library)',
-            '/docker/stars/library/mongo'  => 'stars (icon & label)',
+            '/docker/library/ubuntu/stars' => 'stars (library)',
+            '/docker/library/mongo/stars'  => 'stars (icon & label)',
         ];
     }
 

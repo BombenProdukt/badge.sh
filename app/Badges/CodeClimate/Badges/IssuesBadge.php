@@ -6,6 +6,7 @@ namespace App\Badges\CodeClimate\Badges;
 
 use App\Badges\CodeClimate\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -16,9 +17,9 @@ final class IssuesBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo): array
+    public function handle(string $project): array
     {
-        $response = $this->client->get($owner, $repo, 'snapshots');
+        $response = $this->client->get($project, 'snapshots');
 
         return [
             'label'       => 'issues',
@@ -47,7 +48,7 @@ final class IssuesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codeclimate/issues/{owner}/{repo}',
+            '/codeclimate/{project}/issues',
         ];
     }
 
@@ -60,7 +61,7 @@ final class IssuesBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('project', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -73,7 +74,7 @@ final class IssuesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codeclimate/issues/codeclimate/codeclimate' => 'issues',
+            '/codeclimate/codeclimate/codeclimate/issues' => 'issues',
         ];
     }
 

@@ -6,6 +6,7 @@ namespace App\Badges\WAPM\Badges;
 
 use App\Badges\WAPM\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class ABIBadge implements Badge
@@ -46,7 +47,7 @@ final class ABIBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wapm/abi/{package}',
+            '/wapm/{package}/abi',
         ];
     }
 
@@ -59,7 +60,7 @@ final class ABIBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('package', '.+');
+        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -72,8 +73,8 @@ final class ABIBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wapm/abi/jwmerrill/lox-repl' => 'abi',
-            '/wapm/abi/kherrick/pwgen'     => 'abi',
+            '/wapm/jwmerrill/lox-repl/abi' => 'abi',
+            '/wapm/kherrick/pwgen/abi'     => 'abi',
         ];
     }
 

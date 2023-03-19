@@ -51,7 +51,7 @@ final class GradeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/deepscan/grade/team/{teamId}/project/{projectId}/branch/{branchId}',
+            '/deepscan/team/{teamId}/project/{projectId}/branch/{branchId}/grade',
         ];
     }
 
@@ -77,9 +77,9 @@ final class GradeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/deepscan/grade/team/7382/project/9494/branch/123838'  => 'grade',
-            '/deepscan/grade/team/279/project/1302/branch/3514'     => 'grade',
-            '/deepscan/grade/team/8527/project/10741/branch/152550' => 'grade',
+            '/deepscan/team/7382/project/9494/branch/123838/grade'  => 'grade',
+            '/deepscan/team/279/project/1302/branch/3514/grade'     => 'grade',
+            '/deepscan/team/8527/project/10741/branch/152550/grade' => 'grade',
         ];
     }
 

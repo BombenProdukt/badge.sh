@@ -18,7 +18,6 @@ final class DependabotStatusBadge implements Badge
 
     public function handle(string $owner, string $repo): array
     {
-        // Since there is no API to get dependabot status, for now check if file exists
         $request = Http::get("https://api.github.com/repos/{$owner}/{$repo}/contents/.github/dependabot.yml");
 
         if ($request->successful()) {
@@ -56,7 +55,7 @@ final class DependabotStatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/dependabot/{owner}/{repo}',
+            '/github/{owner}/{repo}/dependabot',
         ];
     }
 
@@ -82,7 +81,7 @@ final class DependabotStatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/dependabot/ubuntu/yaru' => 'dependabot status',
+            '/github/ubuntu/yaru/dependabot' => 'dependabot status',
         ];
     }
 

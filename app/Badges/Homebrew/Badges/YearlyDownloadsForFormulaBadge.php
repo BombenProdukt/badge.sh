@@ -47,9 +47,9 @@ final class YearlyDownloadsForFormulaBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/homebrew/dy/{package}',
-            '/homebrew/formula/dy/{package}',
-            '/homebrew/cask/dy/{package}',
+            '/homebrew/{package}/downloads/yearly',
+            '/homebrew/formula/{package}/downloads/yearly',
+            '/homebrew/cask/{package}/downloads/yearly',
         ];
     }
 
@@ -75,7 +75,7 @@ final class YearlyDownloadsForFormulaBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/homebrew/dy/fish' => 'yearly downloads',
+            '/homebrew/fish/downloads/yearly' => 'yearly downloads',
         ];
     }
 

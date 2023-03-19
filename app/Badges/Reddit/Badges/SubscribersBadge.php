@@ -47,8 +47,7 @@ final class SubscribersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/reddit/subscribers/r/{subreddit}',
-            '/reddit/subscribers/{subreddit}',
+            '/reddit/{subreddit}/subscribers',
         ];
     }
 
@@ -74,7 +73,7 @@ final class SubscribersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/reddit/subscribers/r/programming' => 'subreddit subscribers',
+            '/reddit/programming/subscribers' => 'subreddit subscribers',
         ];
     }
 

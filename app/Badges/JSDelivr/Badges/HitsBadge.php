@@ -6,6 +6,7 @@ namespace App\Badges\JSDelivr\Badges;
 
 use App\Badges\JSDelivr\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -47,7 +48,7 @@ final class HitsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jsdelivr/hits/{platform}/{package}',
+            '/jsdelivr/{platform}/{package}/hits',
         ];
     }
 
@@ -60,7 +61,7 @@ final class HitsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('package', '.+');
+        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -73,8 +74,8 @@ final class HitsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jsdelivr/hits/gh/jquery/jquery' => 'hits (per month)',
-            '/jsdelivr/hits/npm/lodash'       => 'hits (per month)',
+            '/jsdelivr/gh/jquery/jquery/hits' => 'hits (per month)',
+            '/jsdelivr/npm/lodash/hits'       => 'hits (per month)',
         ];
     }
 

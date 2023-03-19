@@ -47,7 +47,7 @@ final class StarsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/amo/stars/{package}',
+            '/amo/{package}/stars',
         ];
     }
 
@@ -73,7 +73,7 @@ final class StarsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/amo/stars/markdown-viewer-chrome' => 'stars',
+            '/amo/markdown-viewer-chrome/stars' => 'stars',
         ];
     }
 

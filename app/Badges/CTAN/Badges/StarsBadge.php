@@ -47,7 +47,7 @@ final class StarsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/ctan/stars/{package}',
+            '/ctan/{package}/stars',
         ];
     }
 
@@ -73,7 +73,7 @@ final class StarsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/ctan/stars/pgf-pie' => 'stars',
+            '/ctan/pgf-pie/stars' => 'stars',
         ];
     }
 

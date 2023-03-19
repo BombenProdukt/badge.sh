@@ -7,6 +7,7 @@ namespace App\Badges\GitHub\Badges;
 use App\Badges\GitHub\Actions\CombineStates;
 use App\Badges\GitHub\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
@@ -78,7 +79,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/status/{owner}/{repo}/{reference?}/{context?}',
+            '/github/{owner}/{repo}/status/{reference?}/{context?}',
         ];
     }
 
@@ -91,7 +92,8 @@ final class StatusBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('context', '.+');
+        $route->where('context', RoutePattern::CATCH_ALL->value);
+        //
     }
 
     public function staticPreviews(): array
@@ -104,14 +106,14 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/status/micromatch/micromatch'                        => 'combined statuses (default branch)',
-            '/github/status/micromatch/micromatch/gh-pages'               => 'combined statuses (branch)',
-            '/github/status/micromatch/micromatch/f4809eb6df80b'          => 'combined statuses (commit)',
-            '/github/status/micromatch/micromatch/4.0.1'                  => 'combined statuses (tag)',
-            '/github/status/facebook/react/main/ci/circleci:%20yarn_test' => 'single status',
-            '/github/status/zeit/hyper/master/ci'                         => 'combined statuses (ci*)',
-            '/github/status/zeit/hyper/master/ci/circleci'                => 'combined statuses (ci/circleci*)',
-            '/github/status/zeit/hyper/master/ci/circleci:%20build'       => 'single status',
+            '/github/micromatch/micromatch/status'                        => 'combined statuses (default branch)',
+            '/github/micromatch/micromatch/status/gh-pages'               => 'combined statuses (branch)',
+            '/github/micromatch/micromatch/status/f4809eb6df80b'          => 'combined statuses (commit)',
+            '/github/micromatch/micromatch/status/4.0.1'                  => 'combined statuses (tag)',
+            '/github/facebook/react/status/main/ci/circleci:%20yarn_test' => 'single status',
+            '/github/zeit/hyper/status/master/ci'                         => 'combined statuses (ci*)',
+            '/github/zeit/hyper/status/master/ci/circleci'                => 'combined statuses (ci/circleci*)',
+            '/github/zeit/hyper/status/master/ci/circleci:%20build'       => 'single status',
         ];
     }
 

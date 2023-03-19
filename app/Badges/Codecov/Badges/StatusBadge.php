@@ -7,6 +7,7 @@ namespace App\Badges\Codecov\Badges;
 use App\Badges\Codecov\Client;
 use App\Badges\Templates\CoverageTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class StatusBadge implements Badge
@@ -16,9 +17,9 @@ final class StatusBadge implements Badge
         //
     }
 
-    public function handle(string $service, string $owner, string $repo, ?string $branch = null): array
+    public function handle(string $service, string $repo, ?string $branch = null): array
     {
-        $response = $this->client->get($service, $owner, $repo, $branch);
+        $response = $this->client->get($service, $repo, $branch);
 
         return CoverageTemplate::make($response['commit']['totals']['c']);
     }
@@ -43,7 +44,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codecov/c/{service}/{owner}/{repo}/{branch?}',
+            '/codecov/{service}/{repo}/coverage/{branch?}',
         ];
     }
 
@@ -56,7 +57,8 @@ final class StatusBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->whereIn('service', ['gh', 'github', 'bitbucket', 'gitlab']);
+        $route->whereIn('service', ['github', 'bitbucket', 'gitlab']);
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -69,12 +71,12 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codecov/c/github/babel/babel'                         => 'coverage (github)',
-            '/codecov/c/github/babel/babel/6.x'                     => 'coverage (github, branch)',
-            '/codecov/c/bitbucket/ignitionrobotics/ign-math'        => 'coverage (bitbucket)',
-            '/codecov/c/bitbucket/ignitionrobotics/ign-math/master' => 'coverage (bitbucket, branch)',
-            '/codecov/c/gitlab/gitlab-org/gitaly'                   => 'coverage (gitlab)',
-            '/codecov/c/gitlab/gitlab-org/gitaly/master'            => 'coverage (gitlab, branch)',
+            '/codecov/github/babel/babel/coverage'                         => 'coverage (github)',
+            '/codecov/github/babel/babel/coverage/6.x'                     => 'coverage (github, branch)',
+            '/codecov/bitbucket/ignitionrobotics/ign-math/coverage'        => 'coverage (bitbucket)',
+            '/codecov/bitbucket/ignitionrobotics/ign-math/coverage/master' => 'coverage (bitbucket, branch)',
+            '/codecov/gitlab/gitlab-org/gitaly/coverage'                   => 'coverage (gitlab)',
+            '/codecov/gitlab/gitlab-org/gitaly/coverage/master'            => 'coverage (gitlab, branch)',
         ];
     }
 

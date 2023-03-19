@@ -6,6 +6,7 @@ namespace App\Badges\CodeClimate\Badges;
 
 use App\Badges\CodeClimate\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -16,9 +17,9 @@ final class TechDebtBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo): array
+    public function handle(string $project): array
     {
-        $response = $this->client->get($owner, $repo, 'snapshots');
+        $response = $this->client->get($project, 'snapshots');
         $ratio    = $response['meta']['measures']['technical_debt_ratio']['value'];
 
         return [
@@ -54,7 +55,7 @@ final class TechDebtBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codeclimate/tech-debt/{owner}/{repo}',
+            '/codeclimate/{project}/tech-debt',
         ];
     }
 
@@ -67,7 +68,7 @@ final class TechDebtBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('project', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -80,7 +81,7 @@ final class TechDebtBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codeclimate/tech-debt/codeclimate/codeclimate' => 'technical debt',
+            '/codeclimate/codeclimate/codeclimate/tech-debt' => 'technical debt',
         ];
     }
 

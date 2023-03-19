@@ -6,6 +6,7 @@ namespace App\Badges\WAPM\Badges;
 
 use App\Badges\WAPM\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatBytes;
 
@@ -45,7 +46,7 @@ final class SizeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wapm/size/{package}',
+            '/wapm/{package}/size',
         ];
     }
 
@@ -58,7 +59,7 @@ final class SizeBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('package', '.+');
+        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -71,7 +72,7 @@ final class SizeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wapm/size/coreutils' => 'size',
+            '/wapm/coreutils/size' => 'size',
         ];
     }
 

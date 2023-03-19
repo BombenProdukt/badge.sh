@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cocoapods/v/{pod}',
+            '/cocoapods/{pod}/version',
         ];
     }
 
@@ -69,7 +69,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cocoapods/v/AFNetworking' => 'version',
+            '/cocoapods/AFNetworking/version' => 'version',
         ];
     }
 

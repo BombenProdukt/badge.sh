@@ -47,7 +47,7 @@ final class TagsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/tags/{owner}/{repo}',
+            '/github/{owner}/{repo}/tags',
         ];
     }
 
@@ -73,7 +73,7 @@ final class TagsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/tags/micromatch/micromatch' => 'tags',
+            '/github/micromatch/micromatch/tags' => 'tags',
         ];
     }
 

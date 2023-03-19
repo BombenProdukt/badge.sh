@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/haxelib/v/{project}',
+            '/haxelib/{project}/version',
         ];
     }
 
@@ -69,8 +69,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/haxelib/v/tink_http' => 'version',
-            '/haxelib/v/nme'       => 'version',
+            '/haxelib/tink_http/version' => 'version',
+            '/haxelib/nme/version'       => 'version',
         ];
     }
 

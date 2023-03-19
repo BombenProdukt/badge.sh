@@ -6,6 +6,7 @@ namespace App\Badges\DavidDM\Badges;
 
 use App\Badges\DavidDM\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class DepBadge implements Badge
@@ -23,9 +24,9 @@ final class DepBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo, string $path): array
+    public function handle(string $repo, string $path): array
     {
-        $status = $this->client->get($owner, $repo, $path)['status'];
+        $status = $this->client->get($repo, $path)['status'];
 
         return [
             'label'       => 'dependencies',
@@ -54,7 +55,7 @@ final class DepBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/david/dep/{owner}/{repo}/{path?}',
+            '/david/{repo}/dep/{path?}',
         ];
     }
 
@@ -67,7 +68,8 @@ final class DepBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('path', '.+');
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
+        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -80,8 +82,8 @@ final class DepBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/david/dep/zeit/pkg'                       => 'dependencies',
-            '/david/dep/babel/babel/packages/babel-cli' => 'dependencies (sub path)',
+            '/david/zeit/pkg/dep'                       => 'dependencies',
+            '/david/babel/babel/dep/packages/babel-cli' => 'dependencies (sub path)',
         ];
     }
 

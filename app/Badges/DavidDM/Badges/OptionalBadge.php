@@ -6,6 +6,7 @@ namespace App\Badges\DavidDM\Badges;
 
 use App\Badges\DavidDM\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class OptionalBadge implements Badge
@@ -23,9 +24,9 @@ final class OptionalBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo, string $path): array
+    public function handle(string $repo, string $path): array
     {
-        $status = $this->client->get($owner, $repo, $path, 'optional-')['status'];
+        $status = $this->client->get($repo, $path, 'optional-')['status'];
 
         return [
             'label'       => 'optionalDependencies',
@@ -54,7 +55,7 @@ final class OptionalBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/david/optional/{owner}/{repo}/{path?}',
+            '/david/{repo}/optional/{path?}',
         ];
     }
 
@@ -67,7 +68,8 @@ final class OptionalBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('path', '.+');
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
+        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -80,7 +82,7 @@ final class OptionalBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/david/optional/epoberezkin/ajv-keywords' => 'optional dependencies',
+            '/david/epoberezkin/ajv-keywords/optional' => 'optional dependencies',
         ];
     }
 

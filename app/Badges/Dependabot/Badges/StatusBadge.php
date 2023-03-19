@@ -6,6 +6,7 @@ namespace App\Badges\Dependabot\Badges;
 
 use App\Badges\Dependabot\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class StatusBadge implements Badge
@@ -15,9 +16,9 @@ final class StatusBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo, ?string $identifier = null): array
+    public function handle(string $project, ?string $identifier = null): array
     {
-        $response = $this->client->get($owner, $repo, $identifier);
+        $response = $this->client->get($project, $identifier);
 
         return [
             'label'       => 'Dependabot',
@@ -46,7 +47,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/dependabot/{owner}/{repo}/{identifier?}',
+            '/dependabot/{project}/status/{identifier?}',
         ];
     }
 
@@ -59,7 +60,7 @@ final class StatusBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -72,8 +73,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/dependabot/thepracticaldev/dev.to'     => 'status',
-            '/dependabot/dependabot/dependabot-core' => 'status',
+            '/dependabot/thepracticaldev/dev.to/status'     => 'status',
+            '/dependabot/dependabot/dependabot-core/status' => 'status',
         ];
     }
 

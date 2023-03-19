@@ -47,7 +47,7 @@ final class OnlineMembersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/discord/online-members/{inviteCode}',
+            '/discord/{inviteCode}/members/online',
         ];
     }
 
@@ -73,7 +73,7 @@ final class OnlineMembersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/discord/online-members/8Jzqu3T' => 'online members',
+            '/discord/8Jzqu3T/members/online' => 'online members',
         ];
     }
 

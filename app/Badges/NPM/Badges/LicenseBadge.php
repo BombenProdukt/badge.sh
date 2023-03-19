@@ -7,6 +7,7 @@ namespace App\Badges\NPM\Badges;
 use App\Badges\NPM\Client;
 use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge implements Badge
@@ -41,7 +42,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/license/{package}/{tag?}',
+            '/npm/{package}/license/{tag?}',
         ];
     }
 
@@ -54,7 +55,7 @@ final class LicenseBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
     public function staticPreviews(): array
@@ -67,7 +68,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/license/lodash' => 'license',
+            '/npm/lodash/license' => 'license',
         ];
     }
 

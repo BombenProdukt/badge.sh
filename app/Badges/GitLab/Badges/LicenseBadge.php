@@ -7,6 +7,7 @@ namespace App\Badges\GitLab\Badges;
 use App\Badges\GitLab\Client;
 use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge implements Badge
@@ -16,9 +17,9 @@ final class LicenseBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo): array
+    public function handle(string $repo): array
     {
-        $response = $this->client->rest($owner, $repo, '?license=true');
+        $response = $this->client->rest($repo, '?license=true');
 
         return LicenseTemplate::make($response->json('license.name'));
     }
@@ -43,7 +44,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/license/{owner}/{repo}',
+            '/gitlab/{repo}/license',
         ];
     }
 
@@ -56,7 +57,7 @@ final class LicenseBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -69,7 +70,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/license/gitlab-org/omnibus-gitlab' => 'license',
+            '/gitlab/gitlab-org/omnibus-gitlab/license' => 'license',
 
         ];
     }

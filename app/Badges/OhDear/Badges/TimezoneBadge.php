@@ -44,7 +44,7 @@ final class TimezoneBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/ohdear/timezone/{domain}',
+            '/ohdear/{domain}/timezone',
         ];
     }
 
@@ -70,7 +70,7 @@ final class TimezoneBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/ohdear/timezone/status.laravel.com' => 'timezone',
+            '/ohdear/status.laravel.com/timezone' => 'timezone',
         ];
     }
 

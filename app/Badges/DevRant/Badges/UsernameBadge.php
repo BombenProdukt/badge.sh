@@ -47,7 +47,7 @@ final class UsernameBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/devrant/score/{username}',
+            '/devrant/{username}/score',
         ];
     }
 
@@ -73,7 +73,7 @@ final class UsernameBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/devrant/score/Linuxxx' => 'score',
+            '/devrant/Linuxxx/score' => 'score',
         ];
     }
 

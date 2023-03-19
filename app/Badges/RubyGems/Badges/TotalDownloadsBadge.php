@@ -41,7 +41,7 @@ final class TotalDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/rubygems/dt/{gem}',
+            '/rubygems/{gem}/downloads',
         ];
     }
 
@@ -67,7 +67,7 @@ final class TotalDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/rubygems/dt/rails' => 'total downloads',
+            '/rubygems/rails/downloads' => 'total downloads',
         ];
     }
 

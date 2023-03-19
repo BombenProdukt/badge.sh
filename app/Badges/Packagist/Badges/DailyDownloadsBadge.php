@@ -7,6 +7,7 @@ namespace App\Badges\Packagist\Badges;
 use App\Badges\Packagist\Client;
 use App\Badges\Templates\DownloadsPerDayTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class DailyDownloadsBadge implements Badge
@@ -16,9 +17,9 @@ final class DailyDownloadsBadge implements Badge
         //
     }
 
-    public function handle(string $vendor, string $package, ?string $channel = null): array
+    public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($vendor, $package);
+        $packageMeta = $this->client->get($package);
 
         return DownloadsPerDayTemplate::make($packageMeta['downloads']['daily']);
     }
@@ -43,7 +44,7 @@ final class DailyDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/dd/{vendor}/{package}',
+            '/packagist/{package}/downloads/daily',
         ];
     }
 
@@ -56,7 +57,7 @@ final class DailyDownloadsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -69,7 +70,7 @@ final class DailyDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/dd/monolog/monolog' => 'daily downloads',
+            '/packagist/monolog/monolog/downloads/daily' => 'daily downloads',
         ];
     }
 

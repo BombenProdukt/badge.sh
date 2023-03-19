@@ -6,6 +6,7 @@ namespace App\Badges\XO\Badges;
 
 use App\Badges\XO\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class StatusBadge implements Badge
@@ -52,7 +53,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/xo/status/{name}',
+            '/xo/{name}/status',
         ];
     }
 
@@ -65,7 +66,7 @@ final class StatusBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('name', '.+');
+        $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -82,8 +83,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/xo/status/chalk'                 => 'status',
-            '/xo/status/@tusbar/cache-control' => 'status',
+            '/xo/chalk/status'                 => 'status',
+            '/xo/@tusbar/cache-control/status' => 'status',
         ];
     }
 

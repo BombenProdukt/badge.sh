@@ -43,7 +43,7 @@ final class DailyDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/dub/dd/{package}',
+            '/dub/{package}/downloads/daily',
         ];
     }
 
@@ -69,7 +69,7 @@ final class DailyDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/dub/dd/vibe-d' => 'daily downloads',
+            '/dub/vibe-d/downloads/daily' => 'daily downloads',
         ];
     }
 

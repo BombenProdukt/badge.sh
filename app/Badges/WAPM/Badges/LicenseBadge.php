@@ -7,6 +7,7 @@ namespace App\Badges\WAPM\Badges;
 use App\Badges\Templates\LicenseTemplate;
 use App\Badges\WAPM\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge implements Badge
@@ -41,7 +42,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wapm/license/{package}',
+            '/wapm/{package}/license',
         ];
     }
 
@@ -54,7 +55,7 @@ final class LicenseBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('package', '.+');
+        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -67,7 +68,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wapm/license/huhn/hello-wasm' => 'license',
+            '/wapm/huhn/hello-wasm/license' => 'license',
         ];
     }
 

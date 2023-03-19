@@ -16,9 +16,9 @@ final class ElmVersionBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $name): array
+    public function handle(string $project): array
     {
-        $version = $this->formatElmVersion($this->client->get($owner, $name)['elm-version']);
+        $version = $this->formatElmVersion($this->client->get($project)['elm-version']);
 
         return VersionTemplate::make($this->service(), $version);
     }
@@ -43,7 +43,7 @@ final class ElmVersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/elm-package/elm/{owner}/{name}',
+            '/elm-package/{project}/version/elm',
         ];
     }
 
@@ -69,7 +69,7 @@ final class ElmVersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/elm-package/elm/justinmimbs/date' => 'elm version',
+            '/elm-package/justinmimbs/date/version/elm' => 'elm version',
         ];
     }
 

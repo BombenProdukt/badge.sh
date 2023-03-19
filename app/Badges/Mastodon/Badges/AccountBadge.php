@@ -57,7 +57,7 @@ final class AccountBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/mastodon/follow/{account}',
+            '/mastodon/{account}/follow',
         ];
     }
 
@@ -83,9 +83,9 @@ final class AccountBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/mastodon/follow/Gargron@mastodon.social' => 'followers',
-            '/mastodon/follow/trumpet@mas.to'          => 'followers',
-            '/mastodon/follow/admin@cawfee.club'       => 'followers (Pleroma)',
+            '/mastodon/Gargron@mastodon.social/follow' => 'followers',
+            '/mastodon/trumpet@mas.to/follow'          => 'followers',
+            '/mastodon/admin@cawfee.club/follow'       => 'followers (Pleroma)',
         ];
     }
 

@@ -6,6 +6,7 @@ namespace App\Badges\NPM\Badges;
 
 use App\Badges\NPM\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -49,7 +50,7 @@ final class DependentsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/dependents/{package}/{tag?}',
+            '/npm/{package}/dependents/{tag?}',
         ];
     }
 
@@ -62,7 +63,7 @@ final class DependentsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
     public function staticPreviews(): array
@@ -75,7 +76,7 @@ final class DependentsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/dependents/got' => 'dependents',
+            '/npm/got/dependents' => 'dependents',
         ];
     }
 

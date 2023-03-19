@@ -6,6 +6,7 @@ namespace App\Badges\Travis\Badges;
 
 use App\Badges\Travis\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
 
@@ -16,10 +17,10 @@ final class StatusBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo, ?string $branch = null): array
+    public function handle(string $project, ?string $branch = null): array
     {
-        $org = $this->client->org($owner, $repo, $branch);
-        $com = $this->client->com($owner, $repo, $branch);
+        $org = $this->client->org($project, $branch);
+        $com = $this->client->com($project, $branch);
 
         $result = $this->availableStates()->firstWhere(fn (array $state) => str_contains($org, $state[0]) || str_contains($com, $state[0]));
 
@@ -50,7 +51,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/travis/{owner}/{repo}/{branch?}',
+            '/travis/{project}/status/{branch?}',
         ];
     }
 
@@ -63,7 +64,7 @@ final class StatusBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -76,8 +77,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/travis/babel/babel'     => 'build',
-            '/travis/babel/babel/6.x' => 'build (branch)',
+            '/travis/babel/babel/status'     => 'build',
+            '/travis/babel/babel/status/6.x' => 'build (branch)',
         ];
     }
 

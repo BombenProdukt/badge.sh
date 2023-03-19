@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cran/v/{package}',
+            '/cran/{package}/version',
         ];
     }
 
@@ -69,7 +69,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cran/v/dplyr' => 'version',
+            '/cran/dplyr/version' => 'version',
         ];
     }
 

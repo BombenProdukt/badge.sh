@@ -43,7 +43,7 @@ final class WeeklyDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/dub/dw/{package}',
+            '/dub/{package}/downloads/weekly',
         ];
     }
 
@@ -69,7 +69,7 @@ final class WeeklyDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/dub/dw/vibe-d' => 'weekly downloads',
+            '/dub/vibe-d/downloads/weekly' => 'weekly downloads',
         ];
     }
 

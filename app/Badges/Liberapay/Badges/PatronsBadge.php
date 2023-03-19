@@ -47,7 +47,7 @@ final class PatronsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/liberapay/patrons/{username}',
+            '/liberapay/{username}/patrons',
         ];
     }
 
@@ -73,7 +73,7 @@ final class PatronsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/liberapay/patrons/microG' => 'patrons count',
+            '/liberapay/microG/patrons' => 'patrons count',
         ];
     }
 

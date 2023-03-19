@@ -7,6 +7,7 @@ namespace App\Badges\NPM\Badges;
 use App\Badges\NPM\Client;
 use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class TotalDownloadsBadge implements Badge
@@ -43,7 +44,7 @@ final class TotalDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/dt/{package}',
+            '/npm/{package}/downloads',
         ];
     }
 
@@ -56,7 +57,7 @@ final class TotalDownloadsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
     public function staticPreviews(): array
@@ -69,7 +70,7 @@ final class TotalDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/dt/express' => 'total downloads',
+            '/npm/express/downloads' => 'total downloads',
         ];
     }
 

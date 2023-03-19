@@ -54,7 +54,7 @@ final class SizeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/snapcraft/size/{snap}/{architecture?}/{channel?}',
+            '/snapcraft/{snap}/size/{architecture?}/{channel?}',
         ];
     }
 
@@ -80,9 +80,9 @@ final class SizeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/snapcraft/size/beekeeper-studio'            => 'distribution size',
-            '/snapcraft/size/beekeeper-studio/arm64'      => 'distribution size',
-            '/snapcraft/size/beekeeper-studio/armhf/edge' => 'distribution size',
+            '/snapcraft/beekeeper-studio/size'            => 'distribution size',
+            '/snapcraft/beekeeper-studio/size/arm64'      => 'distribution size',
+            '/snapcraft/beekeeper-studio/size/armhf/edge' => 'distribution size',
         ];
     }
 

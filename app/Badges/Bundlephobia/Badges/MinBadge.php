@@ -6,6 +6,7 @@ namespace App\Badges\Bundlephobia\Badges;
 
 use App\Badges\Bundlephobia\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatBytes;
 
@@ -45,7 +46,7 @@ final class MinBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/bundlephobia/min/{name}',
+            '/bundlephobia/{name}/min',
         ];
     }
 
@@ -58,7 +59,7 @@ final class MinBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('name', '.+');
+        $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -71,7 +72,7 @@ final class MinBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/bundlephobia/min/react' => 'minified',
+            '/bundlephobia/react/min' => 'minified',
         ];
     }
 

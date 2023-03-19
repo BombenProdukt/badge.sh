@@ -41,7 +41,7 @@ final class PackageDependentsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/dependents-pkg/{owner}/{repo}',
+            '/github/{owner}/{repo}/dependents/package',
         ];
     }
 
@@ -67,7 +67,7 @@ final class PackageDependentsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/dependents-pkg/micromatch/micromatch' => 'package dependents',
+            '/github/micromatch/micromatch/dependents/package' => 'package dependents',
 
         ];
     }

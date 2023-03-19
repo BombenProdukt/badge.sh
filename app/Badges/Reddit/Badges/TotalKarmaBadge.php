@@ -45,8 +45,7 @@ final class TotalKarmaBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/reddit/karma/{user}',
-            '/reddit/karma/u/{user}',
+            '/reddit/{user}/karma',
         ];
     }
 
@@ -72,7 +71,7 @@ final class TotalKarmaBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/reddit/karma/u/spez' => 'karma',
+            '/reddit/spez/karma' => 'karma',
         ];
     }
 

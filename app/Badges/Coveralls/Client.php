@@ -18,8 +18,8 @@ final class Client
             ->withoutRedirecting();
     }
 
-    public function get(string $vcs, string $owner, string $repo, ?string $branch): string
+    public function get(string $vcs, string $repo, ?string $branch): string
     {
-        return $this->client->get("{$vcs}/{$owner}/{$repo}/badge.svg", ['branch' => $branch])->body();
+        return $this->client->get("{$vcs}/{$repo}/badge.svg", ['branch' => $branch])->body();
     }
 }

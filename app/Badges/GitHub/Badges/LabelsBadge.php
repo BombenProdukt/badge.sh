@@ -46,7 +46,7 @@ final class LabelsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/label-issues/{owner}/{repo}/{label}/{states?}',
+            '/github/{owner}/{repo}/issues/filter/label/{label}/{states?}',
         ];
     }
 
@@ -59,6 +59,7 @@ final class LabelsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
+        //
         $route->whereIn('states', ['open', 'closed']);
     }
 
@@ -72,9 +73,9 @@ final class LabelsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/label-issues/nodejs/node/ES%20Modules'             => 'issues by label',
-            '/github/label-issues/atom/atom/help-wanted/open'           => 'open issues by label',
-            '/github/label-issues/rust-lang/rust/B-RFC-approved/closed' => 'closed issues by label',
+            '/github/nodejs/node/issues/filter/label/ES%20Modules'             => 'issues by label',
+            '/github/atom/atom/issues/filter/label/help-wanted/open'           => 'open issues by label',
+            '/github/rust-lang/rust/issues/filter/label/B-RFC-approved/closed' => 'closed issues by label',
         ];
     }
 

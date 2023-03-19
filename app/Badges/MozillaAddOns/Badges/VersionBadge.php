@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/amo/v/{package}',
+            '/amo/{package}/version',
         ];
     }
 
@@ -69,7 +69,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/amo/v/markdown-viewer-chrome' => 'version',
+            '/amo/markdown-viewer-chrome/version' => 'version',
         ];
     }
 

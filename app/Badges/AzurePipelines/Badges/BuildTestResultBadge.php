@@ -6,6 +6,7 @@ namespace App\Badges\AzurePipelines\Badges;
 
 use App\Badges\AzurePipelines\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 use PreemStudio\Formatter\FormatNumber;
@@ -24,16 +25,16 @@ final class BuildTestResultBadge implements Badge
         //
     }
 
-    public function handle(string $org, string $project, string $definition, ?string $branch = null): array
+    public function handle(string $project, string $definition, ?string $branch = null): array
     {
-        $latestBuild = Http::get("https://dev.azure.com/{$org}/{$project}/_apis/build/builds", array_merge([
+        $latestBuild = Http::get("https://dev.azure.com/{$project}/_apis/build/builds", array_merge([
             'api-version'  => '6.0',
             '$top'         => '1',
             'definitionId' => $definition,
             'statusFilter' => 'completed',
         ], $branch ? ['branchName' => "refs/heads/{$branch}"] : []))->json('value.0');
 
-        $response = Http::get("https://dev.azure.com/{$org}/{$project}/_apis/test/ResultSummaryByBuild", [
+        $response = Http::get("https://dev.azure.com/{$project}/_apis/test/ResultSummaryByBuild", [
             'api-version'  => '6.0-preview',
             'buildId'      => $latestBuild['id'],
         ])->json('aggregatedResultsAnalysis');
@@ -83,7 +84,7 @@ final class BuildTestResultBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/build/test/{org}/{project}/{definition}/{branch?}',
+            '/azure-pipelines/{project}/build/test/{definition}/{branch?}',
         ];
     }
 
@@ -96,7 +97,7 @@ final class BuildTestResultBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -109,8 +110,8 @@ final class BuildTestResultBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/build/test/dnceng/public/51'                                => 'test results',
-            '/azure-pipelines/build/test/azuredevops-powershell/azuredevops-powershell/1' => 'test results',
+            '/azure-pipelines/dnceng/public/build/test/51'                                => 'test results',
+            '/azure-pipelines/azuredevops-powershell/azuredevops-powershell/build/test/1' => 'test results',
         ];
     }
 

@@ -49,9 +49,9 @@ final class VersionForFormulaBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/homebrew/v/{package}',
-            '/homebrew/formula/v/{package}',
-            '/homebrew/cask/v/{package}',
+            '/homebrew/{package}/version',
+            '/homebrew/{package}/formula/version',
+            '/homebrew/{package}/cask/version',
         ];
     }
 
@@ -77,8 +77,8 @@ final class VersionForFormulaBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/homebrew/v/fish' => 'version',
-            '/homebrew/v/cake' => 'version',
+            '/homebrew/fish/version' => 'version',
+            '/homebrew/cake/version' => 'version',
         ];
     }
 

@@ -43,7 +43,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cran/license/{package}',
+            '/cran/{package}/license',
         ];
     }
 
@@ -69,7 +69,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cran/license/ggplot2' => 'license',
+            '/cran/ggplot2/license' => 'license',
         ];
     }
 

@@ -8,7 +8,7 @@ use App\Actions\DetermineLicense;
 
 final class LicenseTemplate
 {
-    public static function make(?string $license): array
+    public static function make(mixed $license): array
     {
         return [
             'label'       => 'license',

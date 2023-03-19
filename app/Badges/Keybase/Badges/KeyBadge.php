@@ -46,7 +46,7 @@ final class KeyBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/keybase/pgp/{username}',
+            '/keybase/{username}/pgp',
         ];
     }
 
@@ -72,7 +72,7 @@ final class KeyBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/keybase/pgp/lukechilds' => 'pgp key',
+            '/keybase/lukechilds/pgp' => 'pgp key',
         ];
     }
 

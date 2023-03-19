@@ -44,8 +44,7 @@ final class ArchitectureBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/snapcraft/arch/{snap}',
-            '/snapcraft/architecture/{snap}',
+            '/snapcraft/{snap}/architecture',
         ];
     }
 
@@ -71,7 +70,7 @@ final class ArchitectureBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/snapcraft/architecture/telegram-desktop' => 'supported architectures',
+            '/snapcraft/telegram-desktop/architecture' => 'supported architectures',
         ];
     }
 

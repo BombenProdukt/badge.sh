@@ -16,8 +16,8 @@ final class Client
         $this->client = Http::baseUrl('https://codecov.io/api')->retry(10, 100)->throw();
     }
 
-    public function get(string $service, string $owner, string $repo, ?string $branch): array
+    public function get(string $service, string $repo, ?string $branch): array
     {
-        return $this->client->get("{$service}/{$owner}/{$repo}", ['branch' => $branch])->json();
+        return $this->client->get("{$service}/{$repo}", ['branch' => $branch])->json();
     }
 }

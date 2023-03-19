@@ -6,6 +6,7 @@ namespace App\Badges\XO\Badges;
 
 use App\Badges\XO\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class IndentBadge implements Badge
@@ -52,7 +53,7 @@ final class IndentBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/xo/indent/{name}',
+            '/xo/{name}/indentation',
         ];
     }
 
@@ -65,7 +66,7 @@ final class IndentBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('name', '.+');
+        $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -97,8 +98,8 @@ final class IndentBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/xo/indent/chalk'                 => 'indent',
-            '/xo/indent/@tusbar/cache-control' => 'indent',
+            '/xo/chalk/indentation'                 => 'indentation',
+            '/xo/@tusbar/cache-control/indentation' => 'indentation',
         ];
     }
 

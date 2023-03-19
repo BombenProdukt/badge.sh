@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/v/{appId}',
+            '/f-droid/{appId}/version',
         ];
     }
 
@@ -69,8 +69,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/v/org.schabi.newpipe'    => 'version',
-            '/f-droid/v/com.amaze.filemanager' => 'version',
+            '/f-droid/org.schabi.newpipe/version'    => 'version',
+            '/f-droid/com.amaze.filemanager/version' => 'version',
         ];
     }
 

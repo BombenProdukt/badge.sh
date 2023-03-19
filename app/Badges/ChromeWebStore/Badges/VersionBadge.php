@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/chrome-web-store/v/{itemId}',
+            '/chrome-web-store/{itemId}/version',
         ];
     }
 
@@ -69,7 +69,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/chrome-web-store/v/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'version',
+            '/chrome-web-store/ckkdlimhmcjmikdlpkmbgfkaikojcbjk/version' => 'version',
         ];
     }
 

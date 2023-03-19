@@ -45,7 +45,7 @@ final class StarsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/chrome-web-store/stars/{itemId}',
+            '/chrome-web-store/{itemId}/stars',
         ];
     }
 
@@ -71,7 +71,7 @@ final class StarsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/chrome-web-store/stars/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'stars',
+            '/chrome-web-store/ckkdlimhmcjmikdlpkmbgfkaikojcbjk/stars' => 'stars',
         ];
     }
 

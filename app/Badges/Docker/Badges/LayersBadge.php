@@ -52,7 +52,7 @@ final class LayersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/docker/layers/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
+            '/docker/{scope}/{name}/layers/{tag?}/{architecture?}/{variant?}',
         ];
     }
 
@@ -78,9 +78,9 @@ final class LayersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/docker/layers/lucashalbert/curl/latest/arm/v7' => 'layers (size)',
-            '/docker/layers/lucashalbert/curl/latest/arm/v7' => 'layers (icon & label)',
-            '/docker/layers/lucashalbert/curl/latest/arm/v7' => 'layers (label)',
+            '/docker/lucashalbert/curl/layers/latest/arm/v7' => 'layers (size)',
+            '/docker/lucashalbert/curl/layers/latest/arm/v7' => 'layers (icon & label)',
+            '/docker/lucashalbert/curl/layers/latest/arm/v7' => 'layers (label)',
         ];
     }
 

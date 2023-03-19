@@ -27,7 +27,7 @@ final class MakeBadgeResponse
                 $badge = Badger::from($badge->handle(...$request->route()->parameters()));
             }
 
-            $badge->withStyle($request->query('style', 'flat'));
+            $badge->withStyle($request->query('style', 'classic'));
 
             if ($request->has('hideLabel')) {
                 $badge->withLabel('');
@@ -68,7 +68,7 @@ final class MakeBadgeResponse
             $badge->withLabelColor('slate.900');
             $badge->withStatus('400');
             $badge->withStatusColor('red.600');
-            $badge->withStyle($request->query('style', 'flat'));
+            $badge->withStyle($request->query('style', 'classic'));
 
             return response($badge->render())
                 ->setStatusCode(400)

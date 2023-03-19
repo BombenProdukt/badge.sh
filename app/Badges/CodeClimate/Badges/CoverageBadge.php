@@ -7,6 +7,7 @@ namespace App\Badges\CodeClimate\Badges;
 use App\Badges\CodeClimate\Client;
 use App\Badges\Templates\CoverageTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class CoverageBadge implements Badge
@@ -16,9 +17,9 @@ final class CoverageBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo): array
+    public function handle(string $project): array
     {
-        $response = $this->client->get($owner, $repo, 'test_reports');
+        $response = $this->client->get($project, 'test_reports');
 
         return CoverageTemplate::make($response['attributes']['rating']['measure']['value']);
     }
@@ -43,7 +44,7 @@ final class CoverageBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codeclimate/coverage/{owner}/{repo}',
+            '/codeclimate/{project}/coverage',
         ];
     }
 
@@ -56,7 +57,7 @@ final class CoverageBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('project', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -69,7 +70,7 @@ final class CoverageBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codeclimate/coverage/codeclimate/codeclimate' => 'coverage',
+            '/codeclimate/codeclimate/codeclimate/coverage' => 'coverage',
         ];
     }
 

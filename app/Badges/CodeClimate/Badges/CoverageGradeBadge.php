@@ -2,34 +2,31 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\NPM\Badges;
+namespace App\Badges\CodeClimate\Badges;
 
-use App\Badges\NPM\Client;
+use App\Badges\CodeClimate\Client;
+use App\Badges\Templates\GradeTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
-final class WeeklyDownloadsWithScopeBadge implements Badge
+final class CoverageGradeBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $scope, string $package, string $tag = 'latest'): array
+    public function handle(string $project): array
     {
-        $downloads = $this->client->api("downloads/point/last-week/{$scope}/{$package}")['downloads'];
+        $response = $this->client->get($project, 'test_reports');
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($downloads).'/week',
-            'statusColor' => 'green.600',
-        ];
+        return GradeTemplate::make('coverage', $response['attributes']['rating']['letter']);
     }
 
     public function service(): string
     {
-        return 'npm';
+        return 'Code Climate';
     }
 
     public function title(): string
@@ -47,7 +44,7 @@ final class WeeklyDownloadsWithScopeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/dw/{scope}/{package}/{tag?}',
+            '/codeclimate/{project}/coverage/grade',
         ];
     }
 
@@ -60,7 +57,7 @@ final class WeeklyDownloadsWithScopeBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('scope', '@[a-z]+');
+        $route->where('project', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function staticPreviews(): array
@@ -73,7 +70,7 @@ final class WeeklyDownloadsWithScopeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/dw/express' => 'weekly downloads',
+            '/codeclimate/codeclimate/codeclimate/coverage/grade' => 'coverage (letter)',
         ];
     }
 

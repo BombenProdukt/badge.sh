@@ -22,7 +22,7 @@ final class InstallsBadge implements Badge
         $install  = collect($response['statistics'])->firstWhere('statisticName', 'install')['value'];
 
         return [
-            'label'        => 'install',
+            'label'        => 'installations',
             'status'       => FormatNumber::execute($install),
             'statusColor'  => 'green.600',
         ];
@@ -48,7 +48,7 @@ final class InstallsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/i/{extension}',
+            '/vs-marketplace/{extension}/installation/count',
         ];
     }
 
@@ -74,7 +74,7 @@ final class InstallsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/d/vscodevim.vim' => 'downloads',
+            '/vs-marketplace/vscodevim.vim/installation/count' => 'installation count',
         ];
     }
 

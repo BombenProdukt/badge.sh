@@ -6,6 +6,7 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\GitHub\Actions\CombineStates;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
@@ -14,6 +15,8 @@ final class ChecksBadge implements Badge
 {
     public function handle(string $owner, string $repo, ?string $reference = '', ?string $context = '')
     {
+        [$owner, $repo] = explode('/', $repo);
+
         if (empty($reference)) {
             $response  = GitHub::connection('main')->api('repo')->show($owner, $repo);
             $reference = $response['default_branch'];
@@ -77,7 +80,7 @@ final class ChecksBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/checks/{owner}/{repo}/{reference?}/{context?}',
+            '/github/{owner}/{repo}/checks/{reference?}/{context?}',
         ];
     }
 
@@ -90,7 +93,8 @@ final class ChecksBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('context', '.+');
+        $route->where('context', RoutePattern::CATCH_ALL->value);
+        //
     }
 
     public function staticPreviews(): array
@@ -103,14 +107,14 @@ final class ChecksBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/checks/tunnckoCore/opensource'                                    => 'combined checks (default branch)',
-            '/github/checks/node-formidable/node-formidable'                           => 'combined checks (default branch)',
-            '/github/checks/node-formidable/node-formidable/master/lint'               => 'single checks (lint job)',
-            '/github/checks/node-formidable/node-formidable/master/test'               => 'single checks (test job)',
-            '/github/checks/node-formidable/node-formidable/master/ubuntu?label=linux' => 'single checks (linux)',
-            '/github/checks/node-formidable/node-formidable/master/windows'            => 'single checks (windows)',
-            '/github/checks/node-formidable/node-formidable/master/macos'              => 'single checks (macos)',
-            '/github/checks/styfle/packagephobia/main'                                 => 'combined checks (branch)',
+            '/github/tunnckoCore/opensource/checks'                                    => 'combined checks (default branch)',
+            '/github/node-formidable/node-formidable/checks'                           => 'combined checks (default branch)',
+            '/github/node-formidable/node-formidable/checks/master/lint'               => 'single checks (lint job)',
+            '/github/node-formidable/node-formidable/checks/master/test'               => 'single checks (test job)',
+            '/github/node-formidable/node-formidable/checks/master/ubuntu?label=linux' => 'single checks (linux)',
+            '/github/node-formidable/node-formidable/checks/master/windows'            => 'single checks (windows)',
+            '/github/node-formidable/node-formidable/checks/master/macos'              => 'single checks (macos)',
+            '/github/styfle/packagephobia/checks/main'                                 => 'combined checks (branch)',
         ];
     }
 

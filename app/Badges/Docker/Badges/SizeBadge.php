@@ -110,7 +110,7 @@ final class SizeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/docker/size/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
+            '/docker/{scope}/{name}/size/{tag?}/{architecture?}/{variant?}',
         ];
     }
 
@@ -136,9 +136,9 @@ final class SizeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/docker/size/library/ubuntu'                   => 'size (library)',
-            '/docker/size/lukechilds/bitcoind/latest/amd64' => 'size (scoped/tag/architecture)',
-            '/docker/size/lucashalbert/curl/latest/arm/v6'  => 'size (scoped/tag/architecture/variant)',
+            '/docker/library/ubuntu/size'                   => 'size (library)',
+            '/docker/lukechilds/bitcoind/size/latest/amd64' => 'size (scoped/tag/architecture)',
+            '/docker/lucashalbert/curl/size/latest/arm/v6'  => 'size (scoped/tag/architecture/variant)',
         ];
     }
 

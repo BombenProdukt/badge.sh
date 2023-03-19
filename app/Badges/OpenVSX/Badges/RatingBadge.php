@@ -46,7 +46,7 @@ final class RatingBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/open-vsx/rating/{namespace}/{package}',
+            '/open-vsx/{namespace}/{package}/rating',
         ];
     }
 
@@ -72,7 +72,7 @@ final class RatingBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/open-vsx/rating/idleberg/electron-builder'  => 'rating',
+            '/open-vsx/idleberg/electron-builder/rating' => 'rating',
         ];
     }
 

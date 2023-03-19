@@ -55,7 +55,7 @@ final class DayBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/uptime-robot/day/{apiKey}',
+            '/uptime-robot/{apiKey}/day',
         ];
     }
 
@@ -81,7 +81,7 @@ final class DayBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/uptime-robot/day/m780862024-50db2c44c703e5c68d6b1ebb' => '(24 hours) uptime',
+            '/uptime-robot/m780862024-50db2c44c703e5c68d6b1ebb/day' => '(24 hours) uptime',
         ];
     }
 

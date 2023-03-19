@@ -44,7 +44,7 @@ final class NameBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/rubygems/n/{gem}',
+            '/rubygems/{gem}/name',
         ];
     }
 
@@ -70,7 +70,7 @@ final class NameBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/rubygems/n/rails' => 'name',
+            '/rubygems/rails/name' => 'name',
         ];
     }
 

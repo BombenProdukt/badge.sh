@@ -6,6 +6,7 @@ namespace App\Badges\Jenkins\Badges;
 
 use App\Badges\Jenkins\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LastBuildBadge implements Badge
@@ -46,7 +47,7 @@ final class LastBuildBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jenkins/last-build/{hostname}/{job}',
+            '/jenkins/{hostname}/{job}/last-build',
         ];
     }
 
@@ -59,7 +60,7 @@ final class LastBuildBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('job', '.+');
+        $route->where('job', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -72,7 +73,7 @@ final class LastBuildBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jenkins/last-build/jenkins.mono-project.com/job/test-mono-mainline/' => 'Last build status',
+            '/jenkins/jenkins.mono-project.com/job/test-mono-mainline/last-build' => 'Last build status',
         ];
     }
 

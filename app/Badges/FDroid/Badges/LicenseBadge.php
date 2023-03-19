@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/license/{appId}',
+            '/f-droid/{appId}/license',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/license/org.tasks' => 'license',
+            '/f-droid/org.tasks/license' => 'license',
         ];
     }
 

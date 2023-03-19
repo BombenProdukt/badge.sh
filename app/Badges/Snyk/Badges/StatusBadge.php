@@ -6,6 +6,7 @@ namespace App\Badges\Snyk\Badges;
 
 use App\Badges\Snyk\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class StatusBadge implements Badge
@@ -15,9 +16,9 @@ final class StatusBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $repo, ?string $branch = null, ?string $targetFile = null): array
+    public function handle(string $project, ?string $branch = null, ?string $targetFile = null): array
     {
-        $svg = $this->client->get(implode('/', [$owner, $repo, $branch]), $targetFile);
+        $svg = $this->client->get(implode('/', [$project, $branch]), $targetFile);
 
         preg_match_all('/fill-opacity=[^>]*?>([^<]+)<\//i', $svg, $matchesText);
         [$subject, $status] = $matchesText[1];
@@ -59,7 +60,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/snyk/{owner}/{repo}/{branch?}/{targetFile?}',
+            '/snyk/{project}/status/{branch?}/{targetFile?}',
         ];
     }
 
@@ -72,7 +73,8 @@ final class StatusBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('targetFile', '.+');
+        $route->where('targetFile', RoutePattern::CATCH_ALL->value);
+        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -85,9 +87,9 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/snyk/badgen/badgen.net'                                     => 'vulnerability scan',
-            '/snyk/babel/babel/6.x'                                       => 'vulnerability scan (branch)',
-            '/snyk/rollup/plugins/master/packages%2Falias%2Fpackage.json' => 'vulnerability scan (custom path)',
+            '/snyk/badgen/badgen.net/status'                                     => 'vulnerability scan',
+            '/snyk/babel/babel/status/6.x'                                       => 'vulnerability scan (branch)',
+            '/snyk/rollup/plugins/status/master/packages%2Falias%2Fpackage.json' => 'vulnerability scan (custom path)',
         ];
     }
 

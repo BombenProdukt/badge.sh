@@ -16,8 +16,8 @@ final class Client
         $this->client = Http::baseUrl('https://packagist.org/packages/')->throw();
     }
 
-    public function get(string $vendor, string $package): array
+    public function get(string $package): array
     {
-        return $this->client->get("{$vendor}/{$package}.json")->json('package');
+        return $this->client->get("{$package}.json")->json('package');
     }
 }

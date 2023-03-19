@@ -6,6 +6,7 @@ namespace App\Badges\NPM\Badges;
 
 use App\Badges\NPM\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class TypesBadge implements Badge
@@ -76,7 +77,7 @@ final class TypesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/types/{package}/{tag?}',
+            '/npm/{package}/types/{tag?}',
         ];
     }
 
@@ -89,7 +90,7 @@ final class TypesBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
     public function staticPreviews(): array
@@ -102,9 +103,9 @@ final class TypesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/types/tslib' => 'types',
-            '/npm/types/react' => 'types',
-            '/npm/types/queri' => 'types',
+            '/npm/tslib/types' => 'types',
+            '/npm/react/types' => 'types',
+            '/npm/queri/types' => 'types',
         ];
     }
 

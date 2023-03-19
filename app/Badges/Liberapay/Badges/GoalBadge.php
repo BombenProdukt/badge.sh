@@ -53,7 +53,7 @@ final class GoalBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/liberapay/goal/{username}',
+            '/liberapay/{username}/goal',
         ];
     }
 
@@ -79,7 +79,7 @@ final class GoalBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/liberapay/goal/Changaco' => 'goal progress',
+            '/liberapay/Changaco/goal' => 'goal progress',
         ];
     }
 

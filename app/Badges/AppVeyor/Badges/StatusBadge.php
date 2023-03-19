@@ -47,7 +47,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/appveyor/ci/{account}/{project}/{branch?}',
+            '/appveyor/{account}/{project}/status/{branch?}',
         ];
     }
 
@@ -73,8 +73,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/appveyor/ci/gruntjs/grunt'           => 'build',
-            '/appveyor/ci/gruntjs/grunt/deprecate' => 'build (branch)',
+            '/appveyor/gruntjs/grunt/status'           => 'build',
+            '/appveyor/gruntjs/grunt/status/deprecate' => 'build (branch)',
         ];
     }
 

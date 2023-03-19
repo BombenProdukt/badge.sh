@@ -6,6 +6,7 @@ namespace App\Badges\Jenkins\Badges;
 
 use App\Badges\Jenkins\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -51,7 +52,7 @@ final class BrokenBuildBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jenkins/broken-build/{hostname}/{job}',
+            '/jenkins/{hostname}/{job}/broken-build',
         ];
     }
 
@@ -64,7 +65,7 @@ final class BrokenBuildBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->where('job', '.+');
+        $route->where('job', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -77,7 +78,7 @@ final class BrokenBuildBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jenkins/broken-build/jenkins.mono-project.com/job/test-mono-mainline/' => '# of broken builds',
+            '/jenkins/jenkins.mono-project.com/job/test-mono-mainline/broken-build' => '# of broken builds',
         ];
     }
 

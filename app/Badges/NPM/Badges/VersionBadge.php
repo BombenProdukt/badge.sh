@@ -7,6 +7,7 @@ namespace App\Badges\NPM\Badges;
 use App\Badges\NPM\Client;
 use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class VersionBadge implements Badge
@@ -44,7 +45,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/v/{package}/{tag?}',
+            '/npm/{package}/version/{tag?}',
         ];
     }
 
@@ -57,7 +58,7 @@ final class VersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
     public function staticPreviews(): array
@@ -70,12 +71,12 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/v/express'           => 'version',
-            '/npm/v/yarn'              => 'version',
-            '/npm/v/yarn/berry'        => 'version (tag)',
-            '/npm/v/yarn/legacy'       => 'version (tag)',
-            '/npm/v/@babel/core'       => 'version (scoped package)',
-            '/npm/v/@nestjs/core/beta' => 'version (scoped & tag)',
+            '/npm/express/version'           => 'version',
+            '/npm/yarn/version'              => 'version',
+            '/npm/yarn/version/berry'        => 'version (tag)',
+            '/npm/yarn/version/legacy'       => 'version (tag)',
+            '/npm/@babel/core/version'       => 'version (scoped package)',
+            '/npm/@nestjs/core/version/beta' => 'version (scoped & tag)',
         ];
     }
 

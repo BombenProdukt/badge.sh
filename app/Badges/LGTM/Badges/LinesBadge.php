@@ -7,6 +7,7 @@ namespace App\Badges\LGTM\Badges;
 use App\Badges\LGTM\Client;
 use App\Badges\Templates\LinesTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LinesBadge implements Badge
@@ -22,9 +23,10 @@ final class LinesBadge implements Badge
         //
     }
 
-    public function handle(string $provider, string $owner, string $name, ?string $language = null): array
+    public function handle(string $provider, string $project, ?string $language = null): array
     {
-        $response = $this->client->get($provider, $owner, $name, $language);
+        dd($project);
+        $response = $this->client->get($provider, $project, $language);
 
         return LinesTemplate::make(
             // $language ? 'lines: '.($this->languages[$response['lines']] ?? $language) : 'lines',
@@ -52,7 +54,7 @@ final class LinesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/lgtm/lines/{provider}/{owner}/{name}/{language?}',
+            '/lgtm/{provider}/{project}/lines/{language?}',
         ];
     }
 
@@ -65,7 +67,8 @@ final class LinesBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->whereIn('provider', ['g', 'github', 'b', 'bitbucket', 'gl', 'gitlab']);
+        $route->whereIn('provider', ['github', 'bitbucket', 'gitlab']);
+        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -78,7 +81,7 @@ final class LinesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/lgtm/lines/g/apache/cloudstack/java' => 'lines (java)',
+            '/lgtm/github/apache/cloudstack/java/lines' => 'lines (java)',
         ];
     }
 

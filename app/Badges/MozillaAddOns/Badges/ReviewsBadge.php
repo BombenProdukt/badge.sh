@@ -47,7 +47,7 @@ final class ReviewsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/amo/reviews/{package}',
+            '/amo/{package}/reviews',
         ];
     }
 
@@ -73,7 +73,7 @@ final class ReviewsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/amo/reviews/markdown-viewer-chrome' => 'reviews',
+            '/amo/markdown-viewer-chrome/reviews' => 'reviews',
         ];
     }
 

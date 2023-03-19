@@ -45,7 +45,7 @@ final class ContributorsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/contributors/{owner}/{repo}',
+            '/github/{owner}/{repo}/contributors',
         ];
     }
 
@@ -71,7 +71,7 @@ final class ContributorsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/contributors/micromatch/micromatch' => 'contributors',
+            '/github/micromatch/micromatch/contributors' => 'contributors',
 
         ];
     }

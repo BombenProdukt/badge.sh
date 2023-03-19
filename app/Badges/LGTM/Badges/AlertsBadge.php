@@ -6,6 +6,7 @@ namespace App\Badges\LGTM\Badges;
 
 use App\Badges\LGTM\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -22,9 +23,9 @@ final class AlertsBadge implements Badge
         //
     }
 
-    public function handle(string $provider, string $owner, string $name, ?string $language = null): array
+    public function handle(string $provider, string $project, ?string $language = null): array
     {
-        $response = $this->client->get($provider, $owner, $name, $language);
+        $response = $this->client->get($provider, $project, $language);
 
         return [
             'label'       => 'alerts: '.($this->languages[$response['lines']] ?? $language),
@@ -53,7 +54,7 @@ final class AlertsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/lgtm/alerts/{provider}/{owner}/{name}/{language?}',
+            '/lgtm/{provider}/{project}/alerts/{language?}',
         ];
     }
 
@@ -66,7 +67,8 @@ final class AlertsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        $route->whereIn('provider', ['g', 'github', 'b', 'bitbucket', 'gl', 'gitlab']);
+        $route->whereIn('provider', ['github', 'bitbucket', 'gitlab']);
+        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -79,7 +81,7 @@ final class AlertsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/lgtm/alerts/g/apache/cloudstack' => 'alerts',
+            '/lgtm/github/apache/cloudstack/alerts' => 'alerts',
         ];
     }
 

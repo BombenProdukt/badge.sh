@@ -6,6 +6,7 @@ namespace App\Badges\Pub\Badges;
 
 use App\Badges\Pub\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class DartPlatformBadge implements Badge
@@ -47,7 +48,7 @@ final class DartPlatformBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pub/dart-platform/{package}',
+            '/pub/{package}/platform/dart',
         ];
     }
 
@@ -60,7 +61,7 @@ final class DartPlatformBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -73,8 +74,8 @@ final class DartPlatformBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pub/dart-platform/rxdart'         => 'dart-platform',
-            '/pub/dart-platform/google_sign_in' => 'dart-platform',
+            '/pub/rxdart/platform/dart'         => 'dart-platform',
+            '/pub/google_sign_in/platform/dart' => 'dart-platform',
         ];
     }
 

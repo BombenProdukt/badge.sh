@@ -41,8 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/apm/v/{package}',
-            '/apm/version/{package}',
+            '/apm/{package}/version',
         ];
     }
 
@@ -68,8 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/apm/dl/linter'        => 'downloads',
-            '/apm/downloads/linter' => 'downloads',
+            '/apm/linter/version' => 'version',
         ];
     }
 
