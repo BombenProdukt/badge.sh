@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\Haxelib\Badges;
 
 use App\Badges\Haxelib\Client;
-/**
- * @TODO
- */
 use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;

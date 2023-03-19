@@ -4,20 +4,15 @@ declare(strict_types=1);
 
 namespace App\Badges\ChromeWebStore;
 
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Process;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
-    {
-        $this->client = Http::baseUrl('https://chrome.google.com/webstore/detail/')->throw();
-    }
-
     public function get(string $itemId): string
     {
-        return $this->client->get($itemId)->body();
+        $node   = '/usr/bin/node';
+        $script = base_path('scripts/chrome-web-store.mjs');
+
+        return Process::run("{$node} {$script} {$itemId}")->throw()->output();
     }
 }

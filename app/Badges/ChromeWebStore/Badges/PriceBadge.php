@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace App\Badges\ChromeWebStore\Badges;
 
 use App\Badges\ChromeWebStore\Client;
-/**
- * @TODO
- */
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatMoney;
+use Symfony\Component\DomCrawler\Crawler;
 
 final class PriceBadge implements Badge
 {
@@ -20,12 +19,14 @@ final class PriceBadge implements Badge
 
     public function handle(string $itemId): array
     {
-        $response = $this->client->get($itemId);
+        $crawler       = new Crawler($this->client->get($itemId));
+        $price         = $crawler->filterXPath('//meta[@itemprop="price"]')->getNode(0)->attributes->getNamedItem('content')->textContent;
+        $priceCurrency = $crawler->filterXPath('//meta[@itemprop="priceCurrency"]')->getNode(0)->attributes->getNamedItem('content')->textContent;
 
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'       => 'price',
+            'status'      => FormatMoney::execute($price, $priceCurrency),
+            'statusColor' => 'green.600',
         ];
     }
 

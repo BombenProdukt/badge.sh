@@ -23,6 +23,7 @@
         "spatie/laravel-responsecache": "^7.4",
         "spatie/regex": "^3.1",
         "spiral/roadrunner": "^2.8.2",
+        "symfony/dom-crawler": "^6.2",
         "symfony/yaml": "^6.2"
     },
     "require-dev": {

@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace App\Badges\ChromeWebStore\Badges;
 
 use App\Badges\ChromeWebStore\Client;
-/**
- * @TODO
- */
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use Spatie\Regex\Regex;
+use Symfony\Component\DomCrawler\Crawler;
 
 final class RatingBadge implements Badge
 {
@@ -20,12 +19,17 @@ final class RatingBadge implements Badge
 
     public function handle(string $itemId): array
     {
-        $response = $this->client->get($itemId);
+        $textContent = (new Crawler($this->client->get($itemId)))
+            ->filter('.bhAbjd')
+            ->getNode(0)
+            ->attributes
+            ->getNamedItem('aria-label')
+            ->textContent;
 
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'       => 'rating',
+            'status'      => Regex::match('/Average rating (.*) out of 5/', $textContent)->group(1),
+            'statusColor' => 'green.600',
         ];
     }
 

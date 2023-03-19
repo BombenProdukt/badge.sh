@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace App\Badges\ChromeWebStore\Badges;
 
 use App\Badges\ChromeWebStore\Client;
-/**
- * @TODO
- */
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatStars;
 
 final class StarsBadge implements Badge
 {
@@ -20,12 +18,10 @@ final class StarsBadge implements Badge
 
     public function handle(string $itemId): array
     {
-        $response = $this->client->get($itemId);
-
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'       => 'stars',
+            'status'      => FormatStars::execute((new RatingBadge($this->client))->handle($itemId)['status']),
+            'statusColor' => 'green.600',
         ];
     }
 
