@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Maven\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\Maven\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
@@ -24,11 +23,7 @@ final class UrlBadge implements Badge
 
         preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
 
-        return [
-            'label'       => 'maven',
-            'status'      => ExtractVersion::execute($matches[1]),
-            'statusColor' => ExtractVersionColor::execute($matches[1]),
-        ];
+        return VersionTemplate::make($this->service(), $matches[1]);
     }
 
     public function service(): string

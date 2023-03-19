@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\CodeClimate\Badges;
 
-use App\Actions\ExtractCoverageColor;
 use App\Badges\CodeClimate\Client;
+use App\Badges\Templates\GradeTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,11 @@ final class CoverageLetterBadge implements Badge
     {
         $response = $this->client->get($owner, $repo, 'test_reports');
 
-        return [
-            'label'       => 'coverage',
-            'status'      => $response['attributes']['rating']['letter'],
-            'statusColor' => ExtractCoverageColor::execute($response['attributes']['rating']['measure']['value']),
-        ];
+        return GradeTemplate::make(
+            'coverage',
+            $response['attributes']['rating']['letter'],
+            $response['attributes']['rating']['measure']['value'],
+        );
     }
 
     public function service(): string

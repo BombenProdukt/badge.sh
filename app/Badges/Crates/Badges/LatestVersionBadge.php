@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Crates\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\Crates\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +20,7 @@ final class LatestVersionBadge implements Badge
     {
         $version = $this->client->get($package)['max_version'];
 
-        return [
-            'label'       => 'crates.io',
-            'status'      => ExtractVersion::execute($version),
-            'statusColor' => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make($this->service(), $version);
     }
 
     public function service(): string

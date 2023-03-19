@@ -6,6 +6,7 @@ namespace App\Badges\Packagist\Badges;
 
 use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
@@ -25,11 +26,7 @@ final class PhpVersionBadge implements Badge
 
         $pkg = Arr::get($packageMeta['versions'], $this->getVersion($packageMeta, $channel));
 
-        return [
-            'label'       => 'php',
-            'status'      => Arr::get($pkg, 'require.php', '*'),
-            'statusColor' => 'green.600',
-        ];
+        return VersionTemplate::make('php', Arr::get($pkg, 'require.php', '*'));
     }
 
     public function service(): string

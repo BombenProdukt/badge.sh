@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\Codecov\Badges;
 
-use App\Actions\ExtractCoverageColor;
 use App\Badges\Codecov\Client;
+use App\Badges\Templates\CoverageTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatPercentage;
 
 final class StatusBadge implements Badge
 {
@@ -20,13 +19,8 @@ final class StatusBadge implements Badge
     public function handle(string $service, string $owner, string $repo, ?string $branch = null): array
     {
         $response = $this->client->get($service, $owner, $repo, $branch);
-        $coverage = (float) $response['commit']['totals']['c'];
 
-        return [
-            'label'       => 'coverage',
-            'status'      => FormatPercentage::execute($coverage),
-            'statusColor' => ExtractCoverageColor::execute($coverage),
-        ];
+        return CoverageTemplate::make($response['commit']['totals']['c']);
     }
 
     public function service(): string

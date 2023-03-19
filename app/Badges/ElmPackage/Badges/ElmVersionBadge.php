@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\ElmPackage\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\ElmPackage\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +20,7 @@ final class ElmVersionBadge implements Badge
     {
         $version = $this->formatElmVersion($this->client->get($owner, $name)['elm-version']);
 
-        return [
-            'label'        => 'elm',
-            'status'       => ExtractVersion::execute($version),
-            'statusColor'  => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make($this->service(), $version);
     }
 
     public function service(): string

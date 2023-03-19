@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
-use App\Actions\ExtractCoverageColor;
 use App\Badges\GitHub\Client;
+use App\Badges\Templates\PercentageTemplate;
 use App\Contracts\Badge;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
@@ -22,13 +22,11 @@ final class MilestonesBadge implements Badge
         $milestone   = GitHub::api('issue')->milestones()->show($owner, $repo, $milestoneNumber);
         $openIssues  = $milestone['open_issues'];
         $totalIssues = $openIssues + $milestone['closed_issues'];
-        $percentage  = $totalIssues === 0 ? 0 : 100 - (($openIssues / $totalIssues) * 100);
 
-        return [
-            'label'       => $milestone['title'],
-            'status'      => floor($percentage).'%',
-            'statusColor' => ExtractCoverageColor::execute($percentage),
-        ];
+        return PercentageTemplate::make(
+            $milestone['title'],
+            $totalIssues === 0 ? 0 : 100 - (($openIssues / $totalIssues) * 100),
+        );
     }
 
     public function service(): string

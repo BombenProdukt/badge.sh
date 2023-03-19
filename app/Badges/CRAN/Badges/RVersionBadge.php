@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\CRAN\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +20,7 @@ final class RVersionBadge implements Badge
     {
         $version = preg_replace('/([<>=]+)\s+/', '$1', $this->client->db($package)['Depends']['R']);
 
-        return [
-            'label'        => 'R',
-            'status'       => ExtractVersion::execute($version),
-            'statusColor'  => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make('R', $version);
     }
 
     public function service(): string

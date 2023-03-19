@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Homebrew\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\Homebrew\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -27,11 +26,7 @@ final class VersionForFormulaBadge implements Badge
             $version = $response['versions']['stable'];
         }
 
-        return [
-            'label'       => 'homebrew',
-            'status'      => ExtractVersion::execute($version),
-            'statusColor' => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make($this->service(), $version);
     }
 
     public function service(): string

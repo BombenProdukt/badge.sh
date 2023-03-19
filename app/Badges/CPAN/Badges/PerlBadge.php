@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\CPAN\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\CPAN\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +20,7 @@ final class PerlBadge implements Badge
     {
         $version = $this->normalizeVersion($this->client->get("release/{$distribution}")['metadata']['prereqs']['runtime']['requires']['perl']);
 
-        return [
-            'label'        => 'perl',
-            'status'       => ExtractVersion::execute($version),
-            'statusColor'  => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make($this->service(), $version);
     }
 
     private function normalizeVersion(string $version): string

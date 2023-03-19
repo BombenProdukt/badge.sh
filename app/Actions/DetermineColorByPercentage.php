@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
-final class ExtractCoverageColor
+final class DetermineColorByPercentage
 {
     public static function execute(
         mixed $value,

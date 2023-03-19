@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Templates;
 
+use App\Actions\DetermineColorByVersion;
 use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 
 final class VersionTemplate
 {
@@ -14,7 +14,7 @@ final class VersionTemplate
         return [
             'label'        => $service,
             'status'       => ExtractVersion::execute($version),
-            'statusColor'  => ExtractVersionColor::execute($version),
+            'statusColor'  => DetermineColorByVersion::execute($version),
         ];
     }
 }

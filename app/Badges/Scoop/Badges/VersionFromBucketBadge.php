@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Scoop\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\Scoop\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +20,7 @@ final class VersionFromBucketBadge implements Badge
     {
         $response = $bucket === 'main' ? $this->client->main($app) : $this->client->extra($app);
 
-        return [
-            'label'        => 'scoop',
-            'status'       => ExtractVersion::execute($response['version']),
-            'statusColor'  => ExtractVersionColor::execute($response['version']),
-        ];
+        return VersionTemplate::make($this->service(), $response['version']);
     }
 
     public function service(): string
