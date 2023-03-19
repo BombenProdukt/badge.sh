@@ -62,7 +62,7 @@
                     badges to align with your preferred use-case and visual aesthetics!</p>
 
                 <div class="my-16 xl:max-w-none">
-                    @foreach (\App\Providers\IntegrationServiceProvider::examples() as $group => $examples)
+                    @foreach (\App\Providers\BadgeServiceProvider::examples() as $group => $examples)
                         <div id="{{ Str::slug($group) }}">
                             <h2 id="{{ Str::slug($group) }}" class="scroll-mt-24">
                                 <a class="group text-inherit no-underline hover:text-inherit"

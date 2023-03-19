@@ -42,6 +42,12 @@ final class MakeBadgeResponse
                     $icon = base64_encode($icon);
                 }
 
+                if (str_starts_with($icon, 'simpleicons')) {
+                    $icon = app(Factory::class)->svg($icon)->contents();
+                    $icon = str_replace('role="img"', 'role="img" stroke="#fff" fill="#fff"', $icon);
+                    $icon = base64_encode($icon);
+                }
+
                 if (str_starts_with($icon, 'iconify')) {
                     [,$set,$name] = explode('-', $icon, 3);
 
@@ -61,7 +67,9 @@ final class MakeBadgeResponse
                 ->setSharedMaxAge((int) $request->query('s_maxage', 21600))
                 ->setStaleWhileRevalidate(86400);
         } catch (Throwable $th) {
-            // dd($th, $request->route()->parameters());
+            if (app()->environment('local')) {
+                dd($th, $request->route()->parameters());
+            }
 
             $badge = Badger::make();
             $badge->withLabel($request->segment(1));

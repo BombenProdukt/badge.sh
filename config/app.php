@@ -198,7 +198,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
-        App\Providers\IntegrationServiceProvider::class,
+        App\Providers\BadgeServiceProvider::class,
+        App\Providers\IconServiceProvider::class,
 
         /*
          * Badge Service Providers...
