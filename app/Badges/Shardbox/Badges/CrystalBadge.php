@@ -46,7 +46,7 @@ final class CrystalBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/shards/{shard}/version/crystal',
+            '/shardbox/{shard}/version/crystal',
         ];
     }
 
@@ -72,7 +72,7 @@ final class CrystalBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/shards/amber/version/crystal' => 'crystal version',
+            '/shardbox/amber/version/crystal' => 'crystal version',
         ];
     }
 
