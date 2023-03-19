@@ -3,11 +3,10 @@
 ## Architecture
 
 - [x] Use [Laravel](https://laravel.com) as the framework
-- [x] Use [Tailwind CSS](https://tailwindcss.com) for styling
-- [ ] Use [Inertia](https://inertiajs.com) for the frontend
+- [x] Use [Tailwind CSS](https://tailwindcss.com) for colors and styling
 - [x] Standardize development process by leveraging the Laravel ecosystem
 - [ ] Standardize API to be more consistent and predictable
-- [ ] Standardize color palette to be more consistent and predictable
+- [x] Standardize color palette to be more consistent and predictable
 - [ ] Standardize test suite to ensure functionality of all components
 
 ## Badges
