@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\MozillaAddOns\Badges;
 
-use App\Actions\FormatStars;
 use App\Badges\MozillaAddOns\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatStars;
 
 final class StarsBadge implements Badge
 {

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\Shardbox\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\Shardbox\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatNumber;
 
 final class DependentsBadge implements Badge
 {

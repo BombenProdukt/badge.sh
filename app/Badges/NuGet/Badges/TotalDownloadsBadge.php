@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\NuGet\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\NuGet\Client;
+use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
@@ -25,11 +25,7 @@ final class TotalDownloadsBadge implements Badge
             'semVerLevel' => 2,
         ])->throw()->json('data.0.totalDownloads');
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($totalDownloads),
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsTemplate::make($totalDownloads);
     }
 
     public function service(): string

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\NPM\Badges;
 
 use App\Badges\NPM\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -17,11 +18,10 @@ final class VersionBadge implements Badge
 
     public function handle(string $package, string $tag = 'latest'): array
     {
-        return [
-            'label'       => $tag === 'latest' ? 'npm' : "npm@{$tag}",
-            'status'      => $this->client->unpkg("{$package}@{$tag}/package.json")['version'],
-            'statusColor' => 'green.600',
-        ];
+        return VersionTemplate::make(
+            $tag === 'latest' ? 'npm' : "npm@{$tag}",
+            $this->client->unpkg("{$package}@{$tag}/package.json")['version'],
+        );
     }
 
     public function service(): string

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\DUB\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\DUB\Client;
+use App\Badges\Templates\DownloadsPerWeekTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,7 @@ final class WeeklyDownloadsBadge implements Badge
     {
         $downloads = $this->client->get("{$package}/stats")['downloads'];
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($downloads['weekly']).'/week',
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsPerWeekTemplate::make($downloads['weekly']);
     }
 
     public function service(): string

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\DUB\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\DUB\Client;
+use App\Badges\Templates\DownloadsPerMonthTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,7 @@ final class MonthlyDownloadsBadge implements Badge
     {
         $downloads = $this->client->get("{$package}/stats")['downloads'];
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($downloads['monthly']).'/month',
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsPerMonthTemplate::make($downloads['monthly']);
     }
 
     public function service(): string

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\DUB\Badges;
 
 use App\Badges\DUB\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -17,13 +18,7 @@ final class LicenseBadge implements Badge
 
     public function handle(string $package): array
     {
-        $license = $this->client->get("{$package}/latest/info")['info']['license'];
-
-        return [
-            'label'       => 'license',
-            'status'      => $license,
-            'statusColor' => 'green.600',
-        ];
+        return LicenseTemplate::make($this->client->get("{$package}/latest/info")['info']['license']);
     }
 
     public function service(): string

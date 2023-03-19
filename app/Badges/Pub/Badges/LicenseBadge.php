@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\Pub\Badges;
 
 use App\Badges\Pub\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +22,7 @@ final class LicenseBadge implements Badge
 
         preg_match('/License<\/h3>\s*<p>([^(]+)\(/i', $response, $matches);
 
-        return [
-            'label'       => 'license',
-            'status'      => trim(strip_tags($matches[1])),
-            'statusColor' => 'blue.600',
-        ];
+        return LicenseTemplate::make($matches[1]);
     }
 
     public function service(): string

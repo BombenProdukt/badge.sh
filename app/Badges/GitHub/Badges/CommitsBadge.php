@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\GitHub\Client;
 use App\Contracts\Badge;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatNumber;
 
 final class CommitsBadge implements Badge
 {

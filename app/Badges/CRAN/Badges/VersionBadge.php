@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\CRAN\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +20,7 @@ final class VersionBadge implements Badge
     {
         $response = $this->client->db($package);
 
-        return [
-            'label'        => 'cran',
-            'status'       => ExtractVersion::execute($response['Version']),
-            'statusColor'  => ExtractVersionColor::execute($response['Version']),
-        ];
+        return VersionTemplate::make($this->service(), $response['Version']);
     }
 
     public function service(): string

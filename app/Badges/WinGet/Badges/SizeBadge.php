@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\WinGet\Badges;
 
-use App\Actions\FormatBytes;
 use App\Badges\WinGet\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatBytes;
 
 final class SizeBadge implements Badge
 {

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\Liberapay\Badges;
 
-use App\Actions\FormatPercentage;
 use App\Badges\Liberapay\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatPercentage;
 
 final class GoalBadge implements Badge
 {

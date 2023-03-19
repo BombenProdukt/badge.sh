@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Coveralls\Badges;
 
-use App\Actions\ExtractCoverageColor;
-use App\Actions\FormatPercentage;
 use App\Badges\Coveralls\Client;
+use App\Badges\Templates\CoverageTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -31,11 +30,7 @@ final class CoverageBadge implements Badge
             ];
         }
 
-        return [
-            'label'       => 'coverage',
-            'status'      => FormatPercentage::execute($matches[1]),
-            'statusColor' => ExtractCoverageColor::execute((float) $matches[1]),
-        ];
+        return CoverageTemplate::make($matches[1]);
     }
 
     public function service(): string

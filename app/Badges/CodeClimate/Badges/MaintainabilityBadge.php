@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\CodeClimate\Badges;
 
 use App\Badges\CodeClimate\Client;
+use App\Badges\Templates\GradeTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -19,17 +20,7 @@ final class MaintainabilityBadge implements Badge
     {
         $response = $this->client->get($owner, $repo, 'snapshots');
 
-        return [
-            'label'       => 'maintainability',
-            'status'      => $response['attributes']['ratings'][0]['letter'],
-            'statusColor' => [
-                'A' => 'green.600',
-                'B' => '9C0',
-                'C' => 'AA2',
-                'D' => 'DC2',
-                'E' => 'orange.600',
-            ][$response['attributes']['ratings'][0]['letter']],
-        ];
+        return GradeTemplate::make('maintainability', $response['attributes']['ratings'][0]['letter']);
     }
 
     public function service(): string

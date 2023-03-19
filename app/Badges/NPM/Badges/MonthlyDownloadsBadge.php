@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\NPM\Client;
+use App\Badges\Templates\DownloadsPerMonthTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,7 @@ final class MonthlyDownloadsBadge implements Badge
     {
         $downloads = $this->client->api("downloads/point/last-month/{$package}")['downloads'];
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($downloads).'/month',
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsPerMonthTemplate::make($downloads);
     }
 
     public function service(): string

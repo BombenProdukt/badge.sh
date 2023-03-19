@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WAPM\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
+use App\Badges\Templates\VersionTemplate;
 use App\Badges\WAPM\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
@@ -21,11 +20,7 @@ final class VersionBadge implements Badge
     {
         $response = $this->client->get($package);
 
-        return [
-            'label'        => 'wapm',
-            'status'       => ExtractVersion::execute($response['version']),
-            'statusColor'  => ExtractVersionColor::execute($response['version']),
-        ];
+        return VersionTemplate::make($this->service(), $response['version']);
     }
 
     public function service(): string

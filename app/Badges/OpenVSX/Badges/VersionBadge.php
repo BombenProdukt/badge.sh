@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenVSX\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\OpenVSX\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +20,7 @@ final class VersionBadge implements Badge
     {
         $response = $this->client->get($namespace, $package);
 
-        return [
-            'label'        => 'version',
-            'status'       => ExtractVersion::execute($response['version']),
-            'statusColor'  => ExtractVersionColor::execute($response['version']),
-        ];
+        return VersionTemplate::make($this->service(), $response['version']);
     }
 
     public function service(): string

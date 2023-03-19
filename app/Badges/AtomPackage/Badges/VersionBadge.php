@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\AtomPackage\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\AtomPackage\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -19,13 +18,7 @@ final class VersionBadge implements Badge
 
     public function handle(string $package): array
     {
-        $version = $this->client->get($package)['releases']['latest'];
-
-        return [
-            'label'        => 'apm',
-            'status'       => ExtractVersion::execute($version),
-            'statusColor'  => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make($this->service(), $this->client->get($package)['releases']['latest']);
     }
 
     public function service(): string

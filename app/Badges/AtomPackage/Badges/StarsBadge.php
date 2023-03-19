@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\AtomPackage\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\AtomPackage\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatNumber;
 
 final class StarsBadge implements Badge
 {

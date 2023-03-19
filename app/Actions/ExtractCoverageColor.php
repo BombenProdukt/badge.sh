@@ -7,12 +7,14 @@ namespace App\Actions;
 final class ExtractCoverageColor
 {
     public static function execute(
-        float $value,
+        mixed $value,
         float $green = 100,
         float $yellow = 85,
         float $orange = 70,
         float $red = 35
     ): string {
+        $value = (float) $value;
+
         if ($value < $red) {
             return 'red.600';
         }

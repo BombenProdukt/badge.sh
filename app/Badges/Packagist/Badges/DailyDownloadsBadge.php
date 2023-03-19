@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\Packagist\Client;
+use App\Badges\Templates\DownloadsPerDayTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,7 @@ final class DailyDownloadsBadge implements Badge
     {
         $packageMeta = $this->client->get($vendor, $package);
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($packageMeta['downloads']['daily']).'/day',
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsPerDayTemplate::make($packageMeta['downloads']['daily']);
     }
 
     public function service(): string

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\NPM\Client;
+use App\Badges\Templates\DownloadsPerWeekTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,7 @@ final class WeeklyDownloadsBadge implements Badge
     {
         $downloads = $this->client->api("downloads/point/last-week/{$package}")['downloads'];
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($downloads).'/week',
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsPerWeekTemplate::make($downloads);
     }
 
     public function service(): string

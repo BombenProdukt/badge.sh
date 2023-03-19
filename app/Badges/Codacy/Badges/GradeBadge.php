@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\Codacy\Badges;
 
 use App\Badges\Codacy\Client;
+use App\Badges\Templates\GradeTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -19,20 +20,7 @@ final class GradeBadge implements Badge
     {
         preg_match('/visibility=[^>]*?>([^<]+)<\//i', $this->client->get('grade', $projectId, $branch), $matches);
 
-        $status = trim($matches[1]);
-
-        return [
-            'label'       => 'code quality',
-            'status'      => $status,
-            'statusColor' => [
-                'A' => '4ac41c',
-                'B' => '98c510',
-                'C' => '9fa126',
-                'D' => 'd7b024',
-                'E' => 'f17d3e',
-                'F' => 'd7624b',
-            ][$status],
-        ];
+        return GradeTemplate::make('code quality', trim($matches[1]));
     }
 
     public function service(): string

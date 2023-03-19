@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\Scoop\Badges;
 
 use App\Badges\Scoop\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -19,11 +20,7 @@ final class LicenseBadge implements Badge
     {
         $response = $this->client->main($app);
 
-        return [
-            'label'        => 'scoop',
-            'status'       => $response['license'],
-            'statusColor'  => 'blue.600',
-        ];
+        return LicenseTemplate::make($response['license']);
     }
 
     public function service(): string

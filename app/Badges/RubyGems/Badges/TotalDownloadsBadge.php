@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\RubyGems\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\RubyGems\Client;
+use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -18,11 +18,7 @@ final class TotalDownloadsBadge implements Badge
 
     public function handle(string $gem): array
     {
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($this->client->get("gems/{$gem}")['downloads']),
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsTemplate::make($this->client->get("gems/{$gem}")['downloads']);
     }
 
     public function service(): string

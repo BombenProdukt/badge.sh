@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\Bundlephobia\Badges;
 
-use App\Actions\FormatBytes;
 use App\Badges\Bundlephobia\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatBytes;
 
 final class MinzipBadge implements Badge
 {

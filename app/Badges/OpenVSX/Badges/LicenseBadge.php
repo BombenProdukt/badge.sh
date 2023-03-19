@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\OpenVSX\Badges;
 
 use App\Badges\OpenVSX\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -19,11 +20,7 @@ final class LicenseBadge implements Badge
     {
         $response = $this->client->get($namespace, $package);
 
-        return [
-            'label'       => 'license',
-            'status'      => $response['license'],
-            'statusColor' => 'blue.600',
-        ];
+        return LicenseTemplate::make($response['license']);
     }
 
     public function service(): string

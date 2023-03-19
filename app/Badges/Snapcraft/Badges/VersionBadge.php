@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Snapcraft\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\Snapcraft\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
@@ -28,11 +27,7 @@ final class VersionBadge implements Badge
             default                   => $channels->first(),
         };
 
-        return [
-            'label'        => 'snap',
-            'status'       => ExtractVersion::execute($channel['version']),
-            'statusColor'  => ExtractVersionColor::execute($channel['version']),
-        ];
+        return VersionTemplate::make($this->service(), $channel['version']);
     }
 
     public function service(): string

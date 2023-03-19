@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\ChromeWebStore\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\ChromeWebStore\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +20,7 @@ final class VersionBadge implements Badge
     {
         preg_match('|<span class="C-b-p-D-Xe h-C-b-p-D-md">(.*?)</span>|', $this->client->get($itemId), $matches);
 
-        return [
-            'label'       => 'chrome web store',
-            'status'      => ExtractVersion::execute($matches[1]),
-            'statusColor' => ExtractVersionColor::execute($matches[1]),
-        ];
+        return VersionTemplate::make($this->service(), $matches[1]);
     }
 
     public function service(): string

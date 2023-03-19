@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WinGet\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
+use App\Badges\Templates\VersionTemplate;
 use App\Badges\WinGet\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
@@ -19,13 +18,7 @@ final class VersionBadge implements Badge
 
     public function handle(string $appId): array
     {
-        $version = $this->client->version($appId);
-
-        return [
-            'label'        => 'winget',
-            'status'       => ExtractVersion::execute($version),
-            'statusColor'  => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make($this->service(), $this->client->version($appId));
     }
 
     public function service(): string

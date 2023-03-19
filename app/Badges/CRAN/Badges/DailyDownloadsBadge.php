@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\CRAN\Client;
+use App\Badges\Templates\DownloadsPerDayTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -18,11 +18,7 @@ final class DailyDownloadsBadge implements Badge
 
     public function handle(string $package): array
     {
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($this->client->logs("downloads/total/last-day/{$package}")[0]['downloads']).'/day',
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsPerDayTemplate::make($this->client->logs("downloads/total/last-day/{$package}")[0]['downloads']);
     }
 
     public function service(): string

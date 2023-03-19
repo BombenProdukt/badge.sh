@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\PyPI\Badges;
 
 use App\Badges\PyPI\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -17,11 +18,7 @@ final class LicenseBadge implements Badge
 
     public function handle(string $project): array
     {
-        return [
-            'label'       => 'license',
-            'status'      => $this->client->get($project)['license'],
-            'statusColor' => 'blue.600',
-        ];
+        return LicenseTemplate::make($this->client->get($project)['license']);
     }
 
     public function service(): string

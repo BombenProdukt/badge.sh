@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\CodeClimate\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\CodeClimate\Client;
+use App\Badges\Templates\LinesTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,7 @@ final class LocBadge implements Badge
     {
         $response = $this->client->get($owner, $repo, 'snapshots');
 
-        return [
-            'label'       => 'lines of code',
-            'status'      => FormatNumber::execute($response['attributes']['lines_of_code']),
-            'statusColor' => 'blue.600',
-        ];
+        return LinesTemplate::make($response['attributes']['lines_of_code']);
     }
 
     public function service(): string

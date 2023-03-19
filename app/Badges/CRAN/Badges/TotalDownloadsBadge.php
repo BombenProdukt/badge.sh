@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\CRAN\Client;
+use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
 use Carbon\Carbon;
 use Illuminate\Routing\Route;
@@ -21,11 +21,7 @@ final class TotalDownloadsBadge implements Badge
     {
         $genesis = explode('T', Carbon::createFromTimestamp(0)->toISOString())[0];
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($this->client->logs("downloads/total/{$genesis}:last-day/{$package}")[0]['downloads']),
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsTemplate::make($this->client->logs("downloads/total/{$genesis}:last-day/{$package}")[0]['downloads']);
     }
 
     public function service(): string

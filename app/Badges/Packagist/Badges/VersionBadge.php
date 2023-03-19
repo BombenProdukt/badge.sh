@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -24,11 +23,7 @@ final class VersionBadge implements Badge
     {
         $version = $this->getVersion($this->client->get($vendor, $package), $channel);
 
-        return [
-            'label'        => 'packagist',
-            'status'       => ExtractVersion::execute($version),
-            'statusColor'  => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make($this->service(), $version);
     }
 
     public function service(): string

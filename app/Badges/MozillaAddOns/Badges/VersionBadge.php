@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\MozillaAddOns\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\MozillaAddOns\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +20,7 @@ final class VersionBadge implements Badge
     {
         $response = $this->client->get($package);
 
-        return [
-            'label'        => 'mozilla add-on',
-            'status'       => ExtractVersion::execute($response['current_version']['version']),
-            'statusColor'  => ExtractVersionColor::execute($response['current_version']['version']),
-        ];
+        return VersionTemplate::make($this->service(), $response['current_version']['version']);
     }
 
     public function service(): string

@@ -8,6 +8,7 @@ use App\Badges\Haxelib\Client;
 /**
  * @TODO
  */
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -22,11 +23,7 @@ final class VersionBadge implements Badge
     {
         $response = $this->client->get($project);
 
-        return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
-        ];
+        return VersionTemplate::make($this->service(), 'TODO');
     }
 
     public function service(): string

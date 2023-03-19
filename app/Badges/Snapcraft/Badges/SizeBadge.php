@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Snapcraft\Badges;
 
-use App\Actions\FormatBytes;
 use App\Badges\Snapcraft\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
+use PreemStudio\Formatter\FormatBytes;
 
 final class SizeBadge implements Badge
 {

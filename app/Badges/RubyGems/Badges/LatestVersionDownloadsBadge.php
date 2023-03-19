@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\RubyGems\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\RubyGems\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatNumber;
 
 final class LatestVersionDownloadsBadge implements Badge
 {

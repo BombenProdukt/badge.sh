@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\DeepScan\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\DeepScan\Client;
+use App\Badges\Templates\LinesTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,7 @@ final class LinesBadge implements Badge
     {
         $response = $this->client->get($teamId, $projectId, $branchId);
 
-        return [
-            'label'       => 'lines',
-            'status'      => FormatNumber::execute($response['loc']),
-            'statusColor' => 'blue.600',
-        ];
+        return LinesTemplate::make($response['loc']);
     }
 
     public function service(): string

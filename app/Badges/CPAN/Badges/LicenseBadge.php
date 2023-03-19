@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\CPAN\Badges;
 
 use App\Badges\CPAN\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -17,11 +18,7 @@ final class LicenseBadge implements Badge
 
     public function handle(string $distribution): array
     {
-        return [
-            'label'       => 'license',
-            'status'      => implode(' or ', $this->client->get("release/{$distribution}")['license']),
-            'statusColor' => 'green.600',
-        ];
+        return LicenseTemplate::make($this->client->get("release/{$distribution}")['license']);
     }
 
     public function service(): string

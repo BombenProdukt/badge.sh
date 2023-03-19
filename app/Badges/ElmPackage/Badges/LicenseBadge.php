@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\ElmPackage\Badges;
 
 use App\Badges\ElmPackage\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -17,13 +18,7 @@ final class LicenseBadge implements Badge
 
     public function handle(string $owner, string $name): array
     {
-        $license = $this->client->get($owner, $name)['license'];
-
-        return [
-            'label'        => 'license',
-            'status'       => $license,
-            'statusColor'  => 'blue.600',
-        ];
+        return LicenseTemplate::make($this->client->get($owner, $name)['license']);
     }
 
     public function service(): string

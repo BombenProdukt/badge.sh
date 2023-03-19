@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WinGet\Badges;
 
+use App\Badges\Templates\LicenseTemplate;
 use App\Badges\WinGet\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
@@ -21,11 +22,7 @@ final class LicenseBadge implements Badge
         $document = Yaml::parse(base64_decode($this->client->get($appId)['content']));
         $document = Yaml::parse(base64_decode($this->client->locale($appId, $document['PackageVersion'], $document['DefaultLocale'])['content']));
 
-        return [
-            'label'        => 'license',
-            'status'       => str_replace(' License', '', $document['License']),
-            'statusColor'  => 'blue.600',
-        ];
+        return LicenseTemplate::make($document['License']);
     }
 
     public function service(): string

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Badges\Codecov\Badges;
 
 use App\Actions\ExtractCoverageColor;
-use App\Actions\FormatPercentage;
 use App\Badges\Codecov\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatPercentage;
 
 final class StatusBadge implements Badge
 {

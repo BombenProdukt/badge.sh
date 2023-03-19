@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\CRAN\Badges;
 
 use App\Badges\CRAN\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -19,11 +20,7 @@ final class LicenseBadge implements Badge
     {
         $response = $this->client->db($package);
 
-        return [
-            'label'       => 'license',
-            'status'      => preg_replace('/\s*\S\s+file\s+LICEN[CS]E$/i', '', $response['License']),
-            'statusColor' => 'blue.600',
-        ];
+        return LicenseTemplate::make(preg_replace('/\s*\S\s+file\s+LICEN[CS]E$/i', '', $response['License']));
     }
 
     public function service(): string

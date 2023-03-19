@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\NPM\Client;
+use App\Badges\Templates\DownloadsPerYearTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,7 @@ final class YearlyDownloadsBadge implements Badge
     {
         $downloads = $this->client->api("downloads/point/last-year/{$package}")['downloads'];
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($downloads).'/year',
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsPerYearTemplate::make($downloads);
     }
 
     public function service(): string

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\Liberapay\Badges;
 
-use App\Actions\FormatMoney;
 use App\Badges\Liberapay\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatMoney;
 
 final class GivesBadge implements Badge
 {

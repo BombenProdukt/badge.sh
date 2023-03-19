@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Matrix\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\Matrix\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Str;
+use PreemStudio\Formatter\FormatNumber;
 
 final class MemberBadge implements Badge
 {

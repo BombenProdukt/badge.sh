@@ -8,6 +8,7 @@ use App\Badges\Haxelib\Client;
 /**
  * @TODO
  */
+use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -22,11 +23,7 @@ final class TotalDownloadsBadge implements Badge
     {
         $response = $this->client->get($project);
 
-        return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
-        ];
+        return DownloadsTemplate::make(0);
     }
 
     public function service(): string

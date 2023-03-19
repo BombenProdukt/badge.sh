@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\AtomPackage\Badges;
 
 use App\Badges\AtomPackage\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -19,11 +20,7 @@ final class LicenseBadge implements Badge
     {
         $response = $this->client->get($package);
 
-        return [
-            'label'       => 'license',
-            'status'      => $response['versions'][$response['releases']['latest']]['license'],
-            'statusColor' => 'blue.600',
-        ];
+        return LicenseTemplate::make($response['versions'][$response['releases']['latest']]['license']);
     }
 
     public function service(): string

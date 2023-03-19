@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\LGTM\Client;
+use App\Badges\Templates\LinesTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -26,11 +26,10 @@ final class LinesBadge implements Badge
     {
         $response = $this->client->get($provider, $owner, $name, $language);
 
-        return [
-            'label'       => $language ? 'lines: '.($this->languages[$response['lines']] ?? $language) : 'lines',
-            'status'      => FormatNumber::execute($language ? $response['lines'] : array_reduce($response['languages'], fn ($accu, $curr) => $accu + $curr['lines'], 0)),
-            'statusColor' => 'blue.600',
-        ];
+        return LinesTemplate::make(
+            // $language ? 'lines: '.($this->languages[$response['lines']] ?? $language) : 'lines',
+            $language ? $response['lines'] : array_reduce($response['languages'], fn ($accu, $curr) => $accu + $curr['lines'], 0),
+        );
     }
 
     public function service(): string

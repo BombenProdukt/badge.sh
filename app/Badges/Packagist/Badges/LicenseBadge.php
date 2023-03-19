@@ -6,6 +6,7 @@ namespace App\Badges\Packagist\Badges;
 
 use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -22,11 +23,7 @@ final class LicenseBadge implements Badge
     {
         $packageMeta = $this->client->get($vendor, $package);
 
-        return [
-            'label'       => 'license',
-            'status'      => $packageMeta['versions'][$this->getVersion($packageMeta, $channel)]['license'][0] ?? 'unknown',
-            'statusColor' => 'blue.600',
-        ];
+        return LicenseTemplate::make($packageMeta['versions'][$this->getVersion($packageMeta, $channel)]['license'][0]);
     }
 
     public function service(): string

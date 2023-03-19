@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\GitHub\Badges;
 
 use App\Badges\GitHub\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -19,11 +20,7 @@ final class LicenseBadge implements Badge
     {
         $result = $this->client->makeRepoQuery($owner, $repo, 'licenseInfo { spdxId }');
 
-        return [
-            'label'       => 'license',
-            'status'      => $result['licenseInfo'] ? $result['licenseInfo']['spdxId'] : 'no license',
-            'statusColor' => $result['licenseInfo'] ? 'blue.600' : 'gray.600',
-        ];
+        return LicenseTemplate::make($result['licenseInfo']['spdxId']);
     }
 
     public function service(): string

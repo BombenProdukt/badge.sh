@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\LGTM\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatNumber;
 
 final class AlertsBadge implements Badge
 {

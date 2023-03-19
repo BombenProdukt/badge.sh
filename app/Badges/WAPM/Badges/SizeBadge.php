@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\WAPM\Badges;
 
-use App\Actions\FormatBytes;
 use App\Badges\WAPM\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatBytes;
 
 final class SizeBadge implements Badge
 {

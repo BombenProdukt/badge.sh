@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\GitLab\Badges;
 
 use App\Badges\GitLab\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -19,11 +20,7 @@ final class LicenseBadge implements Badge
     {
         $response = $this->client->rest($owner, $repo, '?license=true');
 
-        return [
-            'label'       => 'license',
-            'status'      => str_replace(' License', ' ', $response->json('license.name')),
-            'statusColor' => 'blue.600',
-        ];
+        return LicenseTemplate::make($response->json('license.name'));
     }
 
     public function service(): string

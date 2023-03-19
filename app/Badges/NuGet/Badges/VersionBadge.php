@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\NuGet\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\NuGet\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -33,11 +32,7 @@ final class VersionBadge implements Badge
             $version = $this->latest($this->stable($versions));
         }
 
-        return [
-            'label'       => 'nuget',
-            'status'      => ExtractVersion::execute($version),
-            'statusColor' => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make($this->service(), $version);
     }
 
     public function service(): string

@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
+use App\Badges\Templates\VersionTemplate;
 use App\Badges\VisualStudioMarketplace\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
@@ -21,11 +20,7 @@ final class VersionBadge implements Badge
     {
         $version = $this->client->get($extension)['versions'][0]['version'];
 
-        return [
-            'label'        => 'VS Marketplace',
-            'status'       => ExtractVersion::execute($version),
-            'statusColor'  => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make($this->service(), $version);
     }
 
     public function service(): string

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\Shardbox\Badges;
 
 use App\Badges\Shardbox\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -19,11 +20,7 @@ final class LicenseBadge implements Badge
     {
         preg_match('/opensource.org\\/licenses\\/[^>]+?>([^<]+)<\\//i', $this->client->get($shard), $matches);
 
-        return [
-            'label'       => 'license',
-            'status'      => $matches[1],
-            'statusColor' => 'blue.600',
-        ];
+        return LicenseTemplate::make($matches[1]);
     }
 
     public function service(): string

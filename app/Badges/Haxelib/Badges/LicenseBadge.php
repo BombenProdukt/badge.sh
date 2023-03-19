@@ -8,6 +8,7 @@ use App\Badges\Haxelib\Client;
 /**
  * @TODO
  */
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -22,11 +23,7 @@ final class LicenseBadge implements Badge
     {
         $response = $this->client->get($project);
 
-        return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
-        ];
+        return LicenseTemplate::make('TODO');
     }
 
     public function service(): string

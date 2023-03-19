@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\CTAN\Badges;
 
 use App\Badges\CTAN\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -17,11 +18,7 @@ final class LicenseBadge implements Badge
 
     public function handle(string $package): array
     {
-        return [
-            'label'       => 'license',
-            'status'      => $this->client->api($package)['license'],
-            'statusColor' => 'green.600',
-        ];
+        return LicenseTemplate::make($this->client->api($package)['license']);
     }
 
     public function service(): string

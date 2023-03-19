@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\RubyGems\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\RubyGems\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -36,11 +35,7 @@ final class VersionBadge implements Badge
             $version = $this->latest($this->stable($versions));
         }
 
-        return [
-            'label'        => 'rubygems',
-            'status'       => ExtractVersion::execute($version),
-            'statusColor'  => ExtractVersionColor::execute($version),
-        ];
+        return VersionTemplate::make($this->service(), $version);
     }
 
     public function service(): string

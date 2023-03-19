@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Actions;
 
-use App\Actions\FormatNumber;
 use Illuminate\Support\Facades\Http;
+use PreemStudio\Formatter\FormatNumber;
 
 final class RequestDependents
 {

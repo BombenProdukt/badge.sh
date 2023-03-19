@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\Packagist\Client;
+use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,7 @@ final class TotalDownloadsBadge implements Badge
     {
         $packageMeta = $this->client->get($vendor, $package);
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($packageMeta['downloads']['total']),
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsTemplate::make($packageMeta['downloads']['total']);
     }
 
     public function service(): string

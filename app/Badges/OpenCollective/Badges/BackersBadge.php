@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenCollective\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\OpenCollective\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatNumber;
 
 final class BackersBadge implements Badge
 {

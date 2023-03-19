@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\NPM\Client;
+use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -20,11 +20,7 @@ final class TotalDownloadsBadge implements Badge
     {
         $downloads = $this->client->api('downloads/range/2005-01-01:'.date('Y')."-01-01/{$package}")['downloads'];
 
-        return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute(collect($downloads)->sum('downloads')),
-            'statusColor' => 'green.600',
-        ];
+        return DownloadsTemplate::make(collect($downloads)->sum('downloads'));
     }
 
     public function service(): string

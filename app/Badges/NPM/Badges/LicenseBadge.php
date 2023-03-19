@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\NPM\Badges;
 
 use App\Badges\NPM\Client;
+use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -17,11 +18,7 @@ final class LicenseBadge implements Badge
 
     public function handle(string $package, string $tag = 'latest'): array
     {
-        return [
-            'label'       => 'license',
-            'status'      => $this->client->unpkg("{$package}@{$tag}/package.json")['license'],
-            'statusColor' => 'blue.600',
-        ];
+        return LicenseTemplate::make($this->client->unpkg("{$package}@{$tag}/package.json")['license']);
     }
 
     public function service(): string

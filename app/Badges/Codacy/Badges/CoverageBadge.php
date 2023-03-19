@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Codacy\Badges;
 
-use App\Actions\ExtractCoverageColor;
-use App\Actions\FormatPercentage;
 use App\Badges\Codacy\Client;
+use App\Badges\Templates\CoverageTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,13 +20,7 @@ final class CoverageBadge implements Badge
     {
         preg_match('/text-anchor=[^>]*?>([^<]+)<\//i', $this->client->get('coverage', $projectId, $branch), $matches);
 
-        $percentage = trim($matches[1]);
-
-        return [
-            'label'  => 'coverage',
-            'status' => FormatPercentage::execute($percentage),
-            'color'  => ExtractCoverageColor::execute((float) $percentage),
-        ];
+        return CoverageTemplate::make(trim($matches[1]));
     }
 
     public function service(): string

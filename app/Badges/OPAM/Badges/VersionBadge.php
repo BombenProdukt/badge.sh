@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\OPAM\Badges;
 
-use App\Actions\ExtractVersion;
-use App\Actions\ExtractVersionColor;
 use App\Badges\OPAM\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
@@ -21,11 +20,7 @@ final class VersionBadge implements Badge
     {
         preg_match('/class="package-version">([^<]+)<\//i', $this->client->get($name), $matches);
 
-        return [
-            'label'        => 'opam',
-            'status'       => ExtractVersion::execute($matches[1]),
-            'statusColor'  => ExtractVersionColor::execute($matches[1]),
-        ];
+        return VersionTemplate::make($this->service(), $matches[1]);
     }
 
     public function service(): string

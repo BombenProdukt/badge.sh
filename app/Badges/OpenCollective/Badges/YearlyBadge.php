@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenCollective\Badges;
 
-use App\Actions\FormatMoney;
 use App\Badges\OpenCollective\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatMoney;
 
 final class YearlyBadge implements Badge
 {

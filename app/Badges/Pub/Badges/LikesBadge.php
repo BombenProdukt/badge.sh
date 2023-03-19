@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\Pub\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\Pub\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatNumber;
 
 final class LikesBadge implements Badge
 {

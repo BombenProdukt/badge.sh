@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\AzurePipelines\Badges;
 
-use App\Actions\FormatNumber;
 use App\Badges\AzurePipelines\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
+use PreemStudio\Formatter\FormatNumber;
 
 final class BuildTestResultBadge implements Badge
 {
