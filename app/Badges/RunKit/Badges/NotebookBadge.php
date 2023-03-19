@@ -15,7 +15,7 @@ final class NotebookBadge implements Badge
         //
     }
 
-    public function handle(string $owner, string $notebook, string $path): array
+    public function handle(string $owner, string $notebook, ?string $path = null): array
     {
         $response = $this->client->get($owner, $notebook, $path);
 
@@ -46,7 +46,7 @@ final class NotebookBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/runkit/{owner}/{notebook}/{path}',
+            '/runkit/{owner}/{notebook}/{path?}',
         ];
     }
 

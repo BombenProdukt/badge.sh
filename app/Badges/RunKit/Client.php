@@ -16,7 +16,7 @@ final class Client
         $this->client = Http::baseUrl('https://runkit.io/')->throw();
     }
 
-    public function get(string $owner, string $notebook, string $path): array
+    public function get(string $owner, string $notebook, ?string $path = null): array
     {
         return $this->client->get("{$owner}/{$notebook}/branches/master/{$path}")->json();
     }

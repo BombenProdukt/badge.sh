@@ -260,7 +260,7 @@ return [
         App\Badges\PyPI\BadgeServiceProvider::class,
         App\Badges\Reddit\BadgeServiceProvider::class,
         App\Badges\RubyGems\BadgeServiceProvider::class,
-        // App\Badges\RunKit\BadgeServiceProvider::class,
+        App\Badges\RunKit\BadgeServiceProvider::class,
         App\Badges\Scoop\BadgeServiceProvider::class,
         App\Badges\Shardbox\BadgeServiceProvider::class,
         App\Badges\Snapcraft\BadgeServiceProvider::class,
