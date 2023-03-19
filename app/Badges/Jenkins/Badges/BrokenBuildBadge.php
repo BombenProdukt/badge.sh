@@ -22,9 +22,9 @@ final class BrokenBuildBadge implements Badge
         $builds = collect($this->client->builds($hostname, $job))->filter(fn (array $build) => strtolower($build['result']) !== 'success');
 
         return [
-            'label'       => 'Broken Builds',
-            'status'      => FormatNumber::execute($builds->count()),
-            'statusColor' => match (true) {
+            'label'        => 'Broken Builds',
+            'message'      => FormatNumber::execute($builds->count()),
+            'messageColor' => match (true) {
                 $builds->count() < 10   => 'green.600',
                 $builds->count() < 20   => 'orange.600',
                 default                 => 'red.600',

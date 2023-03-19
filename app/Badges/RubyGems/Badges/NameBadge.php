@@ -18,9 +18,9 @@ final class NameBadge implements Badge
     public function handle(string $gem): array
     {
         return [
-            'label'       => 'name',
-            'status'      => $this->client->get("gems/{$gem}")['name'],
-            'statusColor' => 'green.600',
+            'label'        => 'name',
+            'message'      => $this->client->get("gems/{$gem}")['name'],
+            'messageColor' => 'green.600',
         ];
     }
 

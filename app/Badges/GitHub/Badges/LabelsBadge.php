@@ -20,9 +20,9 @@ final class LabelsBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, $this->getQueryBody($label, $states));
 
         return [
-            'label'       => $label,
-            'status'      => strval($result['label'] ? $result['label']['issues']['totalCount'] : 0),
-            'statusColor' => $result['label'] ? $result['label']['color'] : 'gray.600',
+            'label'        => $label,
+            'message'      => strval($result['label'] ? $result['label']['issues']['totalCount'] : 0),
+            'messageColor' => $result['label'] ? $result['label']['color'] : 'gray.600',
         ];
     }
 

@@ -11,9 +11,9 @@ final class DownloadsPerQuarterTemplate
     public static function make(int $count): array
     {
         return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($count).'/quarter',
-            'statusColor' => 'green.600',
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($count).'/quarter',
+            'messageColor' => 'green.600',
         ];
     }
 }

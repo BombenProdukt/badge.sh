@@ -21,9 +21,9 @@ final class UsersBadge implements Badge
         $response = $this->client->get($package);
 
         return [
-            'label'       => 'users',
-            'status'      => FormatNumber::execute($response['average_daily_users']),
-            'statusColor' => 'green.600',
+            'label'        => 'users',
+            'message'      => FormatNumber::execute($response['average_daily_users']),
+            'messageColor' => 'green.600',
         ];
     }
 

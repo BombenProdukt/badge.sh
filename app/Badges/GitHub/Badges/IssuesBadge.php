@@ -21,9 +21,9 @@ final class IssuesBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'issues { totalCount }');
 
         return [
-            'label'       => 'issues',
-            'status'      => FormatNumber::execute($result['issues']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'issues',
+            'message'      => FormatNumber::execute($result['issues']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

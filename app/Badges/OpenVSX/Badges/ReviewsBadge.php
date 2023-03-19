@@ -20,9 +20,9 @@ final class ReviewsBadge implements Badge
         $response = $this->client->get($namespace, $package);
 
         return [
-            'label'       => 'reviews',
-            'status'      => (string) $response['reviewCount'],
-            'statusColor' => 'green.600',
+            'label'        => 'reviews',
+            'message'      => (string) $response['reviewCount'],
+            'messageColor' => 'green.600',
         ];
     }
 

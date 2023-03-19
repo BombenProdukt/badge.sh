@@ -20,9 +20,9 @@ final class PointsBadge implements Badge
         $response = $this->client->api("packages/{$package}/score");
 
         return [
-            'label'       => 'popularity',
-            'status'      => $response['grantedPoints'].'/'.$response['maxPoints'],
-            'statusColor' => 'green.600',
+            'label'        => 'popularity',
+            'message'      => $response['grantedPoints'].'/'.$response['maxPoints'],
+            'messageColor' => 'green.600',
         ];
     }
 

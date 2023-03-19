@@ -21,9 +21,9 @@ final class LanguageBadge implements Badge
         $packageMeta = $this->client->get($package);
 
         return [
-            'label'       => 'language',
-            'status'      => $packageMeta['language'],
-            'statusColor' => 'green.600',
+            'label'        => 'language',
+            'message'      => $packageMeta['language'],
+            'messageColor' => 'green.600',
         ];
     }
 

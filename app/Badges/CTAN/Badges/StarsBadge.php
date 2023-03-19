@@ -21,9 +21,9 @@ final class StarsBadge implements Badge
         preg_match('/<span>[^<]*?([\d.]+)\s/i', $this->client->web($package), $matches);
 
         return [
-            'label'       => 'rating',
-            'status'      => FormatStars::execute($matches[1]),
-            'statusColor' => 'green.600',
+            'label'        => 'rating',
+            'message'      => FormatStars::execute($matches[1]),
+            'messageColor' => 'green.600',
         ];
     }
 

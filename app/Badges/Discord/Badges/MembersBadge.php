@@ -21,9 +21,9 @@ final class MembersBadge implements Badge
         $response = $this->client->get($inviteCode);
 
         return [
-            'label'       => $response['guild']['name'] ?? 'discord',
-            'status'      => FormatNumber::execute($response['approximate_member_count']).' members',
-            'statusColor' => '7289DA',
+            'label'        => $response['guild']['name'] ?? 'discord',
+            'message'      => FormatNumber::execute($response['approximate_member_count']).' members',
+            'messageColor' => '7289DA',
         ];
     }
 

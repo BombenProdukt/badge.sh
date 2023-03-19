@@ -210,6 +210,7 @@ return [
         App\Badges\Badge\BadgeServiceProvider::class,
         App\Badges\Badgesize\BadgeServiceProvider::class,
         App\Badges\Bundlephobia\BadgeServiceProvider::class,
+        App\Badges\CDNJS\BadgeServiceProvider::class,
         App\Badges\ChromeWebStore\BadgeServiceProvider::class,
         App\Badges\CircleCI\BadgeServiceProvider::class,
         App\Badges\CocoaPods\BadgeServiceProvider::class,

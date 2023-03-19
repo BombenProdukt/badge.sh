@@ -25,9 +25,9 @@ final class StatusBadge implements Badge
         preg_match('/<rect[^>]*?fill="([^"]+)"[^>]*?x=/i', $svg, $colors);
 
         return [
-            'label'       => $texts[1][0] ?: 'Azure Pipelines',
-            'status'      => $texts[1][1],
-            'statusColor' => trim(str_replace('#', '', $colors[1] ?? '')),
+            'label'        => $texts[1][0] ?: 'Azure Pipelines',
+            'message'      => $texts[1][1],
+            'messageColor' => trim(str_replace('#', '', $colors[1] ?? '')),
         ];
     }
 

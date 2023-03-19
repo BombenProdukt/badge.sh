@@ -21,9 +21,9 @@ final class LikesBadge implements Badge
         $likeCount = $this->client->api("packages/{$package}/score")['likeCount'];
 
         return [
-            'label'       => 'popularity',
-            'status'      => FormatNumber::execute($likeCount),
-            'statusColor' => 'green.600',
+            'label'        => 'popularity',
+            'message'      => FormatNumber::execute($likeCount),
+            'messageColor' => 'green.600',
         ];
     }
 

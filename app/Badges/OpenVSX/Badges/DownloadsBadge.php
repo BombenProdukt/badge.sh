@@ -21,9 +21,9 @@ final class DownloadsBadge implements Badge
         $response = $this->client->get($namespace, $package);
 
         return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($response['downloadCount']),
-            'statusColor' => 'green.600',
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($response['downloadCount']),
+            'messageColor' => 'green.600',
         ];
     }
 

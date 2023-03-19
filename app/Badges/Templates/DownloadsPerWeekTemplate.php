@@ -11,9 +11,9 @@ final class DownloadsPerWeekTemplate
     public static function make(int $count): array
     {
         return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($count).'/week',
-            'statusColor' => 'green.600',
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($count).'/week',
+            'messageColor' => 'green.600',
         ];
     }
 }

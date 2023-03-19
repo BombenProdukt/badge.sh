@@ -27,9 +27,9 @@ final class RatingBadge implements Badge
             ->textContent;
 
         return [
-            'label'       => 'rating',
-            'status'      => Regex::match('/Average rating (.*) out of 5/', $textContent)->group(1),
-            'statusColor' => 'green.600',
+            'label'        => 'rating',
+            'message'      => Regex::match('/Average rating (.*) out of 5/', $textContent)->group(1),
+            'messageColor' => 'green.600',
         ];
     }
 

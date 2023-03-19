@@ -19,9 +19,9 @@ final class LikesBadge implements Badge
     public function handle(string $distribution): array
     {
         return [
-            'label'       => 'likes',
-            'status'      => FormatNumber::execute($this->client->get('favorite/agg_by_distributions', ['distribution' => $distribution])['favorites'][$distribution] ?? 0),
-            'statusColor' => 'green.600',
+            'label'        => 'likes',
+            'message'      => FormatNumber::execute($this->client->get('favorite/agg_by_distributions', ['distribution' => $distribution])['favorites'][$distribution] ?? 0),
+            'messageColor' => 'green.600',
         ];
     }
 

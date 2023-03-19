@@ -18,9 +18,9 @@ final class ResponseBadge implements Badge
     public function handle(string $apiKey): array
     {
         return [
-            'label'       => 'response',
-            'status'      => $this->client->get($apiKey)['average_response_time'].'ms',
-            'statusColor' => 'blue.600',
+            'label'        => 'response',
+            'message'      => $this->client->get($apiKey)['average_response_time'].'ms',
+            'messageColor' => 'blue.600',
         ];
     }
 

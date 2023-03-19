@@ -19,9 +19,9 @@ final class LatestVersionDownloadsBadge implements Badge
     public function handle(string $gem): array
     {
         return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($this->client->get("gems/{$gem}")['version_downloads']).' /version',
-            'statusColor' => 'green.600',
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($this->client->get("gems/{$gem}")['version_downloads']).' /version',
+            'messageColor' => 'green.600',
         ];
     }
 

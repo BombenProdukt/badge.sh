@@ -21,9 +21,9 @@ final class DependentsBadge implements Badge
         $response = $this->client->db("/-/revdeps/{$package}");
 
         return [
-            'label'       => 'dependents',
-            'status'      => FormatNumber::execute(count($response[$package]['Depends'])),
-            'statusColor' => 'green.600',
+            'label'        => 'dependents',
+            'message'      => FormatNumber::execute(count($response[$package]['Depends'])),
+            'messageColor' => 'green.600',
         ];
     }
 

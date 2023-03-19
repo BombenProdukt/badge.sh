@@ -31,9 +31,9 @@ final class FollowersBadge implements Badge
         }
 
         return [
-            'label'       => 'followers',
-            'status'      => FormatNumber::execute($followersCount),
-            'statusColor' => 'F1680D',
+            'label'        => 'followers',
+            'message'      => FormatNumber::execute($followersCount),
+            'messageColor' => 'F1680D',
         ];
     }
 

@@ -21,9 +21,9 @@ final class PopularityBadge implements Badge
         $percentage = (float) $this->client->api("packages/{$package}/score")['popularityScore'];
 
         return [
-            'label'       => 'popularity',
-            'status'      => FormatPercentage::execute($percentage * 100),
-            'statusColor' => 'green.600',
+            'label'        => 'popularity',
+            'message'      => FormatPercentage::execute($percentage * 100),
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -21,9 +21,9 @@ final class StatusBadge implements Badge
         $response = $this->client->get($project, $identifier);
 
         return [
-            'label'       => 'Dependabot',
-            'status'      => $response['status'],
-            'statusColor' => $response['colour'],
+            'label'        => 'Dependabot',
+            'message'      => $response['status'],
+            'messageColor' => $response['colour'],
         ];
     }
 

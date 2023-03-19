@@ -23,9 +23,9 @@ final class TagBadge implements Badge
         $latestTag = count($tags) > 0 ? $tags[0]['node']['name'] : null;
 
         return [
-            'label'       => 'latest tag',
-            'status'      => ExtractVersion::execute($latestTag),
-            'statusColor' => 'blue.600',
+            'label'        => 'latest tag',
+            'message'      => ExtractVersion::execute($latestTag),
+            'messageColor' => 'blue.600',
         ];
     }
 

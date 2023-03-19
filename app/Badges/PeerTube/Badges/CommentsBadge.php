@@ -21,9 +21,9 @@ final class CommentsBadge implements Badge
         $response = $this->client->get($instance, "videos/{$video}/comment-threads");
 
         return [
-            'label'       => 'comments',
-            'status'      => FormatNumber::execute($response['total']),
-            'statusColor' => 'F1680D',
+            'label'        => 'comments',
+            'message'      => FormatNumber::execute($response['total']),
+            'messageColor' => 'F1680D',
         ];
     }
 

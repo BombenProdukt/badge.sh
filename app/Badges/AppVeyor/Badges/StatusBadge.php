@@ -21,9 +21,9 @@ final class StatusBadge implements Badge
         $status = $this->client->get($account, $project, $branch)['build']['status'];
 
         return [
-            'label'       => 'appveyor',
-            'status'      => $status,
-            'statusColor' => $status === 'success' ? 'green.600' : 'red.600',
+            'label'        => 'appveyor',
+            'message'      => $status,
+            'messageColor' => $status === 'success' ? 'green.600' : 'red.600',
         ];
     }
 

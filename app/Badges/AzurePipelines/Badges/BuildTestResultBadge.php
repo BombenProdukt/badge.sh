@@ -58,9 +58,9 @@ final class BuildTestResultBadge implements Badge
         }
 
         return [
-            'label'       => 'Test',
-            'status'      => $status,
-            'statusColor' => $color,
+            'label'        => 'Test',
+            'message'      => $status,
+            'messageColor' => $color,
         ];
     }
 

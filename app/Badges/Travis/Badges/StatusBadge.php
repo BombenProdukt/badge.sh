@@ -25,9 +25,9 @@ final class StatusBadge implements Badge
         $result = $this->availableStates()->firstWhere(fn (array $state) => str_contains($org, $state[0]) || str_contains($com, $state[0]));
 
         return [
-            'label'       => 'travis',
-            'status'      => $result[0],
-            'statusColor' => $result[1],
+            'label'        => 'travis',
+            'message'      => $result[0],
+            'messageColor' => $result[1],
         ];
     }
 

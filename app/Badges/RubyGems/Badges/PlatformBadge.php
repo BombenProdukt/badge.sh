@@ -18,9 +18,9 @@ final class PlatformBadge implements Badge
     public function handle(string $gem): array
     {
         return [
-            'label'       => 'platform',
-            'status'      => $this->client->get("gems/{$gem}")['platform'],
-            'statusColor' => 'green.600',
+            'label'        => 'platform',
+            'message'      => $this->client->get("gems/{$gem}")['platform'],
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -22,9 +22,9 @@ final class OpenMergeRequestsBadge implements Badge
         $response = $this->client->rest($repo, 'merge_requests?state=opened');
 
         return [
-            'label'       => 'open MRs',
-            'status'      => FormatNumber::execute((int) $response->header('x-total')),
-            'statusColor' => 'blue.600',
+            'label'        => 'open MRs',
+            'message'      => FormatNumber::execute((int) $response->header('x-total')),
+            'messageColor' => 'blue.600',
         ];
     }
 

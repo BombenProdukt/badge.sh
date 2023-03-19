@@ -22,16 +22,16 @@ final class IndentBadge implements Badge
 
         if (empty($response['devDependencies']) || empty($response['devDependencies']['xo'])) {
             return [
-                'label'       => 'xo',
-                'status'      => 'not enabled',
-                'statusColor' => 'gray.600',
+                'label'        => 'xo',
+                'message'      => 'not enabled',
+                'messageColor' => 'gray.600',
             ];
         }
 
         return [
-            'label'       => 'xo',
-            'status'      => $this->getIndent($response['xo']['space'] ?? false),
-            'statusColor' => '5ed9c7',
+            'label'        => 'xo',
+            'message'      => $this->getIndent($response['xo']['space'] ?? false),
+            'messageColor' => '5ed9c7',
         ];
     }
 
@@ -73,24 +73,24 @@ final class IndentBadge implements Badge
     {
         return [
             [
-                'label'       => 'xo',
-                'status'      => 'tab',
-                'statusColor' => '5ed9c7',
+                'label'        => 'xo',
+                'message'      => 'tab',
+                'messageColor' => '5ed9c7',
             ],
             [
-                'label'       => 'xo',
-                'status'      => '2 spaces',
-                'statusColor' => '5ed9c7',
+                'label'        => 'xo',
+                'message'      => '2 spaces',
+                'messageColor' => '5ed9c7',
             ],
             [
-                'label'       => 'xo',
-                'status'      => '1 space',
-                'statusColor' => '5ed9c7',
+                'label'        => 'xo',
+                'message'      => '1 space',
+                'messageColor' => '5ed9c7',
             ],
             [
-                'label'       => 'xo',
-                'status'      => '4 spaces',
-                'statusColor' => '5ed9c7',
+                'label'        => 'xo',
+                'message'      => '4 spaces',
+                'messageColor' => '5ed9c7',
             ],
         ];
     }

@@ -27,9 +27,9 @@ final class LastCommitBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, "branch: ref(qualifiedName: \"{$reference}\") { target { ... on Commit { history(first: 1) { nodes { committedDate } } } } }");
 
         return [
-            'label'       => 'last commit',
-            'status'      => Carbon::parse($result['branch']['target']['history']['nodes'][0]['committedDate'])->diffForHumans(),
-            'statusColor' => 'green.600',
+            'label'        => 'last commit',
+            'message'      => Carbon::parse($result['branch']['target']['history']['nodes'][0]['committedDate'])->diffForHumans(),
+            'messageColor' => 'green.600',
         ];
     }
 

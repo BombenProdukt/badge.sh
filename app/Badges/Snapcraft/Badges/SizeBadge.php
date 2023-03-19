@@ -29,8 +29,8 @@ final class SizeBadge implements Badge
 
         return [
             'label'        => 'distrib size',
-            'status'       => FormatBytes::execute($channel['download']['size']),
-            'statusColor'  => 'green.600',
+            'message'      => FormatBytes::execute($channel['download']['size']),
+            'messageColor' => 'green.600',
         ];
     }
 

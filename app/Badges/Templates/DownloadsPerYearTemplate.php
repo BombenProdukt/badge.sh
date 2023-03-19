@@ -11,9 +11,9 @@ final class DownloadsPerYearTemplate
     public static function make(int $count): array
     {
         return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($count).'/year',
-            'statusColor' => 'green.600',
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($count).'/year',
+            'messageColor' => 'green.600',
         ];
     }
 }

@@ -22,9 +22,9 @@ final class ClosedIssuesBadge implements Badge
         $response = $this->client->graphql($repo, 'issues(state:closed){ count }')['issues']['count'];
 
         return [
-            'label'       => 'closed issues',
-            'status'      => FormatNumber::execute($response),
-            'statusColor' => 'blue.600',
+            'label'        => 'closed issues',
+            'message'      => FormatNumber::execute($response),
+            'messageColor' => 'blue.600',
         ];
     }
 

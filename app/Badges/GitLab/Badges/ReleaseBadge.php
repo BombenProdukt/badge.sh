@@ -22,16 +22,16 @@ final class ReleaseBadge implements Badge
 
         if (empty($response)) {
             return [
-                'label'       => 'release',
-                'status'      => 'none',
-                'statusColor' => 'yellow.600',
+                'label'        => 'release',
+                'message'      => 'none',
+                'messageColor' => 'yellow.600',
             ];
         }
 
         return [
-            'label'       => 'release',
-            'status'      => $response['name'],
-            'statusColor' => 'blue.600',
+            'label'        => 'release',
+            'message'      => $response['name'],
+            'messageColor' => 'blue.600',
         ];
     }
 

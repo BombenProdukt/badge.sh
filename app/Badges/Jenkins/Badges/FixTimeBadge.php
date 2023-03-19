@@ -45,9 +45,9 @@ final class FixTimeBadge implements Badge
         $statusColorTime = ($fixTime / 3600000);
 
         return [
-            'label'       => 'Fix Builds',
-            'status'      => $fixTime,
-            'statusColor' => match (true) {
+            'label'        => 'Fix Builds',
+            'message'      => $fixTime,
+            'messageColor' => match (true) {
                 $statusColorTime < 2 => 'green.600',
                 $statusColorTime < 6 => 'orange.600',
                 default              => 'red.600',

@@ -22,9 +22,9 @@ final class MemberBadge implements Badge
         $count = $this->client->fetchMembersCount($room, $server);
 
         return [
-            'label'       => "#{$room}:{$server}",
-            'status'      => FormatNumber::execute($count).' '.Str::plural('member', $count),
-            'statusColor' => 'blue.600',
+            'label'        => "#{$room}:{$server}",
+            'message'      => FormatNumber::execute($count).' '.Str::plural('member', $count),
+            'messageColor' => 'blue.600',
         ];
     }
 

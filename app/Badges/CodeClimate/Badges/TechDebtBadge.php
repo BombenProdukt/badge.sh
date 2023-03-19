@@ -23,9 +23,9 @@ final class TechDebtBadge implements Badge
         $ratio    = $response['meta']['measures']['technical_debt_ratio']['value'];
 
         return [
-            'label'       => 'technical debt',
-            'status'      => FormatNumber::execute($ratio),
-            'statusColor' => match (true) {
+            'label'        => 'technical debt',
+            'message'      => FormatNumber::execute($ratio),
+            'messageColor' => match (true) {
                 $ratio <= 5  => 'green.600' ,
                 $ratio <= 10 => '9C1' ,
                 $ratio <= 20 => 'AA2' ,

@@ -31,9 +31,9 @@ final class AccountBadge implements Badge
         }
 
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'        => 'TODO',
+            'message'      => 'TODO',
+            'messageColor' => 'TODO',
         ];
     }
 

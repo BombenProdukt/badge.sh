@@ -24,9 +24,9 @@ final class DependentsBadge implements Badge
         preg_match('/"dependentsCount"\s*:\s*(\d+)/', $response, $matches);
 
         return [
-            'label'       => 'dependents',
-            'status'      => FormatNumber::execute((int) $matches[1]),
-            'statusColor' => 'green.600',
+            'label'        => 'dependents',
+            'message'      => FormatNumber::execute((int) $matches[1]),
+            'messageColor' => 'green.600',
         ];
     }
 

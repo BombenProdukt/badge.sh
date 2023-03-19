@@ -22,9 +22,9 @@ final class FlutterPlatformBadge implements Badge
         $platforms = implode('|', $this->parseTags($pubScores['panaReport']['derivedTags'], 'platform'));
 
         return [
-            'label'       => 'flutter',
-            'status'      => $platforms ?? 'unknown',
-            'statusColor' => $platforms ? 'blue.600' : 'gray.600',
+            'label'        => 'flutter',
+            'message'      => $platforms ?? 'unknown',
+            'messageColor' => $platforms ? 'blue.600' : 'gray.600',
         ];
     }
 

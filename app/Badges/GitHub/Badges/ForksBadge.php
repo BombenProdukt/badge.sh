@@ -21,9 +21,9 @@ final class ForksBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'forks { totalCount }');
 
         return [
-            'label'       => 'forks',
-            'status'      => FormatNumber::execute($result['forks']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'forks',
+            'message'      => FormatNumber::execute($result['forks']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

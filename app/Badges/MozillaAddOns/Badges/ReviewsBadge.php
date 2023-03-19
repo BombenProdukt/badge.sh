@@ -21,9 +21,9 @@ final class ReviewsBadge implements Badge
         $response = $this->client->get($package);
 
         return [
-            'label'       => 'reviews',
-            'status'      => FormatNumber::execute($response['ratings']['average']),
-            'statusColor' => 'green.600',
+            'label'        => 'reviews',
+            'message'      => FormatNumber::execute($response['ratings']['average']),
+            'messageColor' => 'green.600',
         ];
     }
 

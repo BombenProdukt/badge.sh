@@ -21,9 +21,9 @@ final class OpenIssuesBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'issues(states:[OPEN]) { totalCount }');
 
         return [
-            'label'       => 'open issues',
-            'status'      => FormatNumber::execute($result['issues']['totalCount']),
-            'statusColor' => $result['issues']['totalCount'] === 0 ? 'green.600' : 'orange.600',
+            'label'        => 'open issues',
+            'message'      => FormatNumber::execute($result['issues']['totalCount']),
+            'messageColor' => $result['issues']['totalCount'] === 0 ? 'green.600' : 'orange.600',
         ];
     }
 

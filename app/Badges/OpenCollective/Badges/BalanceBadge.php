@@ -21,9 +21,9 @@ final class BalanceBadge implements Badge
         $response = $this->client->get($slug);
 
         return [
-            'label'       => 'balance',
-            'status'      => FormatMoney::execute($response['balance'] / 100, $response['currency']),
-            'statusColor' => 'green.600',
+            'label'        => 'balance',
+            'message'      => FormatMoney::execute($response['balance'] / 100, $response['currency']),
+            'messageColor' => 'green.600',
         ];
     }
 

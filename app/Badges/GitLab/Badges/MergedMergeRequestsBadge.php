@@ -22,9 +22,9 @@ final class MergedMergeRequestsBadge implements Badge
         $response = $this->client->rest($repo, 'merge_requests?state=merged');
 
         return [
-            'label'       => 'merged MRs',
-            'status'      => FormatNumber::execute((int) $response->header('x-total')),
-            'statusColor' => 'blue.600',
+            'label'        => 'merged MRs',
+            'message'      => FormatNumber::execute((int) $response->header('x-total')),
+            'messageColor' => 'blue.600',
         ];
     }
 

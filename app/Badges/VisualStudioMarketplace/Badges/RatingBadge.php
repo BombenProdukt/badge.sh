@@ -23,8 +23,8 @@ final class RatingBadge implements Badge
 
         return [
             'label'        => 'rating',
-            'status'       => number_format($averageRating)."/5 ({$ratingCount})",
-            'statusColor'  => 'green.600',
+            'message'      => number_format($averageRating)."/5 ({$ratingCount})",
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -23,9 +23,9 @@ final class DownloadsBadge implements Badge
 
         if (! $release || ! $release['assets'] || ! count($release['assets'])) {
             return [
-                'label'       => 'downloads',
-                'status'      => 'no assets',
-                'statusColor' => 'gray.600',
+                'label'        => 'downloads',
+                'message'      => 'no assets',
+                'messageColor' => 'gray.600',
             ];
         }
 
@@ -34,9 +34,9 @@ final class DownloadsBadge implements Badge
         }, 0);
 
         return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($downloadCount),
-            'statusColor' => 'green.600',
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($downloadCount),
+            'messageColor' => 'green.600',
         ];
     }
 

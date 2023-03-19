@@ -21,9 +21,9 @@ final class NodeBadge implements Badge
         $response = $this->client->unpkg("{$package}@{$tag}/package.json");
 
         return [
-            'label'       => 'node',
-            'status'      => $response['engines']['node'],
-            'statusColor' => 'green.600',
+            'label'        => 'node',
+            'message'      => $response['engines']['node'],
+            'messageColor' => 'green.600',
         ];
     }
 

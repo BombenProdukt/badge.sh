@@ -21,9 +21,9 @@ final class UsersBadge implements Badge
         preg_match('|<span class="e-f-ih" title="(.*?)">(.*?)</span>|', $this->client->get($itemId), $matches);
 
         return [
-            'label'       => 'rating',
-            'status'      => FormatNumber::execute((int) filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT)),
-            'statusColor' => 'green.600',
+            'label'        => 'rating',
+            'message'      => FormatNumber::execute((int) filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT)),
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -22,9 +22,9 @@ final class LastCommitBadge implements Badge
         $response = $this->client->rest($repo, $ref ? "repository/commits?ref={$ref}" : 'repository/commits')->json('0');
 
         return [
-            'label'       => 'last commit',
-            'status'      => Carbon::parse($response['committed_date'])->diffForHumans(),
-            'statusColor' => 'green.600',
+            'label'        => 'last commit',
+            'message'      => Carbon::parse($response['committed_date'])->diffForHumans(),
+            'messageColor' => 'green.600',
         ];
     }
 

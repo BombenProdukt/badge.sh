@@ -22,16 +22,16 @@ final class DependabotStatusBadge implements Badge
 
         if ($request->successful()) {
             return [
-                'label'       => 'dependabot',
-                'status'      => 'Active',
-                'statusColor' => 'green.600',
+                'label'        => 'dependabot',
+                'message'      => 'Active',
+                'messageColor' => 'green.600',
             ];
         }
 
         return [
-            'label'       => 'github',
-            'status'      => 'not found',
-            'statusColor' => 'gray.600',
+            'label'        => 'github',
+            'message'      => 'not found',
+            'messageColor' => 'gray.600',
         ];
     }
 

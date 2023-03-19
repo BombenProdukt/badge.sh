@@ -21,9 +21,9 @@ final class SubscribersBadge implements Badge
         $response = $this->client->get("r/{$subreddit}/about.json");
 
         return [
-            'label'       => "r/{$subreddit}",
-            'status'      => FormatNumber::execute($response['subscribers']).' subscribers',
-            'statusColor' => 'ff4500',
+            'label'        => "r/{$subreddit}",
+            'message'      => FormatNumber::execute($response['subscribers']).' subscribers',
+            'messageColor' => 'ff4500',
         ];
     }
 

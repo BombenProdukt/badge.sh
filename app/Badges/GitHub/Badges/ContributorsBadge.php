@@ -19,9 +19,9 @@ final class ContributorsBadge implements Badge
     public function handle(string $owner, string $repo): array
     {
         return [
-            'label'       => 'contributors',
-            'status'      => (string) count(GitHub::api('repo')->contributors($owner, $repo)),
-            'statusColor' => 'blue.600',
+            'label'        => 'contributors',
+            'message'      => (string) count(GitHub::api('repo')->contributors($owner, $repo)),
+            'messageColor' => 'blue.600',
         ];
     }
 

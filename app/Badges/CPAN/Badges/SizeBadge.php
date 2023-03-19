@@ -19,9 +19,9 @@ final class SizeBadge implements Badge
     public function handle(string $distribution): array
     {
         return [
-            'label'       => 'size',
-            'status'      => FormatBytes::execute($this->client->get("release/{$distribution}")['stat']['size']),
-            'statusColor' => 'blue.600',
+            'label'        => 'size',
+            'message'      => FormatBytes::execute($this->client->get("release/{$distribution}")['stat']['size']),
+            'messageColor' => 'blue.600',
         ];
     }
 

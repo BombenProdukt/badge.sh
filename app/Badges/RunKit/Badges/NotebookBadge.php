@@ -21,9 +21,9 @@ final class NotebookBadge implements Badge
         $response = $this->client->get($owner, $notebook, $path);
 
         return [
-            'label'       => $response['label'],
-            'status'      => $response['status'],
-            'statusColor' => $response['statusColor'],
+            'label'        => $response['label'],
+            'message'      => $response['status'],
+            'messageColor' => $response['statusColor'],
         ];
     }
 

@@ -21,8 +21,8 @@ final class LicenseFromBucketBadge implements Badge
 
         return [
             'label'        => $bucket === 'main' ? 'scoop' : 'scoop-extras',
-            'status'       => $response['license'],
-            'statusColor'  => 'blue.600',
+            'message'      => $response['license'],
+            'messageColor' => 'blue.600',
         ];
     }
 

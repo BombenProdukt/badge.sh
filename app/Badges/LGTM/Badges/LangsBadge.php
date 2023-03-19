@@ -23,9 +23,9 @@ final class LangsBadge implements Badge
         usort($response['languages'], fn ($a, $b) => $b['lines'] - $a['lines']);
 
         return [
-            'label'       => 'languages',
-            'status'      => implode(' | ', array_map(fn ($x) => $langLabelOverrides[$x['language']] ?? $x['language'], $response['languages'])),
-            'statusColor' => 'blue.600',
+            'label'        => 'languages',
+            'message'      => implode(' | ', array_map(fn ($x) => $langLabelOverrides[$x['language']] ?? $x['language'], $response['languages'])),
+            'messageColor' => 'blue.600',
         ];
     }
 

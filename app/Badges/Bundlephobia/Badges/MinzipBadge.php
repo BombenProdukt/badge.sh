@@ -20,9 +20,9 @@ final class MinzipBadge implements Badge
     public function handle(string $name): array
     {
         return [
-            'label'       => 'minzipped size',
-            'status'      => FormatBytes::execute($this->client->get($name)['gzip']),
-            'statusColor' => 'blue.600',
+            'label'        => 'minzipped size',
+            'message'      => FormatBytes::execute($this->client->get($name)['gzip']),
+            'messageColor' => 'blue.600',
         ];
     }
 

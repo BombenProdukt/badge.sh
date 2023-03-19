@@ -22,8 +22,8 @@ final class DependentsBadge implements Badge
 
         return [
             'label'        => 'dependents',
-            'status'       => FormatNumber::execute((int) $matches[1]),
-            'statusColor'  => 'green.600',
+            'message'      => FormatNumber::execute((int) $matches[1]),
+            'messageColor' => 'green.600',
         ];
     }
 

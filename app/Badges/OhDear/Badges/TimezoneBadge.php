@@ -18,9 +18,9 @@ final class TimezoneBadge implements Badge
     public function handle(string $domain): array
     {
         return [
-            'label'       => $domain,
-            'status'      => $this->client->get($domain)['timezone'],
-            'statusColor' => 'blue.600',
+            'label'        => $domain,
+            'message'      => $this->client->get($domain)['timezone'],
+            'messageColor' => 'blue.600',
         ];
     }
 

@@ -22,9 +22,9 @@ final class UserIdBadge implements Badge
         $account  = $response['username']."@{$instance}";
 
         return [
-            'label'       => "follow @{$account}",
-            'status'      => FormatNumber::execute($response['followers_count']),
-            'statusColor' => '3487CE',
+            'label'        => "follow @{$account}",
+            'message'      => FormatNumber::execute($response['followers_count']),
+            'messageColor' => '3487CE',
         ];
     }
 

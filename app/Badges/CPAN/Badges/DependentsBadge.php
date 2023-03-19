@@ -19,9 +19,9 @@ final class DependentsBadge implements Badge
     public function handle(string $distribution): array
     {
         return [
-            'label'       => 'dependents',
-            'status'      => FormatNumber::execute($this->client->get("reverse_dependencies/dist/{$distribution}")['total'] ?? 0),
-            'statusColor' => 'green.600',
+            'label'        => 'dependents',
+            'message'      => FormatNumber::execute($this->client->get("reverse_dependencies/dist/{$distribution}")['total'] ?? 0),
+            'messageColor' => 'green.600',
         ];
     }
 

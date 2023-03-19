@@ -21,9 +21,9 @@ final class ClosedIssuesBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'issues(states:[CLOSED]) { totalCount }');
 
         return [
-            'label'       => 'closed issues',
-            'status'      => FormatNumber::execute($result['issues']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'closed issues',
+            'message'      => FormatNumber::execute($result['issues']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

@@ -19,9 +19,9 @@ final class DependencyCountBadge implements Badge
     public function handle(string $name): array
     {
         return [
-            'label'       => 'dependency count',
-            'status'      => (string) $this->client->get($name)['dependencyCount'],
-            'statusColor' => 'blue.600',
+            'label'        => 'dependency count',
+            'message'      => (string) $this->client->get($name)['dependencyCount'],
+            'messageColor' => 'blue.600',
         ];
     }
 

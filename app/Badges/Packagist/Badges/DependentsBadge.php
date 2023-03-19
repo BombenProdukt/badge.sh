@@ -22,9 +22,9 @@ final class DependentsBadge implements Badge
         $packageMeta = $this->client->get($package);
 
         return [
-            'label'       => 'dependents',
-            'status'      => FormatNumber::execute($packageMeta['dependents']),
-            'statusColor' => 'green.600',
+            'label'        => 'dependents',
+            'message'      => FormatNumber::execute($packageMeta['dependents']),
+            'messageColor' => 'green.600',
         ];
     }
 

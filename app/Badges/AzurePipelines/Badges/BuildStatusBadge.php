@@ -27,9 +27,9 @@ final class BuildStatusBadge implements Badge
         ], $branch ? ['branchName' => "refs/heads/{$branch}"] : []))->json('value.0');
 
         return [
-            'label'       => 'Build',
-            'status'      => $response['status'],
-            'statusColor' => [
+            'label'        => 'Build',
+            'message'      => $response['status'],
+            'messageColor' => [
                 'completed'          => 'green.600',
                 'succeeded'          => 'green.600',
                 'partiallySucceeded' => 'yellow.600',

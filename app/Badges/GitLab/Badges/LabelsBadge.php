@@ -23,9 +23,9 @@ final class LabelsBadge implements Badge
         $response    = $this->client->graphql($repo, "issues(labelName:\"{$label}\", {$stateFilter}) { count } label(title: \"{$label}\"){ color }");
 
         return [
-            'label'       => $label,
-            'status'      => FormatNumber::execute($response['issues']['count']),
-            'statusColor' => 'blue.600',
+            'label'        => $label,
+            'message'      => FormatNumber::execute($response['issues']['count']),
+            'messageColor' => 'blue.600',
         ];
     }
 

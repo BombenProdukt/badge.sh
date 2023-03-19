@@ -22,9 +22,9 @@ final class GitHubStarsBadge implements Badge
         $packageMeta = $this->client->get($package);
 
         return [
-            'label'       => 'stars',
-            'status'      => FormatNumber::execute($packageMeta['github_stars']),
-            'statusColor' => 'green.600',
+            'label'        => 'stars',
+            'message'      => FormatNumber::execute($packageMeta['github_stars']),
+            'messageColor' => 'green.600',
         ];
     }
 

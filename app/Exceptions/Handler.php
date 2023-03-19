@@ -52,9 +52,9 @@ final class Handler extends ExceptionHandler
         $this->renderable(function (NotFoundHttpException $e) {
             return response(
                 Badger::from([
-                    'label'       => 'badge.sh',
-                    'status'      => 'not found',
-                    'statusColor' => 'red.600',
+                    'label'        => 'badge.sh',
+                    'message'      => 'not found',
+                    'messageColor' => 'red.600',
                 ])->render()
             )->setStatusCode(200)->header('Content-Type', 'image/svg+xml;charset=base64');
         });

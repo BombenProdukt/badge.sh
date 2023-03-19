@@ -21,9 +21,9 @@ final class RankBadge implements Badge
         $rank = $this->client->data($platform, $package)['rank'];
 
         return [
-            'label'       => 'jsDelivr rank',
-            'status'      => $rank ? "#{$rank}" : 'none',
-            'statusColor' => $rank ? 'blue.600' : 'gray.600',
+            'label'        => 'jsDelivr rank',
+            'message'      => $rank ? "#{$rank}" : 'none',
+            'messageColor' => $rank ? 'blue.600' : 'gray.600',
         ];
     }
 

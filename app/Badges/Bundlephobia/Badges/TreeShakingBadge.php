@@ -22,9 +22,9 @@ final class TreeShakingBadge implements Badge
         $isTreeShakeable = $response['hasJSModule'] || $response['hasJSNext'];
 
         return [
-            'label'       => 'tree shaking',
-            'status'      => $isTreeShakeable ? 'supported' : 'not supported',
-            'statusColor' => $isTreeShakeable ? 'green.600' : 'red.600',
+            'label'        => 'tree shaking',
+            'message'      => $isTreeShakeable ? 'supported' : 'not supported',
+            'messageColor' => $isTreeShakeable ? 'green.600' : 'red.600',
         ];
     }
 

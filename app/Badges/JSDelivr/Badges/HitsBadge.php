@@ -22,9 +22,9 @@ final class HitsBadge implements Badge
         $total = $this->client->data($platform, $package)['total'];
 
         return [
-            'label'       => 'jsDelivr',
-            'status'      => FormatNumber::execute($total).'/month',
-            'statusColor' => 'green.600',
+            'label'        => 'jsDelivr',
+            'message'      => FormatNumber::execute($total).'/month',
+            'messageColor' => 'green.600',
         ];
     }
 

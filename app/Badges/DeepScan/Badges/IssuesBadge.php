@@ -21,9 +21,9 @@ final class IssuesBadge implements Badge
         $response = $this->client->get($teamId, $projectId, $branchId);
 
         return [
-            'label'       => 'issues',
-            'status'      => FormatNumber::execute($response['outstandingDefectCount']),
-            'statusColor' => $response['outstandingDefectCount'] ? 'green.600' : 'yellow.600',
+            'label'        => 'issues',
+            'message'      => FormatNumber::execute($response['outstandingDefectCount']),
+            'messageColor' => $response['outstandingDefectCount'] ? 'green.600' : 'yellow.600',
         ];
     }
 

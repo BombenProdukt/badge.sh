@@ -18,9 +18,9 @@ final class ArchitectureBadge implements Badge
     public function handle(string $snap): array
     {
         return [
-            'label'       => 'architecture',
-            'status'      => collect($this->client->get($snap)['channel-map'])->map->channel->map->architecture->unique()->implode(' | '),
-            'statusColor' => 'blue.600',
+            'label'        => 'architecture',
+            'message'      => collect($this->client->get($snap)['channel-map'])->map->channel->map->architecture->unique()->implode(' | '),
+            'messageColor' => 'blue.600',
         ];
     }
 

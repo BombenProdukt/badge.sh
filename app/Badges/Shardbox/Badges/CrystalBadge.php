@@ -20,9 +20,9 @@ final class CrystalBadge implements Badge
         preg_match('/Crystal<\\/span>\\s*<span[^>]*?>([^<]+)<\\//i', $this->client->get($shard), $matches);
 
         return [
-            'label'       => 'crystal',
-            'status'      => html_entity_decode($matches[1]),
-            'statusColor' => 'green.600',
+            'label'        => 'crystal',
+            'message'      => html_entity_decode($matches[1]),
+            'messageColor' => 'green.600',
         ];
     }
 

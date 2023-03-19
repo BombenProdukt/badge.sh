@@ -22,9 +22,9 @@ final class CommitsBadge implements Badge
         $response = $this->client->rest($repo, $ref ? "repository/commits?ref={$ref}" : 'repository/commits');
 
         return [
-            'label'       => 'commits',
-            'status'      => FormatNumber::execute((int) $response->header('x-total')),
-            'statusColor' => 'blue.600',
+            'label'        => 'commits',
+            'message'      => FormatNumber::execute((int) $response->header('x-total')),
+            'messageColor' => 'blue.600',
         ];
     }
 

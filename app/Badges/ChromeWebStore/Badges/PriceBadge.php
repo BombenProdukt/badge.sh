@@ -24,9 +24,9 @@ final class PriceBadge implements Badge
         $priceCurrency = $crawler->filterXPath('//meta[@itemprop="priceCurrency"]')->getNode(0)->attributes->getNamedItem('content')->textContent;
 
         return [
-            'label'       => 'price',
-            'status'      => FormatMoney::execute($price, $priceCurrency),
-            'statusColor' => 'green.600',
+            'label'        => 'price',
+            'message'      => FormatMoney::execute($price, $priceCurrency),
+            'messageColor' => 'green.600',
         ];
     }
 

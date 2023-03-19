@@ -21,9 +21,9 @@ final class GitHubBadge implements Badge
         $response = $this->client->get($compression, "{$repo}/{$path}");
 
         return [
-            'label'       => $compression === 'normal' ? 'size' : "{$compression} size",
-            'status'      => $response['prettySize'],
-            'statusColor' => $response['color'],
+            'label'        => $compression === 'normal' ? 'size' : "{$compression} size",
+            'message'      => $response['prettySize'],
+            'messageColor' => $response['color'],
         ];
     }
 

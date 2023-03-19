@@ -21,9 +21,9 @@ final class InstallBadge implements Badge
         $response = $this->client->get($name);
 
         return [
-            'label'       => 'install size',
-            'status'      => $response['install']['pretty'],
-            'statusColor' => str_replace('#', '', $response['install']['color']),
+            'label'        => 'install size',
+            'message'      => $response['install']['pretty'],
+            'messageColor' => str_replace('#', '', $response['install']['color']),
         ];
     }
 

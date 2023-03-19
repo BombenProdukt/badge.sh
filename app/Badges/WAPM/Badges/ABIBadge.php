@@ -22,8 +22,8 @@ final class ABIBadge implements Badge
 
         return [
             'label'        => 'abi',
-            'status'       => $abis,
-            'statusColor'  => $abis ? 'blue.600' : 'green.600',
+            'message'      => $abis,
+            'messageColor' => $abis ? 'blue.600' : 'green.600',
         ];
     }
 

@@ -27,9 +27,9 @@ final class RatingCountBadge implements Badge
             ->textContent;
 
         return [
-            'label'       => 'rating count',
-            'status'      => Regex::match('/(\d+) users rated this item/', $textContent)->group(1),
-            'statusColor' => 'green.600',
+            'label'        => 'rating count',
+            'message'      => Regex::match('/(\d+) users rated this item/', $textContent)->group(1),
+            'messageColor' => 'green.600',
         ];
     }
 

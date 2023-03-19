@@ -20,8 +20,8 @@ final class SizeBadge implements Badge
     {
         return [
             'label'        => 'winget',
-            'status'       => FormatBytes::execute($this->client->get($appId)['size']),
-            'statusColor'  => 'blue.600',
+            'message'      => FormatBytes::execute($this->client->get($appId)['size']),
+            'messageColor' => 'blue.600',
         ];
     }
 

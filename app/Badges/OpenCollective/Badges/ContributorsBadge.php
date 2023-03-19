@@ -21,9 +21,9 @@ final class ContributorsBadge implements Badge
         $response = $this->client->get($slug);
 
         return [
-            'label'       => 'contributors',
-            'status'      => FormatNumber::execute($response['contributorsCount']),
-            'statusColor' => 'green.600',
+            'label'        => 'contributors',
+            'message'      => FormatNumber::execute($response['contributorsCount']),
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -20,9 +20,9 @@ final class GradeBadge implements Badge
         $response = $this->client->get($teamId, $projectId, $branchId);
 
         return [
-            'label'       => 'deepscan',
-            'status'      => strtolower($response['grade']),
-            'statusColor' => [
+            'label'        => 'deepscan',
+            'message'      => strtolower($response['grade']),
+            'messageColor' => [
                 'none'   => 'cecece',
                 'good'   => '89b414',
                 'normal' => '2148b1',

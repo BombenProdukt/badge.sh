@@ -41,9 +41,9 @@ final class SizeBadge implements Badge
 
         if (! $tagData) {
             return [
-                'label'       => 'docker',
-                'status'      => 'unknown tag',
-                'statusColor' => 'gray.600',
+                'label'        => 'docker',
+                'message'      => 'unknown tag',
+                'messageColor' => 'gray.600',
             ];
         }
 
@@ -57,9 +57,9 @@ final class SizeBadge implements Badge
 
         if (! $imageData) {
             return [
-                'label'       => 'docker',
-                'status'      => 'unknown architecture',
-                'statusColor' => 'gray.600',
+                'label'        => 'docker',
+                'message'      => 'unknown architecture',
+                'messageColor' => 'gray.600',
             ];
         }
 
@@ -74,9 +74,9 @@ final class SizeBadge implements Badge
 
             if (! $imageData) {
                 return [
-                    'label'       => 'docker',
-                    'status'      => 'unknown variant',
-                    'statusColor' => 'gray.600',
+                    'label'        => 'docker',
+                    'message'      => 'unknown variant',
+                    'messageColor' => 'gray.600',
                 ];
             }
         }
@@ -84,9 +84,9 @@ final class SizeBadge implements Badge
         $sizeInMegabytes = number_format($imageData['size'] / 1024 / 1024, 2);
 
         return [
-            'label'       => 'docker size',
-            'status'      => $sizeInMegabytes.' MB',
-            'statusColor' => 'blue.600',
+            'label'        => 'docker size',
+            'message'      => $sizeInMegabytes.' MB',
+            'messageColor' => 'blue.600',
         ];
     }
 

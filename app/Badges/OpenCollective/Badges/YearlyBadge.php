@@ -21,9 +21,9 @@ final class YearlyBadge implements Badge
         $response = $this->client->get($slug);
 
         return [
-            'label'       => 'yearly income',
-            'status'      => FormatMoney::execute($response['yearlyIncome'] / 100, $response['currency']),
-            'statusColor' => 'green.600',
+            'label'        => 'yearly income',
+            'message'      => FormatMoney::execute($response['yearlyIncome'] / 100, $response['currency']),
+            'messageColor' => 'green.600',
         ];
     }
 

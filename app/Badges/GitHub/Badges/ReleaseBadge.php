@@ -23,9 +23,9 @@ final class ReleaseBadge implements Badge
 
         if (empty($releases)) {
             return [
-                'label'       => 'release',
-                'status'      => 'none',
-                'statusColor' => 'yellow.600',
+                'label'        => 'release',
+                'message'      => 'none',
+                'messageColor' => 'yellow.600',
             ];
         }
 
@@ -33,16 +33,16 @@ final class ReleaseBadge implements Badge
             $stable = collect($releases)->firstWhere('prerelease', false);
 
             return [
-                'label'       => 'release',
-                'status'      => ExtractVersion::execute($stable['name'] ?: $stable['tag_name']),
-                'statusColor' => 'blue.600',
+                'label'        => 'release',
+                'message'      => ExtractVersion::execute($stable['name'] ?: $stable['tag_name']),
+                'messageColor' => 'blue.600',
             ];
         }
 
         return [
-            'label'       => 'release',
-            'status'      => ExtractVersion::execute($releases[0]['name'] ?? $releases[0]['tag_name']),
-            'statusColor' => $releases[0]['prerelease'] ? 'orange.600' : 'blue.600',
+            'label'        => 'release',
+            'message'      => ExtractVersion::execute($releases[0]['name'] ?? $releases[0]['tag_name']),
+            'messageColor' => $releases[0]['prerelease'] ? 'orange.600' : 'blue.600',
         ];
     }
 

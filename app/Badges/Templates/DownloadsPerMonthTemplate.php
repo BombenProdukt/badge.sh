@@ -11,9 +11,9 @@ final class DownloadsPerMonthTemplate
     public static function make(int $count): array
     {
         return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($count).'/month',
-            'statusColor' => 'green.600',
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($count).'/month',
+            'messageColor' => 'green.600',
         ];
     }
 }

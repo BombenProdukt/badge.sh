@@ -21,9 +21,9 @@ final class FollowBadge implements Badge
         $response = $this->client->get($username);
 
         return [
-            'label'       => "follow @{$username}",
-            'status'      => FormatNumber::execute($response['followers_count']),
-            'statusColor' => '1da1f2',
+            'label'        => "follow @{$username}",
+            'message'      => FormatNumber::execute($response['followers_count']),
+            'messageColor' => '1da1f2',
         ];
     }
 

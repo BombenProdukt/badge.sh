@@ -22,9 +22,9 @@ final class GitHubIssuesBadge implements Badge
         $packageMeta = $this->client->get($package);
 
         return [
-            'label'       => 'issues',
-            'status'      => FormatNumber::execute($packageMeta['github_open_issues']),
-            'statusColor' => 'green.600',
+            'label'        => 'issues',
+            'message'      => FormatNumber::execute($packageMeta['github_open_issues']),
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -5563,16 +5563,16 @@
         },
         {
             "name": "preemstudio/laravel-badger",
-            "version": "1.0.5",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PreemStudio/laravel-badger.git",
-                "reference": "d17540250e24f3b0ca2d0d6f33140eb31a8f2571"
+                "reference": "c0e4678c2f906efadb3370eb1daa9105f0b4136d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PreemStudio/laravel-badger/zipball/d17540250e24f3b0ca2d0d6f33140eb31a8f2571",
-                "reference": "d17540250e24f3b0ca2d0d6f33140eb31a8f2571",
+                "url": "https://api.github.com/repos/PreemStudio/laravel-badger/zipball/c0e4678c2f906efadb3370eb1daa9105f0b4136d",
+                "reference": "c0e4678c2f906efadb3370eb1daa9105f0b4136d",
                 "shasum": ""
             },
             "require": {
@@ -5629,9 +5629,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PreemStudio/laravel-badger/issues",
-                "source": "https://github.com/PreemStudio/laravel-badger/tree/1.0.5"
+                "source": "https://github.com/PreemStudio/laravel-badger/tree/1.1.0"
             },
-            "time": "2023-03-17T05:50:08+00:00"
+            "time": "2023-03-19T15:55:46+00:00"
         },
         {
             "name": "preemstudio/laravel-jetpack",

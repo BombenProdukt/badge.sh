@@ -27,9 +27,9 @@ final class GoalBadge implements Badge
         }
 
         return [
-            'label'       => 'goal progress',
-            'status'      => FormatPercentage::execute($goal),
-            'statusColor' => isset($goal) ? 'yellow.600' : 'gray.600',
+            'label'        => 'goal progress',
+            'message'      => FormatPercentage::execute($goal),
+            'messageColor' => isset($goal) ? 'yellow.600' : 'gray.600',
         ];
     }
 

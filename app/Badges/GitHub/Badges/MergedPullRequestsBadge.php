@@ -21,9 +21,9 @@ final class MergedPullRequestsBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'pullRequests(states:[MERGED]) { totalCount }');
 
         return [
-            'label'       => 'merged PRs',
-            'status'      => FormatNumber::execute($result['pullRequests']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'merged PRs',
+            'message'      => FormatNumber::execute($result['pullRequests']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

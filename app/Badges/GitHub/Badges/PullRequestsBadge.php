@@ -21,9 +21,9 @@ final class PullRequestsBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'pullRequests { totalCount }');
 
         return [
-            'label'       => 'PRs',
-            'status'      => FormatNumber::execute($result['pullRequests']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'PRs',
+            'message'      => FormatNumber::execute($result['pullRequests']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

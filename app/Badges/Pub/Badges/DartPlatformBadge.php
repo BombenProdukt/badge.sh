@@ -22,9 +22,9 @@ final class DartPlatformBadge implements Badge
         $sdk       = implode('|', $this->parseTags($pubScores['panaReport']['derivedTags'], 'sdk'));
 
         return [
-            'label'       => 'dart',
-            'status'      => $sdk ?? 'unknown',
-            'statusColor' => $sdk ? 'blue.600' : 'gray.600',
+            'label'        => 'dart',
+            'message'      => $sdk ?? 'unknown',
+            'messageColor' => $sdk ? 'blue.600' : 'gray.600',
         ];
     }
 

@@ -35,9 +35,9 @@ final class PythonBadge implements Badge
             ->implode('version', ' | ');
 
         return [
-            'label'       => 'python',
-            'status'      => $versions,
-            'statusColor' => 'blue.600',
+            'label'        => 'python',
+            'message'      => $versions,
+            'messageColor' => 'blue.600',
         ];
     }
 

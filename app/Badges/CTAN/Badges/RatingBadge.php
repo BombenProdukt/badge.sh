@@ -20,9 +20,9 @@ final class RatingBadge implements Badge
         preg_match('/<span>[^<]*?([\d.]+)\s/i', $this->client->web($package), $matches);
 
         return [
-            'label'       => 'rating',
-            'status'      => number_format((float) $matches[1], 2).'/5',
-            'statusColor' => 'green.600',
+            'label'        => 'rating',
+            'message'      => number_format((float) $matches[1], 2).'/5',
+            'messageColor' => 'green.600',
         ];
     }
 

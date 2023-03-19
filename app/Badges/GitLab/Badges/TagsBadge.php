@@ -22,9 +22,9 @@ final class TagsBadge implements Badge
         $response = $this->client->rest($repo, 'repository/tags');
 
         return [
-            'label'       => 'tags',
-            'status'      => FormatNumber::execute((int) $response->header('x-total')),
-            'statusColor' => 'blue.600',
+            'label'        => 'tags',
+            'message'      => FormatNumber::execute((int) $response->header('x-total')),
+            'messageColor' => 'blue.600',
         ];
     }
 

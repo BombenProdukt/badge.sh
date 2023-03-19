@@ -21,9 +21,9 @@ final class StarsBadge implements Badge
         $score = $this->client->get("{$package}/stats")['score'];
 
         return [
-            'label'       => 'stars',
-            'status'      => FormatStars::execute($score),
-            'statusColor' => 'green.600',
+            'label'        => 'stars',
+            'message'      => FormatStars::execute($score),
+            'messageColor' => 'green.600',
         ];
     }
 

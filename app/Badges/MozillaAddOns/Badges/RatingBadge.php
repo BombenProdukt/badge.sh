@@ -20,9 +20,9 @@ final class RatingBadge implements Badge
         $response = $this->client->get($package);
 
         return [
-            'label'       => 'rating',
-            'status'      => (string) $response['ratings']['count'],
-            'statusColor' => 'green.600',
+            'label'        => 'rating',
+            'message'      => (string) $response['ratings']['count'],
+            'messageColor' => 'green.600',
         ];
     }
 

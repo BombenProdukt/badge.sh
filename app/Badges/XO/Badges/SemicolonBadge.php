@@ -24,16 +24,16 @@ final class SemicolonBadge implements Badge
 
         if (empty($response['devDependencies']) || empty($response['devDependencies']['xo'])) {
             return [
-                'label'       => 'xo',
-                'status'      => 'not enabled',
-                'statusColor' => 'gray.600',
+                'label'        => 'xo',
+                'message'      => 'not enabled',
+                'messageColor' => 'gray.600',
             ];
         }
 
         return [
-            'label'       => 'semicolons',
-            'status'      => Arr::get($response, 'xo.semicolon') ? 'enabled' : 'disabled',
-            'statusColor' => '5ED9C7',
+            'label'        => 'semicolons',
+            'message'      => Arr::get($response, 'xo.semicolon') ? 'enabled' : 'disabled',
+            'messageColor' => '5ED9C7',
         ];
     }
 
@@ -75,14 +75,14 @@ final class SemicolonBadge implements Badge
     {
         return [
             [
-                'label'       => 'semicolons',
-                'status'      => 'enabled',
-                'statusColor' => '5ED9C7',
+                'label'        => 'semicolons',
+                'message'      => 'enabled',
+                'messageColor' => '5ED9C7',
             ],
             [
-                'label'       => 'semicolons',
-                'status'      => 'disabled',
-                'statusColor' => '5ED9C7',
+                'label'        => 'semicolons',
+                'message'      => 'disabled',
+                'messageColor' => '5ED9C7',
             ],
         ];
     }

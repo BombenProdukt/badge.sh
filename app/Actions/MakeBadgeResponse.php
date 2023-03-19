@@ -19,9 +19,9 @@ final class MakeBadgeResponse
         try {
             if ($badge->deprecated()) {
                 $badge = Badger::from([
-                    'label'       => $request->segment(1),
-                    'status'      => 'deprecated',
-                    'statusColor' => 'red.600',
+                    'label'        => $request->segment(1),
+                    'message'      => 'deprecated',
+                    'messageColor' => 'red.600',
                 ]);
             } else {
                 $badge = Badger::from($badge->handle(...$request->route()->parameters()));

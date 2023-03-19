@@ -21,9 +21,9 @@ final class GivesBadge implements Badge
         $response = $this->client->get($username);
 
         return [
-            'label'       => 'gives',
-            'status'      => FormatMoney::execute((float) $response['giving']['amount'], $response['giving']['currency']).'/week',
-            'statusColor' => 'yellow.600',
+            'label'        => 'gives',
+            'message'      => FormatMoney::execute((float) $response['giving']['amount'], $response['giving']['currency']).'/week',
+            'messageColor' => 'yellow.600',
         ];
     }
 

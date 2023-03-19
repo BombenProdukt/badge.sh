@@ -21,9 +21,9 @@ final class StatusBadge implements Badge
         $status = $this->client->get($vcs, $repo, $branch)[0]['status'];
 
         return [
-            'label'       => 'circleci',
-            'status'      => str_replace('_', ' ', $status),
-            'statusColor' => ['failed'  => 'red.600', 'success' => 'green.600'][$status] ?? 'gray.600',
+            'label'        => 'circleci',
+            'message'      => str_replace('_', ' ', $status),
+            'messageColor' => ['failed'  => 'red.600', 'success' => 'green.600'][$status] ?? 'gray.600',
         ];
     }
 

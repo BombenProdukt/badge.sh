@@ -22,9 +22,9 @@ final class IssuesBadge implements Badge
         $response = $this->client->get($project, 'snapshots');
 
         return [
-            'label'       => 'issues',
-            'status'      => FormatNumber::execute($response['meta']['issues_count']),
-            'statusColor' => 'blue.600',
+            'label'        => 'issues',
+            'message'      => FormatNumber::execute($response['meta']['issues_count']),
+            'messageColor' => 'blue.600',
         ];
     }
 

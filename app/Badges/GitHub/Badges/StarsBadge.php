@@ -21,9 +21,9 @@ final class StarsBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'stargazers { totalCount }');
 
         return [
-            'label'       => 'stars',
-            'status'      => FormatNumber::execute($result['stargazers']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'stars',
+            'message'      => FormatNumber::execute($result['stargazers']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

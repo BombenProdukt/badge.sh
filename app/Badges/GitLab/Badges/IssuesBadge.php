@@ -22,9 +22,9 @@ final class IssuesBadge implements Badge
         $response = $this->client->graphql($repo, 'issues{ count }')['issues']['count'];
 
         return [
-            'label'       => 'issues',
-            'status'      => FormatNumber::execute($response),
-            'statusColor' => 'blue.600',
+            'label'        => 'issues',
+            'message'      => FormatNumber::execute($response),
+            'messageColor' => 'blue.600',
         ];
     }
 

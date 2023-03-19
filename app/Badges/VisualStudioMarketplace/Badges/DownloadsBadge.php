@@ -24,8 +24,8 @@ final class DownloadsBadge implements Badge
 
         return [
             'label'        => 'downloads',
-            'status'       => FormatNumber::execute($install + $updateCount),
-            'statusColor'  => 'green.600',
+            'message'      => FormatNumber::execute($install + $updateCount),
+            'messageColor' => 'green.600',
         ];
     }
 

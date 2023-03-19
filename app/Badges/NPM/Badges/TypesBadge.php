@@ -22,9 +22,9 @@ final class TypesBadge implements Badge
 
         if (isset($response['types']) || isset($response['typings']) || isset($response['exports']['types'])) {
             return [
-                'label'       => 'types',
-                'status'      => 'included',
-                'statusColor' => '0074c1',
+                'label'        => 'types',
+                'message'      => 'included',
+                'messageColor' => '0074c1',
             ];
         }
 
@@ -32,9 +32,9 @@ final class TypesBadge implements Badge
             $this->client->unpkg("{$package}/index.d.ts");
 
             return [
-                'label'       => 'types',
-                'status'      => 'included',
-                'statusColor' => '0074c1',
+                'label'        => 'types',
+                'message'      => 'included',
+                'messageColor' => '0074c1',
             ];
         } catch (\Throwable) {
             //
@@ -42,18 +42,18 @@ final class TypesBadge implements Badge
 
         try {
             return [
-                'label'       => 'types',
-                'status'      => $this->client->unpkg('@types/'.($package[0] === '@' ? str_replace('/', '__', substr($package, 1)) : $package).'/package.json')['name'],
-                'statusColor' => 'cyan.600',
+                'label'        => 'types',
+                'message'      => $this->client->unpkg('@types/'.($package[0] === '@' ? str_replace('/', '__', substr($package, 1)) : $package).'/package.json')['name'],
+                'messageColor' => 'cyan.600',
             ];
         } catch (\Throwable) {
             //
         }
 
         return [
-            'label'       => 'types',
-            'status'      => 'missing',
-            'statusColor' => 'orange.600',
+            'label'        => 'types',
+            'message'      => 'missing',
+            'messageColor' => 'orange.600',
         ];
     }
 

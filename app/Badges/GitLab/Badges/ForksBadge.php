@@ -22,9 +22,9 @@ final class ForksBadge implements Badge
         $response = $this->client->graphql($repo, 'forksCount');
 
         return [
-            'label'       => 'forks',
-            'status'      => FormatNumber::execute($response['forksCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'forks',
+            'message'      => FormatNumber::execute($response['forksCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

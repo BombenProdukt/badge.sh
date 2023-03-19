@@ -22,9 +22,9 @@ final class ReleasesBadge implements Badge
         $response = $this->client->rest($repo, 'releases');
 
         return [
-            'label'       => 'releases',
-            'status'      => FormatNumber::execute((int) $response->header('x-total')),
-            'statusColor' => 'blue.600',
+            'label'        => 'releases',
+            'message'      => FormatNumber::execute((int) $response->header('x-total')),
+            'messageColor' => 'blue.600',
         ];
     }
 

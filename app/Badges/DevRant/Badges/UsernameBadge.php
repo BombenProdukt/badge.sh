@@ -21,9 +21,9 @@ final class UsernameBadge implements Badge
         $profile = $this->client->get($this->client->getUserIdFromName($username));
 
         return [
-            'label'       => ucfirst($profile['username']),
-            'status'      => FormatNumber::execute($profile['score']),
-            'statusColor' => 'f99a66',
+            'label'        => ucfirst($profile['username']),
+            'message'      => FormatNumber::execute($profile['score']),
+            'messageColor' => 'f99a66',
         ];
     }
 

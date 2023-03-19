@@ -22,16 +22,16 @@ final class RequestDependents
 
         if ($count === 0) {
             return [
-                'label'       => $subject,
-                'status'      => 'invalid',
-                'statusColor' => 'gray.600',
+                'label'        => $subject,
+                'message'      => 'invalid',
+                'messageColor' => 'gray.600',
             ];
         }
 
         return [
-            'label'       => $subject,
-            'status'      => FormatNumber::execute($count),
-            'statusColor' => 'blue.600',
+            'label'        => $subject,
+            'message'      => FormatNumber::execute($count),
+            'messageColor' => 'blue.600',
         ];
     }
 }

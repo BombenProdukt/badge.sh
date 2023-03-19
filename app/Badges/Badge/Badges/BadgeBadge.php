@@ -12,9 +12,9 @@ final class BadgeBadge implements Badge
     public function handle(string $label, string $status, ?string $statusColor = null): array
     {
         return [
-            'label'       => $label,
-            'status'      => $status,
-            'statusColor' => $statusColor ? "{$statusColor}.600" : 'green.600',
+            'label'        => $label,
+            'message'      => $status,
+            'messageColor' => $statusColor ? "{$statusColor}.600" : 'green.600',
         ];
     }
 

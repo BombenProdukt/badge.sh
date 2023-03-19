@@ -19,9 +19,9 @@ final class StarsBadge implements Badge
     public function handle(string $package): array
     {
         return [
-            'label'       => 'stars',
-            'status'      => FormatNumber::execute($this->client->get($package)['stargazers_count']),
-            'statusColor' => 'green.600',
+            'label'        => 'stars',
+            'message'      => FormatNumber::execute($this->client->get($package)['stargazers_count']),
+            'messageColor' => 'green.600',
         ];
     }
 

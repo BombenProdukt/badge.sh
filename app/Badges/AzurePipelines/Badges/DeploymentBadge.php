@@ -27,9 +27,9 @@ final class DeploymentBadge implements Badge
         ], $environment ? ['definitionEnvironmentId' => 'environment'] : []))->json('value.0');
 
         return [
-            'label'       => 'Deployment Version',
-            'status'      => $response['release']['name'],
-            'statusColor' => [
+            'label'        => 'Deployment Version',
+            'message'      => $response['release']['name'],
+            'messageColor' => [
                 'succeeded'          => 'green.600',
                 'partiallySucceeded' => 'yellow.600',
                 'failed'             => 'red.600',

@@ -27,9 +27,9 @@ final class ReleaseBadge implements Badge
         ], $environment ? ['definitionEnvironmentId' => 'environment'] : []))->json('value.0');
 
         return [
-            'label'       => 'Release Version',
-            'status'      => $response['name'],
-            'statusColor' => 'green.600',
+            'label'        => 'Release Version',
+            'message'      => $response['name'],
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -20,9 +20,9 @@ final class MinBadge implements Badge
     public function handle(string $name): array
     {
         return [
-            'label'       => 'minified size',
-            'status'      => FormatBytes::execute($this->client->get($name)['size']),
-            'statusColor' => 'blue.600',
+            'label'        => 'minified size',
+            'message'      => FormatBytes::execute($this->client->get($name)['size']),
+            'messageColor' => 'blue.600',
         ];
     }
 

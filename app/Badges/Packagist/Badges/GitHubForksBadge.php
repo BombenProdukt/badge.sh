@@ -22,9 +22,9 @@ final class GitHubForksBadge implements Badge
         $packageMeta = $this->client->get($package);
 
         return [
-            'label'       => 'forks',
-            'status'      => FormatNumber::execute($packageMeta['github_forks']),
-            'statusColor' => 'green.600',
+            'label'        => 'forks',
+            'message'      => FormatNumber::execute($packageMeta['github_forks']),
+            'messageColor' => 'green.600',
         ];
     }
 

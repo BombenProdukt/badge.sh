@@ -23,9 +23,9 @@ final class DayBadge implements Badge
         [$percentage] = explode('-', $response['custom_uptime_ratio']);
 
         return [
-            'label'       => 'uptime /24h',
-            'status'      => FormatPercentage::execute($percentage),
-            'statusColor' => match (true) {
+            'label'        => 'uptime /24h',
+            'message'      => FormatPercentage::execute($percentage),
+            'messageColor' => match (true) {
                 $percentage >= 99.9 => '9C1',
                 $percentage >= 99   => 'EA2',
                 $percentage >= 97   => 'orange.600',

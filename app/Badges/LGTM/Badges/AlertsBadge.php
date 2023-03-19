@@ -28,9 +28,9 @@ final class AlertsBadge implements Badge
         $response = $this->client->get($provider, $project, $language);
 
         return [
-            'label'       => 'alerts: '.($this->languages[$response['lines']] ?? $language),
-            'status'      => FormatNumber::execute($response['alerts']),
-            'statusColor' => $response['alerts'] === 0 ? 'green.600' : 'yellow.600',
+            'label'        => 'alerts: '.($this->languages[$response['lines']] ?? $language),
+            'message'      => FormatNumber::execute($response['alerts']),
+            'messageColor' => $response['alerts'] === 0 ? 'green.600' : 'yellow.600',
         ];
     }
 

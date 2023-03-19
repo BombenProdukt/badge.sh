@@ -26,9 +26,9 @@ final class LayersBadge implements Badge
         $response = $this->client->config($scope, $name, $tag, $architecture, $variant);
 
         return [
-            'label'       => 'docker layers',
-            'status'      => FormatNumber::execute(count($response['history'])),
-            'statusColor' => 'blue.600',
+            'label'        => 'docker layers',
+            'message'      => FormatNumber::execute(count($response['history'])),
+            'messageColor' => 'blue.600',
         ];
     }
 

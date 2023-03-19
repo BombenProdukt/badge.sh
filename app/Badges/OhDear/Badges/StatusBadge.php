@@ -20,9 +20,9 @@ final class StatusBadge implements Badge
         $site = collect($this->client->get($domain)['sites'])->flatten(1)->firstWhere('label', $label);
 
         return [
-            'label'       => $label,
-            'status'      => $site['status'],
-            'statusColor' => $site['status'] === 'up' ? 'green.600' : 'red.600',
+            'label'        => $label,
+            'message'      => $site['status'],
+            'messageColor' => $site['status'] === 'up' ? 'green.600' : 'red.600',
         ];
     }
 

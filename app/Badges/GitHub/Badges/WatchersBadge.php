@@ -21,9 +21,9 @@ final class WatchersBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'watchers { totalCount }');
 
         return [
-            'label'       => 'watchers',
-            'status'      => FormatNumber::execute($result['watchers']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'watchers',
+            'message'      => FormatNumber::execute($result['watchers']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

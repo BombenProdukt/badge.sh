@@ -29,9 +29,9 @@ final class DepBadge implements Badge
         $status = $this->client->get($repo, $path)['status'];
 
         return [
-            'label'       => 'dependencies',
-            'status'      => $this->statusInfo[$status][0],
-            'statusColor' => $this->statusInfo[$status][1],
+            'label'        => 'dependencies',
+            'message'      => $this->statusInfo[$status][0],
+            'messageColor' => $this->statusInfo[$status][1],
         ];
     }
 

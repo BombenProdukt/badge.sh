@@ -21,18 +21,18 @@ final class StatusBadge implements Badge
 
         if (empty($location)) {
             return [
-                'label'       => 'tidelift',
-                'status'      => 'not found',
-                'statusColor' => 'red.600',
+                'label'        => 'tidelift',
+                'message'      => 'not found',
+                'messageColor' => 'red.600',
             ];
         }
 
         [, $status, $statusColor] = explode('-', parse_url(urldecode($location))['path']);
 
         return [
-            'label'       => 'tidelift',
-            'status'      => str_replace('!', '', $status),
-            'statusColor' => str_replace('.svg', '', $statusColor),
+            'label'        => 'tidelift',
+            'message'      => str_replace('!', '', $status),
+            'messageColor' => str_replace('.svg', '', $statusColor),
         ];
     }
 

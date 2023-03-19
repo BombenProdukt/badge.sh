@@ -22,9 +22,9 @@ final class BranchesBadge implements Badge
         $response = $this->client->rest($repo, 'repository/branches');
 
         return [
-            'label'       => 'branches',
-            'status'      => FormatNumber::execute((int) $response->header('x-total')),
-            'statusColor' => 'blue.600',
+            'label'        => 'branches',
+            'message'      => FormatNumber::execute((int) $response->header('x-total')),
+            'messageColor' => 'blue.600',
         ];
     }
 

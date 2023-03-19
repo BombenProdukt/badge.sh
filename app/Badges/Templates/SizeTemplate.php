@@ -11,9 +11,9 @@ final class SizeTemplate
     public static function make(int $count): array
     {
         return [
-            'label'       => 'size',
-            'status'      => FormatBytes::execute($count),
-            'statusColor' => 'blue.600',
+            'label'        => 'size',
+            'message'      => FormatBytes::execute($count),
+            'messageColor' => 'blue.600',
         ];
     }
 }

@@ -21,9 +21,9 @@ final class ViewsBadge implements Badge
         $response = $this->client->get($instance, "videos/{$video}");
 
         return [
-            'label'       => 'views',
-            'status'      => FormatNumber::execute($response['views']),
-            'statusColor' => 'F1680D',
+            'label'        => 'views',
+            'message'      => FormatNumber::execute($response['views']),
+            'messageColor' => 'F1680D',
         ];
     }
 

@@ -19,9 +19,9 @@ final class StarsBadge implements Badge
     public function handle(string $scope, string $name): array
     {
         return [
-            'label'       => 'docker pulls',
-            'status'      => FormatNumber::execute($this->client->info($scope, $name)['star_count']),
-            'statusColor' => 'blue.600',
+            'label'        => 'docker pulls',
+            'message'      => FormatNumber::execute($this->client->info($scope, $name)['star_count']),
+            'messageColor' => 'blue.600',
         ];
     }
 

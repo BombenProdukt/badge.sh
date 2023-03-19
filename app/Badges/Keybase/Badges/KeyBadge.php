@@ -20,9 +20,9 @@ final class KeyBadge implements Badge
         $response = $this->client->get($username);
 
         return [
-            'label'       => 'PGP',
-            'status'      => strtoupper(implode(' ', str_split(substr($response['them']['public_keys']['primary']['key_fingerprint'], -16), 4))),
-            'statusColor' => 'blue.600',
+            'label'        => 'PGP',
+            'message'      => strtoupper(implode(' ', str_split(substr($response['them']['public_keys']['primary']['key_fingerprint'], -16), 4))),
+            'messageColor' => 'blue.600',
         ];
     }
 

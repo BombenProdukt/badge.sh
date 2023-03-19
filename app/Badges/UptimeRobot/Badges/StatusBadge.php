@@ -28,9 +28,9 @@ final class StatusBadge implements Badge
         $response = $this->client->get($apiKey);
 
         return [
-            'label'       => 'status',
-            'status'      => $this->statuses[$response['status']][0],
-            'statusColor' => $this->statuses[$response['status']][1],
+            'label'        => 'status',
+            'message'      => $this->statuses[$response['status']][0],
+            'messageColor' => $this->statuses[$response['status']][1],
         ];
     }
 

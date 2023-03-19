@@ -21,9 +21,9 @@ final class PatronsBadge implements Badge
         $response = $this->client->get($username);
 
         return [
-            'label'       => 'patrons',
-            'status'      => FormatNumber::execute($response['npatrons']),
-            'statusColor' => 'yellow.600',
+            'label'        => 'patrons',
+            'message'      => FormatNumber::execute($response['npatrons']),
+            'messageColor' => 'yellow.600',
         ];
     }
 

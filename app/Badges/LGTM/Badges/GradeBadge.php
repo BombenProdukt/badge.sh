@@ -27,9 +27,9 @@ final class GradeBadge implements Badge
         $response = $this->client->get($provider, $project, $language);
 
         return [
-            'label'       => 'code quality: '.($this->languages[$response['lines']] ?? $language),
-            'status'      => $response['grade'],
-            'statusColor' => [
+            'label'        => 'code quality: '.($this->languages[$response['lines']] ?? $language),
+            'message'      => $response['grade'],
+            'messageColor' => [
                 'A+' => 'green.600',
                 'A'  => '9C0',
                 'B'  => 'A4A61D',

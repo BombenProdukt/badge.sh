@@ -22,16 +22,16 @@ final class StatusBadge implements Badge
 
         if (empty($response['devDependencies']) || empty($response['devDependencies']['xo'])) {
             return [
-                'label'       => 'xo',
-                'status'      => 'not enabled',
-                'statusColor' => 'gray.600',
+                'label'        => 'xo',
+                'message'      => 'not enabled',
+                'messageColor' => 'gray.600',
             ];
         }
 
         return [
-            'label'       => 'code style',
-            'status'      => 'XO',
-            'statusColor' => '5ED9C7',
+            'label'        => 'code style',
+            'message'      => 'XO',
+            'messageColor' => '5ED9C7',
         ];
     }
 
@@ -73,9 +73,9 @@ final class StatusBadge implements Badge
     {
         return [
             [
-                'label'       => 'code style',
-                'status'      => 'XO',
-                'statusColor' => '5ED9C7',
+                'label'        => 'code style',
+                'message'      => 'XO',
+                'messageColor' => '5ED9C7',
             ],
         ];
     }

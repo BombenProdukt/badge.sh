@@ -23,8 +23,8 @@ final class InstallsBadge implements Badge
 
         return [
             'label'        => 'installations',
-            'status'       => FormatNumber::execute($install),
-            'statusColor'  => 'green.600',
+            'message'      => FormatNumber::execute($install),
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -18,9 +18,9 @@ final class PlatformBadge implements Badge
     public function handle(string $pod): array
     {
         return [
-            'label'       => 'platform',
-            'status'      => implode('|', array_keys($this->client->get($pod)['platforms'])),
-            'statusColor' => 'gray.600',
+            'label'        => 'platform',
+            'message'      => implode('|', array_keys($this->client->get($pod)['platforms'])),
+            'messageColor' => 'gray.600',
         ];
     }
 

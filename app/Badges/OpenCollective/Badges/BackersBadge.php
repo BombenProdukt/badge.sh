@@ -21,9 +21,9 @@ final class BackersBadge implements Badge
         $response = $this->client->get($slug);
 
         return [
-            'label'       => 'backers',
-            'status'      => FormatNumber::execute($response['backersCount']),
-            'statusColor' => 'green.600',
+            'label'        => 'backers',
+            'message'      => FormatNumber::execute($response['backersCount']),
+            'messageColor' => 'green.600',
         ];
     }
 

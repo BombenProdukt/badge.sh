@@ -11,9 +11,9 @@ final class DownloadsTemplate
     public static function make(mixed $count): array
     {
         return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute((float) $count),
-            'statusColor' => 'green.600',
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute((float) $count),
+            'messageColor' => 'green.600',
         ];
     }
 }

@@ -21,9 +21,9 @@ final class MonthlyDownloadsForFormulaBadge implements Badge
         $count = $this->client->get('formula', $package)['analytics']['install']['30d'][$package];
 
         return [
-            'label'       => 'downloads',
-            'status'      => FormatNumber::execute($count).'/month',
-            'statusColor' => 'green.600',
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($count).'/month',
+            'messageColor' => 'green.600',
         ];
     }
 

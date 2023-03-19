@@ -34,9 +34,9 @@ final class StatusBadge implements Badge
         }
 
         return [
-            'label'       => $subject ?? 'vulnerabilities',
-            'status'      => $status,
-            'statusColor' => $statusColor,
+            'label'        => $subject ?? 'vulnerabilities',
+            'message'      => $status,
+            'messageColor' => $statusColor,
         ];
     }
 

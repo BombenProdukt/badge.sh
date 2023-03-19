@@ -13,8 +13,8 @@ final class VersionTemplate
     {
         return [
             'label'        => $service,
-            'status'       => ExtractVersion::execute($version),
-            'statusColor'  => DetermineColorByVersion::execute($version),
+            'message'      => ExtractVersion::execute($version),
+            'messageColor' => DetermineColorByVersion::execute($version),
         ];
     }
 }

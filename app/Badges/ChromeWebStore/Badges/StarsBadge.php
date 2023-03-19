@@ -19,9 +19,9 @@ final class StarsBadge implements Badge
     public function handle(string $itemId): array
     {
         return [
-            'label'       => 'stars',
-            'status'      => FormatStars::execute((new RatingBadge($this->client))->handle($itemId)['status']),
-            'statusColor' => 'green.600',
+            'label'        => 'stars',
+            'message'      => FormatStars::execute((new RatingBadge($this->client))->handle($itemId)['status']),
+            'messageColor' => 'green.600',
         ];
     }
 

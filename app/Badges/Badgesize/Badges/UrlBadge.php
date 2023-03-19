@@ -21,9 +21,9 @@ final class UrlBadge implements Badge
         $response = $this->client->get($compression, 'https:/'.str_replace(['https://', 'https/'], '', $path));
 
         return [
-            'label'       => $compression === 'normal' ? 'size' : "{$compression} size",
-            'status'      => $response['prettySize'],
-            'statusColor' => $response['color'],
+            'label'        => $compression === 'normal' ? 'size' : "{$compression} size",
+            'message'      => $response['prettySize'],
+            'messageColor' => $response['color'],
         ];
     }
 

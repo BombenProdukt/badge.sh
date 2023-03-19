@@ -22,9 +22,9 @@ final class OpenIssuesBadge implements Badge
         $response = $this->client->graphql($repo, 'openIssuesCount')['openIssuesCount'];
 
         return [
-            'label'       => 'open issues',
-            'status'      => FormatNumber::execute($response),
-            'statusColor' => $response === 0 ? 'green.600' : 'orange.600',
+            'label'        => 'open issues',
+            'message'      => FormatNumber::execute($response),
+            'messageColor' => $response === 0 ? 'green.600' : 'orange.600',
         ];
     }
 

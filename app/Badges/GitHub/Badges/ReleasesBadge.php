@@ -21,9 +21,9 @@ final class ReleasesBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'releases { totalCount }');
 
         return [
-            'label'       => 'releases',
-            'status'      => FormatNumber::execute($result['releases']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'releases',
+            'message'      => FormatNumber::execute($result['releases']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

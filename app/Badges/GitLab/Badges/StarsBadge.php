@@ -22,9 +22,9 @@ final class StarsBadge implements Badge
         $response = $this->client->graphql($repo, 'starCount');
 
         return [
-            'label'       => 'stars',
-            'status'      => FormatNumber::execute($response['starCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'stars',
+            'message'      => FormatNumber::execute($response['starCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

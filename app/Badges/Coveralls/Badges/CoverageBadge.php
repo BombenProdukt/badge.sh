@@ -25,9 +25,9 @@ final class CoverageBadge implements Badge
 
         if (! is_numeric($matches[1])) {
             return [
-                'subject'     => 'coverage',
-                'status'      => 'invalid',
-                'statusColor' => 'gray.600',
+                'subject'      => 'coverage',
+                'message'      => 'invalid',
+                'messageColor' => 'gray.600',
             ];
         }
 

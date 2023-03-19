@@ -22,24 +22,24 @@ final class VotesBadge implements Badge
 
         if ($format === 'likes') {
             return [
-                'label'       => 'votes',
-                'status'      => FormatNumber::execute($response['likes']),
-                'statusColor' => 'F1680D',
+                'label'        => 'votes',
+                'message'      => FormatNumber::execute($response['likes']),
+                'messageColor' => 'F1680D',
             ];
         }
 
         if ($format === 'dislikes') {
             return [
-                'label'       => 'votes',
-                'status'      => FormatNumber::execute($response['dislikes']),
-                'statusColor' => 'F1680D',
+                'label'        => 'votes',
+                'message'      => FormatNumber::execute($response['dislikes']),
+                'messageColor' => 'F1680D',
             ];
         }
 
         return [
-            'label'       => 'votes',
-            'status'      => sprintf('%s 👍 %s 👎', FormatNumber::execute($response['likes']), FormatNumber::execute($response['dislikes'])),
-            'statusColor' => 'F1680D',
+            'label'        => 'votes',
+            'message'      => sprintf('%s 👍 %s 👎', FormatNumber::execute($response['likes']), FormatNumber::execute($response['dislikes'])),
+            'messageColor' => 'F1680D',
         ];
     }
 

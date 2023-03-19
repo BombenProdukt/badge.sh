@@ -22,9 +22,9 @@ final class SuggestersBadge implements Badge
         $packageMeta = $this->client->get($package);
 
         return [
-            'label'       => 'suggesters',
-            'status'      => FormatNumber::execute($packageMeta['suggesters']),
-            'statusColor' => 'green.600',
+            'label'        => 'suggesters',
+            'message'      => FormatNumber::execute($packageMeta['suggesters']),
+            'messageColor' => 'green.600',
         ];
     }
 

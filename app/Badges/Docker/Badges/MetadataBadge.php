@@ -26,9 +26,9 @@ final class MetadataBadge implements Badge
         $response = $this->client->config($scope, $name, $tag, $architecture, $variant);
 
         return [
-            'label'       => $type,
-            'status'      => $response['container_config']['Labels']["org.label-schema.{$type}"] ?? $response['container_config']['Labels']["org.opencontainers.image.{$type}"],
-            'statusColor' => 'blue.600',
+            'label'        => $type,
+            'message'      => $response['container_config']['Labels']["org.label-schema.{$type}"] ?? $response['container_config']['Labels']["org.opencontainers.image.{$type}"],
+            'messageColor' => 'blue.600',
         ];
     }
 

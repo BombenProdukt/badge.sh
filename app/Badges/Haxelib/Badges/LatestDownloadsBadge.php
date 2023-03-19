@@ -20,9 +20,9 @@ final class LatestDownloadsBadge implements Badge
         $response = $this->client->get($project);
 
         return [
-            'label'       => 'TODO',
-            'status'      => 'TODO',
-            'statusColor' => 'TODO',
+            'label'        => 'TODO',
+            'message'      => 'TODO',
+            'messageColor' => 'TODO',
         ];
     }
 

@@ -27,9 +27,9 @@ final class CommitsBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, "branch: ref(qualifiedName: \"{$reference}\") { target { ... on Commit { history(first: 0) { totalCount } } } }");
 
         return [
-            'label'       => 'commits',
-            'status'      => FormatNumber::execute($result['branch']['target']['history']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'commits',
+            'message'      => FormatNumber::execute($result['branch']['target']['history']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

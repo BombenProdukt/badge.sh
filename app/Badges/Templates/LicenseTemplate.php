@@ -11,9 +11,9 @@ final class LicenseTemplate
     public static function make(mixed $license): array
     {
         return [
-            'label'       => 'license',
-            'status'      => DetermineLicense::execute($license),
-            'statusColor' => 'blue.600',
+            'label'        => 'license',
+            'message'      => DetermineLicense::execute($license),
+            'messageColor' => 'blue.600',
         ];
     }
 }

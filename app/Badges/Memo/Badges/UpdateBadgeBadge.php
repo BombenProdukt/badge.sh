@@ -14,9 +14,9 @@ final class UpdateBadgeBadge implements Badge
     public function handle(Request $request, string $name): array
     {
         $badge = [
-            'label'       => $request->input('label'),
-            'status'      => $request->input('status'),
-            'statusColor' => $request->input('statusColor'),
+            'label'        => $request->input('label'),
+            'message'      => $request->input('status'),
+            'messageColor' => $request->input('statusColor'),
         ];
 
         Cache::rememberForever($name, $badge);

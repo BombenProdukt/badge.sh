@@ -21,9 +21,9 @@ final class UserIdBadge implements Badge
         $profile = $this->client->get($userId);
 
         return [
-            'label'       => ucfirst($profile['username']),
-            'status'      => FormatNumber::execute($profile['score']),
-            'statusColor' => 'f99a66',
+            'label'        => ucfirst($profile['username']),
+            'message'      => FormatNumber::execute($profile['score']),
+            'messageColor' => 'f99a66',
         ];
     }
 

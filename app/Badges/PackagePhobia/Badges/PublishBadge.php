@@ -21,9 +21,9 @@ final class PublishBadge implements Badge
         $response = $this->client->get($name);
 
         return [
-            'label'       => 'publish size',
-            'status'      => $response['publish']['pretty'],
-            'statusColor' => str_replace('#', '', $response['publish']['color']),
+            'label'        => 'publish size',
+            'message'      => $response['publish']['pretty'],
+            'messageColor' => str_replace('#', '', $response['publish']['color']),
         ];
     }
 

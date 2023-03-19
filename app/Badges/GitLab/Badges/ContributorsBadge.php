@@ -22,9 +22,9 @@ final class ContributorsBadge implements Badge
         $response = $this->client->rest($repo, 'repository/contributors');
 
         return [
-            'label'       => 'contributors',
-            'status'      => FormatNumber::execute((int) $response->header('x-total')),
-            'statusColor' => 'blue.600',
+            'label'        => 'contributors',
+            'message'      => FormatNumber::execute((int) $response->header('x-total')),
+            'messageColor' => 'blue.600',
         ];
     }
 

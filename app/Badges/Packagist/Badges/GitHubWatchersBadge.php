@@ -22,9 +22,9 @@ final class GitHubWatchersBadge implements Badge
         $packageMeta = $this->client->get($package);
 
         return [
-            'label'       => 'watchers',
-            'status'      => FormatNumber::execute($packageMeta['github_watchers']),
-            'statusColor' => 'green.600',
+            'label'        => 'watchers',
+            'message'      => FormatNumber::execute($packageMeta['github_watchers']),
+            'messageColor' => 'green.600',
         ];
     }
 

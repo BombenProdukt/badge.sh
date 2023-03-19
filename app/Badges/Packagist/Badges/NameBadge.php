@@ -21,9 +21,9 @@ final class NameBadge implements Badge
         $packageMeta = $this->client->get($package);
 
         return [
-            'label'       => 'packagist',
-            'status'      => $packageMeta['name'],
-            'statusColor' => 'green.600',
+            'label'        => 'packagist',
+            'message'      => $packageMeta['name'],
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -21,8 +21,8 @@ final class SizeBadge implements Badge
     {
         return [
             'label'        => 'distrib size',
-            'status'       => FormatBytes::execute($this->client->get($package)['distribution']['size']),
-            'statusColor'  => 'green.600',
+            'message'      => FormatBytes::execute($this->client->get($package)['distribution']['size']),
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -21,9 +21,9 @@ final class RequestBadge implements Badge
         $response = $this->client->get($host, $path);
 
         return [
-            'label'       => $response['label'] ?? $response['subject'],
-            'status'      => $response['status'],
-            'statusColor' => $response['statusColor'] ?? $response['color'].'.600',
+            'label'        => $response['label'] ?? $response['subject'],
+            'message'      => $response['status'],
+            'messageColor' => $response['statusColor'] ?? $response['color'].'.600',
         ];
     }
 

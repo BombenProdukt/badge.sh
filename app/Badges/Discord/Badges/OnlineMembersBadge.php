@@ -21,9 +21,9 @@ final class OnlineMembersBadge implements Badge
         $response = $this->client->get($inviteCode);
 
         return [
-            'label'       => $response['guild']['name'] ?? 'discord',
-            'status'      => FormatNumber::execute($response['approximate_presence_count']).' online',
-            'statusColor' => '7289DA',
+            'label'        => $response['guild']['name'] ?? 'discord',
+            'message'      => FormatNumber::execute($response['approximate_presence_count']).' online',
+            'messageColor' => '7289DA',
         ];
     }
 

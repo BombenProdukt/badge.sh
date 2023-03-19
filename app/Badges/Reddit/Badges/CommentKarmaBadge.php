@@ -19,9 +19,9 @@ final class CommentKarmaBadge implements Badge
     public function handle(string $user): array
     {
         return [
-            'label'       => "u/{$user}",
-            'status'      => FormatNumber::execute($this->client->get("user/{$user}/about.json")['comment_karma']).' comment karma',
-            'statusColor' => 'ff4500',
+            'label'        => "u/{$user}",
+            'message'      => FormatNumber::execute($this->client->get("user/{$user}/about.json")['comment_karma']).' comment karma',
+            'messageColor' => 'ff4500',
         ];
     }
 

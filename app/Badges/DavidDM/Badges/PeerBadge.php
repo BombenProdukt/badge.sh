@@ -29,9 +29,9 @@ final class PeerBadge implements Badge
         $status = $this->client->get($repo, $path, 'peer-')['status'];
 
         return [
-            'label'       => 'peerDependencies',
-            'status'      => $this->statusInfo[$status][0],
-            'statusColor' => $this->statusInfo[$status][1],
+            'label'        => 'peerDependencies',
+            'message'      => $this->statusInfo[$status][0],
+            'messageColor' => $this->statusInfo[$status][1],
         ];
     }
 

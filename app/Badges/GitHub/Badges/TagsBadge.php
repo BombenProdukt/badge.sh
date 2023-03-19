@@ -21,9 +21,9 @@ final class TagsBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'refs(first: 0, refPrefix: "refs/tags/") { totalCount }');
 
         return [
-            'label'       => 'tags',
-            'status'      => FormatNumber::execute($result['refs']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'tags',
+            'message'      => FormatNumber::execute($result['refs']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

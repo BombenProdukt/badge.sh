@@ -41,9 +41,9 @@ final class ChecksBadge implements Badge
 
         if (is_string($state)) {
             return [
-                'label'       => $context ?: 'checks',
-                'status'      => $state,
-                'statusColor' => [
+                'label'        => $context ?: 'checks',
+                'message'      => $state,
+                'messageColor' => [
                     'pending' => 'orange.600',
                     'success' => 'green.600',
                     'failure' => 'red.600',
@@ -54,9 +54,9 @@ final class ChecksBadge implements Badge
         }
 
         return [
-            'label'       => 'checks',
-            'status'      => 'unknown',
-            'statusColor' => 'gray.600',
+            'label'        => 'checks',
+            'message'      => 'unknown',
+            'messageColor' => 'gray.600',
         ];
     }
 

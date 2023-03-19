@@ -21,9 +21,9 @@ final class ClosedPullRequestsBadge implements Badge
         $result = $this->client->makeRepoQuery($owner, $repo, 'pullRequests(states:[CLOSED, MERGED]) { totalCount }');
 
         return [
-            'label'       => 'closed PRs',
-            'status'      => FormatNumber::execute($result['pullRequests']['totalCount']),
-            'statusColor' => 'blue.600',
+            'label'        => 'closed PRs',
+            'message'      => FormatNumber::execute($result['pullRequests']['totalCount']),
+            'messageColor' => 'blue.600',
         ];
     }
 

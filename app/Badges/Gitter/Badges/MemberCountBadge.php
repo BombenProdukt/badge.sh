@@ -21,9 +21,9 @@ final class MemberCountBadge implements Badge
         preg_match('/"userCount"\s*:\s*(\d+)/', $this->client->get($org, $room), $matches);
 
         return [
-            'label'       => 'gitter',
-            'status'      => FormatNumber::execute((float) $matches[1][0]),
-            'statusColor' => 'ed1965',
+            'label'        => 'gitter',
+            'message'      => FormatNumber::execute((float) $matches[1][0]),
+            'messageColor' => 'ed1965',
         ];
     }
 

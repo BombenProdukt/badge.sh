@@ -21,9 +21,9 @@ final class LastBuildBadge implements Badge
         $response = $this->client->get($hostname, $job, 'lastBuild/api/json?tree=result,timestamp,estimatedDuration');
 
         return [
-            'label'       => 'Last Build',
-            'status'      => $response['result'],
-            'statusColor' => strtolower($response['result']) === 'success' ? 'green.600' : 'red.600',
+            'label'        => 'Last Build',
+            'message'      => $response['result'],
+            'messageColor' => strtolower($response['result']) === 'success' ? 'green.600' : 'red.600',
         ];
     }
 

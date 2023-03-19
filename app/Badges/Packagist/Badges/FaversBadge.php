@@ -22,9 +22,9 @@ final class FaversBadge implements Badge
         $packageMeta = $this->client->get($package);
 
         return [
-            'label'       => 'favers',
-            'status'      => FormatNumber::execute($packageMeta['favers']),
-            'statusColor' => 'green.600',
+            'label'        => 'favers',
+            'message'      => FormatNumber::execute($packageMeta['favers']),
+            'messageColor' => 'green.600',
         ];
     }
 
