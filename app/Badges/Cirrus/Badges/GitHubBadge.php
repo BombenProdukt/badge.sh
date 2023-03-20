@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace App\Badges\Cirrus\Badges;
 
 use App\Badges\Cirrus\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\StatusTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class GitHubBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $owner, string $repo, ?string $branch = null): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return StatusTemplate::make('build', $this->client->github($owner, $repo, $branch, request('task'), request('script')));
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'Cirrus';
     }
 
     public function title(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/cirrus/{owner}/{repo}/{branch?}',
         ];
     }
 
@@ -67,7 +67,10 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/cirrus/flutter/flutter'                                      => 'build status',
+            '/cirrus/flutter/flutter/master'                               => 'build status',
+            '/cirrus/flutter/flutter/master?task=build_docker'             => 'build status',
+            '/cirrus/flutter/flutter/master?task=build_docker&script=test' => 'build status',
         ];
     }
 
