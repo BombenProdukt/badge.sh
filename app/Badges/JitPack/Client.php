@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://jitpack.io/api')->throw();
     }
 
-    public function get(string $appId): array
+    public function version(string $groupId, string $artifactId): string
     {
-        return $this->client->get('')->json();
+        return $this->client->get("builds/{$groupId}/{$artifactId}/latestOk")->json('version');
     }
 }
