@@ -4,21 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Hackage;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function hackage(string $package): array
     {
-        $this->client = Http::baseUrl('https://hackage.haskell.org/')->throw();
-    }
-
-    public function get(string $package): array
-    {
-        return $this->parseCabalFile($this->client->get("package/{$package}/{$package}.cabal")->body());
+        return $this->parseCabalFile(Http::baseUrl('https://hackage.haskell.org/')->throw()->get("package/{$package}/{$package}.cabal")->body());
     }
 
     private function parseCabalFile(string $raw): array

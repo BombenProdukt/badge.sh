@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace App\Badges\Hackage\Badges;
 
 use App\Badges\Hackage\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\TextTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Http;
 
-final class VersionBadge implements Badge
+final class DependencyBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,9 +19,12 @@ final class VersionBadge implements Badge
 
     public function handle(string $package): array
     {
-        $version = $this->client->hackage($package)['version'];
+        $client = Http::baseUrl('https://packdeps.haskellers.com/')->throw();
+        $client->get("licenses/{$package}");
 
-        return VersionTemplate::make($this->service(), $version);
+        $outdated = str_contains($client->get("feed/{$package}")->body(), "Outdated dependencies for {$package}");
+
+        return TextTemplate::make('dependencies', $outdated ? 'outdated' : 'up-to-date', $outdated ? 'red.600' : 'green.600');
     }
 
     public function service(): string
@@ -43,7 +47,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hackage/{package}/version',
+            '/hackage/{package}/dependencies',
         ];
     }
 
@@ -69,8 +73,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hackage/abt/version'   => 'version',
-            '/hackage/Cabal/version' => 'version',
+            '/hackage/Cabal/license' => 'license',
         ];
     }
 
