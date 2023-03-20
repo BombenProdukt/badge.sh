@@ -4,20 +4,16 @@ declare(strict_types=1);
 
 namespace App\Badges\Drone;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function status(string $user, string $repo, ?string $branch): array
     {
-        $this->client = Http::baseUrl('')->throw();
-    }
-
-    public function get(string $appId): array
-    {
-        return $this->client->get('')->json();
+        return Http::baseUrl('https://cloud.drone.io/api')
+            ->withToken(config('services.drone.token'))
+            ->throw()
+            ->get("repos/{$user}/{$repo}/builds/latest", ['ref' => $branch ? "refs/heads/{$branch}" : null])
+            ->json('status');
     }
 }

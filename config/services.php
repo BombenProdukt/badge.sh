@@ -16,6 +16,10 @@ return [
     |
     */
 
+    'drone' => [
+        'token' => env('DRONE_TOKEN'),
+    ],
+
     'gitlab' => [
         'token' => env('GITLAB_TOKEN'),
     ],
