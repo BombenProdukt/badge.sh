@@ -6,24 +6,25 @@ namespace App\Badges\ClearlyDefined\Badges;
 
 use App\Badges\ClearlyDefined\Client;
 use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\NumberTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class ScoreBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $type, string $provider, string $namespace, string $name, string $revision): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return NumberTemplate::make('score', $this->client->get($type, $provider, $namespace, $name, $revision)['scores']['effective']);
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'ClearlyDefined';
     }
 
     public function title(): string
@@ -41,7 +42,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/clearlydefined/score/{type}/{provider}/{namespace}/{name}/{revision}',
         ];
     }
 
@@ -67,7 +68,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/clearlydefined/score/npm/npmjs/-/jquery/3.4.1' => 'score',
         ];
     }
 

@@ -6,7 +6,6 @@ namespace App\Badges\ClearlyDefined;
 
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
-use Symfony\Component\Yaml\Yaml;
 
 final class Client
 {
@@ -14,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.clearlydefined.io/definitions/')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $type, string $provider, string $namespace, string $name, string $revision): array
     {
-        return Yaml::parse($this->client->get('')->body());
+        return $this->client->get("{$type}/{$provider}/{$namespace}/{$name}/{$revision}")->json();
     }
 }
