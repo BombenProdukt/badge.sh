@@ -16,16 +16,14 @@ final class VersionBadge implements Badge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $cookbook): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return VersionTemplate::make($this->service(), $this->client->version($cookbook));
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'Cookbook';
     }
 
     public function title(): string
@@ -43,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/cookbook/version/{cookbook}',
         ];
     }
 
@@ -69,8 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/cookbook/version/chef-sugar' => 'version',
         ];
     }
 
