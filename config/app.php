@@ -231,6 +231,7 @@ return [
         App\Badges\DUB\BadgeServiceProvider::class,
         App\Badges\ElmPackage\BadgeServiceProvider::class,
         App\Badges\FDroid\BadgeServiceProvider::class,
+        App\Badges\FreeCodeCamp\BadgeServiceProvider::class,
         App\Badges\GitHub\BadgeServiceProvider::class,
         App\Badges\GitLab\BadgeServiceProvider::class,
         App\Badges\Gitter\BadgeServiceProvider::class,

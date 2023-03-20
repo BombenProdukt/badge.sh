@@ -105,7 +105,7 @@ version/X => platform/X
 - [ ] [fedora](https://github.com/badges/shields/tree/master/services/fedora)
 - [ ] [feedz](https://github.com/badges/shields/tree/master/services/feedz)
 - [ ] [flathub](https://github.com/badges/shields/tree/master/services/flathub)
-- [ ] [freecodecamp](https://github.com/badges/shields/tree/master/services/freecodecamp)
+- [x] [freecodecamp](https://github.com/badges/shields/tree/master/services/freecodecamp)
 - [ ] [galaxytoolshed](https://github.com/badges/shields/tree/master/services/galaxytoolshed)
 - [ ] [gem](https://github.com/badges/shields/tree/master/services/gem)
 - [ ] [gerrit](https://github.com/badges/shields/tree/master/services/gerrit)
