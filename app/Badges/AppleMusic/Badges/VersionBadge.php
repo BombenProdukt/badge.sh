@@ -16,16 +16,14 @@ final class VersionBadge implements Badge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $bundleId): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return VersionTemplate::make($this->service(), $this->client->version($bundleId));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Apple Music';
     }
 
     public function title(): string
@@ -43,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/apple-music/version/{bundleId}',
         ];
     }
 
@@ -69,8 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/apple-music/version/803453959' => 'version',
         ];
     }
 

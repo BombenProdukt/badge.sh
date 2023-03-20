@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://itunes.apple.com')->throw();
     }
 
-    public function get(string $appId): array
+    public function version(string $bundleId): string
     {
-        return $this->client->get('')->json();
+        return $this->client->get('lookup', ['id' => $bundleId])->json('results.0.version');
     }
 }
