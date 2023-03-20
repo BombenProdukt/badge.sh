@@ -23,7 +23,6 @@ version/X => platform/X
 - [ ] [conan](https://github.com/badges/shields/tree/master/services/conan)
 - [ ] [conda](https://github.com/badges/shields/tree/master/services/conda)
 - [ ] [cookbook](https://github.com/badges/shields/tree/master/services/cookbook)
-- [ ] [date](https://github.com/badges/shields/tree/master/services/date)
 - [ ] [debian](https://github.com/badges/shields/tree/master/services/debian)
 - [ ] [debug](https://github.com/badges/shields/tree/master/services/debug)
 - [ ] [depfu](https://github.com/badges/shields/tree/master/services/depfu)

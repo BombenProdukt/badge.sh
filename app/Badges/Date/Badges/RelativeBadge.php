@@ -5,27 +5,26 @@ declare(strict_types=1);
 namespace App\Badges\Date\Badges;
 
 use App\Badges\Date\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\TextTemplate;
 use App\Contracts\Badge;
+use Carbon\Carbon;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class RelativeBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $timestamp): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return TextTemplate::make('date', Carbon::createFromTimestamp($timestamp)->diffForHumans(), 'blue.600');
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'Date';
     }
 
     public function title(): string
@@ -43,7 +42,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/date/relative/{timestamp}',
         ];
     }
 
@@ -56,7 +55,7 @@ final class VersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->whereNumber('timestamp');
     }
 
     public function staticPreviews(): array
@@ -69,8 +68,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/date/relative/1540814400' => 'relative date',
         ];
     }
 
