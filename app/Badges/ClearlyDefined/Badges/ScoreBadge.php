@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\ClearlyDefined\Badges;
 
 use App\Badges\ClearlyDefined\Client;
-use App\Badges\Templates\LicenseTemplate;
 use App\Badges\Templates\NumberTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;

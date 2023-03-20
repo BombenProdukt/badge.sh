@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://app.codeship.com/')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $projectId, ?string $branch): string
     {
-        return $this->client->get('')->json();
+        return $this->client->get("projects/{$projectId}/status", ['branch' => $branch])->body();
     }
 }

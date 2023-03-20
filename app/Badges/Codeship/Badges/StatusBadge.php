@@ -5,27 +5,35 @@ declare(strict_types=1);
 namespace App\Badges\Codeship\Badges;
 
 use App\Badges\Codeship\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\StatusTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class StatusBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $projectId, ?string $branch = null): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $response = $this->client->get($projectId, $branch);
 
-        return VersionTemplate::make($this->service(), $version);
+        if (str_contains($response, 'id="project not found"')) {
+            return StatusTemplate::make('build', 'project not found');
+        }
+
+        if (str_contains($response, 'id="passing"')) {
+            return StatusTemplate::make('build', 'passing');
+        }
+
+        return StatusTemplate::make('build', 'failing');
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'CodeShip';
     }
 
     public function title(): string
@@ -43,7 +51,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/codeship/status/{projectId}/{branch?}',
         ];
     }
 
@@ -69,8 +77,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/codeship/status/0bdb0440-3af5-0133-00ea-0ebda3a33bf6' => 'status',
         ];
     }
 
