@@ -4,20 +4,17 @@ declare(strict_types=1);
 
 namespace App\Badges\Flathub;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function downloads(string $packageName): int
     {
-        $this->client = Http::baseUrl('')->throw();
+        return Http::get("https://flathub.org/api/v2/stats/{$packageName}")->throw()->json('installs_total');
     }
 
-    public function get(string $appId): array
+    public function version(string $packageName): string
     {
-        return $this->client->get('')->json();
+        return Http::get("https://flathub.org/api/v1/apps/{$packageName}")->throw()->json('currentReleaseVersion');
     }
 }

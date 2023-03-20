@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace App\Badges\Flathub\Badges;
 
 use App\Badges\Flathub\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class DownloadsBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return DownloadsTemplate::make($this->client->downloads($packageName));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Flathub';
     }
 
     public function title(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/flathub/downloads/{packageName}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/flathub/downloads/org.mozilla.firefox' => 'version',
         ];
     }
 
