@@ -14,11 +14,13 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.bountysource.com/')
+            ->withHeaders(['Accept' => 'application/vnd.bountysource+json; version=2'])
+            ->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $team): array
     {
-        return Yaml::parse($this->client->get('')->body());
+        return Yaml::parse($this->client->get("teams/{$team}")->body());
     }
 }
