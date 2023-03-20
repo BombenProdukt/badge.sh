@@ -2,34 +2,52 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Hackage\Badges;
+namespace App\Badges\PyPI\Badges;
 
-use App\Badges\Hackage\Client;
+use App\Badges\PyPI\Client;
 use App\Badges\Templates\TextTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Http;
 
-final class DependencyBadge implements Badge
+final class FormatBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $package): array
+    public function handle(string $project): array
     {
-        $client = Http::baseUrl('https://packdeps.haskellers.com/')->throw();
-        $client->get("licenses/{$package}");
+        $urls     = $this->client->get($project)['urls'];
+        $hasWheel = false;
+        $hasEgg   = false;
 
-        $outdated = str_contains($client->get("feed/{$package}")->body(), "Outdated dependencies for {$package}");
+        foreach ($urls as $url) {
+            $packageType = $url['packagetype'];
 
-        return TextTemplate::make('dependencies', $outdated ? 'outdated' : 'up-to-date', $outdated ? 'red.600' : 'green.600');
+            if (in_array($packageType, ['wheel', 'bdist_wheel'])) {
+                $hasWheel = true;
+            }
+
+            if (in_array($packageType, ['egg', 'bdist_egg'])) {
+                $hasEgg = true;
+            }
+        }
+
+        if ($hasWheel) {
+            return TextTemplate::make('format', 'wheel', 'green.600');
+        }
+
+        if ($hasEgg) {
+            return TextTemplate::make('format', 'egg', 'red.600');
+        }
+
+        return TextTemplate::make('format', 'source', 'yellow.600');
     }
 
     public function service(): string
     {
-        return 'Hackage';
+        return 'PyPI';
     }
 
     public function title(): string
@@ -47,7 +65,7 @@ final class DependencyBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hackage/{package}/dependencies',
+            '/pypi/{project}/format',
         ];
     }
 
@@ -73,7 +91,7 @@ final class DependencyBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hackage/Cabal/dependencies' => 'dependencies',
+            '/pypi/black/format' => 'format',
         ];
     }
 

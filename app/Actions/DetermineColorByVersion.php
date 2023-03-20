@@ -10,10 +10,22 @@ final class DetermineColorByVersion
 {
     public static function execute(string $value): string
     {
-        $expression = Regex::match('/alpha|beta|canary|dev|pre|rc|snapshot/', $value);
+        $stableRelease = Regex::match('/mature|production|stable/i', $value);
 
-        if ($expression->hasMatch()) {
+        if ($stableRelease->hasMatch()) {
+            return 'green.600';
+        }
+
+        $preRelease = Regex::match('/alpha|beta|canary|dev|pre|rc|snapshot/i', $value);
+
+        if ($preRelease->hasMatch()) {
             return 'cyan.600';
+        }
+
+        $badState = Regex::match('/inactive|planning/i', $value);
+
+        if ($badState->hasMatch()) {
+            return 'red.600';
         }
 
         if (str_starts_with($value, '0.')) {

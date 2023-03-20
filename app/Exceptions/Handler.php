@@ -55,7 +55,7 @@ final class Handler extends ExceptionHandler
                     'label'        => 'badge.sh',
                     'message'      => 'not found',
                     'messageColor' => 'red.600',
-                ])->render()
+                ])->withStyle('classic')->render()
             )->setStatusCode(200)->header('Content-Type', 'image/svg+xml;charset=base64');
         });
     }

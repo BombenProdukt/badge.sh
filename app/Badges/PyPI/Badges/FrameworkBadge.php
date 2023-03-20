@@ -2,34 +2,41 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Hackage\Badges;
+namespace App\Badges\PyPI\Badges;
 
-use App\Badges\Hackage\Client;
-use App\Badges\Templates\TextTemplate;
+use App\Badges\PyPI\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Http;
 
-final class DependencyBadge implements Badge
+final class FrameworkBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $package): array
+    public function handle(string $project): array
     {
-        $client = Http::baseUrl('https://packdeps.haskellers.com/')->throw();
-        $client->get("licenses/{$package}");
+        $frameworks = collect($this->client->get($project)['info']['classifiers'])->map(function (string $classifier) {
+            if (! str_starts_with($classifier, 'Framework ::')) {
+                return null;
+            }
 
-        $outdated = str_contains($client->get("feed/{$package}")->body(), "Outdated dependencies for {$package}");
+            $classifier = explode(' :: ', $classifier);
 
-        return TextTemplate::make('dependencies', $outdated ? 'outdated' : 'up-to-date', $outdated ? 'red.600' : 'green.600');
+            return ['framework' => $classifier[1], 'version' => $classifier[2] ?? null];
+        })->filter();
+
+        return [
+            'label'        => $frameworks->first()['framework'],
+            'message'      => $frameworks->map->version->filter()->implode(' | '),
+            'messageColor' => 'blue.600',
+        ];
     }
 
     public function service(): string
     {
-        return 'Hackage';
+        return 'PyPI';
     }
 
     public function title(): string
@@ -47,7 +54,7 @@ final class DependencyBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hackage/{package}/dependencies',
+            '/pypi/{project}/framework',
         ];
     }
 
@@ -73,7 +80,8 @@ final class DependencyBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hackage/Cabal/dependencies' => 'dependencies',
+            '/pypi/black/framework'       => 'framework',
+            '/pypi/plone.volto/framework' => 'framework',
         ];
     }
 

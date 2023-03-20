@@ -2,34 +2,41 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Hackage\Badges;
+namespace App\Badges\PyPI\Badges;
 
-use App\Badges\Hackage\Client;
-use App\Badges\Templates\TextTemplate;
+use App\Badges\PyPI\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Http;
 
-final class DependencyBadge implements Badge
+final class ImplementationBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $package): array
+    public function handle(string $project): array
     {
-        $client = Http::baseUrl('https://packdeps.haskellers.com/')->throw();
-        $client->get("licenses/{$package}");
+        $implementation = collect($this->client->get($project)['info']['classifiers'])->map(function (string $classifier) {
+            preg_match('/^Programming Language :: Python :: Implementation :: (\d+)$/', $classifier, $matches);
 
-        $outdated = str_contains($client->get("feed/{$package}")->body(), "Outdated dependencies for {$package}");
+            if (empty($matches)) {
+                return null;
+            }
 
-        return TextTemplate::make('dependencies', $outdated ? 'outdated' : 'up-to-date', $outdated ? 'red.600' : 'green.600');
+            return $matches[1];
+        })->filter()->first();
+
+        return [
+            'label'        => 'implementation',
+            'message'      => empty($implementation) ? 'cpython' : $implementation,
+            'messageColor' => 'blue.600',
+        ];
     }
 
     public function service(): string
     {
-        return 'Hackage';
+        return 'PyPI';
     }
 
     public function title(): string
@@ -47,7 +54,7 @@ final class DependencyBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hackage/{package}/dependencies',
+            '/pypi/{project}/implementation',
         ];
     }
 
@@ -73,7 +80,7 @@ final class DependencyBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hackage/Cabal/dependencies' => 'dependencies',
+            '/pypi/black/implementation' => 'framework',
         ];
     }
 
