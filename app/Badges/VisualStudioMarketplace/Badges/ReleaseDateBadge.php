@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
+use App\Badges\Templates\DateTemplate;
 use App\Badges\VisualStudioMarketplace\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
-final class InstallsBadge implements Badge
+final class ReleaseDateBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,14 +18,7 @@ final class InstallsBadge implements Badge
 
     public function handle(string $extension): array
     {
-        $response = collect($this->client->get($extension));
-        $install  = collect($response['statistics'])->firstWhere('statisticName', 'install')['value'];
-
-        return [
-            'label'        => 'installations',
-            'message'      => FormatNumber::execute($install),
-            'messageColor' => 'green.600',
-        ];
+        return DateTemplate::make('release date', $this->client->get($extension)['releaseDate']);
     }
 
     public function service(): string
@@ -48,7 +41,7 @@ final class InstallsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/{extension}/installation/count',
+            '/vs-marketplace/{extension}/release-date',
         ];
     }
 
@@ -74,7 +67,7 @@ final class InstallsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/vscodevim.vim/installation/count' => 'installation count',
+            '/vs-marketplace/vscodevim.vim/release-date' => 'release date',
         ];
     }
 

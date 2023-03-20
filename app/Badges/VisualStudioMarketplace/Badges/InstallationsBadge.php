@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
-use App\Badges\Templates\DownloadsTemplate;
+use App\Badges\Templates\NumberTemplate;
 use App\Badges\VisualStudioMarketplace\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class DownloadsBadge implements Badge
+final class InstallationsBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,11 +18,9 @@ final class DownloadsBadge implements Badge
 
     public function handle(string $extension): array
     {
-        $response    = $this->client->get($extension);
-        $install     = collect($response['statistics'])->firstWhere('statisticName', 'install')['value'];
-        $updateCount = collect($response['statistics'])->firstWhere('statisticName', 'updateCount')['value'];
+        $installations = collect($this->client->get($extension)['statistics'])->firstWhere('statisticName', 'install')['value'];
 
-        return DownloadsTemplate::make($install + $updateCount);
+        return NumberTemplate::make('installations', $installations);
     }
 
     public function service(): string
@@ -45,7 +43,7 @@ final class DownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/{extension}/downloads',
+            '/vs-marketplace/{extension}/installation/count',
         ];
     }
 
@@ -71,7 +69,7 @@ final class DownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/vscodevim.vim/downloads' => 'downloads',
+            '/vs-marketplace/vscodevim.vim/installation/count' => 'installation count',
         ];
     }
 

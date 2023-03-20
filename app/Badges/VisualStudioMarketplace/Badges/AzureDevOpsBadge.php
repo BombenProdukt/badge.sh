@@ -9,20 +9,28 @@ use App\Badges\VisualStudioMarketplace\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class DownloadsBadge implements Badge
+final class AzureDevOpsBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $extension): array
+    public function handle(string $extension, ?string $measurement = null): array
     {
-        $response    = $this->client->get($extension);
-        $install     = collect($response['statistics'])->firstWhere('statisticName', 'install')['value'];
-        $updateCount = collect($response['statistics'])->firstWhere('statisticName', 'updateCount')['value'];
+        $response        = $this->client->get($extension);
+        $install         = collect($response['statistics'])->firstWhere('statisticName', 'install')['value'];
+        $onpremDownloads = collect($response['statistics'])->firstWhere('statisticName', 'onpremDownloads')['value'];
 
-        return DownloadsTemplate::make($install + $updateCount);
+        if ($measurement === 'services') {
+            return DownloadsTemplate::make($install);
+        }
+
+        if ($measurement === 'on-prem') {
+            return DownloadsTemplate::make($onpremDownloads);
+        }
+
+        return DownloadsTemplate::make($install + $onpremDownloads);
     }
 
     public function service(): string
@@ -45,7 +53,7 @@ final class DownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/{extension}/downloads',
+            '/vs-marketplace/{extension}/installations/azure-devops/{measurement?}',
         ];
     }
 
@@ -71,7 +79,9 @@ final class DownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/vscodevim.vim/downloads' => 'downloads',
+            '/vs-marketplace/swellaby.mirror-git-repository/installations/azure-devops'          => 'downloads',
+            '/vs-marketplace/swellaby.mirror-git-repository/installations/azure-devops/services' => 'downloads',
+            '/vs-marketplace/swellaby.mirror-git-repository/installations/azure-devops/on-prem'  => 'downloads',
         ];
     }
 
