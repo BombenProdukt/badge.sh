@@ -18,7 +18,7 @@ final class MaintainerBadge implements Badge
 
     public function handle(string $package): array
     {
-        return LicenseTemplate::make($this->client->get($package)['pkgver']);
+        return LicenseTemplate::make($this->client->get($package)['Maintainer']);
     }
 
     public function service(): string
@@ -41,7 +41,7 @@ final class MaintainerBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/aur/{package}/version',
+            '/aur/{package}/maintainer',
         ];
     }
 

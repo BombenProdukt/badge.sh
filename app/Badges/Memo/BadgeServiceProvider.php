@@ -14,6 +14,6 @@ final class BadgeServiceProvider extends ServiceProvider
     {
         BadgeService::add(Badges\ShowBadgeBadge::class);
 
-        Route::put('/memo/{name}', Badges\UpdateBadgeBadge::class);
+        // Route::put('/memo/{name}', Badges\UpdateBadgeBadge::class);
     }
 }

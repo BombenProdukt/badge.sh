@@ -67,7 +67,7 @@ final class VotesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/aur/core/google-chrome/votes' => 'votes',
+            '/aur/google-chrome/votes' => 'votes',
         ];
     }
 

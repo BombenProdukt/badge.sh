@@ -67,7 +67,7 @@ final class PopularityBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/aur/core/google-chrome/popularity' => 'popularity',
+            '/aur/google-chrome/popularity' => 'popularity',
         ];
     }
 

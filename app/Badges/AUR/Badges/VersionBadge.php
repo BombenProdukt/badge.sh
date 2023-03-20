@@ -67,7 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/aur/core/google-chrome/version' => 'version',
+            '/aur/google-chrome/version' => 'version',
         ];
     }
 
