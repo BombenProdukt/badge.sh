@@ -23,7 +23,7 @@ final class ActivityBadge implements Badge
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'BountySource';
     }
 
     public function title(): string

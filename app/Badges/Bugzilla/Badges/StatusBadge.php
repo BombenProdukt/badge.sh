@@ -44,7 +44,7 @@ final class StatusBadge implements Badge
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'Bugzilla';
     }
 
     public function title(): string
