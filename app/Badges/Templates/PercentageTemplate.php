@@ -12,9 +12,9 @@ final class PercentageTemplate
     public static function make(string $label, mixed $percentage): array
     {
         return [
-            'label'  => $label,
-            'status' => FormatPercentage::execute($percentage),
-            'color'  => DetermineColorByPercentage::execute($percentage),
+            'label'        => $label,
+            'message'      => FormatPercentage::execute($percentage ?? 0),
+            'messageColor' => DetermineColorByPercentage::execute($percentage),
         ];
     }
 }
