@@ -7,22 +7,22 @@ namespace App\Badges\OpenCollective\Badges;
 use App\Badges\OpenCollective\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatMoney;
+use PreemStudio\Formatter\FormatNumber;
 
-final class YearlyBadge implements Badge
+final class SponsorsBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $slug, ?string $tier = null): array
+    public function handle(string $slug, ?string $tierId = null): array
     {
-        $response = $this->client->get($slug, null, $tier);
+        $response = $this->client->fetchCollectiveBackersCount($slug, 'organizations', $tierId);
 
         return [
-            'label'        => 'yearly income',
-            'message'      => FormatMoney::execute($response['yearlyIncome'] / 100, $response['currency']),
+            'label'        => 'sponsors',
+            'message'      => FormatNumber::execute($response),
             'messageColor' => 'green.600',
         ];
     }
@@ -47,7 +47,7 @@ final class YearlyBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/opencollective/{slug}/yearly',
+            '/opencollective/{slug}/sponsors/{tierId?}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class YearlyBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/opencollective/webpack/yearly' => 'yearly income',
+            '/opencollective/webpack/sponsors' => 'sponsors',
         ];
     }
 

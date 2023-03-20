@@ -20,4 +20,11 @@ final class Client
     {
         return $this->client->get("{$package}.json")->json();
     }
+
+    public function fetchCollectiveBackersCount(string $collective, ?string $userType = null, ?string $tierId = null): int
+    {
+        $userType ??= 'all';
+
+        return count($this->client->get("{$collective}/members/{$userType}.json", ['TierId' => $tierId])->json());
+    }
 }

@@ -16,13 +16,13 @@ final class BackersBadge implements Badge
         //
     }
 
-    public function handle(string $slug): array
+    public function handle(string $slug, ?string $tierId = null): array
     {
-        $response = $this->client->get($slug);
+        $response = $this->client->fetchCollectiveBackersCount($slug, 'users', $tierId);
 
         return [
             'label'        => 'backers',
-            'message'      => FormatNumber::execute($response['backersCount']),
+            'message'      => FormatNumber::execute($response),
             'messageColor' => 'green.600',
         ];
     }
@@ -47,7 +47,7 @@ final class BackersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/opencollective/{slug}/backers',
+            '/opencollective/{slug}/backers/{tierId?}',
         ];
     }
 
