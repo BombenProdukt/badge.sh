@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://apps.fedoraproject.org/mdapi/')->throw();
     }
 
-    public function get(string $appId): array
+    public function version(string $packageName, ?string $branch): string
     {
-        return $this->client->get('')->json();
+        return $this->client->get("{$branch}/pkg/{$packageName}")->json('version');
     }
 }

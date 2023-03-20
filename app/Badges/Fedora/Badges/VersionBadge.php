@@ -16,16 +16,14 @@ final class VersionBadge implements Badge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName, ?string $branch = 'rawhide'): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return VersionTemplate::make($this->service(), $this->client->version($packageName, $branch));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Fedora';
     }
 
     public function title(): string
@@ -43,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/fedora/version/{packageName}/{branch?}',
         ];
     }
 
@@ -69,8 +67,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/fedora/version/rpm'         => 'version',
+            '/fedora/version/rpm/rawhide' => 'version',
         ];
     }
 
