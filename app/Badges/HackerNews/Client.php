@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://hacker-news.firebaseio.com/v0/user/')->throw();
     }
 
-    public function get(string $appId): array
+    public function karma(string $username): int
     {
-        return $this->client->get('')->json();
+        return $this->client->get("{$username}.json")->json('karma');
     }
 }
