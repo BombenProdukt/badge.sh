@@ -12,7 +12,6 @@ version/X => platform/X
 - [ ] [ansible](https://github.com/badges/shields/tree/master/services/ansible)
 - [ ] [azure-devops](https://github.com/badges/shields/tree/master/services/azure-devops)
 - [ ] [bitbucket](https://github.com/badges/shields/tree/master/services/bitbucket)
-- [ ] [bitrise](https://github.com/badges/shields/tree/master/services/bitrise)
 - [ ] [bountysource](https://github.com/badges/shields/tree/master/services/bountysource)
 - [ ] [bower](https://github.com/badges/shields/tree/master/services/bower)
 - [ ] [bstats](https://github.com/badges/shields/tree/master/services/bstats)

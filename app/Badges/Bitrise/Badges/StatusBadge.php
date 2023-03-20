@@ -5,25 +5,31 @@ declare(strict_types=1);
 namespace App\Badges\Bitrise\Badges;
 
 use App\Badges\Bitrise\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\TextTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class StatusBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $token, string $appId, ?string $branch = null): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        $status = $this->client->get($token, $appId, $branch)['status'];
+
+        return TextTemplate::make('status', $status === 'unknown' ? 'branch not found' : $status, [
+            'error'   => 'red.600',
+            'success' => 'green.600',
+            'unknown' => 'gray.600',
+        ][$status]);
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'Bitrise';
     }
 
     public function title(): string
@@ -41,7 +47,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/bitrise/{token}/{appId}/version/{branch?}',
         ];
     }
 
@@ -67,7 +73,8 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/bitrise/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304/version'        => 'version',
+            '/bitrise/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304/version/master' => 'version',
         ];
     }
 
