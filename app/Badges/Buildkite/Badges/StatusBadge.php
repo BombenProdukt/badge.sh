@@ -5,27 +5,25 @@ declare(strict_types=1);
 namespace App\Badges\Buildkite\Badges;
 
 use App\Badges\Buildkite\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\StatusTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class StatusBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $identifier, ?string $branch = null): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return StatusTemplate::make('build', $this->client->status($identifier, $branch));
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'Buildkite';
     }
 
     public function title(): string
@@ -43,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/buildkite/{identifier}/{branch?}',
         ];
     }
 
@@ -69,8 +67,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/buildkite/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489'        => 'build status',
+            '/buildkite/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489/master' => 'build status',
         ];
     }
 

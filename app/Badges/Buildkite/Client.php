@@ -6,7 +6,6 @@ namespace App\Badges\Buildkite;
 
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
-use Symfony\Component\Yaml\Yaml;
 
 final class Client
 {
@@ -14,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://badge.buildkite.com/')->throw();
     }
 
-    public function get(string $appId): array
+    public function status(string $identifier): string
     {
-        return Yaml::parse($this->client->get('')->body());
+        return $this->client->get("{$identifier}.json")->json('status');
     }
 }
