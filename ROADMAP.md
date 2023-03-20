@@ -35,7 +35,6 @@ version/X => platform/X
 - [ ] [gradle-plugin-portal](https://github.com/badges/shields/tree/master/services/gradle-plugin-portal)
 - [ ] [greasyfork](https://github.com/badges/shields/tree/master/services/greasyfork)
 - [ ] [hexpm](https://github.com/badges/shields/tree/master/services/hexpm)
-- [ ] [hsts](https://github.com/badges/shields/tree/master/services/hsts)
 - [ ] [itunes](https://github.com/badges/shields/tree/master/services/itunes)
 - [ ] [jenkins](https://github.com/badges/shields/tree/master/services/jenkins)
 - [ ] [jetbrains](https://github.com/badges/shields/tree/master/services/jetbrains)

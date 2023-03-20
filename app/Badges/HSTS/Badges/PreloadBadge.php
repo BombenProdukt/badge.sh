@@ -5,27 +5,25 @@ declare(strict_types=1);
 namespace App\Badges\HSTS\Badges;
 
 use App\Badges\HSTS\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\StatusTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class PreloadBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $domain): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return StatusTemplate::make('hsts preloaded', $this->client->status($domain));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'HSTS';
     }
 
     public function title(): string
@@ -43,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/hsts/preload/{domain}',
         ];
     }
 
@@ -69,8 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/hsts/preload/github.com' => 'status',
         ];
     }
 

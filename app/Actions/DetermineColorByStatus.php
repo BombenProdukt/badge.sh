@@ -13,6 +13,7 @@ final class DetermineColorByStatus
         'succeeded',
         'success',
         'successful',
+        'preloaded',
     ];
 
     private static array $orangeStatuses = [
@@ -67,6 +68,10 @@ final class DetermineColorByStatus
 
         if (in_array($status, static::$redStatuses)) {
             return 'red.600';
+        }
+
+        if (in_array($status, static::$otherStatuses)) {
+            return 'cyan.600';
         }
 
         return 'gray.600';
