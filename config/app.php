@@ -253,7 +253,6 @@ return [
         App\Badges\Date\BadgeServiceProvider::class,
         App\Badges\DavidDM\BadgeServiceProvider::class,
         App\Badges\Debian\BadgeServiceProvider::class,
-        App\Badges\Debug\BadgeServiceProvider::class,
         App\Badges\DeepScan\BadgeServiceProvider::class,
         App\Badges\Dependabot\BadgeServiceProvider::class,
         App\Badges\Depfu\BadgeServiceProvider::class,
