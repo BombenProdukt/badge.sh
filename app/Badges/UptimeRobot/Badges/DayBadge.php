@@ -18,7 +18,7 @@ final class DayBadge implements Badge
 
     public function handle(string $apiKey): array
     {
-        $response = $this->client->get($apiKey);
+        $response = $this->client->get($apiKey, 1);
 
         [$percentage] = explode('-', $response['custom_uptime_ratio']);
 
@@ -55,7 +55,7 @@ final class DayBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/uptime-robot/{apiKey}/day',
+            '/uptimerobot/{apiKey}/day',
         ];
     }
 
@@ -81,7 +81,7 @@ final class DayBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/uptime-robot/m780862024-50db2c44c703e5c68d6b1ebb/day' => '(24 hours) uptime',
+            '/uptimerobot/m780862024-50db2c44c703e5c68d6b1ebb/day' => '(24 hours) uptime',
         ];
     }
 

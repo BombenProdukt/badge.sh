@@ -18,7 +18,7 @@ final class MonthBadge implements Badge
 
     public function handle(string $apiKey): array
     {
-        $response = $this->client->get($apiKey);
+        $response = $this->client->get($apiKey, 30);
 
         [,,$percentage] = explode('-', $response['custom_uptime_ratio']);
 
@@ -55,7 +55,7 @@ final class MonthBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/uptime-robot/{apiKey}/month',
+            '/uptimerobot/{apiKey}/month',
         ];
     }
 
@@ -81,7 +81,7 @@ final class MonthBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/uptime-robot/m780862024-50db2c44c703e5c68d6b1ebb/month' => '(past month) uptime',
+            '/uptimerobot/m780862024-50db2c44c703e5c68d6b1ebb/month' => '(past month) uptime',
         ];
     }
 

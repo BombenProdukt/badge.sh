@@ -18,7 +18,7 @@ final class WeekBadge implements Badge
 
     public function handle(string $apiKey): array
     {
-        $response = $this->client->get($apiKey);
+        $response = $this->client->get($apiKey, 7);
 
         [,$percentage] = explode('-', $response['custom_uptime_ratio']);
 
@@ -55,7 +55,7 @@ final class WeekBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/uptime-robot/{apiKey}/week',
+            '/uptimerobot/{apiKey}/week',
         ];
     }
 
@@ -81,7 +81,7 @@ final class WeekBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/uptime-robot/m780862024-50db2c44c703e5c68d6b1ebb/week' => '(past week) uptime',
+            '/uptimerobot/m780862024-50db2c44c703e5c68d6b1ebb/week' => '(past week) uptime',
         ];
     }
 

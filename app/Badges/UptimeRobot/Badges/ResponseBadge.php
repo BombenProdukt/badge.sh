@@ -44,7 +44,7 @@ final class ResponseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/uptime-robot/{apiKey}/response',
+            '/uptimerobot/{apiKey}/response',
         ];
     }
 
@@ -70,7 +70,7 @@ final class ResponseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/uptime-robot/m780862024-50db2c44c703e5c68d6b1ebb/response' => '(last hour) response',
+            '/uptimerobot/m780862024-50db2c44c703e5c68d6b1ebb/response' => '(last hour) response',
         ];
     }
 
