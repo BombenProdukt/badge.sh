@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://docs.rs/crate/')->throw();
     }
 
-    public function get(string $appId): array
+    public function status(string $crate, ?string $version): bool
     {
-        return $this->client->get('')->json();
+        return $this->client->get("{$crate}/{$version}/builds.json")->json('0.build_status');
     }
 }
