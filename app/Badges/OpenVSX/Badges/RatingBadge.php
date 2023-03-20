@@ -15,9 +15,9 @@ final class RatingBadge implements Badge
         //
     }
 
-    public function handle(string $namespace, string $package): array
+    public function handle(string $extension): array
     {
-        $response = $this->client->get($namespace, $package);
+        $response = $this->client->get($extension);
 
         return [
             'label'        => 'rating',
@@ -46,7 +46,7 @@ final class RatingBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/open-vsx/{namespace}/{package}/rating',
+            '/open-vsx/{package}/rating',
         ];
     }
 

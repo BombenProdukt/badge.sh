@@ -7,6 +7,7 @@ namespace App\Badges\OpenVSX\Badges;
 use App\Badges\OpenVSX\Client;
 use App\Badges\Templates\LicenseTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge implements Badge
@@ -16,11 +17,9 @@ final class LicenseBadge implements Badge
         //
     }
 
-    public function handle(string $namespace, string $package): array
+    public function handle(string $extension): array
     {
-        $response = $this->client->get($namespace, $package);
-
-        return LicenseTemplate::make($response['license']);
+        return LicenseTemplate::make($this->client->get($extension)['license']);
     }
 
     public function service(): string
@@ -56,7 +55,7 @@ final class LicenseBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('extension', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array

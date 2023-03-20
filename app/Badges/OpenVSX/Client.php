@@ -16,8 +16,8 @@ final class Client
         $this->client = Http::baseUrl('https://open-vsx.org/api/')->throw();
     }
 
-    public function get(string $namespace, string $package): array
+    public function get(string $extension): array
     {
-        return $this->client->get("{$namespace}/{$package}")->json();
+        return $this->client->get($extension)->json();
     }
 }

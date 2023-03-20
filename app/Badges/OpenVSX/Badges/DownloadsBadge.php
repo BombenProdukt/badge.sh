@@ -16,9 +16,9 @@ final class DownloadsBadge implements Badge
         //
     }
 
-    public function handle(string $namespace, string $package): array
+    public function handle(string $extension): array
     {
-        $response = $this->client->get($namespace, $package);
+        $response = $this->client->get($extension);
 
         return [
             'label'        => 'downloads',

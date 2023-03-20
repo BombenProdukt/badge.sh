@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace App\Badges\OpenVSX\Badges;
 
 use App\Badges\OpenVSX\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\DateTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class ReleaseDateBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,9 +19,7 @@ final class VersionBadge implements Badge
 
     public function handle(string $extension): array
     {
-        $response = $this->client->get($extension);
-
-        return VersionTemplate::make($this->service(), $response['version']);
+        return DateTemplate::make('release date', $this->client->get($extension)['timestamp']);
     }
 
     public function service(): string
@@ -43,7 +42,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/open-vsx/{namespace}/{package}/version',
+            '/open-vsx/{extension}/release-date',
         ];
     }
 
@@ -56,7 +55,7 @@ final class VersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('extension', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -69,7 +68,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/open-vsx/idleberg/electron-builder/version' => 'version',
+            '/open-vsx/idleberg/electron-builder/release-date' => 'release date',
         ];
     }
 
