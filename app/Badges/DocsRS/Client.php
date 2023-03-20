@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Docsrs;
+namespace App\Badges\DocsRS;
 
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;

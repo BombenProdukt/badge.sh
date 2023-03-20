@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Docsrs;
+namespace App\Badges\DocsRS;
 
 use App\Facades\BadgeService;
 use Illuminate\Support\ServiceProvider;

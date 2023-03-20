@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Docsrs\Badges;
+namespace App\Badges\DocsRS\Badges;
 
-use App\Badges\Docsrs\Client;
+use App\Badges\DocsRS\Client;
 use App\Badges\Templates\StatusTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;

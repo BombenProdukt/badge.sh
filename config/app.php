@@ -260,7 +260,7 @@ return [
         App\Badges\Discord\BadgeServiceProvider::class,
         App\Badges\Discourse\BadgeServiceProvider::class,
         App\Badges\Docker\BadgeServiceProvider::class,
-        App\Badges\Docsrs\BadgeServiceProvider::class,
+        App\Badges\DocsRS\BadgeServiceProvider::class,
         App\Badges\Drone\BadgeServiceProvider::class,
         App\Badges\DUB\BadgeServiceProvider::class,
         App\Badges\Dynamic\BadgeServiceProvider::class,
