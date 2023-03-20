@@ -5,25 +5,26 @@ declare(strict_types=1);
 namespace App\Badges\Depfu\Badges;
 
 use App\Badges\Depfu\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\StatusTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class StatusBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $vcs, string $project): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return StatusTemplate::make($this->service(), $this->client->get($vcs, $project));
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'Depfu';
     }
 
     public function title(): string
@@ -41,7 +42,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/depfu/status/{vcs}/{project}',
         ];
     }
 
@@ -54,7 +55,8 @@ final class LicenseBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->whereIn('vcs', ['github', 'gitlab']);
+        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -67,7 +69,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/depfu/status/github/depfu/example-ruby' => 'dependencies',
         ];
     }
 
