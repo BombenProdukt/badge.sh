@@ -8,7 +8,7 @@ use App\Badges\Keybase\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class KeyBadge implements Badge
+final class PGPBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -17,7 +17,7 @@ final class KeyBadge implements Badge
 
     public function handle(string $username): array
     {
-        $response = $this->client->get($username);
+        $response = $this->client->get($username, 'public_keys');
 
         return [
             'label'        => 'PGP',
