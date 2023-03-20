@@ -12,7 +12,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
 
-final class StatusBadge implements Badge
+final class CheckStatusBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -79,7 +79,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/status/{reference?}/{context?}',
+            '/github/{owner}/{repo}/check-status/{reference?}/{context?}',
         ];
     }
 
@@ -106,14 +106,14 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/status'                        => 'combined statuses (default branch)',
-            '/github/micromatch/micromatch/status/gh-pages'               => 'combined statuses (branch)',
-            '/github/micromatch/micromatch/status/f4809eb6df80b'          => 'combined statuses (commit)',
-            '/github/micromatch/micromatch/status/4.0.1'                  => 'combined statuses (tag)',
-            '/github/facebook/react/status/main/ci/circleci:%20yarn_test' => 'single status',
-            '/github/zeit/hyper/status/master/ci'                         => 'combined statuses (ci*)',
-            '/github/zeit/hyper/status/master/ci/circleci'                => 'combined statuses (ci/circleci*)',
-            '/github/zeit/hyper/status/master/ci/circleci:%20build'       => 'single status',
+            '/github/micromatch/micromatch/check-status'                        => 'combined statuses (default branch)',
+            '/github/micromatch/micromatch/check-status/gh-pages'               => 'combined statuses (branch)',
+            '/github/micromatch/micromatch/check-status/f4809eb6df80b'          => 'combined statuses (commit)',
+            '/github/micromatch/micromatch/check-status/4.0.1'                  => 'combined statuses (tag)',
+            '/github/facebook/react/check-status/main/ci/circleci:%20yarn_test' => 'single status',
+            '/github/zeit/hyper/check-status/master/ci'                         => 'combined statuses (ci*)',
+            '/github/zeit/hyper/check-status/master/ci/circleci'                => 'combined statuses (ci/circleci*)',
+            '/github/zeit/hyper/check-status/master/ci/circleci:%20build'       => 'single status',
         ];
     }
 

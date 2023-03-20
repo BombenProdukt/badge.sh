@@ -11,7 +11,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
 
-final class ChecksBadge implements Badge
+final class CheckRunsBadge implements Badge
 {
     public function handle(string $owner, string $repo, ?string $reference = '', ?string $context = '')
     {
