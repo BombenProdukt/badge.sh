@@ -6,12 +6,12 @@ namespace App\Badges\Templates;
 
 final class TextTemplate
 {
-    public static function make(string $label, mixed $message): array
+    public static function make(string $label, mixed $message, string $messageColor): array
     {
         return [
             'label'        => $label,
             'message'      => $message,
-            'messageColor' => 'green.600',
+            'messageColor' => $messageColor,
         ];
     }
 }
