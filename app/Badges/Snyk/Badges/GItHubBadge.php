@@ -9,16 +9,16 @@ use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class StatusBadge implements Badge
+final class GItHubBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $project, ?string $branch = null, ?string $targetFile = null): array
+    public function handle(string $project, string $targetFile = null): array
     {
-        $svg = $this->client->get(implode('/', [$project, $branch]), $targetFile);
+        $svg = $this->client->get("test/github/{$project}", $targetFile);
 
         preg_match_all('/fill-opacity=[^>]*?>([^<]+)<\//i', $svg, $matchesText);
         [$subject, $status] = $matchesText[1];
@@ -60,7 +60,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/snyk/{project}/status/{branch?}/{targetFile?}',
+            '/snyk/{project}/github/{targetFile?}',
         ];
     }
 
@@ -87,9 +87,7 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/snyk/badgen/badgen.net/status'                                     => 'vulnerability scan',
-            '/snyk/babel/babel/status/6.x'                                       => 'vulnerability scan (branch)',
-            '/snyk/rollup/plugins/status/master/packages%2Falias%2Fpackage.json' => 'vulnerability scan (custom path)',
+            '/snyk/badges/shields/github/badge-maker/package.json' => 'vulnerability scan',
         ];
     }
 

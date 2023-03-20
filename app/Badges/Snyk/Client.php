@@ -13,7 +13,7 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('https://snyk.io/test/github/')->throw();
+        $this->client = Http::baseUrl('https://snyk.io')->throw();
     }
 
     public function get(string $package, ?string $targetFile): string
