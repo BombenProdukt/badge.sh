@@ -14,5 +14,6 @@ final class BadgeServiceProvider extends ServiceProvider
         BadgeService::add(Badges\VersionBadge::class);
         BadgeService::add(Badges\LicenseBadge::class);
         BadgeService::add(Badges\PythonBadge::class);
+        BadgeService::add(Badges\WheelsBadge::class);
     }
 }

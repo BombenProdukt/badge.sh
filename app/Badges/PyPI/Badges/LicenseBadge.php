@@ -18,7 +18,7 @@ final class LicenseBadge implements Badge
 
     public function handle(string $project): array
     {
-        return LicenseTemplate::make($this->client->get($project)['license']);
+        return LicenseTemplate::make($this->client->get($project)['info']['license']);
     }
 
     public function service(): string

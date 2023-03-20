@@ -8,7 +8,7 @@ use App\Badges\PyPI\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class PythonBadge implements Badge
+final class WheelsBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -17,27 +17,26 @@ final class PythonBadge implements Badge
 
     public function handle(string $project): array
     {
-        $versions = collect($this->client->get($project)['info']['classifiers'])
-            ->map(function (string $classifier) {
-                preg_match('/^Programming Language :: Python :: ([\d.]+)( :: Only)?$/i', $classifier, $matches);
+        $urls     = $this->client->get($project)['urls'];
+        $hasWheel = false;
+        $hasEgg   = false;
 
-                if (empty($matches)) {
-                    return [];
-                }
+        foreach ($urls as $url) {
+            $packageType = $url['packagetype'];
 
-                return [
-                    'version'     => $matches[1],
-                    'isExclusive' => isset($matches[2]),
-                ];
-            })
-            ->filter()
-            ->unique(fn (array $item) => $item['version'])
-            ->implode('version', ' | ');
+            if (in_array($packageType, ['wheel', 'bdist_wheel'])) {
+                $hasWheel = true;
+            }
+
+            if (in_array($packageType, ['egg', 'bdist_egg'])) {
+                $hasEgg = true;
+            }
+        }
 
         return [
-            'label'        => 'python',
-            'message'      => $versions,
-            'messageColor' => 'blue.600',
+            'label'        => 'wheel',
+            'message'      => $hasWheel ? 'yes' : 'no',
+            'messageColor' => $hasWheel ? 'green.600' : 'red.600',
         ];
     }
 
@@ -61,7 +60,7 @@ final class PythonBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pypi/{project}/version/python',
+            '/pypi/{project}/wheels',
         ];
     }
 

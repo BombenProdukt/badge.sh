@@ -18,7 +18,7 @@ final class VersionBadge implements Badge
 
     public function handle(string $project): array
     {
-        $version = $this->client->get($project)['version'];
+        $version = $this->client->get($project)['info']['version'];
 
         return VersionTemplate::make($this->service(), $version);
     }
