@@ -5,27 +5,26 @@ declare(strict_types=1);
 namespace App\Badges\Bit\Badges;
 
 use App\Badges\Bit\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\NumberTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class TotalComponentsBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $collection): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return NumberTemplate::make('components', $this->client->get($collection)['totalComponents']);
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'Bit';
     }
 
     public function title(): string
@@ -43,7 +42,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/bit/{collection}/components',
         ];
     }
 
@@ -56,7 +55,7 @@ final class VersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('collection', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -69,8 +68,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/bit/ramda/ramda/components' => 'total components',
         ];
     }
 
