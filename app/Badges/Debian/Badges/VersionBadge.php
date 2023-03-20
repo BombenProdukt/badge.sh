@@ -16,16 +16,14 @@ final class VersionBadge implements Badge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName, ?string $distribution = 'stable'): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return VersionTemplate::make($this->service(), array_key_first($this->client->version($packageName, $distribution)));
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'Debian';
     }
 
     public function title(): string
@@ -43,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/debian/version/{packageName}/{distribution?}',
         ];
     }
 
@@ -69,8 +67,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/debian/version/apt'          => 'version',
+            '/debian/version/apt/unstable' => 'version',
         ];
     }
 
