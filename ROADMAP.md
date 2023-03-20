@@ -10,7 +10,6 @@ version/X => platform/X
 ## Badges
 
 - [ ] [ansible](https://github.com/badges/shields/tree/master/services/ansible)
-- [ ] [aur](https://github.com/badges/shields/tree/master/services/aur)
 - [ ] [azure-devops](https://github.com/badges/shields/tree/master/services/azure-devops)
 - [ ] [beerpay](https://github.com/badges/shields/tree/master/services/beerpay)
 - [ ] [bintray](https://github.com/badges/shields/tree/master/services/bintray)

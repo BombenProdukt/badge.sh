@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Pub\Badges;
+namespace App\Badges\AUR\Badges;
 
-use App\Badges\Pub\Client;
-use App\Badges\Templates\PercentageTemplate;
+use App\Badges\AUR\Client;
+use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class PopularityBadge implements Badge
+final class VersionBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,14 +18,12 @@ final class PopularityBadge implements Badge
 
     public function handle(string $package): array
     {
-        $percentage = (float) $this->client->api("packages/{$package}/score")['popularityScore'];
-
-        return PercentageTemplate::make('popularity', $percentage * 100);
+        return VersionTemplate::make($this->service(), $this->client->get($package)['Version']);
     }
 
     public function service(): string
     {
-        return 'Pub';
+        return 'AUR';
     }
 
     public function title(): string
@@ -43,7 +41,7 @@ final class PopularityBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pub/{package}/popularity',
+            '/aur/{package}/version',
         ];
     }
 
@@ -69,7 +67,7 @@ final class PopularityBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pub/mobx/popularity' => 'popularity',
+            '/aur/core/google-chrome/version' => 'version',
         ];
     }
 

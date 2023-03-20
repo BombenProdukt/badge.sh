@@ -207,6 +207,7 @@ return [
         App\Badges\AppVeyor\BadgeServiceProvider::class,
         App\Badges\ArchLinux\BadgeServiceProvider::class,
         App\Badges\AtomPackage\BadgeServiceProvider::class,
+        App\Badges\AUR\BadgeServiceProvider::class,
         App\Badges\AzurePipelines\BadgeServiceProvider::class,
         App\Badges\Badge\BadgeServiceProvider::class,
         App\Badges\Badgesize\BadgeServiceProvider::class,
