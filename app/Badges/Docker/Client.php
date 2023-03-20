@@ -26,6 +26,11 @@ final class Client
         return $this->client->get("{$scope}/{$package}/tags")->json();
     }
 
+    public function build(string $scope, string $package): array
+    {
+        return Http::get('https://cloud.docker.com/api/build/v1/source', ['image' => "{$scope}/{$package}"])->json('objects.0');
+    }
+
     public function registry(string $token, string $path): array
     {
         return Http::baseUrl('https://registry.hub.docker.com/v2')
