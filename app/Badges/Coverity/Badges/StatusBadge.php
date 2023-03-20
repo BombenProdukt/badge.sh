@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace App\Badges\Coverity\Badges;
 
 use App\Badges\Coverity\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\StatusTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class StatusBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $projectId): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return StatusTemplate::make($this->service(), $this->client->status($projectId));
     }
 
     public function service(): string
     {
-        return 'F-Droid';
+        return 'Coverity';
     }
 
     public function title(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/coverity/status/{projectId}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/coverity/status/3997' => 'status',
         ];
     }
 

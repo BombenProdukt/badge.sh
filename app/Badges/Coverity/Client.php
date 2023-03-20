@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://scan.coverity.com/')->throw();
     }
 
-    public function get(string $appId): array
+    public function status(string $projectId): string
     {
-        return $this->client->get('')->json();
+        return $this->client->get("projects/{$projectId}/badge.json")->json('status');
     }
 }
