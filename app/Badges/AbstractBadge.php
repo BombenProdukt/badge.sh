@@ -2,28 +2,24 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\W3C\Badges;
+namespace App\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Templates\LicenseTemplate;
-use App\Badges\W3C\Client;
+use App\Contracts\Badge;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+abstract class AbstractBadge implements Badge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
+    protected Request $request;
 
-    public function handle(string $appId): array
+    public function setRequest(Request $request): void
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        $this->request = $request;
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return '';
     }
 
     public function title(): string
@@ -38,9 +34,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function routePaths(): array
     {
-        return [
-            '/service/{package}',
-        ];
+        return [];
     }
 
     public function routeParameters(): array
@@ -60,8 +54,11 @@ final class LicenseBadge extends AbstractBadge
 
     public function dynamicPreviews(): array
     {
-        return [
-            '/service/{package}' => '',
-        ];
+        return [];
+    }
+
+    public function deprecated(): array
+    {
+        return [];
     }
 }

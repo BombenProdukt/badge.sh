@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\ChromeWebStore\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\ChromeWebStore\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class UsersBadge implements Badge
+final class UsersBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -39,9 +39,7 @@ final class UsersBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -53,9 +51,7 @@ final class UsersBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,22 +61,13 @@ final class UsersBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/chrome-web-store/users/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'users',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

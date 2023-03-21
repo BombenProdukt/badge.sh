@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\UptimeRobot\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\UptimeRobot\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatPercentage;
 
-final class WeekBadge implements Badge
+final class WeekBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -47,9 +47,7 @@ final class WeekBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -61,9 +59,7 @@ final class WeekBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -73,22 +69,13 @@ final class WeekBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/uptimerobot/week/m780862024-50db2c44c703e5c68d6b1ebb' => '(past week) uptime',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

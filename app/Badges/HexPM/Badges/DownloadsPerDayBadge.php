@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\HexPM\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\HexPM\Client;
 use App\Badges\Templates\DownloadsTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class DownloadsPerDayBadge implements Badge
+final class DownloadsPerDayBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -33,9 +33,7 @@ final class DownloadsPerDayBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -47,9 +45,7 @@ final class DownloadsPerDayBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -59,22 +55,13 @@ final class DownloadsPerDayBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/hex/downloads-daily/plug' => 'daily downloads',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

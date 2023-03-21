@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Badges\PyPI\Badges;
 
 use App\Actions\DetermineColorByVersion;
+use App\Badges\AbstractBadge;
 use App\Badges\PyPI\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class StabilityBadge implements Badge
+final class StabilityBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -53,9 +53,7 @@ final class StabilityBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -67,9 +65,7 @@ final class StabilityBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -79,9 +75,7 @@ final class StabilityBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -89,13 +83,6 @@ final class StabilityBadge implements Badge
         return [
             '/pypi/stability/black'       => 'stability',
             '/pypi/stability/plone.volto' => 'stability',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

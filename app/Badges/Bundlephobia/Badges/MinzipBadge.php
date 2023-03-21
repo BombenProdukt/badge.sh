@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Bundlephobia\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Bundlephobia\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatBytes;
 
-final class MinzipBadge implements Badge
+final class MinzipBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -38,9 +38,7 @@ final class MinzipBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -52,9 +50,7 @@ final class MinzipBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -64,9 +60,7 @@ final class MinzipBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -74,13 +68,6 @@ final class MinzipBadge implements Badge
         return [
             '/bundlephobia/minzip/react'             => 'minified + gzip',
             '/bundlephobia/minzip/@material-ui/core' => '(scoped pkg) minified + gzip',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Packagist\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class GitHubStarsBadge implements Badge
+final class GitHubStarsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -40,9 +40,7 @@ final class GitHubStarsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -54,9 +52,7 @@ final class GitHubStarsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -66,22 +62,13 @@ final class GitHubStarsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/packagist/github-stars/monolog/monolog' => 'github stars',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

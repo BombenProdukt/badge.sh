@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Liberapay\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Liberapay\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatPercentage;
 
-final class GoalBadge implements Badge
+final class GoalBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -45,9 +45,7 @@ final class GoalBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -59,9 +57,7 @@ final class GoalBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -71,22 +67,13 @@ final class GoalBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/liberapay/goal/Changaco' => 'goal progress',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

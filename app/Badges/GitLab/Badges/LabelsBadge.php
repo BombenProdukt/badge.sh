@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\GitLab\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\GitLab\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class LabelsBadge implements Badge
+final class LabelsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -41,9 +41,7 @@ final class LabelsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -55,9 +53,7 @@ final class LabelsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -67,9 +63,7 @@ final class LabelsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -78,13 +72,6 @@ final class LabelsBadge implements Badge
             '/gitlab/issues-by-label/NickBusey/HomelabOS/Bug'                  => 'issues by label',
             '/gitlab/issues-by-label/NickBusey/HomelabOS/Enhancement/opened'   => 'open issues by label',
             '/gitlab/issues-by-label/NickBusey/HomelabOS/Help%20wanted/closed' => 'closed issues by label',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

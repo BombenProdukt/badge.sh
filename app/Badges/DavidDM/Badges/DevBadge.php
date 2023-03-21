@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\DavidDM\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\DavidDM\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class DevBadge implements Badge
+final class DevBadge extends AbstractBadge
 {
     private array $statusInfo = [
         'insecure'      => ['insecure', 'red'],
@@ -47,9 +47,7 @@ final class DevBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -61,9 +59,7 @@ final class DevBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -74,9 +70,7 @@ final class DevBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array

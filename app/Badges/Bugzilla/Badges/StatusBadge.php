@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Bugzilla\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Bugzilla\Client;
 use App\Badges\Templates\TextTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class StatusBadge implements Badge
+final class StatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -54,9 +54,7 @@ final class StatusBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -68,9 +66,7 @@ final class StatusBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -80,22 +76,13 @@ final class StatusBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/bugzilla/status/996038' => 'status',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

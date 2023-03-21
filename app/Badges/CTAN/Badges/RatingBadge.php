@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\CTAN\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\CTAN\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class RatingBadge implements Badge
+final class RatingBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -38,9 +38,7 @@ final class RatingBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -52,9 +50,7 @@ final class RatingBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -64,22 +60,13 @@ final class RatingBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/ctan/rating/pgf-pie' => 'rating',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Coveralls\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Coveralls\Client;
 use App\Badges\Templates\CoverageTemplate;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class CoverageBadge implements Badge
+final class CoverageBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -46,9 +46,7 @@ final class CoverageBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -60,9 +58,7 @@ final class CoverageBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -73,9 +69,7 @@ final class CoverageBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -85,13 +79,6 @@ final class CoverageBadge implements Badge
             '/coveralls/coverage/github/jekyll/jekyll/master'    => 'coverage (github, branch)',
             '/coveralls/coverage/bitbucket/pyKLIP/pyklip'        => 'coverage (bitbucket)',
             '/coveralls/coverage/bitbucket/pyKLIP/pyklip/master' => 'coverage (bitbucket, branch)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

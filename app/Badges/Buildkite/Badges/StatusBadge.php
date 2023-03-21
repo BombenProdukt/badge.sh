@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Buildkite\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Buildkite\Client;
 use App\Badges\Templates\StatusTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class StatusBadge implements Badge
+final class StatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -33,9 +33,7 @@ final class StatusBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -47,9 +45,7 @@ final class StatusBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -59,9 +55,7 @@ final class StatusBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -69,13 +63,6 @@ final class StatusBadge implements Badge
         return [
             '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489'        => 'build status',
             '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489/master' => 'build status',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

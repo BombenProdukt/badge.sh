@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Bit\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Bit\Client;
 use App\Badges\Templates\NumberTemplate;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class TotalComponentsBadge implements Badge
+final class TotalComponentsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -34,9 +34,7 @@ final class TotalComponentsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -48,9 +46,7 @@ final class TotalComponentsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -60,22 +56,13 @@ final class TotalComponentsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/bit/components/ramda/ramda' => 'total components',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

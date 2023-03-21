@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Packagist\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class LanguageBadge implements Badge
+final class LanguageBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -39,9 +39,7 @@ final class LanguageBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -53,9 +51,7 @@ final class LanguageBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,22 +61,13 @@ final class LanguageBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/packagist/language/monolog/monolog' => 'language',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

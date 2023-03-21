@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Actions\RequestDependents;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class RepositoryDependentsBadge implements Badge
+final class RepositoryDependentsBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
@@ -27,9 +27,7 @@ final class RepositoryDependentsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -41,9 +39,7 @@ final class RepositoryDependentsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -53,22 +49,13 @@ final class RepositoryDependentsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/github/dependents-repo/micromatch/micromatch' => 'repository dependents',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

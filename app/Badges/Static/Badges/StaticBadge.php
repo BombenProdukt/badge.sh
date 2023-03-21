@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\Static\Badges;
 
-use App\Contracts\Badge;
+use App\Badges\AbstractBadge;
 use Illuminate\Routing\Route;
 
-final class StaticBadge implements Badge
+final class StaticBadge extends AbstractBadge
 {
     public function handle(string $label, string $message, ?string $messageColor = 'green.600'): array
     {
@@ -30,9 +30,7 @@ final class StaticBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -44,9 +42,7 @@ final class StaticBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -56,9 +52,7 @@ final class StaticBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -70,13 +64,6 @@ final class StaticBadge implements Badge
             '/static/stars/★★★★☆'               => 'star rating',
             '/static/become/a%20patron/F96854'  => 'patron',
             '/static/code%20style/standard/f2a' => 'code style: standard',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

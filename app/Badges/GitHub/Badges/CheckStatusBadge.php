@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Actions\CombineStates;
 use App\Badges\GitHub\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
 
-final class CheckStatusBadge implements Badge
+final class CheckStatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -71,9 +71,7 @@ final class CheckStatusBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -85,9 +83,7 @@ final class CheckStatusBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -98,9 +94,7 @@ final class CheckStatusBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -114,13 +108,6 @@ final class CheckStatusBadge implements Badge
             '/github/check-status/zeit/hyper/master/ci'                         => 'combined statuses (ci*)',
             '/github/check-status/zeit/hyper/master/ci/circleci'                => 'combined statuses (ci/circleci*)',
             '/github/check-status/zeit/hyper/master/ci/circleci:%20build'       => 'single status',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

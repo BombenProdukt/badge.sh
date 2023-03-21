@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\ElmPackage\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\ElmPackage\Client;
 use App\Badges\Templates\VersionTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class ElmVersionBadge implements Badge
+final class ElmVersionBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -35,9 +35,7 @@ final class ElmVersionBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -49,9 +47,7 @@ final class ElmVersionBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -61,22 +57,13 @@ final class ElmVersionBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/elm-package/elm-version/justinmimbs/date' => 'elm version',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 

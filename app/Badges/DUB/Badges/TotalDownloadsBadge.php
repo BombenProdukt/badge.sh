@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\DUB\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\DUB\Client;
 use App\Badges\Templates\DownloadsTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class TotalDownloadsBadge implements Badge
+final class TotalDownloadsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -35,9 +35,7 @@ final class TotalDownloadsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -49,9 +47,7 @@ final class TotalDownloadsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -61,22 +57,13 @@ final class TotalDownloadsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/dub/downloads/vibe-d' => 'total downloads',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

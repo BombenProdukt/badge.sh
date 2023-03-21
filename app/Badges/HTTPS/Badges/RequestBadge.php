@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\HTTPS\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\HTTPS\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class RequestBadge implements Badge
+final class RequestBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -39,9 +39,7 @@ final class RequestBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -53,9 +51,7 @@ final class RequestBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,9 +61,7 @@ final class RequestBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -76,13 +70,6 @@ final class RequestBadge implements Badge
             '/https/cal-badge-icd0onfvrxx6.runkit.sh'                     => 'https endpoint',
             '/https/cal-badge-icd0onfvrxx6.runkit.sh/Asia/Shanghai'       => 'https endpoint (with path args)',
             '/https/cal-badge-icd0onfvrxx6.runkit.sh/America/Los_Angeles' => 'https endpoint (with path args)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

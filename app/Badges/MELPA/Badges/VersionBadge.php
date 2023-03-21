@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\MELPA\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\MELPA\Client;
 use App\Badges\Templates\VersionTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class VersionBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -37,9 +37,7 @@ final class VersionBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -51,9 +49,7 @@ final class VersionBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -63,22 +59,13 @@ final class VersionBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/melpa/version/magit' => 'version',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

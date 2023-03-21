@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Pub\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Pub\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class DartPlatformBadge implements Badge
+final class DartPlatformBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -40,9 +40,7 @@ final class DartPlatformBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -54,9 +52,7 @@ final class DartPlatformBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -66,9 +62,7 @@ final class DartPlatformBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -76,13 +70,6 @@ final class DartPlatformBadge implements Badge
         return [
             '/pub/dart-platform/rxdart'         => 'dart-platform',
             '/pub/dart-platform/google_sign_in' => 'dart-platform',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Codacy\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Codacy\Client;
 use App\Badges\Templates\CoverageTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class CoverageBadge implements Badge
+final class CoverageBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -35,9 +35,7 @@ final class CoverageBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -49,9 +47,7 @@ final class CoverageBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -61,9 +57,7 @@ final class CoverageBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -71,13 +65,6 @@ final class CoverageBadge implements Badge
         return [
             '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e'        => 'coverage',
             '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e/master' => 'branch coverage',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

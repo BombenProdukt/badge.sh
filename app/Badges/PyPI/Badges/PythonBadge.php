@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\PyPI\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\PyPI\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class PythonBadge implements Badge
+final class PythonBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -53,9 +53,7 @@ final class PythonBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -67,9 +65,7 @@ final class PythonBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -79,22 +75,13 @@ final class PythonBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/pypi/python-version/black' => 'python version',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

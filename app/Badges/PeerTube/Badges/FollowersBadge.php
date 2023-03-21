@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\PeerTube\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\PeerTube\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class FollowersBadge implements Badge
+final class FollowersBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -49,9 +49,7 @@ final class FollowersBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -63,9 +61,7 @@ final class FollowersBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -75,9 +71,7 @@ final class FollowersBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -85,13 +79,6 @@ final class FollowersBadge implements Badge
         return [
             '/peertube/followers/framatube.org/framasoft'                 => 'followers (account)',
             '/peertube/followers/framatube.org/framasoft/framablog.audio' => 'followers (channel)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

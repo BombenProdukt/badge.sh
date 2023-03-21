@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Codacy\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Codacy\Client;
 use App\Badges\Templates\GradeTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class GradeBadge implements Badge
+final class GradeBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -35,9 +35,7 @@ final class GradeBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -49,9 +47,7 @@ final class GradeBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -61,9 +57,7 @@ final class GradeBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -71,13 +65,6 @@ final class GradeBadge implements Badge
         return [
             '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e'        => 'code quality',
             '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e/master' => 'branch code quality',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

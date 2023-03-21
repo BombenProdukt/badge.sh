@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\UptimeRobot\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\UptimeRobot\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class StatusBadge implements Badge
+final class StatusBadge extends AbstractBadge
 {
     private array $statuses = [
         '0' => ['paused', 'yellow.600'],
@@ -46,9 +46,7 @@ final class StatusBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -60,9 +58,7 @@ final class StatusBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -72,22 +68,13 @@ final class StatusBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/uptimerobot/status/m780862024-50db2c44c703e5c68d6b1ebb' => 'status',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

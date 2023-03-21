@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
-use App\Contracts\Badge;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class CommitsBadge implements Badge
+final class CommitsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -45,9 +45,7 @@ final class CommitsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -59,9 +57,7 @@ final class CommitsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -71,9 +67,7 @@ final class CommitsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -82,13 +76,6 @@ final class CommitsBadge implements Badge
             '/github/commits/micromatch/micromatch'          => 'commits count',
             '/github/commits/micromatch/micromatch/gh-pages' => 'commits count (branch ref)',
             '/github/commits/micromatch/micromatch/4.0.1'    => 'commits count (tag ref)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

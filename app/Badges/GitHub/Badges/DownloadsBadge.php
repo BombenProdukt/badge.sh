@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
-use App\Contracts\Badge;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class DownloadsBadge implements Badge
+final class DownloadsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -52,9 +52,7 @@ final class DownloadsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -66,9 +64,7 @@ final class DownloadsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -78,9 +74,7 @@ final class DownloadsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -88,13 +82,6 @@ final class DownloadsBadge implements Badge
         return [
             '/github/downloads/electron/electron'        => 'assets downloads for latest release',
             '/github/downloads/electron/electron/v7.0.0' => 'assets downloads for a tag',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

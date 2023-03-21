@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Actions\CombineStates;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
 
-final class CheckRunsBadge implements Badge
+final class CheckRunsBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo, ?string $reference = '', ?string $context = '')
     {
@@ -70,9 +70,7 @@ final class CheckRunsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -84,9 +82,7 @@ final class CheckRunsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -97,9 +93,7 @@ final class CheckRunsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -113,13 +107,6 @@ final class CheckRunsBadge implements Badge
             '/github/check-runs/node-formidable/node-formidable/master/windows'            => 'single checks (windows)',
             '/github/check-runs/node-formidable/node-formidable/master/macos'              => 'single checks (macos)',
             '/github/check-runs/styfle/packagephobia/main'                                 => 'combined checks (branch)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

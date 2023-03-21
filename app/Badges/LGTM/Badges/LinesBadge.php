@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\LGTM\Client;
 use App\Badges\Templates\LinesTemplate;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class LinesBadge implements Badge
+final class LinesBadge extends AbstractBadge
 {
     private array $languages = [
         'cpp'        => 'c/c++',
@@ -46,9 +46,7 @@ final class LinesBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -60,9 +58,7 @@ final class LinesBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -73,9 +69,7 @@ final class LinesBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array

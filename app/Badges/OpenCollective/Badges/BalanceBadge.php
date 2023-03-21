@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenCollective\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\OpenCollective\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatMoney;
 
-final class BalanceBadge implements Badge
+final class BalanceBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -39,9 +39,7 @@ final class BalanceBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -53,9 +51,7 @@ final class BalanceBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,22 +61,13 @@ final class BalanceBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/opencollective/balance/webpack' => 'balance',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

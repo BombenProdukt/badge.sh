@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Actions\MakeBadgeResponse;
+use App\Contracts\Badge;
 use App\Services\BadgeService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Spatie\ResponseCache\Middlewares\CacheResponse;
@@ -25,8 +28,17 @@ final class BadgeServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Route::middleware(CacheResponse::class)->group(function (): void {
+            /** @var Badge */
             foreach (app('badge.service')->all() as $badge) {
-                Route::badge($badge::class);
+                foreach ($badge->routePaths() as $path) {
+                    $badge->routeConstraints(
+                        Route::get($path, function (Request $request) use ($badge) {
+                            $badge->setRequest(request());
+
+                            return MakeBadgeResponse::execute($request, $badge);
+                        })
+                    );
+                }
             }
         });
     }

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\CodeClimate\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\CodeClimate\Client;
 use App\Badges\Templates\LinesTemplate;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class LinesBadge implements Badge
+final class LinesBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -36,9 +36,7 @@ final class LinesBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -50,9 +48,7 @@ final class LinesBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -62,22 +58,13 @@ final class LinesBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/codeclimate/lines/codeclimate/codeclimate' => 'lines of code',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

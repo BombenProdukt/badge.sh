@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\PackagePhobia\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\PackagePhobia\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class PublishBadge implements Badge
+final class PublishBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -39,9 +39,7 @@ final class PublishBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -53,9 +51,7 @@ final class PublishBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,9 +61,7 @@ final class PublishBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -75,13 +69,6 @@ final class PublishBadge implements Badge
         return [
             '/packagephobia/publish/webpack'               => 'publish size',
             '/packagephobia/publish/@tusbar/cache-control' => '(scoped pkg) publish size',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

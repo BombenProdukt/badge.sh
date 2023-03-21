@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\NPM\Client;
 use App\Badges\Templates\DownloadsPerWeekTemplate;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class WeeklyDownloadsBadge implements Badge
+final class WeeklyDownloadsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -36,9 +36,7 @@ final class WeeklyDownloadsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -50,9 +48,7 @@ final class WeeklyDownloadsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -62,22 +58,13 @@ final class WeeklyDownloadsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/npm/downloads-weekly/express' => 'weekly downloads',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

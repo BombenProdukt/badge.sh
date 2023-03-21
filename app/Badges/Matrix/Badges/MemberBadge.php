@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Matrix\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Matrix\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Str;
 use PreemStudio\Formatter\FormatNumber;
 
-final class MemberBadge implements Badge
+final class MemberBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -40,9 +40,7 @@ final class MemberBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -56,9 +54,7 @@ final class MemberBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -68,9 +64,7 @@ final class MemberBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -79,13 +73,6 @@ final class MemberBadge implements Badge
             '/matrix/members/rust/matrix.org'         => 'members',
             '/matrix/members/thisweekinmatrix'        => 'members',
             '/matrix/members/archlinux/archlinux.org' => 'members',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

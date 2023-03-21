@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Hackage\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Hackage\Client;
 use App\Badges\Templates\TextTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
-final class DependencyBadge implements Badge
+final class DependencyBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -39,9 +39,7 @@ final class DependencyBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -53,9 +51,7 @@ final class DependencyBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,22 +61,13 @@ final class DependencyBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/hackage/dependencies/Cabal' => 'dependencies',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

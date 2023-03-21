@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
 use App\Badges\Templates\PercentageTemplate;
-use App\Contracts\Badge;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 
-final class MilestonesBadge implements Badge
+final class MilestonesBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -41,9 +41,7 @@ final class MilestonesBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -55,9 +53,7 @@ final class MilestonesBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -67,9 +63,7 @@ final class MilestonesBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -77,13 +71,6 @@ final class MilestonesBadge implements Badge
         return [
             '/github/milestones/chrislgarry/Apollo-11/1' => 'milestone percentage',
 
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

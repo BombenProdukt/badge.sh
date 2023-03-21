@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\AzurePipelines\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\AzurePipelines\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 use PreemStudio\Formatter\FormatNumber;
 
-final class BuildTestResultBadge implements Badge
+final class BuildTestResultBadge extends AbstractBadge
 {
     private array $colors = [
         'completed'          => 'green.600',
@@ -76,9 +76,7 @@ final class BuildTestResultBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -90,9 +88,7 @@ final class BuildTestResultBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -102,9 +98,7 @@ final class BuildTestResultBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -112,13 +106,6 @@ final class BuildTestResultBadge implements Badge
         return [
             '/azure-pipelines/build-test/dnceng/public/51'                                => 'test results',
             '/azure-pipelines/build-test/azuredevops-powershell/azuredevops-powershell/1' => 'test results',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

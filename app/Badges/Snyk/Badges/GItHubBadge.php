@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Snyk\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Snyk\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class GItHubBadge implements Badge
+final class GItHubBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -52,9 +52,7 @@ final class GItHubBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -66,9 +64,7 @@ final class GItHubBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -79,22 +75,13 @@ final class GItHubBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/snyk/github/badges/shields/badge-maker/package.json' => 'vulnerability scan',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

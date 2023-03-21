@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Homebrew\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Homebrew\Client;
 use App\Badges\Templates\VersionTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionForFormulaBadge implements Badge
+final class VersionForFormulaBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -41,9 +41,7 @@ final class VersionForFormulaBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -57,9 +55,7 @@ final class VersionForFormulaBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -69,9 +65,7 @@ final class VersionForFormulaBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -79,13 +73,6 @@ final class VersionForFormulaBadge implements Badge
         return [
             '/homebrew/version/fish' => 'version',
             '/homebrew/version/cake' => 'version',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

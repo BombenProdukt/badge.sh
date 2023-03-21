@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Snyk\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Snyk\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class NPMBadge implements Badge
+final class NPMBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -52,9 +52,7 @@ final class NPMBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -66,9 +64,7 @@ final class NPMBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -79,9 +75,7 @@ final class NPMBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -89,13 +83,6 @@ final class NPMBadge implements Badge
         return [
             '/snyk/npm/@babel/core'     => 'vulnerability scan (branch)',
             '/snyk/npm/@babel/core/6.x' => 'vulnerability scan (branch)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

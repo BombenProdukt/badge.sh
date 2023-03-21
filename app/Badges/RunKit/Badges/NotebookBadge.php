@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\RunKit\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\RunKit\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class NotebookBadge implements Badge
+final class NotebookBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -39,9 +39,7 @@ final class NotebookBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -53,9 +51,7 @@ final class NotebookBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,9 +61,7 @@ final class NotebookBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -79,13 +73,6 @@ final class NotebookBadge implements Badge
             '/runkit/vladimyr/metaweather/44418/wind'          => 'metaweather (wind in km/h)',
             '/runkit/vladimyr/metaweather/44418/wind/mph'      => 'metaweather (wind in mph)',
             '/runkit/vladimyr/metaweather/44418/humidity'      => 'metaweather (humidity)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

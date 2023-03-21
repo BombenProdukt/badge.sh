@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\WinGet\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Templates\LicenseTemplate;
 use App\Badges\WinGet\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Symfony\Component\Yaml\Yaml;
 
-final class LicenseBadge implements Badge
+final class LicenseBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -37,9 +37,7 @@ final class LicenseBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -51,9 +49,7 @@ final class LicenseBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -63,22 +59,13 @@ final class LicenseBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/winget/license/GitHub.cli' => 'license',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

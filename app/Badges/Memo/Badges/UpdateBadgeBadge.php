@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Memo\Badges;
 
-use App\Contracts\Badge;
+use App\Badges\AbstractBadge;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Cache;
 
-final class UpdateBadgeBadge implements Badge
+final class UpdateBadgeBadge extends AbstractBadge
 {
     public function handle(Request $request, string $name): array
     {
@@ -36,23 +36,17 @@ final class UpdateBadgeBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -62,22 +56,11 @@ final class UpdateBadgeBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
-        return [
-            //
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
-        ];
+        return [];
     }
 }

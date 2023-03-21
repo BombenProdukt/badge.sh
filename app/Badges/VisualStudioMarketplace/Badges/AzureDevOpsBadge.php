@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Templates\DownloadsTemplate;
 use App\Badges\VisualStudioMarketplace\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class AzureDevOpsBadge implements Badge
+final class AzureDevOpsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -45,9 +45,7 @@ final class AzureDevOpsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -59,9 +57,7 @@ final class AzureDevOpsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -71,9 +67,7 @@ final class AzureDevOpsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -82,13 +76,6 @@ final class AzureDevOpsBadge implements Badge
             '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository'          => 'downloads',
             '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/services' => 'downloads',
             '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/on-prem'  => 'downloads',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Cirrus\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Cirrus\Client;
 use App\Badges\Templates\StatusTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class GitHubBadge implements Badge
+final class GitHubBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class GitHubBadge implements Badge
 
     public function handle(string $owner, string $repo, ?string $branch = null): array
     {
-        return StatusTemplate::make('build', $this->client->github($owner, $repo, $branch, request('task'), request('script')));
+        return StatusTemplate::make('build', $this->client->github($owner, $repo, $branch, $this->request->query('task'), $this->request->query('script')));
     }
 
     public function service(): string
@@ -33,9 +33,7 @@ final class GitHubBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -47,9 +45,7 @@ final class GitHubBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -59,9 +55,7 @@ final class GitHubBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -71,13 +65,6 @@ final class GitHubBadge implements Badge
             '/cirrus/github/flutter/flutter/master'                               => 'build status',
             '/cirrus/github/flutter/flutter/master?task=build_docker'             => 'build status',
             '/cirrus/github/flutter/flutter/master?task=build_docker&script=test' => 'build status',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

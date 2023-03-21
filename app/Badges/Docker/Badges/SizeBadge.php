@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Docker\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Docker\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
-final class SizeBadge implements Badge
+final class SizeBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -102,9 +102,7 @@ final class SizeBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -116,9 +114,7 @@ final class SizeBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -128,9 +124,7 @@ final class SizeBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -139,13 +133,6 @@ final class SizeBadge implements Badge
             '/docker/size/library/ubuntu'                   => 'size (library)',
             '/docker/size/lukechilds/bitcoind/latest/amd64' => 'size (scoped/tag/architecture)',
             '/docker/size/lucashalbert/curl/latest/arm/v6'  => 'size (scoped/tag/architecture/variant)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

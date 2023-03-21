@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\GitLab\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\GitLab\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class ClosedIssuesBadge implements Badge
+final class ClosedIssuesBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -40,9 +40,7 @@ final class ClosedIssuesBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -54,9 +52,7 @@ final class ClosedIssuesBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -66,9 +62,7 @@ final class ClosedIssuesBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -76,13 +70,6 @@ final class ClosedIssuesBadge implements Badge
         return [
             '/gitlab/closed-issues/gitlab-org/gitlab-runner' => 'issues',
 
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

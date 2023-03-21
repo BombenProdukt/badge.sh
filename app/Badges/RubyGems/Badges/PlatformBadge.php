@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\RubyGems\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\RubyGems\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class PlatformBadge implements Badge
+final class PlatformBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -36,9 +36,7 @@ final class PlatformBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -50,9 +48,7 @@ final class PlatformBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -62,22 +58,13 @@ final class PlatformBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/rubygems/platform/rails' => 'platform',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

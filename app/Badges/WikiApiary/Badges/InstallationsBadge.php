@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\WikiApiary\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Templates\NumberTemplate;
 use App\Badges\WikiApiary\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class InstallationsBadge implements Badge
+final class InstallationsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -36,9 +36,7 @@ final class InstallationsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -50,9 +48,7 @@ final class InstallationsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -62,22 +58,13 @@ final class InstallationsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/wikiapiary/installations/extension/ParserFunctions' => 'installations',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

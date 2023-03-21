@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Bitrise\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Bitrise\Client;
 use App\Badges\Templates\TextTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class StatusBadge implements Badge
+final class StatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -39,9 +39,7 @@ final class StatusBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -53,9 +51,7 @@ final class StatusBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,9 +61,7 @@ final class StatusBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -75,13 +69,6 @@ final class StatusBadge implements Badge
         return [
             '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304'        => 'version',
             '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304/master' => 'version',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\PeerTube\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\PeerTube\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class CommentsBadge implements Badge
+final class CommentsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -39,9 +39,7 @@ final class CommentsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -53,9 +51,7 @@ final class CommentsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,22 +61,13 @@ final class CommentsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/peertube/comments/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d'       => 'comments',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

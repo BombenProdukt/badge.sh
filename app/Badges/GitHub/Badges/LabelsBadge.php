@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LabelsBadge implements Badge
+final class LabelsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -38,9 +38,7 @@ final class LabelsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -52,9 +50,7 @@ final class LabelsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,9 +61,7 @@ final class LabelsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -76,13 +70,6 @@ final class LabelsBadge implements Badge
             '/github/issues-by-label/nodejs/node/ES%20Modules'             => 'issues by label',
             '/github/issues-by-label/atom/atom/help-wanted/open'           => 'open issues by label',
             '/github/issues-by-label/rust-lang/rust/B-RFC-approved/closed' => 'closed issues by label',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 

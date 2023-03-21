@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\FDroid\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\FDroid\Client;
 use App\Badges\Templates\LicenseTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class LicenseBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {

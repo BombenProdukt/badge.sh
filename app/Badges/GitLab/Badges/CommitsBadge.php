@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\GitLab\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\GitLab\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class CommitsBadge implements Badge
+final class CommitsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -40,9 +40,7 @@ final class CommitsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -54,9 +52,7 @@ final class CommitsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -66,9 +62,7 @@ final class CommitsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -77,13 +71,6 @@ final class CommitsBadge implements Badge
             '/gitlab/commits/cryptsetup/cryptsetup'                                                  => 'commits count',
             '/gitlab/commits/cryptsetup/cryptsetup/coverity_scan'                                    => 'commits count (branch ref)',
             '/gitlab/commits/cryptsetup/cryptsetup/v2.2.2'                                           => 'commits count (tag ref)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

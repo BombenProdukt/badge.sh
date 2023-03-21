@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contracts;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
 /**
@@ -11,6 +12,8 @@ use Illuminate\Routing\Route;
  */
 interface Badge
 {
+    public function setRequest(Request $request): void;
+
     public function service(): string;
 
     public function title(): string;

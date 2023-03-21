@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\DeepScan\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\DeepScan\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class GradeBadge implements Badge
+final class GradeBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -43,9 +43,7 @@ final class GradeBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -57,9 +55,7 @@ final class GradeBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -69,9 +65,7 @@ final class GradeBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -80,13 +74,6 @@ final class GradeBadge implements Badge
             '/deepscan/grade/team/7382/project/9494/branch/123838'  => 'grade',
             '/deepscan/grade/team/279/project/1302/branch/3514'     => 'grade',
             '/deepscan/grade/team/8527/project/10741/branch/152550' => 'grade',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

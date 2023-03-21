@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\NuGet\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\NuGet\Client;
 use App\Badges\Templates\DownloadsTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
-final class TotalDownloadsBadge implements Badge
+final class TotalDownloadsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -40,9 +40,7 @@ final class TotalDownloadsBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -54,9 +52,7 @@ final class TotalDownloadsBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -66,22 +62,13 @@ final class TotalDownloadsBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/nuget/downloads/Newtonsoft.Json' => 'total downloads',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

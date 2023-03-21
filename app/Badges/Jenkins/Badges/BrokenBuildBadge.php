@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Jenkins\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class BrokenBuildBadge implements Badge
+final class BrokenBuildBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -44,9 +44,7 @@ final class BrokenBuildBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -58,9 +56,7 @@ final class BrokenBuildBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -70,22 +66,13 @@ final class BrokenBuildBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/jenkins/broken-build/jenkins.mono-project.com/job/test-mono-mainline' => '# of broken builds',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

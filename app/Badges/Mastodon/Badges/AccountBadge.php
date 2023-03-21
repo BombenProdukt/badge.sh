@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Mastodon\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Mastodon\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class AccountBadge implements Badge
+final class AccountBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -63,9 +63,7 @@ final class AccountBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -75,9 +73,7 @@ final class AccountBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -86,13 +82,6 @@ final class AccountBadge implements Badge
             '/mastodon/follow/Gargron@mastodon.social' => 'followers',
             '/mastodon/follow/trumpet@mas.to'          => 'followers',
             '/mastodon/follow/admin@cawfee.club'       => 'followers (Pleroma)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 

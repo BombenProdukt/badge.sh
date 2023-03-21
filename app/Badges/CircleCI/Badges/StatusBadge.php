@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\CircleCI\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\CircleCI\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class StatusBadge implements Badge
+final class StatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -39,9 +39,7 @@ final class StatusBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -53,9 +51,7 @@ final class StatusBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -66,9 +62,7 @@ final class StatusBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -76,13 +70,6 @@ final class StatusBadge implements Badge
         return [
             '/circleci/status/github/circleci/ex'      => 'build',
             '/circleci/status/github/circleci/ex/main' => 'build (branch)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

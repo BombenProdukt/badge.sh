@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\WhatPulse\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Templates\TextTemplate;
 use App\Badges\WhatPulse\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
-final class UploadBadge implements Badge
+final class UploadBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -34,9 +34,7 @@ final class UploadBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -48,9 +46,7 @@ final class UploadBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -60,22 +56,13 @@ final class UploadBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/whatpulse/upload/user/179734' => 'license',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

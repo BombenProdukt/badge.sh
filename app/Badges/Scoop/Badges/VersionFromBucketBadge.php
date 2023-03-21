@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Scoop\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Scoop\Client;
 use App\Badges\Templates\VersionTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionFromBucketBadge implements Badge
+final class VersionFromBucketBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -35,9 +35,7 @@ final class VersionFromBucketBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -49,9 +47,7 @@ final class VersionFromBucketBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -61,9 +57,7 @@ final class VersionFromBucketBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -71,13 +65,6 @@ final class VersionFromBucketBadge implements Badge
         return [
             '/scoop/version/extras/age'        => 'version',
             '/scoop/version/extras/codeblocks' => 'version',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

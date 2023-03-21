@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Templates\DateTemplate;
 use App\Badges\VisualStudioMarketplace\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LastUpdateBadge implements Badge
+final class LastUpdateBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -33,9 +33,7 @@ final class LastUpdateBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -47,9 +45,7 @@ final class LastUpdateBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -59,22 +55,13 @@ final class LastUpdateBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/vs-marketplace/last-modified/vscodevim.vim' => 'last updated',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

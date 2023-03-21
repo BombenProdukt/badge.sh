@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
 use App\Badges\Templates\VersionTemplate;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
-final class PhpVersionBadge implements Badge
+final class PhpVersionBadge extends AbstractBadge
 {
     use HandlesVersions;
 
@@ -42,9 +42,7 @@ final class PhpVersionBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -56,9 +54,7 @@ final class PhpVersionBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -68,22 +64,13 @@ final class PhpVersionBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/packagist/php-version/monolog/monolog' => 'php',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

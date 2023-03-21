@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Ubuntu\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Templates\VersionTemplate;
 use App\Badges\Ubuntu\Client;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class VersionBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -33,9 +33,7 @@ final class VersionBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -47,9 +45,7 @@ final class VersionBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -59,9 +55,7 @@ final class VersionBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -69,13 +63,6 @@ final class VersionBadge implements Badge
         return [
             '/ubuntu/version/ubuntu-wallpapers'        => 'version',
             '/ubuntu/version/ubuntu-wallpapers/bionic' => 'version',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

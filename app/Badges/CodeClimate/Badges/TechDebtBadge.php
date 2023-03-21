@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\CodeClimate\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\CodeClimate\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
-final class TechDebtBadge implements Badge
+final class TechDebtBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -47,9 +47,7 @@ final class TechDebtBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -61,9 +59,7 @@ final class TechDebtBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -73,22 +69,13 @@ final class TechDebtBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/codeclimate/tech-debt/codeclimate/codeclimate' => 'technical debt',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

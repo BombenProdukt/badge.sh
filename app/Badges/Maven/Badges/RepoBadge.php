@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Maven\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\Maven\Client;
 use App\Badges\Templates\VersionTemplate;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class RepoBadge implements Badge
+final class RepoBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -38,9 +38,7 @@ final class RepoBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -52,9 +50,7 @@ final class RepoBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -65,9 +61,7 @@ final class RepoBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -75,13 +69,6 @@ final class RepoBadge implements Badge
         return [
             '/maven/version/maven-central/com.google.code.gson/gson' => 'version (maven-central)',
             '/maven/version/jcenter/com.squareup.okhttp3/okhttp'     => 'version (jcenter)',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

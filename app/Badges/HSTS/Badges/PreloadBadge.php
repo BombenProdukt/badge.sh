@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\HSTS\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\HSTS\Client;
 use App\Badges\Templates\StatusTemplate;
-use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class PreloadBadge implements Badge
+final class PreloadBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -33,9 +33,7 @@ final class PreloadBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -47,9 +45,7 @@ final class PreloadBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -59,22 +55,13 @@ final class PreloadBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
             '/hsts/preload/github.com' => 'status',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

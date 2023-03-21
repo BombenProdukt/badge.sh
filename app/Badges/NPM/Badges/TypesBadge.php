@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
+use App\Badges\AbstractBadge;
 use App\Badges\NPM\Client;
-use App\Contracts\Badge;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class TypesBadge implements Badge
+final class TypesBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -69,9 +69,7 @@ final class TypesBadge implements Badge
 
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routePaths(): array
@@ -83,9 +81,7 @@ final class TypesBadge implements Badge
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -95,9 +91,7 @@ final class TypesBadge implements Badge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
@@ -106,13 +100,6 @@ final class TypesBadge implements Badge
             '/npm/types/tslib' => 'types',
             '/npm/types/react' => 'types',
             '/npm/types/queri' => 'types',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }
