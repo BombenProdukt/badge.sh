@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace App\Badges\FactorioModPortal\Badges;
 
 use App\Badges\FactorioModPortal\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\DateTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class LastModifiedBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $modName): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return DateTemplate::make('last modified', $this->client->latestRelease($modName)['released_at']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Factorio Mod Portal';
     }
 
     public function title(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/factorio-mod-portal/last-modified/{modName}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/factorio-mod-portal/last-modified/rso-mod' => 'factorio version',
         ];
     }
 

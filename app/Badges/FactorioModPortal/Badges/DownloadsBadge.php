@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Badges\FactorioModPortal\Badges;
 
 use App\Badges\FactorioModPortal\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class DownloadsBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class VersionBadge implements Badge
 
     public function handle(string $modName): array
     {
-        return VersionTemplate::make('latest version', $this->client->latestRelease($modName)['version']);
+        return DownloadsTemplate::make($this->client->downloads($modName));
     }
 
     public function service(): string
@@ -41,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/factorio-mod-portal/version/{modName}',
+            '/factorio-mod-portal/downloads/{modName}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/factorio-mod-portal/version/rso-mod' => 'mod portal version',
+            '/factorio-mod-portal/downloads/rso-mod' => 'downloads',
         ];
     }
 

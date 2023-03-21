@@ -13,11 +13,16 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://mods.factorio.com/api/mods/')->throw();
     }
 
-    public function get(string $appId): array
+    public function downloads(string $modName): int
     {
-        return $this->client->get('')->json();
+        return $this->client->get($modName)->json('downloads_count');
+    }
+
+    public function latestRelease(string $modName): array
+    {
+        return last($this->client->get($modName)->json('releases'));
     }
 }

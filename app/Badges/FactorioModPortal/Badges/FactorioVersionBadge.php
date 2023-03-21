@@ -9,7 +9,7 @@ use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class FactorioVersionBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class VersionBadge implements Badge
 
     public function handle(string $modName): array
     {
-        return VersionTemplate::make('latest version', $this->client->latestRelease($modName)['version']);
+        return VersionTemplate::make('factorio version', $this->client->latestRelease($modName)['info_json']['factorio_version']);
     }
 
     public function service(): string
@@ -41,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/factorio-mod-portal/version/{modName}',
+            '/factorio-mod-portal/factorio-version/{modName}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/factorio-mod-portal/version/rso-mod' => 'mod portal version',
+            '/factorio-mod-portal/factorio-version/rso-mod' => 'factorio version',
         ];
     }
 
