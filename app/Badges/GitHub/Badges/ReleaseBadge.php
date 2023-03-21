@@ -92,8 +92,8 @@ final class ReleaseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/babel/babel/releases/latest' => 'latest release',
-            '/github/babel/babel/releases/stable' => 'latest stable release',
+            '/github/babel/babel/release/latest' => 'latest release',
+            '/github/babel/babel/release/stable' => 'latest stable release',
         ];
     }
 

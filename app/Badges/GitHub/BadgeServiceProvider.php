@@ -16,6 +16,7 @@ final class BadgeServiceProvider extends ServiceProvider
         BadgeService::add(Badges\CheckStatusBadge::class);
         BadgeService::add(Badges\ClosedIssuesBadge::class);
         BadgeService::add(Badges\ClosedPullRequestsBadge::class);
+        BadgeService::add(Badges\LastCommitBadge::class);
         BadgeService::add(Badges\CommitsBadge::class);
         BadgeService::add(Badges\ContributorsBadge::class);
         BadgeService::add(Badges\DependabotStatusBadge::class);
@@ -27,7 +28,6 @@ final class BadgeServiceProvider extends ServiceProvider
         BadgeService::add(Badges\LabelsBadge::class);
         BadgeService::add(Badges\LanguageBadge::class);
         BadgeService::add(Badges\LanguagesBadge::class);
-        BadgeService::add(Badges\LastCommitBadge::class);
         BadgeService::add(Badges\LernaBadge::class);
         BadgeService::add(Badges\LicenseBadge::class);
         BadgeService::add(Badges\MergedPullRequestsBadge::class);

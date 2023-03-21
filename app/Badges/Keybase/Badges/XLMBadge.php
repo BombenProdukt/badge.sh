@@ -72,7 +72,7 @@ final class XLMBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/keybase/lukechilds/xlm' => 'xlm address',
+            '/keybase/skyplabs/xlm' => 'xlm address',
         ];
     }
 

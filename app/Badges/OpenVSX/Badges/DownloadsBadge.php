@@ -6,6 +6,7 @@ namespace App\Badges\OpenVSX\Badges;
 
 use App\Badges\OpenVSX\Client;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -47,7 +48,7 @@ final class DownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/open-vsx/{namespace}/{package}/downloads',
+            '/open-vsx/{extension}/downloads',
         ];
     }
 
@@ -60,7 +61,7 @@ final class DownloadsBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('extension', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array

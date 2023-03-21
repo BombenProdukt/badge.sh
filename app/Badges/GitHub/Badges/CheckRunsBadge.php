@@ -15,8 +15,6 @@ final class CheckRunsBadge implements Badge
 {
     public function handle(string $owner, string $repo, ?string $reference = '', ?string $context = '')
     {
-        [$owner, $repo] = explode('/', $repo);
-
         if (empty($reference)) {
             $response  = GitHub::connection('main')->api('repo')->show($owner, $repo);
             $reference = $response['default_branch'];

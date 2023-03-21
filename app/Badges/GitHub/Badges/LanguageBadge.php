@@ -42,7 +42,7 @@ final class LanguageBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/languages/top',
+            '/github/{owner}/{repo}/language',
         ];
     }
 

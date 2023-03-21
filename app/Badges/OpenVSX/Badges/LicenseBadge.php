@@ -42,7 +42,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/open-vsx/{namespace}/{package}/license',
+            '/open-vsx/{extension}/license',
         ];
     }
 
