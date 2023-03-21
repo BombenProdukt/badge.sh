@@ -20,7 +20,7 @@ Use query string parameters when:
 
 - The parameter is related to formatting (e.g., `/appveyor/tests/:user/:repo?compact_message`).
 - The parameter is for an uncommon optional attribute, like an alternate registry URL.
-- The parameter triggers alternative logic application, like version semantics (e.g., `/github/v/tag/:user/:repo?sort=semver`).
+- The parameter triggers alternative logic application, like version semantics (e.g., `/github/version/tag/:user/:repo?sort=semver`).
 - Services requiring a URL/hostname parameter should always use a query string parameter to accept that value (e.g., `/discourse/topics?server=https://meta.discourse.org`).
 
 ## Standard Routes and Abbreviations
@@ -28,16 +28,16 @@ Use query string parameters when:
 Adhere to these standard routes and abbreviations across services:
 
 - Coverage: `/coverage`
-- Downloads or Installs:
-  - Total: `/dt` (use this even for services that only provide total download/install data)
-  - Recent: `/dr`
-  - Per year: `/dy`
-  - Per quarter: `/dq`
-  - Per month: `/dm`
-  - Per week: `/dw`
-  - Per day: `/dd`
+- Downloads or Installations:
+  - Total: `/downloads`
+  - Recently: `/downloads-recently`
+  - Yearly: `/downloads-yearly`
+  - Quarterly: `/downloads-quarterly`
+  - Monthly: `/downloads-monthly`
+  - Weekly: `/downloads-weekly`
+  - Dayly: `/downloads-daily`
 - Rating:
   - Numeric: `/rating`
   - Stars: `/stars`
-- License: `/l`
-- Version or Release: `/v`
+- License: `/license`
+- Version or Release: `/version`
