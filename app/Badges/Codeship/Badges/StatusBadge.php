@@ -6,6 +6,7 @@ namespace App\Badges\Codeship\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Codeship\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -42,7 +43,7 @@ final class StatusBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array

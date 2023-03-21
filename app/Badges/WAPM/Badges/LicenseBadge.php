@@ -6,6 +6,7 @@ namespace App\Badges\WAPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\WAPM\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -23,7 +24,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function service(): string
     {
-        return 'WAPM';
+        return 'WebAssembly Package Manager';
     }
 
     public function title(): string
@@ -33,7 +34,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::LICENSE];
     }
 
     public function routePaths(): array

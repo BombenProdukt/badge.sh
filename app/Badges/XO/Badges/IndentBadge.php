@@ -6,6 +6,7 @@ namespace App\Badges\XO\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\XO\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -47,7 +48,7 @@ final class IndentBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::CODE_FORMATTING];
     }
 
     public function routePaths(): array

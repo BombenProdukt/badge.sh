@@ -6,6 +6,7 @@ namespace App\Badges\ClearlyDefined\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\ClearlyDefined\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ScoreBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class ScoreBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array

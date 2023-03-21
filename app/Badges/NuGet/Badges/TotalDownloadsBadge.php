@@ -6,6 +6,7 @@ namespace App\Badges\NuGet\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\NuGet\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -39,7 +40,7 @@ final class TotalDownloadsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

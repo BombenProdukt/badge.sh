@@ -6,6 +6,7 @@ namespace App\Badges\HTTPS\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\HTTPS\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -39,7 +40,7 @@ final class RequestBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::OTHER];
     }
 
     public function routePaths(): array

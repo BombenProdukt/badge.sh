@@ -6,6 +6,7 @@ namespace App\Badges\Docker\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Docker\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class MetadataBadge extends AbstractBadge
@@ -44,7 +45,7 @@ final class MetadataBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::BUILD];
     }
 
     public function routePaths(): array

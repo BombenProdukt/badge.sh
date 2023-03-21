@@ -6,6 +6,7 @@ namespace App\Badges\Liberapay\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Liberapay\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatPercentage;
 
@@ -45,7 +46,7 @@ final class GoalBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::FUNDING];
     }
 
     public function routePaths(): array

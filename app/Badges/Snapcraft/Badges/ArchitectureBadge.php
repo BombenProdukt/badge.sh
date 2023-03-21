@@ -6,6 +6,7 @@ namespace App\Badges\Snapcraft\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Snapcraft\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ArchitectureBadge extends AbstractBadge
@@ -36,7 +37,7 @@ final class ArchitectureBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::PLATFORM_SUPPORT];
     }
 
     public function routePaths(): array

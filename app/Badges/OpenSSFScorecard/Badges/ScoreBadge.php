@@ -6,6 +6,7 @@ namespace App\Badges\OpenSSFScorecard\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OpenSSFScorecard\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ScoreBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class ScoreBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array

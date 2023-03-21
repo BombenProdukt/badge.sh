@@ -6,6 +6,7 @@ namespace App\Badges\OhDear\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OhDear\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class TimezoneBadge extends AbstractBadge
@@ -36,7 +37,7 @@ final class TimezoneBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::MONITORING];
     }
 
     public function routePaths(): array

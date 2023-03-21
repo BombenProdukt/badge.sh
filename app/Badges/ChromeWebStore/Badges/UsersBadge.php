@@ -6,6 +6,7 @@ namespace App\Badges\ChromeWebStore\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\ChromeWebStore\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -39,7 +40,7 @@ final class UsersBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

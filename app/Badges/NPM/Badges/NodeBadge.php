@@ -6,6 +6,7 @@ namespace App\Badges\NPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\NPM\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -39,7 +40,7 @@ final class NodeBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::PLATFORM_SUPPORT];
     }
 
     public function routePaths(): array

@@ -6,6 +6,7 @@ namespace App\Badges\OpenVSX\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OpenVSX\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
@@ -40,7 +41,7 @@ final class DownloadsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

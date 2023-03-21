@@ -6,6 +6,7 @@ namespace App\Badges\FactorioModPortal\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\FactorioModPortal\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class FactorioVersionBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class FactorioVersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::PLATFORM_SUPPORT, Category::VERSION];
     }
 
     public function routePaths(): array

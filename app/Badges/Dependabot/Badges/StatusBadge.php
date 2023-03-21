@@ -6,6 +6,7 @@ namespace App\Badges\Dependabot\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Dependabot\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -39,7 +40,7 @@ final class StatusBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array

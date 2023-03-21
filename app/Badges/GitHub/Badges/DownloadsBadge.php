@@ -6,6 +6,7 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
+use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
@@ -52,7 +53,7 @@ final class DownloadsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

@@ -6,6 +6,7 @@ namespace App\Badges\AtomPackage\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AtomPackage\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class TotalDownloadsBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class TotalDownloadsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

@@ -6,6 +6,7 @@ namespace App\Badges\CPAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CPAN\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -37,7 +38,7 @@ final class DependentsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array

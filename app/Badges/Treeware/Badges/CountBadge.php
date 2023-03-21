@@ -6,6 +6,7 @@ namespace App\Badges\Treeware\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Treeware\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class CountBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class CountBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::OTHER];
     }
 
     public function routePaths(): array

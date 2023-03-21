@@ -6,6 +6,7 @@ namespace App\Badges\Pub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Pub\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -40,7 +41,7 @@ final class DartPlatformBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::PLATFORM_SUPPORT];
     }
 
     public function routePaths(): array

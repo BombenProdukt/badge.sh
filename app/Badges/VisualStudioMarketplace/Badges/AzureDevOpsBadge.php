@@ -6,6 +6,7 @@ namespace App\Badges\VisualStudioMarketplace\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\VisualStudioMarketplace\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class AzureDevOpsBadge extends AbstractBadge
@@ -44,7 +45,7 @@ final class AzureDevOpsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

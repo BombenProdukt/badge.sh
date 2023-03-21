@@ -6,6 +6,7 @@ namespace App\Badges\HackerNews\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\HackerNews\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class KarmaBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class KarmaBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array

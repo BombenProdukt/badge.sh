@@ -6,6 +6,7 @@ namespace App\Badges\HexPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\HexPM\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class DownloadsPerDayBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class DownloadsPerDayBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

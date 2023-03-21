@@ -6,6 +6,7 @@ namespace App\Badges\Snapcraft\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Snapcraft\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 use PreemStudio\Formatter\FormatBytes;
@@ -46,7 +47,7 @@ final class SizeBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SIZE];
     }
 
     public function routePaths(): array

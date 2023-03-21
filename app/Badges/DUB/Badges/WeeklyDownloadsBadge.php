@@ -6,6 +6,7 @@ namespace App\Badges\DUB\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\DUB\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class WeeklyDownloadsBadge extends AbstractBadge
@@ -34,7 +35,7 @@ final class WeeklyDownloadsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

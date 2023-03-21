@@ -6,6 +6,7 @@ namespace App\Badges\AzurePipelines\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AzurePipelines\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
@@ -45,7 +46,7 @@ final class ReleaseBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::BUILD];
     }
 
     public function routePaths(): array

@@ -7,6 +7,7 @@ namespace App\Badges\TAS\Badges;
 use App\Actions\DetermineColorByStatus;
 use App\Badges\AbstractBadge;
 use App\Badges\TAS\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -41,7 +42,7 @@ final class StatusBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::TEST_RESULTS];
     }
 
     public function routePaths(): array

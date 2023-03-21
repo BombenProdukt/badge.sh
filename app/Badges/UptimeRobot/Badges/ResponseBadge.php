@@ -6,6 +6,7 @@ namespace App\Badges\UptimeRobot\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\UptimeRobot\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ResponseBadge extends AbstractBadge
@@ -36,7 +37,7 @@ final class ResponseBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::MONITORING];
     }
 
     public function routePaths(): array

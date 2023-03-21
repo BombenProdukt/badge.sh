@@ -6,6 +6,7 @@ namespace App\Badges\HSTS\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\HSTS\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class PreloadBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class PreloadBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::MONITORING];
     }
 
     public function routePaths(): array

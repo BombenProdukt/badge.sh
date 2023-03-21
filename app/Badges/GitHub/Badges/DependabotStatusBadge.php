@@ -6,6 +6,7 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -47,7 +48,7 @@ final class DependabotStatusBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS, Category::DEPENDENCIES];
     }
 
     public function routePaths(): array

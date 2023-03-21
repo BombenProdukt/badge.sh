@@ -6,6 +6,7 @@ namespace App\Badges\WAPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\WAPM\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatBytes;
@@ -28,7 +29,7 @@ final class SizeBadge extends AbstractBadge
 
     public function service(): string
     {
-        return 'WAPM';
+        return 'WebAssembly Package Manager';
     }
 
     public function title(): string
@@ -38,7 +39,7 @@ final class SizeBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SIZE];
     }
 
     public function routePaths(): array

@@ -6,6 +6,7 @@ namespace App\Badges\VisualStudioMarketplace\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\VisualStudioMarketplace\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ReleaseDateBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class ReleaseDateBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::VERSION];
     }
 
     public function routePaths(): array

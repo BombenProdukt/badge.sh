@@ -6,6 +6,7 @@ namespace App\Badges\Gitter\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Gitter\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -39,7 +40,7 @@ final class MemberCountBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array

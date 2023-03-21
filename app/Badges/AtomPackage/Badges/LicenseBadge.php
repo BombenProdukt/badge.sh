@@ -6,6 +6,7 @@ namespace App\Badges\AtomPackage\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AtomPackage\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -34,7 +35,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::LICENSE];
     }
 
     public function routePaths(): array

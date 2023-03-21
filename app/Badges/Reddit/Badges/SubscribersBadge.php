@@ -6,6 +6,7 @@ namespace App\Badges\Reddit\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Reddit\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -39,7 +40,7 @@ final class SubscribersBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array

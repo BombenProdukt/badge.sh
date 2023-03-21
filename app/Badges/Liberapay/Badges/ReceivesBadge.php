@@ -6,6 +6,7 @@ namespace App\Badges\Liberapay\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Liberapay\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatMoney;
 
@@ -39,7 +40,7 @@ final class ReceivesBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::FUNDING];
     }
 
     public function routePaths(): array

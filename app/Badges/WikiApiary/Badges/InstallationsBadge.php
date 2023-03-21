@@ -6,6 +6,7 @@ namespace App\Badges\WikiApiary\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\WikiApiary\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class InstallationsBadge extends AbstractBadge
@@ -35,7 +36,7 @@ final class InstallationsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

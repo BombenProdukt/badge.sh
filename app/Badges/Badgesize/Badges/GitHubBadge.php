@@ -6,6 +6,7 @@ namespace App\Badges\Badgesize\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Badgesize\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -39,7 +40,7 @@ final class GitHubBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SIZE];
     }
 
     public function routePaths(): array

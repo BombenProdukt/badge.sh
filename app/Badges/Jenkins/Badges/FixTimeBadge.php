@@ -6,6 +6,7 @@ namespace App\Badges\Jenkins\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Jenkins\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -67,7 +68,7 @@ final class FixTimeBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::BUILD];
     }
 
     public function routePaths(): array

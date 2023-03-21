@@ -6,6 +6,7 @@ namespace App\Badges\CPAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CPAN\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class PerlBadge extends AbstractBadge
@@ -47,7 +48,7 @@ final class PerlBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::PLATFORM_SUPPORT, Category::VERSION];
     }
 
     public function routePaths(): array

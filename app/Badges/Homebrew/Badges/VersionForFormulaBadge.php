@@ -6,6 +6,7 @@ namespace App\Badges\Homebrew\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Homebrew\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionForFormulaBadge extends AbstractBadge
@@ -40,7 +41,7 @@ final class VersionForFormulaBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::VERSION];
     }
 
     public function routePaths(): array

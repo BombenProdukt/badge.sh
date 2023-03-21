@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\Static\Badges;
 
 use App\Badges\AbstractBadge;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StaticBadge extends AbstractBadge
@@ -30,7 +31,7 @@ final class StaticBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::OTHER];
     }
 
     public function routePaths(): array

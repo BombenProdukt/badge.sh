@@ -6,6 +6,7 @@ namespace App\Badges\CTAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CTAN\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatStars;
 
@@ -39,7 +40,7 @@ final class StarsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::RATING];
     }
 
     public function routePaths(): array

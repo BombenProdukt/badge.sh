@@ -6,6 +6,7 @@ namespace App\Badges\Crates\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Crates\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LatestVersionBadge extends AbstractBadge
@@ -34,7 +35,7 @@ final class LatestVersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::VERSION];
     }
 
     public function routePaths(): array

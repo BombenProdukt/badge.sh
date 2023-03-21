@@ -6,6 +6,7 @@ namespace App\Badges\Pub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Pub\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class PopularityBadge extends AbstractBadge
@@ -34,7 +35,7 @@ final class PopularityBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array

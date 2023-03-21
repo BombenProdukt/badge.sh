@@ -6,6 +6,7 @@ namespace App\Badges\PyPI\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\PyPI\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ImplementationBadge extends AbstractBadge
@@ -46,7 +47,7 @@ final class ImplementationBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::PLATFORM_SUPPORT];
     }
 
     public function routePaths(): array

@@ -6,6 +6,7 @@ namespace App\Badges\Shardbox\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Shardbox\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class CrystalBadge extends AbstractBadge
@@ -38,7 +39,7 @@ final class CrystalBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::PLATFORM_SUPPORT];
     }
 
     public function routePaths(): array

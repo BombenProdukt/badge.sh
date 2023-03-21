@@ -6,6 +6,7 @@ namespace App\Badges\Scoop\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Scoop\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionFromBucketBadge extends AbstractBadge
@@ -34,7 +35,7 @@ final class VersionFromBucketBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::VERSION];
     }
 
     public function routePaths(): array

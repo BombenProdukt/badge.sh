@@ -6,6 +6,7 @@ namespace App\Badges\Docker\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Docker\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -37,7 +38,7 @@ final class PullsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

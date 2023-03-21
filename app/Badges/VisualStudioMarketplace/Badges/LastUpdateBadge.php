@@ -6,6 +6,7 @@ namespace App\Badges\VisualStudioMarketplace\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\VisualStudioMarketplace\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LastUpdateBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class LastUpdateBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ACTIVITY];
     }
 
     public function routePaths(): array

@@ -6,6 +6,7 @@ namespace App\Badges\Depfu\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Depfu\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -33,7 +34,7 @@ final class StatusBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS, Category::DEPENDENCIES];
     }
 
     public function routePaths(): array

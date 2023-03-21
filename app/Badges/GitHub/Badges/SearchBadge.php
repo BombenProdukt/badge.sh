@@ -6,6 +6,7 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
+use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 
@@ -18,7 +19,7 @@ final class SearchBadge extends AbstractBadge
 
     public function handle(string $owner, string $repo, string $query): array
     {
-        return $this->renderNumber("{$query} counter", GitHub::search()->code("$query repo:{$owner}/{$repo}")['total_count']);
+        return $this->renderNumber("{$query} counter", GitHub::search()->code("{$query} repo:{$owner}/{$repo}")['total_count']);
     }
 
     public function service(): string
@@ -33,7 +34,7 @@ final class SearchBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array

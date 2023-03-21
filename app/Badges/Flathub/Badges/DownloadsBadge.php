@@ -6,6 +6,7 @@ namespace App\Badges\Flathub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Flathub\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class DownloadsBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class DownloadsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

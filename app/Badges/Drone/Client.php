@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    public function status(string $user, string $repo, ?string $branch): array
+    public function status(string $user, string $repo, ?string $branch): string
     {
         return Http::baseUrl('https://cloud.drone.io/api')
             ->withToken(config('services.drone.token'))

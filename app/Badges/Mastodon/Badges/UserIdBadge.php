@@ -6,6 +6,7 @@ namespace App\Badges\Mastodon\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Mastodon\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -40,7 +41,7 @@ final class UserIdBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array

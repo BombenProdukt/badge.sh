@@ -6,6 +6,7 @@ namespace App\Badges\ChromeWebStore\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\ChromeWebStore\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
 use Symfony\Component\DomCrawler\Crawler;
@@ -45,7 +46,7 @@ final class RatingCountBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::RATING];
     }
 
     public function routePaths(): array

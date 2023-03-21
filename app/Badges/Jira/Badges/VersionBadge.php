@@ -6,6 +6,7 @@ namespace App\Badges\Jira\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Jira\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -34,7 +35,7 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::VERSION];
     }
 
     public function routePaths(): array

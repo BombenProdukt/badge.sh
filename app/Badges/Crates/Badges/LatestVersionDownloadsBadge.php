@@ -6,6 +6,7 @@ namespace App\Badges\Crates\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Crates\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -37,7 +38,7 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

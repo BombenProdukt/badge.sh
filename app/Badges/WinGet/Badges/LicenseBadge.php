@@ -6,6 +6,7 @@ namespace App\Badges\WinGet\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\WinGet\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Symfony\Component\Yaml\Yaml;
 
@@ -36,7 +37,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::LICENSE];
     }
 
     public function routePaths(): array

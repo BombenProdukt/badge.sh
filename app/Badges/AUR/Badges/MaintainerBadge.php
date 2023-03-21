@@ -6,6 +6,7 @@ namespace App\Badges\AUR\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AUR\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class MaintainerBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class MaintainerBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::OTHER];
     }
 
     public function routePaths(): array

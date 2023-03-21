@@ -6,6 +6,7 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitLab\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Carbon\Carbon;
 use Illuminate\Routing\Route;
@@ -40,7 +41,7 @@ final class LastCommitBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ACTIVITY];
     }
 
     public function routePaths(): array

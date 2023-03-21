@@ -6,6 +6,7 @@ namespace App\Badges\Tokei\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Tokei\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LinesBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class LinesBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array

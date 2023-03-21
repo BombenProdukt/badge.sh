@@ -6,6 +6,7 @@ namespace App\Badges\ChromeWebStore\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\ChromeWebStore\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatStars;
 
@@ -37,7 +38,7 @@ final class StarsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::RATING];
     }
 
     public function routePaths(): array

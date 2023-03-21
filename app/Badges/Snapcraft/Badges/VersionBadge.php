@@ -6,6 +6,7 @@ namespace App\Badges\Snapcraft\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Snapcraft\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
@@ -41,7 +42,7 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::VERSION];
     }
 
     public function routePaths(): array

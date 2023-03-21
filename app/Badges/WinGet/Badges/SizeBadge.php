@@ -6,6 +6,7 @@ namespace App\Badges\WinGet\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\WinGet\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatBytes;
 
@@ -37,7 +38,7 @@ final class SizeBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SIZE];
     }
 
     public function routePaths(): array

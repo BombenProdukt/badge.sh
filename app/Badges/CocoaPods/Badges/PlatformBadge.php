@@ -6,6 +6,7 @@ namespace App\Badges\CocoaPods\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CocoaPods\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class PlatformBadge extends AbstractBadge
@@ -36,7 +37,7 @@ final class PlatformBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::PLATFORM_SUPPORT];
     }
 
     public function routePaths(): array

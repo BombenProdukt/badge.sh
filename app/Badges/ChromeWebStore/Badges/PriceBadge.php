@@ -6,6 +6,7 @@ namespace App\Badges\ChromeWebStore\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\ChromeWebStore\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatMoney;
 use Symfony\Component\DomCrawler\Crawler;
@@ -42,7 +43,7 @@ final class PriceBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::OTHER];
     }
 
     public function routePaths(): array

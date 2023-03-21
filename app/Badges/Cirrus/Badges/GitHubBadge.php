@@ -6,6 +6,7 @@ namespace App\Badges\Cirrus\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Cirrus\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class GitHubBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class GitHubBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::BUILD];
     }
 
     public function routePaths(): array

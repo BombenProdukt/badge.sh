@@ -6,6 +6,7 @@ namespace App\Badges\Repology\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Repology\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
 
@@ -36,7 +37,7 @@ final class RepositoryCountBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array

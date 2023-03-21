@@ -6,6 +6,7 @@ namespace App\Badges\OpenVSX\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OpenVSX\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -35,7 +36,7 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::VERSION];
     }
 
     public function routePaths(): array

@@ -6,6 +6,7 @@ namespace App\Badges\Keybase\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Keybase\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ZECBadge extends AbstractBadge
@@ -38,7 +39,7 @@ final class ZECBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array

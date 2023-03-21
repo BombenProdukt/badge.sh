@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\Memo\Badges;
 
 use App\Badges\AbstractBadge;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Cache;
 
@@ -27,7 +28,7 @@ final class ShowBadgeBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::OTHER];
     }
 
     public function routePaths(): array

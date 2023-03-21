@@ -6,6 +6,7 @@ namespace App\Badges\POEditor\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\POEditor\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ProgressBadge extends AbstractBadge
@@ -35,7 +36,7 @@ final class ProgressBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array

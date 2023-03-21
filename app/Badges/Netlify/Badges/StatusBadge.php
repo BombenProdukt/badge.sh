@@ -6,6 +6,7 @@ namespace App\Badges\Netlify\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Netlify\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -46,7 +47,7 @@ final class StatusBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::BUILD];
     }
 
     public function routePaths(): array

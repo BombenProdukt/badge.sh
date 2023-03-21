@@ -6,6 +6,7 @@ namespace App\Badges\ReadTheDocs\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\ReadTheDocs\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
 
@@ -36,7 +37,7 @@ final class StatusBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::BUILD];
     }
 
     public function routePaths(): array

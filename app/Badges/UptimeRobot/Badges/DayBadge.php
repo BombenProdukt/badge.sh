@@ -6,6 +6,7 @@ namespace App\Badges\UptimeRobot\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\UptimeRobot\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatPercentage;
 
@@ -47,7 +48,7 @@ final class DayBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::MONITORING];
     }
 
     public function routePaths(): array

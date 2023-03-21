@@ -6,6 +6,7 @@ namespace App\Badges\PackagePhobia\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\PackagePhobia\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -39,7 +40,7 @@ final class PublishBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SIZE];
     }
 
     public function routePaths(): array

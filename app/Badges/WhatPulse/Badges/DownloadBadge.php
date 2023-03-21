@@ -6,6 +6,7 @@ namespace App\Badges\WhatPulse\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\WhatPulse\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
@@ -33,7 +34,7 @@ final class DownloadBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

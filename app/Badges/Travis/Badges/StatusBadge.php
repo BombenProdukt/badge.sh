@@ -6,6 +6,7 @@ namespace App\Badges\Travis\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Travis\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
@@ -43,7 +44,7 @@ final class StatusBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::BUILD];
     }
 
     public function routePaths(): array

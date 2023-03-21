@@ -6,6 +6,7 @@ namespace App\Badges\WhatPulse\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\WhatPulse\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
@@ -33,7 +34,7 @@ final class UptimeBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array

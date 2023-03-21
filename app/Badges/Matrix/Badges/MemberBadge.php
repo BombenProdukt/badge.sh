@@ -6,6 +6,7 @@ namespace App\Badges\Matrix\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Matrix\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Str;
 use PreemStudio\Formatter\FormatNumber;
@@ -40,7 +41,7 @@ final class MemberBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array

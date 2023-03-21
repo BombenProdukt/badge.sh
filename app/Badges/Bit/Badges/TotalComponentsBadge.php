@@ -6,6 +6,7 @@ namespace App\Badges\Bit\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Bit\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -33,7 +34,7 @@ final class TotalComponentsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::SIZE];
     }
 
     public function routePaths(): array

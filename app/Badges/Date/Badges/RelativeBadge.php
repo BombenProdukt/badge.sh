@@ -6,6 +6,7 @@ namespace App\Badges\Date\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Date\Client;
+use App\Enums\Category;
 use Carbon\Carbon;
 use Illuminate\Routing\Route;
 
@@ -33,7 +34,7 @@ final class RelativeBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::OTHER];
     }
 
     public function routePaths(): array

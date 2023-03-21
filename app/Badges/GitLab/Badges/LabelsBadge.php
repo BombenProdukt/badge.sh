@@ -6,6 +6,7 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitLab\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
@@ -41,7 +42,7 @@ final class LabelsBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ISSUE_TRACKING];
     }
 
     public function routePaths(): array

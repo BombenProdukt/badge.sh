@@ -6,6 +6,7 @@ namespace App\Badges\Packagist\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Packagist\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -39,7 +40,7 @@ final class NameBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::OTHER];
     }
 
     public function routePaths(): array

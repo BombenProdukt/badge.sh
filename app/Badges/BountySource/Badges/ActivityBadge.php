@@ -6,6 +6,7 @@ namespace App\Badges\BountySource\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\BountySource\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ActivityBadge extends AbstractBadge
@@ -32,7 +33,7 @@ final class ActivityBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::ACTIVITY];
     }
 
     public function routePaths(): array

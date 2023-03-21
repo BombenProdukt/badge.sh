@@ -6,6 +6,7 @@ namespace App\Badges\Bundlephobia\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Bundlephobia\Client;
+use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -40,7 +41,7 @@ final class TreeShakingBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [];
+        return [Category::BUILD];
     }
 
     public function routePaths(): array
