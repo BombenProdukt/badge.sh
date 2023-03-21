@@ -26,11 +26,6 @@ final class ScoreBadge extends AbstractBadge
         return 'OpenSSF Scorecard';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

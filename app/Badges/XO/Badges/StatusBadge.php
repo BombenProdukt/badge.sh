@@ -41,11 +41,6 @@ final class StatusBadge extends AbstractBadge
         return 'XO';
     }
 
-    public function title(): string
-    {
-        return 'code style';
-    }
-
     public function keywords(): array
     {
         return [Category::CODE_FORMATTING];

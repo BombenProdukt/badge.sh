@@ -22,7 +22,7 @@ final class SupportersBadge extends AbstractBadge
         $response = $this->client->fetchCollectiveBackersCount($slug, 'all', $tierId);
 
         return [
-            'label'        => 'sponsors',
+            'label'        => 'supporters',
             'message'      => FormatNumber::execute($response),
             'messageColor' => 'green.600',
         ];
@@ -31,11 +31,6 @@ final class SupportersBadge extends AbstractBadge
     public function service(): string
     {
         return 'Open Collective';
-    }
-
-    public function title(): string
-    {
-        return '';
     }
 
     public function keywords(): array

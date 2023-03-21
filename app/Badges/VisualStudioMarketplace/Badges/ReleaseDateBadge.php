@@ -26,11 +26,6 @@ final class ReleaseDateBadge extends AbstractBadge
         return 'Visual Studio Marketplace';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

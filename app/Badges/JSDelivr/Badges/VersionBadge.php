@@ -29,11 +29,6 @@ final class VersionBadge extends AbstractBadge
         return 'jsDelivr';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

@@ -21,12 +21,7 @@ final class StaticBadge extends AbstractBadge
 
     public function service(): string
     {
-        return 'Badge';
-    }
-
-    public function title(): string
-    {
-        return '';
+        return 'Static Badge';
     }
 
     public function keywords(): array

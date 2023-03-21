@@ -6,6 +6,7 @@ namespace App\Badges\FDroid\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\FDroid\Client;
+use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -27,16 +28,9 @@ final class VersionBadge extends AbstractBadge
         return 'F-Droid';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
-        return [
-            //
-        ];
+        return [Category::VERSION];
     }
 
     public function routePaths(): array

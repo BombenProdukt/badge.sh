@@ -33,11 +33,6 @@ final class LanguageBadge extends AbstractBadge
         return 'Packagist';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ANALYSIS];

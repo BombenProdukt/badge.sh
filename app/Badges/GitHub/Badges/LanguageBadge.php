@@ -27,11 +27,6 @@ final class LanguageBadge extends AbstractBadge
         return 'GitHub';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ANALYSIS];

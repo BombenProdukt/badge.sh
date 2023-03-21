@@ -29,11 +29,6 @@ final class DailyDownloadsBadge extends AbstractBadge
         return 'npm';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::DOWNLOADS];

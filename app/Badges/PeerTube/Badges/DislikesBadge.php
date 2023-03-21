@@ -33,11 +33,6 @@ final class DislikesBadge extends AbstractBadge
         return 'PeerTube';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

@@ -33,11 +33,6 @@ final class SubscribersBadge extends AbstractBadge
         return 'Reddit';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

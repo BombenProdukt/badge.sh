@@ -28,11 +28,6 @@ final class LatestVersionBadge extends AbstractBadge
         return 'Crates';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

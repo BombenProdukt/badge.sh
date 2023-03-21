@@ -31,11 +31,6 @@ final class PointsBadge extends AbstractBadge
         return 'FreeCodeCamp';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

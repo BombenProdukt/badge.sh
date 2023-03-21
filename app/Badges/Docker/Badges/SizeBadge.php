@@ -96,11 +96,6 @@ final class SizeBadge extends AbstractBadge
         return 'Docker';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SIZE];

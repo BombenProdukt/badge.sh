@@ -30,11 +30,6 @@ final class StatusBadge extends AbstractBadge
         return 'Read the Docs';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::BUILD];

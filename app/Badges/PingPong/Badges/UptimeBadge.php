@@ -26,11 +26,6 @@ final class UptimeBadge extends AbstractBadge
         return 'PingPong';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::MONITORING];

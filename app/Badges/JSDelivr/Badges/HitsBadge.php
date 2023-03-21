@@ -34,11 +34,6 @@ final class HitsBadge extends AbstractBadge
         return 'jsDelivr';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

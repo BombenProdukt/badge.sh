@@ -37,11 +37,6 @@ final class StatusBadge extends AbstractBadge
         return 'Azure Pipelines';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::BUILD];

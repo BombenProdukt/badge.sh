@@ -30,11 +30,6 @@ final class ArchitectureBadge extends AbstractBadge
         return 'Snapcraft';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT];

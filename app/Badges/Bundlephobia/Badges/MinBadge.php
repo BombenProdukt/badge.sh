@@ -32,11 +32,6 @@ final class MinBadge extends AbstractBadge
         return 'Bundlephobia';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SIZE];

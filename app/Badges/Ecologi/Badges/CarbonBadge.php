@@ -26,11 +26,6 @@ final class CarbonBadge extends AbstractBadge
         return 'Ecologi';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::OTHER];

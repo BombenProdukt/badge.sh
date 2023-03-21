@@ -26,11 +26,6 @@ final class CountBadge extends AbstractBadge
         return 'Treeware';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::OTHER];

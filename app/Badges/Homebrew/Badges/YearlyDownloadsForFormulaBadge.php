@@ -33,11 +33,6 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
         return 'Homebrew';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::DOWNLOADS];

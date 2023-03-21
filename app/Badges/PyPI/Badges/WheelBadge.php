@@ -9,7 +9,7 @@ use App\Badges\PyPI\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class WheelsBadge extends AbstractBadge
+final class WheelBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -46,11 +46,6 @@ final class WheelsBadge extends AbstractBadge
         return 'PyPI';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT];
@@ -59,7 +54,7 @@ final class WheelsBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/pypi/wheels/{project}',
+            '/pypi/wheel/{project}',
         ];
     }
 
@@ -81,7 +76,7 @@ final class WheelsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/wheels/black' => 'wheels',
+            '/pypi/wheel/black' => 'wheel',
         ];
     }
 }

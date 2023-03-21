@@ -34,11 +34,6 @@ final class MilestonesBadge extends AbstractBadge
         return 'GitHub';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ISSUE_TRACKING];

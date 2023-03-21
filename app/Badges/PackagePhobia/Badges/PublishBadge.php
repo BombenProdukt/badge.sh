@@ -33,11 +33,6 @@ final class PublishBadge extends AbstractBadge
         return 'Package Phobia';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SIZE];

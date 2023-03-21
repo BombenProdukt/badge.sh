@@ -32,11 +32,6 @@ final class UrlBadge extends AbstractBadge
         return 'Maven';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];
@@ -45,7 +40,6 @@ final class UrlBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            // TODO
             '/maven/version/metadata-url/{hostname}/{pathname}',
         ];
     }

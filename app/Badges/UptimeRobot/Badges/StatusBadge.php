@@ -40,11 +40,6 @@ final class StatusBadge extends AbstractBadge
         return 'UptimeRobot';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::CODE_FORMATTING];

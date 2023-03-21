@@ -8,6 +8,7 @@ use App\Badges\Concerns\HasRequest;
 use App\Badges\Concerns\HasTemplates;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Str;
 
 abstract class AbstractBadge implements Badge
 {
@@ -21,7 +22,7 @@ abstract class AbstractBadge implements Badge
 
     public function title(): string
     {
-        return '';
+        return explode(' Badge', Str::title(Str::snake(class_basename($this), ' ')))[0];
     }
 
     public function keywords(): array

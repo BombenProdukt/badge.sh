@@ -41,11 +41,6 @@ final class ReleaseBadge extends AbstractBadge
         return 'GitLab';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

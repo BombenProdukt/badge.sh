@@ -36,11 +36,6 @@ final class PriceBadge extends AbstractBadge
         return 'Chrome Web Store';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::OTHER];

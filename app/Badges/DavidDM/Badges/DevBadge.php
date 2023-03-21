@@ -41,11 +41,6 @@ final class DevBadge extends AbstractBadge
         return 'DavidDM';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::DEPENDENCIES];

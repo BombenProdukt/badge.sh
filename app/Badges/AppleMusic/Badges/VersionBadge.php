@@ -26,11 +26,6 @@ final class VersionBadge extends AbstractBadge
         return 'Apple Music';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

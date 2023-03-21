@@ -33,11 +33,6 @@ final class BackersBadge extends AbstractBadge
         return 'Open Collective';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::FUNDING];

@@ -41,11 +41,6 @@ final class PerlBadge extends AbstractBadge
         return 'CPAN';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT, Category::VERSION];

@@ -26,11 +26,6 @@ final class LastModifiedBadge extends AbstractBadge
         return 'AUR';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ACTIVITY];

@@ -27,11 +27,6 @@ final class LicenseBadge extends AbstractBadge
         return 'WebAssembly Package Manager';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::LICENSE];

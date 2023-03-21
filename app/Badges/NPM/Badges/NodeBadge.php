@@ -33,11 +33,6 @@ final class NodeBadge extends AbstractBadge
         return 'npm';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT];

@@ -30,11 +30,6 @@ final class RepositoryCountBadge extends AbstractBadge
         return 'Repology';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ANALYSIS];

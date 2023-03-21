@@ -33,11 +33,6 @@ final class StatusBadge extends AbstractBadge
         return 'AppVeyor';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::BUILD];

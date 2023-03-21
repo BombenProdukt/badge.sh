@@ -32,11 +32,6 @@ final class ZECBadge extends AbstractBadge
         return 'Keybase';
     }
 
-    public function title(): string
-    {
-        return 'Z-Cash Address';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

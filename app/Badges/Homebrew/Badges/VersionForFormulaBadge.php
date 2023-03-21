@@ -34,11 +34,6 @@ final class VersionForFormulaBadge extends AbstractBadge
         return 'Homebrew';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

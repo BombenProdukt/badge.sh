@@ -33,11 +33,6 @@ final class GivesBadge extends AbstractBadge
         return 'Liberapay';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::FUNDING];

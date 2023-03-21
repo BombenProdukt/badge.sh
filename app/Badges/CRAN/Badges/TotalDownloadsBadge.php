@@ -29,11 +29,6 @@ final class TotalDownloadsBadge extends AbstractBadge
         return 'CRAN';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::DOWNLOADS];

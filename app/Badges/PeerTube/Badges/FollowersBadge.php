@@ -43,11 +43,6 @@ final class FollowersBadge extends AbstractBadge
         return 'PeerTube';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

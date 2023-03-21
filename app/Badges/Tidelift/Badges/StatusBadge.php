@@ -42,11 +42,6 @@ final class StatusBadge extends AbstractBadge
         return 'Tidelift';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::FUNDING];

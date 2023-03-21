@@ -28,11 +28,6 @@ final class VersionFromBucketBadge extends AbstractBadge
         return 'Scoop';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

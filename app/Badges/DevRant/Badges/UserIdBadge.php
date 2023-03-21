@@ -33,11 +33,6 @@ final class UserIdBadge extends AbstractBadge
         return 'devRant';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

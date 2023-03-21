@@ -39,11 +39,6 @@ final class LinesBadge extends AbstractBadge
         return 'LGTM';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ANALYSIS];

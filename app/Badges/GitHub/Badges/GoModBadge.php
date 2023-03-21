@@ -30,11 +30,6 @@ final class GoModBadge extends AbstractBadge
         return 'GitHub';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT, Category::VERSION];

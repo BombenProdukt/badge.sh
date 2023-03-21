@@ -33,11 +33,6 @@ final class AccessibilityBadge extends AbstractBadge
         return 'Wheelmap';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::OTHER];

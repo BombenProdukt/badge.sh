@@ -41,11 +41,6 @@ final class IndentBadge extends AbstractBadge
         return 'XO';
     }
 
-    public function title(): string
-    {
-        return 'indent';
-    }
-
     public function keywords(): array
     {
         return [Category::CODE_FORMATTING];

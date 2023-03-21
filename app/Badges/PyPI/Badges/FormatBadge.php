@@ -50,11 +50,6 @@ final class FormatBadge extends AbstractBadge
         return 'PyPI';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT];

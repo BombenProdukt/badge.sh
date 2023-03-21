@@ -26,11 +26,6 @@ final class FactorioVersionBadge extends AbstractBadge
         return 'Factorio Mod Portal';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT, Category::VERSION];

@@ -32,11 +32,6 @@ final class StatusBadge extends AbstractBadge
         return 'Swagger';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::OTHER];

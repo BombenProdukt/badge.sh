@@ -26,11 +26,6 @@ final class DownloadsPerWeekBadge extends AbstractBadge
         return 'hex.pm';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::DOWNLOADS];

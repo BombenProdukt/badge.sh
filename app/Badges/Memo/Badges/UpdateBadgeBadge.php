@@ -29,11 +29,6 @@ final class UpdateBadgeBadge extends AbstractBadge
         return 'Memo';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [];

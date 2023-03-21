@@ -38,11 +38,6 @@ final class MetadataBadge extends AbstractBadge
         return 'Docker';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::BUILD];

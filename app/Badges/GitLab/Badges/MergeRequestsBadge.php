@@ -34,11 +34,6 @@ final class MergeRequestsBadge extends AbstractBadge
         return 'GitLab';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ISSUE_TRACKING];

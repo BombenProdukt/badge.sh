@@ -28,11 +28,6 @@ final class CoverageBadge extends AbstractBadge
         return 'Codacy';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ANALYSIS];

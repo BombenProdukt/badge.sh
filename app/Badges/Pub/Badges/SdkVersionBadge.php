@@ -28,11 +28,6 @@ final class SdkVersionBadge extends AbstractBadge
         return 'Pub';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT];

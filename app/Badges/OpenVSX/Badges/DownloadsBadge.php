@@ -34,11 +34,6 @@ final class DownloadsBadge extends AbstractBadge
         return 'Open VSX';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::DOWNLOADS];

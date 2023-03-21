@@ -32,11 +32,6 @@ final class StatusBadge extends AbstractBadge
         return 'Oh Dear';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::MONITORING];

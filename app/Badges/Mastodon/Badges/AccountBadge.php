@@ -42,11 +42,6 @@ final class AccountBadge extends AbstractBadge
         return 'Mastodon';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [

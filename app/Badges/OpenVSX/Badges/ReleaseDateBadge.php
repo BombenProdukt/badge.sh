@@ -27,11 +27,6 @@ final class ReleaseDateBadge extends AbstractBadge
         return 'Open VSX';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

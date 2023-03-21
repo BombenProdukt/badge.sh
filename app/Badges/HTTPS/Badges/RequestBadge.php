@@ -33,11 +33,6 @@ final class RequestBadge extends AbstractBadge
         return 'HTTPS';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::OTHER];

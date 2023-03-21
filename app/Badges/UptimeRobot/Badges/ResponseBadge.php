@@ -30,11 +30,6 @@ final class ResponseBadge extends AbstractBadge
         return 'UptimeRobot';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::MONITORING];

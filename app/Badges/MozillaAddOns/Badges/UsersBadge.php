@@ -33,11 +33,6 @@ final class UsersBadge extends AbstractBadge
         return 'Mozilla Add-ons';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::DOWNLOADS, Category::SOCIAL];

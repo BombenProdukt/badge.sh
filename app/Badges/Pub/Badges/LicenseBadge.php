@@ -30,11 +30,6 @@ final class LicenseBadge extends AbstractBadge
         return 'Pub';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::LICENSE];

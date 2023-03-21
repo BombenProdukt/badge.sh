@@ -32,11 +32,6 @@ final class SizeBadge extends AbstractBadge
         return 'WebAssembly Package Manager';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SIZE];

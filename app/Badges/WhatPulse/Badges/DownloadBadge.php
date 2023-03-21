@@ -27,11 +27,6 @@ final class DownloadBadge extends AbstractBadge
         return 'WhatPulse';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::DOWNLOADS];

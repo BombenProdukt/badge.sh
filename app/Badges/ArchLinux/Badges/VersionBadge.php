@@ -26,11 +26,6 @@ final class VersionBadge extends AbstractBadge
         return 'Arch Linux';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

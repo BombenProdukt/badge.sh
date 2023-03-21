@@ -31,11 +31,6 @@ final class PullsBadge extends AbstractBadge
         return 'Docker';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::DOWNLOADS];

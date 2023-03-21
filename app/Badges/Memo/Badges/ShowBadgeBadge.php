@@ -21,11 +21,6 @@ final class ShowBadgeBadge extends AbstractBadge
         return 'Memo';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::OTHER];

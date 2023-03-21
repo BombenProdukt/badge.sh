@@ -26,11 +26,6 @@ final class KarmaBadge extends AbstractBadge
         return 'Hacker News';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

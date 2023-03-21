@@ -36,11 +36,6 @@ final class CloudBuildStatusBadge extends AbstractBadge
         return 'Docker';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::BUILD];

@@ -33,11 +33,6 @@ final class ABIBadge extends AbstractBadge
         return 'WebAssembly Package Manager';
     }
 
-    public function title(): string
-    {
-        return 'ABI';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT];

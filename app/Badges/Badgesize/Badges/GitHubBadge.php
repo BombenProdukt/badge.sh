@@ -33,11 +33,6 @@ final class GitHubBadge extends AbstractBadge
         return 'Badgesize';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SIZE];

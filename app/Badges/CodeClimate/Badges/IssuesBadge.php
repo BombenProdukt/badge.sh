@@ -34,11 +34,6 @@ final class IssuesBadge extends AbstractBadge
         return 'Code Climate';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ANALYSIS];

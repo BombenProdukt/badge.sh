@@ -33,11 +33,6 @@ final class MembersBadge extends AbstractBadge
         return 'Discord';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

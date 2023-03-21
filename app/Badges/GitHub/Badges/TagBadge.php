@@ -35,11 +35,6 @@ final class TagBadge extends AbstractBadge
         return 'GitHub';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

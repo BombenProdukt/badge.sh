@@ -61,11 +61,6 @@ final class FixTimeBadge extends AbstractBadge
         return 'Jenkins';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::BUILD];

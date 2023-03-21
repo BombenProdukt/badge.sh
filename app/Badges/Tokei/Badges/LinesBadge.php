@@ -26,11 +26,6 @@ final class LinesBadge extends AbstractBadge
         return 'Tokei';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ANALYSIS];

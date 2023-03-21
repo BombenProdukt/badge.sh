@@ -42,11 +42,6 @@ final class SemicolonBadge extends AbstractBadge
         return 'XO';
     }
 
-    public function title(): string
-    {
-        return 'semicolon';
-    }
-
     public function keywords(): array
     {
         return [Keyword::CODE_STYLE];

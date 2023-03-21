@@ -26,11 +26,6 @@ final class GradeBadge extends AbstractBadge
         return 'Security Headers';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ANALYSIS];

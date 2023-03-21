@@ -32,11 +32,6 @@ final class XLMBadge extends AbstractBadge
         return 'Keybase';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::SOCIAL];

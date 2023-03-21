@@ -28,11 +28,6 @@ final class LinesBadge extends AbstractBadge
         return 'DeepScan';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ANALYSIS];

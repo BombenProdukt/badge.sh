@@ -30,11 +30,6 @@ final class PlatformBadge extends AbstractBadge
         return 'CocoaPods';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT];

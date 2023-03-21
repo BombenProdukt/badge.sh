@@ -46,11 +46,6 @@ final class GItHubBadge extends AbstractBadge
         return 'Snyk';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::ANALYSIS];

@@ -26,11 +26,6 @@ final class VersionBadge extends AbstractBadge
         return 'Fedora';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::VERSION];

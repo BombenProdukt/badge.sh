@@ -26,11 +26,6 @@ final class LicenseBadge extends AbstractBadge
         return 'DUB';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::LICENSE];

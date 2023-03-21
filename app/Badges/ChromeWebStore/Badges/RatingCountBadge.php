@@ -39,11 +39,6 @@ final class RatingCountBadge extends AbstractBadge
         return 'Chrome Web Store';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::RATING];

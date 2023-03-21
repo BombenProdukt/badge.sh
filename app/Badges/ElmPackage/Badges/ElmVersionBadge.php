@@ -28,11 +28,6 @@ final class ElmVersionBadge extends AbstractBadge
         return 'Elm Package';
     }
 
-    public function title(): string
-    {
-        return '';
-    }
-
     public function keywords(): array
     {
         return [Category::PLATFORM_SUPPORT, Category::VERSION];
