@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Badges\HexPM\Badges;
 
 use App\Badges\HexPM\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\DownloadsTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class DownloadsBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,9 +18,7 @@ final class VersionBadge implements Badge
 
     public function handle(string $packageName): array
     {
-        $response = $this->client->get($packageName);
-
-        return VersionTemplate::make($this->service(), $response['latest_stable_version'] ?? $response['latest_version']);
+        return DownloadsTemplate::make($this->client->get($packageName)['downloads']['all']);
     }
 
     public function service(): string
@@ -43,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hex/v/{packageName}',
+            '/hex/dt/{packageName}',
         ];
     }
 
@@ -69,7 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hex/v/plug' => 'version',
+            '/hex/dt/plug' => 'total downloads',
         ];
     }
 

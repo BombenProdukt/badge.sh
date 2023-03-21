@@ -11,7 +11,10 @@ final class BadgeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        BadgeService::add(Badges\VersionBadge::class);
+        BadgeService::add(Badges\DownloadsBadge::class);
+        BadgeService::add(Badges\DownloadsPerDayBadge::class);
+        BadgeService::add(Badges\DownloadsPerWeekBadge::class);
         BadgeService::add(Badges\LicenseBadge::class);
+        BadgeService::add(Badges\VersionBadge::class);
     }
 }

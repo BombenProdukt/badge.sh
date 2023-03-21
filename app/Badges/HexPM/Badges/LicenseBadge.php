@@ -16,14 +16,14 @@ final class LicenseBadge implements Badge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return LicenseTemplate::make($this->client->get($packageName)['meta']['licenses']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'hex.pm';
     }
 
     public function title(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/hex/l/{packageName}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/hex/l/plug' => 'license',
         ];
     }
 
