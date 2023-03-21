@@ -2,7 +2,6 @@
 
 ## Architecture
 
-- Standardize API to be more consistent and predictable
 - Standardize test suite to ensure functionality of all components
 
 ## Badges
