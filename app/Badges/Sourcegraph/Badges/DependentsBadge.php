@@ -6,7 +6,6 @@ namespace App\Badges\Sourcegraph\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Sourcegraph\Client;
-use App\Badges\Templates\TextTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -19,7 +18,7 @@ final class DependentsBadge extends AbstractBadge
 
     public function handle(string $repo): array
     {
-        return TextTemplate::make('used by', $this->client->dependents($repo), 'green.600');
+        return $this->renderText('used by', $this->client->dependents($repo), 'green.600');
     }
 
     public function service(): string

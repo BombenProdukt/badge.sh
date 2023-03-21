@@ -6,7 +6,6 @@ namespace App\Badges\AtomPackage\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AtomPackage\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return VersionTemplate::make($this->service(), $this->client->get($package)['releases']['latest']);
+        return $this->renderVersion($this->service(), $this->client->get($package)['releases']['latest']);
     }
 
     public function service(): string

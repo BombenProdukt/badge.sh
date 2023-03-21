@@ -6,7 +6,6 @@ namespace App\Badges\PyPI\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\PyPI\Client;
-use App\Badges\Templates\TextTemplate;
 use Illuminate\Routing\Route;
 
 final class FormatBadge extends AbstractBadge
@@ -35,14 +34,14 @@ final class FormatBadge extends AbstractBadge
         }
 
         if ($hasWheel) {
-            return TextTemplate::make('format', 'wheel', 'green.600');
+            return $this->renderText('format', 'wheel', 'green.600');
         }
 
         if ($hasEgg) {
-            return TextTemplate::make('format', 'egg', 'red.600');
+            return $this->renderText('format', 'egg', 'red.600');
         }
 
-        return TextTemplate::make('format', 'source', 'yellow.600');
+        return $this->renderText('format', 'source', 'yellow.600');
     }
 
     public function service(): string

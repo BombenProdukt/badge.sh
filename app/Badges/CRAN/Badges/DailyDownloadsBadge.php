@@ -6,7 +6,6 @@ namespace App\Badges\CRAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CRAN\Client;
-use App\Badges\Templates\DownloadsPerDayTemplate;
 use Illuminate\Routing\Route;
 
 final class DailyDownloadsBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class DailyDownloadsBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return DownloadsPerDayTemplate::make($this->client->logs("downloads/total/last-day/{$package}")[0]['downloads']);
+        return $this->renderDownloadsPerDay($this->client->logs("downloads/total/last-day/{$package}")[0]['downloads']);
     }
 
     public function service(): string

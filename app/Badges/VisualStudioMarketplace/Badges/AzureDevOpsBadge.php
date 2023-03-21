@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\DownloadsTemplate;
 use App\Badges\VisualStudioMarketplace\Client;
 use Illuminate\Routing\Route;
 
@@ -23,14 +22,14 @@ final class AzureDevOpsBadge extends AbstractBadge
         $onpremDownloads = collect($response['statistics'])->firstWhere('statisticName', 'onpremDownloads')['value'];
 
         if ($measurement === 'services') {
-            return DownloadsTemplate::make($install);
+            return $this->renderDownloads($install);
         }
 
         if ($measurement === 'on-prem') {
-            return DownloadsTemplate::make($onpremDownloads);
+            return $this->renderDownloads($onpremDownloads);
         }
 
-        return DownloadsTemplate::make($install + $onpremDownloads);
+        return $this->renderDownloads($install + $onpremDownloads);
     }
 
     public function service(): string

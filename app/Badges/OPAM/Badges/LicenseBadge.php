@@ -6,7 +6,6 @@ namespace App\Badges\OPAM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OPAM\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class LicenseBadge extends AbstractBadge
     {
         preg_match('/<th>license<\/th>\s*<td>([^<]+)<\//i', $this->client->get($name), $matches);
 
-        return LicenseTemplate::make($matches[1]);
+        return $this->renderLicense($matches[1]);
     }
 
     public function service(): string

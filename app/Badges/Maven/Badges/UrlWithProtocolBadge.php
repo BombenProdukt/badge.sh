@@ -6,7 +6,6 @@ namespace App\Badges\Maven\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Maven\Client;
-use App\Badges\Templates\VersionTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
@@ -24,7 +23,7 @@ final class UrlWithProtocolBadge extends AbstractBadge
 
         preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
 
-        return VersionTemplate::make($this->service(), $matches[1]);
+        return $this->renderVersion($this->service(), $matches[1]);
     }
 
     public function service(): string

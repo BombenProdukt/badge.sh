@@ -6,7 +6,6 @@ namespace App\Badges\DUB\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\DUB\Client;
-use App\Badges\Templates\DownloadsTemplate;
 use Illuminate\Routing\Route;
 
 final class TotalDownloadsBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class TotalDownloadsBadge extends AbstractBadge
     {
         $downloads = $this->client->get("{$package}/stats")['downloads'];
 
-        return DownloadsTemplate::make($downloads['total']);
+        return $this->renderDownloads($downloads['total']);
     }
 
     public function service(): string

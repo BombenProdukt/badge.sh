@@ -6,7 +6,6 @@ namespace App\Badges\Depfu\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Depfu\Client;
-use App\Badges\Templates\StatusTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -19,7 +18,7 @@ final class StatusBadge extends AbstractBadge
 
     public function handle(string $vcs, string $project): array
     {
-        return StatusTemplate::make($this->service(), $this->client->get($vcs, $project));
+        return $this->renderStatus($this->service(), $this->client->get($vcs, $project));
     }
 
     public function service(): string

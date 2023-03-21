@@ -6,7 +6,6 @@ namespace App\Badges\POEditor\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\POEditor\Client;
-use App\Badges\Templates\PercentageTemplate;
 use Illuminate\Routing\Route;
 
 final class ProgressBadge extends AbstractBadge
@@ -21,7 +20,7 @@ final class ProgressBadge extends AbstractBadge
         $response = $this->client->get($apiToken, $projectId, $languageCode);
         $language = collect($response['result'])->firstWhere('code', $languageCode);
 
-        return PercentageTemplate::make($language['name'], $language['percentage']);
+        return $this->renderPercentage($language['name'], $language['percentage']);
     }
 
     public function service(): string

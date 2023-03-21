@@ -6,7 +6,6 @@ namespace App\Badges\CRAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CRAN\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         $response = $this->client->db($package);
 
-        return VersionTemplate::make($this->service(), $response['Version']);
+        return $this->renderVersion($this->service(), $response['Version']);
     }
 
     public function service(): string

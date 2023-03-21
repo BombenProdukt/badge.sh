@@ -6,7 +6,6 @@ namespace App\Badges\HexPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\HexPM\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $packageName): array
     {
-        return LicenseTemplate::make($this->client->get($packageName)['meta']['licenses']);
+        return $this->renderLicense($this->client->get($packageName)['meta']['licenses']);
     }
 
     public function service(): string

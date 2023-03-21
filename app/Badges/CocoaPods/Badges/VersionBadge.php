@@ -6,7 +6,6 @@ namespace App\Badges\CocoaPods\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CocoaPods\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         $response = $this->client->get($pod);
 
-        return VersionTemplate::make($this->service(), $response['version']);
+        return $this->renderVersion($this->service(), $response['version']);
     }
 
     public function service(): string

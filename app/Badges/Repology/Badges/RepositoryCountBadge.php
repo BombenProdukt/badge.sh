@@ -6,7 +6,6 @@ namespace App\Badges\Repology\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Repology\Client;
-use App\Badges\Templates\NumberTemplate;
 use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
 
@@ -19,7 +18,7 @@ final class RepositoryCountBadge extends AbstractBadge
 
     public function handle(string $packageName): array
     {
-        return NumberTemplate::make(
+        return $this->renderNumber(
             'repositories',
             Regex::match('|<text x="105.0" y="15" fill="#010101" fill-opacity=".3" text-anchor="middle">(\d+)</text>|', $this->client->count($packageName))->group(1),
         );

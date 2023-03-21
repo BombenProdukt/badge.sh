@@ -6,7 +6,6 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
-use App\Badges\Templates\NumberTemplate;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class SponsorsBadge extends AbstractBadge
     {
         $response = GitHub::connection('graphql')->api('graphql')->execute('query ($user: String!) { repositoryOwner(login: $user) { ... on User { sponsorshipsAsMaintainer { totalCount } } ... on Organization { sponsorshipsAsMaintainer { totalCount } } } }', ['user' => $username]);
 
-        return NumberTemplate::make('sponsors', $response['data']['repositoryOwner']['sponsorshipsAsMaintainer']['totalCount']);
+        return $this->renderNumber('sponsors', $response['data']['repositoryOwner']['sponsorshipsAsMaintainer']['totalCount']);
     }
 
     public function service(): string

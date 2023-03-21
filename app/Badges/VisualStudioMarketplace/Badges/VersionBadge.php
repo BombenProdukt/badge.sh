@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\VersionTemplate;
 use App\Badges\VisualStudioMarketplace\Client;
 use Illuminate\Routing\Route;
 
@@ -20,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         $version = $this->client->get($extension)['versions'][0]['version'];
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     public function service(): string

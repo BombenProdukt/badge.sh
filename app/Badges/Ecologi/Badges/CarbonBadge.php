@@ -6,7 +6,6 @@ namespace App\Badges\Ecologi\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Ecologi\Client;
-use App\Badges\Templates\NumberTemplate;
 use Illuminate\Routing\Route;
 
 final class CarbonBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class CarbonBadge extends AbstractBadge
 
     public function handle(string $username): array
     {
-        return NumberTemplate::make('carbon offset', $this->client->carbon($username));
+        return $this->renderNumber('carbon offset', $this->client->carbon($username));
     }
 
     public function service(): string

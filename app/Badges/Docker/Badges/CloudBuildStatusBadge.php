@@ -6,7 +6,6 @@ namespace App\Badges\Docker\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Docker\Client;
-use App\Badges\Templates\TextTemplate;
 use Illuminate\Routing\Route;
 
 final class CloudBuildStatusBadge extends AbstractBadge
@@ -21,14 +20,14 @@ final class CloudBuildStatusBadge extends AbstractBadge
         $response = $this->client->build($scope, $name);
 
         if ($response['state'] === 'Success') {
-            return TextTemplate::make('docker build', 'passing', 'green.600');
+            return $this->renderText('docker build', 'passing', 'green.600');
         }
 
         if ($response['state'] === 'Failed') {
-            return TextTemplate::make('docker build', 'failing', 'red.600');
+            return $this->renderText('docker build', 'failing', 'red.600');
         }
 
-        return TextTemplate::make('docker build', 'building', 'blue.600');
+        return $this->renderText('docker build', 'building', 'blue.600');
     }
 
     public function service(): string

@@ -6,7 +6,6 @@ namespace App\Badges\DUB\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\DUB\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return LicenseTemplate::make($this->client->get("{$package}/latest/info")['info']['license']);
+        return $this->renderLicense($this->client->get("{$package}/latest/info")['info']['license']);
     }
 
     public function service(): string

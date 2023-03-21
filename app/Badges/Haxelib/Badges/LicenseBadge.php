@@ -6,7 +6,6 @@ namespace App\Badges\Haxelib\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Haxelib\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class LicenseBadge extends AbstractBadge
     {
         $response = $this->client->get($project);
 
-        return LicenseTemplate::make('TODO');
+        return $this->renderLicense('TODO');
     }
 
     public function service(): string

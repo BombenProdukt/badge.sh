@@ -6,7 +6,6 @@ namespace App\Badges\Debian\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Debian\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $packageName, ?string $distribution = 'stable'): array
     {
-        return VersionTemplate::make($this->service(), array_key_first($this->client->version($packageName, $distribution)));
+        return $this->renderVersion($this->service(), array_key_first($this->client->version($packageName, $distribution)));
     }
 
     public function service(): string

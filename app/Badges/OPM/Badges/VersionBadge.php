@@ -6,7 +6,6 @@ namespace App\Badges\OPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OPM\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
 
@@ -19,7 +18,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $user, string $moduleName): array
     {
-        return VersionTemplate::make($this->service(), Regex::match("/{$moduleName}-(.+).opm/", $this->client->version($user, $moduleName))->group(1));
+        return $this->renderVersion($this->service(), Regex::match("/{$moduleName}-(.+).opm/", $this->client->version($user, $moduleName))->group(1));
     }
 
     public function service(): string

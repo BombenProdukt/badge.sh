@@ -7,7 +7,6 @@ namespace App\Badges\Packagist\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
-use App\Badges\Templates\VersionTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
@@ -27,7 +26,7 @@ final class PhpVersionBadge extends AbstractBadge
 
         $pkg = Arr::get($packageMeta['versions'], $this->getVersion($packageMeta, $channel));
 
-        return VersionTemplate::make('php', Arr::get($pkg, 'require.php', '*'));
+        return $this->renderVersion('php', Arr::get($pkg, 'require.php', '*'));
     }
 
     public function service(): string

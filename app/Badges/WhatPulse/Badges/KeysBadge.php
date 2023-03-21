@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\WhatPulse\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\NumberTemplate;
 use App\Badges\WhatPulse\Client;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
@@ -19,7 +18,7 @@ final class KeysBadge extends AbstractBadge
 
     public function handle(string $userType, string $id): array
     {
-        return NumberTemplate::make('keys', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Keys' : 'Keys'));
+        return $this->renderNumber('keys', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Keys' : 'Keys'));
     }
 
     public function service(): string

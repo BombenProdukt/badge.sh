@@ -6,7 +6,6 @@ namespace App\Badges\DeepScan\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\DeepScan\Client;
-use App\Badges\Templates\LinesTemplate;
 use Illuminate\Routing\Route;
 
 final class LinesBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class LinesBadge extends AbstractBadge
     {
         $response = $this->client->get($teamId, $projectId, $branchId);
 
-        return LinesTemplate::make($response['loc']);
+        return $this->renderLines($response['loc']);
     }
 
     public function service(): string

@@ -6,7 +6,6 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
-use App\Badges\Templates\TextTemplate;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 
@@ -19,7 +18,7 @@ final class LanguagesBadge extends AbstractBadge
 
     public function handle(string $owner, string $repo): array
     {
-        return TextTemplate::make('languages', implode(' | ', array_keys(GitHub::repos()->languages($owner, $repo))), 'blue.600');
+        return $this->renderText('languages', implode(' | ', array_keys(GitHub::repos()->languages($owner, $repo))), 'blue.600');
     }
 
     public function service(): string

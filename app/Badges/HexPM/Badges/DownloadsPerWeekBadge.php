@@ -6,7 +6,6 @@ namespace App\Badges\HexPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\HexPM\Client;
-use App\Badges\Templates\DownloadsTemplate;
 use Illuminate\Routing\Route;
 
 final class DownloadsPerWeekBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class DownloadsPerWeekBadge extends AbstractBadge
 
     public function handle(string $packageName): array
     {
-        return DownloadsTemplate::make($this->client->get($packageName)['downloads']['week']);
+        return $this->renderDownloads($this->client->get($packageName)['downloads']['week']);
     }
 
     public function service(): string

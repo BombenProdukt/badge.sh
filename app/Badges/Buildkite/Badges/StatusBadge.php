@@ -6,7 +6,6 @@ namespace App\Badges\Buildkite\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Buildkite\Client;
-use App\Badges\Templates\StatusTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class StatusBadge extends AbstractBadge
 
     public function handle(string $identifier, ?string $branch = null): array
     {
-        return StatusTemplate::make('build', $this->client->status($identifier, $branch));
+        return $this->renderStatus('build', $this->client->status($identifier, $branch));
     }
 
     public function service(): string

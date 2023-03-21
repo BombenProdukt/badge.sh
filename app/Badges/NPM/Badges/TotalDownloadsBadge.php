@@ -6,7 +6,6 @@ namespace App\Badges\NPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\NPM\Client;
-use App\Badges\Templates\DownloadsTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class TotalDownloadsBadge extends AbstractBadge
     {
         $downloads = $this->client->api('downloads/range/2005-01-01:'.date('Y')."-01-01/{$package}")['downloads'];
 
-        return DownloadsTemplate::make(collect($downloads)->sum('downloads'));
+        return $this->renderDownloads(collect($downloads)->sum('downloads'));
     }
 
     public function service(): string

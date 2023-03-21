@@ -6,7 +6,6 @@ namespace App\Badges\OpenVSX\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OpenVSX\Client;
-use App\Badges\Templates\VersionTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class VersionBadge extends AbstractBadge
     {
         $response = $this->client->get($extension);
 
-        return VersionTemplate::make($this->service(), $response['version']);
+        return $this->renderVersion($this->service(), $response['version']);
     }
 
     public function service(): string

@@ -6,7 +6,6 @@ namespace App\Badges\PyPI\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\PyPI\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $project): array
     {
-        return LicenseTemplate::make($this->client->get($project)['info']['license']);
+        return $this->renderLicense($this->client->get($project)['info']['license']);
     }
 
     public function service(): string

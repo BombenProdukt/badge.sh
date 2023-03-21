@@ -6,7 +6,6 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
-use App\Badges\Templates\VersionTemplate;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
@@ -22,7 +21,7 @@ final class GoModBadge extends AbstractBadge
     {
         $response = base64_decode(GitHub::repos()->contents()->show($owner, $repo, 'src/go.mod')['content']);
 
-        return VersionTemplate::make('go', Regex::match('/go (.+)/', $response)->group(1));
+        return $this->renderVersion('go', Regex::match('/go (.+)/', $response)->group(1));
     }
 
     public function service(): string

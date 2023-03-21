@@ -6,7 +6,6 @@ namespace App\Badges\Pub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Pub\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -22,7 +21,7 @@ final class LicenseBadge extends AbstractBadge
 
         preg_match('/License<\/h3>\s*<p>([^(]+)\(/i', $response, $matches);
 
-        return LicenseTemplate::make($matches[1]);
+        return $this->renderLicense($matches[1]);
     }
 
     public function service(): string

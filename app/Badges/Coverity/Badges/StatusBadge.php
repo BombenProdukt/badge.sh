@@ -6,7 +6,6 @@ namespace App\Badges\Coverity\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Coverity\Client;
-use App\Badges\Templates\StatusTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class StatusBadge extends AbstractBadge
 
     public function handle(string $projectId): array
     {
-        return StatusTemplate::make($this->service(), $this->client->status($projectId));
+        return $this->renderStatus($this->service(), $this->client->status($projectId));
     }
 
     public function service(): string

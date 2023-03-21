@@ -6,7 +6,6 @@ namespace App\Badges\Swagger\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Swagger\Client;
-use App\Badges\Templates\StatusTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -21,10 +20,10 @@ final class StatusBadge extends AbstractBadge
         $schemaValidationMessages = $this->client->debug($this->request->query('spec'));
 
         if (empty($schemaValidationMessages)) {
-            return StatusTemplate::make($this->service(), 'passed');
+            return $this->renderStatus($this->service(), 'passed');
         }
 
-        return StatusTemplate::make($this->service(), 'failed');
+        return $this->renderStatus($this->service(), 'failed');
     }
 
     public function service(): string

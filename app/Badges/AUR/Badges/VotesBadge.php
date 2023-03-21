@@ -6,7 +6,6 @@ namespace App\Badges\AUR\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AUR\Client;
-use App\Badges\Templates\NumberTemplate;
 use Illuminate\Routing\Route;
 
 final class VotesBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class VotesBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return NumberTemplate::make('votes', $this->client->get($package)['NumVotes']);
+        return $this->renderNumber('votes', $this->client->get($package)['NumVotes']);
     }
 
     public function service(): string

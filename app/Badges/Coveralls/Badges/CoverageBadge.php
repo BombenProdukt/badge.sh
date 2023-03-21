@@ -6,7 +6,6 @@ namespace App\Badges\Coveralls\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Coveralls\Client;
-use App\Badges\Templates\CoverageTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -31,7 +30,7 @@ final class CoverageBadge extends AbstractBadge
             ];
         }
 
-        return CoverageTemplate::make($matches[1]);
+        return $this->renderCoverage($matches[1]);
     }
 
     public function service(): string

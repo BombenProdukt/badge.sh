@@ -6,7 +6,6 @@ namespace App\Badges\Cirrus\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Cirrus\Client;
-use App\Badges\Templates\StatusTemplate;
 use Illuminate\Routing\Route;
 
 final class GitHubBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class GitHubBadge extends AbstractBadge
 
     public function handle(string $owner, string $repo, ?string $branch = null): array
     {
-        return StatusTemplate::make('build', $this->client->github($owner, $repo, $branch, $this->request->query('task'), $this->request->query('script')));
+        return $this->renderStatus('build', $this->client->github($owner, $repo, $branch, $this->request->query('task'), $this->request->query('script')));
     }
 
     public function service(): string

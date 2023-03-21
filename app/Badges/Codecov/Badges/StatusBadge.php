@@ -6,7 +6,6 @@ namespace App\Badges\Codecov\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Codecov\Client;
-use App\Badges\Templates\CoverageTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class StatusBadge extends AbstractBadge
     {
         $response = $this->client->get($service, $repo, $branch);
 
-        return CoverageTemplate::make($response['commit']['totals']['c']);
+        return $this->renderCoverage($response['commit']['totals']['c']);
     }
 
     public function service(): string

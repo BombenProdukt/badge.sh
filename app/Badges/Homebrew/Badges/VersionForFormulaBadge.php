@@ -6,7 +6,6 @@ namespace App\Badges\Homebrew\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Homebrew\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionForFormulaBadge extends AbstractBadge
@@ -26,7 +25,7 @@ final class VersionForFormulaBadge extends AbstractBadge
             $version = $response['versions']['stable'];
         }
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     public function service(): string

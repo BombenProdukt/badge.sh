@@ -6,7 +6,6 @@ namespace App\Badges\HSTS\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\HSTS\Client;
-use App\Badges\Templates\StatusTemplate;
 use Illuminate\Routing\Route;
 
 final class PreloadBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class PreloadBadge extends AbstractBadge
 
     public function handle(string $domain): array
     {
-        return StatusTemplate::make('hsts preloaded', $this->client->status($domain));
+        return $this->renderStatus('hsts preloaded', $this->client->status($domain));
     }
 
     public function service(): string

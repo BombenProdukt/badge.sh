@@ -6,7 +6,6 @@ namespace App\Badges\Hackage\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Hackage\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         $version = $this->client->hackage($package)['version'];
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     public function service(): string

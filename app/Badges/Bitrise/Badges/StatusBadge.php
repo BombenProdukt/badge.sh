@@ -6,7 +6,6 @@ namespace App\Badges\Bitrise\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Bitrise\Client;
-use App\Badges\Templates\TextTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class StatusBadge extends AbstractBadge
     {
         $status = $this->client->get($token, $appId, $branch)['status'];
 
-        return TextTemplate::make('status', $status === 'unknown' ? 'branch not found' : $status, [
+        return $this->renderText('status', $status === 'unknown' ? 'branch not found' : $status, [
             'error'   => 'red.600',
             'success' => 'green.600',
             'unknown' => 'gray.600',

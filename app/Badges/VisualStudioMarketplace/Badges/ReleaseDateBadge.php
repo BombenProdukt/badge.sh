@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\DateTemplate;
 use App\Badges\VisualStudioMarketplace\Client;
 use Illuminate\Routing\Route;
 
@@ -18,7 +17,7 @@ final class ReleaseDateBadge extends AbstractBadge
 
     public function handle(string $extension): array
     {
-        return DateTemplate::make('release date', $this->client->get($extension)['releaseDate']);
+        return $this->renderDate('release date', $this->client->get($extension)['releaseDate']);
     }
 
     public function service(): string

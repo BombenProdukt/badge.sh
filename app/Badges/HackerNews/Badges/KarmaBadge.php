@@ -6,7 +6,6 @@ namespace App\Badges\HackerNews\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\HackerNews\Client;
-use App\Badges\Templates\NumberTemplate;
 use Illuminate\Routing\Route;
 
 final class KarmaBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class KarmaBadge extends AbstractBadge
 
     public function handle(string $username): array
     {
-        return NumberTemplate::make("u/{$username} karma", $this->client->karma($username));
+        return $this->renderNumber("u/{$username} karma", $this->client->karma($username));
     }
 
     public function service(): string

@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Badges;
 
+use App\Badges\Concerns\HasTemplates;
 use App\Contracts\Badge;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
 abstract class AbstractBadge implements Badge
 {
+    use HasTemplates;
+
     protected Request $request;
 
     public function setRequest(Request $request): void

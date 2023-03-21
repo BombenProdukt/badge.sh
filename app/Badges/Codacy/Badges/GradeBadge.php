@@ -6,7 +6,6 @@ namespace App\Badges\Codacy\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Codacy\Client;
-use App\Badges\Templates\GradeTemplate;
 use Illuminate\Routing\Route;
 
 final class GradeBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class GradeBadge extends AbstractBadge
     {
         preg_match('/visibility=[^>]*?>([^<]+)<\//i', $this->client->get('grade', $projectId, $branch), $matches);
 
-        return GradeTemplate::make('code quality', trim($matches[1]));
+        return $this->renderGrade('code quality', trim($matches[1]));
     }
 
     public function service(): string

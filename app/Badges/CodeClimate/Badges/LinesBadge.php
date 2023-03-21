@@ -6,7 +6,6 @@ namespace App\Badges\CodeClimate\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CodeClimate\Client;
-use App\Badges\Templates\LinesTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class LinesBadge extends AbstractBadge
     {
         $response = $this->client->get($project, 'snapshots');
 
-        return LinesTemplate::make($response['attributes']['lines_of_code']);
+        return $this->renderLines($response['attributes']['lines_of_code']);
     }
 
     public function service(): string

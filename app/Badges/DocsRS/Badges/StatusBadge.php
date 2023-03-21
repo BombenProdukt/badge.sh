@@ -6,7 +6,6 @@ namespace App\Badges\DocsRS\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\DocsRS\Client;
-use App\Badges\Templates\StatusTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -21,10 +20,10 @@ final class StatusBadge extends AbstractBadge
         $label = "docs@{$version}";
 
         if ($this->client->status($crate, $version)) {
-            return StatusTemplate::make($label, 'passing');
+            return $this->renderStatus($label, 'passing');
         }
 
-        return StatusTemplate::make($label, 'failing');
+        return $this->renderStatus($label, 'failing');
     }
 
     public function service(): string

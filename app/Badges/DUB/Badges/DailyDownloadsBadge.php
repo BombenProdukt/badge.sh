@@ -6,7 +6,6 @@ namespace App\Badges\DUB\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\DUB\Client;
-use App\Badges\Templates\DownloadsPerDayTemplate;
 use Illuminate\Routing\Route;
 
 final class DailyDownloadsBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class DailyDownloadsBadge extends AbstractBadge
     {
         $downloads = $this->client->get("{$package}/stats")['downloads'];
 
-        return DownloadsPerDayTemplate::make($downloads['daily']);
+        return $this->renderDownloadsPerDay($downloads['daily']);
     }
 
     public function service(): string

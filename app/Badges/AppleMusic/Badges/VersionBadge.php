@@ -6,7 +6,6 @@ namespace App\Badges\AppleMusic\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AppleMusic\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $bundleId): array
     {
-        return VersionTemplate::make($this->service(), $this->client->version($bundleId));
+        return $this->renderVersion($this->service(), $this->client->version($bundleId));
     }
 
     public function service(): string

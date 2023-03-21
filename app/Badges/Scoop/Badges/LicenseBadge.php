@@ -6,7 +6,6 @@ namespace App\Badges\Scoop\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Scoop\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class LicenseBadge extends AbstractBadge
     {
         $response = $this->client->main($app);
 
-        return LicenseTemplate::make($response['license']);
+        return $this->renderLicense($response['license']);
     }
 
     public function service(): string

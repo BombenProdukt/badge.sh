@@ -6,7 +6,6 @@ namespace App\Badges\Drone\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Drone\Client;
-use App\Badges\Templates\StatusTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class StatusBadge extends AbstractBadge
 
     public function handle(string $user, string $repo, ?string $branch = null): array
     {
-        return StatusTemplate::make('build', $this->client->status($user, $repo, $branch));
+        return $this->renderStatus('build', $this->client->status($user, $repo, $branch));
     }
 
     public function service(): string

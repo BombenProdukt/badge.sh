@@ -6,7 +6,6 @@ namespace App\Badges\Fedora\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Fedora\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $packageName, ?string $branch = 'rawhide'): array
     {
-        return VersionTemplate::make($this->service(), $this->client->version($packageName, $branch));
+        return $this->renderVersion($this->service(), $this->client->version($packageName, $branch));
     }
 
     public function service(): string

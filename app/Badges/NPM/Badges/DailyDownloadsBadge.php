@@ -6,7 +6,6 @@ namespace App\Badges\NPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\NPM\Client;
-use App\Badges\Templates\DownloadsPerDayTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class DailyDownloadsBadge extends AbstractBadge
     {
         $downloads = $this->client->api("downloads/point/last-day/{$package}")['downloads'];
 
-        return DownloadsPerDayTemplate::make($downloads);
+        return $this->renderDownloadsPerDay($downloads);
     }
 
     public function service(): string

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\WhatPulse\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\TextTemplate;
 use App\Badges\WhatPulse\Client;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
@@ -19,7 +18,7 @@ final class UptimeBadge extends AbstractBadge
 
     public function handle(string $userType, string $id): array
     {
-        return TextTemplate::make('uptime', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.UptimeLong' : 'UptimeLong'), 'green.600');
+        return $this->renderText('uptime', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.UptimeLong' : 'UptimeLong'), 'green.600');
     }
 
     public function service(): string

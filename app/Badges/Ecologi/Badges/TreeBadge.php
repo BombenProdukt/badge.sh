@@ -6,7 +6,6 @@ namespace App\Badges\Ecologi\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Ecologi\Client;
-use App\Badges\Templates\NumberTemplate;
 use Illuminate\Routing\Route;
 
 final class TreeBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class TreeBadge extends AbstractBadge
 
     public function handle(string $username): array
     {
-        return NumberTemplate::make('trees', $this->client->trees($username));
+        return $this->renderNumber('trees', $this->client->trees($username));
     }
 
     public function service(): string

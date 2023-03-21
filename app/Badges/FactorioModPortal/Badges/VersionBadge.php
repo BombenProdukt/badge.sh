@@ -6,7 +6,6 @@ namespace App\Badges\FactorioModPortal\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\FactorioModPortal\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $modName): array
     {
-        return VersionTemplate::make('latest version', $this->client->latestRelease($modName)['version']);
+        return $this->renderVersion('latest version', $this->client->latestRelease($modName)['version']);
     }
 
     public function service(): string

@@ -6,7 +6,6 @@ namespace App\Badges\CocoaPods\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CocoaPods\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class LicenseBadge extends AbstractBadge
     {
         $response = $this->client->get($pod);
 
-        return LicenseTemplate::make(is_array($response['license']) ? $response['license']['type'] : $response['license']);
+        return $this->renderLicense(is_array($response['license']) ? $response['license']['type'] : $response['license']);
     }
 
     public function service(): string

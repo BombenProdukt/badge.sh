@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\Ubuntu\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\VersionTemplate;
 use App\Badges\Ubuntu\Client;
 use Illuminate\Routing\Route;
 
@@ -18,7 +17,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $packageName, ?string $series = null): array
     {
-        return VersionTemplate::make($this->service(), $this->client->version($packageName, $series));
+        return $this->renderVersion($this->service(), $this->client->version($packageName, $series));
     }
 
     public function service(): string

@@ -7,7 +7,6 @@ namespace App\Badges\Packagist\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
-use App\Badges\Templates\VersionTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -24,7 +23,7 @@ final class VersionBadge extends AbstractBadge
     {
         $version = $this->getVersion($this->client->get($package), $channel);
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     public function service(): string

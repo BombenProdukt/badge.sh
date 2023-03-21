@@ -6,7 +6,6 @@ namespace App\Badges\NPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\NPM\Client;
-use App\Badges\Templates\DownloadsPerWeekTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class WeeklyDownloadsBadge extends AbstractBadge
     {
         $downloads = $this->client->api("downloads/point/last-week/{$package}")['downloads'];
 
-        return DownloadsPerWeekTemplate::make($downloads);
+        return $this->renderDownloadsPerWeek($downloads);
     }
 
     public function service(): string

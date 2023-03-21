@@ -6,7 +6,6 @@ namespace App\Badges\RubyGems\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\RubyGems\Client;
-use App\Badges\Templates\DownloadsTemplate;
 use Illuminate\Routing\Route;
 
 final class TotalDownloadsBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class TotalDownloadsBadge extends AbstractBadge
 
     public function handle(string $gem): array
     {
-        return DownloadsTemplate::make($this->client->get("gems/{$gem}")['downloads']);
+        return $this->renderDownloads($this->client->get("gems/{$gem}")['downloads']);
     }
 
     public function service(): string

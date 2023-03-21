@@ -6,7 +6,6 @@ namespace App\Badges\OpenSSFScorecard\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OpenSSFScorecard\Client;
-use App\Badges\Templates\NumberTemplate;
 use Illuminate\Routing\Route;
 
 final class ScoreBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class ScoreBadge extends AbstractBadge
 
     public function handle(string $host, string $orgName, string $repoName): array
     {
-        return NumberTemplate::make('score', $this->client->score($host, $orgName, $repoName));
+        return $this->renderNumber('score', $this->client->score($host, $orgName, $repoName));
     }
 
     public function service(): string

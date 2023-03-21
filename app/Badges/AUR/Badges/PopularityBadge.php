@@ -6,7 +6,6 @@ namespace App\Badges\AUR\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AUR\Client;
-use App\Badges\Templates\NumberTemplate;
 use Illuminate\Routing\Route;
 
 final class PopularityBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class PopularityBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return NumberTemplate::make('popularity', $this->client->get($package)['Popularity']);
+        return $this->renderNumber('popularity', $this->client->get($package)['Popularity']);
     }
 
     public function service(): string

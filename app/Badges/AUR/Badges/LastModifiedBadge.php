@@ -6,7 +6,6 @@ namespace App\Badges\AUR\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AUR\Client;
-use App\Badges\Templates\DateTemplate;
 use Illuminate\Routing\Route;
 
 final class LastModifiedBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class LastModifiedBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return DateTemplate::make('last modified', $this->client->get($package)['LastModified']);
+        return $this->renderDate('last modified', $this->client->get($package)['LastModified']);
     }
 
     public function service(): string

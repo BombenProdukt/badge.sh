@@ -6,7 +6,6 @@ namespace App\Badges\Date\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Date\Client;
-use App\Badges\Templates\TextTemplate;
 use Carbon\Carbon;
 use Illuminate\Routing\Route;
 
@@ -19,7 +18,7 @@ final class RelativeBadge extends AbstractBadge
 
     public function handle(string $timestamp): array
     {
-        return TextTemplate::make('date', Carbon::createFromTimestamp($timestamp)->diffForHumans(), 'blue.600');
+        return $this->renderText('date', Carbon::createFromTimestamp($timestamp)->diffForHumans(), 'blue.600');
     }
 
     public function service(): string

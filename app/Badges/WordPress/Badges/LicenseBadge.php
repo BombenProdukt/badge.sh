@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\WordPress\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\LicenseTemplate;
 use App\Badges\WordPress\Client;
 use Illuminate\Routing\Route;
 
@@ -18,7 +17,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $appId): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return $this->renderLicense($this->client->get($appId)['License']);
     }
 
     public function service(): string

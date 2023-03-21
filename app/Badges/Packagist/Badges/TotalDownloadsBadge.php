@@ -6,7 +6,6 @@ namespace App\Badges\Packagist\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Packagist\Client;
-use App\Badges\Templates\DownloadsTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class TotalDownloadsBadge extends AbstractBadge
     {
         $packageMeta = $this->client->get($package);
 
-        return DownloadsTemplate::make($packageMeta['downloads']['total']);
+        return $this->renderDownloads($packageMeta['downloads']['total']);
     }
 
     public function service(): string

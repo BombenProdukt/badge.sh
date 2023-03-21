@@ -6,7 +6,6 @@ namespace App\Badges\DUB\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\DUB\Client;
-use App\Badges\Templates\DownloadsPerMonthTemplate;
 use Illuminate\Routing\Route;
 
 final class MonthlyDownloadsBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
     {
         $downloads = $this->client->get("{$package}/stats")['downloads'];
 
-        return DownloadsPerMonthTemplate::make($downloads['monthly']);
+        return $this->renderDownloadsPerMonth($downloads['monthly']);
     }
 
     public function service(): string

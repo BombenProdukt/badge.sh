@@ -6,7 +6,6 @@ namespace App\Badges\JSDelivr\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\JSDelivr\Client;
-use App\Badges\Templates\VersionTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class VersionBadge extends AbstractBadge
     {
         $version = $this->client->cdn($package)['version'];
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     public function service(): string

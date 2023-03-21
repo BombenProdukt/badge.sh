@@ -6,7 +6,6 @@ namespace App\Badges\NPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\NPM\Client;
-use App\Badges\Templates\DownloadsPerMonthTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
     {
         $downloads = $this->client->api("downloads/point/last-month/{$package}")['downloads'];
 
-        return DownloadsPerMonthTemplate::make($downloads);
+        return $this->renderDownloadsPerMonth($downloads);
     }
 
     public function service(): string

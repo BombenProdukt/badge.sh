@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\WinGet\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\LicenseTemplate;
 use App\Badges\WinGet\Client;
 use Illuminate\Routing\Route;
 use Symfony\Component\Yaml\Yaml;
@@ -22,7 +21,7 @@ final class LicenseBadge extends AbstractBadge
         $document = Yaml::parse(base64_decode($this->client->get($appId)['content']));
         $document = Yaml::parse(base64_decode($this->client->locale($appId, $document['PackageVersion'], $document['DefaultLocale'])['content']));
 
-        return LicenseTemplate::make($document['License']);
+        return $this->renderLicense($document['License']);
     }
 
     public function service(): string

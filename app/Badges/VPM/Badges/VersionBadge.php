@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\VPM\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\VersionTemplate;
 use App\Badges\VPM\Client;
 use Illuminate\Routing\Route;
 
@@ -18,7 +17,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $packageId): array
     {
-        return VersionTemplate::make($this->service(), array_key_last($this->client->versions($packageId)));
+        return $this->renderVersion($this->service(), array_key_last($this->client->versions($packageId)));
     }
 
     public function service(): string

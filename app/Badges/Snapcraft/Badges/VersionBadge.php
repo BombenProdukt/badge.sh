@@ -6,7 +6,6 @@ namespace App\Badges\Snapcraft\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Snapcraft\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
@@ -27,7 +26,7 @@ final class VersionBadge extends AbstractBadge
             default                   => $channels->first(),
         };
 
-        return VersionTemplate::make($this->service(), $channel['version']);
+        return $this->renderVersion($this->service(), $channel['version']);
     }
 
     public function service(): string

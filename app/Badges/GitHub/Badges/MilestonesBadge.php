@@ -6,7 +6,6 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
-use App\Badges\Templates\PercentageTemplate;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 
@@ -23,7 +22,7 @@ final class MilestonesBadge extends AbstractBadge
         $openIssues  = $milestone['open_issues'];
         $totalIssues = $openIssues + $milestone['closed_issues'];
 
-        return PercentageTemplate::make(
+        return $this->renderPercentage(
             $milestone['title'],
             $totalIssues === 0 ? 0 : 100 - (($openIssues / $totalIssues) * 100),
         );

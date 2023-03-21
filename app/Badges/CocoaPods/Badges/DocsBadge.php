@@ -6,7 +6,6 @@ namespace App\Badges\CocoaPods\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CocoaPods\Client;
-use App\Badges\Templates\PercentageTemplate;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
@@ -19,7 +18,7 @@ final class DocsBadge extends AbstractBadge
 
     public function handle(string $pod): array
     {
-        return PercentageTemplate::make($this->service(), Arr::get($this->client->get($pod), 'cocoadocs.doc_percent', 0));
+        return $this->renderPercentage($this->service(), Arr::get($this->client->get($pod), 'cocoadocs.doc_percent', 0));
     }
 
     public function service(): string

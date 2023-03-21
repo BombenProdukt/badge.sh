@@ -6,7 +6,6 @@ namespace App\Badges\OpenVSX\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OpenVSX\Client;
-use App\Badges\Templates\LicenseTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -19,7 +18,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $extension): array
     {
-        return LicenseTemplate::make($this->client->get($extension)['license']);
+        return $this->renderLicense($this->client->get($extension)['license']);
     }
 
     public function service(): string

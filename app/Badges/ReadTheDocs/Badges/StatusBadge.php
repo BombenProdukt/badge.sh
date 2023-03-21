@@ -6,7 +6,6 @@ namespace App\Badges\ReadTheDocs\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\ReadTheDocs\Client;
-use App\Badges\Templates\StatusTemplate;
 use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
 
@@ -19,7 +18,7 @@ final class StatusBadge extends AbstractBadge
 
     public function handle(string $project, ?string $version = null): array
     {
-        return StatusTemplate::make(
+        return $this->renderStatus(
             'docs',
             Regex::match('|<text x="595" y="140" transform="scale\(.1\)" textLength="410">(.*)<\/text>|', $this->client->status($project, $version))->group(1),
         );

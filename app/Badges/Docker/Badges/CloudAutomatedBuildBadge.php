@@ -6,7 +6,6 @@ namespace App\Badges\Docker\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Docker\Client;
-use App\Badges\Templates\TextTemplate;
 use Illuminate\Routing\Route;
 
 final class CloudAutomatedBuildBadge extends AbstractBadge
@@ -21,10 +20,10 @@ final class CloudAutomatedBuildBadge extends AbstractBadge
         $settings = $this->client->build($scope, $name)['build_settings'];
 
         if (count($settings) >= 1) {
-            return TextTemplate::make('docker build', 'automated', 'green.600');
+            return $this->renderText('docker build', 'automated', 'green.600');
         }
 
-        return TextTemplate::make('docker build', 'manual', 'yellow.600');
+        return $this->renderText('docker build', 'manual', 'yellow.600');
     }
 
     public function service(): string

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\YouTube\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\VersionTemplate;
 use App\Badges\YouTube\Client;
 use Illuminate\Routing\Route;
 
@@ -20,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         $version = $this->client->get($appId)['CurrentVersion'];
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     public function service(): string

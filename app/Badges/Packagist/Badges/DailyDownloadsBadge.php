@@ -6,7 +6,6 @@ namespace App\Badges\Packagist\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Packagist\Client;
-use App\Badges\Templates\DownloadsPerDayTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class DailyDownloadsBadge extends AbstractBadge
     {
         $packageMeta = $this->client->get($package);
 
-        return DownloadsPerDayTemplate::make($packageMeta['downloads']['daily']);
+        return $this->renderDownloadsPerDay($packageMeta['downloads']['daily']);
     }
 
     public function service(): string

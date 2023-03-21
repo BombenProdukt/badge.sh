@@ -6,7 +6,6 @@ namespace App\Badges\NuGet\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\NuGet\Client;
-use App\Badges\Templates\DownloadsTemplate;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -25,7 +24,7 @@ final class TotalDownloadsBadge extends AbstractBadge
             'semVerLevel' => 2,
         ])->throw()->json('data.0.totalDownloads');
 
-        return DownloadsTemplate::make($totalDownloads);
+        return $this->renderDownloads($totalDownloads);
     }
 
     public function service(): string

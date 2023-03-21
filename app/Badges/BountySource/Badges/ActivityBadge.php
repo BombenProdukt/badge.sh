@@ -6,7 +6,6 @@ namespace App\Badges\BountySource\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\BountySource\Client;
-use App\Badges\Templates\NumberTemplate;
 use Illuminate\Routing\Route;
 
 final class ActivityBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class ActivityBadge extends AbstractBadge
 
     public function handle(string $team): array
     {
-        return NumberTemplate::make('activity', $this->client->get($team)['activity_total']);
+        return $this->renderNumber('activity', $this->client->get($team)['activity_total']);
     }
 
     public function service(): string

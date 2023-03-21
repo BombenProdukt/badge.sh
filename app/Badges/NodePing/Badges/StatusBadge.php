@@ -6,7 +6,6 @@ namespace App\Badges\NodePing\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\NodePing\Client;
-use App\Badges\Templates\TextTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class StatusBadge extends AbstractBadge
     {
         $isOnline = $this->client->status($uuid);
 
-        return TextTemplate::make('status', $isOnline ? 'online' : 'offline', $isOnline ? 'green.600' : 'red.600');
+        return $this->renderText('status', $isOnline ? 'online' : 'offline', $isOnline ? 'green.600' : 'red.600');
     }
 
     public function service(): string

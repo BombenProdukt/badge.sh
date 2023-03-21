@@ -6,7 +6,6 @@ namespace App\Badges\ClearlyDefined\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\ClearlyDefined\Client;
-use App\Badges\Templates\NumberTemplate;
 use Illuminate\Routing\Route;
 
 final class ScoreBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class ScoreBadge extends AbstractBadge
 
     public function handle(string $type, string $provider, string $namespace, string $name, string $revision): array
     {
-        return NumberTemplate::make('score', $this->client->get($type, $provider, $namespace, $name, $revision)['scores']['effective']);
+        return $this->renderNumber('score', $this->client->get($type, $provider, $namespace, $name, $revision)['scores']['effective']);
     }
 
     public function service(): string

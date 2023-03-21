@@ -6,7 +6,6 @@ namespace App\Badges\CRAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CRAN\Client;
-use App\Badges\Templates\DownloadsTemplate;
 use Carbon\Carbon;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class TotalDownloadsBadge extends AbstractBadge
     {
         $genesis = explode('T', Carbon::createFromTimestamp(0)->toISOString())[0];
 
-        return DownloadsTemplate::make($this->client->logs("downloads/total/{$genesis}:last-day/{$package}")[0]['downloads']);
+        return $this->renderDownloads($this->client->logs("downloads/total/{$genesis}:last-day/{$package}")[0]['downloads']);
     }
 
     public function service(): string

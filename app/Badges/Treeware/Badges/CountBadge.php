@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\Treeware\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\NumberTemplate;
 use App\Badges\Treeware\Client;
 use Illuminate\Routing\Route;
 
@@ -18,7 +17,7 @@ final class CountBadge extends AbstractBadge
 
     public function handle(string $owner, string $packageName): array
     {
-        return NumberTemplate::make('trees', $this->client->get($owner, $packageName));
+        return $this->renderNumber('trees', $this->client->get($owner, $packageName));
     }
 
     public function service(): string

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\WinGet\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\VersionTemplate;
 use App\Badges\WinGet\Client;
 use Illuminate\Routing\Route;
 
@@ -18,7 +17,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $appId): array
     {
-        return VersionTemplate::make($this->service(), $this->client->version($appId));
+        return $this->renderVersion($this->service(), $this->client->version($appId));
     }
 
     public function service(): string

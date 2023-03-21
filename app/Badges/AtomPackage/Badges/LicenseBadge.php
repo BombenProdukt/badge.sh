@@ -6,7 +6,6 @@ namespace App\Badges\AtomPackage\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AtomPackage\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class LicenseBadge extends AbstractBadge
     {
         $response = $this->client->get($package);
 
-        return LicenseTemplate::make($response['versions'][$response['releases']['latest']]['license']);
+        return $this->renderLicense($response['versions'][$response['releases']['latest']]['license']);
     }
 
     public function service(): string

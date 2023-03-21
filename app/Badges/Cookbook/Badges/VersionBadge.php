@@ -6,7 +6,6 @@ namespace App\Badges\Cookbook\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Cookbook\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $cookbook): array
     {
-        return VersionTemplate::make($this->service(), $this->client->version($cookbook));
+        return $this->renderVersion($this->service(), $this->client->version($cookbook));
     }
 
     public function service(): string

@@ -6,7 +6,6 @@ namespace App\Badges\CodeClimate\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CodeClimate\Client;
-use App\Badges\Templates\GradeTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class MaintainabilityBadge extends AbstractBadge
     {
         $response = $this->client->get($project, 'snapshots');
 
-        return GradeTemplate::make('maintainability', $response['attributes']['ratings'][0]['letter']);
+        return $this->renderGrade('maintainability', $response['attributes']['ratings'][0]['letter']);
     }
 
     public function service(): string

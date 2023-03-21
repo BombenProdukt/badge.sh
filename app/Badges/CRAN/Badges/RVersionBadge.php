@@ -6,7 +6,6 @@ namespace App\Badges\CRAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CRAN\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class RVersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class RVersionBadge extends AbstractBadge
     {
         $version = preg_replace('/([<>=]+)\s+/', '$1', $this->client->db($package)['Depends']['R']);
 
-        return VersionTemplate::make('R', $version);
+        return $this->renderVersion('R', $version);
     }
 
     public function service(): string

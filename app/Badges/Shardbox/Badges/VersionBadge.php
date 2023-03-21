@@ -6,7 +6,6 @@ namespace App\Badges\Shardbox\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Shardbox\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         preg_match('/class="version">([^<]+)<\\//i', $this->client->get($shard), $matches);
 
-        return VersionTemplate::make($this->service(), $matches[1]);
+        return $this->renderVersion($this->service(), $matches[1]);
     }
 
     public function service(): string

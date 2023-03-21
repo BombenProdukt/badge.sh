@@ -6,7 +6,6 @@ namespace App\Badges\OpenVSX\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OpenVSX\Client;
-use App\Badges\Templates\DateTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -19,7 +18,7 @@ final class ReleaseDateBadge extends AbstractBadge
 
     public function handle(string $extension): array
     {
-        return DateTemplate::make('release date', $this->client->get($extension)['timestamp']);
+        return $this->renderDate('release date', $this->client->get($extension)['timestamp']);
     }
 
     public function service(): string

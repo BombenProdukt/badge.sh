@@ -6,7 +6,6 @@ namespace App\Badges\Haxelib\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Haxelib\Client;
-use App\Badges\Templates\DownloadsTemplate;
 use Illuminate\Routing\Route;
 
 final class TotalDownloadsBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class TotalDownloadsBadge extends AbstractBadge
     {
         $response = $this->client->get($project);
 
-        return DownloadsTemplate::make(0);
+        return $this->renderDownloads(0);
     }
 
     public function service(): string

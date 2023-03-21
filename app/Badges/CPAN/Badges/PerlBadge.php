@@ -6,7 +6,6 @@ namespace App\Badges\CPAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CPAN\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class PerlBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class PerlBadge extends AbstractBadge
     {
         $version = $this->normalizeVersion($this->client->get("release/{$distribution}")['metadata']['prereqs']['runtime']['requires']['perl']);
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     private function normalizeVersion(string $version): string

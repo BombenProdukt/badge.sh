@@ -6,7 +6,6 @@ namespace App\Badges\PingPong\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\PingPong\Client;
-use App\Badges\Templates\PercentageTemplate;
 use Illuminate\Routing\Route;
 
 final class UptimeBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class UptimeBadge extends AbstractBadge
 
     public function handle(string $apiKey): array
     {
-        return PercentageTemplate::make('uptime', $this->client->uptime($apiKey));
+        return $this->renderPercentage('uptime', $this->client->uptime($apiKey));
     }
 
     public function service(): string

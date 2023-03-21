@@ -6,7 +6,6 @@ namespace App\Badges\MELPA\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\MELPA\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -22,7 +21,7 @@ final class VersionBadge extends AbstractBadge
 
         [, $version] = explode(':', trim($matches[1]));
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     public function service(): string

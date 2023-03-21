@@ -6,7 +6,6 @@ namespace App\Badges\Bugzilla\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Bugzilla\Client;
-use App\Badges\Templates\TextTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -21,7 +20,7 @@ final class StatusBadge extends AbstractBadge
         $response = $this->client->get($bug);
         $status   = strtolower($response['status'] === 'RESOLVED' ? $response['resolution'] : $response['status']);
 
-        return TextTemplate::make(
+        return $this->renderText(
             "bug {$bug}",
             match ($status) {
                 'worksforme' => 'works for me',

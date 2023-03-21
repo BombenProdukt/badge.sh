@@ -6,7 +6,6 @@ namespace App\Badges\CDNJS\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CDNJS\Client;
-use App\Badges\Templates\VersionTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -19,7 +18,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return VersionTemplate::make($this->service(), $this->client->get($package));
+        return $this->renderVersion($this->service(), $this->client->get($package));
     }
 
     public function service(): string

@@ -6,7 +6,6 @@ namespace App\Badges\CRAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CRAN\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class LicenseBadge extends AbstractBadge
     {
         $response = $this->client->db($package);
 
-        return LicenseTemplate::make(preg_replace('/\s*\S\s+file\s+LICEN[CS]E$/i', '', $response['License']));
+        return $this->renderLicense(preg_replace('/\s*\S\s+file\s+LICEN[CS]E$/i', '', $response['License']));
     }
 
     public function service(): string

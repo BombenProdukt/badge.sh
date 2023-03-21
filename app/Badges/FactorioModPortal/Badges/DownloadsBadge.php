@@ -6,7 +6,6 @@ namespace App\Badges\FactorioModPortal\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\FactorioModPortal\Client;
-use App\Badges\Templates\DownloadsTemplate;
 use Illuminate\Routing\Route;
 
 final class DownloadsBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class DownloadsBadge extends AbstractBadge
 
     public function handle(string $modName): array
     {
-        return DownloadsTemplate::make($this->client->downloads($modName));
+        return $this->renderDownloads($this->client->downloads($modName));
     }
 
     public function service(): string

@@ -6,7 +6,6 @@ namespace App\Badges\Codeship\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Codeship\Client;
-use App\Badges\Templates\StatusTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -21,14 +20,14 @@ final class StatusBadge extends AbstractBadge
         $response = $this->client->get($projectId, $branch);
 
         if (str_contains($response, 'id="project not found"')) {
-            return StatusTemplate::make('build', 'project not found');
+            return $this->renderStatus('build', 'project not found');
         }
 
         if (str_contains($response, 'id="passing"')) {
-            return StatusTemplate::make('build', 'passing');
+            return $this->renderStatus('build', 'passing');
         }
 
-        return StatusTemplate::make('build', 'failing');
+        return $this->renderStatus('build', 'failing');
     }
 
     public function service(): string

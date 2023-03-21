@@ -6,7 +6,6 @@ namespace App\Badges\Pub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Pub\Client;
-use App\Badges\Templates\PercentageTemplate;
 use Illuminate\Routing\Route;
 
 final class PopularityBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class PopularityBadge extends AbstractBadge
     {
         $percentage = (float) $this->client->api("packages/{$package}/score")['popularityScore'];
 
-        return PercentageTemplate::make('popularity', $percentage * 100);
+        return $this->renderPercentage('popularity', $percentage * 100);
     }
 
     public function service(): string

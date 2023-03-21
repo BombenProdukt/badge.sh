@@ -6,7 +6,6 @@ namespace App\Badges\Hackage\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Hackage\Client;
-use App\Badges\Templates\TextTemplate;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -24,7 +23,7 @@ final class DependencyBadge extends AbstractBadge
 
         $outdated = str_contains($client->get("feed/{$package}")->body(), "Outdated dependencies for {$package}");
 
-        return TextTemplate::make('dependencies', $outdated ? 'outdated' : 'up-to-date', $outdated ? 'red.600' : 'green.600');
+        return $this->renderText('dependencies', $outdated ? 'outdated' : 'up-to-date', $outdated ? 'red.600' : 'green.600');
     }
 
     public function service(): string

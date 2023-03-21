@@ -6,7 +6,6 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitLab\Client;
-use App\Badges\Templates\LicenseTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class LicenseBadge extends AbstractBadge
     {
         $response = $this->client->rest($repo, '?license=true');
 
-        return LicenseTemplate::make($response->json('license.name'));
+        return $this->renderLicense($response->json('license.name'));
     }
 
     public function service(): string

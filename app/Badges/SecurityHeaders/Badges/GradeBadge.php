@@ -6,7 +6,6 @@ namespace App\Badges\SecurityHeaders\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\SecurityHeaders\Client;
-use App\Badges\Templates\GradeTemplate;
 use Illuminate\Routing\Route;
 
 final class GradeBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class GradeBadge extends AbstractBadge
 
     public function handle(string $url): array
     {
-        return GradeTemplate::make('security headers', $this->client->grade($url));
+        return $this->renderGrade('security headers', $this->client->grade($url));
     }
 
     public function service(): string

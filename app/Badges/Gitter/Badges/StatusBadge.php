@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Gitter\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\TextTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
     public function handle(string $org, string $room): array
     {
-        return TextTemplate::make('gitter', 'on gitter', 'ed1965');
+        return $this->renderText('gitter', 'on gitter', 'ed1965');
     }
 
     public function service(): string

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\NumberTemplate;
 use App\Badges\VisualStudioMarketplace\Client;
 use Illuminate\Routing\Route;
 
@@ -20,7 +19,7 @@ final class InstallationsBadge extends AbstractBadge
     {
         $installations = collect($this->client->get($extension)['statistics'])->firstWhere('statisticName', 'install')['value'];
 
-        return NumberTemplate::make('installations', $installations);
+        return $this->renderNumber('installations', $installations);
     }
 
     public function service(): string

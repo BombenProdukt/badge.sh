@@ -6,7 +6,6 @@ namespace App\Badges\FactorioModPortal\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\FactorioModPortal\Client;
-use App\Badges\Templates\DateTemplate;
 use Illuminate\Routing\Route;
 
 final class LastModifiedBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class LastModifiedBadge extends AbstractBadge
 
     public function handle(string $modName): array
     {
-        return DateTemplate::make('last modified', $this->client->latestRelease($modName)['released_at']);
+        return $this->renderDate('last modified', $this->client->latestRelease($modName)['released_at']);
     }
 
     public function service(): string

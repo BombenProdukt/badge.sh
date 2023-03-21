@@ -6,7 +6,6 @@ namespace App\Badges\CTAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CTAN\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return LicenseTemplate::make($this->client->api($package)['license']);
+        return $this->renderLicense($this->client->api($package)['license']);
     }
 
     public function service(): string

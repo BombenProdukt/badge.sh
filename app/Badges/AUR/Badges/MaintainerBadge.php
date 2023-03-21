@@ -6,7 +6,6 @@ namespace App\Badges\AUR\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\AUR\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class MaintainerBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class MaintainerBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return LicenseTemplate::make($this->client->get($package)['Maintainer']);
+        return $this->renderLicense($this->client->get($package)['Maintainer']);
     }
 
     public function service(): string

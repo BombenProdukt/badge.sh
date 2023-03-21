@@ -6,7 +6,6 @@ namespace App\Badges\ElmPackage\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\ElmPackage\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class ElmVersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class ElmVersionBadge extends AbstractBadge
     {
         $version = $this->formatElmVersion($this->client->get($project)['elm-version']);
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     public function service(): string

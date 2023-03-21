@@ -6,7 +6,6 @@ namespace App\Badges\Hackage\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Hackage\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return LicenseTemplate::make($this->client->hackage($package)['license']);
+        return $this->renderLicense($this->client->hackage($package)['license']);
     }
 
     public function service(): string

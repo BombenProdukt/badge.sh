@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\WheelMap\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\TextTemplate;
 use App\Badges\WheelMap\Client;
 use Illuminate\Routing\Route;
 
@@ -20,7 +19,7 @@ final class AccessibilityBadge extends AbstractBadge
     {
         $accessibility = $this->client->node($nodeId);
 
-        return TextTemplate::make('accessibility', $accessibility, match ($accessibility) {
+        return $this->renderText('accessibility', $accessibility, match ($accessibility) {
             'yes'     => 'green.600',
             'limited' => 'yellow.600',
             'no'      => 'red.600',

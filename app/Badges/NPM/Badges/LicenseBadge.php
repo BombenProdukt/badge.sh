@@ -6,7 +6,6 @@ namespace App\Badges\NPM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\NPM\Client;
-use App\Badges\Templates\LicenseTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -19,7 +18,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $package, string $tag = 'latest'): array
     {
-        return LicenseTemplate::make($this->client->unpkg("{$package}@{$tag}/package.json")['license']);
+        return $this->renderLicense($this->client->unpkg("{$package}@{$tag}/package.json")['license']);
     }
 
     public function service(): string

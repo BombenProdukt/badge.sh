@@ -6,7 +6,6 @@ namespace App\Badges\Haxelib\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Haxelib\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         $response = $this->client->get($project);
 
-        return VersionTemplate::make($this->service(), 'TODO');
+        return $this->renderVersion($this->service(), 'TODO');
     }
 
     public function service(): string

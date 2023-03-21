@@ -6,7 +6,6 @@ namespace App\Badges\OPAM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\OPAM\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         preg_match('/class="package-version">([^<]+)<\//i', $this->client->get($name), $matches);
 
-        return VersionTemplate::make($this->service(), $matches[1]);
+        return $this->renderVersion($this->service(), $matches[1]);
     }
 
     public function service(): string

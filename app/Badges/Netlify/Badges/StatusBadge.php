@@ -6,7 +6,6 @@ namespace App\Badges\Netlify\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Netlify\Client;
-use App\Badges\Templates\StatusTemplate;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
@@ -32,7 +31,7 @@ final class StatusBadge extends AbstractBadge
             $status = 'building';
         }
 
-        return StatusTemplate::make('build', $status);
+        return $this->renderStatus('build', $status);
     }
 
     public function service(): string

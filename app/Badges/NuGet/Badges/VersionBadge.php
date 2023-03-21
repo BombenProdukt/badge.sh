@@ -6,7 +6,6 @@ namespace App\Badges\NuGet\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\NuGet\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -32,7 +31,7 @@ final class VersionBadge extends AbstractBadge
             $version = $this->latest($this->stable($versions));
         }
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     public function service(): string

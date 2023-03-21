@@ -6,7 +6,6 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
-use App\Badges\Templates\NumberTemplate;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class TopLanguageBadge extends AbstractBadge
     {
         $languages = GitHub::repos()->languages($owner, $repo);
 
-        return NumberTemplate::make(array_key_first($languages), head($languages));
+        return $this->renderNumber(array_key_first($languages), head($languages));
     }
 
     public function service(): string

@@ -7,7 +7,6 @@ namespace App\Badges\Packagist\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
-use App\Badges\Templates\LicenseTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -24,7 +23,7 @@ final class LicenseBadge extends AbstractBadge
     {
         $packageMeta = $this->client->get($package);
 
-        return LicenseTemplate::make($packageMeta['versions'][$this->getVersion($packageMeta, $channel)]['license'][0]);
+        return $this->renderLicense($packageMeta['versions'][$this->getVersion($packageMeta, $channel)]['license'][0]);
     }
 
     public function service(): string

@@ -6,7 +6,6 @@ namespace App\Badges\Bit\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Bit\Client;
-use App\Badges\Templates\NumberTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -19,7 +18,7 @@ final class TotalComponentsBadge extends AbstractBadge
 
     public function handle(string $collection): array
     {
-        return NumberTemplate::make('components', $this->client->get($collection)['totalComponents']);
+        return $this->renderNumber('components', $this->client->get($collection)['totalComponents']);
     }
 
     public function service(): string

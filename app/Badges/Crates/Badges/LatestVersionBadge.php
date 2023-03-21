@@ -6,7 +6,6 @@ namespace App\Badges\Crates\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Crates\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class LatestVersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class LatestVersionBadge extends AbstractBadge
     {
         $version = $this->client->get($package)['max_version'];
 
-        return VersionTemplate::make($this->service(), $version);
+        return $this->renderVersion($this->service(), $version);
     }
 
     public function service(): string

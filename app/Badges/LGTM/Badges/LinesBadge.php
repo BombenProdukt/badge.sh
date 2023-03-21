@@ -6,7 +6,6 @@ namespace App\Badges\LGTM\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\LGTM\Client;
-use App\Badges\Templates\LinesTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -28,7 +27,7 @@ final class LinesBadge extends AbstractBadge
         dd($project);
         $response = $this->client->get($provider, $project, $language);
 
-        return LinesTemplate::make(
+        return $this->renderLines(
             // $language ? 'lines: '.($this->languages[$response['lines']] ?? $language) : 'lines',
             $language ? $response['lines'] : array_reduce($response['languages'], fn ($accu, $curr) => $accu + $curr['lines'], 0),
         );

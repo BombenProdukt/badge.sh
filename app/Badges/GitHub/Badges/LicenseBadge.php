@@ -6,7 +6,6 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Client;
-use App\Badges\Templates\LicenseTemplate;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class LicenseBadge extends AbstractBadge
     {
         $result = $this->client->makeRepoQuery($owner, $repo, 'licenseInfo { spdxId }');
 
-        return LicenseTemplate::make($result['licenseInfo']['spdxId']);
+        return $this->renderLicense($result['licenseInfo']['spdxId']);
     }
 
     public function service(): string

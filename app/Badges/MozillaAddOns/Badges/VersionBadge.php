@@ -6,7 +6,6 @@ namespace App\Badges\MozillaAddOns\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\MozillaAddOns\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         $response = $this->client->get($package);
 
-        return VersionTemplate::make($this->service(), $response['current_version']['version']);
+        return $this->renderVersion($this->service(), $response['current_version']['version']);
     }
 
     public function service(): string

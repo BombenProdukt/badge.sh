@@ -6,7 +6,6 @@ namespace App\Badges\Packagist\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Packagist\Client;
-use App\Badges\Templates\DownloadsPerMonthTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
     {
         $packageMeta = $this->client->get($package);
 
-        return DownloadsPerMonthTemplate::make($packageMeta['downloads']['monthly']);
+        return $this->renderDownloadsPerMonth($packageMeta['downloads']['monthly']);
     }
 
     public function service(): string

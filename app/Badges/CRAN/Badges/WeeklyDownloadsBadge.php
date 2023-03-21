@@ -6,7 +6,6 @@ namespace App\Badges\CRAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CRAN\Client;
-use App\Badges\Templates\DownloadsPerWeekTemplate;
 use Illuminate\Routing\Route;
 
 final class WeeklyDownloadsBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class WeeklyDownloadsBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return DownloadsPerWeekTemplate::make($this->client->logs("downloads/total/last-week/{$package}")[0]['downloads']);
+        return $this->renderDownloadsPerWeek($this->client->logs("downloads/total/last-week/{$package}")[0]['downloads']);
     }
 
     public function service(): string

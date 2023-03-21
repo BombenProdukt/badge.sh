@@ -6,7 +6,6 @@ namespace App\Badges\CRAN\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CRAN\Client;
-use App\Badges\Templates\DownloadsPerMonthTemplate;
 use Illuminate\Routing\Route;
 
 final class MonthlyDownloadsBadge extends AbstractBadge
@@ -18,7 +17,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return DownloadsPerMonthTemplate::make($this->client->logs("downloads/total/last-month/{$package}")[0]['downloads']);
+        return $this->renderDownloadsPerMonth($this->client->logs("downloads/total/last-month/{$package}")[0]['downloads']);
     }
 
     public function service(): string

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Templates\DownloadsTemplate;
 use App\Badges\VisualStudioMarketplace\Client;
 use Illuminate\Routing\Route;
 
@@ -22,7 +21,7 @@ final class DownloadsBadge extends AbstractBadge
         $install     = collect($response['statistics'])->firstWhere('statisticName', 'install')['value'];
         $updateCount = collect($response['statistics'])->firstWhere('statisticName', 'updateCount')['value'];
 
-        return DownloadsTemplate::make($install + $updateCount);
+        return $this->renderDownloads($install + $updateCount);
     }
 
     public function service(): string

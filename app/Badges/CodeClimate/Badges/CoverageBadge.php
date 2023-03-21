@@ -6,7 +6,6 @@ namespace App\Badges\CodeClimate\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\CodeClimate\Client;
-use App\Badges\Templates\CoverageTemplate;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
@@ -21,7 +20,7 @@ final class CoverageBadge extends AbstractBadge
     {
         $response = $this->client->get($project, 'test_reports');
 
-        return CoverageTemplate::make($response['attributes']['rating']['measure']['value']);
+        return $this->renderCoverage($response['attributes']['rating']['measure']['value']);
     }
 
     public function service(): string

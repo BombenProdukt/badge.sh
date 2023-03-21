@@ -6,7 +6,6 @@ namespace App\Badges\Pub\Badges;
 
 use App\Badges\AbstractBadge;
 use App\Badges\Pub\Client;
-use App\Badges\Templates\VersionTemplate;
 use Illuminate\Routing\Route;
 
 final class SdkVersionBadge extends AbstractBadge
@@ -20,7 +19,7 @@ final class SdkVersionBadge extends AbstractBadge
     {
         $version = $this->client->api("packages/{$package}")['latest']['pubspec']['environment']['sdk'];
 
-        return VersionTemplate::make('dart sdk', $version);
+        return $this->renderVersion('dart sdk', $version);
     }
 
     public function service(): string
