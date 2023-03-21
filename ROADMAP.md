@@ -89,7 +89,6 @@ version/X => platform/X
 - [ ] [tokei](https://github.com/badges/shields/tree/master/services/tokei)
 - [ ] [treeware](https://github.com/badges/shields/tree/master/services/treeware)
 - [ ] [twitch](https://github.com/badges/shields/tree/master/services/twitch)
-- [ ] [ubuntu](https://github.com/badges/shields/tree/master/services/ubuntu)
 - [ ] [vaadin-directory](https://github.com/badges/shields/tree/master/services/vaadin-directory)
 - [ ] [vcpkg](https://github.com/badges/shields/tree/master/services/vcpkg)
 - [ ] [visual-studio-app-center](https://github.com/badges/shields/tree/master/services/visual-studio-app-center)
