@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://nodeping.com')->throw();
     }
 
-    public function get(string $appId): array
+    public function status(string $uuid): bool
     {
-        return $this->client->get('')->json();
+        return $this->client->get("reports/results/{$uuid}/1", ['format' => 'json'])->json('0.su');
     }
 }

@@ -5,27 +5,27 @@ declare(strict_types=1);
 namespace App\Badges\NodePing\Badges;
 
 use App\Badges\NodePing\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\TextTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class StatusBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $uuid): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $isOnline = $this->client->status($uuid);
 
-        return VersionTemplate::make($this->service(), $version);
+        return TextTemplate::make('status', $isOnline ? 'online' : 'offline', $isOnline ? 'green.600' : 'red.600');
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'NodePing';
     }
 
     public function title(): string
@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/nodeping/status/{uuid}',
         ];
     }
 
@@ -69,8 +69,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/nodeping/status/jkiwn052-ntpp-4lbb-8d45-ihew6d9ucoei' => 'status',
         ];
     }
 
