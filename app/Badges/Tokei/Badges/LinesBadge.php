@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace App\Badges\Tokei\Badges;
 
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\LinesTemplate;
 use App\Badges\Tokei\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class LinesBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $provider, string $user, string $repo): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return LinesTemplate::make($this->client->lines($provider, $user, $repo));
     }
 
     public function service(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/tokei/lines/{provider}/{user}/{repo}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/tokei/lines/github/badges/shields' => 'version',
         ];
     }
 

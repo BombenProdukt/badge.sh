@@ -5,8 +5,6 @@
 - [ ] Standardize API to be more consistent and predictable
 - [ ] Standardize test suite to ensure functionality of all components
 
-version/X => platform/X
-
 ## Badges
 
 - [ ] [ansible](https://github.com/badges/shields/tree/master/services/ansible)

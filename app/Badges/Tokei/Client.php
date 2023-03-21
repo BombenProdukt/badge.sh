@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://tokei.rs/b1')->acceptJson()->throw();
     }
 
-    public function get(string $appId): array
+    public function lines(string $provider, string $user, string $repo): int
     {
-        return $this->client->get('')->json();
+        return $this->client->get("{$provider}/{$user}/{$repo}")->json('lines');
     }
 }
