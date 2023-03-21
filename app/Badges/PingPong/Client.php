@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.pingpong.one')->throw();
     }
 
-    public function get(string $appId): array
+    public function uptime(string $apiKey): float
     {
-        return $this->client->get('')->json();
+        return $this->client->get("widget/shields/uptime/{$apiKey}")->json('uptime');
     }
 }

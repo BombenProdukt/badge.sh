@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace App\Badges\PingPong\Badges;
 
 use App\Badges\PingPong\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\PercentageTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class UptimeBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $apiKey): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return PercentageTemplate::make('uptime', $this->client->uptime($apiKey));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'PingPong';
     }
 
     public function title(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/pingpong/uptime/{apiKey}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/pingpong/uptime/sp_2e80bc00b6054faeb2b87e2464be337e' => 'uptime',
         ];
     }
 
