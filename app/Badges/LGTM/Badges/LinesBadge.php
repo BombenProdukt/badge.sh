@@ -54,7 +54,7 @@ final class LinesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/lgtm/{provider}/{project}/lines/{language?}',
+            '/lgtm/lines/{provider}/{project}/{language?}',
         ];
     }
 
@@ -81,7 +81,7 @@ final class LinesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/lgtm/github/apache/cloudstack/java/lines' => 'lines (java)',
+            '/lgtm/lines/github/apache/cloudstack/java' => 'lines (java)',
         ];
     }
 

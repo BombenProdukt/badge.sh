@@ -41,7 +41,7 @@ final class DownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hex/dt/{packageName}',
+            '/hex/downloads/{packageName}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class DownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hex/dt/plug' => 'total downloads',
+            '/hex/downloads/plug' => 'total downloads',
         ];
     }
 

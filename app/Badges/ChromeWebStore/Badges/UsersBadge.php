@@ -47,7 +47,7 @@ final class UsersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/chrome-web-store/{itemId}/users',
+            '/chrome-web-store/users/{itemId}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class UsersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/chrome-web-store/ckkdlimhmcjmikdlpkmbgfkaikojcbjk/users' => 'users',
+            '/chrome-web-store/users/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'users',
         ];
     }
 

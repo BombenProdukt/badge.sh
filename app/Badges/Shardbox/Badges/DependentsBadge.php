@@ -47,7 +47,7 @@ final class DependentsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/shardbox/{shard}/dependents',
+            '/shardbox/dependents/{shard}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class DependentsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/shardbox/lucky/dependents' => 'dependents',
+            '/shardbox/dependents/lucky' => 'dependents',
         ];
     }
 

@@ -53,7 +53,7 @@ final class RatingCountBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/chrome-web-store/{itemId}/rating-count',
+            '/chrome-web-store/rating-count/{itemId}',
         ];
     }
 
@@ -79,7 +79,7 @@ final class RatingCountBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/chrome-web-store/ckkdlimhmcjmikdlpkmbgfkaikojcbjk/rating-count' => 'rating count',
+            '/chrome-web-store/rating-count/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'rating count',
         ];
     }
 

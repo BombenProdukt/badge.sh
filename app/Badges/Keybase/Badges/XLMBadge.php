@@ -46,7 +46,7 @@ final class XLMBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/keybase/{address}/xlm',
+            '/keybase/xlm/{address}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class XLMBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/keybase/skyplabs/xlm' => 'xlm address',
+            '/keybase/xlm/skyplabs' => 'xlm address',
         ];
     }
 

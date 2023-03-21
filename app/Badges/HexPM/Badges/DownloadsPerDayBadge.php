@@ -41,7 +41,7 @@ final class DownloadsPerDayBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hex/dd/{packageName}',
+            '/hex/downloads-daily/{packageName}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class DownloadsPerDayBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hex/dd/plug' => 'daily downloads',
+            '/hex/downloads-daily/plug' => 'daily downloads',
         ];
     }
 

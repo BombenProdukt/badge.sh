@@ -56,7 +56,7 @@ final class PerlBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cpan/{distribution}/version/perl',
+            '/cpan/perl-version/{distribution}',
         ];
     }
 
@@ -82,7 +82,7 @@ final class PerlBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cpan/Plack/version/perl' => 'perl version',
+            '/cpan/perl-version/Plack' => 'perl version',
         ];
     }
 

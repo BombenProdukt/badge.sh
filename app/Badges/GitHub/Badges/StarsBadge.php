@@ -47,7 +47,7 @@ final class StarsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/stars',
+            '/github/stars/{owner}/{repo}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class StarsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/stars' => 'stars',
+            '/github/stars/micromatch/micromatch' => 'stars',
 
         ];
     }

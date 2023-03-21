@@ -50,7 +50,7 @@ final class DependentsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/{package}/dependents/{tag?}',
+            '/npm/dependents/{package}/{tag?}',
         ];
     }
 
@@ -76,7 +76,7 @@ final class DependentsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/got/dependents' => 'dependents',
+            '/npm/dependents/got' => 'dependents',
         ];
     }
 

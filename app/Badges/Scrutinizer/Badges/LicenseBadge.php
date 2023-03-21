@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/service/{package}' => '',
         ];
     }
 

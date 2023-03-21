@@ -54,7 +54,7 @@ final class CoverageBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/coveralls/{vcs}/{repo}/coverage/{branch?}',
+            '/coveralls/coverage/{vcs}/{repo}/{branch?}',
         ];
     }
 
@@ -81,10 +81,10 @@ final class CoverageBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/coveralls/github/jekyll/jekyll/coverage'           => 'coverage (github)',
-            '/coveralls/github/jekyll/jekyll/coverage/master'    => 'coverage (github, branch)',
-            '/coveralls/bitbucket/pyKLIP/pyklip/coverage'        => 'coverage (bitbucket)',
-            '/coveralls/bitbucket/pyKLIP/pyklip/coverage/master' => 'coverage (bitbucket, branch)',
+            '/coveralls/coverage/github/jekyll/jekyll'           => 'coverage (github)',
+            '/coveralls/coverage/github/jekyll/jekyll/master'    => 'coverage (github, branch)',
+            '/coveralls/coverage/bitbucket/pyKLIP/pyklip'        => 'coverage (bitbucket)',
+            '/coveralls/coverage/bitbucket/pyKLIP/pyklip/master' => 'coverage (bitbucket, branch)',
         ];
     }
 

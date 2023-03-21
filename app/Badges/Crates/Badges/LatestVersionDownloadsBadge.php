@@ -45,7 +45,7 @@ final class LatestVersionDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/crates/{package}/downloads/latest',
+            '/crates/downloads-recently/{package}',
         ];
     }
 
@@ -71,7 +71,7 @@ final class LatestVersionDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/crates/regex/downloads/latest' => 'downloads (latest version)',
+            '/crates/downloads-recently/regex' => 'downloads (latest version)',
         ];
     }
 

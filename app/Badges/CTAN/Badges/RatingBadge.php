@@ -46,7 +46,7 @@ final class RatingBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/ctan/{package}/rating',
+            '/ctan/rating/{package}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class RatingBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/ctan/pgf-pie/rating' => 'rating',
+            '/ctan/rating/pgf-pie' => 'rating',
         ];
     }
 

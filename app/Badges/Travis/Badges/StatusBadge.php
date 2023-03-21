@@ -51,7 +51,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/travis/{project}/status/{branch?}',
+            '/travis/status/{project}/{branch?}',
         ];
     }
 
@@ -77,8 +77,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/travis/babel/babel/status'     => 'build',
-            '/travis/babel/babel/status/6.x' => 'build (branch)',
+            '/travis/status/babel/babel'     => 'build',
+            '/travis/status/babel/babel/6.x' => 'build (branch)',
         ];
     }
 

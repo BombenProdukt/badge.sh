@@ -47,7 +47,7 @@ final class LastBuildBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jenkins/{hostname}/{job}/last-build',
+            '/jenkins/last-build/{hostname}/{job}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class LastBuildBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jenkins/jenkins.mono-project.com/job/test-mono-mainline/last-build' => 'Last build status',
+            '/jenkins/last-build/jenkins.mono-project.com/job/test-mono-mainline' => 'Last build status',
         ];
     }
 

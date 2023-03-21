@@ -58,7 +58,7 @@ final class BuildStatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/{project}/build/status/{definition}/{branch?}',
+            '/azure-pipelines/build-status/{project}/{definition}/{branch?}',
         ];
     }
 
@@ -84,7 +84,7 @@ final class BuildStatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/dnceng/public/build/status/51' => 'build status',
+            '/azure-pipelines/build-status/dnceng/public/51' => 'build status',
         ];
     }
 

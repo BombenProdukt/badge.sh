@@ -48,7 +48,7 @@ final class ReleasesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/releases',
+            '/gitlab/releases/{repo}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class ReleasesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/AuroraOSS/AuroraStore/releases' => 'release',
+            '/gitlab/releases/AuroraOSS/AuroraStore' => 'release',
         ];
     }
 

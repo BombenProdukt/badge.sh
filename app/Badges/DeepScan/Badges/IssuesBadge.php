@@ -47,7 +47,7 @@ final class IssuesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/deepscan/team/{teamId}/project/{projectId}/branch/{branchId}/issues',
+            '/deepscan/issues/team/{teamId}/project/{projectId}/branch/{branchId}',
         ];
     }
 
@@ -73,8 +73,8 @@ final class IssuesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/deepscan/team/8527/project/10741/branch/152550/issues' => 'issues',
-            '/deepscan/team/7382/project/9494/branch/123838/issues'  => 'issues',
+            '/deepscan/issues/team/8527/project/10741/branch/152550' => 'issues',
+            '/deepscan/issues/team/7382/project/9494/branch/123838'  => 'issues',
         ];
     }
 

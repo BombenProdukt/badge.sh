@@ -55,7 +55,7 @@ final class DevBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/david/{repo}/dev/{path?}',
+            '/david/dev/{repo}/{path?}',
         ];
     }
 
@@ -82,7 +82,7 @@ final class DevBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/david/zeit/pkg/dev' => 'dev dependencies',
+            '/david/dev/zeit/pkg' => 'dev dependencies',
         ];
     }
 

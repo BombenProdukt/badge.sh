@@ -43,7 +43,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/apm/{package}/license',
+            '/apm/license/{package}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/apm/linter/license' => 'license',
+            '/apm/license/linter' => 'license',
         ];
     }
 

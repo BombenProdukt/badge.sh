@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/dub/{package}/license',
+            '/dub/license/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/dub/arsd-official/license' => 'license',
+            '/dub/license/arsd-official' => 'license',
         ];
     }
 

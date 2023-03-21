@@ -47,7 +47,6 @@ final class GitHubBadge implements Badge
     public function routePaths(): array
     {
         return [
-            // TODO: here the prefix makes sense but it breaks the standards pattern
             '/badgesize/{compression}/{repo}/{path}',
         ];
     }

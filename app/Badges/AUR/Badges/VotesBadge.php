@@ -41,7 +41,7 @@ final class VotesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/aur/{package}/votes',
+            '/aur/votes/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class VotesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/aur/google-chrome/votes' => 'votes',
+            '/aur/votes/google-chrome' => 'votes',
         ];
     }
 

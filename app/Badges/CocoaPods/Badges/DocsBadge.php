@@ -42,7 +42,7 @@ final class DocsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cocoapods/{pod}/metrics/doc-percent',
+            '/cocoapods/doc-percent/{pod}',
         ];
     }
 
@@ -68,7 +68,7 @@ final class DocsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cocoapods/AFNetworking/metrics/doc-percent' => 'documentation coverage (percentage)',
+            '/cocoapods/doc-percent/AFNetworking' => 'documentation coverage (percentage)',
         ];
     }
 

@@ -42,7 +42,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cdnjs/{package}/version',
+            '/cdnjs/version/{package}',
         ];
     }
 
@@ -68,7 +68,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cdnjs/react/version' => 'version',
+            '/cdnjs/version/react' => 'version',
         ];
     }
 

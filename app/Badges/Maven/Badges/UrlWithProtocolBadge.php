@@ -48,7 +48,7 @@ final class UrlWithProtocolBadge implements Badge
     {
         return [
             // TODO
-            '/maven/v/metadata-url/{protocol}/{hostname}/{pathname}',
+            '/maven/version/metadata-url/{protocol}/{hostname}/{pathname}',
         ];
     }
 
@@ -75,7 +75,7 @@ final class UrlWithProtocolBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/maven/v/metadata-url/https/repo1.maven.org/maven2/com/google/code/gson/gson/maven-metadata.xml' => 'version (maven metadata url)',
+            '/maven/version/metadata-url/https/repo1.maven.org/maven2/com/google/code/gson/gson/maven-metadata.xml' => 'version (maven metadata url)',
         ];
     }
 

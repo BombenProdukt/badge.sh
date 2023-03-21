@@ -46,7 +46,7 @@ final class LicenseFromBucketBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/scoop/{bucket}/{app}/license',
+            '/scoop/license/{bucket}/{app}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class LicenseFromBucketBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/scoop/extras/deluge/license' => 'license',
+            '/scoop/license/extras/deluge' => 'license',
         ];
     }
 

@@ -55,7 +55,7 @@ final class TechDebtBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codeclimate/{project}/tech-debt',
+            '/codeclimate/tech-debt/{project}',
         ];
     }
 
@@ -81,7 +81,7 @@ final class TechDebtBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codeclimate/codeclimate/codeclimate/tech-debt' => 'technical debt',
+            '/codeclimate/tech-debt/codeclimate/codeclimate' => 'technical debt',
         ];
     }
 

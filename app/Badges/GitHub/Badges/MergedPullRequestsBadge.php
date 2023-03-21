@@ -47,7 +47,7 @@ final class MergedPullRequestsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/pull-requests/merged',
+            '/github/merged-pull-requests/{owner}/{repo}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class MergedPullRequestsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/pull-requests/merged' => 'merged PRs',
+            '/github/merged-pull-requests/micromatch/micromatch' => 'merged PRs',
 
         ];
     }

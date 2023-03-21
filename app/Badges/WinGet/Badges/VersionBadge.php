@@ -41,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/winget/{appId}/version',
+            '/winget/version/{appId}',
         ];
     }
 
@@ -67,8 +67,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/winget/GitHub.cli/version'    => 'version',
-            '/winget/Balena.Etcher/version' => 'version',
+            '/winget/version/GitHub.cli'    => 'version',
+            '/winget/version/Balena.Etcher' => 'version',
         ];
     }
 

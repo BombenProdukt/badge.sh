@@ -43,7 +43,7 @@ final class PopularityBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pub/{package}/popularity',
+            '/pub/popularity/{package}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class PopularityBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pub/mobx/popularity' => 'popularity',
+            '/pub/popularity/mobx' => 'popularity',
         ];
     }
 

@@ -47,7 +47,7 @@ final class IssuesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/issues',
+            '/github/issues/{owner}/{repo}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class IssuesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/issues' => 'issues',
+            '/github/issues/micromatch/micromatch' => 'issues',
 
         ];
     }

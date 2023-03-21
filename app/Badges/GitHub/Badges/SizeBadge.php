@@ -42,7 +42,7 @@ final class SizeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/size',
+            '/github/size/{owner}/{repo}',
         ];
     }
 
@@ -68,7 +68,7 @@ final class SizeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/size' => 'size',
+            '/github/size/micromatch/micromatch' => 'size',
 
         ];
     }

@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/opam/{name}/version',
+            '/opam/version/{name}',
         ];
     }
 
@@ -69,8 +69,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/opam/merlin/version'      => 'version',
-            '/opam/ocamlformat/version' => 'version',
+            '/opam/version/merlin'      => 'version',
+            '/opam/version/ocamlformat' => 'version',
         ];
     }
 

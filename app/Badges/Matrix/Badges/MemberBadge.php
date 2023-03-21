@@ -48,9 +48,9 @@ final class MemberBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/matrix/{room}/members/gitter',
-            '/matrix/{room}/members/gitter.im',
-            '/matrix/{room}/members/{server?}',
+            '/matrix/members/{room}/gitter',
+            '/matrix/members/{room}/gitter.im',
+            '/matrix/members/{room}/{server?}',
         ];
     }
 
@@ -76,9 +76,9 @@ final class MemberBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/matrix/rust/members/matrix.org'         => 'members',
-            '/matrix/thisweekinmatrix/members'        => 'members',
-            '/matrix/archlinux/members/archlinux.org' => 'members',
+            '/matrix/members/rust/matrix.org'         => 'members',
+            '/matrix/members/thisweekinmatrix'        => 'members',
+            '/matrix/members/archlinux/archlinux.org' => 'members',
         ];
     }
 

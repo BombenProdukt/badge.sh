@@ -44,7 +44,7 @@ final class TotalDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/{package}/downloads',
+            '/npm/downloads/{package}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class TotalDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/express/downloads' => 'total downloads',
+            '/npm/downloads/express' => 'total downloads',
         ];
     }
 

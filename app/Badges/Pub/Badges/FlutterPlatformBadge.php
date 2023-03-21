@@ -48,7 +48,7 @@ final class FlutterPlatformBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pub/{package}/platform/flutter',
+            '/pub/flutter-platform/{package}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class FlutterPlatformBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pub/xml/platform/flutter' => 'flutter-platform',
+            '/pub/flutter-platform/xml' => 'flutter-platform',
         ];
     }
 

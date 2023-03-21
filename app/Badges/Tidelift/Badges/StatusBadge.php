@@ -56,7 +56,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/tidelift/{platform}/{name}/status',
+            '/tidelift/status/{platform}/{name}',
         ];
     }
 
@@ -82,8 +82,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/tidelift/npm/minimist/status' => 'subscription',
-            '/tidelift/npm/got/status'      => 'subscription',
+            '/tidelift/status/npm/minimist' => 'subscription',
+            '/tidelift/status/npm/got'      => 'subscription',
         ];
     }
 

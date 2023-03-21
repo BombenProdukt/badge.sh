@@ -45,7 +45,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/winget/{appId}/license',
+            '/winget/license/{appId}',
         ];
     }
 
@@ -71,7 +71,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/winget/GitHub.cli/license' => 'license',
+            '/winget/license/GitHub.cli' => 'license',
         ];
     }
 

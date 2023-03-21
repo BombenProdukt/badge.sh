@@ -41,7 +41,7 @@ final class ReleaseDateBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/{extension}/release-date',
+            '/vs-marketplace/release-date/{extension}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class ReleaseDateBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/vscodevim.vim/release-date' => 'release date',
+            '/vs-marketplace/release-date/vscodevim.vim' => 'release date',
         ];
     }
 

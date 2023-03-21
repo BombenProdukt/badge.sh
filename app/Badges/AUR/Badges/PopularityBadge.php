@@ -41,7 +41,7 @@ final class PopularityBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/aur/{package}/popularity',
+            '/aur/popularity/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class PopularityBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/aur/google-chrome/popularity' => 'popularity',
+            '/aur/popularity/google-chrome' => 'popularity',
         ];
     }
 

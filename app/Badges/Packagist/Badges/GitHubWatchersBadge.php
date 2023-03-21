@@ -48,7 +48,7 @@ final class GitHubWatchersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/github/watchers',
+            '/packagist/github-watchers/{package}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class GitHubWatchersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/github/watchers' => 'github watchers',
+            '/packagist-github/watchers/monolog/monolog' => 'github watchers',
         ];
     }
 

@@ -54,7 +54,7 @@ final class ImplementationBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pypi/{project}/implementation',
+            '/pypi/implementation/{project}',
         ];
     }
 
@@ -80,7 +80,7 @@ final class ImplementationBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/black/implementation' => 'framework',
+            '/pypi/implementation/black' => 'framework',
         ];
     }
 

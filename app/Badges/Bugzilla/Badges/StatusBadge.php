@@ -62,7 +62,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/bugzilla/{bug}/status',
+            '/bugzilla/status/{bug}',
         ];
     }
 
@@ -88,7 +88,7 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/bugzilla/996038/status' => 'status',
+            '/bugzilla/status/996038' => 'status',
         ];
     }
 

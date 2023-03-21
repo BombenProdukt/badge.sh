@@ -47,7 +47,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/dependabot/{project}/status/{identifier?}',
+            '/dependabot/status/{project}/{identifier?}',
         ];
     }
 
@@ -73,8 +73,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/dependabot/thepracticaldev/dev.to/status'     => 'status',
-            '/dependabot/dependabot/dependabot-core/status' => 'status',
+            '/dependabot/status/thepracticaldev/dev.to'     => 'status',
+            '/dependabot/status/dependabot/dependabot-core' => 'status',
         ];
     }
 

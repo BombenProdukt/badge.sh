@@ -51,7 +51,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/{project}/status/{definition}/{branch?}',
+            '/azure-pipelines/status/{project}/{definition}/{branch?}',
         ];
     }
 
@@ -77,8 +77,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/dnceng/public/status/efcore-ci' => 'pipeline status (definition name)',
-            '/azure-pipelines/dnceng/public/status/51'        => 'pipeline status (definition id)',
+            '/azure-pipelines/status/dnceng/public/efcore-ci' => 'pipeline status (definition name)',
+            '/azure-pipelines/status/dnceng/public/51'        => 'pipeline status (definition id)',
         ];
     }
 

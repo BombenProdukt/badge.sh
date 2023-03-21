@@ -48,7 +48,7 @@ final class AccessibilityBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wheelmap/a/{nodeId}',
+            '/wheelmap/accessibility/{nodeId}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class AccessibilityBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wheelmap/a/26699541' => 'version',
+            '/wheelmap/accessibility/26699541' => 'version',
         ];
     }
 

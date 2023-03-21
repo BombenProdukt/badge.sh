@@ -49,7 +49,7 @@ final class LabelsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/issues/filter/label/{label}/{state?}',
+            '/gitlab/issues-by-label/{repo}/{label}/{state?}',
         ];
     }
 
@@ -75,9 +75,9 @@ final class LabelsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/NickBusey/HomelabOS/issues/filter/label/Bug'                  => 'issues by label',
-            '/gitlab/NickBusey/HomelabOS/issues/filter/label/Enhancement/opened'   => 'open issues by label',
-            '/gitlab/NickBusey/HomelabOS/issues/filter/label/Help%20wanted/closed' => 'closed issues by label',
+            '/gitlab/issues-by-label/NickBusey/HomelabOS/Bug'                  => 'issues by label',
+            '/gitlab/issues-by-label/NickBusey/HomelabOS/Enhancement/opened'   => 'open issues by label',
+            '/gitlab/issues-by-label/NickBusey/HomelabOS/Help%20wanted/closed' => 'closed issues by label',
         ];
     }
 

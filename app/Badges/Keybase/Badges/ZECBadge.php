@@ -46,7 +46,7 @@ final class ZECBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/keybase/{address}/zec',
+            '/keybase/zec/{address}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class ZECBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/keybase/skyplabs/zec' => 'zec address',
+            '/keybase/zec/skyplabs' => 'zec address',
         ];
     }
 

@@ -41,7 +41,7 @@ final class ActivityBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/bountysource/{team}/activity',
+            '/bountysource/activity/{team}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class ActivityBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/bountysource/mozilla-core/activity' => 'activity',
+            '/bountysource/activity/mozilla-core' => 'activity',
         ];
     }
 

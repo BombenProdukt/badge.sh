@@ -67,7 +67,7 @@ final class DownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/flathub/downloads/org.mozilla.firefox' => 'version',
+            '/flathub/downloads/org.mozilla.firefox' => 'downloads',
         ];
     }
 

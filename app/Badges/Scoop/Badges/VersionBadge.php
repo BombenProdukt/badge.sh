@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/scoop/{app}/version',
+            '/scoop/version/{app}',
         ];
     }
 
@@ -69,8 +69,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/scoop/1password-cli/version' => 'version',
-            '/scoop/adb/version'           => 'version',
+            '/scoop/version/1password-cli' => 'version',
+            '/scoop/version/adb'           => 'version',
         ];
     }
 

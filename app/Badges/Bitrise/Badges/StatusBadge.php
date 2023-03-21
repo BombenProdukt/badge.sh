@@ -47,7 +47,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/bitrise/{token}/{appId}/version/{branch?}',
+            '/bitrise/version/{token}/{appId}/{branch?}',
         ];
     }
 
@@ -73,8 +73,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/bitrise/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304/version'        => 'version',
-            '/bitrise/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304/version/master' => 'version',
+            '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304'        => 'version',
+            '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304/master' => 'version',
         ];
     }
 

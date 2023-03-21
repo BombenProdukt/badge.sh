@@ -43,7 +43,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/haxelib/{project}/license',
+            '/haxelib/license/{project}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/haxelib/openfl/license' => 'license',
+            '/haxelib/license/openfl' => 'license',
         ];
     }
 

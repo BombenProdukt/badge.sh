@@ -59,7 +59,7 @@ final class GradeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/lgtm/{provider}/{project}/grade/{language?}',
+            '/lgtm/grade/{provider}/{project}/{language?}',
         ];
     }
 
@@ -86,11 +86,11 @@ final class GradeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/lgtm/github/apache/cloudstack/grade/java'              => 'grade (java)',
-            '/lgtm/github/apache/cloudstack/grade'                   => 'grade (auto)',
-            '/lgtm/github/systemd/systemd/grade'                     => 'grade (auto)',
-            '/lgtm/bitbucket/wegtam/bitbucket-youtrack-broker/grade' => 'grade (auto)',
-            '/lgtm/gitlab/nekokatt/hikari/grade'                     => 'grade (auto)',
+            '/lgtm/grade/github/apache/cloudstack/java'              => 'grade (java)',
+            '/lgtm/grade/github/apache/cloudstack'                   => 'grade (auto)',
+            '/lgtm/grade/github/systemd/systemd'                     => 'grade (auto)',
+            '/lgtm/grade/bitbucket/wegtam/bitbucket-youtrack-broker' => 'grade (auto)',
+            '/lgtm/grade/gitlab/nekokatt/hikari'                     => 'grade (auto)',
         ];
     }
 

@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pypi/{project}/license',
+            '/pypi/license/{project}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/pip/license' => 'license',
+            '/pypi/license/pip' => 'license',
         ];
     }
 

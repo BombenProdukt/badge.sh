@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/{extension}/version',
+            '/vs-marketplace/version/{extension}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/vscodevim.vim/version' => 'version',
+            '/vs-marketplace/version/vscodevim.vim' => 'version',
         ];
     }
 

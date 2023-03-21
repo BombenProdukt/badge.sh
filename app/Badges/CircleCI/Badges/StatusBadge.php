@@ -47,7 +47,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/circleci/{vcs}/{repo}/status/{branch?}',
+            '/circleci/status/{vcs}/{repo}/{branch?}',
         ];
     }
 
@@ -74,8 +74,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/circleci/github/circleci/ex/status'      => 'build',
-            '/circleci/github/circleci/ex/status/main' => 'build (branch)',
+            '/circleci/status/github/circleci/ex'      => 'build',
+            '/circleci/status/github/circleci/ex/main' => 'build (branch)',
         ];
     }
 

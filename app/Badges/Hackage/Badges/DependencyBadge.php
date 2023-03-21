@@ -47,7 +47,7 @@ final class DependencyBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hackage/{package}/dependencies',
+            '/hackage/dependencies/{package}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class DependencyBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hackage/Cabal/dependencies' => 'dependencies',
+            '/hackage/dependencies/Cabal' => 'dependencies',
         ];
     }
 

@@ -43,7 +43,7 @@ final class LinesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/deepscan/team/{teamId}/project/{projectId}/branch/{branchId}/lines',
+            '/deepscan/lines/team/{teamId}/project/{projectId}/branch/{branchId}',
         ];
     }
 
@@ -69,8 +69,8 @@ final class LinesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/deepscan/team/8527/project/10741/branch/152550/lines' => 'lines',
-            '/deepscan/team/7382/project/9494/branch/123838/lines'  => 'lines',
+            '/deepscan/lines/team/8527/project/10741/branch/152550' => 'lines',
+            '/deepscan/lines/team/7382/project/9494/branch/123838'  => 'lines',
         ];
     }
 

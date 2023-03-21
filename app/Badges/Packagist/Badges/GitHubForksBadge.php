@@ -48,7 +48,7 @@ final class GitHubForksBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/github/forks',
+            '/packagist/github-forks/{package}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class GitHubForksBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/github/forks' => 'github followers',
+            '/packagist/github-forks/monolog/monolog' => 'github followers',
         ];
     }
 

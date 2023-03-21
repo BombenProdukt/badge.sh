@@ -45,7 +45,7 @@ final class PullsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/docker/{scope}/{name}/pulls',
+            '/docker/pulls/{scope}/{name}',
         ];
     }
 
@@ -71,8 +71,8 @@ final class PullsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/docker/library/ubuntu/pulls'   => 'pulls (library)',
-            '/docker/amio/node-chrome/pulls' => 'pulls (scoped)',
+            '/docker/pulls/library/ubuntu'   => 'pulls (library)',
+            '/docker/pulls/amio/node-chrome' => 'pulls (scoped)',
         ];
     }
 

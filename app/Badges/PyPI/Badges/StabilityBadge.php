@@ -61,7 +61,7 @@ final class StabilityBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pypi/{project}/stability',
+            '/pypi/stability/{project}',
         ];
     }
 
@@ -87,8 +87,8 @@ final class StabilityBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/black/stability'       => 'stability',
-            '/pypi/plone.volto/stability' => 'stability',
+            '/pypi/stability/black'       => 'stability',
+            '/pypi/stability/plone.volto' => 'stability',
         ];
     }
 

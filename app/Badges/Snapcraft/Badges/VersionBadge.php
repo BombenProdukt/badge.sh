@@ -50,7 +50,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/snapcraft/{snap}/version/{architecture?}/{channel?}',
+            '/snapcraft/version/{snap}/{architecture?}/{channel?}',
         ];
     }
 
@@ -76,9 +76,9 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/snapcraft/joplin-desktop/version'              => 'version',
-            '/snapcraft/mattermost-desktop/version/i386'     => 'version',
-            '/snapcraft/telegram-desktop/version/arm64/edge' => 'version',
+            '/snapcraft/version/joplin-desktop'              => 'version',
+            '/snapcraft/version/mattermost-desktop/i386'     => 'version',
+            '/snapcraft/version/telegram-desktop/arm64/edge' => 'version',
         ];
     }
 

@@ -44,7 +44,7 @@ final class LinesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codeclimate/{project}/lines',
+            '/codeclimate/lines/{project}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class LinesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codeclimate/codeclimate/codeclimate/lines' => 'lines of code',
+            '/codeclimate/lines/codeclimate/codeclimate' => 'lines of code',
         ];
     }
 

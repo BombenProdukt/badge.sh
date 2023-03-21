@@ -52,7 +52,7 @@ final class BrokenBuildBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jenkins/{hostname}/{job}/broken-build',
+            '/jenkins/broken-build/{hostname}/{job}',
         ];
     }
 
@@ -78,7 +78,7 @@ final class BrokenBuildBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jenkins/jenkins.mono-project.com/job/test-mono-mainline/broken-build' => '# of broken builds',
+            '/jenkins/broken-build/jenkins.mono-project.com/job/test-mono-mainline' => '# of broken builds',
         ];
     }
 

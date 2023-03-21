@@ -47,7 +47,7 @@ final class GivesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/liberapay/{username}/gives',
+            '/liberapay/gives/{username}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class GivesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/liberapay/aurelienpierre/gives' => 'giving',
+            '/liberapay/gives/aurelienpierre' => 'giving',
         ];
     }
 

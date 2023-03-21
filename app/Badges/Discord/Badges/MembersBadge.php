@@ -47,7 +47,7 @@ final class MembersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/discord/{inviteCode}/members',
+            '/discord/members/{inviteCode}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class MembersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/discord/reactiflux/members' => 'members',
+            '/discord/members/reactiflux' => 'members',
         ];
     }
 

@@ -48,7 +48,7 @@ final class DartPlatformBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pub/{package}/platform/dart',
+            '/pub/dart-platform/{package}',
         ];
     }
 
@@ -74,8 +74,8 @@ final class DartPlatformBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pub/rxdart/platform/dart'         => 'dart-platform',
-            '/pub/google_sign_in/platform/dart' => 'dart-platform',
+            '/pub/dart-platform/rxdart'         => 'dart-platform',
+            '/pub/dart-platform/google_sign_in' => 'dart-platform',
         ];
     }
 

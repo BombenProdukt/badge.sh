@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cpan/{distribution}/license',
+            '/cpan/license/{distribution}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cpan/Perl::Tidy/license' => 'license',
+            '/cpan/license/Perl::Tidy' => 'license',
         ];
     }
 

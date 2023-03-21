@@ -41,7 +41,7 @@ final class LastUpdateBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/{extension}/last-updated',
+            '/vs-marketplace/last-modified/{extension}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LastUpdateBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/vscodevim.vim/last-updated' => 'last updated',
+            '/vs-marketplace/last-modified/vscodevim.vim' => 'last updated',
         ];
     }
 

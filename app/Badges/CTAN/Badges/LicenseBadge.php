@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/ctan/{package}/license',
+            '/ctan/license/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/ctan/latexdiff/license' => 'license',
+            '/ctan/license/latexdiff' => 'license',
         ];
     }
 

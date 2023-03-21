@@ -46,7 +46,7 @@ final class RepoBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/maven/{repo}/{group}/{artifact}/version',
+            '/maven/version/{repo}/{group}/{artifact}',
         ];
     }
 
@@ -73,8 +73,8 @@ final class RepoBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/maven/maven-central/com.google.code.gson/gson/version' => 'version (maven-central)',
-            '/maven/jcenter/com.squareup.okhttp3/okhttp/version'     => 'version (jcenter)',
+            '/maven/version/maven-central/com.google.code.gson/gson' => 'version (maven-central)',
+            '/maven/version/jcenter/com.squareup.okhttp3/okhttp'     => 'version (jcenter)',
         ];
     }
 

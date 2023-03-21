@@ -53,7 +53,7 @@ final class CommitsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/commits/{reference?}',
+            '/github/commits/{owner}/{repo}/{reference?}',
         ];
     }
 
@@ -79,9 +79,9 @@ final class CommitsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/commits'          => 'commits count',
-            '/github/micromatch/micromatch/commits/gh-pages' => 'commits count (branch ref)',
-            '/github/micromatch/micromatch/commits/4.0.1'    => 'commits count (tag ref)',
+            '/github/commits/micromatch/micromatch'          => 'commits count',
+            '/github/commits/micromatch/micromatch/gh-pages' => 'commits count (branch ref)',
+            '/github/commits/micromatch/micromatch/4.0.1'    => 'commits count (tag ref)',
         ];
     }
 

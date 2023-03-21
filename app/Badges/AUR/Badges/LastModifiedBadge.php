@@ -41,7 +41,7 @@ final class LastModifiedBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/aur/{package}/last-modified',
+            '/aur/last-modified/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LastModifiedBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/aur/google-chrome/last-modified' => 'last modified',
+            '/aur/last-modified/google-chrome' => 'last modified',
         ];
     }
 

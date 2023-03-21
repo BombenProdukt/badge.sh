@@ -47,7 +47,7 @@ final class BackersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/opencollective/{slug}/backers/{tierId?}',
+            '/opencollective/backers/{slug}/{tierId?}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class BackersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/opencollective/webpack/backers' => 'backers',
+            '/opencollective/backers/webpack' => 'backers',
         ];
     }
 

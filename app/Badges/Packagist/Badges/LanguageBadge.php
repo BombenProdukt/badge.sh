@@ -47,7 +47,7 @@ final class LanguageBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/language',
+            '/packagist/language/{package}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class LanguageBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/language' => 'language',
+            '/packagist/language/monolog/monolog' => 'language',
         ];
     }
 

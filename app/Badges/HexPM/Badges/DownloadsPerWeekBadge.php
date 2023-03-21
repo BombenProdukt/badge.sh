@@ -41,7 +41,7 @@ final class DownloadsPerWeekBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hex/dw/{packageName}',
+            '/hex/downloads-weekly/{packageName}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class DownloadsPerWeekBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hex/dw/plug' => 'total downloads',
+            '/hex/downloads-weekly/plug' => 'total downloads',
         ];
     }
 

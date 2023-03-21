@@ -44,7 +44,7 @@ final class InstallationsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wikiapiary/i/{variant}/{name}',
+            '/wikiapiary/installations/{variant}/{name}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class InstallationsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wikiapiary/i/extension/ParserFunctions' => 'installations',
+            '/wikiapiary/installations/extension/ParserFunctions' => 'installations',
         ];
     }
 

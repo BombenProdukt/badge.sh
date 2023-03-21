@@ -48,7 +48,7 @@ final class GitHubIssuesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/github/issues/open',
+            '/packagist/github-open-issues/{package}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class GitHubIssuesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/github/issues/open' => 'github issues',
+            '/packagist/github-open-issues/monolog/monolog' => 'github issues',
         ];
     }
 

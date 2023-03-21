@@ -44,7 +44,7 @@ final class MonthlyDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/downloads/monthly',
+            '/packagist/downloads-monthly/{package}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class MonthlyDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/downloads/monthly' => 'monthly downloads',
+            '/packagist/downloads-monthly/monolog/monolog' => 'monthly downloads',
         ];
     }
 

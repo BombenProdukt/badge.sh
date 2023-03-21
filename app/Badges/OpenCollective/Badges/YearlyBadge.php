@@ -47,7 +47,7 @@ final class YearlyBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/opencollective/{slug}/yearly',
+            '/opencollective/yearly/{slug}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class YearlyBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/opencollective/webpack/yearly' => 'yearly income',
+            '/opencollective/yearly/webpack' => 'yearly income',
         ];
     }
 

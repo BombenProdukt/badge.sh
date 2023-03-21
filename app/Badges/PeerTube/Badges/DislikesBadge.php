@@ -2,28 +2,34 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Cirrus\Badges;
+namespace App\Badges\PeerTube\Badges;
 
-use App\Badges\Cirrus\Client;
-use App\Badges\Templates\StatusTemplate;
+use App\Badges\PeerTube\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use PreemStudio\Formatter\FormatNumber;
 
-final class GitHubBadge implements Badge
+final class DislikesBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $owner, string $repo, ?string $branch = null): array
+    public function handle(string $instance, string $video): array
     {
-        return StatusTemplate::make('build', $this->client->github($owner, $repo, $branch, request('task'), request('script')));
+        $response = $this->client->get($instance, "videos/{$video}");
+
+        return [
+            'label'        => 'votes',
+            'message'      => FormatNumber::execute($response['dislikes']),
+            'messageColor' => 'F1680D',
+        ];
     }
 
     public function service(): string
     {
-        return 'Cirrus';
+        return 'PeerTube';
     }
 
     public function title(): string
@@ -41,7 +47,7 @@ final class GitHubBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cirrus/github/{owner}/{repo}/{branch?}',
+            '/peertube/dislikes/{instance}/{video}',
         ];
     }
 
@@ -60,17 +66,14 @@ final class GitHubBadge implements Badge
     public function staticPreviews(): array
     {
         return [
-            //
+            '/peertube/dislikes/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d' => 'dislikes',
         ];
     }
 
     public function dynamicPreviews(): array
     {
         return [
-            '/cirrus/github/flutter/flutter'                                      => 'build status',
-            '/cirrus/github/flutter/flutter/master'                               => 'build status',
-            '/cirrus/github/flutter/flutter/master?task=build_docker'             => 'build status',
-            '/cirrus/github/flutter/flutter/master?task=build_docker&script=test' => 'build status',
+            //
         ];
     }
 

@@ -43,7 +43,7 @@ final class ElmVersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/elm-package/{project}/version/elm',
+            '/elm-package/elm-version/{project}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class ElmVersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/elm-package/justinmimbs/date/version/elm' => 'elm version',
+            '/elm-package/elm-version/justinmimbs/date' => 'elm version',
         ];
     }
 

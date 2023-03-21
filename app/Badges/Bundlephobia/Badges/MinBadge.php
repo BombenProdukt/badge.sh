@@ -46,7 +46,7 @@ final class MinBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/bundlephobia/{name}/min',
+            '/bundlephobia/min/{name}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class MinBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/bundlephobia/react/min' => 'minified',
+            '/bundlephobia/min/react' => 'minified',
         ];
     }
 

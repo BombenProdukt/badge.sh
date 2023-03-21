@@ -48,7 +48,7 @@ final class DependentsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/dependents',
+            '/packagist/dependents/{package}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class DependentsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/dependents' => 'dependents',
+            '/packagist/dependents/monolog/monolog' => 'dependents',
         ];
     }
 

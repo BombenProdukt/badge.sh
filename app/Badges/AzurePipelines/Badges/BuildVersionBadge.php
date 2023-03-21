@@ -58,7 +58,7 @@ final class BuildVersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/{project}/build/version/{definition}/{branch?}',
+            '/azure-pipelines/build-version/{project}/{definition}/{branch?}',
         ];
     }
 
@@ -84,7 +84,7 @@ final class BuildVersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/dnceng/public/build/version/51' => 'build version',
+            '/azure-pipelines/build-version/dnceng/public/51' => 'build version',
         ];
     }
 

@@ -44,7 +44,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/license',
+            '/gitlab/license/{repo}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/gitlab-org/omnibus-gitlab/license' => 'license',
+            '/gitlab/license/gitlab-org/omnibus-gitlab' => 'license',
 
         ];
     }

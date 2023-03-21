@@ -42,7 +42,7 @@ final class ReleaseDateBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/open-vsx/{extension}/release-date',
+            '/open-vsx/release-date/{extension}',
         ];
     }
 
@@ -68,7 +68,7 @@ final class ReleaseDateBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/open-vsx/idleberg/electron-builder/release-date' => 'release date',
+            '/open-vsx/release-date/idleberg/electron-builder' => 'release date',
         ];
     }
 

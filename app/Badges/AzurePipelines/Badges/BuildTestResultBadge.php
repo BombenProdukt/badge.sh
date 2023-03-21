@@ -84,7 +84,7 @@ final class BuildTestResultBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/{project}/build/test/{definition}/{branch?}',
+            '/azure-pipelines/build-test/{project}/{definition}/{branch?}',
         ];
     }
 
@@ -110,8 +110,8 @@ final class BuildTestResultBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/dnceng/public/build/test/51'                                => 'test results',
-            '/azure-pipelines/azuredevops-powershell/azuredevops-powershell/build/test/1' => 'test results',
+            '/azure-pipelines/build-test/dnceng/public/51'                                => 'test results',
+            '/azure-pipelines/build-test/azuredevops-powershell/azuredevops-powershell/1' => 'test results',
         ];
     }
 

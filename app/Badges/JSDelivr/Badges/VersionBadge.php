@@ -44,7 +44,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jsdelivr/npm/{package}/version',
+            '/jsdelivr/version/npm/{package}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jsdelivr/npm/lodash/version' => 'version',
+            '/jsdelivr/version/npm/lodash' => 'version',
         ];
     }
 

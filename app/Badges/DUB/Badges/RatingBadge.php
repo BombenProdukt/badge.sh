@@ -46,7 +46,7 @@ final class RatingBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/dub/{package}/rating',
+            '/dub/rating/{package}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class RatingBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/dub/pegged/rating' => 'rating',
+            '/dub/rating/pegged' => 'rating',
         ];
     }
 

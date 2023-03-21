@@ -48,7 +48,7 @@ final class ForksBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/forks',
+            '/gitlab/forks/{repo}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class ForksBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/inkscape/inkscape/forks' => 'forks',
+            '/gitlab/forks/inkscape/inkscape' => 'forks',
         ];
     }
 

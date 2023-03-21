@@ -35,7 +35,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitter/{org}/{room}/status',
+            '/gitter/status/{org}/{room}',
         ];
     }
 
@@ -61,8 +61,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitter/redom/lobby/status' => 'status',
-            '/gitter/redom/redom/status' => 'status',
+            '/gitter/status/redom/lobby' => 'status',
+            '/gitter/status/redom/redom' => 'status',
         ];
     }
 

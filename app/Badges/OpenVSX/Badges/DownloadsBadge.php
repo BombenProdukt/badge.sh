@@ -48,7 +48,7 @@ final class DownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/open-vsx/{extension}/downloads',
+            '/open-vsx/downloads/{extension}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class DownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/open-vsx/idleberg/electron-builder/downloads' => 'downloads',
+            '/open-vsx/downloads/idleberg/electron-builder' => 'downloads',
         ];
     }
 

@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/aur/{package}/license',
+            '/aur/license/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/aur/google-chrome/license' => 'license',
+            '/aur/license/google-chrome' => 'license',
         ];
     }
 

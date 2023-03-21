@@ -48,7 +48,7 @@ final class HitsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jsdelivr/{platform}/{package}/hits',
+            '/jsdelivr/hits/{platform}/{package}',
         ];
     }
 
@@ -74,8 +74,8 @@ final class HitsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jsdelivr/gh/jquery/jquery/hits' => 'hits (per month)',
-            '/jsdelivr/npm/lodash/hits'       => 'hits (per month)',
+            '/jsdelivr/hits/gh/jquery/jquery' => 'hits (per month)',
+            '/jsdelivr/hits/npm/lodash'       => 'hits (per month)',
         ];
     }
 

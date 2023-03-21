@@ -50,7 +50,7 @@ final class PriceBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/chrome-web-store/{itemId}/price',
+            '/chrome-web-store/price/{itemId}',
         ];
     }
 
@@ -76,7 +76,7 @@ final class PriceBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/chrome-web-store/ckkdlimhmcjmikdlpkmbgfkaikojcbjk/price' => 'price',
+            '/chrome-web-store/price/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'price',
         ];
     }
 

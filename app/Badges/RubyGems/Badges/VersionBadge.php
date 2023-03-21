@@ -58,7 +58,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/rubygems/{gem}/version/{channel?}',
+            '/rubygems/version/{gem}/{channel?}',
         ];
     }
 
@@ -84,9 +84,9 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/rubygems/rails/version'        => 'version (stable)',
-            '/rubygems/rails/version/pre'    => 'version (pre)',
-            '/rubygems/rails/version/latest' => 'version (latest)',
+            '/rubygems/version/rails'        => 'version (stable)',
+            '/rubygems/version/rails/pre'    => 'version (pre)',
+            '/rubygems/version/rails/latest' => 'version (latest)',
         ];
     }
 

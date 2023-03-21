@@ -55,7 +55,7 @@ final class PeerBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/david/{repo}/peer/{path?}',
+            '/david/peer/{repo}/{path?}',
         ];
     }
 
@@ -82,7 +82,7 @@ final class PeerBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/david/epoberezkin/ajv-keywords/peer' => 'peer dependencies',
+            '/david/peer/epoberezkin/ajv-keywords' => 'peer dependencies',
         ];
     }
 

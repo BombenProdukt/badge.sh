@@ -51,7 +51,7 @@ final class CloudBuildStatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/docker/{scope}/{name}/cloud/build',
+            '/docker/cloud-build/{scope}/{name}',
         ];
     }
 
@@ -77,7 +77,7 @@ final class CloudBuildStatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/docker/jrottenberg/ffmpeg/cloud/build' => 'build',
+            '/docker/cloud-build/jrottenberg/ffmpeg' => 'build',
         ];
     }
 

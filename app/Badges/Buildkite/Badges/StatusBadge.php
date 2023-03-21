@@ -41,7 +41,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/buildkite/{identifier}/{branch?}',
+            '/buildkite/status/{identifier}/{branch?}',
         ];
     }
 
@@ -67,8 +67,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/buildkite/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489'        => 'build status',
-            '/buildkite/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489/master' => 'build status',
+            '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489'        => 'build status',
+            '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489/master' => 'build status',
         ];
     }
 

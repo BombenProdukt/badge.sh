@@ -45,7 +45,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/{package}/version/{tag?}',
+            '/npm/version/{package}/{tag?}',
         ];
     }
 
@@ -71,12 +71,12 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/express/version'           => 'version',
-            '/npm/yarn/version'              => 'version',
-            '/npm/yarn/version/berry'        => 'version (tag)',
-            '/npm/yarn/version/legacy'       => 'version (tag)',
-            '/npm/@babel/core/version'       => 'version (scoped package)',
-            '/npm/@nestjs/core/version/beta' => 'version (scoped & tag)',
+            '/npm/version/express'           => 'version',
+            '/npm/version/yarn'              => 'version',
+            '/npm/version/yarn/berry'        => 'version (tag)',
+            '/npm/version/yarn/legacy'       => 'version (tag)',
+            '/npm/version/@babel/core'       => 'version (scoped package)',
+            '/npm/version/@nestjs/core/beta' => 'version (scoped & tag)',
         ];
     }
 

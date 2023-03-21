@@ -54,7 +54,7 @@ final class AlertsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/lgtm/{provider}/{project}/alerts/{language?}',
+            '/lgtm/alerts/{provider}/{project}/{language?}',
         ];
     }
 
@@ -81,7 +81,7 @@ final class AlertsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/lgtm/github/apache/cloudstack/alerts' => 'alerts',
+            '/lgtm/alerts/github/apache/cloudstack' => 'alerts',
         ];
     }
 

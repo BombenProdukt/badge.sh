@@ -65,7 +65,7 @@ final class FormatBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pypi/{project}/format',
+            '/pypi/format/{project}',
         ];
     }
 
@@ -91,7 +91,7 @@ final class FormatBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/black/format' => 'format',
+            '/pypi/format/black' => 'format',
         ];
     }
 

@@ -47,7 +47,7 @@ final class NodeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/{package}/version/node/{tag?}',
+            '/npm/node-version/{package}/{tag?}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class NodeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/next/version/node' => 'node version',
+            '/npm/node-version/next' => 'node version',
         ];
     }
 

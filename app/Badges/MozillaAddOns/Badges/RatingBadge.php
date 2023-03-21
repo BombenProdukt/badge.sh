@@ -46,7 +46,7 @@ final class RatingBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/amo/{package}/rating',
+            '/amo/rating/{package}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class RatingBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/amo/markdown-viewer-chrome/rating' => 'rating',
+            '/amo/rating/markdown-viewer-chrome' => 'rating',
         ];
     }
 

@@ -42,7 +42,7 @@ final class TotalComponentsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/bit/{collection}/components',
+            '/bit/components/{collection}',
         ];
     }
 
@@ -68,7 +68,7 @@ final class TotalComponentsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/bit/ramda/ramda/components' => 'total components',
+            '/bit/components/ramda/ramda' => 'total components',
         ];
     }
 

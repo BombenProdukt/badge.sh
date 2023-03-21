@@ -48,7 +48,7 @@ final class StarsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/stars',
+            '/gitlab/stars/{repo}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class StarsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/fdroid/fdroidclient/stars' => 'stars',
+            '/gitlab/stars/fdroid/fdroidclient' => 'stars',
         ];
     }
 

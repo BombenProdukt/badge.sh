@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/hackage/{package}/license',
+            '/hackage/license/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/hackage/Cabal/license' => 'license',
+            '/hackage/license/Cabal' => 'license',
         ];
     }
 

@@ -77,7 +77,7 @@ final class TypesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/npm/{package}/types/{tag?}',
+            '/npm/types/{package}/{tag?}',
         ];
     }
 
@@ -103,9 +103,9 @@ final class TypesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/tslib/types' => 'types',
-            '/npm/react/types' => 'types',
-            '/npm/queri/types' => 'types',
+            '/npm/types/tslib' => 'types',
+            '/npm/types/react' => 'types',
+            '/npm/types/queri' => 'types',
         ];
     }
 

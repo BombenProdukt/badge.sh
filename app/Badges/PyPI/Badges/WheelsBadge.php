@@ -60,7 +60,7 @@ final class WheelsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pypi/{project}/wheels',
+            '/pypi/wheels/{project}',
         ];
     }
 
@@ -86,7 +86,7 @@ final class WheelsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/black/version/python' => 'python version',
+            '/pypi/wheels/black' => 'wheels',
         ];
     }
 

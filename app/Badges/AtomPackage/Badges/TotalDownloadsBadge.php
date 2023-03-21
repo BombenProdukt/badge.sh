@@ -41,7 +41,7 @@ final class TotalDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/apm/{package}/downloads',
+            '/apm/downloads/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class TotalDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/apm/linter/downloads' => 'total downloads',
+            '/apm/downloads/linter' => 'total downloads',
         ];
     }
 

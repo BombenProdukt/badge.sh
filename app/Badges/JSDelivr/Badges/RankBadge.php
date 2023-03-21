@@ -47,7 +47,7 @@ final class RankBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jsdelivr/{platform}/{package}/rank',
+            '/jsdelivr/rank/{platform}/{package}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class RankBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jsdelivr/npm/lodash/rank' => 'rank',
+            '/jsdelivr/rank/npm/lodash' => 'rank',
         ];
     }
 

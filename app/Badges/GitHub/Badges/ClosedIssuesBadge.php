@@ -47,7 +47,7 @@ final class ClosedIssuesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/issues/closed',
+            '/github/closed-issues/{owner}/{repo}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class ClosedIssuesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/issues/closed' => 'closed issues',
+            '/github/closed-issues/micromatch/micromatch' => 'closed issues',
 
         ];
     }

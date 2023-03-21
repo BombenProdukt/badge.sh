@@ -41,7 +41,7 @@ final class MaintainerBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/aur/{package}/maintainer',
+            '/aur/maintainer/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class MaintainerBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/aur/google-chrome/maintainer' => 'maintainer',
+            '/aur/maintainer/google-chrome' => 'maintainer',
         ];
     }
 

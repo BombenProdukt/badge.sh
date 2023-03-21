@@ -48,7 +48,7 @@ final class BranchesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/branches',
+            '/gitlab/branches/{repo}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class BranchesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/gitterHQ/webapp/branches' => 'branches',
+            '/gitlab/branches/gitterHQ/webapp' => 'branches',
         ];
     }
 

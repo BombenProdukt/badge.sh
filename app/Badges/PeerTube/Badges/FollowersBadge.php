@@ -57,7 +57,7 @@ final class FollowersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/peertube/{instance}/{account}/followers/{channel?}',
+            '/peertube/followers/{instance}/{account}/{channel?}',
         ];
     }
 
@@ -83,8 +83,8 @@ final class FollowersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/peertube/framatube.org/framasoft/followers'                 => 'followers (account)',
-            '/peertube/framatube.org/framasoft/followers/framablog.audio' => 'followers (channel)',
+            '/peertube/followers/framatube.org/framasoft'                 => 'followers (account)',
+            '/peertube/followers/framatube.org/framasoft/framablog.audio' => 'followers (channel)',
         ];
     }
 

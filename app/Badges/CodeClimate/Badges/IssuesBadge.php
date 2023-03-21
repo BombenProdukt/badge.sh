@@ -48,7 +48,7 @@ final class IssuesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codeclimate/{project}/issues',
+            '/codeclimate/issues/{project}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class IssuesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codeclimate/codeclimate/codeclimate/issues' => 'issues',
+            '/codeclimate/issues/codeclimate/codeclimate' => 'issues',
         ];
     }
 

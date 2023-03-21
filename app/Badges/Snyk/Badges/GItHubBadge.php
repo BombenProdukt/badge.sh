@@ -60,7 +60,7 @@ final class GItHubBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/snyk/{project}/github/{targetFile?}',
+            '/snyk/github/{project}/{targetFile?}',
         ];
     }
 
@@ -87,7 +87,7 @@ final class GItHubBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/snyk/badges/shields/github/badge-maker/package.json' => 'vulnerability scan',
+            '/snyk/github/badges/shields/badge-maker/package.json' => 'vulnerability scan',
         ];
     }
 

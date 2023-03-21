@@ -48,7 +48,7 @@ final class MaintainabilityPercentageBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codeclimate/{project}/maintainability/percentage',
+            '/codeclimate/maintainability-percentage/{project}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class MaintainabilityPercentageBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codeclimate/codeclimate/codeclimate/maintainability/percentage' => 'maintainability (percentage)',
+            '/codeclimate/maintainability-percentage/codeclimate/codeclimate' => 'maintainability (percentage)',
         ];
     }
 

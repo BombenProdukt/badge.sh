@@ -47,7 +47,7 @@ final class WatchersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/watchers',
+            '/github/watchers/{owner}/{repo}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class WatchersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/watchers' => 'watchers',
+            '/github/watchers/micromatch/micromatch' => 'watchers',
 
         ];
     }

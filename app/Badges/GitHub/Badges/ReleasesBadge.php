@@ -47,7 +47,7 @@ final class ReleasesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/releases',
+            '/github/releases/{owner}/{repo}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class ReleasesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/releases' => 'releases',
+            '/github/releases/micromatch/micromatch' => 'releases',
         ];
     }
 

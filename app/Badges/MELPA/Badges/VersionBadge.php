@@ -45,7 +45,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/melpa/{package}/version',
+            '/melpa/version/{package}',
         ];
     }
 
@@ -71,7 +71,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/melpa/magit/version' => 'version',
+            '/melpa/version/magit' => 'version',
         ];
     }
 

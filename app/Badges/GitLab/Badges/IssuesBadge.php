@@ -48,7 +48,7 @@ final class IssuesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/issues',
+            '/gitlab/issues/{repo}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class IssuesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/gitlab-org/gitlab-runner/issues' => 'issues',
+            '/gitlab/issues/gitlab-org/gitlab-runner' => 'issues',
         ];
     }
 

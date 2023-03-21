@@ -41,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/arch-linux/{repository}/{architecture}/{package}/version',
+            '/arch-linux/version/{repository}/{architecture}/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/arch-linux/core/x86_64/pacman/version' => 'version',
+            '/arch-linux/version/core/x86_64/pacman' => 'version',
         ];
     }
 

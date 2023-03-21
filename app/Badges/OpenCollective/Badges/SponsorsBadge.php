@@ -47,7 +47,7 @@ final class SponsorsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/opencollective/{slug}/sponsors/{tierId?}',
+            '/opencollective/sponsors/{slug}/{tierId?}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class SponsorsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/opencollective/webpack/sponsors' => 'sponsors',
+            '/opencollective/sponsors/webpack' => 'sponsors',
         ];
     }
 

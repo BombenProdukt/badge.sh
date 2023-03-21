@@ -47,7 +47,7 @@ final class UsersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/amo/{package}/users',
+            '/amo/users/{package}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class UsersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/amo/markdown-viewer-chrome/users' => 'users',
+            '/amo/users/markdown-viewer-chrome' => 'users',
         ];
     }
 

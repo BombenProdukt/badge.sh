@@ -48,7 +48,7 @@ final class UrlBadge implements Badge
     {
         return [
             // TODO
-            '/maven/v/metadata-url/{hostname}/{pathname}',
+            '/maven/version/metadata-url/{hostname}/{pathname}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class UrlBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/maven/v/metadata-url/repo1.maven.org/maven2/com/google/code/gson/gson/maven-metadata.xml' => 'version (maven metadata url)',
+            '/maven/version/metadata-url/repo1.maven.org/maven2/com/google/code/gson/gson/maven-metadata.xml' => 'version (maven metadata url)',
         ];
     }
 

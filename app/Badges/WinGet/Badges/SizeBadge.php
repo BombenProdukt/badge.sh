@@ -45,7 +45,7 @@ final class SizeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/winget/{appId}/size',
+            '/winget/size/{appId}',
         ];
     }
 
@@ -71,7 +71,7 @@ final class SizeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/winget/GitHub.cli/size' => 'size',
+            '/winget/size/GitHub.cli' => 'size',
         ];
     }
 

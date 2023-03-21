@@ -47,7 +47,7 @@ final class StarsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/dub/{package}/stars',
+            '/dub/stars/{package}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class StarsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/dub/silly/stars' => 'stars',
+            '/dub/stars/silly' => 'stars',
         ];
     }
 

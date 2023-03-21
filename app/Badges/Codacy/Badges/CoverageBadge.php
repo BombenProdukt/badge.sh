@@ -43,7 +43,7 @@ final class CoverageBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codacy/{projectId}/coverage/{branch?}',
+            '/codacy/coverage/{projectId}/{branch?}',
         ];
     }
 
@@ -69,8 +69,8 @@ final class CoverageBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codacy/f0875490cea1497a9eca9c25f3f7774e/coverage'        => 'coverage',
-            '/codacy/f0875490cea1497a9eca9c25f3f7774e/coverage/master' => 'branch coverage',
+            '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e'        => 'coverage',
+            '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e/master' => 'branch coverage',
         ];
     }
 

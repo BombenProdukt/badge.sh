@@ -44,7 +44,7 @@ final class DailyDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/downloads/daily',
+            '/packagist/downloads-daily/{package}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class DailyDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/downloads/daily' => 'daily downloads',
+            '/packagist/downloads-daily/monolog/monolog' => 'daily downloads',
         ];
     }
 

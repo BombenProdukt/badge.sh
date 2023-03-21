@@ -48,7 +48,7 @@ final class TagsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/tags',
+            '/gitlab/tags/{repo}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class TagsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/commento/commento/tags' => 'tags',
+            '/gitlab/tags/commento/commento' => 'tags',
         ];
     }
 

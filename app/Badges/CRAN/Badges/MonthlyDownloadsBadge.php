@@ -41,7 +41,7 @@ final class MonthlyDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cran/{package}/downloads/monthly',
+            '/cran/downloads-monthly/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class MonthlyDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cran/Rcpp/downloads/monthly' => 'monthly downloads',
+            '/cran/downloads-monthly/Rcpp' => 'monthly downloads',
         ];
     }
 

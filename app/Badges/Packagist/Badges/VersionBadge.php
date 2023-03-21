@@ -47,7 +47,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/version/{channel?}',
+            '/packagist/version/{package}/{channel?}',
         ];
     }
 
@@ -73,9 +73,9 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/version'        => 'version',
-            '/packagist/monolog/monolog/version/pre'    => 'version (pre)',
-            '/packagist/monolog/monolog/version/latest' => 'version (latest)',
+            '/packagist/version/monolog/monolog'        => 'version',
+            '/packagist/version/monolog/monolog/pre'    => 'version (pre)',
+            '/packagist/version/monolog/monolog/latest' => 'version (latest)',
         ];
     }
 

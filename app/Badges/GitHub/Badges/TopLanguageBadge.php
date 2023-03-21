@@ -44,7 +44,7 @@ final class TopLanguageBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/languages/top',
+            '/github/top-language/{owner}/{repo}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class TopLanguageBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/languages/top' => 'top language',
+            '/github/top-language/micromatch/micromatch' => 'top language',
 
         ];
     }

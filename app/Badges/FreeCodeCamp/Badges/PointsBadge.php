@@ -45,7 +45,7 @@ final class PointsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/freecodecamp/{username}/points',
+            '/freecodecamp/points/{username}',
         ];
     }
 
@@ -71,8 +71,7 @@ final class PointsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/appveyor/gruntjs/grunt/status'           => 'build',
-            '/appveyor/gruntjs/grunt/status/deprecate' => 'build (branch)',
+            '/freecodecamp/points/sethi' => 'points',
         ];
     }
 

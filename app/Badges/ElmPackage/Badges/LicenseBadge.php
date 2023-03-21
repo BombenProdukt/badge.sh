@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/elm-package/{project}/license',
+            '/elm-package/license/{project}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/elm-package/mdgriffith/elm-ui/license' => 'license',
+            '/elm-package/license/mdgriffith/elm-ui' => 'license',
         ];
     }
 

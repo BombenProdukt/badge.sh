@@ -45,7 +45,7 @@ final class LatestVersionDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/rubygems/{gem}/downloads/latest',
+            '/rubygems/downloads-recently/{gem}',
         ];
     }
 
@@ -71,7 +71,7 @@ final class LatestVersionDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/rubygems/rails/downloads/latest' => 'latest version downloads',
+            '/rubygems/downloads-recently/rails' => 'latest version downloads',
         ];
     }
 

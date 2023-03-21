@@ -54,7 +54,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/uptimerobot/{apiKey}/status',
+            '/uptimerobot/status/{apiKey}',
         ];
     }
 
@@ -80,7 +80,7 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/uptimerobot/m780862024-50db2c44c703e5c68d6b1ebb/status' => 'status',
+            '/uptimerobot/status/m780862024-50db2c44c703e5c68d6b1ebb' => 'status',
         ];
     }
 

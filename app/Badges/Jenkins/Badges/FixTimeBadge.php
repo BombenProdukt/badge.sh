@@ -75,7 +75,7 @@ final class FixTimeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/jenkins/{hostname}/{job}/fix-time',
+            '/jenkins/fix-time/{hostname}/{job}',
         ];
     }
 
@@ -101,7 +101,7 @@ final class FixTimeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/jenkins/jenkins.mono-project.com/job/test-mono-mainline/fix-time' => 'Time taken to fix a broken build',
+            '/jenkins/fix-time/jenkins.mono-project.com/job/test-mono-mainline' => 'Time taken to fix a broken build',
         ];
     }
 

@@ -54,7 +54,7 @@ final class FrameworkBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pypi/{project}/framework',
+            '/pypi/framework/{project}',
         ];
     }
 
@@ -80,8 +80,8 @@ final class FrameworkBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/black/framework'       => 'framework',
-            '/pypi/plone.volto/framework' => 'framework',
+            '/pypi/framework/black'       => 'framework',
+            '/pypi/framework/plone.volto' => 'framework',
         ];
     }
 

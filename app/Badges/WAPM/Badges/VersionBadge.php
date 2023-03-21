@@ -44,7 +44,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wapm/{package}/version',
+            '/wapm/version/{package}',
         ];
     }
 
@@ -70,8 +70,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wapm/zamfofex/greg/version' => 'version',
-            '/wapm/cowsay/version'        => 'version',
+            '/wapm/version/zamfofex/greg' => 'version',
+            '/wapm/version/cowsay'        => 'version',
         ];
     }
 

@@ -46,7 +46,7 @@ final class SizeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wapm/{package}/size',
+            '/wapm/size/{package}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class SizeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wapm/coreutils/size' => 'size',
+            '/wapm/size/coreutils' => 'size',
         ];
     }
 

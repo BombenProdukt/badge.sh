@@ -47,7 +47,7 @@ final class ABIBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wapm/{package}/abi',
+            '/wapm/abi/{package}',
         ];
     }
 
@@ -73,8 +73,8 @@ final class ABIBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wapm/jwmerrill/lox-repl/abi' => 'abi',
-            '/wapm/kherrick/pwgen/abi'     => 'abi',
+            '/wapm/abi/jwmerrill/lox-repl' => 'abi',
+            '/wapm/abi/kherrick/pwgen'     => 'abi',
         ];
     }
 

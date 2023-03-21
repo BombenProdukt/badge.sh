@@ -16,25 +16,9 @@ final class VotesBadge implements Badge
         //
     }
 
-    public function handle(string $instance, string $video, ?string $format = null): array
+    public function handle(string $instance, string $video): array
     {
         $response = $this->client->get($instance, "videos/{$video}");
-
-        if ($format === 'likes') {
-            return [
-                'label'        => 'votes',
-                'message'      => FormatNumber::execute($response['likes']),
-                'messageColor' => 'F1680D',
-            ];
-        }
-
-        if ($format === 'dislikes') {
-            return [
-                'label'        => 'votes',
-                'message'      => FormatNumber::execute($response['dislikes']),
-                'messageColor' => 'F1680D',
-            ];
-        }
 
         return [
             'label'        => 'votes',
@@ -63,7 +47,7 @@ final class VotesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/peertube/{instance}/{video}/votes/{format?}',
+            '/peertube/votes/{instance}/{video}',
         ];
     }
 
@@ -82,11 +66,7 @@ final class VotesBadge implements Badge
     public function staticPreviews(): array
     {
         return [
-            '/peertube/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d/votes'          => 'votes (combined)',
-            // TODO: extract into a likes badge
-            '/peertube/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d/votes/likes'    => 'votes (likes)',
-            // TODO: extract into a dislikes badge
-            '/peertube/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d/votes/dislikes' => 'votes (dislikes)',
+            '/peertube/votes/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d' => 'votes',
         ];
     }
 

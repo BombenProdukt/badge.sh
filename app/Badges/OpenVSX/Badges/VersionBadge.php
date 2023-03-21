@@ -44,7 +44,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/open-vsx/{extension}/version',
+            '/open-vsx/version/{extension}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/open-vsx/idleberg/electron-builder/version' => 'version',
+            '/open-vsx/version/idleberg/electron-builder' => 'version',
         ];
     }
 

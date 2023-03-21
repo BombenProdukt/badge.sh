@@ -50,7 +50,7 @@ final class PhpVersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/version/php/{channel?}',
+            '/packagist/php-version/{package}/{channel?}',
         ];
     }
 
@@ -76,7 +76,7 @@ final class PhpVersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/version/php' => 'php',
+            '/packagist/php-version/monolog/monolog' => 'php',
         ];
     }
 

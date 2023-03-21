@@ -55,7 +55,7 @@ final class DependabotStatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/dependabot',
+            '/github/dependabot/{owner}/{repo}',
         ];
     }
 
@@ -81,7 +81,7 @@ final class DependabotStatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/ubuntu/yaru/dependabot' => 'dependabot status',
+            '/github/dependabot/ubuntu/yaru' => 'dependabot status',
         ];
     }
 

@@ -53,7 +53,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/xo/{name}/status',
+            '/xo/status/{name}',
         ];
     }
 
@@ -83,8 +83,8 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/xo/chalk/status'                 => 'status',
-            '/xo/@tusbar/cache-control/status' => 'status',
+            '/xo/status/chalk'                 => 'status',
+            '/xo/status/@tusbar/cache-control' => 'status',
         ];
     }
 

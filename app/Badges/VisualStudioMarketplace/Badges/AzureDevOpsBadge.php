@@ -53,7 +53,7 @@ final class AzureDevOpsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/{extension}/installations/azure-devops/{measurement?}',
+            '/vs-marketplace/azure-devops-installations/{extension}/{measurement?}',
         ];
     }
 
@@ -79,9 +79,9 @@ final class AzureDevOpsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/swellaby.mirror-git-repository/installations/azure-devops'          => 'downloads',
-            '/vs-marketplace/swellaby.mirror-git-repository/installations/azure-devops/services' => 'downloads',
-            '/vs-marketplace/swellaby.mirror-git-repository/installations/azure-devops/on-prem'  => 'downloads',
+            '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository'          => 'downloads',
+            '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/services' => 'downloads',
+            '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/on-prem'  => 'downloads',
         ];
     }
 

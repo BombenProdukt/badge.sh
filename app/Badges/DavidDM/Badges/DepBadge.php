@@ -55,7 +55,7 @@ final class DepBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/david/{repo}/dep/{path?}',
+            '/david/dep/{repo}/{path?}',
         ];
     }
 
@@ -82,8 +82,8 @@ final class DepBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/david/zeit/pkg/dep'                       => 'dependencies',
-            '/david/babel/babel/dep/packages/babel-cli' => 'dependencies (sub path)',
+            '/david/dep/zeit/pkg'                       => 'dependencies',
+            '/david/dep/babel/babel/packages/babel-cli' => 'dependencies (sub path)',
         ];
     }
 

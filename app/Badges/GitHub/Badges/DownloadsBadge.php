@@ -60,7 +60,7 @@ final class DownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/downloads/{tag?}',
+            '/github/downloads/{owner}/{repo}/{tag?}',
         ];
     }
 
@@ -86,8 +86,8 @@ final class DownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/electron/electron/downloads'        => 'assets downloads for latest release',
-            '/github/electron/electron/downloads/v7.0.0' => 'assets downloads for a tag',
+            '/github/downloads/electron/electron'        => 'assets downloads for latest release',
+            '/github/downloads/electron/electron/v7.0.0' => 'assets downloads for a tag',
         ];
     }
 

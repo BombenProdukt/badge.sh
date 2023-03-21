@@ -48,7 +48,7 @@ final class LastCommitBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/commits/latest/{ref?}',
+            '/gitlab/last-commit/{repo}/{ref?}',
         ];
     }
 
@@ -74,9 +74,9 @@ final class LastCommitBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/gitlab-org/gitlab-development-kit/commits/latest'                                  => 'last commit',
-            '/gitlab/gitlab-org/gitlab-development-kit/commits/latest/updating-chromedriver-install-v2' => 'last commit (branch ref)',
-            '/gitlab/gitlab-org/gitlab-development-kit/commits/latest/v0.2.5'                           => 'last commit (tag ref)',
+            '/gitlab/last-commit/gitlab-org/gitlab-development-kit'                                  => 'last commit',
+            '/gitlab/last-commit/gitlab-org/gitlab-development-kit/updating-chromedriver-install-v2' => 'last commit (branch ref)',
+            '/gitlab/last-commit/gitlab-org/gitlab-development-kit/v0.2.5'                           => 'last commit (tag ref)',
         ];
     }
 

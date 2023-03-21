@@ -53,7 +53,7 @@ final class ReleaseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/{project}/release/version/{definition}/{environment?}',
+            '/azure-pipelines/release/{project}/{definition}/{environment?}',
         ];
     }
 
@@ -79,7 +79,7 @@ final class ReleaseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/azuredevops-powershell/azuredevops-powershell/release/version/1' => 'release version',
+            '/azure-pipelines/release/azuredevops-powershell/azuredevops-powershell/1' => 'release version',
         ];
     }
 

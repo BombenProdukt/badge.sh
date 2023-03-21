@@ -44,7 +44,7 @@ final class LernaBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/lerna',
+            '/github/lerna/{owner}/{repo}',
         ];
     }
 

@@ -55,7 +55,7 @@ final class WeekBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/uptimerobot/{apiKey}/week',
+            '/uptimerobot/week/{apiKey}',
         ];
     }
 
@@ -81,7 +81,7 @@ final class WeekBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/uptimerobot/m780862024-50db2c44c703e5c68d6b1ebb/week' => '(past week) uptime',
+            '/uptimerobot/week/m780862024-50db2c44c703e5c68d6b1ebb' => '(past week) uptime',
         ];
     }
 

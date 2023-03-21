@@ -47,7 +47,7 @@ final class MemberCountBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitter/{org}/{room}/members',
+            '/gitter/members/{org}/{room}',
         ];
     }
 
@@ -73,8 +73,8 @@ final class MemberCountBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitter/redom/lobby/members' => 'members',
-            '/gitter/redom/redom/members' => 'members',
+            '/gitter/members/redom/lobby' => 'members',
+            '/gitter/members/redom/redom' => 'members',
         ];
     }
 

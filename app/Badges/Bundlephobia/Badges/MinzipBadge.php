@@ -46,7 +46,7 @@ final class MinzipBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/bundlephobia/{name}/minzip',
+            '/bundlephobia/minzip/{name}',
         ];
     }
 
@@ -72,8 +72,8 @@ final class MinzipBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/bundlephobia/react/minzip'             => 'minified + gzip',
-            '/bundlephobia/@material-ui/core/minzip' => '(scoped pkg) minified + gzip',
+            '/bundlephobia/minzip/react'             => 'minified + gzip',
+            '/bundlephobia/minzip/@material-ui/core' => '(scoped pkg) minified + gzip',
         ];
     }
 

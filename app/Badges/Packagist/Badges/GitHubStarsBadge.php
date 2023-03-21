@@ -48,7 +48,7 @@ final class GitHubStarsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/github/stars',
+            '/packagist/github-stars/{package}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class GitHubStarsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/github/stars' => 'github stars',
+            '/packagist/github-stars/monolog/monolog' => 'github stars',
         ];
     }
 

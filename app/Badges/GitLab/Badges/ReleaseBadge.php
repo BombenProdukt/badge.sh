@@ -55,7 +55,7 @@ final class ReleaseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/releases/latest',
+            '/gitlab/latest-release/{repo}',
         ];
     }
 
@@ -81,7 +81,7 @@ final class ReleaseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/veloren/veloren/releases/latest' => 'latest release',
+            '/gitlab/latest-release/veloren/veloren' => 'latest release',
         ];
     }
 

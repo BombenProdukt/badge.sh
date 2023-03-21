@@ -44,7 +44,7 @@ final class CoverageBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codeclimate/{project}/coverage',
+            '/codeclimate/coverage/{project}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class CoverageBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codeclimate/codeclimate/codeclimate/coverage' => 'coverage',
+            '/codeclimate/coverage/codeclimate/codeclimate' => 'coverage',
         ];
     }
 

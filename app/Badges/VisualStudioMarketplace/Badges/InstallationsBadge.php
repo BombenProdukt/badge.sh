@@ -43,7 +43,7 @@ final class InstallationsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/vs-marketplace/{extension}/installation/count',
+            '/vs-marketplace/installations/{extension}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class InstallationsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/vscodevim.vim/installation/count' => 'installation count',
+            '/vs-marketplace/installations/vscodevim.vim' => 'installation count',
         ];
     }
 

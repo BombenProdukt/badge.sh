@@ -44,7 +44,7 @@ final class MaintainabilityBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codeclimate/{project}/maintainability',
+            '/codeclimate/maintainability/{project}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class MaintainabilityBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codeclimate/codeclimate/codeclimate/maintainability' => 'maintainability',
+            '/codeclimate/maintainability/codeclimate/codeclimate' => 'maintainability',
         ];
     }
 

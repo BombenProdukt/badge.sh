@@ -55,7 +55,7 @@ final class SemicolonBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/xo/{name}/semicolon',
+            '/xo/semicolon/{name}',
         ];
     }
 
@@ -90,8 +90,8 @@ final class SemicolonBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/xo/chalk/semicolon'                 => 'semicolon',
-            '/xo/@tusbar/cache-control/semicolon' => 'semicolon',
+            '/xo/semicolon/chalk'                 => 'semicolon',
+            '/xo/semicolon/@tusbar/cache-control' => 'semicolon',
         ];
     }
 

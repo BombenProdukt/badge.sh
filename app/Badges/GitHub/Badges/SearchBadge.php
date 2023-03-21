@@ -42,7 +42,7 @@ final class SearchBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/search/{query}',
+            '/github/search/{owner}/{repo}/{query}',
         ];
     }
 
@@ -68,7 +68,7 @@ final class SearchBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/torvalds/linux/search/goto' => 'search',
+            '/github/search/torvalds/linux/goto' => 'search',
         ];
     }
 

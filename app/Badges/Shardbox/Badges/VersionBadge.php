@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/shardbox/{shard}/version',
+            '/shardbox/version/{shard}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/shardbox/kemal/version' => 'version',
+            '/shardbox/version/kemal' => 'version',
         ];
     }
 

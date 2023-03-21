@@ -46,7 +46,7 @@ final class BTCBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/keybase/{address}/btc',
+            '/keybase/btc/{address}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class BTCBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/keybase/skyplabs/btc' => 'btc address',
+            '/keybase/btc/skyplabs' => 'btc address',
         ];
     }
 

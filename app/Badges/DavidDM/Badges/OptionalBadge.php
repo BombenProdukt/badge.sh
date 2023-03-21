@@ -55,7 +55,7 @@ final class OptionalBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/david/{repo}/optional/{path?}',
+            '/david/optional/{repo}/{path?}',
         ];
     }
 
@@ -82,7 +82,7 @@ final class OptionalBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/david/epoberezkin/ajv-keywords/optional' => 'optional dependencies',
+            '/david/optional/epoberezkin/ajv-keywords' => 'optional dependencies',
         ];
     }
 

@@ -42,7 +42,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/open-vsx/{extension}/license',
+            '/open-vsx/license/{extension}',
         ];
     }
 
@@ -68,7 +68,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/open-vsx/idleberg/electron-builder/license' => 'license',
+            '/open-vsx/license/idleberg/electron-builder' => 'license',
         ];
     }
 

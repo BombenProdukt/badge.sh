@@ -43,7 +43,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pypi/{project}/version',
+            '/pypi/version/{project}',
         ];
     }
 
@@ -69,8 +69,8 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/pip/version'      => 'version',
-            '/pypi/docutils/version' => 'version',
+            '/pypi/version/pip'      => 'version',
+            '/pypi/version/docutils' => 'version',
         ];
     }
 

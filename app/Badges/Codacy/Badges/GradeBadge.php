@@ -43,7 +43,7 @@ final class GradeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codacy/{projectId}/grade/{branch?}',
+            '/codacy/grade/{projectId}/{branch?}',
         ];
     }
 
@@ -69,8 +69,8 @@ final class GradeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codacy/f0875490cea1497a9eca9c25f3f7774e/grade'        => 'code quality',
-            '/codacy/f0875490cea1497a9eca9c25f3f7774e/grade/master' => 'branch code quality',
+            '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e'        => 'code quality',
+            '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e/master' => 'branch code quality',
         ];
     }
 

@@ -46,7 +46,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/ohdear/{domain}/status/{label}',
+            '/ohdear/status/{domain}/{label}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/ohdear/status.laravel.com/status/forge.laravel.com' => 'status',
+            '/ohdear/status/status.laravel.com/forge.laravel.com' => 'status',
         ];
     }
 

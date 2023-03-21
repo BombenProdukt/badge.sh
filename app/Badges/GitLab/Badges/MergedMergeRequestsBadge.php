@@ -48,7 +48,7 @@ final class MergedMergeRequestsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/merge-requests/merged',
+            '/gitlab/merged-merge-requests/{repo}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class MergedMergeRequestsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/edouardklein/falsisign/merge-requests/merged' => 'merged MRs',
+            '/gitlab/merged-merge-requests/edouardklein/falsisign' => 'merged MRs',
 
         ];
     }

@@ -48,7 +48,7 @@ final class CommitsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/commits/{ref?}',
+            '/gitlab/commits/{repo}/{ref?}',
         ];
     }
 
@@ -74,9 +74,9 @@ final class CommitsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/cryptsetup/cryptsetup/commits'                                                  => 'commits count',
-            '/gitlab/cryptsetup/cryptsetup/commits/coverity_scan'                                    => 'commits count (branch ref)',
-            '/gitlab/cryptsetup/cryptsetup/commits/v2.2.2'                                           => 'commits count (tag ref)',
+            '/gitlab/commits/cryptsetup/cryptsetup'                                                  => 'commits count',
+            '/gitlab/commits/cryptsetup/cryptsetup/coverity_scan'                                    => 'commits count (branch ref)',
+            '/gitlab/commits/cryptsetup/cryptsetup/v2.2.2'                                           => 'commits count (tag ref)',
         ];
     }
 

@@ -57,7 +57,7 @@ final class DeploymentBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/{project}/deployment/version/{definition}/{environment?}',
+            '/azure-pipelines/deployment-version/{project}/{definition}/{environment?}',
         ];
     }
 
@@ -83,7 +83,7 @@ final class DeploymentBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/azuredevops-powershell/azuredevops-powershell/deployment/version/1' => 'deployment version',
+            '/azure-pipelines/deployment-version/azuredevops-powershell/azuredevops-powershell/1' => 'deployment version',
         ];
     }
 

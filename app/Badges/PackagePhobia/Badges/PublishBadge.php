@@ -47,7 +47,7 @@ final class PublishBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagephobia/{name}/publish',
+            '/packagephobia/publish/{name}',
         ];
     }
 
@@ -73,8 +73,8 @@ final class PublishBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagephobia/webpack/publish'               => 'publish size',
-            '/packagephobia/@tusbar/cache-control/publish' => '(scoped pkg) publish size',
+            '/packagephobia/publish/webpack'               => 'publish size',
+            '/packagephobia/publish/@tusbar/cache-control' => '(scoped pkg) publish size',
         ];
     }
 

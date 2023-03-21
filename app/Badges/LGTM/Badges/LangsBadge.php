@@ -49,7 +49,7 @@ final class LangsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/lgtm/{provider}/{project}/languages/{language?}',
+            '/lgtm/languages/{provider}/{project}/{language?}',
         ];
     }
 
@@ -76,7 +76,7 @@ final class LangsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/lgtm/github/apache/cloudstack/languages/java' => 'langs',
+            '/lgtm/languages/github/apache/cloudstack/java' => 'langs',
         ];
     }
 

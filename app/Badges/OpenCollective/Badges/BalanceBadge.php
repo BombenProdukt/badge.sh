@@ -47,7 +47,7 @@ final class BalanceBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/opencollective/{slug}/balance',
+            '/opencollective/balance/{slug}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class BalanceBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/opencollective/webpack/balance' => 'balance',
+            '/opencollective/balance/webpack' => 'balance',
         ];
     }
 

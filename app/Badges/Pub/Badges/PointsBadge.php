@@ -46,7 +46,7 @@ final class PointsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/pub/{package}/points',
+            '/pub/points/{package}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class PointsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/pub/rxdart/points' => 'pub points',
+            '/pub/points/rxdart' => 'pub points',
         ];
     }
 

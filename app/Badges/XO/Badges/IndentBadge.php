@@ -53,7 +53,7 @@ final class IndentBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/xo/{name}/indentation',
+            '/xo/indentation/{name}',
         ];
     }
 
@@ -98,8 +98,8 @@ final class IndentBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/xo/chalk/indentation'                 => 'indentation',
-            '/xo/@tusbar/cache-control/indentation' => 'indentation',
+            '/xo/indentation/chalk'                 => 'indentation',
+            '/xo/indentation/@tusbar/cache-control' => 'indentation',
         ];
     }
 

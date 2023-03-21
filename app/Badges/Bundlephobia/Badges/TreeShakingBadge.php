@@ -48,7 +48,7 @@ final class TreeShakingBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/bundlephobia/{name}/tree-shaking',
+            '/bundlephobia/tree-shaking/{name}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class TreeShakingBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/bundlephobia/react-colorful/tree-shaking' => 'tree-shaking support',
+            '/bundlephobia/tree-shaking/react-colorful' => 'tree-shaking support',
         ];
     }
 

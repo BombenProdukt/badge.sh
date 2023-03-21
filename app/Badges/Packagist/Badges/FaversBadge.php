@@ -48,7 +48,7 @@ final class FaversBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/favers',
+            '/packagist/favers/{package}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class FaversBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/favers' => 'favers',
+            '/packagist/favers/monolog/monolog' => 'favers',
         ];
     }
 

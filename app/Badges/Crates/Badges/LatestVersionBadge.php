@@ -43,7 +43,7 @@ final class LatestVersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/crates/{package}/version',
+            '/crates/version/{package}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class LatestVersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/crates/regex/version' => 'version',
+            '/crates/version/regex' => 'version',
         ];
     }
 

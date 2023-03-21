@@ -43,7 +43,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/license',
+            '/github/license/{owner}/{repo}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/license' => 'license',
+            '/github/license/micromatch/micromatch' => 'license',
         ];
     }
 

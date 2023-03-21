@@ -43,7 +43,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cocoapods/{pod}/license',
+            '/cocoapods/license/{pod}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cocoapods/AFNetworking/license' => 'license',
+            '/cocoapods/license/AFNetworking' => 'license',
         ];
     }
 

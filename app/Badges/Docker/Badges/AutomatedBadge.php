@@ -47,7 +47,7 @@ final class AutomatedBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/docker/{scope}/{name}/build/automated',
+            '/docker/build-automated/{scope}/{name}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class AutomatedBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/docker/jrottenberg/ffmpeg/build/automated' => 'automated',
+            '/docker/build-automated/jrottenberg/ffmpeg' => 'automated',
         ];
     }
 

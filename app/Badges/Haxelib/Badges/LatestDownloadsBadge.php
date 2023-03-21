@@ -46,7 +46,7 @@ final class LatestDownloadsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/haxelib/{project}/downloads/latest',
+            '/haxelib/downloads-recently/{project}',
         ];
     }
 
@@ -72,7 +72,7 @@ final class LatestDownloadsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/haxelib/hxnodejs/downloads/latest' => 'downloads (latest version)',
+            '/haxelib/downloads-recently/hxnodejs' => 'downloads (latest version)',
         ];
     }
 

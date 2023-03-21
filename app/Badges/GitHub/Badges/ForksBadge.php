@@ -47,7 +47,7 @@ final class ForksBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/forks',
+            '/github/forks/{owner}/{repo}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class ForksBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/forks' => 'forks',
+            '/github/forks/micromatch/micromatch' => 'forks',
 
         ];
     }

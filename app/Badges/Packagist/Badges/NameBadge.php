@@ -47,7 +47,7 @@ final class NameBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/name',
+            '/packagist/name/{package}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class NameBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/name' => 'name',
+            '/packagist/name/monolog/monolog' => 'name',
         ];
     }
 

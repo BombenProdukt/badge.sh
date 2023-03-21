@@ -42,7 +42,7 @@ final class LanguagesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/languages',
+            '/github/languages/{owner}/{repo}',
         ];
     }
 
@@ -68,7 +68,7 @@ final class LanguagesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/languages' => 'languages',
+            '/github/languages/micromatch/micromatch' => 'languages',
 
         ];
     }

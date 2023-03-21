@@ -41,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/aur/{package}/version',
+            '/aur/version/{package}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/aur/google-chrome/version' => 'version',
+            '/aur/version/google-chrome' => 'version',
         ];
     }
 

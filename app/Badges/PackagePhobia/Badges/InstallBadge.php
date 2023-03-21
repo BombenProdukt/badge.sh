@@ -47,7 +47,7 @@ final class InstallBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagephobia/{name}/installation/size',
+            '/packagephobia/size/{name}',
         ];
     }
 
@@ -73,8 +73,8 @@ final class InstallBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagephobia/webpack/installation/size'               => 'install size',
-            '/packagephobia/@tusbar/cache-control/installation/size' => 'install size',
+            '/packagephobia/size/webpack'               => 'install size',
+            '/packagephobia/size/@tusbar/cache-control' => 'install size',
         ];
     }
 

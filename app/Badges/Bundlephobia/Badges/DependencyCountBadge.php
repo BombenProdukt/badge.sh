@@ -45,7 +45,7 @@ final class DependencyCountBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/bundlephobia/{name}/dependency-count',
+            '/bundlephobia/dependency-count/{name}',
         ];
     }
 
@@ -71,7 +71,7 @@ final class DependencyCountBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/bundlephobia/react/dependency-count' => 'dependency count',
+            '/bundlephobia/dependency-count/react' => 'dependency count',
         ];
     }
 

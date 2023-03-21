@@ -53,7 +53,7 @@ final class LastCommitBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/commits/latest/{reference?}',
+            '/github/last-commit/{owner}/{repo}/{reference?}',
         ];
     }
 
@@ -79,9 +79,9 @@ final class LastCommitBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/commits/latest'          => 'last commit',
-            '/github/micromatch/micromatch/commits/latest/gh-pages' => 'last commit (branch ref)',
-            '/github/micromatch/micromatch/commits/latest/4.0.1'    => 'last commit (tag ref)',
+            '/github/last-commit/micromatch/micromatch'          => 'last commit',
+            '/github/last-commit/micromatch/micromatch/gh-pages' => 'last commit (branch ref)',
+            '/github/last-commit/micromatch/micromatch/4.0.1'    => 'last commit (tag ref)',
         ];
     }
 

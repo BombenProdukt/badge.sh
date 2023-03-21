@@ -45,7 +45,7 @@ final class LikesBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cpan/{distribution}/likes',
+            '/cpan/likes/{distribution}',
         ];
     }
 
@@ -71,7 +71,7 @@ final class LikesBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cpan/DBIx::Class/likes' => 'likes',
+            '/cpan/likes/DBIx::Class' => 'likes',
         ];
     }
 

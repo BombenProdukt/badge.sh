@@ -44,7 +44,7 @@ final class SponsorsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{username}/sponsors',
+            '/github/sponsors/{username}',
         ];
     }
 
@@ -70,7 +70,7 @@ final class SponsorsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/sponsors' => 'sponsors',
+            '/github/sponsors/micromatch' => 'sponsors',
         ];
     }
 

@@ -43,7 +43,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/opam/{name}/license',
+            '/opam/license/{name}',
         ];
     }
 
@@ -69,7 +69,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/opam/cohttp/license' => 'license',
+            '/opam/license/cohttp' => 'license',
         ];
     }
 

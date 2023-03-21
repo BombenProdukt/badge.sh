@@ -45,7 +45,7 @@ final class SizeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/cpan/{distribution}/size',
+            '/cpan/size/{distribution}',
         ];
     }
 
@@ -71,7 +71,7 @@ final class SizeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/cpan/Moose/size' => 'size',
+            '/cpan/size/Moose' => 'size',
         ];
     }
 

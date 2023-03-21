@@ -47,7 +47,7 @@ final class ViewsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/peertube/{instance}/{video}/views',
+            '/peertube/views/{instance}/{video}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class ViewsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/peertube/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d/views' => 'views',
+            '/peertube/views/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d' => 'views',
         ];
     }
 

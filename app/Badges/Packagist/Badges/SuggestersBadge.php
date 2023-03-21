@@ -48,7 +48,7 @@ final class SuggestersBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/packagist/{package}/suggesters',
+            '/packagist/suggesters/{package}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class SuggestersBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/monolog/monolog/suggesters' => 'suggesters',
+            '/packagist/suggesters/monolog/monolog' => 'suggesters',
         ];
     }
 

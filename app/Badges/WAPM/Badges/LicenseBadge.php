@@ -42,7 +42,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wapm/{package}/license',
+            '/wapm/license/{package}',
         ];
     }
 
@@ -68,7 +68,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wapm/huhn/hello-wasm/license' => 'license',
+            '/wapm/license/huhn/hello-wasm' => 'license',
         ];
     }
 

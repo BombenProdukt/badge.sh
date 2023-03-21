@@ -48,7 +48,7 @@ final class ContributorsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/gitlab/{repo}/contributors',
+            '/gitlab/contributors/{repo}',
         ];
     }
 
@@ -74,7 +74,7 @@ final class ContributorsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/graphviz/graphviz/contributors' => 'contributors',
+            '/gitlab/contributors/graphviz/graphviz' => 'contributors',
         ];
     }
 

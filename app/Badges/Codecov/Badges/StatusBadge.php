@@ -44,7 +44,7 @@ final class StatusBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/codecov/{service}/{repo}/coverage/{branch?}',
+            '/codecov/coverage/{service}/{repo}/{branch?}',
         ];
     }
 
@@ -71,12 +71,12 @@ final class StatusBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/codecov/github/babel/babel/coverage'                         => 'coverage (github)',
-            '/codecov/github/babel/babel/coverage/6.x'                     => 'coverage (github, branch)',
-            '/codecov/bitbucket/ignitionrobotics/ign-math/coverage'        => 'coverage (bitbucket)',
-            '/codecov/bitbucket/ignitionrobotics/ign-math/coverage/master' => 'coverage (bitbucket, branch)',
-            '/codecov/gitlab/gitlab-org/gitaly/coverage'                   => 'coverage (gitlab)',
-            '/codecov/gitlab/gitlab-org/gitaly/coverage/master'            => 'coverage (gitlab, branch)',
+            '/codecov/coverage/github/babel/babel'                         => 'coverage (github)',
+            '/codecov/coverage/github/babel/babel/6.x'                     => 'coverage (github, branch)',
+            '/codecov/coverage/bitbucket/ignitionrobotics/ign-math'        => 'coverage (bitbucket)',
+            '/codecov/coverage/bitbucket/ignitionrobotics/ign-math/master' => 'coverage (bitbucket, branch)',
+            '/codecov/coverage/gitlab/gitlab-org/gitaly'                   => 'coverage (gitlab)',
+            '/codecov/coverage/gitlab/gitlab-org/gitaly/master'            => 'coverage (gitlab, branch)',
         ];
     }
 

@@ -45,7 +45,7 @@ final class GoModBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/gomod',
+            '/github/gomod/{owner}/{repo}',
         ];
     }
 
@@ -71,7 +71,7 @@ final class GoModBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/golang/go/gomod' => 'lerna',
+            '/github/gomod/golang/go' => 'lerna',
 
         ];
     }

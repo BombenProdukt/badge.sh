@@ -78,7 +78,7 @@ final class CheckRunsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/check-runs/{reference?}/{context?}',
+            '/github/check-runs/{owner}/{repo}/{reference?}/{context?}',
         ];
     }
 
@@ -105,14 +105,14 @@ final class CheckRunsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/tunnckoCore/opensource/check-runs'                                    => 'combined checks (default branch)',
-            '/github/node-formidable/node-formidable/check-runs'                           => 'combined checks (default branch)',
-            '/github/node-formidable/node-formidable/check-runs/master/lint'               => 'single checks (lint job)',
-            '/github/node-formidable/node-formidable/check-runs/master/test'               => 'single checks (test job)',
-            '/github/node-formidable/node-formidable/check-runs/master/ubuntu?label=linux' => 'single checks (linux)',
-            '/github/node-formidable/node-formidable/check-runs/master/windows'            => 'single checks (windows)',
-            '/github/node-formidable/node-formidable/check-runs/master/macos'              => 'single checks (macos)',
-            '/github/styfle/packagephobia/check-runs/main'                                 => 'combined checks (branch)',
+            '/github/check-runs/tunnckoCore/opensource'                                    => 'combined checks (default branch)',
+            '/github/check-runs/node-formidable/node-formidable'                           => 'combined checks (default branch)',
+            '/github/check-runs/node-formidable/node-formidable/master/lint'               => 'single checks (lint job)',
+            '/github/check-runs/node-formidable/node-formidable/master/test'               => 'single checks (test job)',
+            '/github/check-runs/node-formidable/node-formidable/master/ubuntu?label=linux' => 'single checks (linux)',
+            '/github/check-runs/node-formidable/node-formidable/master/windows'            => 'single checks (windows)',
+            '/github/check-runs/node-formidable/node-formidable/master/macos'              => 'single checks (macos)',
+            '/github/check-runs/styfle/packagephobia/main'                                 => 'combined checks (branch)',
         ];
     }
 

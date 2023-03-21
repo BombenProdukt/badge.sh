@@ -60,7 +60,7 @@ final class NPMBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/snyk/{project}/npm/{targetFile?}',
+            '/snyk/npm/{project}/{targetFile?}',
         ];
     }
 
@@ -87,8 +87,8 @@ final class NPMBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/snyk/@babel/core/npm'     => 'vulnerability scan (branch)',
-            '/snyk/@babel/core/npm/6.x' => 'vulnerability scan (branch)',
+            '/snyk/npm/@babel/core'     => 'vulnerability scan (branch)',
+            '/snyk/npm/@babel/core/6.x' => 'vulnerability scan (branch)',
         ];
     }
 

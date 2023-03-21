@@ -66,7 +66,7 @@ final class ReleaseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/release/{channel?}',
+            '/github/release/{owner}/{repo}/{channel?}',
         ];
     }
 
@@ -92,8 +92,9 @@ final class ReleaseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/babel/babel/release/latest' => 'latest release',
-            '/github/babel/babel/release/stable' => 'latest stable release',
+            '/github/release/babel/babel'        => 'stable release',
+            '/github/release/babel/babel/latest' => 'latest release',
+            '/github/release/babel/babel/stable' => 'latest stable release',
         ];
     }
 

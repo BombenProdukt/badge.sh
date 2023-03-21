@@ -47,7 +47,7 @@ final class PullRequestsBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/github/{owner}/{repo}/pull-requests',
+            '/github/pull-requests/{owner}/{repo}',
         ];
     }
 
@@ -73,7 +73,7 @@ final class PullRequestsBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/micromatch/micromatch/pull-requests' => 'PRs',
+            '/github/pull-requests/micromatch/micromatch' => 'PRs',
         ];
     }
 
