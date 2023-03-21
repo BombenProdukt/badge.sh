@@ -23,7 +23,7 @@ final class LinesBadge implements Badge
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Tokei';
     }
 
     public function title(): string
