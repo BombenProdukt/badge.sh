@@ -13,11 +13,14 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://opm.openresty.org/api')->withoutRedirecting()->throw();
     }
 
-    public function get(string $appId): array
+    public function version(string $user, string $moduleName): string
     {
-        return $this->client->get('')->json();
+        return $this->client->head('pkg/fetch', [
+            'account' => $user,
+            'name'    => $moduleName,
+        ])->header('location');
     }
 }

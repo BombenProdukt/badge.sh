@@ -8,6 +8,7 @@ use App\Badges\OPM\Client;
 use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use Spatie\Regex\Regex;
 
 final class VersionBadge implements Badge
 {
@@ -16,16 +17,14 @@ final class VersionBadge implements Badge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $user, string $moduleName): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return VersionTemplate::make($this->service(), Regex::match("/{$moduleName}-(.+).opm/", $this->client->version($user, $moduleName))->group(1));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'OPM';
     }
 
     public function title(): string
@@ -43,7 +42,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/opm/version/{user}/{moduleName}',
         ];
     }
 
