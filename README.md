@@ -4,11 +4,10 @@ This project is a port of the popular [badgen/badgen.net](https://github.com/bad
 
 - Use [Laravel](https://laravel.com) as the framework
 - Use [Tailwind CSS](https://tailwindcss.com) for styling
-- Use [Inertia](https://inertiajs.com) for the frontend
-- Standardize development process by leveraging the Laravel ecosystem
-- Standardize paths to be more consistent and predictable
-- Standardize color palette to be more consistent and predictable
-- Standardize test suite to ensure functionality of all components
+- Standardized development process by leveraging the Laravel ecosystem
+- Standardized paths to be more consistent and predictable
+- Standardized color palette to be more consistent and predictable
+- Standardized test suite to ensure functionality of all components
 
 ## Installation
 
