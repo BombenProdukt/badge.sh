@@ -47,7 +47,6 @@ version/X => platform/X
 - [ ] [modrinth](https://github.com/badges/shields/tree/master/services/modrinth)
 - [ ] [mozilla-observatory](https://github.com/badges/shields/tree/master/services/mozilla-observatory)
 - [ ] [myget](https://github.com/badges/shields/tree/master/services/myget)
-- [ ] [netlify](https://github.com/badges/shields/tree/master/services/netlify)
 - [ ] [nexus](https://github.com/badges/shields/tree/master/services/nexus)
 - [ ] [node](https://github.com/badges/shields/tree/master/services/node)
 - [ ] [nodeping](https://github.com/badges/shields/tree/master/services/nodeping)

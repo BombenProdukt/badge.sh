@@ -5,25 +5,39 @@ declare(strict_types=1);
 namespace App\Badges\Netlify\Badges;
 
 use App\Badges\Netlify\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\StatusTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class StatusBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $projectId): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        $status = $this->client->status($projectId);
+
+        if (str_contains($status, '#0F4A21')) {
+            $status = 'passing';
+        }
+
+        if (str_contains($status, '#800A20')) {
+            $status = 'failing';
+        }
+
+        if (str_contains($status, '#603408')) {
+            $status = 'building';
+        }
+
+        return StatusTemplate::make('build', $status);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Netlify';
     }
 
     public function title(): string
@@ -41,7 +55,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/netlify/status/{projectId}',
         ];
     }
 
@@ -67,7 +81,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/netlify/status/e6d5a4e0-dee1-4261-833e-2f47f509c68f' => 'license',
         ];
     }
 
