@@ -19,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         $response = $this->client->get($project);
 
-        return $this->renderVersion($this->service(), 'TODO');
+        return $this->renderVersion('TODO');
     }
 
     public function service(): string

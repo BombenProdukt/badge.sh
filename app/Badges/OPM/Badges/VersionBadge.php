@@ -18,7 +18,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $user, string $moduleName): array
     {
-        return $this->renderVersion($this->service(), Regex::match("/{$moduleName}-(.+).opm/", $this->client->version($user, $moduleName))->group(1));
+        return $this->renderVersion(Regex::match("/{$moduleName}-(.+).opm/", $this->client->version($user, $moduleName))->group(1));
     }
 
     public function service(): string

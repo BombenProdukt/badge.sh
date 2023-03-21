@@ -19,7 +19,7 @@ final class PerlBadge extends AbstractBadge
     {
         $version = $this->normalizeVersion($this->client->get("release/{$distribution}")['metadata']['prereqs']['runtime']['requires']['perl']);
 
-        return $this->renderVersion($this->service(), $version);
+        return $this->renderVersion($version);
     }
 
     private function normalizeVersion(string $version): string

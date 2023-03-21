@@ -26,7 +26,7 @@ final class PhpVersionBadge extends AbstractBadge
 
         $pkg = Arr::get($packageMeta['versions'], $this->getVersion($packageMeta, $channel));
 
-        return $this->renderVersion('php', Arr::get($pkg, 'require.php', '*'));
+        return $this->renderVersion(Arr::get($pkg, 'require.php', '*'), 'php');
     }
 
     public function service(): string

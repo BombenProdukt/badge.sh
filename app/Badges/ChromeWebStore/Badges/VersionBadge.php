@@ -19,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         preg_match('|<span class="C-b-p-D-Xe h-C-b-p-D-md">(.*?)</span>|', $this->client->get($itemId), $matches);
 
-        return $this->renderVersion($this->service(), $matches[1]);
+        return $this->renderVersion($matches[1]);
     }
 
     public function service(): string

@@ -31,7 +31,7 @@ final class VersionBadge extends AbstractBadge
             $version = $this->latest($this->stable($versions));
         }
 
-        return $this->renderVersion($this->service(), $version);
+        return $this->renderVersion($version);
     }
 
     public function service(): string

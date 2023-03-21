@@ -19,7 +19,7 @@ final class VersionFromBucketBadge extends AbstractBadge
     {
         $response = $bucket === 'main' ? $this->client->main($app) : $this->client->extra($app);
 
-        return $this->renderVersion($this->service(), $response['version']);
+        return $this->renderVersion($response['version']);
     }
 
     public function service(): string

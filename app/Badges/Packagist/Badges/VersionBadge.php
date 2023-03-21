@@ -23,7 +23,7 @@ final class VersionBadge extends AbstractBadge
     {
         $version = $this->getVersion($this->client->get($package), $channel);
 
-        return $this->renderVersion($this->service(), $version);
+        return $this->renderVersion($version);
     }
 
     public function service(): string

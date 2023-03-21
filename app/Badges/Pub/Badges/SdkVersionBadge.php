@@ -19,7 +19,7 @@ final class SdkVersionBadge extends AbstractBadge
     {
         $version = $this->client->api("packages/{$package}")['latest']['pubspec']['environment']['sdk'];
 
-        return $this->renderVersion('dart sdk', $version);
+        return $this->renderVersion($version, 'dart sdk');
     }
 
     public function service(): string

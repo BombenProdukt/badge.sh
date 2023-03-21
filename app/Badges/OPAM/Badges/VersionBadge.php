@@ -19,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         preg_match('/class="package-version">([^<]+)<\//i', $this->client->get($name), $matches);
 
-        return $this->renderVersion($this->service(), $matches[1]);
+        return $this->renderVersion($matches[1]);
     }
 
     public function service(): string

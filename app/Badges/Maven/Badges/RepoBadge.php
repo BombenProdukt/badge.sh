@@ -22,7 +22,7 @@ final class RepoBadge extends AbstractBadge
 
         preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
 
-        return $this->renderVersion($this->service(), $matches[1]);
+        return $this->renderVersion($matches[1]);
     }
 
     public function service(): string

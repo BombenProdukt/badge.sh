@@ -19,7 +19,7 @@ final class ElmVersionBadge extends AbstractBadge
     {
         $version = $this->formatElmVersion($this->client->get($project)['elm-version']);
 
-        return $this->renderVersion($this->service(), $version);
+        return $this->renderVersion($version);
     }
 
     public function service(): string

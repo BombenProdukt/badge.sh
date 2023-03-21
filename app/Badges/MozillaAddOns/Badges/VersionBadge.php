@@ -19,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         $response = $this->client->get($package);
 
-        return $this->renderVersion($this->service(), $response['current_version']['version']);
+        return $this->renderVersion($response['current_version']['version']);
     }
 
     public function service(): string

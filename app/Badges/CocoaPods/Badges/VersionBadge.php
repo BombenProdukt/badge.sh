@@ -19,7 +19,7 @@ final class VersionBadge extends AbstractBadge
     {
         $response = $this->client->get($pod);
 
-        return $this->renderVersion($this->service(), $response['version']);
+        return $this->renderVersion($response['version']);
     }
 
     public function service(): string

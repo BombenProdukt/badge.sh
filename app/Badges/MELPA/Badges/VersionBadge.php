@@ -21,7 +21,7 @@ final class VersionBadge extends AbstractBadge
 
         [, $version] = explode(':', trim($matches[1]));
 
-        return $this->renderVersion($this->service(), $version);
+        return $this->renderVersion($version);
     }
 
     public function service(): string

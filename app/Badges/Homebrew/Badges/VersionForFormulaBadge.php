@@ -25,7 +25,7 @@ final class VersionForFormulaBadge extends AbstractBadge
             $version = $response['versions']['stable'];
         }
 
-        return $this->renderVersion($this->service(), $version);
+        return $this->renderVersion($version);
     }
 
     public function service(): string

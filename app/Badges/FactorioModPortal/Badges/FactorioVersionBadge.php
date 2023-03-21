@@ -17,7 +17,7 @@ final class FactorioVersionBadge extends AbstractBadge
 
     public function handle(string $modName): array
     {
-        return $this->renderVersion('factorio version', $this->client->latestRelease($modName)['info_json']['factorio_version']);
+        return $this->renderVersion($this->client->latestRelease($modName)['info_json']['factorio_version'], 'factorio version');
     }
 
     public function service(): string

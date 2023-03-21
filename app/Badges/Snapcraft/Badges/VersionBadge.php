@@ -26,7 +26,7 @@ final class VersionBadge extends AbstractBadge
             default                   => $channels->first(),
         };
 
-        return $this->renderVersion($this->service(), $channel['version']);
+        return $this->renderVersion($channel['version']);
     }
 
     public function service(): string

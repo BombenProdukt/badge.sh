@@ -19,7 +19,7 @@ final class RVersionBadge extends AbstractBadge
     {
         $version = preg_replace('/([<>=]+)\s+/', '$1', $this->client->db($package)['Depends']['R']);
 
-        return $this->renderVersion('R', $version);
+        return $this->renderVersion($version, 'R');
     }
 
     public function service(): string

@@ -172,10 +172,10 @@ trait HasTemplates
         ];
     }
 
-    protected function renderVersion(string $service, string $version): array
+    protected function renderVersion(string $version, ?string $label = null): array
     {
         return [
-            'label'        => $service,
+            'label'        => $label ?? $this->service(),
             'message'      => ExtractVersion::execute($version),
             'messageColor' => DetermineColorByVersion::execute($version),
         ];
