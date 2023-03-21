@@ -16,16 +16,14 @@ final class VersionBadge implements Badge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageId): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return VersionTemplate::make($this->service(), array_key_last($this->client->versions($packageId)));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'VPM';
     }
 
     public function title(): string
@@ -43,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/vpm/version/{packageId}',
         ];
     }
 
@@ -69,8 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/vpm/version/com.vrchat.udonsharp' => 'version',
         ];
     }
 

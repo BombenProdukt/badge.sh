@@ -91,7 +91,6 @@ version/X => platform/X
 - [ ] [vaadin-directory](https://github.com/badges/shields/tree/master/services/vaadin-directory)
 - [ ] [vcpkg](https://github.com/badges/shields/tree/master/services/vcpkg)
 - [ ] [visual-studio-app-center](https://github.com/badges/shields/tree/master/services/visual-studio-app-center)
-- [ ] [vpm](https://github.com/badges/shields/tree/master/services/vpm)
 - [ ] [w3c](https://github.com/badges/shields/tree/master/services/w3c)
 - [ ] [weblate](https://github.com/badges/shields/tree/master/services/weblate)
 - [ ] [website](https://github.com/badges/shields/tree/master/services/website)
