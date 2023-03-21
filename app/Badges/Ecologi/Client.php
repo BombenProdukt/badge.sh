@@ -13,11 +13,16 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://public.ecologi.com')->throw();
     }
 
-    public function get(string $appId): array
+    public function carbon(string $username): float
     {
-        return $this->client->get('')->json();
+        return $this->client->get("users/{$username}/carbon-offset")->json('total');
+    }
+
+    public function trees(string $username): float
+    {
+        return $this->client->get("users/{$username}/trees")->json('total');
     }
 }

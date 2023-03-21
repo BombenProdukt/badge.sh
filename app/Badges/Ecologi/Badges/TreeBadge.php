@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace App\Badges\Ecologi\Badges;
 
 use App\Badges\Ecologi\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\NumberTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class TreeBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $username): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return NumberTemplate::make('trees', $this->client->trees($username));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Ecologi';
     }
 
     public function title(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/ecologi/trees/{username}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/ecologi/trees/ecologi' => 'license',
         ];
     }
 
