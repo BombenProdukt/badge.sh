@@ -5,25 +5,31 @@ declare(strict_types=1);
 namespace App\Badges\Swagger\Badges;
 
 use App\Badges\Swagger\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\StatusTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class StatusBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        $schemaValidationMessages = $this->client->debug(request('spec'));
+
+        if (empty($schemaValidationMessages)) {
+            return StatusTemplate::make($this->service(), 'passed');
+        }
+
+        return StatusTemplate::make($this->service(), 'failed');
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Swagger';
     }
 
     public function title(): string
@@ -41,7 +47,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/swagger/validator',
         ];
     }
 
@@ -67,7 +73,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/swagger/validator?spec=https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-expanded.json' => 'license',
         ];
     }
 
