@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://sourcegraph.com/.api')->throw();
     }
 
-    public function get(string $appId): array
+    public function dependents(string $repo): string
     {
-        return $this->client->get('')->json();
+        return trim($this->client->get("repos/{$repo}/-/shield")->json('value'));
     }
 }

@@ -5,25 +5,26 @@ declare(strict_types=1);
 namespace App\Badges\Sourcegraph\Badges;
 
 use App\Badges\Sourcegraph\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\TextTemplate;
 use App\Contracts\Badge;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class DependentsBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $repo): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return TextTemplate::make('used by', $this->client->dependents($repo), 'green.600');
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Sourcegraph';
     }
 
     public function title(): string
@@ -41,7 +42,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/sourcegraph/dependents/{repo}',
         ];
     }
 
@@ -54,7 +55,7 @@ final class LicenseBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -67,7 +68,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/sourcegraph/dependents/github.com/gorilla/mux' => 'dependents',
         ];
     }
 

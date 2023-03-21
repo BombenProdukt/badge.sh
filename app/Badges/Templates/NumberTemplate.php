@@ -8,11 +8,11 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class NumberTemplate
 {
-    public static function make(string $label, mixed $percentage): array
+    public static function make(string $label, mixed $value): array
     {
         return [
             'label'        => $label,
-            'message'      => FormatNumber::execute((float) $percentage),
+            'message'      => FormatNumber::execute((float) $value),
             'messageColor' => 'green.600',
         ];
     }
