@@ -4,26 +4,33 @@ declare(strict_types=1);
 
 namespace App\Badges\WheelMap\Badges;
 
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\TextTemplate;
 use App\Badges\WheelMap\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class AccessibilityBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $nodeId): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        $accessibility = $this->client->node($nodeId);
+
+        return TextTemplate::make('accessibility', $accessibility, match ($accessibility) {
+            'yes'     => 'green.600',
+            'limited' => 'yellow.600',
+            'no'      => 'red.600',
+            default   => 'red.600',
+        });
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Wheelmap';
     }
 
     public function title(): string
@@ -41,7 +48,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/wheelmap/a/{nodeId}',
         ];
     }
 
@@ -67,7 +74,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/wheelmap/a/26699541' => 'version',
         ];
     }
 

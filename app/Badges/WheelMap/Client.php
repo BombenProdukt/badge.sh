@@ -13,11 +13,13 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://wheelmap.org/api')->throw();
     }
 
-    public function get(string $appId): array
+    public function node(string $nodeId): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("nodes/{$nodeId}", [
+            'api_key' => config('services.wheelmap.token'),
+        ])->json('node.wheelchair');
     }
 }
