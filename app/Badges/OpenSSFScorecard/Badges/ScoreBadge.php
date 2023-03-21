@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace App\Badges\OpenSSFScorecard\Badges;
 
 use App\Badges\OpenSSFScorecard\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\NumberTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class ScoreBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $host, string $orgName, string $repoName): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return NumberTemplate::make('score', $this->client->score($host, $orgName, $repoName));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'OpenSSF Scorecard';
     }
 
     public function title(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/ossf-scorecard/score/{host}/{orgName}/{repoName}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/ossf-scorecard/score/github.com/rohankh532/org-workflow-add' => 'version',
         ];
     }
 

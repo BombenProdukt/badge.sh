@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.securityscorecards.dev')->throw();
     }
 
-    public function get(string $appId): array
+    public function score(string $host, string $orgName, string $repoName): float
     {
-        return $this->client->get('')->json();
+        return $this->client->get("projects/{$host}/{$orgName}/{$repoName}")->json('score');
     }
 }
