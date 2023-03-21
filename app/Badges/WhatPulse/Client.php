@@ -13,11 +13,14 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.whatpulse.org')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $userType, string $id): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("{$userType}.php", [
+            $userType => $id,
+            'format'  => 'json',
+        ])->json();
     }
 }

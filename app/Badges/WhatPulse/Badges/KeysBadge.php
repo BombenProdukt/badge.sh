@@ -4,26 +4,27 @@ declare(strict_types=1);
 
 namespace App\Badges\WhatPulse\Badges;
 
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\NumberTemplate;
 use App\Badges\WhatPulse\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Arr;
 
-final class LicenseBadge implements Badge
+final class KeysBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $userType, string $id): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return NumberTemplate::make('keys', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Keys' : 'Keys'));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'WhatPulse';
     }
 
     public function title(): string
@@ -41,7 +42,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/whatpulse/keys/{userType}/{id}',
         ];
     }
 
@@ -54,7 +55,7 @@ final class LicenseBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->whereIn('userType', ['user', 'team']);
     }
 
     public function staticPreviews(): array
@@ -67,7 +68,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/whatpulse/keys/user/179734' => 'license',
         ];
     }
 

@@ -2,35 +2,29 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\WheelMap\Badges;
+namespace App\Badges\WhatPulse\Badges;
 
 use App\Badges\Templates\TextTemplate;
-use App\Badges\WheelMap\Client;
+use App\Badges\WhatPulse\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Arr;
 
-final class AccessibilityBadge implements Badge
+final class UploadBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $nodeId): array
+    public function handle(string $userType, string $id): array
     {
-        $accessibility = $this->client->node($nodeId);
-
-        return TextTemplate::make('accessibility', $accessibility, match ($accessibility) {
-            'yes'     => 'green.600',
-            'limited' => 'yellow.600',
-            'no'      => 'red.600',
-            default   => 'gray.600',
-        });
+        return TextTemplate::make('upload', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Upload' : 'Upload'), 'green.600');
     }
 
     public function service(): string
     {
-        return 'Wheelmap';
+        return 'WhatPulse';
     }
 
     public function title(): string
@@ -48,7 +42,7 @@ final class AccessibilityBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/wheelmap/a/{nodeId}',
+            '/whatpulse/upload/{userType}/{id}',
         ];
     }
 
@@ -61,7 +55,7 @@ final class AccessibilityBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->whereIn('userType', ['user', 'team']);
     }
 
     public function staticPreviews(): array
@@ -74,7 +68,7 @@ final class AccessibilityBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/wheelmap/a/26699541' => 'version',
+            '/whatpulse/upload/user/179734' => 'license',
         ];
     }
 

@@ -4,28 +4,27 @@ declare(strict_types=1);
 
 namespace App\Badges\WhatPulse\Badges;
 
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\NumberTemplate;
 use App\Badges\WhatPulse\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Arr;
 
-final class VersionBadge implements Badge
+final class PulsesBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $userType, string $id): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return NumberTemplate::make('pulses', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Pulses' : 'Pulses'));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'WhatPulse';
     }
 
     public function title(): string
@@ -43,7 +42,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/whatpulse/pulses/{userType}/{id}',
         ];
     }
 
@@ -56,7 +55,7 @@ final class VersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->whereIn('userType', ['user', 'team']);
     }
 
     public function staticPreviews(): array
@@ -69,8 +68,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/whatpulse/pulses/user/179734' => 'license',
         ];
     }
 
