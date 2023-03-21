@@ -17,7 +17,7 @@ final class GitHubBadge extends AbstractBadge
 
     public function handle(string $owner, string $repo, ?string $branch = null): array
     {
-        return $this->renderStatus('build', $this->client->github($owner, $repo, $branch, $this->request->query('task'), $this->request->query('script')));
+        return $this->renderStatus('build', $this->client->github($owner, $repo, $branch, $this->getRequestData('task'), $this->getRequestData('script')));
     }
 
     public function service(): string
@@ -39,6 +39,14 @@ final class GitHubBadge extends AbstractBadge
     {
         return [
             '/cirrus/github/{owner}/{repo}/{branch?}',
+        ];
+    }
+
+    public function routeRules(): array
+    {
+        return [
+            'script' => ['string'],
+            'task'   => ['string'],
         ];
     }
 

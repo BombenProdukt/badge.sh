@@ -17,7 +17,7 @@ final class StatusBadge extends AbstractBadge
 
     public function handle(): array
     {
-        $schemaValidationMessages = $this->client->debug($this->request->query('spec'));
+        $schemaValidationMessages = $this->client->debug($this->getRequestData('spec'));
 
         if (empty($schemaValidationMessages)) {
             return $this->renderStatus($this->service(), 'passed');
@@ -45,6 +45,13 @@ final class StatusBadge extends AbstractBadge
     {
         return [
             '/swagger/validator',
+        ];
+    }
+
+    public function routeRules(): array
+    {
+        return [
+            'spec' => ['required', 'url'],
         ];
     }
 

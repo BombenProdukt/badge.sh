@@ -4,21 +4,15 @@ declare(strict_types=1);
 
 namespace App\Badges;
 
+use App\Badges\Concerns\HasRequest;
 use App\Badges\Concerns\HasTemplates;
 use App\Contracts\Badge;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
 abstract class AbstractBadge implements Badge
 {
+    use HasRequest;
     use HasTemplates;
-
-    protected Request $request;
-
-    public function setRequest(Request $request): void
-    {
-        $this->request = $request;
-    }
 
     public function service(): string
     {
@@ -36,6 +30,11 @@ abstract class AbstractBadge implements Badge
     }
 
     public function routePaths(): array
+    {
+        return [];
+    }
+
+    public function routeRules(): array
     {
         return [];
     }
