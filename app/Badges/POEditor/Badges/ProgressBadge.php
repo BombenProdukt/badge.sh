@@ -5,25 +5,28 @@ declare(strict_types=1);
 namespace App\Badges\POEditor\Badges;
 
 use App\Badges\POEditor\Client;
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\PercentageTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class ProgressBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $apiToken, string $projectId, string $languageCode): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        $response = $this->client->get($apiToken, $projectId, $languageCode);
+        $language = collect($response['result'])->firstWhere('code', $languageCode);
+
+        return PercentageTemplate::make($language['name'], $language['percentage']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'POEditor';
     }
 
     public function title(): string
@@ -41,7 +44,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/poeditor/progress/{apiToken}/{projectId}/{languageCode}',
         ];
     }
 
@@ -67,7 +70,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/poeditor/progress/abc123def456/323337/fr' => 'progress',
         ];
     }
 

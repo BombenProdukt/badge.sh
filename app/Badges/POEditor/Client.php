@@ -13,11 +13,14 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.poeditor.com/v2')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $apiToken, string $projectId): array
     {
-        return $this->client->get('')->json();
+        return $this->client->post('language/list', [
+            'api_token' => $apiToken,
+            'id'        => $projectId,
+        ])->json();
     }
 }
