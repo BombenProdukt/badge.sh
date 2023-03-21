@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://packages.spack.io')->throw();
     }
 
-    public function get(string $appId): array
+    public function version(string $packageName): string
     {
-        return $this->client->get('')->json();
+        return $this->client->get("data/packages/{$packageName}.json")->json('latest_version');
     }
 }
