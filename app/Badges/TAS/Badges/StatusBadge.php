@@ -4,28 +4,34 @@ declare(strict_types=1);
 
 namespace App\Badges\TAS\Badges;
 
+use App\Actions\DetermineColorByStatus;
 use App\Badges\TAS\Client;
-use App\Badges\Templates\VersionTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class StatusBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $provider, string $org, string $repo): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $response = $this->client->get($provider, $org, $repo);
 
-        return VersionTemplate::make($this->service(), $version);
+        return [
+            'label'        => $this->service(),
+            'message'      => $response['status'] === 'failed'
+                ? sprintf('%s passed, %s failed, %s skipped, %s total', $response['passed'], $response['failed'], $response['skipped'], $response['total_tests'])
+                : $response['status'],
+            'messageColor' => DetermineColorByStatus::execute($response['status']),
+        ];
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'TAS';
     }
 
     public function title(): string
@@ -43,7 +49,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/tas/tests/{provider}/{org}/{repo}',
         ];
     }
 
@@ -69,8 +75,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/tas/tests/github/tasdemo/axios' => 'license',
         ];
     }
 
