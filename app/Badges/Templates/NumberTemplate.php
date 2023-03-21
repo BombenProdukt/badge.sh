@@ -12,7 +12,7 @@ final class NumberTemplate
     {
         return [
             'label'        => $label,
-            'message'      => FormatNumber::execute($percentage),
+            'message'      => FormatNumber::execute((float) $percentage),
             'messageColor' => 'green.600',
         ];
     }

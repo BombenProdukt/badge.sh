@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Badge\Badges;
+namespace App\Badges\Static\Badges;
 
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class BadgeBadge implements Badge
+final class StaticBadge implements Badge
 {
-    public function handle(string $label, string $status, ?string $statusColor = null): array
+    public function handle(string $label, string $message, ?string $messageColor = 'green.600'): array
     {
         return [
             'label'        => $label,
-            'message'      => $status,
-            'messageColor' => $statusColor ? "{$statusColor}.600" : 'green.600',
+            'message'      => $message,
+            'messageColor' => $messageColor,
         ];
     }
 
@@ -38,7 +38,7 @@ final class BadgeBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/badge/{label}/{status}/{statusColor?}',
+            '/static/{label}/{message}/{messageColor?}',
         ];
     }
 
@@ -64,12 +64,12 @@ final class BadgeBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/badge/Swift/4.2/orange'          => 'swift version',
-            '/badge/license/MIT/blue'          => 'license MIT',
-            '/badge/chat/on%20gitter/cyan'     => 'chat on gitter',
-            '/badge/stars/★★★★☆'               => 'star rating',
-            '/badge/become/a%20patron/F96854'  => 'patron',
-            '/badge/code%20style/standard/f2a' => 'code style: standard',
+            '/static/Swift/4.2/orange'          => 'swift version',
+            '/static/license/MIT/blue'          => 'license MIT',
+            '/static/chat/on%20gitter/cyan'     => 'chat on gitter',
+            '/static/stars/★★★★☆'               => 'star rating',
+            '/static/become/a%20patron/F96854'  => 'patron',
+            '/static/code%20style/standard/f2a' => 'code style: standard',
         ];
     }
 

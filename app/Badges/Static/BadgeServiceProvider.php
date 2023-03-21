@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Badge;
+namespace App\Badges\Static;
 
 use App\Facades\BadgeService;
 use Illuminate\Support\ServiceProvider;
@@ -11,6 +11,6 @@ final class BadgeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        BadgeService::add(Badges\BadgeBadge::class);
+        BadgeService::add(Badges\StaticBadge::class);
     }
 }
