@@ -4,26 +4,26 @@ declare(strict_types=1);
 
 namespace App\Badges\Treeware\Badges;
 
-use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\NumberTemplate;
 use App\Badges\Treeware\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge implements Badge
+final class CountBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $owner, string $packageName): array
     {
-        return LicenseTemplate::make($this->client->get($appId)['License']);
+        return NumberTemplate::make('trees', $this->client->get($owner, $packageName));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Treeware';
     }
 
     public function title(): string
@@ -41,7 +41,7 @@ final class LicenseBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/treeware/trees/{owner}/{packageName}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class LicenseBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.tasks/license' => 'license',
+            '/treeware/trees/stoplightio/spectral' => 'tree count',
         ];
     }
 
