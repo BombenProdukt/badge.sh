@@ -68,7 +68,6 @@ version/X => platform/X
 - [ ] [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)
 - [ ] [readthedocs](https://github.com/badges/shields/tree/master/services/readthedocs)
 - [ ] [redmine](https://github.com/badges/shields/tree/master/services/redmine)
-- [ ] [repology](https://github.com/badges/shields/tree/master/services/repology)
 - [ ] [resharper](https://github.com/badges/shields/tree/master/services/resharper)
 - [ ] [reuse](https://github.com/badges/shields/tree/master/services/reuse)
 - [ ] [ros](https://github.com/badges/shields/tree/master/services/ros)

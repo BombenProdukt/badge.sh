@@ -5,27 +5,30 @@ declare(strict_types=1);
 namespace App\Badges\Repology\Badges;
 
 use App\Badges\Repology\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\LicenseTemplate;
+use App\Badges\Templates\NumberTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
+use Spatie\Regex\Regex;
 
-final class VersionBadge implements Badge
+final class RepositoryCountBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return NumberTemplate::make(
+            'repositories',
+            Regex::match('|<text x="105.0" y="15" fill="#010101" fill-opacity=".3" text-anchor="middle">(\d+)</text>|', $this->client->count($packageName))->group(1),
+        );
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Repology';
     }
 
     public function title(): string
@@ -43,7 +46,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/repology/repositories/{packageName}',
         ];
     }
 
@@ -69,8 +72,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/repology/repositories/starship' => 'repository count',
         ];
     }
 

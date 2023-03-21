@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://repology.org')->throw();
     }
 
-    public function get(string $appId): array
+    public function count(string $projectName): string
     {
-        return $this->client->get('')->json();
+        return $this->client->get("badge/tiny-repos/{$projectName}.svg")->body();
     }
 }
