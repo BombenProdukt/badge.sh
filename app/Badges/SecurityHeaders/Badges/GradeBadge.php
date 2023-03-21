@@ -5,27 +5,25 @@ declare(strict_types=1);
 namespace App\Badges\SecurityHeaders\Badges;
 
 use App\Badges\SecurityHeaders\Client;
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\GradeTemplate;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class GradeBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $url): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return VersionTemplate::make($this->service(), $version);
+        return GradeTemplate::make('security headers', $this->client->grade($url));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Security Headers';
     }
 
     public function title(): string
@@ -43,7 +41,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/security-headers/grade/{url}/',
         ];
     }
 
@@ -69,8 +67,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/security-headers/grade/shields.io' => 'grade',
         ];
     }
 

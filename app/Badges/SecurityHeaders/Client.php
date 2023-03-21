@@ -13,11 +13,15 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://securityheaders.com')->throw();
     }
 
-    public function get(string $appId): array
+    public function grade(string $url): string
     {
-        return $this->client->get('')->json();
+        return $this->client->head('/', [
+            'q'               => $url,
+            'hide'            => 'on',
+            'followRedirects' => 'on',
+        ])->header('x-grade');
     }
 }
