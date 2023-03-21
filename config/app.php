@@ -388,7 +388,7 @@ return [
         App\Badges\Website\BadgeServiceProvider::class,
         App\Badges\WhatPulse\BadgeServiceProvider::class,
         App\Badges\WheelMap\BadgeServiceProvider::class,
-        App\Badges\WikiApiary\BadgeServiceProvider::class,
+        // App\Badges\WikiApiary\BadgeServiceProvider::class,
         App\Badges\WinGet\BadgeServiceProvider::class,
         App\Badges\WordPress\BadgeServiceProvider::class,
         App\Badges\XO\BadgeServiceProvider::class,

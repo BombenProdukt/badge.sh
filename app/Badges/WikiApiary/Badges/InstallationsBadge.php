@@ -4,28 +4,29 @@ declare(strict_types=1);
 
 namespace App\Badges\WikiApiary\Badges;
 
-use App\Badges\Templates\VersionTemplate;
+use App\Badges\Templates\NumberTemplate;
 use App\Badges\WikiApiary\Client;
 use App\Contracts\Badge;
 use Illuminate\Routing\Route;
 
-final class VersionBadge implements Badge
+final class InstallationsBadge implements Badge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $variant, string $name): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $results   = $this->client->usage($variant, $name);
+        $resultKey = array_search("{$variant}:{$name}", array_map('strtolower', array_keys($results)), true);
 
-        return VersionTemplate::make($this->service(), $version);
+        return NumberTemplate::make('installations', $results[$resultKey]['printouts']['Has website count'][0]);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'WikiApiary';
     }
 
     public function title(): string
@@ -43,7 +44,7 @@ final class VersionBadge implements Badge
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/wikiapiary/i/{variant}/{name}',
         ];
     }
 
@@ -56,7 +57,7 @@ final class VersionBadge implements Badge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->whereIn('variant', ['extension', 'skin', 'farm', 'generator', 'host']);
     }
 
     public function staticPreviews(): array
@@ -69,8 +70,7 @@ final class VersionBadge implements Badge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            '/wikiapiary/i/extension/ParserFunctions' => 'installations',
         ];
     }
 

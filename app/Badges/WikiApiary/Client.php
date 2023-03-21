@@ -13,11 +13,15 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://wikiapiary.com')->throw();
     }
 
-    public function get(string $appId): array
+    public function usage(string $variant, string $name)
     {
-        return $this->client->get('')->json();
+        return $this->client->get('w/api.php', [
+            'action' => 'ask',
+            'query'  => `[[{$variant}:{$name}]]|?Has_website_count`,
+            'format' => 'json',
+        ])->json('query.results');
     }
 }

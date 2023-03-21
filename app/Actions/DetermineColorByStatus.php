@@ -8,13 +8,14 @@ final class DetermineColorByStatus
 {
     public static function execute(string $status): string
     {
-        return match ($status) {
+        return match (strtolower($status)) {
             'aborted'                => 'blue.600',
             'broken'                 => 'red.600',
             'building'               => 'blue.600',
             'canceled'               => 'blue.600',
             'cancelled'              => 'blue.600',
             'created'                => 'blue.600',
+            'critical state'         => 'red.600',
             'error'                  => 'red.600',
             'errored'                => 'red.600',
             'expired'                => 'blue.600',
@@ -23,11 +24,15 @@ final class DetermineColorByStatus
             'failure'                => 'red.600',
             'fixed'                  => 'green.600',
             'infrastructure_failure' => 'red.600',
+            'infrastructure failure' => 'red.600',
             'initiated'              => 'blue.600',
+            'maintenance mode'       => 'gray.600',
+            'major issues'           => 'orange.600',
             'no builds'              => 'blue.600',
             'no tests'               => 'blue.600',
             'not built'              => 'blue.600',
             'not run'                => 'blue.600',
+            'operational'            => 'green.600',
             'partially succeeded'    => 'orange.600',
             'passed'                 => 'green.600',
             'passing'                => 'green.600',
