@@ -9,16 +9,25 @@ use App\Badges\PackageControl\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class DownloadsPerWeekBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName): array
     {
-        return $this->renderVersion($this->client->get($appId)['versions'][0]['version']);
+        $platforms = $this->client->get($packageName)['installs']['daily']['data'];
+
+        $total = 0;
+        foreach ($platforms as $platform) {
+            for ($i = 0; $i < 7; $i++) {
+                $total += $platform['totals'][$i];
+            }
+        }
+
+        return $this->renderDownloads($total);
     }
 
     public function service(): string
@@ -28,21 +37,19 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::LICENSE];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/package-control/downloads-weekly/{packageName}',
         ];
     }
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -52,23 +59,13 @@ final class VersionBadge extends AbstractBadge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
+            '/package-control/downloads-weekly/GitGutter' => 'weekly downloads',
         ];
     }
 }

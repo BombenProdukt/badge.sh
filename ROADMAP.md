@@ -32,7 +32,6 @@
 - [offset-earth](https://github.com/badges/shields/tree/master/services/offset-earth)
 - [ore](https://github.com/badges/shields/tree/master/services/ore)
 - [osslifecycle](https://github.com/badges/shields/tree/master/services/osslifecycle)
-- [packagecontrol](https://github.com/badges/shields/tree/master/services/packagecontrol)
 - [piwheels](https://github.com/badges/shields/tree/master/services/piwheels)
 - [polymart](https://github.com/badges/shields/tree/master/services/polymart)
 - [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)

@@ -9,16 +9,16 @@ use App\Badges\PackageControl\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class LastModifiedBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName): array
     {
-        return $this->renderVersion($this->client->get($appId)['versions'][0]['version']);
+        return $this->renderDateDiff('last modified', $this->client->get($packageName)['last_modified']);
     }
 
     public function service(): string
@@ -28,21 +28,19 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::LICENSE];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/{appId}/version',
+            '/package-control/last-modified/{packageName}',
         ];
     }
 
     public function routeParameters(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function routeConstraints(Route $route): void
@@ -52,23 +50,13 @@ final class VersionBadge extends AbstractBadge
 
     public function staticPreviews(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
+            '/package-control/last-modified/GitGutter' => 'last modified',
         ];
     }
 }

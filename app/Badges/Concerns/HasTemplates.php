@@ -28,9 +28,9 @@ trait HasTemplates
     protected function renderDate(string $label, mixed $value): array
     {
         try {
-            $carbon = Carbon::createFromTimestamp($value);
-        } catch (Throwable) {
             $carbon = Carbon::parse($value);
+        } catch (Throwable) {
+            $carbon = Carbon::createFromTimestamp($value);
         }
 
         return [
@@ -43,9 +43,9 @@ trait HasTemplates
     protected function renderDateTime(string $label, mixed $value): array
     {
         try {
-            $carbon = Carbon::createFromTimestamp($value);
-        } catch (Throwable) {
             $carbon = Carbon::parse($value);
+        } catch (Throwable) {
+            $carbon = Carbon::createFromTimestamp($value);
         }
 
         return [
@@ -58,15 +58,42 @@ trait HasTemplates
     protected function renderDateDiff(string $label, mixed $value): array
     {
         try {
-            $carbon = Carbon::createFromTimestamp($value);
-        } catch (Throwable) {
             $carbon = Carbon::parse($value);
+        } catch (Throwable) {
+            $carbon = Carbon::createFromTimestamp($value);
         }
 
         return [
             'label'        => $label,
             'message'      => $carbon->diffForHumans(),
             'messageColor' => DetermineColorByAge::execute($carbon->diffInDays()),
+        ];
+    }
+
+    protected function renderDownloadsPerWindows(int $count): array
+    {
+        return [
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($count).'/windows',
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderDownloadsPerMac(int $count): array
+    {
+        return [
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($count).'/mac',
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderDownloadsPerLinux(int $count): array
+    {
+        return [
+            'label'        => 'downloads',
+            'message'      => FormatNumber::execute($count).'/linux',
+            'messageColor' => 'green.600',
         ];
     }
 
