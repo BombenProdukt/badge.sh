@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://luarocks.org')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $user, string $moduleName): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("manifests/{$user}/manifest.json")->json('repository')[$moduleName];
     }
 }

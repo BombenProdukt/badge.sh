@@ -20,7 +20,6 @@
 - [jira](https://github.com/badges/shields/tree/master/services/jira)
 - [librariesio](https://github.com/badges/shields/tree/master/services/librariesio)
 - [localizely](https://github.com/badges/shields/tree/master/services/localizely)
-- [luarocks](https://github.com/badges/shields/tree/master/services/luarocks)
 - [maintenance](https://github.com/badges/shields/tree/master/services/maintenance)
 - [maven-central](https://github.com/badges/shields/tree/master/services/maven-central)
 - [maven-metadata](https://github.com/badges/shields/tree/master/services/maven-metadata)

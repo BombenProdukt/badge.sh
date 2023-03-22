@@ -295,7 +295,7 @@ return [
         App\Badges\Liberapay\BadgeServiceProvider::class,
         // App\Badges\LibrariesIO\BadgeServiceProvider::class,
         // App\Badges\Localizely\BadgeServiceProvider::class,
-        // App\Badges\LuaRocks\BadgeServiceProvider::class,
+        App\Badges\LuaRocks\BadgeServiceProvider::class,
         // App\Badges\Maintenance\BadgeServiceProvider::class,
         App\Badges\Mastodon\BadgeServiceProvider::class,
         App\Badges\Matrix\BadgeServiceProvider::class,
