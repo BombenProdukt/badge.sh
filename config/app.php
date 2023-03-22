@@ -304,7 +304,7 @@ return [
         // App\Badges\MavenMetadata\BadgeServiceProvider::class,
         App\Badges\MELPA\BadgeServiceProvider::class,
         // App\Badges\Memo\BadgeServiceProvider::class,
-        // App\Badges\Modrinth\BadgeServiceProvider::class,
+        App\Badges\Modrinth\BadgeServiceProvider::class,
         App\Badges\MozillaAddOns\BadgeServiceProvider::class,
         // App\Badges\MozillaObservatory\BadgeServiceProvider::class,
         App\Badges\MyGet\BadgeServiceProvider::class,
