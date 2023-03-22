@@ -8,7 +8,6 @@
 
 - [azure-devops](https://github.com/badges/shields/tree/master/services/azure-devops)
 - [bitbucket](https://github.com/badges/shields/tree/master/services/bitbucket)
-- [bower](https://github.com/badges/shields/tree/master/services/bower)
 - [bstats](https://github.com/badges/shields/tree/master/services/bstats)
 - [cii-best-practices](https://github.com/badges/shields/tree/master/services/cii-best-practices)
 - [clojars](https://github.com/badges/shields/tree/master/services/clojars)

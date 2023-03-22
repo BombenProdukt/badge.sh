@@ -217,7 +217,7 @@ return [
         // App\Badges\Bitbucket\BadgeServiceProvider::class,
         App\Badges\Bitrise\BadgeServiceProvider::class,
         App\Badges\BountySource\BadgeServiceProvider::class,
-        // App\Badges\Bower\BadgeServiceProvider::class,
+        App\Badges\Bower\BadgeServiceProvider::class,
         // App\Badges\BStats\BadgeServiceProvider::class,
         App\Badges\Bugzilla\BadgeServiceProvider::class,
         App\Badges\Buildkite\BadgeServiceProvider::class,

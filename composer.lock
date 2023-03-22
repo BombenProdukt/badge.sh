@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "868fa1e49d556617ce8960b22a9a12e2",
+    "content-hash": "6a9ac955d80f456b125139a69072cdb4",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -11456,6 +11456,89 @@
     ],
     "packages-dev": [
         {
+            "name": "bitbucket/client",
+            "version": "v4.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BitbucketPHP/Client.git",
+                "reference": "781512e3f4782d5cf6a124aa2e21a7e0c22975a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BitbucketPHP/Client/zipball/781512e3f4782d5cf6a124aa2e21a7e0c22975a8",
+                "reference": "781512e3f4782d5cf6a124aa2e21a7e0c22975a8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.4.15 || ^8.0.2",
+                "php-http/cache-plugin": "^1.7.5",
+                "php-http/client-common": "^2.6",
+                "php-http/discovery": "^1.15",
+                "php-http/httplug": "^2.3",
+                "php-http/multipart-stream-builder": "^1.2",
+                "psr/cache": "^1.0 || ^2.0 || ^3.0",
+                "psr/http-client-implementation": "^1.0",
+                "psr/http-factory-implementation": "^1.0",
+                "psr/http-message": "^1.0",
+                "symfony/polyfill-php80": "^1.26"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8.2",
+                "guzzlehttp/guzzle": "^7.5",
+                "http-interop/http-factory-guzzle": "^1.2",
+                "php-http/mock-client": "^1.5"
+            },
+            "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bitbucket\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                }
+            ],
+            "description": "Bitbucket API 2.0 client for PHP",
+            "keywords": [
+                "Bitbucket API",
+                "Bitbucket API Client",
+                "Bitbucket Client",
+                "BitbucketAPI",
+                "Graham Campbell",
+                "GrahamCampbell",
+                "bitbucket"
+            ],
+            "support": {
+                "issues": "https://github.com/BitbucketPHP/Client/issues",
+                "source": "https://github.com/BitbucketPHP/Client/tree/v4.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/bitbucket/client",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-02-27T12:27:28+00:00"
+        },
+        {
             "name": "fakerphp/faker",
             "version": "v1.21.0",
             "source": {
@@ -11593,6 +11676,92 @@
                 }
             ],
             "time": "2023-03-06T18:09:13+00:00"
+        },
+        {
+            "name": "graham-campbell/bitbucket",
+            "version": "v10.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Laravel-Bitbucket.git",
+                "reference": "8d886faf9ccba5b843c13cc86ab2948a98234892"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Bitbucket/zipball/8d886faf9ccba5b843c13cc86ab2948a98234892",
+                "reference": "8d886faf9ccba5b843c13cc86ab2948a98234892",
+                "shasum": ""
+            },
+            "require": {
+                "bitbucket/client": "4.3.*",
+                "graham-campbell/bounded-cache": "^1.2 || ^2.0",
+                "graham-campbell/manager": "^5.0",
+                "guzzlehttp/guzzle": "^7.5",
+                "guzzlehttp/psr7": "^2.4",
+                "illuminate/contracts": "^8.75 || ^9.0 || ^10.0",
+                "illuminate/support": "^8.75 || ^9.0 || ^10.0",
+                "lcobucci/jwt": "^4.3 || ^5.0",
+                "php": "^7.4.15 || ^8.0.2",
+                "symfony/cache": "^5.4 || ^6.0"
+            },
+            "require-dev": {
+                "graham-campbell/analyzer": "^4.0",
+                "graham-campbell/testbench": "^6.0",
+                "mockery/mockery": "^1.5.1",
+                "phpunit/phpunit": "^9.6.3 || ^10.0.12"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GrahamCampbell\\Bitbucket\\BitbucketServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GrahamCampbell\\Bitbucket\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                }
+            ],
+            "description": "Bitbucket Is A Bitbucket Bridge For Laravel",
+            "keywords": [
+                "Bridge",
+                "Graham Campbell",
+                "GrahamCampbell",
+                "Laravel Bitbucket",
+                "Laravel-Bitbucket",
+                "PHP Bitbucket API",
+                "bitbucket",
+                "bitbucket bridge",
+                "framework",
+                "laravel",
+                "php-bitbucket-api"
+            ],
+            "support": {
+                "issues": "https://github.com/GrahamCampbell/Laravel-Bitbucket/issues",
+                "source": "https://github.com/GrahamCampbell/Laravel-Bitbucket/tree/v10.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/graham-campbell/bitbucket",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-03-07T01:16:26+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",

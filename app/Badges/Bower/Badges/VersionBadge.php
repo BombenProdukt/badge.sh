@@ -16,16 +16,16 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName, ?string $channel = 'latest'): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $response = $this->client->get($packageName);
 
-        return $this->renderVersion($version);
+        return $this->renderVersion($response[$channel === 'latest' ? 'latest_stable_release_number' : 'latest_release_number'] ?? $response['latest_release_number']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Bower';
     }
 
     public function keywords(): array
@@ -36,7 +36,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/bower/version/{packageName}/{channel?}',
         ];
     }
 
@@ -58,8 +58,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/bower/version/bootstrap' => 'version',
         ];
     }
 }

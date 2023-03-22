@@ -16,14 +16,14 @@ final class LicenseBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderLicense($this->client->get($packageName)['normalized_licenses']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Bower';
     }
 
     public function keywords(): array
@@ -34,7 +34,7 @@ final class LicenseBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/bower/license/{packageName}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/bower/license/bootstrap' => 'license',
         ];
     }
 }
