@@ -16,6 +16,7 @@ use PreemStudio\Formatter\FormatBytes;
 use PreemStudio\Formatter\FormatMoney;
 use PreemStudio\Formatter\FormatNumber;
 use PreemStudio\Formatter\FormatPercentage;
+use PreemStudio\Formatter\FormatStars;
 use Throwable;
 
 trait HasTemplates
@@ -192,6 +193,15 @@ trait HasTemplates
         return [
             'label'        => $label,
             'message'      => FormatNumber::execute((float) $value),
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderStars(string $label, mixed $value): array
+    {
+        return [
+            'label'        => $label,
+            'message'      => FormatStars::execute($value),
             'messageColor' => 'green.600',
         ];
     }

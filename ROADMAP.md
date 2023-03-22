@@ -33,7 +33,6 @@
 - [ore](https://github.com/badges/shields/tree/master/services/ore)
 - [osslifecycle](https://github.com/badges/shields/tree/master/services/osslifecycle)
 - [piwheels](https://github.com/badges/shields/tree/master/services/piwheels)
-- [polymart](https://github.com/badges/shields/tree/master/services/polymart)
 - [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)
 - [redmine](https://github.com/badges/shields/tree/master/services/redmine)
 - [resharper](https://github.com/badges/shields/tree/master/services/resharper)

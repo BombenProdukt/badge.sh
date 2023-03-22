@@ -9,7 +9,7 @@ use App\Badges\Polymart\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $resourceId): array
     {
-        return $this->renderVersion($this->client->get($resourceId)['updates']['latest']['version']);
+        return $this->renderDownloads($this->client->get($resourceId)['downloads']);
     }
 
     public function service(): string
@@ -28,13 +28,13 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/polymart/version/{resourceId}',
+            '/polymart/downloads/{resourceId}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/polymart/version/323' => 'version',
+            '/polymart/downloads/323' => 'total downloads',
         ];
     }
 }

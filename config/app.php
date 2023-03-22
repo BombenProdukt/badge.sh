@@ -333,7 +333,7 @@ return [
         App\Badges\PingPong\BadgeServiceProvider::class,
         // App\Badges\Piwheels\BadgeServiceProvider::class,
         // App\Badges\POEditor\BadgeServiceProvider::class,
-        // App\Badges\Polymart\BadgeServiceProvider::class,
+        App\Badges\Polymart\BadgeServiceProvider::class,
         App\Badges\PowerShellGallery\BadgeServiceProvider::class,
         App\Badges\Pub\BadgeServiceProvider::class,
         // App\Badges\PuppetForge\BadgeServiceProvider::class,
