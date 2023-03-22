@@ -8,19 +8,21 @@ use App\Badges\AbstractBadge;
 use App\Badges\Codefactor\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
+use Spatie\Regex\Regex;
 
-final class VersionBadge extends AbstractBadge
+final class GradeBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $vcs, string $user, string $repo, ?string $channel = 'main'): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderGrade(
+            'code quality',
+            Regex::match('|<text x="78" y="14">([A-Z]+)</text>|', $this->client->get($vcs, $user, $repo, $channel))->group(1),
+        );
     }
 
     public function service(): string
@@ -30,13 +32,13 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/codefactor/grade/{vcs}/{user}/{repo}/{branch?}',
         ];
     }
 
@@ -58,8 +60,8 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/codefactor/grade/github/microsoft/powertoys'      => 'grade',
+            '/codefactor/grade/github/microsoft/powertoys/main' => 'grade (branch)',
         ];
     }
 }

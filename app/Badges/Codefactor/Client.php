@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://codefactor.io')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $vcsType, string $user, string $repo, ?string $branch): string
     {
-        return $this->client->get('')->json();
+        return $this->client->get("repository/{$vcsType}/{$user}/{$repo}/badge/{$branch}")->body();
     }
 }

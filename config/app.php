@@ -234,7 +234,7 @@ return [
         App\Badges\Codacy\BadgeServiceProvider::class,
         App\Badges\CodeClimate\BadgeServiceProvider::class,
         App\Badges\Codecov\BadgeServiceProvider::class,
-        // App\Badges\Codefactor\BadgeServiceProvider::class,
+        App\Badges\Codefactor\BadgeServiceProvider::class,
         App\Badges\Codeship\BadgeServiceProvider::class,
         // App\Badges\Coincap\BadgeServiceProvider::class,
         // App\Badges\Conan\BadgeServiceProvider::class,

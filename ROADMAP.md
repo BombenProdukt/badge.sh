@@ -8,10 +8,6 @@
 
 - [azure-devops](https://github.com/badges/shields/tree/master/services/azure-devops)
 - [bitbucket](https://github.com/badges/shields/tree/master/services/bitbucket)
-- [bstats](https://github.com/badges/shields/tree/master/services/bstats)
-- [cii-best-practices](https://github.com/badges/shields/tree/master/services/cii-best-practices)
-- [clojars](https://github.com/badges/shields/tree/master/services/clojars)
-- [codefactor](https://github.com/badges/shields/tree/master/services/codefactor)
 - [coincap](https://github.com/badges/shields/tree/master/services/coincap)
 - [conan](https://github.com/badges/shields/tree/master/services/conan)
 - [conda](https://github.com/badges/shields/tree/master/services/conda)

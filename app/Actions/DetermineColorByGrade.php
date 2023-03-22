@@ -27,6 +27,6 @@ final class DetermineColorByGrade
             'F'   => 'red.600',
             'R'   => 'gray.600',
             '-'   => 'gray.600',
-        ][$value];
+        ][strtoupper($value)];
     }
 }
