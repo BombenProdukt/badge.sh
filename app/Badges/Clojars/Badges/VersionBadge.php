@@ -16,16 +16,16 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $clojar): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $response = $this->client->get($clojar);
 
-        return $this->renderVersion($version);
+        return $this->renderVersion($response['latest_release'] ?? $response['latest_version']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Clojars';
     }
 
     public function keywords(): array
@@ -36,7 +36,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/clojars/version/{clojar}',
         ];
     }
 
@@ -58,8 +58,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/clojars/version/prismic' => 'version',
         ];
     }
 }

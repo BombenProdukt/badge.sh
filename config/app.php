@@ -229,7 +229,7 @@ return [
         App\Badges\CircleCI\BadgeServiceProvider::class,
         App\Badges\Cirrus\BadgeServiceProvider::class,
         App\Badges\ClearlyDefined\BadgeServiceProvider::class,
-        // App\Badges\Clojars\BadgeServiceProvider::class,
+        App\Badges\Clojars\BadgeServiceProvider::class,
         App\Badges\CocoaPods\BadgeServiceProvider::class,
         App\Badges\Codacy\BadgeServiceProvider::class,
         App\Badges\CodeClimate\BadgeServiceProvider::class,
