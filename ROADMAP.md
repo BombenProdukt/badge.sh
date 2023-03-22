@@ -10,7 +10,6 @@
 - [bitbucket](https://github.com/badges/shields/tree/master/services/bitbucket)
 - [discourse](https://github.com/badges/shields/tree/master/services/discourse)
 - [dynamic](https://github.com/badges/shields/tree/master/services/dynamic)
-- [endpoint](https://github.com/badges/shields/tree/master/services/endpoint)
 - [feedz](https://github.com/badges/shields/tree/master/services/feedz)
 - [galaxytoolshed](https://github.com/badges/shields/tree/master/services/galaxytoolshed)
 - [gerrit](https://github.com/badges/shields/tree/master/services/gerrit)
