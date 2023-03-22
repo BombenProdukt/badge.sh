@@ -13,11 +13,19 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://community.chocolatey.org/api/v2')
+            ->accept('application/atom+json,application/json')
+            ->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $packageName, bool $includePrereleases = false): array
     {
-        return $this->client->get('')->json();
+        $releaseTypeFilter = $includePrereleases
+            ? 'IsAbsoluteLatestVersion eq true'
+            : 'IsLatestVersion eq true';
+
+        return $this->client->get('Packages()', [
+            '$filter' => "Id eq '{$packageName}' and {$releaseTypeFilter}",
+        ])->json('d.results.0');
     }
 }

@@ -16,16 +16,14 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $project, ?string $channel = 'latest'): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderVersion($this->client->get($project, $channel !== 'latest')['Version']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Chocolatey';
     }
 
     public function keywords(): array
@@ -36,7 +34,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/chocolatey/version/{project}/{channel?}',
         ];
     }
 
@@ -58,8 +56,24 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/chocolatey/version/Newtonsoft.Json'        => 'version (stable channel)',
+            '/chocolatey/version/Newtonsoft.Json/pre'    => 'version (pre channel)',
+            '/chocolatey/version/Newtonsoft.Json/latest' => 'version (latest channel)',
         ];
+    }
+
+    private function pre(array $versions): array
+    {
+        return array_filter($versions, fn ($v) => strpos($v, '-') !== false);
+    }
+
+    private function stable(array $versions): array
+    {
+        return array_filter($versions, fn ($v) => strpos($v, '-') === false);
+    }
+
+    private function latest(array $versions): string|null
+    {
+        return count($versions) > 0 ? end($versions) : null;
     }
 }
