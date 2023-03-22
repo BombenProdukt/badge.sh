@@ -361,7 +361,7 @@ return [
         App\Badges\Static\BadgeServiceProvider::class,
         // App\Badges\Steam\BadgeServiceProvider::class,
         App\Badges\Swagger\BadgeServiceProvider::class,
-        // App\Badges\Symfony\BadgeServiceProvider::class,
+        App\Badges\SymfonyInsight\BadgeServiceProvider::class,
         App\Badges\TAS\BadgeServiceProvider::class,
         // App\Badges\TeamCity\BadgeServiceProvider::class,
         // App\Badges\Testspace\BadgeServiceProvider::class,

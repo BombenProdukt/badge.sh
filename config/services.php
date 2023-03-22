@@ -45,6 +45,11 @@ return [
         'token' => env('STACK_EXCHANGE_TOKEN'),
     ],
 
+    'symfony_insight' => [
+        'username' => env('SYMFONY_INSIGHT_USERNAME'),
+        'password' => env('SYMFONY_INSIGHT_PASSWORD'),
+    ],
+
     'wheelmap' => [
         'token' => env('WHEELMAP_TOKEN'),
     ],

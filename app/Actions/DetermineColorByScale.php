@@ -23,11 +23,11 @@ final class DetermineColorByScale
             throw new InvalidArgumentException('When invoking colorScale, steps should be provided.');
         }
 
-        if (! count(static::$defaultColors[count($steps)])) {
+        if (! count(self::$defaultColors[count($steps)])) {
             throw new RuntimeException('No default colors for '.count($steps).' steps.');
         }
 
-        $colors = static::$defaultColors[count($steps)];
+        $colors = self::$defaultColors[count($steps)];
 
         if (count($steps) !== count($colors) - 1) {
             throw new RuntimeException('When colors are provided, there should be n + 1 colors for n steps.');

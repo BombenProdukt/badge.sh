@@ -2,41 +2,45 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Symfony\Badges;
+namespace App\Badges\SymfonyInsight\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Symfony\Client;
+use App\Badges\SymfonyInsight\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class StarsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $projectUuid): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderGrade('grade', match ($this->client->get($projectUuid)['grade']) {
+            'bronze'   => 1,
+            'silver'   => 2,
+            'gold'     => 3,
+            'platinum' => 4,
+            default    => 0
+        });
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Symfony';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/symfony-insight/stars/{projectUuid}',
         ];
     }
 
@@ -58,8 +62,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/symfony-insight/stars/825be328-29f8-44f7-a750-f82818ae9111' => 'stars',
         ];
     }
 }
