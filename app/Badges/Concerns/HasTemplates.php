@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\Concerns;
 
 use App\Actions\DetermineColorByAge;
+use App\Actions\DetermineColorByGrade;
 use App\Actions\DetermineColorByPercentage;
 use App\Actions\DetermineColorByStatus;
 use App\Actions\DetermineColorByVersion;
@@ -128,14 +129,7 @@ trait HasTemplates
         return [
             'label'        => $label,
             'message'      => is_numeric($value) ? FormatPercentage::execute($value) : $value,
-            'messageColor' => [
-                'A' => 'green.600',
-                'B' => 'blue.600',
-                'C' => 'yellow.600',
-                'D' => 'amber.600',
-                'E' => 'orange.600',
-                'F' => 'red.600',
-            ][$grade ?? $value],
+            'messageColor' => DetermineColorByGrade::execute($grade ?? $value),
         ];
     }
 

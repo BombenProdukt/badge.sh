@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://http-observatory.security.mozilla.org/api/v1')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $host): array
     {
-        return $this->client->get('')->json();
+        return $this->client->post("analyze?host={$host}", ['hidden' => true])->json();
     }
 }

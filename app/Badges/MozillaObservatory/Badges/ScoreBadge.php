@@ -9,32 +9,32 @@ use App\Badges\MozillaObservatory\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class ScoreBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $host): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderText('observatory', $this->client->get($host)['score'].'/100', 'blue.600');
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Mozilla Observatory';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/mozilla-observatory/score/{host}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/mozilla-observatory/score/github.com' => 'score',
         ];
     }
 }

@@ -9,34 +9,32 @@ use App\Badges\MozillaObservatory\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class GradeBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $host): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderGrade('observatory', $this->client->get($host)['grade']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Mozilla Observatory';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/mozilla-observatory/grade/{host}',
         ];
     }
 
@@ -58,8 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/mozilla-observatory/grade/github.com' => 'grade',
         ];
     }
 }

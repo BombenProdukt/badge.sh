@@ -24,7 +24,6 @@
 - [maven-central](https://github.com/badges/shields/tree/master/services/maven-central)
 - [maven-metadata](https://github.com/badges/shields/tree/master/services/maven-metadata)
 - [md](https://github.com/badges/shields/blob/master/doc/badge-urls.md)
-- [mozilla-observatory](https://github.com/badges/shields/tree/master/services/mozilla-observatory)
 - [nexus](https://github.com/badges/shields/tree/master/services/nexus)
 - [node](https://github.com/badges/shields/tree/master/services/node)
 - [npms-io](https://github.com/badges/shields/tree/master/services/npms-io)

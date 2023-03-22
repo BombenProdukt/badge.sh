@@ -306,7 +306,7 @@ return [
         // App\Badges\Memo\BadgeServiceProvider::class,
         App\Badges\Modrinth\BadgeServiceProvider::class,
         App\Badges\MozillaAddOns\BadgeServiceProvider::class,
-        // App\Badges\MozillaObservatory\BadgeServiceProvider::class,
+        App\Badges\MozillaObservatory\BadgeServiceProvider::class,
         App\Badges\MyGet\BadgeServiceProvider::class,
         // App\Badges\Netlify\BadgeServiceProvider::class,
         // App\Badges\Nexus\BadgeServiceProvider::class,
