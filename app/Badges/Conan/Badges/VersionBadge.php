@@ -7,6 +7,7 @@ namespace App\Badges\Conan\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\Conan\Client;
 use App\Enums\Category;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -16,16 +17,14 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderVersion(array_key_first($this->client->get($packageName)['versions']));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Conan Center';
     }
 
     public function keywords(): array
@@ -36,7 +35,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/conan/version/{packageName}',
         ];
     }
 
@@ -47,7 +46,7 @@ final class VersionBadge extends AbstractBadge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('packageName', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -58,8 +57,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/conan/version/boost' => 'version',
         ];
     }
 }

@@ -4,20 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Conan;
 
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Support\Facades\Http;
+use GrahamCampbell\GitHub\Facades\GitHub;
+use Symfony\Component\Yaml\Yaml;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function get(string $packageName): array
     {
-        $this->client = Http::baseUrl('')->throw();
-    }
-
-    public function get(string $appId): array
-    {
-        return $this->client->get('')->json();
+        return Yaml::parse(base64_decode(GitHub::repos()->contents()->show('conan-io', 'conan-center-index', "recipes/{$packageName}/config.yml")['content']));
     }
 }
