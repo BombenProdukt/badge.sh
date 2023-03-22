@@ -9,34 +9,32 @@ use App\Badges\YouTube\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class ChannelVideosBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $channelId): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderNumber('videos', $this->client->channel($channelId)['videoCount']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'YouTube';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::LICENSE];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/youtube/channel/videos/{channelId}',
         ];
     }
 
@@ -50,16 +48,15 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function staticPreviews(): array
+    public function staticPrevideos(): array
     {
         return [];
     }
 
-    public function dynamicPreviews(): array
+    public function dynamicPrevideos(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/youtube/channel/videos/UC8butISFwT-Wl7EV0hUK0BQ' => 'channel videos',
         ];
     }
 }

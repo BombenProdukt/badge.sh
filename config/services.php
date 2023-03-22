@@ -45,4 +45,8 @@ return [
         'token' => env('WHEELMAP_TOKEN'),
     ],
 
+    'youtube' => [
+        'token' => env('YOUTUBE_TOKEN'),
+    ],
+
 ];

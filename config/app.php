@@ -388,7 +388,7 @@ return [
         App\Badges\WinGet\BadgeServiceProvider::class,
         // App\Badges\WordPress\BadgeServiceProvider::class,
         App\Badges\XO\BadgeServiceProvider::class,
-        // App\Badges\YouTube\BadgeServiceProvider::class,
+        App\Badges\YouTube\BadgeServiceProvider::class,
 
     ],
 

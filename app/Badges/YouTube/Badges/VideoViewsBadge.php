@@ -9,32 +9,32 @@ use App\Badges\YouTube\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class VideoViewsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $videoId): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderNumber('views', $this->client->video($videoId)['viewCount']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'YouTube';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/youtube/video/views/{videoId}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/youtube/video/views/wGJHwc5ksMA' => 'video views',
         ];
     }
 }

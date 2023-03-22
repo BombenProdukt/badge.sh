@@ -57,4 +57,3 @@
 - [w3c](https://github.com/badges/shields/tree/master/services/w3c)
 - [weblate](https://github.com/badges/shields/tree/master/services/weblate)
 - [wordpress](https://github.com/badges/shields/tree/master/services/wordpress)
-- [youtube](https://github.com/badges/shields/tree/master/services/youtube)
