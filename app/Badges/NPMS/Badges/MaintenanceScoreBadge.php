@@ -9,32 +9,32 @@ use App\Badges\NPMS\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class MaintenanceScoreBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $package): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderNumber('maintenance', $this->client->get($package)['data']['maintenance']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'npms';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/npms/maintenance-score/{package}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/npms/maintenance-score/chalk' => 'maintenance score',
         ];
     }
 }
