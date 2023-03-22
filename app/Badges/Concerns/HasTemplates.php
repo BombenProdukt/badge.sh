@@ -242,7 +242,7 @@ trait HasTemplates
         ];
     }
 
-    protected function renderText(string $label, mixed $message, string $messageColor): array
+    protected function renderText(string $label, mixed $message, string $messageColor = 'blue.600'): array
     {
         return [
             'label'        => $label,

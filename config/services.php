@@ -41,6 +41,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'stack_exchange' => [
+        'token' => env('STACK_EXCHANGE_TOKEN'),
+    ],
+
     'wheelmap' => [
         'token' => env('WHEELMAP_TOKEN'),
     ],

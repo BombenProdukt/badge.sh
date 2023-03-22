@@ -9,34 +9,32 @@ use App\Badges\StackExchange\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class UserReputationBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $site, string $query): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderNumber('reputation', $this->client->user($site, $query)['reputation']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Stack Exchange';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/stack-exchange/user/reputation/{site}/{query}',
         ];
     }
 
@@ -58,8 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/stack-exchange/user/reputation/stackoverflow/123' => 'reputation',
         ];
     }
 }
