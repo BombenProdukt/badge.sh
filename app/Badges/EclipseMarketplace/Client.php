@@ -6,6 +6,7 @@ namespace App\Badges\EclipseMarketplace;
 
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
+use Symfony\Component\DomCrawler\Crawler;
 
 final class Client
 {
@@ -13,11 +14,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://marketplace.eclipse.org')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $name): Crawler
     {
-        return $this->client->get('')->json();
+        return new Crawler($this->client->get("content/{$name}/api/p")->body());
     }
 }

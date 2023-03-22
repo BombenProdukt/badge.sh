@@ -6,7 +6,7 @@ namespace App\Actions;
 
 final class DetermineColorByAge
 {
-    public static function execute(string $value): string
+    public static function execute(mixed $value): string
     {
         return DetermineColorByScale::execute($value, [7, 30, 180, 365, 730], true);
     }

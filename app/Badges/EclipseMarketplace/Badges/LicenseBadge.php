@@ -16,14 +16,14 @@ final class LicenseBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $name): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderLicense($this->client->get($name)->filterXPath('//license')->text());
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Eclipse Marketplace';
     }
 
     public function keywords(): array
@@ -34,7 +34,7 @@ final class LicenseBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/eclipse-marketplace/license/{name}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/eclipse-marketplace/license/notepad4e' => 'license',
         ];
     }
 }

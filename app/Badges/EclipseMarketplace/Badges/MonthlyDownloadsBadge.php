@@ -9,7 +9,7 @@ use App\Badges\EclipseMarketplace\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class MonthlyDownloadsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $name): array
     {
-        return $this->renderVersion($this->client->get($name)->filterXPath('//version')->text());
+        return $this->renderDownloads($this->client->get($name)->filterXPath('//installsrecent')->text());
     }
 
     public function service(): string
@@ -28,13 +28,13 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/eclipse-marketplace/version/{name}',
+            '/eclipse-marketplace/downloads-monthly/{name}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/eclipse-marketplace/version/notepad4e' => 'version',
+            '/eclipse-marketplace/downloads-monthly/notepad4e' => 'monthly downloads',
         ];
     }
 }

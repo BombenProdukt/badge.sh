@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Concerns;
 
+use App\Actions\DetermineColorByAge;
 use App\Actions\DetermineColorByPercentage;
 use App\Actions\DetermineColorByStatus;
 use App\Actions\DetermineColorByVersion;
@@ -14,6 +15,7 @@ use PreemStudio\Formatter\FormatBytes;
 use PreemStudio\Formatter\FormatMoney;
 use PreemStudio\Formatter\FormatNumber;
 use PreemStudio\Formatter\FormatPercentage;
+use Throwable;
 
 trait HasTemplates
 {
@@ -22,21 +24,48 @@ trait HasTemplates
         return $this->renderPercentage($label ?? 'coverage', $percentage);
     }
 
-    protected function renderDate(string $label, mixed $percentage): array
+    protected function renderDate(string $label, mixed $value): array
     {
+        try {
+            $carbon = Carbon::createFromTimestamp($value);
+        } catch (Throwable) {
+            $carbon = Carbon::parse($value);
+        }
+
         return [
             'label'        => $label,
-            'message'      => Carbon::parse($percentage)->toDateString(),
+            'message'      => $carbon->toDateString(),
             'messageColor' => 'green.600',
         ];
     }
 
-    protected function renderDateTime(string $label, mixed $percentage): array
+    protected function renderDateTime(string $label, mixed $value): array
     {
+        try {
+            $carbon = Carbon::createFromTimestamp($value);
+        } catch (Throwable) {
+            $carbon = Carbon::parse($value);
+        }
+
         return [
             'label'        => $label,
-            'message'      => Carbon::parse($percentage)->toDateTimeString(),
+            'message'      => $carbon->toDateTimeString(),
             'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderDateDiff(string $label, mixed $value): array
+    {
+        try {
+            $carbon = Carbon::createFromTimestamp($value);
+        } catch (Throwable) {
+            $carbon = Carbon::parse($value);
+        }
+
+        return [
+            'label'        => $label,
+            'message'      => $carbon->diffForHumans(),
+            'messageColor' => DetermineColorByAge::execute($carbon->diffInDays()),
         ];
     }
 
