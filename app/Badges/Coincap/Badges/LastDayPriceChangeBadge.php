@@ -9,32 +9,34 @@ use App\Badges\Coincap\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class LastDayPriceChangeBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $assetId): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        $response = $this->client->get($assetId);
+
+        return $this->renderPercentage($response['name'], $response['changePercent24Hr']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'CoinCap';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::CRYPTO_CURRENCY];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/coincap/last-day-price-change/{assetId}',
         ];
     }
 
@@ -56,7 +58,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/coincap/last-day-price-change/bitcoin' => 'price',
         ];
     }
 }

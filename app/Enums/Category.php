@@ -12,9 +12,11 @@ enum Category: string
     case CHAT             = 'chat';
     case CODE_FORMATTING  = 'code-formatting';
     case COVERAGE         = 'coverage';
+    case CRYPTO_CURRENCY  = 'crypto-currency';
     case DEPENDENCIES     = 'dependencies';
     case DEVELOPMENT      = 'development';
     case DOWNLOADS        = 'downloads';
+    case FINANCE          = 'finance';
     case FUNDING          = 'funding';
     case ISSUE_TRACKING   = 'issue-tracking';
     case LICENSE          = 'license';

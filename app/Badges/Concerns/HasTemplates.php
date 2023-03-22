@@ -11,6 +11,7 @@ use App\Actions\DetermineLicense;
 use App\Actions\ExtractVersion;
 use Carbon\Carbon;
 use PreemStudio\Formatter\FormatBytes;
+use PreemStudio\Formatter\FormatMoney;
 use PreemStudio\Formatter\FormatNumber;
 use PreemStudio\Formatter\FormatPercentage;
 
@@ -124,6 +125,15 @@ trait HasTemplates
             'label'        => 'lines of code',
             'message'      => FormatNumber::execute($count),
             'messageColor' => 'blue.600',
+        ];
+    }
+
+    protected function renderMoney(string $label, mixed $value, string $currency): array
+    {
+        return [
+            'label'        => $label,
+            'message'      => FormatMoney::execute((float) $value, $currency),
+            'messageColor' => 'green.600',
         ];
     }
 

@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.coincap.io/v2')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $assetId): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("assets/{$assetId}")->json('data');
     }
 }

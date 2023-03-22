@@ -236,7 +236,7 @@ return [
         App\Badges\Codecov\BadgeServiceProvider::class,
         App\Badges\Codefactor\BadgeServiceProvider::class,
         App\Badges\Codeship\BadgeServiceProvider::class,
-        // App\Badges\Coincap\BadgeServiceProvider::class,
+        App\Badges\Coincap\BadgeServiceProvider::class,
         // App\Badges\Conan\BadgeServiceProvider::class,
         // App\Badges\Conda\BadgeServiceProvider::class,
         App\Badges\Cookbook\BadgeServiceProvider::class,
