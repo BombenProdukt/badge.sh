@@ -277,7 +277,7 @@ return [
         App\Badges\GitLab\BadgeServiceProvider::class,
         App\Badges\Gitter\BadgeServiceProvider::class,
         // App\Badges\GradlePluginPortal\BadgeServiceProvider::class,
-        // App\Badges\GreasyFork\BadgeServiceProvider::class,
+        App\Badges\GreasyFork\BadgeServiceProvider::class,
         App\Badges\Hackage\BadgeServiceProvider::class,
         App\Badges\HackerNews\BadgeServiceProvider::class,
         // App\Badges\Haxelib\BadgeServiceProvider::class,

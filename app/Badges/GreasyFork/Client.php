@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://greasyfork.org')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $scriptId): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("scripts/{$scriptId}.json")->json();
     }
 }

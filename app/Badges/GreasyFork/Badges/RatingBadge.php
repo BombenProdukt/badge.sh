@@ -9,7 +9,7 @@ use App\Badges\GreasyFork\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class RatingBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,13 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $scriptId): array
     {
-        return $this->renderLicense($this->client->get($scriptId)['license']);
+        $response = $this->client->get($scriptId);
+
+        return $this->renderText(
+            'rating',
+            sprintf('%s good, %s ok, %s bad', $response['good_ratings'], $response['ok_ratings'], $response['bad_ratings']),
+            'blue.600',
+        );
     }
 
     public function service(): string
@@ -28,13 +34,13 @@ final class LicenseBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array
     {
         return [
-            '/greasyfork/license/{scriptId}',
+            '/greasyfork/rating/{scriptId}',
         ];
     }
 
@@ -56,7 +62,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/greasyfork/license/407466' => 'license',
+            '/greasyfork/rating/407466' => 'rating',
         ];
     }
 }
