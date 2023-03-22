@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\PowerShellGallery\Badges;
+namespace App\Badges\Chocolatey\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\PowerShellGallery\Client;
+use App\Badges\Chocolatey\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class TotalDownloadsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,23 +18,23 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $project, ?string $channel = 'latest'): array
     {
-        return $this->renderVersion($this->client->get($project, $channel !== 'latest')->filterXPath('//m:properties/d:Version')->text());
+        return $this->renderDownloads($this->client->get($project, $channel !== 'latest')['DownloadCount']);
     }
 
     public function service(): string
     {
-        return 'PowerShell Gallery';
+        return 'Chocolatey';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/powershellgallery/version/{project}/{channel?}',
+            '/chocolatey/downloads/{project}/{channel?}',
         ];
     }
 
@@ -56,9 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/powershellgallery/version/Azure.Storage'        => 'version (stable channel)',
-            '/powershellgallery/version/Azure.Storage/pre'    => 'version (pre channel)',
-            '/powershellgallery/version/Azure.Storage/latest' => 'version (latest channel)',
+            '/chocolatey/downloads/Newtonsoft.Json' => 'total downloads',
         ];
     }
 }
