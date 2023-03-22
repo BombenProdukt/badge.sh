@@ -204,7 +204,7 @@ return [
         /*
          * Badge Service Providers...
          */
-        // App\Badges\Ansible\BadgeServiceProvider::class,
+        App\Badges\Ansible\BadgeServiceProvider::class,
         App\Badges\AppleMusic\BadgeServiceProvider::class,
         App\Badges\AppVeyor\BadgeServiceProvider::class,
         App\Badges\ArchLinux\BadgeServiceProvider::class,

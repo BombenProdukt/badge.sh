@@ -6,7 +6,6 @@
 
 ## Badges
 
-- [ansible](https://github.com/badges/shields/tree/master/services/ansible)
 - [azure-devops](https://github.com/badges/shields/tree/master/services/azure-devops)
 - [bitbucket](https://github.com/badges/shields/tree/master/services/bitbucket)
 - [bower](https://github.com/badges/shields/tree/master/services/bower)

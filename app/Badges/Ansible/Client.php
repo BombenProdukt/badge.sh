@@ -13,11 +13,21 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://galaxy.ansible.com/api')->throw();
     }
 
-    public function get(string $appId): array
+    public function collections(string $collectionId): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("v2/collections/{$collectionId}")->json();
+    }
+
+    public function content(string $projectId): array
+    {
+        return $this->client->get("v1/content/{$projectId}")->json();
+    }
+
+    public function roles(string $roleId): array
+    {
+        return $this->client->get("v1/roles/{$roleId}")->json();
     }
 }

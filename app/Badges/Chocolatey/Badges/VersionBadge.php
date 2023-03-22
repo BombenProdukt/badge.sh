@@ -56,9 +56,9 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/chocolatey/version/Newtonsoft.Json'        => 'version (stable channel)',
-            '/chocolatey/version/Newtonsoft.Json/pre'    => 'version (pre channel)',
-            '/chocolatey/version/Newtonsoft.Json/latest' => 'version (latest channel)',
+            '/chocolatey/version/git'        => 'version (stable channel)',
+            '/chocolatey/version/git/pre'    => 'version (pre channel)',
+            '/chocolatey/version/git/latest' => 'version (latest channel)',
         ];
     }
 

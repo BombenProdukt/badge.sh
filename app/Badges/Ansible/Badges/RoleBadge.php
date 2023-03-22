@@ -9,32 +9,32 @@ use App\Badges\Ansible\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class RoleBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $roleId): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderDownloads($this->client->roles($roleId)['download_count']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Ansible';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/ansible/role/{roleId}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/ansible/role/3078' => 'downloads',
         ];
     }
 }
