@@ -254,7 +254,7 @@ return [
         App\Badges\Depfu\BadgeServiceProvider::class,
         App\Badges\DevRant\BadgeServiceProvider::class,
         App\Badges\Discord\BadgeServiceProvider::class,
-        // App\Badges\Discourse\BadgeServiceProvider::class,
+        App\Badges\Discourse\BadgeServiceProvider::class,
         App\Badges\Docker\BadgeServiceProvider::class,
         App\Badges\DocsRS\BadgeServiceProvider::class,
         // App\Badges\Drone\BadgeServiceProvider::class,

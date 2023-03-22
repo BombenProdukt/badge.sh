@@ -4,20 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Discourse;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function statistics(string $server): array
     {
-        $this->client = Http::baseUrl('')->throw();
-    }
-
-    public function get(string $appId): array
-    {
-        return $this->client->get('')->json();
+        return Http::baseUrl($server)->throw()->get('site/statistics.json')->json();
     }
 }
