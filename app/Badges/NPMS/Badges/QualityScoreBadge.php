@@ -18,7 +18,7 @@ final class QualityScoreBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return $this->renderNumber('quality', $this->client->get($package)['data']['quality']);
+        return $this->renderNumber('quality', $this->client->get($package)['detail']['quality']);
     }
 
     public function service(): string

@@ -18,7 +18,7 @@ final class PopularityScoreBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return $this->renderNumber('popularity', $this->client->get($package)['data']['popularity']);
+        return $this->renderNumber('popularity', $this->client->get($package)['detail']['popularity']);
     }
 
     public function service(): string

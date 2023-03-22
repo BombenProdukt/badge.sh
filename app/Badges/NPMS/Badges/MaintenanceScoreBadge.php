@@ -18,7 +18,7 @@ final class MaintenanceScoreBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return $this->renderNumber('maintenance', $this->client->get($package)['data']['maintenance']);
+        return $this->renderNumber('maintenance', $this->client->get($package)['detail']['maintenance']);
     }
 
     public function service(): string
