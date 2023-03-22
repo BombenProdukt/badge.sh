@@ -9,34 +9,32 @@ use App\Badges\Sourceforge\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class DownloadsPerDayBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $project, string $folder): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderDownloads($this->client->stats($project, $folder, 1)['total']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'SourceForge';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/sourceforge/downloads-daily/{project}/{folder}',
         ];
     }
 
@@ -58,8 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/sourceforge/downloads-daily/arianne/stendhal' => 'daily downloads',
         ];
     }
 }
