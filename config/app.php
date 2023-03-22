@@ -374,7 +374,7 @@ return [
         App\Badges\Ubuntu\BadgeServiceProvider::class,
         App\Badges\UptimeRobot\BadgeServiceProvider::class,
         App\Badges\VaadinAddOnDirectory\BadgeServiceProvider::class,
-        // App\Badges\VCPKG\BadgeServiceProvider::class,
+        App\Badges\VCPKG\BadgeServiceProvider::class,
         // App\Badges\VisualStudioAppCenter\BadgeServiceProvider::class,
         App\Badges\VisualStudioMarketplace\BadgeServiceProvider::class,
         // App\Badges\VPM\BadgeServiceProvider::class,

@@ -16,16 +16,28 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $response = $this->client->get($packageName);
 
-        return $this->renderVersion($version);
+        if (isset($manifest['version-date'])) {
+            return $this->renderVersion($response['version-date']);
+        }
+
+        if (isset($manifest['version-semver'])) {
+            return $this->renderVersion($response['version-semver']);
+        }
+
+        if (isset($manifest['version-string'])) {
+            return $this->renderVersion($response['version-string']);
+        }
+
+        return $this->renderVersion($response['version']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'vcpkg';
     }
 
     public function keywords(): array
@@ -36,7 +48,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/vcpkg/version/{packageName}',
         ];
     }
 
@@ -58,8 +70,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/vcpkg/version/entt' => 'version',
         ];
     }
 }

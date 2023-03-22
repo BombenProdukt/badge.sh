@@ -4,20 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\VCPKG;
 
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Support\Facades\Http;
+use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function get(string $packageName): array
     {
-        $this->client = Http::baseUrl('')->throw();
-    }
-
-    public function get(string $appId): array
-    {
-        return $this->client->get('')->json();
+        return json_decode(base64_decode(GitHub::repos()->contents()->show('microsoft', 'vcpkg', "ports/{$packageName}/vcpkg.json")['content']), true, JSON_THROW_ON_ERROR);
     }
 }
