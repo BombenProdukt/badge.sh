@@ -197,6 +197,15 @@ trait HasTemplates
         ];
     }
 
+    protected function renderRating(mixed $value): array
+    {
+        return [
+            'label'        => 'rating',
+            'message'      => FormatNumber::execute($value),
+            'messageColor' => 'green.600',
+        ];
+    }
+
     protected function renderStars(string $label, mixed $value): array
     {
         return [
