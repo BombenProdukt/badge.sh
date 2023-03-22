@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://bestpractices.coreinfrastructure.org/')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $projectId): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("projects/{$projectId}/badge.json")->json();
     }
 }

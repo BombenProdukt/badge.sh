@@ -16,9 +16,9 @@ use PreemStudio\Formatter\FormatPercentage;
 
 trait HasTemplates
 {
-    protected function renderCoverage(mixed $percentage): array
+    protected function renderCoverage(mixed $percentage, ?string $label = null): array
     {
-        return $this->renderPercentage('coverage', $percentage);
+        return $this->renderPercentage($label ?? 'coverage', $percentage);
     }
 
     protected function renderDate(string $label, mixed $percentage): array

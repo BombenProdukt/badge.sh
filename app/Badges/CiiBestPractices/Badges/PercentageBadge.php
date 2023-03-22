@@ -9,34 +9,32 @@ use App\Badges\CiiBestPractices\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class PercentageBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $projectId): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderCoverage($this->client->get($projectId)['tiered_percentage'], 'cii');
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'CII Best Practices';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/cii/percentage/{projectId}',
         ];
     }
 
@@ -58,8 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/cii/percentage/29' => 'percentage',
         ];
     }
 }

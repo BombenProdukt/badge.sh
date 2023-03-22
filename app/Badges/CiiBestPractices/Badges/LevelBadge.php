@@ -4,37 +4,40 @@ declare(strict_types=1);
 
 namespace App\Badges\CiiBestPractices\Badges;
 
+use App\Actions\DetermineColorByStatus;
 use App\Badges\AbstractBadge;
 use App\Badges\CiiBestPractices\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class LevelBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $projectId): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        $response = $this->client->get($projectId);
+
+        return $this->renderText('cii', $response['badge_level'], DetermineColorByStatus::execute($response['badge_level']));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'CII Best Practices';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/cii/level/{projectId}',
         ];
     }
 
@@ -56,7 +59,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/cii/level/1' => 'level',
         ];
     }
 }

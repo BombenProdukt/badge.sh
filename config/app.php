@@ -225,7 +225,7 @@ return [
         App\Badges\CDNJS\BadgeServiceProvider::class,
         App\Badges\Chocolatey\BadgeServiceProvider::class,
         App\Badges\ChromeWebStore\BadgeServiceProvider::class,
-        // App\Badges\CiiBestPractices\BadgeServiceProvider::class,
+        App\Badges\CiiBestPractices\BadgeServiceProvider::class,
         App\Badges\CircleCI\BadgeServiceProvider::class,
         App\Badges\Cirrus\BadgeServiceProvider::class,
         App\Badges\ClearlyDefined\BadgeServiceProvider::class,
