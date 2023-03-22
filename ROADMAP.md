@@ -8,8 +8,6 @@
 
 - [azure-devops](https://github.com/badges/shields/tree/master/services/azure-devops)
 - [bitbucket](https://github.com/badges/shields/tree/master/services/bitbucket)
-- [conda](https://github.com/badges/shields/tree/master/services/conda)
-- [debug](https://github.com/badges/shields/tree/master/services/debug)
 - [discourse](https://github.com/badges/shields/tree/master/services/discourse)
 - [dynamic](https://github.com/badges/shields/tree/master/services/dynamic)
 - [eclipse-marketplace](https://github.com/badges/shields/tree/master/services/eclipse-marketplace)

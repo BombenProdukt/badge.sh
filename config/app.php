@@ -238,7 +238,7 @@ return [
         App\Badges\Codeship\BadgeServiceProvider::class,
         App\Badges\Coincap\BadgeServiceProvider::class,
         App\Badges\Conan\BadgeServiceProvider::class,
-        // App\Badges\Conda\BadgeServiceProvider::class,
+        App\Badges\Conda\BadgeServiceProvider::class,
         App\Badges\Cookbook\BadgeServiceProvider::class,
         App\Badges\Coveralls\BadgeServiceProvider::class,
         App\Badges\Coverity\BadgeServiceProvider::class,

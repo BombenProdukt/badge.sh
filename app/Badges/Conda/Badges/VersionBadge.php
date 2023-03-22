@@ -16,27 +16,25 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $channel, string $package): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderVersion($this->client->get($channel, $package)['latest_version']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Conda';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::LICENSE];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/conda/version/{channel}/{package}',
         ];
     }
 
@@ -58,8 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/conda/version/conda-forge/python' => 'version',
         ];
     }
 }

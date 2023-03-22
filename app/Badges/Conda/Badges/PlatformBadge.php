@@ -9,7 +9,7 @@ use App\Badges\Conda\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class PlatformBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $channel, string $package): array
     {
-        return $this->renderLicense($this->client->get($channel, $package)['license']);
+        return $this->renderText('platforms', implode(' | ', $this->client->get($channel, $package)['conda_platforms']), 'blue.600');
     }
 
     public function service(): string
@@ -28,13 +28,13 @@ final class LicenseBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::PLATFORM_SUPPORT];
     }
 
     public function routePaths(): array
     {
         return [
-            '/conda/license/{channel}/{package}',
+            '/conda/platform/{channel}/{package}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/conda/license/conda-forge/python' => 'license',
+            '/conda/platform/conda-forge/python' => 'platform',
         ];
     }
 }
