@@ -13,11 +13,16 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://bstats.org/api/v1')->throw();
     }
 
-    public function get(string $appId): array
+    public function servers(string $pluginId): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("plugins/{$pluginId}/charts/servers/data", ['maxElements' => 1])->json('0.1');
+    }
+
+    public function players(string $pluginId): array
+    {
+        return $this->client->get("plugins/{$pluginId}/charts/players/data", ['maxElements' => 1])->json('0.1');
     }
 }

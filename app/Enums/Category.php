@@ -18,6 +18,7 @@ enum Category: string
     case FUNDING          = 'funding';
     case ISSUE_TRACKING   = 'issue-tracking';
     case LICENSE          = 'license';
+    case METRICS          = 'metrics';
     case MONITORING       = 'monitoring';
     case OTHER            = 'other';
     case PLATFORM_SUPPORT = 'platform-support';
