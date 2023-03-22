@@ -9,32 +9,32 @@ use App\Badges\VaadinAddOnDirectory\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class StarsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $packageName): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderStars('rating', $this->client->get($packageName)['averageRating']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Vaadin Add-on Directory';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::RATING];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/vaadin/stars/{packageName}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/vaadin/stars/vaadinvaadin-grid' => '',
         ];
     }
 }

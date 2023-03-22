@@ -17,8 +17,11 @@ final class Client
     {
         $this->client = Http::baseUrl('https://insight.symfony.com/api')
             ->accept('application/vnd.com.sensiolabs.insight+xml')
-            ->withBasicAuth(config('services.symfony_insight.username'), config('services.symfony_insight.password'))
             ->throw();
+
+        if (config('services.symfony_insight.username') && config('services.symfony_insight.password')) {
+            $this->client->withBasicAuth(config('services.symfony_insight.username'), config('services.symfony_insight.password'));
+        }
     }
 
     public function get(string $projectUuid): array

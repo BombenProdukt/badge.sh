@@ -9,7 +9,7 @@ use App\Badges\VaadinAddOnDirectory\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class RatingBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $packageName): array
     {
-        return $this->renderVersion($this->client->get($packageName)['latestAvailableRelease']['name']);
+        return $this->renderRating($this->client->get($packageName)['averageRating']);
     }
 
     public function service(): string
@@ -28,13 +28,13 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::RATING];
     }
 
     public function routePaths(): array
     {
         return [
-            '/vaadin/version/{packageName}',
+            '/vaadin/rating/{packageName}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/vaadin/version/vaadinvaadin-grid' => 'version',
+            '/vaadin/rating/vaadinvaadin-grid' => '',
         ];
     }
 }
