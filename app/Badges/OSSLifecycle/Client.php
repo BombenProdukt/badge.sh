@@ -4,20 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\OSSLifecycle;
 
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Support\Facades\Http;
+use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function get(string $user, string $repo, ?string $branch): string
     {
-        $this->client = Http::baseUrl('')->throw();
-    }
-
-    public function get(string $appId): array
-    {
-        return $this->client->get('')->json();
+        return base64_decode(GitHub::repos()->contents()->show($user, $repo, 'OSSMETADATA')['content']);
     }
 }

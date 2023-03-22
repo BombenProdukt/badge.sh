@@ -10,6 +10,8 @@ final class DetermineColorByStatus
     {
         return match (strtolower($status)) {
             'aborted'                => 'blue.600',
+            'active'                 => 'green.600',
+            'archived'               => 'red.600',
             'broken'                 => 'red.600',
             'building'               => 'blue.600',
             'canceled'               => 'blue.600',
@@ -23,10 +25,11 @@ final class DetermineColorByStatus
             'failing'                => 'red.600',
             'failure'                => 'red.600',
             'fixed'                  => 'green.600',
-            'infrastructure_failure' => 'red.600',
             'infrastructure failure' => 'red.600',
+            'infrastructure_failure' => 'red.600',
             'initiated'              => 'blue.600',
             'maintenance mode'       => 'gray.600',
+            'maintenance'            => 'gray.600',
             'major issues'           => 'orange.600',
             'no builds'              => 'blue.600',
             'no tests'               => 'blue.600',

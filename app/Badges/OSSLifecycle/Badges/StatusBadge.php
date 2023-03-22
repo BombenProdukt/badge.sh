@@ -8,22 +8,23 @@ use App\Badges\AbstractBadge;
 use App\Badges\OSSLifecycle\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
+use Spatie\Regex\Regex;
 
-final class LicenseBadge extends AbstractBadge
+final class StatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $user, string $repo, ?string $branch = null): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderStatus('status', Regex::match('/osslifecycle=(.*)/', $this->client->get($user, $repo, $branch))->group(1));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'OSS Lifecycle';
     }
 
     public function keywords(): array
@@ -34,7 +35,7 @@ final class LicenseBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/oss-lifecycle/status/{user}/{repo}/{branch?}',
         ];
     }
 
@@ -56,7 +57,8 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/oss-lifecycle/status/Netflix/osstracker'               => 'status',
+            '/oss-lifecycle/status/Netflix/osstracker/documentation' => 'status with branch',
         ];
     }
 }
