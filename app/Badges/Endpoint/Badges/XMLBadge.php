@@ -7,7 +7,6 @@ namespace App\Badges\Endpoint\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\Endpoint\Client;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
@@ -68,7 +67,7 @@ final class XMLBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/endpoint/xml?url'.route('services.endpoint.xml')   => 'endpoint with XML',
+            '/endpoint/xml?url'.route('services.endpoint.xml') => 'endpoint with XML',
         ];
     }
 }

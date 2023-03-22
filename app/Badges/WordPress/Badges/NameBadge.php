@@ -9,7 +9,7 @@ use App\Badges\WordPress\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class NameBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {

@@ -7,7 +7,6 @@ namespace App\Badges\Endpoint\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\Endpoint\Client;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 

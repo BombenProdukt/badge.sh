@@ -152,6 +152,87 @@ trait HasTemplates
         ];
     }
 
+    protected function renderInstallationsPerWindows(int $count): array
+    {
+        return [
+            'label'        => 'installations',
+            'message'      => FormatNumber::execute($count).'/windows',
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderInstallationsPerMac(int $count): array
+    {
+        return [
+            'label'        => 'installations',
+            'message'      => FormatNumber::execute($count).'/mac',
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderInstallationsPerLinux(int $count): array
+    {
+        return [
+            'label'        => 'installations',
+            'message'      => FormatNumber::execute($count).'/linux',
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderInstallationsPerDay(int $count): array
+    {
+        return [
+            'label'        => 'installations',
+            'message'      => FormatNumber::execute($count).'/day',
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderInstallationsPerMonth(int $count): array
+    {
+        return [
+            'label'        => 'installations',
+            'message'      => FormatNumber::execute($count).'/month',
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderInstallationsPerQuarter(int $count): array
+    {
+        return [
+            'label'        => 'installations',
+            'message'      => FormatNumber::execute($count).'/quarter',
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderInstallationsPerWeek(int $count): array
+    {
+        return [
+            'label'        => 'installations',
+            'message'      => FormatNumber::execute($count).'/week',
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderInstallationsPerYear(int $count): array
+    {
+        return [
+            'label'        => 'installations',
+            'message'      => FormatNumber::execute($count).'/year',
+            'messageColor' => 'green.600',
+        ];
+    }
+
+    protected function renderInstallations(mixed $count): array
+    {
+        return [
+            'label'        => 'installations',
+            'message'      => FormatNumber::execute((float) $count),
+            'messageColor' => 'green.600',
+        ];
+    }
+
     protected function renderGrade(string $label, mixed $value, ?string $grade = null): array
     {
         return [

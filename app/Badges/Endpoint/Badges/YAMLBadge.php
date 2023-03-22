@@ -7,7 +7,6 @@ namespace App\Badges\Endpoint\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\Endpoint\Client;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Yaml\Yaml;
@@ -69,7 +68,7 @@ final class YAMLBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/endpoint/yaml?url'.route('services.endpoint.yaml')   => 'endpoint with YAML',
+            '/endpoint/yaml?url'.route('services.endpoint.yaml') => 'endpoint with YAML',
         ];
     }
 }

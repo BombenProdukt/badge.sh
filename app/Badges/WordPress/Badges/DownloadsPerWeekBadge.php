@@ -9,7 +9,7 @@ use App\Badges\WordPress\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class DownloadsPerWeekBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderDownloads($this->client->info($extensionType, $extension)['version']);
+        return $this->renderDownloads($this->client->downloads($extensionType, $extension, 7));
     }
 
     public function service(): string
@@ -28,13 +28,13 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/wordpress/{extensionType}/version/{extension}',
+            '/wordpress/{extensionType}/downloads-weekly/{extension}',
         ];
     }
 
@@ -51,8 +51,8 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/version/bbpress'        => 'version (plugin)',
-            '/wordpress/theme/version/twentyseventeen' => 'version (theme)',
+            '/wordpress/plugin/downloads-weekly/bbpress'        => 'weekly downloads (plugin)',
+            '/wordpress/theme/downloads-weekly/twentyseventeen' => 'weekly downloads (theme)',
         ];
     }
 }

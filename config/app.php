@@ -383,7 +383,7 @@ return [
         // App\Badges\WheelMap\BadgeServiceProvider::class,
         // App\Badges\WikiApiary\BadgeServiceProvider::class,
         App\Badges\WinGet\BadgeServiceProvider::class,
-        // App\Badges\WordPress\BadgeServiceProvider::class,
+        App\Badges\WordPress\BadgeServiceProvider::class,
         App\Badges\XO\BadgeServiceProvider::class,
         App\Badges\YouTube\BadgeServiceProvider::class,
 

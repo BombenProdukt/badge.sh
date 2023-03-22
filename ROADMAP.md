@@ -9,7 +9,6 @@
 - [azure-devops](https://github.com/badges/shields/tree/master/services/azure-devops)
 - [bitbucket](https://github.com/badges/shields/tree/master/services/bitbucket)
 - [discourse](https://github.com/badges/shields/tree/master/services/discourse)
-- [dynamic](https://github.com/badges/shields/tree/master/services/dynamic)
 - [feedz](https://github.com/badges/shields/tree/master/services/feedz)
 - [galaxytoolshed](https://github.com/badges/shields/tree/master/services/galaxytoolshed)
 - [gerrit](https://github.com/badges/shields/tree/master/services/gerrit)
@@ -42,4 +41,3 @@
 - [visual-studio-app-center](https://github.com/badges/shields/tree/master/services/visual-studio-app-center)
 - [w3c](https://github.com/badges/shields/tree/master/services/w3c)
 - [weblate](https://github.com/badges/shields/tree/master/services/weblate)
-- [wordpress](https://github.com/badges/shields/tree/master/services/wordpress)

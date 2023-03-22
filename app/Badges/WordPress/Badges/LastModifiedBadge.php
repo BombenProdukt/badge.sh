@@ -9,7 +9,7 @@ use App\Badges\WordPress\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class LastModifiedBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderDownloads($this->client->info($extensionType, $extension)['version']);
+        return $this->renderDateDiff('commercial', $this->client->info($extensionType, $extension)['last_updated']);
     }
 
     public function service(): string
@@ -34,7 +34,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/wordpress/{extensionType}/version/{extension}',
+            '/wordpress/{extensionType}/last-modified/{extension}',
         ];
     }
 
@@ -51,8 +51,8 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/version/bbpress'        => 'version (plugin)',
-            '/wordpress/theme/version/twentyseventeen' => 'version (theme)',
+            '/wordpress/plugin/last-modified/bbpress'        => 'last modified (plugin)',
+            '/wordpress/theme/last-modified/twentyseventeen' => 'last modified (theme)',
         ];
     }
 }
