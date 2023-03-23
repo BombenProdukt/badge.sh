@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Maven\Badges;
+namespace App\Badges\MavenCentral\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Maven\Client;
+use App\Badges\MavenCentral\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -17,9 +17,9 @@ final class RepoBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $repo, string $group, string $artifact): array
+    public function handle(string $group, string $artifact): array
     {
-        $response = $this->client->get($repo, str_replace('.', '/', $group)."/{$artifact}/maven-metadata.xml");
+        $response = $this->client->get(str_replace('.', '/', $group)."/{$artifact}/maven-metadata.xml");
 
         preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
 
@@ -28,7 +28,7 @@ final class RepoBadge extends AbstractBadge
 
     public function service(): string
     {
-        return 'Maven';
+        return 'Maven Central';
     }
 
     public function keywords(): array
@@ -39,7 +39,7 @@ final class RepoBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/maven/version/{repo}/{group}/{artifact}',
+            '/maven-central/version/{group}/{artifact}',
         ];
     }
 
@@ -50,7 +50,6 @@ final class RepoBadge extends AbstractBadge
 
     public function routeConstraints(Route $route): void
     {
-        $route->whereIn('repo', ['maven-central', 'jcenter']);
         $route->where('pathname', RoutePattern::CATCH_ALL->value);
     }
 
@@ -62,8 +61,7 @@ final class RepoBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/maven/version/maven-central/com.google.code.gson/gson' => 'version (maven-central)',
-            '/maven/version/jcenter/com.squareup.okhttp3/okhttp'     => 'version (jcenter)',
+            '/maven-central/version/com.google.code.gson/gson' => 'version',
         ];
     }
 }
