@@ -6,7 +6,6 @@
 
 ## Badges
 
-- [azure-devops](https://github.com/badges/shields/tree/master/services/azure-devops)
 - [gradle-plugin-portal](https://github.com/badges/shields/tree/master/services/gradle-plugin-portal)
 - [jenkins](https://github.com/badges/shields/tree/master/services/jenkins)
 - [jira](https://github.com/badges/shields/tree/master/services/jira)

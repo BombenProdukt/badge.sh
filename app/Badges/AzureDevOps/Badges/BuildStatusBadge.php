@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\AzurePipelines\Badges;
+namespace App\Badges\AzureDevOps\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\AzurePipelines\Client;
+use App\Badges\AzureDevOps\Client;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
-final class BuildVersionBadge extends AbstractBadge
+final class BuildStatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -26,8 +26,8 @@ final class BuildVersionBadge extends AbstractBadge
         ], $branch ? ['branchName' => "refs/heads/{$branch}"] : []))->json('value.0');
 
         return [
-            'label'        => 'Build Version',
-            'message'      => $response['buildNumber'],
+            'label'        => 'Build',
+            'message'      => $response['status'],
             'messageColor' => [
                 'completed'          => 'green.600',
                 'succeeded'          => 'green.600',
@@ -50,7 +50,7 @@ final class BuildVersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/build-version/{organization}/{project}/{definition}/{branch?}',
+            '/azure-devops/build-status/{organization}/{project}/{definition}/{branch?}',
         ];
     }
 
@@ -67,7 +67,7 @@ final class BuildVersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/build-version/dnceng/public/51' => 'build version',
+            '/azure-devops/build-status/dnceng/public/51' => 'build status',
         ];
     }
 }

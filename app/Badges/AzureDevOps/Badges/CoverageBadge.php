@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\AzurePipelines\Badges;
+namespace App\Badges\AzureDevOps\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\AzurePipelines\Client;
+use App\Badges\AzureDevOps\Client;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -58,7 +58,7 @@ final class CoverageBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/coverage/{organization}/{project}/{definition}',
+            '/azure-devops/coverage/{organization}/{project}/{definition}',
         ];
     }
 
@@ -75,7 +75,7 @@ final class CoverageBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/coverage/swellaby/opensource/25' => 'test coverage',
+            '/azure-devops/coverage/swellaby/opensource/25' => 'test coverage',
         ];
     }
 }

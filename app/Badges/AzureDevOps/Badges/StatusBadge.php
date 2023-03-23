@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\AzurePipelines\Badges;
+namespace App\Badges\AzureDevOps\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\AzurePipelines\Client;
+use App\Badges\AzureDevOps\Client;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -43,7 +43,7 @@ final class StatusBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/status/{organization}/{project}/{definition}/{branch?}',
+            '/azure-devops/status/{organization}/{project}/{definition}/{branch?}',
         ];
     }
 
@@ -60,8 +60,8 @@ final class StatusBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/status/dnceng/public/efcore-ci' => 'pipeline status (definition name)',
-            '/azure-pipelines/status/dnceng/public/51'        => 'pipeline status (definition id)',
+            '/azure-devops/status/dnceng/public/efcore-ci' => 'pipeline status (definition name)',
+            '/azure-devops/status/dnceng/public/51'        => 'pipeline status (definition id)',
         ];
     }
 }

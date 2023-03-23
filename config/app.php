@@ -211,7 +211,7 @@ return [
         App\Badges\AtomPackage\BadgeServiceProvider::class,
         App\Badges\AUR\BadgeServiceProvider::class,
         // App\Badges\AzureDevops\BadgeServiceProvider::class,
-        App\Badges\AzurePipelines\BadgeServiceProvider::class,
+        App\Badges\AzureDevOps\BadgeServiceProvider::class,
         App\Badges\Badgesize\BadgeServiceProvider::class,
         App\Badges\Bit\BadgeServiceProvider::class,
         App\Badges\Bitbucket\BadgeServiceProvider::class,

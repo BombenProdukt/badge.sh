@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\AzurePipelines;
+namespace App\Badges\AzureDevOps;
 
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;

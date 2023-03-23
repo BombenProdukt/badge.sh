@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\AzurePipelines\Badges;
+namespace App\Badges\AzureDevOps\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\AzurePipelines\Client;
+use App\Badges\AzureDevOps\Client;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 use PreemStudio\Formatter\FormatNumber;
@@ -76,7 +76,7 @@ final class BuildTestResultBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/build-test/{organization}/{project}/{definition}/{branch?}',
+            '/azure-devops/build-test/{organization}/{project}/{definition}/{branch?}',
         ];
     }
 
@@ -93,8 +93,8 @@ final class BuildTestResultBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/build-test/dnceng/public/51'                                => 'test results',
-            '/azure-pipelines/build-test/azuredevops-powershell/azuredevops-powershell/1' => 'test results',
+            '/azure-devops/build-test/dnceng/public/51'                                => 'test results',
+            '/azure-devops/build-test/azuredevops-powershell/azuredevops-powershell/1' => 'test results',
         ];
     }
 }

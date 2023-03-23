@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\AzurePipelines\Badges;
+namespace App\Badges\AzureDevOps\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\AzurePipelines\Client;
+use App\Badges\AzureDevOps\Client;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
-final class DeploymentBadge extends AbstractBadge
+final class ReleaseBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class DeploymentBadge extends AbstractBadge
 
     public function handle(string $organization, string $project, string $definition, ?string $environment = null): array
     {
-        $response = Http::get("https://vsrm.dev.azure.com/{$organization}/{$project}/_apis/release/deployments", array_merge([
+        $response = Http::get("https://vsrm.dev.azure.com/{$organization}/{$project}/_apis/release/releases", array_merge([
             'api-version'      => '6.0',
             '$top'             => '1',
             'definitionId'     => $definition,
@@ -26,13 +26,9 @@ final class DeploymentBadge extends AbstractBadge
         ], $environment ? ['definitionenvironment' => 'environment'] : []))->json('value.0');
 
         return [
-            'label'        => 'Deployment Version',
-            'message'      => $response['release']['name'],
-            'messageColor' => [
-                'succeeded'          => 'green.600',
-                'partiallySucceeded' => 'yellow.600',
-                'failed'             => 'red.600',
-            ][$response['deploymentStatus']],
+            'label'        => 'Release Version',
+            'message'      => $response['name'],
+            'messageColor' => 'green.600',
         ];
     }
 
@@ -49,7 +45,7 @@ final class DeploymentBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/deployment-version/{organization}/{project}/{definition}/{environment?}',
+            '/azure-devops/release/{organization}/{project}/{definition}/{environment?}',
         ];
     }
 
@@ -66,7 +62,7 @@ final class DeploymentBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/azure-pipelines/deployment-version/azuredevops-powershell/azuredevops-powershell/1' => 'deployment version',
+            '/azure-devops/release/azuredevops-powershell/azuredevops-powershell/1' => 'release version',
         ];
     }
 }
