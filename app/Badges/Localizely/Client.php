@@ -13,11 +13,14 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.localizely.com/v1')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $apiToken, string $projectId): array
     {
-        return $this->client->get('')->json();
+        return $this->client
+            ->withHeaders(['X-Api-Token' => $apiToken])
+            ->get("projects/{$projectId}/status")
+            ->json();
     }
 }

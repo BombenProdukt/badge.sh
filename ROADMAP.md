@@ -11,7 +11,6 @@
 - [jenkins](https://github.com/badges/shields/tree/master/services/jenkins)
 - [jira](https://github.com/badges/shields/tree/master/services/jira)
 - [librariesio](https://github.com/badges/shields/tree/master/services/librariesio)
-- [localizely](https://github.com/badges/shields/tree/master/services/localizely)
 - [nexus](https://github.com/badges/shields/tree/master/services/nexus)
 - [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)
 - [sonar](https://github.com/badges/shields/tree/master/services/sonar)
