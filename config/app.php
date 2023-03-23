@@ -266,7 +266,7 @@ return [
         App\Badges\FactorioModPortal\BadgeServiceProvider::class,
         App\Badges\FDroid\BadgeServiceProvider::class,
         App\Badges\Fedora\BadgeServiceProvider::class,
-        // App\Badges\Feedz\BadgeServiceProvider::class,
+        App\Badges\Feedz\BadgeServiceProvider::class,
         App\Badges\Flathub\BadgeServiceProvider::class,
         App\Badges\FreeCodeCamp\BadgeServiceProvider::class,
         // App\Badges\GalaxyToolShed\BadgeServiceProvider::class,

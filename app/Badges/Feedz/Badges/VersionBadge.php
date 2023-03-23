@@ -16,16 +16,14 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $organization, string $repository, string $packageName): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderVersion(head($this->client->items($organization, $repository, $packageName)));
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Feedz';
     }
 
     public function keywords(): array
@@ -36,7 +34,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/feedz/version/{organization}/{repository}/{packageName}',
         ];
     }
 
@@ -58,8 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/feedz/version/shieldstests/mongodb/MongoDB.Driver.Core' => 'version',
         ];
     }
 }
