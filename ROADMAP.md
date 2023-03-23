@@ -26,7 +26,6 @@
 - [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)
 - [reuse](https://github.com/badges/shields/tree/master/services/reuse)
 - [ros](https://github.com/badges/shields/tree/master/services/ros)
-- [scrutinizer](https://github.com/badges/shields/tree/master/services/scrutinizer)
 - [sonar](https://github.com/badges/shields/tree/master/services/sonar)
 - [teamcity](https://github.com/badges/shields/tree/master/services/teamcity)
 - [testspace](https://github.com/badges/shields/tree/master/services/testspace)

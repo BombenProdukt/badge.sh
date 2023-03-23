@@ -345,7 +345,7 @@ return [
         App\Badges\RubyGems\BadgeServiceProvider::class,
         // App\Badges\RunKit\BadgeServiceProvider::class,
         App\Badges\Scoop\BadgeServiceProvider::class,
-        // App\Badges\Scrutinizer\BadgeServiceProvider::class,
+        App\Badges\ScrutinizerCI\BadgeServiceProvider::class,
         App\Badges\SecurityHeaders\BadgeServiceProvider::class,
         App\Badges\Shardbox\BadgeServiceProvider::class,
         App\Badges\Snapcraft\BadgeServiceProvider::class,
