@@ -5,36 +5,30 @@ declare(strict_types=1);
 namespace App\Badges\Maintenance\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Maintenance\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class StaleBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
+    public function handle(string $year): array
     {
-        //
-    }
-
-    public function handle(string $appId): array
-    {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderText('stale', $year, 'blue.600');
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Maintenance';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::ACTIVITY];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/maintenance/stale/{year}',
         ];
     }
 
@@ -45,7 +39,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->whereNumber('year');
     }
 
     public function staticPreviews(): array
@@ -56,7 +50,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/maintenance/stale/2023' => 'stale',
         ];
     }
 }

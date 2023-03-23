@@ -15,7 +15,6 @@
 - [jira](https://github.com/badges/shields/tree/master/services/jira)
 - [librariesio](https://github.com/badges/shields/tree/master/services/librariesio)
 - [localizely](https://github.com/badges/shields/tree/master/services/localizely)
-- [maintenance](https://github.com/badges/shields/tree/master/services/maintenance)
 - [nexus](https://github.com/badges/shields/tree/master/services/nexus)
 - [nycrc](https://github.com/badges/shields/tree/master/services/nycrc)
 - [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)

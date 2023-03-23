@@ -5,38 +5,30 @@ declare(strict_types=1);
 namespace App\Badges\Maintenance\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Maintenance\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class MaintainedBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
+    public function handle(string $year): array
     {
-        //
-    }
-
-    public function handle(string $appId): array
-    {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderText('maintained', $year, 'green.600');
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Maintenance';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::ACTIVITY];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/maintenance/maintained/{year}',
         ];
     }
 
@@ -47,7 +39,7 @@ final class VersionBadge extends AbstractBadge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->whereNumber('year');
     }
 
     public function staticPreviews(): array
@@ -58,8 +50,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/maintenance/maintained/2023' => 'maintained',
         ];
     }
 }
