@@ -378,7 +378,7 @@ return [
         App\Badges\VPM\BadgeServiceProvider::class,
         // App\Badges\W3C\BadgeServiceProvider::class,
         App\Badges\WAPM\BadgeServiceProvider::class,
-        // App\Badges\Weblate\BadgeServiceProvider::class,
+        App\Badges\Weblate\BadgeServiceProvider::class,
         App\Badges\WhatPulse\BadgeServiceProvider::class,
         // App\Badges\WheelMap\BadgeServiceProvider::class,
         // App\Badges\WikiApiary\BadgeServiceProvider::class,

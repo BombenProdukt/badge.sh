@@ -32,4 +32,3 @@
 - [twitch](https://github.com/badges/shields/tree/master/services/twitch)
 - [visual-studio-app-center](https://github.com/badges/shields/tree/master/services/visual-studio-app-center)
 - [w3c](https://github.com/badges/shields/tree/master/services/w3c)
-- [weblate](https://github.com/badges/shields/tree/master/services/weblate)

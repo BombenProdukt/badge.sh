@@ -9,16 +9,16 @@ use App\Badges\Weblate\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class ProgressBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $project, string $component): array
+    public function handle(string $project): array
     {
-        return $this->renderLicense($this->client->component($project, $component)['license']);
+        return $this->renderPercentage('progress', $this->client->project($project)['translated_percent']);
     }
 
     public function service(): string
@@ -28,13 +28,13 @@ final class LicenseBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::METRICS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/weblate/license/{project}/{component}',
+            '/weblate/progress/{project}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/weblate/license/godot-engine/godot' => '',
+            '/weblate/progress/godot-engine' => 'progress',
         ];
     }
 }

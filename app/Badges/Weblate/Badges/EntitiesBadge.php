@@ -9,34 +9,32 @@ use App\Badges\Weblate\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class EntitiesBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $type): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderNumber($type, $this->client->entity($type)['count']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Weblate';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::METRICS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/weblate/entities/{type}',
         ];
     }
 
@@ -47,7 +45,7 @@ final class VersionBadge extends AbstractBadge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->whereIn('type', ['components', 'projects', 'users', 'languages']);
     }
 
     public function staticPreviews(): array
@@ -58,8 +56,10 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/weblate/entities/components' => 'components',
+            '/weblate/entities/languages'  => 'languages',
+            '/weblate/entities/projects'   => 'projects',
+            '/weblate/entities/users'      => 'users',
         ];
     }
 }

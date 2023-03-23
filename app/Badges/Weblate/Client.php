@@ -13,11 +13,26 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://hosted.weblate.org/api')->throw();
     }
 
-    public function get(string $appId): array
+    public function entity(string $type): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("{$type}/")->json();
+    }
+
+    public function component(string $project, string $component): array
+    {
+        return $this->client->get("components/{$project}/{$component}/")->json();
+    }
+
+    public function project(string $project): array
+    {
+        return $this->client->get("projects/{$project}/statistics/")->json();
+    }
+
+    public function user(string $user): array
+    {
+        return $this->client->get("users/{$user}/statistics/")->json();
     }
 }
