@@ -13,11 +13,22 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.steampowered.com')->asForm()->throw();
     }
 
-    public function get(string $appId): array
+    public function collection(string $collectionId): array
     {
-        return $this->client->get('')->json();
+        return $this->client->post('ISteamRemoteStorage/GetCollectionDetails/v1?format=json', [
+            'collectioncount'     => '1',
+            'publishedfileids[0]' => $collectionId,
+        ])->json('response')['collectiondetails'][0];
+    }
+
+    public function file(string $fileId): array
+    {
+        return $this->client->post('ISteamRemoteStorage/GetPublishedFileDetails/v1?format=json', [
+            'itemcount'           => 1,
+            'publishedfileids[0]' => $fileId,
+        ])->json('response')['publishedfiledetails'][0];
     }
 }

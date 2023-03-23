@@ -46,12 +46,4 @@ final class BadgeServiceProvider extends ServiceProvider
             }
         });
     }
-
-    /**
-     * @todo Replace this with a view composer or component.
-     */
-    public static function examples(): array
-    {
-        return app('badge.service')->dynamicPreviews();
-    }
 }

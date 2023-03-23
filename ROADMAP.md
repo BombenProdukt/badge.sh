@@ -34,7 +34,6 @@
 - [ros](https://github.com/badges/shields/tree/master/services/ros)
 - [scrutinizer](https://github.com/badges/shields/tree/master/services/scrutinizer)
 - [sonar](https://github.com/badges/shields/tree/master/services/sonar)
-- [steam](https://github.com/badges/shields/tree/master/services/steam)
 - [teamcity](https://github.com/badges/shields/tree/master/services/teamcity)
 - [testspace](https://github.com/badges/shields/tree/master/services/testspace)
 - [twitch](https://github.com/badges/shields/tree/master/services/twitch)
