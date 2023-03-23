@@ -329,7 +329,7 @@ return [
         App\Badges\Packagist\BadgeServiceProvider::class,
         App\Badges\PeerTube\BadgeServiceProvider::class,
         App\Badges\PingPong\BadgeServiceProvider::class,
-        // App\Badges\Piwheels\BadgeServiceProvider::class,
+        App\Badges\Piwheels\BadgeServiceProvider::class,
         // App\Badges\POEditor\BadgeServiceProvider::class,
         App\Badges\Polymart\BadgeServiceProvider::class,
         App\Badges\PowerShellGallery\BadgeServiceProvider::class,

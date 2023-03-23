@@ -20,7 +20,6 @@
 - [maintenance](https://github.com/badges/shields/tree/master/services/maintenance)
 - [nexus](https://github.com/badges/shields/tree/master/services/nexus)
 - [nycrc](https://github.com/badges/shields/tree/master/services/nycrc)
-- [piwheels](https://github.com/badges/shields/tree/master/services/piwheels)
 - [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)
 - [reuse](https://github.com/badges/shields/tree/master/services/reuse)
 - [ros](https://github.com/badges/shields/tree/master/services/ros)
