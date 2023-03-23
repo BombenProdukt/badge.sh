@@ -9,21 +9,21 @@ use App\Badges\NYCRC\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class LinesBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $user, string $repo): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderText('lines', $this->client->get($user, $repo)['lines'] ?? 0);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return '.nycrc';
     }
 
     public function keywords(): array
@@ -34,7 +34,7 @@ final class LicenseBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/nycrc/lines/{user}/{repo}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/nycrc/lines/yargs/yargs' => 'lines',
         ];
     }
 }

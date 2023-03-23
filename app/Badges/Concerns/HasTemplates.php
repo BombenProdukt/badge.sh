@@ -327,7 +327,7 @@ trait HasTemplates
     {
         return [
             'label'        => $label,
-            'message'      => $message,
+            'message'      => (string) $message,
             'messageColor' => $messageColor,
         ];
     }

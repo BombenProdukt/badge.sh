@@ -4,20 +4,16 @@ declare(strict_types=1);
 
 namespace App\Badges\NYCRC;
 
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Support\Facades\Http;
+use GrahamCampbell\GitHub\Facades\GitHub;
 
+// @todo: .nycrc.json
+// @todo: .nycrc.yaml
+// @todo: .nycrc.yml
+// @todo: package.json
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function get(string $user, string $repo)
     {
-        $this->client = Http::baseUrl('')->throw();
-    }
-
-    public function get(string $appId): array
-    {
-        return $this->client->get('')->json();
+        return json_decode(base64_decode(GitHub::repos()->contents()->show($user, $repo, '.nycrc')['content']), true, JSON_THROW_ON_ERROR);
     }
 }

@@ -16,7 +16,6 @@
 - [librariesio](https://github.com/badges/shields/tree/master/services/librariesio)
 - [localizely](https://github.com/badges/shields/tree/master/services/localizely)
 - [nexus](https://github.com/badges/shields/tree/master/services/nexus)
-- [nycrc](https://github.com/badges/shields/tree/master/services/nycrc)
 - [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)
 - [sonar](https://github.com/badges/shields/tree/master/services/sonar)
 - [teamcity](https://github.com/badges/shields/tree/master/services/teamcity)

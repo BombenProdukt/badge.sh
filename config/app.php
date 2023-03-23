@@ -313,7 +313,7 @@ return [
         App\Badges\NPM\BadgeServiceProvider::class,
         App\Badges\NPMS\BadgeServiceProvider::class,
         App\Badges\NuGet\BadgeServiceProvider::class,
-        // App\Badges\NYCRC\BadgeServiceProvider::class,
+        App\Badges\NYCRC\BadgeServiceProvider::class,
         App\Badges\OhDear\BadgeServiceProvider::class,
         App\Badges\OPAM\BadgeServiceProvider::class,
         App\Badges\OpenCollective\BadgeServiceProvider::class,
