@@ -9,32 +9,43 @@ use App\Badges\W3C\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class StatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        $errors = collect($this->client->get($this->getRequestData('url'))['messages'])
+            ->filter(fn ($message) => in_array($message['type'], ['error', 'warning']))
+            ->count();
+
+        return $this->renderStatus('w3c', $errors ? 'failed' : 'passed');
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'W3C Validation';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::ANALYSIS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/w3c/status',
+        ];
+    }
+
+    public function routeRules(): array
+    {
+        return [
+            'url' => ['required', 'url'],
         ];
     }
 
@@ -56,7 +67,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/w3c/status?url=https://youtube.com/' => 'status',
         ];
     }
 }

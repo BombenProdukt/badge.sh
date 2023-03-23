@@ -4,20 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\W3C;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function get(string $targetUrl)
     {
-        $this->client = Http::baseUrl('')->throw();
-    }
-
-    public function get(string $appId): array
-    {
-        return $this->client->get('')->json();
+        return Http::get('https://validator.w3.org/nu/?doc='.urlencode($targetUrl).'&out=json')->throw()->json();
     }
 }

@@ -375,7 +375,7 @@ return [
         // App\Badges\VisualStudioAppCenter\BadgeServiceProvider::class,
         App\Badges\VisualStudioMarketplace\BadgeServiceProvider::class,
         App\Badges\VPM\BadgeServiceProvider::class,
-        // App\Badges\W3C\BadgeServiceProvider::class,
+        App\Badges\W3C\BadgeServiceProvider::class,
         App\Badges\WAPM\BadgeServiceProvider::class,
         App\Badges\Weblate\BadgeServiceProvider::class,
         App\Badges\WhatPulse\BadgeServiceProvider::class,
