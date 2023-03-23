@@ -9,7 +9,7 @@ use App\Badges\Spiget\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $resourceId): array
     {
-        return $this->renderVersion($this->client->latestVersion($resourceId)['name']);
+        return $this->renderDownloads($this->client->latestVersion($resourceId)['downloads']);
     }
 
     public function service(): string
@@ -28,13 +28,13 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/spiget/version/{resourceId}',
+            '/spiget/downloads/{resourceId}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/spiget/version/9089' => 'version',
+            '/spiget/downloads/9089' => 'downloads',
         ];
     }
 }

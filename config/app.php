@@ -353,7 +353,7 @@ return [
         App\Badges\Sourceforge\BadgeServiceProvider::class,
         App\Badges\Sourcegraph\BadgeServiceProvider::class,
         App\Badges\Spack\BadgeServiceProvider::class,
-        // App\Badges\Spiget\BadgeServiceProvider::class,
+        App\Badges\Spiget\BadgeServiceProvider::class,
         App\Badges\StackExchange\BadgeServiceProvider::class,
         App\Badges\Static\BadgeServiceProvider::class,
         App\Badges\Steam\BadgeServiceProvider::class,

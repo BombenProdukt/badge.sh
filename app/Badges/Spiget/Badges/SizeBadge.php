@@ -9,7 +9,7 @@ use App\Badges\Spiget\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class SizeBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,13 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $resourceId): array
     {
-        return $this->renderVersion($this->client->latestVersion($resourceId)['name']);
+        $file = $this->client->resource($resourceId)['file'];
+
+        if ($file['type'] === 'external') {
+            return $this->renderText('size', 'resource hosted externally', 'gray.600');
+        }
+
+        return $this->renderText('size', $file['size'].' '.$file['sizeUnit']);
     }
 
     public function service(): string
@@ -28,13 +34,13 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::SIZE];
     }
 
     public function routePaths(): array
     {
         return [
-            '/spiget/version/{resourceId}',
+            '/spiget/size/{resourceId}',
         ];
     }
 
@@ -56,7 +62,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/spiget/version/9089' => 'version',
+            '/spiget/size/9089' => 'size',
         ];
     }
 }

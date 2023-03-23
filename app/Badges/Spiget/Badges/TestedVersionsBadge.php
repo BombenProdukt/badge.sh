@@ -9,32 +9,40 @@ use App\Badges\Spiget\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class TestedVersionsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $resourceId): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        $testedVersions = $this->client->resource($resourceId)['testedVersions'];
+        $earliest       = $testedVersions[0];
+        $latest         = end($testedVersions);
+
+        if ($earliest === $latest) {
+            return $this->renderVersion($earliest);
+        }
+
+        return $this->renderVersion("{$earliest}-{$latest}", 'tested versions');
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Spiget';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::VERSION];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/spiget/tested-versions/{resourceId}',
         ];
     }
 
@@ -56,7 +64,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/spiget/tested-versions/9089' => 'tested versions',
         ];
     }
 }

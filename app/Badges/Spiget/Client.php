@@ -13,11 +13,16 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.spiget.org/v2')->throw();
     }
 
-    public function get(string $appId): array
+    public function resource(string $resourceId): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("resources/{$resourceId}")->json();
+    }
+
+    public function latestVersion(string $resourceId): array
+    {
+        return $this->client->get("resources/{$resourceId}/versions/latest")->json();
     }
 }
