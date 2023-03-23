@@ -9,7 +9,6 @@
 - [azure-devops](https://github.com/badges/shields/tree/master/services/azure-devops)
 - [bitbucket](https://github.com/badges/shields/tree/master/services/bitbucket)
 - [discourse](https://github.com/badges/shields/tree/master/services/discourse)
-- [galaxytoolshed](https://github.com/badges/shields/tree/master/services/galaxytoolshed)
 - [gerrit](https://github.com/badges/shields/tree/master/services/gerrit)
 - [gradle-plugin-portal](https://github.com/badges/shields/tree/master/services/gradle-plugin-portal)
 - [jenkins](https://github.com/badges/shields/tree/master/services/jenkins)

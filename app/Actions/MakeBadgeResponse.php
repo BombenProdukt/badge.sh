@@ -74,7 +74,7 @@ final class MakeBadgeResponse
             $badge = Badger::make();
             $badge->withLabel($request->segment(1));
             $badge->withLabelColor('slate.900');
-            $badge->withStatus('400');
+            $badge->withStatus('bad request');
             $badge->withStatusColor('red.600');
             $badge->withStyle($request->query('style', 'classic'));
 
