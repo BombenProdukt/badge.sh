@@ -9,34 +9,32 @@ use App\Badges\Gerrit\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class StatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $changeId): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderStatus('status', $this->client->get($changeId)['status']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Gerrit Code Review';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::LICENSE];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/gerrit/status/{changeId}',
         ];
     }
 
@@ -58,8 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/gerrit/status/1011478' => 'status',
         ];
     }
 }

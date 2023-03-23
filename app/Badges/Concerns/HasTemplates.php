@@ -318,7 +318,7 @@ trait HasTemplates
     {
         return [
             'label'        => strtolower($service),
-            'message'      => $status,
+            'message'      => strtolower($status),
             'messageColor' => DetermineColorByStatus::execute($status),
         ];
     }

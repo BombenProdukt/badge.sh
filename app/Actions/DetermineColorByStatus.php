@@ -9,6 +9,7 @@ final class DetermineColorByStatus
     public static function execute(string $status): string
     {
         return match (strtolower($status)) {
+            'abandoned'              => 'red.600',
             'aborted'                => 'blue.600',
             'active'                 => 'green.600',
             'archived'               => 'red.600',
@@ -33,6 +34,8 @@ final class DetermineColorByStatus
             'maintenance mode'       => 'gray.600',
             'maintenance'            => 'gray.600',
             'major issues'           => 'orange.600',
+            'merged'                 => 'green.600',
+            'new'                    => 'blue.600',
             'no builds'              => 'blue.600',
             'no tests'               => 'blue.600',
             'non-compliant'          => 'red.600',

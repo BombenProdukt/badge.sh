@@ -270,7 +270,7 @@ return [
         App\Badges\Flathub\BadgeServiceProvider::class,
         App\Badges\FreeCodeCamp\BadgeServiceProvider::class,
         App\Badges\GalaxyToolShed\BadgeServiceProvider::class,
-        // App\Badges\Gerrit\BadgeServiceProvider::class,
+        App\Badges\Gerrit\BadgeServiceProvider::class,
         App\Badges\GitHub\BadgeServiceProvider::class,
         App\Badges\GitLab\BadgeServiceProvider::class,
         App\Badges\Gitter\BadgeServiceProvider::class,

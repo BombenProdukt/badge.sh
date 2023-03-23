@@ -13,11 +13,11 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://android-review.googlesource.com')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $changeId): array
     {
-        return $this->client->get('')->json();
+        return json_decode(explode("\n", $this->client->get("changes/{$changeId}")->body())[1], true, JSON_THROW_ON_ERROR);
     }
 }
