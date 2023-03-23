@@ -8,6 +8,7 @@ use App\Badges\AbstractBadge;
 use App\Badges\ROS\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
+use Spatie\Regex\Regex;
 
 final class VersionBadge extends AbstractBadge
 {
@@ -16,16 +17,23 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $distro, string $repoName): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $tags = collect($this->client->refs($distro))
+            ->map(fn (array $version) => $version['node']['name'])
+            ->filter(fn (string $name) => Regex::match('|^\d+-\d+-\d+$|', $name)->hasMatch())
+            ->sort()
+            ->reverse();
 
-        return $this->renderVersion($version);
+        return $this->renderVersion(
+            $this->client->content($distro, $tags[0] ? "refs/tags/{$distro}/{$tags[0]}" : 'refs/heads/master')['repositories'][$repoName]['release']['version'],
+            'ros | humble',
+        );
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'ROS Index';
     }
 
     public function keywords(): array
@@ -36,7 +44,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/ros/version/{distro}/{repoName}',
         ];
     }
 
@@ -58,8 +66,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/ros/version/humble/vision_msgs' => 'version',
         ];
     }
 }

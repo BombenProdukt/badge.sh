@@ -4,20 +4,24 @@ declare(strict_types=1);
 
 namespace App\Badges\ROS;
 
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Support\Facades\Http;
+use GrahamCampbell\GitHub\Facades\GitHub;
+use Symfony\Component\Yaml\Yaml;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function refs(string $distro): array
     {
-        $this->client = Http::baseUrl('')->throw();
+        return GitHub::connection('graphql')->api('graphql')->execute(
+            'query ($refPrefix: String!) { repository(owner: "ros", name: "rosdistro") { refs( refPrefix: $refPrefix first: 30 orderBy: { field: TAG_COMMIT_DATE, direction: DESC } ) { edges { node { name } } } } }',
+            ['refPrefix' => "refs/tags/{$distro}/"],
+        )['data']['repository']['refs']['edges'];
     }
 
-    public function get(string $appId): array
+    public function content(string $distro, string $ref): array
     {
-        return $this->client->get('')->json();
+        return Yaml::parse(GitHub::connection('graphql')->api('graphql')->execute(
+            'query ($expression: String!) { repository(owner: "ros", name: "rosdistro") { object(expression: $expression) { ... on Blob { text } } } }',
+            ['expression' => "{$ref}:{$distro}/distribution.yaml"],
+        )['data']['repository']['object']['text']);
     }
 }
