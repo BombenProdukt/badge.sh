@@ -26,7 +26,6 @@
 - [node](https://github.com/badges/shields/tree/master/services/node)
 - [nycrc](https://github.com/badges/shields/tree/master/services/nycrc)
 - [obs](https://github.com/badges/shields/tree/master/services/obs)
-- [ore](https://github.com/badges/shields/tree/master/services/ore)
 - [piwheels](https://github.com/badges/shields/tree/master/services/piwheels)
 - [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)
 - [resharper](https://github.com/badges/shields/tree/master/services/resharper)

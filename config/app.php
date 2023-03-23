@@ -322,7 +322,7 @@ return [
         App\Badges\OpenSSFScorecard\BadgeServiceProvider::class,
         App\Badges\OpenVSX\BadgeServiceProvider::class,
         App\Badges\OPM\BadgeServiceProvider::class,
-        // App\Badges\Ore\BadgeServiceProvider::class,
+        App\Badges\Ore\BadgeServiceProvider::class,
         App\Badges\OSSLifecycle\BadgeServiceProvider::class,
         App\Badges\PackageControl\BadgeServiceProvider::class,
         App\Badges\PackagePhobia\BadgeServiceProvider::class,

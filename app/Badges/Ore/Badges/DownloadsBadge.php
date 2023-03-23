@@ -9,7 +9,7 @@ use App\Badges\Ore\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,7 +18,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function handle(string $pluginId): array
     {
-        return $this->renderLicense($this->client->get($pluginId)['settings']['license']['name']);
+        return $this->renderDownloads($this->client->get($pluginId)['stats']['downloads']);
     }
 
     public function service(): string
@@ -28,13 +28,13 @@ final class LicenseBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/ore/license/{pluginId}',
+            '/ore/downloads/{pluginId}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/ore/license/nucleus' => 'license',
+            '/ore/downloads/nucleus' => 'downloads',
         ];
     }
 }

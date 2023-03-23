@@ -16,16 +16,14 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $pluginId): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderVersion($this->client->get($pluginId)['promotedVersions'][0]['version']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Ore';
     }
 
     public function keywords(): array
@@ -36,7 +34,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/ore/version/{pluginId}',
         ];
     }
 
@@ -58,8 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/ore/version/nucleus' => 'version',
         ];
     }
 }
