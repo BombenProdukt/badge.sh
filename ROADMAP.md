@@ -15,6 +15,5 @@
 - [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)
 - [sonar](https://github.com/badges/shields/tree/master/services/sonar)
 - [teamcity](https://github.com/badges/shields/tree/master/services/teamcity)
-- [testspace](https://github.com/badges/shields/tree/master/services/testspace)
 - [twitch](https://github.com/badges/shields/tree/master/services/twitch)
 - [visual-studio-app-center](https://github.com/badges/shields/tree/master/services/visual-studio-app-center)
