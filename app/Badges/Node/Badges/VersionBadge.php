@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Node\Badges;
 
+use App\Actions\DetermineColorByVersion;
 use App\Badges\AbstractBadge;
 use App\Badges\Node\Client;
 use App\Enums\Category;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Arr;
 
 final class VersionBadge extends AbstractBadge
 {
@@ -16,16 +19,20 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $package, ?string $tag = 'latest'): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $version = Arr::get($this->client->get($package, $tag, $this->getRequestData('registry')), 'engines.node');
 
-        return $this->renderVersion($version);
+        return $this->renderText(
+            $tag === 'latest' ? $package : "{$package}@{$tag}",
+            $version,
+            DetermineColorByVersion::execute($version),
+        );
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Node';
     }
 
     public function keywords(): array
@@ -36,7 +43,14 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/node/version/{package}/{tag?}',
+        ];
+    }
+
+    public function routeRules(): array
+    {
+        return [
+            'registry' => ['nullable', 'url'],
         ];
     }
 
@@ -47,7 +61,7 @@ final class VersionBadge extends AbstractBadge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
     public function staticPreviews(): array
@@ -58,8 +72,12 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/node/version/passport'                                                  => 'node version',
+            '/node/version/passport/latest'                                           => 'node version (tag)',
+            '/node/version/passport/latest?registry=https://registry.npmjs.com'       => 'node version (tag, custom registry)',
+            '/node/version/@stdlib/stdlib'                                            => 'node version (scoped)',
+            '/node/version/@stdlib/stdlib/latest'                                     => 'node version (scoped, tag)',
+            '/node/version/@stdlib/stdlib/latest?registry=https://registry.npmjs.com' => 'node version (scoped, tag, custom registry)',
         ];
     }
 }

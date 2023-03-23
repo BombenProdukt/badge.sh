@@ -4,20 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Node;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function get(string $package, ?string $tag, ?string $registry): array
     {
-        $this->client = Http::baseUrl('')->throw();
-    }
-
-    public function get(string $appId): array
-    {
-        return $this->client->get('')->json();
+        return Http::baseUrl($registry ?? 'https://registry.npmjs.org')->throw()->get("{$package}/{$tag}")->json();
     }
 }

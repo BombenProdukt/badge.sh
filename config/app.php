@@ -309,7 +309,7 @@ return [
         App\Badges\MyGet\BadgeServiceProvider::class,
         // App\Badges\Netlify\BadgeServiceProvider::class,
         // App\Badges\Nexus\BadgeServiceProvider::class,
-        // App\Badges\Node\BadgeServiceProvider::class,
+        App\Badges\Node\BadgeServiceProvider::class,
         App\Badges\NodePing\BadgeServiceProvider::class,
         App\Badges\NPM\BadgeServiceProvider::class,
         App\Badges\NPMS\BadgeServiceProvider::class,
