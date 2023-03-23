@@ -2,39 +2,39 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Resharper\Badges;
+namespace App\Badges\ReSharper\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\Resharper\Client;
+use App\Badges\ReSharper\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class TotalDownloadsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $project, ?string $channel = 'latest'): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderDownloads($this->client->get($project, $channel !== 'latest')->filterXPath('//m:properties/d:DownloadCount')->text());
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'JetBrains ReSharper Plugins';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/resharper/downloads/{project}/{channel?}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/resharper/downloads/git' => 'total downloads',
         ];
     }
 }
