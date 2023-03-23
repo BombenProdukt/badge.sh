@@ -7,25 +7,29 @@ namespace App\Badges\MavenMetadata\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\MavenMetadata\Client;
 use App\Enums\Category;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Http;
 
-final class VersionBadge extends AbstractBadge
+final class UrlBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $hostname, string $pathname): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $response = Http::get("https://{$hostname}/{$pathname}")->throw()->body();
 
-        return $this->renderVersion($version);
+        preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
+
+        return $this->renderVersion($matches[1]);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Maven Metadata';
     }
 
     public function keywords(): array
@@ -36,7 +40,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/maven-metadata/version/{hostname}/{pathname}',
         ];
     }
 
@@ -47,7 +51,7 @@ final class VersionBadge extends AbstractBadge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('pathname', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -58,8 +62,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/maven-metadata/version/repo1.maven.org/maven2/com/google/code/gson/gson/maven-metadata.xml' => 'version (maven metadata url)',
         ];
     }
 }
