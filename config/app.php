@@ -340,7 +340,7 @@ return [
         App\Badges\Reddit\BadgeServiceProvider::class,
         App\Badges\Repology\BadgeServiceProvider::class,
         App\Badges\ReSharper\BadgeServiceProvider::class,
-        // App\Badges\REUSE\BadgeServiceProvider::class,
+        App\Badges\REUSE\BadgeServiceProvider::class,
         // App\Badges\ROS\BadgeServiceProvider::class,
         App\Badges\RubyGems\BadgeServiceProvider::class,
         // App\Badges\RunKit\BadgeServiceProvider::class,

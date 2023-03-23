@@ -7,36 +7,35 @@ namespace App\Badges\REUSE\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\REUSE\Client;
 use App\Enums\Category;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class ComplianceBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $remote): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderStatus('reuse', $this->client->get($remote)['status']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'REUSE';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::LICENSE];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/reuse/compliance/{remote}',
         ];
     }
 
@@ -47,7 +46,7 @@ final class VersionBadge extends AbstractBadge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('remote', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -58,8 +57,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/reuse/compliance/github.com/fsfe/reuse-tool' => 'compliance',
         ];
     }
 }
