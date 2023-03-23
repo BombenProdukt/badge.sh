@@ -7,8 +7,6 @@ namespace App\Badges\AzurePipelines\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\AzurePipelines\Client;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
 final class StatusBadge extends AbstractBadge
@@ -18,9 +16,9 @@ final class StatusBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $project, string $definition, ?string $branch = null): array
+    public function handle(string $organization, string $project, string $definition, ?string $branch = null): array
     {
-        $svg = Http::get("https://dev.azure.com/{$project}/_apis/build/status/{$definition}", ['branchName' => $branch])->body();
+        $svg = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/status/{$definition}", ['branchName' => $branch])->body();
 
         preg_match_all('/fill-opacity=[^>]*?>([^<]+)<\//i', $svg, $texts);
         preg_match('/<rect[^>]*?fill="([^"]+)"[^>]*?x=/i', $svg, $colors);
@@ -45,18 +43,13 @@ final class StatusBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/status/{project}/{definition}/{branch?}',
+            '/azure-pipelines/status/{organization}/{project}/{definition}/{branch?}',
         ];
     }
 
     public function routeParameters(): array
     {
         return [];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array

@@ -7,8 +7,6 @@ namespace App\Badges\AzurePipelines\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\AzurePipelines\Client;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -26,16 +24,16 @@ final class BuildTestResultBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $project, string $definition, ?string $branch = null): array
+    public function handle(string $organization, string $project, string $definition, ?string $branch = null): array
     {
-        $latestBuild = Http::get("https://dev.azure.com/{$project}/_apis/build/builds", array_merge([
+        $latestBuild = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/builds", array_merge([
             'api-version'  => '6.0',
             '$top'         => '1',
             'definitionId' => $definition,
             'statusFilter' => 'completed',
         ], $branch ? ['branchName' => "refs/heads/{$branch}"] : []))->json('value.0');
 
-        $response = Http::get("https://dev.azure.com/{$project}/_apis/test/ResultSummaryByBuild", [
+        $response = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/test/ResultSummaryByBuild", [
             'api-version'  => '6.0-preview',
             'buildId'      => $latestBuild['id'],
         ])->json('aggregatedResultsAnalysis');
@@ -78,18 +76,13 @@ final class BuildTestResultBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/azure-pipelines/build-test/{project}/{definition}/{branch?}',
+            '/azure-pipelines/build-test/{organization}/{project}/{definition}/{branch?}',
         ];
     }
 
     public function routeParameters(): array
     {
         return [];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
