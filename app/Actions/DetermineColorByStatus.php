@@ -35,6 +35,7 @@ final class DetermineColorByStatus
             'maintenance'            => 'gray.600',
             'major issues'           => 'orange.600',
             'merged'                 => 'green.600',
+            'never built'            => 'blue.600',
             'new'                    => 'blue.600',
             'no builds'              => 'blue.600',
             'no tests'               => 'blue.600',

@@ -214,7 +214,7 @@ return [
         App\Badges\AzurePipelines\BadgeServiceProvider::class,
         App\Badges\Badgesize\BadgeServiceProvider::class,
         App\Badges\Bit\BadgeServiceProvider::class,
-        // App\Badges\Bitbucket\BadgeServiceProvider::class,
+        App\Badges\Bitbucket\BadgeServiceProvider::class,
         App\Badges\Bitrise\BadgeServiceProvider::class,
         App\Badges\BountySource\BadgeServiceProvider::class,
         App\Badges\Bower\BadgeServiceProvider::class,
