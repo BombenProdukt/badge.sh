@@ -9,32 +9,36 @@ use App\Badges\JetBrains\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class RatingBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $pluginId): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        if (is_numeric($pluginId)) {
+            return $this->renderRating($this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//rating')->text());
+        }
+
+        return $this->renderRating($this->client->rating($pluginId)['meanRating']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'JetBrains Plugins';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::RATING];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/jetbrains/rating/{pluginId}',
         ];
     }
 
@@ -56,7 +60,8 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/jetbrains/rating/13441-laravel-idea' => 'rating',
+            '/jetbrains/rating/9630'               => 'rating (legacy plugin)',
         ];
     }
 }

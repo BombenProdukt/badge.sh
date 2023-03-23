@@ -282,7 +282,7 @@ trait HasTemplates
     {
         return [
             'label'        => 'rating',
-            'message'      => FormatNumber::execute($value),
+            'message'      => FormatNumber::execute((float) $value),
             'messageColor' => 'green.600',
         ];
     }

@@ -9,7 +9,7 @@ use App\Badges\JetBrains\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class StarsBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -19,10 +19,10 @@ final class VersionBadge extends AbstractBadge
     public function handle(string $pluginId): array
     {
         if (is_numeric($pluginId)) {
-            return $this->renderVersion($this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//version')->text());
+            return $this->renderStars('rating', $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//rating')->text());
         }
 
-        return $this->renderVersion($this->client->updates($pluginId)[0]['version']);
+        return $this->renderStars('rating', $this->client->rating($pluginId)['meanRating']);
     }
 
     public function service(): string
@@ -32,13 +32,13 @@ final class VersionBadge extends AbstractBadge
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::RATING];
     }
 
     public function routePaths(): array
     {
         return [
-            '/jetbrains/version/{pluginId}',
+            '/jetbrains/stars/{pluginId}',
         ];
     }
 
@@ -60,8 +60,8 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/jetbrains/version/13441-laravel-idea' => 'version',
-            '/jetbrains/version/9630'               => 'version (legacy plugin)',
+            '/jetbrains/stars/13441-laravel-idea' => 'stars',
+            '/jetbrains/stars/9630'               => 'stars (legacy plugin)',
         ];
     }
 }
