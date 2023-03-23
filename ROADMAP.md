@@ -23,7 +23,6 @@
 - [maven-metadata](https://github.com/badges/shields/tree/master/services/maven-metadata)
 - [nexus](https://github.com/badges/shields/tree/master/services/nexus)
 - [nycrc](https://github.com/badges/shields/tree/master/services/nycrc)
-- [obs](https://github.com/badges/shields/tree/master/services/obs)
 - [piwheels](https://github.com/badges/shields/tree/master/services/piwheels)
 - [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)
 - [resharper](https://github.com/badges/shields/tree/master/services/resharper)

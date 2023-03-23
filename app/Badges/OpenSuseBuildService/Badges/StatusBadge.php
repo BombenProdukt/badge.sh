@@ -2,39 +2,39 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\OBS\Badges;
+namespace App\Badges\OpenSuseBuildService\Badges;
 
 use App\Badges\AbstractBadge;
-use App\Badges\OBS\Client;
+use App\Badges\OpenSuseBuildService\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class StatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $project, string $packageName, string $repository, string $arch): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        return $this->renderStatus('build status', $this->client->get($project, $packageName, $repository, $arch)['License']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'openSUSE Build Service';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::BUILD];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/open-suse-build-service/status/{project}/{packageName}/{repository}/{arch}',
         ];
     }
 
@@ -56,7 +56,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/open-suse-build-service/status/openSUSE:Tools/osc/Debian_111/x86_64' => 'build status',
         ];
     }
 }

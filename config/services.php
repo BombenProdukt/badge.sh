@@ -31,6 +31,11 @@ return [
         'scheme'   => 'https',
     ],
 
+    'open_suse_build_service' => [
+        'username' => env('OPEN_SUSE_BUILD_SERVICE_PASSWORD'),
+        'password' => env('OPEN_SUSE_BUILD_SERVICE_USERNAME'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
