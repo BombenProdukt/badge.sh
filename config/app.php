@@ -348,7 +348,7 @@ return [
         App\Badges\Shardbox\BadgeServiceProvider::class,
         App\Badges\Snapcraft\BadgeServiceProvider::class,
         App\Badges\Snyk\BadgeServiceProvider::class,
-        // App\Badges\Sonar\BadgeServiceProvider::class,
+        App\Badges\Sonar\BadgeServiceProvider::class,
         App\Badges\Sourceforge\BadgeServiceProvider::class,
         App\Badges\Sourcegraph\BadgeServiceProvider::class,
         App\Badges\Spack\BadgeServiceProvider::class,
@@ -399,7 +399,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'BadgeService' => App\Facades\BadgeService::class,
+        //
     ])->toArray(),
 
 ];

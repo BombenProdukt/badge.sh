@@ -2088,16 +2088,16 @@
         },
         {
             "name": "iconify/json",
-            "version": "2.2.38",
+            "version": "2.2.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iconify/icon-sets.git",
-                "reference": "b9ab42d6893b3cafc2a46bb9e3861d3300602a7a"
+                "reference": "b40f3acf98cc735743841459ee0eb96598b9cb9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iconify/icon-sets/zipball/b9ab42d6893b3cafc2a46bb9e3861d3300602a7a",
-                "reference": "b9ab42d6893b3cafc2a46bb9e3861d3300602a7a",
+                "url": "https://api.github.com/repos/iconify/icon-sets/zipball/b40f3acf98cc735743841459ee0eb96598b9cb9f",
+                "reference": "b40f3acf98cc735743841459ee0eb96598b9cb9f",
                 "shasum": ""
             },
             "type": "library",
@@ -2114,9 +2114,9 @@
             "homepage": "https://iconify.design/icon-sets/",
             "support": {
                 "issues": "https://github.com/iconify/icon-sets/issues",
-                "source": "https://github.com/iconify/icon-sets/tree/2.2.38"
+                "source": "https://github.com/iconify/icon-sets/tree/2.2.39"
             },
-            "time": "2023-03-22T07:24:28+00:00"
+            "time": "2023-03-24T07:07:51+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",

@@ -21,7 +21,7 @@ final class VersionBadge extends AbstractBadge
         return $this->renderVersion(
             $this->client->get(
                 $this->getRequestData('instance'),
-                $this->getRequestData('instanceVersion'),
+                $this->getRequestData('nexusVersion'),
                 $this->getRequestData('query'),
                 $repo,
                 $groupId,
@@ -50,9 +50,9 @@ final class VersionBadge extends AbstractBadge
     public function routeRules(): array
     {
         return [
-            'instance'        => ['required', 'url'],
-            'instanceVersion' => ['required', 'in:2,3'],
-            'query'           => ['nullable', 'string'],
+            'instance'     => ['required', 'url'],
+            'nexusVersion' => ['required', 'in:2,3'],
+            'query'        => ['nullable', 'string'],
         ];
     }
 

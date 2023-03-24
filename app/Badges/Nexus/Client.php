@@ -9,9 +9,9 @@ use Throwable;
 
 final class Client
 {
-    public function get(string $instance, string $instanceVersion, string $query, string $repo, string $groupId, string $artifactId): string
+    public function get(string $instance, string $inexusVersion, string $query, string $repo, string $groupId, string $artifactId): string
     {
-        if ($instanceVersion === '2') {
+        if ($inexusVersion === '2') {
             try {
                 return $this->nexus2($instance, $query, $repo, $groupId, $artifactId);
             } catch (Throwable) {
