@@ -284,7 +284,7 @@ return [
         App\Badges\HSTS\BadgeServiceProvider::class,
         App\Badges\HTTPS\BadgeServiceProvider::class,
         App\Badges\JCenter\BadgeServiceProvider::class,
-        // App\Badges\Jenkins\BadgeServiceProvider::class,
+        App\Badges\Jenkins\BadgeServiceProvider::class,
         App\Badges\JetBrains\BadgeServiceProvider::class,
         // App\Badges\Jira\BadgeServiceProvider::class,
         App\Badges\JitPack\BadgeServiceProvider::class,
