@@ -12,11 +12,16 @@ final class MembersBadge extends AbstractBadge
 {
     public function handle(string $inviteCode): array
     {
-        $response = $this->client->get($inviteCode);
+        return [
+            'count' => $this->client->get($inviteCode)['approximate_member_count'],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => $response['guild']['name'] ?? 'discord',
-            'message'      => FormatNumber::execute($response['approximate_member_count']).' members',
+            'message'      => FormatNumber::execute($properties['count']).' members',
             'messageColor' => '7289DA',
         ];
     }

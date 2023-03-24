@@ -10,9 +10,14 @@ final class CoverageBadge extends AbstractBadge
 {
     public function handle(string $metric, string $component, string $branch): array
     {
-        $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch);
+        return [
+            'percentage' => $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch)['coverage'],
+        ];
+    }
 
-        return $this->renderCoverage($response['coverage']);
+    public function render(array $properties): array
+    {
+        return $this->renderCoverage($properties['percentage']);
     }
 
     public function keywords(): array

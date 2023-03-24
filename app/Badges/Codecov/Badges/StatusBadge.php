@@ -12,9 +12,14 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $service, string $repo, ?string $branch = null): array
     {
-        $response = $this->client->get($service, $repo, $branch);
+        return [
+            'percentage' => $this->client->get($service, $repo, $branch)['commit']['totals']['c'],
+        ];
+    }
 
-        return $this->renderCoverage($response['commit']['totals']['c']);
+    public function render(array $properties): array
+    {
+        return $this->renderCoverage($properties['percentage']);
     }
 
     public function keywords(): array

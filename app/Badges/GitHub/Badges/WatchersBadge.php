@@ -12,11 +12,16 @@ final class WatchersBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
-        $result = $this->client->makeRepoQuery($owner, $repo, 'watchers { totalCount }');
+        return [
+            'watchers' => $this->client->makeRepoQuery($owner, $repo, 'watchers { totalCount }')['watchers']['totalCount'],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'watchers',
-            'message'      => FormatNumber::execute($result['watchers']['totalCount']),
+            'message'      => FormatNumber::execute($properties['watchers']),
             'messageColor' => 'blue.600',
         ];
     }

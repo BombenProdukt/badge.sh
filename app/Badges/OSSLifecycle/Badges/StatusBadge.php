@@ -12,7 +12,14 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $user, string $repo, ?string $branch = null): array
     {
-        return $this->renderStatus('status', Regex::match('/osslifecycle=(.*)/', $this->client->get($user, $repo, $branch))->group(1));
+        return [
+            'status' => Regex::match('/osslifecycle=(.*)/', $this->client->get($user, $repo, $branch))->group(1),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('status', $properties['status']);
     }
 
     public function keywords(): array

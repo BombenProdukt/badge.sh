@@ -11,7 +11,14 @@ final class TotalCountBadge extends AbstractBadge
 {
     public function handle(string $org, string $project, string $space): array
     {
-        return $this->renderNumber('total', $this->client->get($org, $project, $space)['total']);
+        return [
+            'downloads' => $this->client->get($org, $project, $space)['total'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('total', $properties['downloads']);
     }
 
     public function keywords(): array

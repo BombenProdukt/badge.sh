@@ -20,8 +20,16 @@ final class MetadataBadge extends AbstractBadge
         $response = $this->client->config($scope, $name, $tag, $architecture, $variant);
 
         return [
-            'label'        => $type,
-            'message'      => $response['container_config']['Labels']["org.label-schema.{$type}"] ?? $response['container_config']['Labels']["org.opencontainers.image.{$type}"],
+            'type'     => $type,
+            'metadata' => $response['container_config']['Labels']["org.label-schema.{$type}"] ?? $response['container_config']['Labels']["org.opencontainers.image.{$type}"],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => $properties['type'],
+            'message'      => $properties['metadata'],
             'messageColor' => 'blue.600',
         ];
     }

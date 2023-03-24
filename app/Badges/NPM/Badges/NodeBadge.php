@@ -12,11 +12,16 @@ final class NodeBadge extends AbstractBadge
 {
     public function handle(string $package, string $tag = 'latest'): array
     {
-        $response = $this->client->unpkg("{$package}@{$tag}/package.json");
+        return [
+            'version' => $this->client->unpkg("{$package}@{$tag}/package.json")['engines']['node'],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'node',
-            'message'      => $response['engines']['node'],
+            'message'      => $properties['version'],
             'messageColor' => 'green.600',
         ];
     }

@@ -29,7 +29,14 @@ final class CoverageBadge extends AbstractBadge
             $coverage = $covered ? ($covered / $total) * 100 : 0;
         }
 
-        return $this->renderCoverage($coverage ?? 0);
+        return [
+            'percentage' => $coverage ?? 0,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderCoverage($properties['percentage']);
     }
 
     public function keywords(): array

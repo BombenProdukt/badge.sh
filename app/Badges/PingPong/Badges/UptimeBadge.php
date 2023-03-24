@@ -11,7 +11,14 @@ final class UptimeBadge extends AbstractBadge
 {
     public function handle(string $apiKey): array
     {
-        return $this->renderPercentage('uptime', $this->client->uptime($apiKey));
+        return [
+            'percentage' => $this->client->uptime($apiKey),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage('uptime', $properties['percentage']);
     }
 
     public function keywords(): array

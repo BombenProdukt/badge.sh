@@ -11,7 +11,14 @@ final class ReleaseVersionBadge extends AbstractBadge
 {
     public function handle(string $owner, string $app, string $token): array
     {
-        return $this->renderSize($this->client->releases($owner, $app, $token)['short_version']);
+        return [
+            'version' => $this->client->releases($owner, $app, $token)['short_version'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['version']);
     }
 
     public function keywords(): array

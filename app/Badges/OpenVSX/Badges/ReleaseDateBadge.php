@@ -12,7 +12,14 @@ final class ReleaseDateBadge extends AbstractBadge
 {
     public function handle(string $extension): array
     {
-        return $this->renderDate('release date', $this->client->get($extension)['timestamp']);
+        return [
+            'date' => $this->client->get($extension)['timestamp'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDate('release date', $properties['date']);
     }
 
     public function keywords(): array

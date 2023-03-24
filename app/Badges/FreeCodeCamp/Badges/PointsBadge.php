@@ -6,17 +6,17 @@ namespace App\Badges\FreeCodeCamp\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class PointsBadge extends AbstractBadge
 {
     public function handle(string $username): array
     {
-        return [
-            'label'        => 'freecodecamp',
-            'message'      => FormatNumber::execute($this->client->get($username)['entities']['user'][$username]['points']),
-            'messageColor' => 'green.600',
-        ];
+        return $this->client->get($username)['entities']['user'][$username];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('freecodecamp', $properties['points']);
     }
 
     public function keywords(): array

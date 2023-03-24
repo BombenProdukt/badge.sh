@@ -14,10 +14,19 @@ final class SizeBadge extends AbstractBadge
         $file = $this->client->resource($resourceId)['file'];
 
         if ($file['type'] === 'external') {
-            return $this->renderText('size', 'resource hosted externally', 'gray.600');
+            return [
+                'size' => 'resource hosted externally',
+            ];
         }
 
-        return $this->renderText('size', $file['size'].' '.$file['sizeUnit']);
+        return [
+            'size' => $file['size'].' '.$file['sizeUnit'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['size']);
     }
 
     public function keywords(): array

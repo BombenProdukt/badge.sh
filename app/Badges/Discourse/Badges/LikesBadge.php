@@ -11,7 +11,14 @@ final class LikesBadge extends AbstractBadge
 {
     public function handle(string $server): array
     {
-        return $this->renderNumber('likes', $this->client->statistics($server)['like_count']);
+        return [
+            'count' => $this->client->statistics($server)['like_count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('likes', $properties['count']);
     }
 
     public function keywords(): array

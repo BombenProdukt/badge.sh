@@ -12,10 +12,19 @@ final class VersionBadge extends AbstractBadge
     public function handle(string $pluginId): array
     {
         if (is_numeric($pluginId)) {
-            return $this->renderVersion($this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//version')->text());
+            return [
+                'version' => $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//version')->text(),
+            ];
         }
 
-        return $this->renderVersion($this->client->updates($pluginId)[0]['version']);
+        return [
+            'version' => $this->client->updates($pluginId)[0]['version'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

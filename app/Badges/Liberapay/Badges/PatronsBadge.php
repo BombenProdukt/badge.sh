@@ -6,19 +6,19 @@ namespace App\Badges\Liberapay\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class PatronsBadge extends AbstractBadge
 {
     public function handle(string $username): array
     {
-        $response = $this->client->get($username);
-
         return [
-            'label'        => 'patrons',
-            'message'      => FormatNumber::execute($response['npatrons']),
-            'messageColor' => 'yellow.600',
+            'count' => $this->client->get($username)['npatrons'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('patrons', $properties['count']);
     }
 
     public function keywords(): array

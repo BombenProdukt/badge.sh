@@ -11,11 +11,16 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(): array
     {
-        $errors = collect($this->client->get($this->getRequestData('url'))['messages'])
-            ->filter(fn ($message) => in_array($message['type'], ['error', 'warning']))
-            ->count();
+        return [
+            'count' => collect($this->client->get($this->getRequestData('url'))['messages'])
+                ->filter(fn ($message) => in_array($message['type'], ['error', 'warning']))
+                ->count(),
+        ];
+    }
 
-        return $this->renderStatus('w3c', $errors ? 'failed' : 'passed');
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('w3c', $properties['count'] > 0 ? 'failed' : 'passed');
     }
 
     public function keywords(): array

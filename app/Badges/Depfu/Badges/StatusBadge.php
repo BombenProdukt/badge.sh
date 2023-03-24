@@ -12,7 +12,14 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $vcs, string $project): array
     {
-        return $this->renderStatus($this->service(), $this->client->get($vcs, $project));
+        return [
+            'status' => $this->client->get($vcs, $project),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus($this->service(), $properties['status']);
     }
 
     public function keywords(): array

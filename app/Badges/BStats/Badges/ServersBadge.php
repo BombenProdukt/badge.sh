@@ -11,7 +11,14 @@ final class ServersBadge extends AbstractBadge
 {
     public function handle(string $projectId): array
     {
-        return $this->renderNumber('servers', $this->client->servers($projectId));
+        return [
+            'count' => $this->client->servers($projectId),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('servers', $properties['count']);
     }
 
     public function keywords(): array

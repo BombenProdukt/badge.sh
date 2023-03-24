@@ -11,7 +11,14 @@ final class StaleBadge extends AbstractBadge
 {
     public function handle(string $year): array
     {
-        return $this->renderText('stale', $year, 'blue.600');
+        return [
+            'year' => $year,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('stale', $properties['year'], 'blue.600');
     }
 
     public function keywords(): array

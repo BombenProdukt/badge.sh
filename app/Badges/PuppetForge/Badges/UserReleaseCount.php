@@ -14,6 +14,11 @@ final class UserReleaseCount extends AbstractBadge
         return $this->renderNumber('release count', $this->client->user($user)['release_count']);
     }
 
+    public function render(array $properties): array
+    {
+        //
+    }
+
     public function keywords(): array
     {
         return [Category::VERSION];

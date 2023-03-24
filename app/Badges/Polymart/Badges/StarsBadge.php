@@ -11,7 +11,12 @@ final class StarsBadge extends AbstractBadge
 {
     public function handle(string $resourceId): array
     {
-        return $this->renderStars('rating', $this->client->get($resourceId)['reviews']['stars']);
+        return $this->client->get($resourceId)['reviews'];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStars('rating', $properties['stars']);
     }
 
     public function keywords(): array

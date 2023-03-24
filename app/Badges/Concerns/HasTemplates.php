@@ -305,10 +305,10 @@ trait HasTemplates
         ];
     }
 
-    protected function renderSize(int $count): array
+    protected function renderSize(int $count, ?string $label = null): array
     {
         return [
-            'label'        => 'size',
+            'label'        => $label ?? 'size',
             'message'      => FormatBytes::execute($count),
             'messageColor' => 'blue.600',
         ];

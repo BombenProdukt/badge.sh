@@ -37,17 +37,25 @@ final class CheckRunsBadge extends AbstractBadge
             $state = CombineStates::execute($state, 'conclusion');
         }
 
-        if (is_string($state)) {
+        return [
+            'context' => $context,
+            'state'   => $state,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if (is_string($properties['state'])) {
             return [
-                'label'        => $context ?: 'checks',
-                'message'      => $state,
+                'label'        => $properties['context'] ?: 'checks',
+                'message'      => $properties['state'],
                 'messageColor' => [
                     'pending' => 'orange.600',
                     'success' => 'green.600',
                     'failure' => 'red.600',
                     'error'   => 'red.600',
                     'unknown' => 'gray.600',
-                ][$state],
+                ][$properties['state']],
             ];
         }
 

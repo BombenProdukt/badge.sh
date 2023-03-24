@@ -21,10 +21,13 @@ final class RatingBadge extends AbstractBadge
             ->textContent;
 
         return [
-            'label'        => 'rating',
-            'message'      => Regex::match('/Average rating (.*) out of 5/', $textContent)->group(1),
-            'messageColor' => 'green.600',
+            'rating' => Regex::match('/Average rating (.*) out of 5/', $textContent)->group(1),
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderRating('rating', $properties['rating']);
     }
 
     public function keywords(): array

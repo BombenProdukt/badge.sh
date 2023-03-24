@@ -11,7 +11,7 @@ final class BadgeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        BadgeService::add(Badges\GItHubBadge::class);
+        BadgeService::add(Badges\GitHubBadge::class);
         BadgeService::add(Badges\NPMBadge::class);
     }
 }

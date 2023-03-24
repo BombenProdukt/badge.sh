@@ -12,7 +12,15 @@ final class SearchBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo, string $query): array
     {
-        return $this->renderNumber("{$query} counter", GitHub::search()->code("{$query} repo:{$owner}/{$repo}")['total_count']);
+        return [
+            'label' => "{$query} counter",
+            'count' => GitHub::search()->code("{$query} repo:{$owner}/{$repo}")['total_count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber($properties['label'], $properties['count']);
     }
 
     public function keywords(): array

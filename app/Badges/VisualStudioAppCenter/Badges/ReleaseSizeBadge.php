@@ -11,7 +11,12 @@ final class ReleaseSizeBadge extends AbstractBadge
 {
     public function handle(string $owner, string $app, string $token): array
     {
-        return $this->renderSize($this->client->releases($owner, $app, $token)['size']);
+        return $this->client->releases($owner, $app, $token);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['size']);
     }
 
     public function keywords(): array

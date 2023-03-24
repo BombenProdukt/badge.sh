@@ -11,26 +11,31 @@ final class PythonBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        $versions = collect($this->client->get($project)['info']['classifiers'])
-            ->map(function (string $classifier) {
-                preg_match('/^Programming Language :: Python :: ([\d.]+)( :: Only)?$/i', $classifier, $matches);
+        return [
+            'versions' => collect($this->client->get($project)['info']['classifiers'])
+                ->map(function (string $classifier) {
+                    preg_match('/^Programming Language :: Python :: ([\d.]+)( :: Only)?$/i', $classifier, $matches);
 
-                if (empty($matches)) {
-                    return [];
-                }
+                    if (empty($matches)) {
+                        return [];
+                    }
 
-                return [
-                    'version'     => $matches[1],
-                    'isExclusive' => isset($matches[2]),
-                ];
-            })
-            ->filter()
-            ->unique(fn (array $item) => $item['version'])
-            ->implode('version', ' | ');
+                    return [
+                        'version'     => $matches[1],
+                        'isExclusive' => isset($matches[2]),
+                    ];
+                })
+                ->filter()
+                ->unique(fn (array $item) => $item['version'])
+                ->implode('version', ' | '),
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'python',
-            'message'      => $versions,
+            'message'      => $properties['versions'],
             'messageColor' => 'blue.600',
         ];
     }

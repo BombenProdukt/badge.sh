@@ -6,17 +6,17 @@ namespace App\Badges\ChromeWebStore\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatStars;
 
 final class StarsBadge extends AbstractBadge
 {
     public function handle(string $itemId): array
     {
-        return [
-            'label'        => 'stars',
-            'message'      => FormatStars::execute((new RatingBadge($this->client))->handle($itemId)['status']),
-            'messageColor' => 'green.600',
-        ];
+        return (new RatingBadge($this->client))->handle($itemId);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStars('stars', $properties['score']);
     }
 
     public function keywords(): array

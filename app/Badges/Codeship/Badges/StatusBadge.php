@@ -14,14 +14,25 @@ final class StatusBadge extends AbstractBadge
         $response = $this->client->get($projectId, $branch);
 
         if (str_contains($response, 'id="project not found"')) {
-            return $this->renderStatus('build', 'project not found');
+            return [
+                'status' => 'project not found',
+            ];
         }
 
         if (str_contains($response, 'id="passing"')) {
-            return $this->renderStatus('build', 'passing');
+            return [
+                'status' => 'passing',
+            ];
         }
 
-        return $this->renderStatus('build', 'failing');
+        return [
+            'status' => 'failing',
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('build', $properties['status']);
     }
 
     public function keywords(): array

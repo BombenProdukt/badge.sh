@@ -17,7 +17,14 @@ final class UrlBadge extends AbstractBadge
 
         preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
 
-        return $this->renderVersion($matches[1]);
+        return [
+            'version' => $matches[1],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

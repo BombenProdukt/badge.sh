@@ -15,8 +15,15 @@ final class MemberCountBadge extends AbstractBadge
         preg_match('/"userCount"\s*:\s*(\d+)/', $this->client->get($org, $room), $matches);
 
         return [
+            'count' => $matches[1][0],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'gitter',
-            'message'      => FormatNumber::execute((float) $matches[1][0]),
+            'message'      => FormatNumber::execute($properties['count']),
             'messageColor' => 'ed1965',
         ];
     }

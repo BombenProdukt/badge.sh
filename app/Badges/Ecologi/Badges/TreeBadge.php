@@ -11,7 +11,14 @@ final class TreeBadge extends AbstractBadge
 {
     public function handle(string $username): array
     {
-        return $this->renderNumber('trees', $this->client->trees($username));
+        return [
+            'count' => $this->client->trees($username),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('trees', $properties['count']);
     }
 
     public function keywords(): array

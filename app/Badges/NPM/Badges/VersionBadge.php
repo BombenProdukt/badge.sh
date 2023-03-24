@@ -12,9 +12,18 @@ final class VersionBadge extends AbstractBadge
 {
     public function handle(string $package, string $tag = 'latest'): array
     {
+        return [
+            'package' => $package,
+            'tag'     => $tag,
+            'version' => $this->client->unpkg("{$package}@{$tag}/package.json"),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
         return $this->renderVersion(
-            $tag === 'latest' ? 'npm' : "npm@{$tag}",
-            $this->client->unpkg("{$package}@{$tag}/package.json")['version'],
+            $properties['tag'] === 'latest' ? 'npm' : 'npm@'.$properties['tag'],
+            $properties['version'],
         );
     }
 

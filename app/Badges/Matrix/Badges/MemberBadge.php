@@ -13,11 +13,18 @@ final class MemberBadge extends AbstractBadge
 {
     public function handle(string $room, string $server = 'matrix.org'): array
     {
-        $count = $this->client->fetchMembersCount($room, $server);
-
         return [
-            'label'        => "#{$room}:{$server}",
-            'message'      => FormatNumber::execute($count).' '.Str::plural('member', $count),
+            'room'   => $room,
+            'server' => $server,
+            'count'  => $this->client->fetchMembersCount($room, $server),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => '#'.$properties['room'].':'.$properties['server'],
+            'message'      => FormatNumber::execute($properties['count']).' '.Str::plural('member', $properties['count']),
             'messageColor' => 'blue.600',
         ];
     }

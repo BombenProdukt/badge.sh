@@ -6,7 +6,6 @@ namespace App\Badges\OpenCollective\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatMoney;
 
 final class BalanceBadge extends AbstractBadge
 {
@@ -15,10 +14,14 @@ final class BalanceBadge extends AbstractBadge
         $response = $this->client->get($slug);
 
         return [
-            'label'        => 'balance',
-            'message'      => FormatMoney::execute($response['balance'] / 100, $response['currency']),
-            'messageColor' => 'green.600',
+            'amount'   => $response['balance'] / 100,
+            'currency' => $response['currency'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderMoney('balance', $properties['amount'], $properties['currency']);
     }
 
     public function keywords(): array

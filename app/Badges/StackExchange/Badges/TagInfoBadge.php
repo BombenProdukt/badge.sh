@@ -11,7 +11,16 @@ final class TagInfoBadge extends AbstractBadge
 {
     public function handle(string $site, string $query): array
     {
-        return $this->renderNumber("{$query}@{$site}", $this->client->tags($site, $query)['count']);
+        return [
+            'query' => $query,
+            'site'  => $site,
+            'count' => $this->client->tags($site, $query)['count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber($properties['query'].'@'.$properties['site'], $properties['count']);
     }
 
     public function keywords(): array

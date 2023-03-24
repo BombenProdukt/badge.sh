@@ -15,9 +15,18 @@ final class GitHubBadge extends AbstractBadge
         $response = $this->client->get($compression, "{$repo}/{$path}");
 
         return [
-            'label'        => $compression === 'normal' ? 'size' : "{$compression} size",
-            'message'      => $response['prettySize'],
-            'messageColor' => $response['color'],
+            'compression' => $compression,
+            'size'        => $response['prettySize'],
+            'color'       => $response['color'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => $properties['compression'] === 'normal' ? 'size' : $properties['compression'].' size',
+            'message'      => $properties['size'],
+            'messageColor' => $properties['color'],
         ];
     }
 

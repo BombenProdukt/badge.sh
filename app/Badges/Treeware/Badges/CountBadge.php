@@ -11,7 +11,14 @@ final class CountBadge extends AbstractBadge
 {
     public function handle(string $owner, string $packageName): array
     {
-        return $this->renderNumber('trees', $this->client->get($owner, $packageName));
+        return [
+            'count' => $this->client->get($owner, $packageName),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('trees', $properties['count']);
     }
 
     public function keywords(): array

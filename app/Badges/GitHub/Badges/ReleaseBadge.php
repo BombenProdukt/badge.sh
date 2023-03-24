@@ -16,6 +16,29 @@ final class ReleaseBadge extends AbstractBadge
         $releases = GitHub::api('repo')->releases()->all($owner, $repo);
 
         if (empty($releases)) {
+            return [];
+        }
+
+        if ($channel === 'stable') {
+            $stable = collect($releases)->firstWhere('prerelease', false);
+
+            return [
+                'name'       => $stable['name'],
+                'tagName'    => $stable['tag_name'],
+                'prerelease' => $stable['prerelease'],
+            ];
+        }
+
+        return [
+            'name'       => $releases[0]['name'],
+            'tagName'    => $releases[0]['tag_name'],
+            'prerelease' => $releases[0]['prerelease'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if (empty($properties['name'])) {
             return [
                 'label'        => 'release',
                 'message'      => 'none',
@@ -23,20 +46,10 @@ final class ReleaseBadge extends AbstractBadge
             ];
         }
 
-        if ($channel === 'stable') {
-            $stable = collect($releases)->firstWhere('prerelease', false);
-
-            return [
-                'label'        => 'release',
-                'message'      => ExtractVersion::execute($stable['name'] ?: $stable['tag_name']),
-                'messageColor' => 'blue.600',
-            ];
-        }
-
         return [
             'label'        => 'release',
-            'message'      => ExtractVersion::execute($releases[0]['name'] ?? $releases[0]['tag_name']),
-            'messageColor' => $releases[0]['prerelease'] ? 'orange.600' : 'blue.600',
+            'message'      => ExtractVersion::execute($properties['name'] ?? $properties['tagName']),
+            'messageColor' => $properties['preRelease'] ? 'orange.600' : 'blue.600',
         ];
     }
 

@@ -11,7 +11,14 @@ final class FileSizeBadge extends AbstractBadge
 {
     public function handle(string $fileId): array
     {
-        return $this->renderSize($this->client->file($fileId)['file_size']);
+        return [
+            'size' => $this->client->file($fileId)['file_size'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['size']);
     }
 
     public function keywords(): array

@@ -11,7 +11,14 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $projectId): array
     {
-        return $this->renderStatus($this->service(), $this->client->status($projectId));
+        return [
+            'status' => $this->client->status($projectId),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus($this->service(), $properties['status']);
     }
 
     public function keywords(): array

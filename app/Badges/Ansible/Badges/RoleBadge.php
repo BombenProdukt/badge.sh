@@ -11,7 +11,14 @@ final class RoleBadge extends AbstractBadge
 {
     public function handle(string $roleId): array
     {
-        return $this->renderDownloads($this->client->roles($roleId)['download_count']);
+        return [
+            'count' => $this->client->roles($roleId)['download_count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['count']);
     }
 
     public function keywords(): array

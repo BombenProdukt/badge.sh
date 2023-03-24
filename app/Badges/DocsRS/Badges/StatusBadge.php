@@ -11,13 +11,22 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $crate, ?string $version = 'latest'): array
     {
-        $label = "docs@{$version}";
-
         if ($this->client->status($crate, $version)) {
-            return $this->renderStatus($label, 'passing');
+            return [
+                'status'  => 'passing',
+                'version' => $version,
+            ];
         }
 
-        return $this->renderStatus($label, 'failing');
+        return [
+            'status'  => 'failing',
+            'version' => $version,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('docs@'.$properties['version'], $properties['status']);
     }
 
     public function keywords(): array

@@ -11,7 +11,14 @@ final class RatingsBadge extends AbstractBadge
 {
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderNumber('ratings', $this->client->info($extensionType, $extension)['num_ratings']);
+        return [
+            'count' => $this->client->info($extensionType, $extension)['num_ratings'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('ratings', $properties['count']);
     }
 
     public function keywords(): array

@@ -11,7 +11,14 @@ final class ScoreBadge extends AbstractBadge
 {
     public function handle(string $type, string $provider, string $namespace, string $name, string $revision): array
     {
-        return $this->renderNumber('score', $this->client->get($type, $provider, $namespace, $name, $revision)['scores']['effective']);
+        return [
+            'score' => $this->client->get($type, $provider, $namespace, $name, $revision)['scores']['effective'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('score', $properties['score']);
     }
 
     public function keywords(): array

@@ -14,7 +14,14 @@ final class SponsorsBadge extends AbstractBadge
     {
         $response = GitHub::connection('graphql')->api('graphql')->execute('query ($user: String!) { repositoryOwner(login: $user) { ... on User { sponsorshipsAsMaintainer { totalCount } } ... on Organization { sponsorshipsAsMaintainer { totalCount } } } }', ['user' => $username]);
 
-        return $this->renderNumber('sponsors', $response['data']['repositoryOwner']['sponsorshipsAsMaintainer']['totalCount']);
+        return [
+            'count' => $response['data']['repositoryOwner']['sponsorshipsAsMaintainer']['totalCount'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('sponsors', $properties['count']);
     }
 
     public function keywords(): array

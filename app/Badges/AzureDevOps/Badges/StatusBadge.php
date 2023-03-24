@@ -17,9 +17,18 @@ final class StatusBadge extends AbstractBadge
         preg_match('/<rect[^>]*?fill="([^"]+)"[^>]*?x=/i', $svg, $colors);
 
         return [
-            'label'        => $texts[1][0] ?: 'Azure Pipelines',
-            'message'      => $texts[1][1],
-            'messageColor' => trim(str_replace('#', '', $colors[1] ?? '')),
+            'pipeline'    => $texts[1][0],
+            'status'      => $texts[1][1],
+            'statusColor' => $colors[1],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => $properties['pipeline'] ?: 'Azure Pipelines',
+            'message'      => $properties['status'],
+            'messageColor' => trim(str_replace('#', '', $properties['statusColor'] ?? '')),
         ];
     }
 

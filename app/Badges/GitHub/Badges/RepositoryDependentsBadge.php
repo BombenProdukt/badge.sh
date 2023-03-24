@@ -15,6 +15,11 @@ final class RepositoryDependentsBadge extends AbstractBadge
         return RequestDependents::execute($owner, $repo, 'REPOSITORY');
     }
 
+    public function render(array $properties): array
+    {
+        return $properties;
+    }
+
     public function keywords(): array
     {
         return [Category::SOCIAL];

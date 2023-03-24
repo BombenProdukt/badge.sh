@@ -12,7 +12,14 @@ final class TotalComponentsBadge extends AbstractBadge
 {
     public function handle(string $collection): array
     {
-        return $this->renderNumber('components', $this->client->get($collection)['totalComponents']);
+        return [
+            'count' => $this->client->get($collection)['totalComponents'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('components', $properties['count']);
     }
 
     public function keywords(): array

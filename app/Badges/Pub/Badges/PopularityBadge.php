@@ -11,9 +11,14 @@ final class PopularityBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $percentage = (float) $this->client->api("packages/{$package}/score")['popularityScore'];
+        return [
+            'popularity' => $this->client->api("packages/{$package}/score")['popularityScore'],
+        ];
+    }
 
-        return $this->renderPercentage('popularity', $percentage * 100);
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage('popularity', $properties['popularity'] * 100);
     }
 
     public function keywords(): array

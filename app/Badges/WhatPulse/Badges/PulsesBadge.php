@@ -12,7 +12,14 @@ final class PulsesBadge extends AbstractBadge
 {
     public function handle(string $userType, string $id): array
     {
-        return $this->renderNumber('pulses', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Pulses' : 'Pulses'));
+        return [
+            'count' => Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Pulses' : 'Pulses'),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('pulses', $properties['count']);
     }
 
     public function keywords(): array

@@ -12,13 +12,19 @@ final class TreeShakingBadge extends AbstractBadge
 {
     public function handle(string $name): array
     {
-        $response        = $this->client->get($name);
-        $isTreeShakeable = $response['hasJSModule'] || $response['hasJSNext'];
+        $response = $this->client->get($name);
 
         return [
+            'isTreeShakeable' => $response['hasJSModule'] || $response['hasJSNext'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'tree shaking',
-            'message'      => $isTreeShakeable ? 'supported' : 'not supported',
-            'messageColor' => $isTreeShakeable ? 'green.600' : 'red.600',
+            'message'      => $properties['isTreeShakeable'] ? 'supported' : 'not supported',
+            'messageColor' => $properties['isTreeShakeable'] ? 'green.600' : 'red.600',
         ];
     }
 

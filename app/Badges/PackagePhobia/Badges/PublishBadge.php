@@ -15,9 +15,17 @@ final class PublishBadge extends AbstractBadge
         $response = $this->client->get($name);
 
         return [
+            'size'  => $response['publish']['pretty'],
+            'color' => $response['publish']['color'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'publish size',
-            'message'      => $response['publish']['pretty'],
-            'messageColor' => str_replace('#', '', $response['publish']['color']),
+            'message'      => $properties['size'],
+            'messageColor' => str_replace('#', '', $properties['color']),
         ];
     }
 

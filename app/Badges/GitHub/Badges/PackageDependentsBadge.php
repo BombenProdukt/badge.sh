@@ -15,6 +15,11 @@ final class PackageDependentsBadge extends AbstractBadge
         return RequestDependents::execute($owner, $repo, 'PACKAGE');
     }
 
+    public function render(array $properties): array
+    {
+        return $properties;
+    }
+
     public function keywords(): array
     {
         return [Category::SOCIAL];

@@ -13,6 +13,11 @@ use Illuminate\Routing\Route;
  */
 interface Badge
 {
+    /**
+     * @param  array<string,mixed>  $properties
+     */
+    public function render(array $properties): array;
+
     public function service(): string;
 
     public function title(): string;

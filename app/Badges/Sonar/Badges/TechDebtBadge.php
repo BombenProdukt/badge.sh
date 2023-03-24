@@ -13,7 +13,14 @@ final class TechDebtBadge extends AbstractBadge
     {
         $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch);
 
-        return $this->renderPercentage('tech debt', $response['sqale_debt_ratio']);
+        return [
+            'ratio' => $response['sqale_debt_ratio'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage('tech debt', $properties['ratio']);
     }
 
     public function keywords(): array

@@ -11,7 +11,14 @@ final class RankBadge extends AbstractBadge
 {
     public function handle(string $packageName): array
     {
-        return $this->renderNumber('rank', $this->client->get($packageName)['installs_rank']);
+        return [
+            'rank' => $this->client->get($packageName)['installs_rank'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('rank', $properties['rank']);
     }
 
     public function keywords(): array

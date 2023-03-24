@@ -12,16 +12,23 @@ final class StatusBadge extends AbstractBadge
     public function handle(string $bug): array
     {
         $response = $this->client->get($bug);
-        $status   = strtolower($response['status'] === 'RESOLVED' ? $response['resolution'] : $response['status']);
 
+        return [
+            'bug'    => $bug,
+            'status' => strtolower($response['status'] === 'RESOLVED' ? $response['resolution'] : $response['status']),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
         return $this->renderText(
-            "bug {$bug}",
-            match ($status) {
+            'bug '.$properties['bug'],
+            match ($properties['status']) {
                 'worksforme' => 'works for me',
                 'wontfix'    => "won't fix",
-                default      => $status,
+                default      => $properties['status'],
             },
-            match ($status) {
+            match ($properties['status']) {
                 'unconfirmed' => 'blue.600',
                 'new'         => 'blue.600',
                 'assigned'    => 'green.600',
@@ -32,7 +39,8 @@ final class StatusBadge extends AbstractBadge
                 'worksforme'  => 'lime.600',
                 'incomplete'  => 'red.600',
                 default       => 'gray.600',
-            });
+            }
+        );
     }
 
     public function keywords(): array

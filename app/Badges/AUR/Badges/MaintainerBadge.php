@@ -11,7 +11,14 @@ final class MaintainerBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        return $this->renderLicense($this->client->get($package)['Maintainer']);
+        return [
+            'maintainer' => $this->client->get($package)['Maintainer'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('maintainer', $properties['maintainer']);
     }
 
     public function keywords(): array

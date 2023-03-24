@@ -11,9 +11,18 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $username): array
     {
-        $isLive = count($this->client->user($username)) > 1;
+        return [
+            'status' => count($this->client->user($username)) > 1 ? 'online' : 'offline',
+        ];
+    }
 
-        return $this->renderText('twitch', $isLive ? 'live' : 'offline', $isLive ? 'green.600' : 'red.600');
+    public function render(array $properties): array
+    {
+        return $this->renderText(
+            'twitch',
+            $properties['status'] === 'online' ? 'live' : 'offline',
+            $properties['status'] === 'online' ? 'green.600' : 'red.600',
+        );
     }
 
     public function keywords(): array

@@ -14,14 +14,22 @@ final class UserStatisticsBadge extends AbstractBadge
     {
         $response = $this->client->user($username);
 
-        return $this->renderNumber($type, match ($type) {
-            'translations' => $response['translated'],
-            'suggestions'  => $response['suggested'],
-            'uploads'      => $response['uploaded'],
-            'comments'     => $response['commented'],
-            'languages'    => $response['languages'],
-            default        => throw new InvalidArgumentException("Unknown type: {$type}")
-        });
+        return [
+            'type'  => $type,
+            'count' => match ($type) {
+                'translations' => $response['translated'],
+                'suggestions'  => $response['suggested'],
+                'uploads'      => $response['uploaded'],
+                'comments'     => $response['commented'],
+                'languages'    => $response['languages'],
+                default        => throw new InvalidArgumentException("Unknown type: {$type}")
+            },
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber($properties['type'], $properties['count']);
     }
 
     public function keywords(): array

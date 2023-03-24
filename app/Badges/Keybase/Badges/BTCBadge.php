@@ -11,11 +11,14 @@ final class BTCBadge extends AbstractBadge
 {
     public function handle(string $address): array
     {
-        $response = $this->client->get($address, 'cryptocurrency_addresses');
+        return $this->client->get($address, 'cryptocurrency_addresses.them.cryptocurrency_addresses.bitcoin.0');
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'BTC',
-            'message'      => $response['them']['cryptocurrency_addresses']['bitcoin'][0]['address'],
+            'message'      => $properties['address'],
             'messageColor' => 'blue.600',
         ];
     }

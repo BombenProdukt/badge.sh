@@ -11,7 +11,14 @@ final class BranchesBadge extends AbstractBadge
 {
     public function handle(string $user, string $repo): array
     {
-        return $this->renderText('branches', $this->client->get($user, $repo)['branches'] ?? 0);
+        return [
+            'count' => $this->client->get($user, $repo)['branches'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('branches', $properties['count']);
     }
 
     public function keywords(): array

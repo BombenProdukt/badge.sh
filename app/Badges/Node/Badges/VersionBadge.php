@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Node\Badges;
 
-use App\Actions\DetermineColorByVersion;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -14,12 +13,18 @@ final class VersionBadge extends AbstractBadge
 {
     public function handle(string $package, ?string $tag = 'latest'): array
     {
-        $version = Arr::get($this->client->get($package, $tag, $this->getRequestData('registry')), 'engines.node');
+        return [
+            'package' => $package,
+            'tag'     => $tag,
+            'version' => Arr::get($this->client->get($package, $tag, $this->getRequestData('registry')), 'engines.node'),
+        ];
+    }
 
-        return $this->renderText(
-            $tag === 'latest' ? $package : "{$package}@{$tag}",
-            $version,
-            DetermineColorByVersion::execute($version),
+    public function render(array $properties): array
+    {
+        return $this->renderVersion(
+            $properties['tag'] === 'latest' ? $properties['package'] : $properties['package'].'@'.$properties['tag'],
+            $properties['version']
         );
     }
 

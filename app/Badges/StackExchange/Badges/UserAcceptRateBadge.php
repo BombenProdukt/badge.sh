@@ -11,7 +11,14 @@ final class UserAcceptRateBadge extends AbstractBadge
 {
     public function handle(string $site, string $query): array
     {
-        return $this->renderPercentage('accept rate', $this->client->user($site, $query)['accept_rate']);
+        return [
+            'rate' => $this->client->user($site, $query)['accept_rate'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage('accept rate', $properties['rate']);
     }
 
     public function keywords(): array

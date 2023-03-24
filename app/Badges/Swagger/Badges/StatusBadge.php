@@ -14,10 +14,19 @@ final class StatusBadge extends AbstractBadge
         $schemaValidationMessages = $this->client->debug($this->getRequestData('spec'));
 
         if (empty($schemaValidationMessages)) {
-            return $this->renderStatus($this->service(), 'passed');
+            return [
+                'status' => 'passed',
+            ];
         }
 
-        return $this->renderStatus($this->service(), 'failed');
+        return [
+            'status' => 'failed',
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus($this->service(), $properties['status']);
     }
 
     public function keywords(): array

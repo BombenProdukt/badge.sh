@@ -11,7 +11,14 @@ final class PreloadBadge extends AbstractBadge
 {
     public function handle(string $domain): array
     {
-        return $this->renderStatus('hsts preloaded', $this->client->status($domain));
+        return [
+            'status' => $this->client->status($domain),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('hsts preloaded', $properties['status']);
     }
 
     public function keywords(): array

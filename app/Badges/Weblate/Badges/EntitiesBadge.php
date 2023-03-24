@@ -11,7 +11,15 @@ final class EntitiesBadge extends AbstractBadge
 {
     public function handle(string $type): array
     {
-        return $this->renderNumber($type, $this->client->entity($type)['count']);
+        return [
+            'type'  => $type,
+            'count' => $this->client->entity($type)['count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber($properties['type'], $properties['count']);
     }
 
     public function keywords(): array

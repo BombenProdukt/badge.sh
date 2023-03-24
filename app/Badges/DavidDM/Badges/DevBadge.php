@@ -12,12 +12,15 @@ final class DevBadge extends AbstractBadge
 {
     public function handle(string $repo, string $path): array
     {
-        $status = $this->client->get($repo, $path, 'dev-')['status'];
+        return $this->client->get($repo, $path, 'dev-');
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'devDependencies',
-            'message'      => $this->statusInfo[$status][0],
-            'messageColor' => $this->statusInfo[$status][1],
+            'message'      => $this->statusInfo[$properties['status']][0],
+            'messageColor' => $this->statusInfo[$properties['status']][1],
         ];
     }
 

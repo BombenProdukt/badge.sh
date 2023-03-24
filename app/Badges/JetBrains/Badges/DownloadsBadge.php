@@ -12,10 +12,17 @@ final class DownloadsBadge extends AbstractBadge
     public function handle(string $pluginId): array
     {
         if (is_numeric($pluginId)) {
-            return $this->renderDownloads($this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//@downloads')->text());
+            return [
+                'downloads' => $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//@downloads')->text(),
+            ];
         }
 
-        return $this->renderDownloads($this->client->info($pluginId)['downloads']);
+        return $this->client->info($pluginId);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

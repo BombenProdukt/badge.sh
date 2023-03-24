@@ -13,7 +13,15 @@ final class ReleaseOperatingSystemVersionBadge extends AbstractBadge
     {
         $response = $this->client->releases($owner, $app, $token);
 
-        return $this->renderText($response['app_os'], '>='.$response['min_os']);
+        return [
+            'app' => $response['app_os'],
+            'min' => $response['min_os'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText($properties['app'], '>='.$properties['min']);
     }
 
     public function keywords(): array

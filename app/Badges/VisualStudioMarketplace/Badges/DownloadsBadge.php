@@ -15,7 +15,14 @@ final class DownloadsBadge extends AbstractBadge
         $install     = collect($response['statistics'])->firstWhere('statisticName', 'install')['value'];
         $updateCount = collect($response['statistics'])->firstWhere('statisticName', 'updateCount')['value'];
 
-        return $this->renderDownloads($install + $updateCount);
+        return [
+            'downloads' => $install + $updateCount,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

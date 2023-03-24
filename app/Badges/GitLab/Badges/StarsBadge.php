@@ -7,19 +7,19 @@ namespace App\Badges\GitLab\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class StarsBadge extends AbstractBadge
 {
     public function handle(string $repo): array
     {
-        $response = $this->client->graphql($repo, 'starCount');
-
         return [
-            'label'        => 'stars',
-            'message'      => FormatNumber::execute($response['starCount']),
-            'messageColor' => 'blue.600',
+            'count' => $this->client->graphql($repo, 'starCount')['starCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStars('stars', $properties['count']);
     }
 
     public function keywords(): array

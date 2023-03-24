@@ -29,6 +29,11 @@ final class YAMLBadge extends AbstractBadge
         )->validate();
     }
 
+    public function render(array $properties): array
+    {
+        return $properties;
+    }
+
     public function keywords(): array
     {
         return [Category::OTHER];

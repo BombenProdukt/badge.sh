@@ -15,9 +15,14 @@ final class DependencyBadge extends AbstractBadge
         $client = Http::baseUrl('https://packdeps.haskellers.com/')->throw();
         $client->get("licenses/{$package}");
 
-        $outdated = str_contains($client->get("feed/{$package}")->body(), "Outdated dependencies for {$package}");
+        return [
+            'outdated' => str_contains($client->get("feed/{$package}")->body(), "Outdated dependencies for {$package}"),
+        ];
+    }
 
-        return $this->renderText('dependencies', $outdated ? 'outdated' : 'up-to-date', $outdated ? 'red.600' : 'green.600');
+    public function render(array $properties): array
+    {
+        return $this->renderText('dependencies', $properties['outdated'] ? 'outdated' : 'up-to-date', $properties['outdated'] ? 'red.600' : 'green.600');
     }
 
     public function keywords(): array

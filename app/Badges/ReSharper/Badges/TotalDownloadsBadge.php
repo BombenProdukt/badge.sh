@@ -11,7 +11,14 @@ final class TotalDownloadsBadge extends AbstractBadge
 {
     public function handle(string $project, ?string $channel = 'latest'): array
     {
-        return $this->renderDownloads($this->client->get($project, $channel !== 'latest')->filterXPath('//m:properties/d:DownloadCount')->text());
+        return [
+            'downloads' => $this->client->get($project, $channel !== 'latest')->filterXPath('//m:properties/d:DownloadCount')->text(),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

@@ -12,9 +12,14 @@ final class YearlyDownloadsBadge extends AbstractBadge
 {
     public function handle(string $package, string $tag = 'latest'): array
     {
-        $downloads = $this->client->api("downloads/point/last-year/{$package}")['downloads'];
+        return [
+            'downloads' => $this->client->api("downloads/point/last-year/{$package}")['downloads'],
+        ];
+    }
 
-        return $this->renderDownloadsPerYear($downloads);
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerYear($properties['downloads']);
     }
 
     public function keywords(): array

@@ -13,7 +13,16 @@ final class IssueBadge extends AbstractBadge
     {
         $response = $this->client->issue($this->getRequestData('instance'), $issue);
 
-        return $this->renderText($issue, strtolower($response['name']), match ($response['statusCategory']['colorName']) {
+        return [
+            'issue'     => $issue,
+            'name'      => $response['name'],
+            'colorName' => $response['statusCategory']['colorName'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText($properties['label'], strtolower($properties['name']), match ($properties['colorName']) {
             'medium-gray' => 'gray.600',
             'green'       => 'green.600',
             'yellow'      => 'yellow.600',

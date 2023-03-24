@@ -11,9 +11,14 @@ final class NameBadge extends AbstractBadge
 {
     public function handle(string $gem): array
     {
+        return $this->client->get("gems/{$gem}");
+    }
+
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'name',
-            'message'      => $this->client->get("gems/{$gem}")['name'],
+            'message'      => $properties['name'],
             'messageColor' => 'green.600',
         ];
     }

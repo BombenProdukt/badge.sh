@@ -12,8 +12,15 @@ final class ArchitectureBadge extends AbstractBadge
     public function handle(string $snap): array
     {
         return [
+            'architectures' => collect($this->client->get($snap)['channel-map'])->map->channel->map->architecture->unique()->toArray(),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'architecture',
-            'message'      => collect($this->client->get($snap)['channel-map'])->map->channel->map->architecture->unique()->implode(' | '),
+            'message'      => implode(' | ', $properties['architectures']),
             'messageColor' => 'blue.600',
         ];
     }

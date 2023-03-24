@@ -17,8 +17,15 @@ final class LangsBadge extends AbstractBadge
         usort($response['languages'], fn ($a, $b) => $b['lines'] - $a['lines']);
 
         return [
+            'languages' => array_map(fn ($x) => $langLabelOverrides[$x['language']] ?? $x['language'], $response['languages']),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'languages',
-            'message'      => implode(' | ', array_map(fn ($x) => $langLabelOverrides[$x['language']] ?? $x['language'], $response['languages'])),
+            'message'      => implode(' | ', $properties['languages']),
             'messageColor' => 'blue.600',
         ];
     }

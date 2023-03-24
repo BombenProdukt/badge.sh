@@ -7,19 +7,19 @@ namespace App\Badges\OpenVSX\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class DownloadsBadge extends AbstractBadge
 {
     public function handle(string $extension): array
     {
-        $response = $this->client->get($extension);
-
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($response['downloadCount']),
-            'messageColor' => 'green.600',
+            'downloads' => $this->client->get($extension)['downloadCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

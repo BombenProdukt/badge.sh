@@ -13,11 +13,16 @@ final class HitsBadge extends AbstractBadge
 {
     public function handle(string $platform, string $package): array
     {
-        $total = $this->client->data($platform, $package)['total'];
+        return [
+            'count' => $this->client->data($platform, $package)['total'],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'jsDelivr',
-            'message'      => FormatNumber::execute($total).'/month',
+            'message'      => FormatNumber::execute($properties['count']).'/month',
             'messageColor' => 'green.600',
         ];
     }

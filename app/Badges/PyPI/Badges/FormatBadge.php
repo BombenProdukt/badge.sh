@@ -27,11 +27,19 @@ final class FormatBadge extends AbstractBadge
             }
         }
 
-        if ($hasWheel) {
+        return [
+            'hasWheel' => $hasWheel,
+            'hasEgg'   => $hasEgg,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if ($properties['hasWheel']) {
             return $this->renderText('format', 'wheel', 'green.600');
         }
 
-        if ($hasEgg) {
+        if ($properties['hasEgg']) {
             return $this->renderText('format', 'egg', 'red.600');
         }
 

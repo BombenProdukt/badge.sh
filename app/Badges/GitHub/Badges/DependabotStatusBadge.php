@@ -12,9 +12,14 @@ final class DependabotStatusBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
-        $request = Http::get("https://api.github.com/repos/{$owner}/{$repo}/contents/.github/dependabot.yml");
+        return [
+            'successful' => Http::get("https://api.github.com/repos/{$owner}/{$repo}/contents/.github/dependabot.yml")->successful(),
+        ];
+    }
 
-        if ($request->successful()) {
+    public function render(array $properties): array
+    {
+        if ($properties['successful']) {
             return [
                 'label'        => 'dependabot',
                 'message'      => 'Active',

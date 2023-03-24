@@ -13,12 +13,18 @@ final class DartPlatformBadge extends AbstractBadge
     public function handle(string $package): array
     {
         $pubScores = $this->client->api("packages/{$package}/metrics")['scorecard'];
-        $sdk       = implode('|', $this->parseTags($pubScores['panaReport']['derivedTags'], 'sdk'));
 
         return [
+            'versions' => $this->parseTags($pubScores['panaReport']['derivedTags'], 'sdk'),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'dart',
-            'message'      => $sdk ?? 'unknown',
-            'messageColor' => $sdk ? 'blue.600' : 'gray.600',
+            'message'      => $properties['versions'] ? implode('|', $properties['versions']) : 'unknown',
+            'messageColor' => $properties['versions'] ? 'blue.600' : 'gray.600',
         ];
     }
 

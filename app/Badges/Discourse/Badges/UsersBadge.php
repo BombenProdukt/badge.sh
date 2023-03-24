@@ -11,7 +11,14 @@ final class UsersBadge extends AbstractBadge
 {
     public function handle(string $server): array
     {
-        return $this->renderNumber('users', $this->client->statistics($server)['user_count']);
+        return [
+            'count' => $this->client->statistics($server)['user_count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('users', $properties['count']);
     }
 
     public function keywords(): array

@@ -11,7 +11,14 @@ final class VotesBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        return $this->renderNumber('votes', $this->client->get($package)['NumVotes']);
+        return [
+            'votes' => $this->client->get($package)['NumVotes'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('votes', $properties['votes']);
     }
 
     public function keywords(): array

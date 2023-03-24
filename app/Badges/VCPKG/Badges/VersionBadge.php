@@ -14,18 +14,31 @@ final class VersionBadge extends AbstractBadge
         $response = $this->client->get($packageName);
 
         if (isset($manifest['version-date'])) {
-            return $this->renderVersion($response['version-date']);
+            return [
+                'version' => $response['version-date'],
+            ];
         }
 
         if (isset($manifest['version-semver'])) {
-            return $this->renderVersion($response['version-semver']);
+            return [
+                'version' => $response['version-semver'],
+            ];
         }
 
         if (isset($manifest['version-string'])) {
-            return $this->renderVersion($response['version-string']);
+            return [
+                'version' => $response['version-string'],
+            ];
         }
 
-        return $this->renderVersion($response['version']);
+        return [
+            'version' => $response['version'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

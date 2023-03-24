@@ -11,19 +11,26 @@ final class AzureDevOpsBadge extends AbstractBadge
 {
     public function handle(string $extension, ?string $measurement = null): array
     {
-        $response        = $this->client->get($extension);
-        $install         = collect($response['statistics'])->firstWhere('statisticName', 'install')['value'];
-        $onpremDownloads = collect($response['statistics'])->firstWhere('statisticName', 'onpremDownloads')['value'];
+        $response = $this->client->get($extension);
 
-        if ($measurement === 'services') {
-            return $this->renderDownloads($install);
+        return [
+            'measurement'     => $measurement,
+            'installations'   => collect($response['statistics'])->firstWhere('statisticName', 'install')['value'],
+            'onpremDownloads' => collect($response['statistics'])->firstWhere('statisticName', 'onpremDownloads')['value'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if ($properties['measurement'] === 'services') {
+            return $this->renderDownloads($properties['installations']);
         }
 
-        if ($measurement === 'on-prem') {
-            return $this->renderDownloads($onpremDownloads);
+        if ($properties['measurement'] === 'on-prem') {
+            return $this->renderDownloads($properties['onpremDownloads']);
         }
 
-        return $this->renderDownloads($install + $onpremDownloads);
+        return $this->renderDownloads($properties['installations'] + $properties['onpremDownloads']);
     }
 
     public function keywords(): array

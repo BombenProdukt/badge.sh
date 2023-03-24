@@ -11,7 +11,14 @@ final class WordPressVersionBadge extends AbstractBadge
 {
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderVersion($this->client->info($extensionType, $extension)['requires'], 'WordPress');
+        return [
+            'version' => $this->client->info($extensionType, $extension)['requires'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version'], 'WordPress');
     }
 
     public function keywords(): array

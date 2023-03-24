@@ -15,6 +15,17 @@ final class ReleaseBadge extends AbstractBadge
         $response = $this->client->rest($repo, 'releases')->json(0);
 
         if (empty($response)) {
+            return [];
+        }
+
+        return [
+            'version' => $response['name'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if (empty($properties['version'])) {
             return [
                 'label'        => 'release',
                 'message'      => 'none',
@@ -22,11 +33,7 @@ final class ReleaseBadge extends AbstractBadge
             ];
         }
 
-        return [
-            'label'        => 'release',
-            'message'      => $response['name'],
-            'messageColor' => 'blue.600',
-        ];
+        return $this->renderVersion($properties['version'], 'release');
     }
 
     public function keywords(): array

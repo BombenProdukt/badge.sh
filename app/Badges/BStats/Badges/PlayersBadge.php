@@ -11,7 +11,14 @@ final class PlayersBadge extends AbstractBadge
 {
     public function handle(string $projectId): array
     {
-        return $this->renderNumber('players', $this->client->players($projectId));
+        return [
+            'count' => $this->client->players($projectId),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('players', $properties['count']);
     }
 
     public function keywords(): array

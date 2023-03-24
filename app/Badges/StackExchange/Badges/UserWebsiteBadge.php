@@ -11,7 +11,14 @@ final class UserWebsiteBadge extends AbstractBadge
 {
     public function handle(string $site, string $query): array
     {
-        return $this->renderText('website', $this->client->user($site, $query)['website_url']);
+        return [
+            'url' => $this->client->user($site, $query)['website_url'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('website', $properties['url']);
     }
 
     public function keywords(): array

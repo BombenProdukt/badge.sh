@@ -11,7 +11,14 @@ final class PopularityBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        return $this->renderNumber('popularity', $this->client->get($package)['Popularity']);
+        return [
+            'popularity' => $this->client->get($package)['Popularity'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('popularity', $properties['popularity']);
     }
 
     public function keywords(): array

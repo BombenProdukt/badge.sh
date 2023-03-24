@@ -11,7 +11,14 @@ final class GameVersionsBadge extends AbstractBadge
 {
     public function handle(string $projectId): array
     {
-        return $this->renderVersion(implode(' | ', $this->client->version($projectId)['game_versions']));
+        return [
+            'versions' => $this->client->version($projectId)['game_versions'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion(implode(' | ', $properties['versions']));
     }
 
     public function keywords(): array

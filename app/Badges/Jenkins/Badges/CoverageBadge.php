@@ -18,10 +18,17 @@ final class CoverageBadge extends AbstractBadge
             'jacoco'    => ['tree' => 'instructionCoverage[shortDescription]'],
         })->throw()->json();
 
-        return match ($format) {
-            'jacoco' => $response['instructionCoverage']['percentage'],
-            default  => collect($response['results']['elements'])->firstWhere('name', 'Lines')['ratio']
-        };
+        return [
+            'percentage' => match ($format) {
+                'jacoco' => $response['instructionCoverage']['percentage'],
+                default  => collect($response['results']['elements'])->firstWhere('name', 'Lines')['ratio']
+            },
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderCoverage('percentage');
     }
 
     public function keywords(): array

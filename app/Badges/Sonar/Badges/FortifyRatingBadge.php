@@ -10,9 +10,14 @@ final class FortifyRatingBadge extends AbstractBadge
 {
     public function handle(string $metric, string $component, string $branch): array
     {
-        $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch);
+        return [
+            'rating' => $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch)['fortify-security-rating'],
+        ];
+    }
 
-        return $this->renderPercentage('fortify security rating', $response['fortify-security-rating']);
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage('fortify security rating', $properties['rating']);
     }
 
     public function keywords(): array

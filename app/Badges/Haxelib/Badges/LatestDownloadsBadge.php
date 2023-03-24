@@ -11,8 +11,11 @@ final class LatestDownloadsBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        $response = $this->client->get($project);
+        return $this->client->get($project);
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'TODO',
             'message'      => 'TODO',

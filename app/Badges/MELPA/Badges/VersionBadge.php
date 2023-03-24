@@ -13,9 +13,14 @@ final class VersionBadge extends AbstractBadge
     {
         preg_match('/<title>([^<]+)<\//i', $this->client->get($package), $matches);
 
-        [, $version] = explode(':', trim($matches[1]));
+        return [
+            'version' => explode(':', trim($matches[1]))[1],
+        ];
+    }
 
-        return $this->renderVersion($version);
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

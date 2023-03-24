@@ -12,9 +12,15 @@ final class PassRatioBadge extends AbstractBadge
     public function handle(string $org, string $project, string $space): array
     {
         $response = $this->client->get($org, $project, $space);
-        $ratio    = ($response['passed'] / ($response['passed'] + $response['failed'] + $response['errored'])) * 100;
 
-        return $this->renderPercentage($ratio === 100 ? 'success' : 'critical', $ratio);
+        return [
+            'ratio' => ($response['passed'] / ($response['passed'] + $response['failed'] + $response['errored'])) * 100,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage($properties['ratio'] === 100 ? 'success' : 'critical', $properties['ratio']);
     }
 
     public function keywords(): array

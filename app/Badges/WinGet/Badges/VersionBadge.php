@@ -11,7 +11,14 @@ final class VersionBadge extends AbstractBadge
 {
     public function handle(string $appId): array
     {
-        return $this->renderVersion($this->client->version($appId));
+        return [
+            'version' => $this->client->version($appId),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

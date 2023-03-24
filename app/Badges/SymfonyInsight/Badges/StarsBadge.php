@@ -11,7 +11,12 @@ final class StarsBadge extends AbstractBadge
 {
     public function handle(string $projectUuid): array
     {
-        return $this->renderGrade('grade', match ($this->client->get($projectUuid)['grade']) {
+        return $this->client->get($projectUuid);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStars('stars', match ($properties['grade']) {
             'bronze'   => 1,
             'silver'   => 2,
             'gold'     => 3,

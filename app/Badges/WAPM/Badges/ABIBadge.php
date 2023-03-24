@@ -12,12 +12,17 @@ final class ABIBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $abis = collect($this->client->get($package)['modules'])->map->abi->sort()->implode(' | ');
+        return [
+            'abis' => collect($this->client->get($package)['modules'])->map->abi->sort(),
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'abi',
-            'message'      => $abis,
-            'messageColor' => $abis ? 'blue.600' : 'green.600',
+            'message'      => implode(' | ', $properties['abis']),
+            'messageColor' => $properties['abis'] ? 'blue.600' : 'green.600',
         ];
     }
 

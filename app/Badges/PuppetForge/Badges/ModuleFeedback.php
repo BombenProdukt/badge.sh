@@ -14,6 +14,11 @@ final class ModuleFeedback extends AbstractBadge
         return $this->renderNumber('feedback score', $this->client->module($user, $module)['feedback_score']);
     }
 
+    public function render(array $properties): array
+    {
+        //
+    }
+
     public function keywords(): array
     {
         return [Category::SOCIAL];

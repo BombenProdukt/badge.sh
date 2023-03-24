@@ -12,7 +12,12 @@ final class SourceRankBadge extends AbstractBadge
 {
     public function handle(string $platform, string $package): array
     {
-        return $this->renderNumber('sourcerank', $this->client->get($platform, $package)['rank']);
+        return $this->client->get($platform, $package);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('sourcerank', $properties['rank']);
     }
 
     public function keywords(): array

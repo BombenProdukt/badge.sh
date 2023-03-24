@@ -6,19 +6,19 @@ namespace App\Badges\Homebrew\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $count = $this->client->get('formula', $package)['analytics']['install']['30d'][$package];
-
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($count).'/month',
-            'messageColor' => 'green.600',
+            'downloads' => $this->client->get('formula', $package)['analytics']['install']['30d'][$package],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerMonth($properties['downloads']);
     }
 
     public function keywords(): array

@@ -12,10 +12,14 @@ final class GradeBadge extends AbstractBadge
 {
     public function handle(string $vcs, string $user, string $repo, ?string $channel = 'main'): array
     {
-        return $this->renderGrade(
-            'code quality',
-            Regex::match('|<text x="78" y="14">([A-Z]+)</text>|', $this->client->get($vcs, $user, $repo, $channel))->group(1),
-        );
+        return [
+            'grade' => Regex::match('|<text x="78" y="14">([A-Z]+)</text>|', $this->client->get($vcs, $user, $repo, $channel))->group(1),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderGrade('code quality', $properties['grade']);
     }
 
     public function keywords(): array

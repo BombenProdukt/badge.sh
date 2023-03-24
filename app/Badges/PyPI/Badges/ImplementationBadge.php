@@ -11,19 +11,24 @@ final class ImplementationBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        $implementation = collect($this->client->get($project)['info']['classifiers'])->map(function (string $classifier) {
-            preg_match('/^Programming Language :: Python :: Implementation :: (\d+)$/', $classifier, $matches);
+        return [
+            'implementation' => collect($this->client->get($project)['info']['classifiers'])->map(function (string $classifier) {
+                preg_match('/^Programming Language :: Python :: Implementation :: (\d+)$/', $classifier, $matches);
 
-            if (empty($matches)) {
-                return null;
-            }
+                if (empty($matches)) {
+                    return null;
+                }
 
-            return $matches[1];
-        })->filter()->first();
+                return $matches[1];
+            })->filter()->first(),
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'implementation',
-            'message'      => empty($implementation) ? 'cpython' : $implementation,
+            'message'      => empty($properties['implementation']) ? 'cpython' : $properties['implementation'],
             'messageColor' => 'blue.600',
         ];
     }

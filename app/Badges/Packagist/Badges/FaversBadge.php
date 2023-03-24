@@ -7,19 +7,17 @@ namespace App\Badges\Packagist\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class FaversBadge extends AbstractBadge
 {
     public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
+        return $this->client->get($package);
+    }
 
-        return [
-            'label'        => 'favers',
-            'message'      => FormatNumber::execute($packageMeta['favers']),
-            'messageColor' => 'green.600',
-        ];
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('favers', $properties['favers']);
     }
 
     public function keywords(): array

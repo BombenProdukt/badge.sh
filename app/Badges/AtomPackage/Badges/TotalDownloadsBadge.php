@@ -11,7 +11,12 @@ final class TotalDownloadsBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        return $this->renderDownloads($this->client->get($package)['downloads']);
+        return $this->client->get($package);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

@@ -11,7 +11,14 @@ final class FileLastModifiedBadge extends AbstractBadge
 {
     public function handle(string $fileId): array
     {
-        return $this->renderDateDiff('last modified', $this->client->file($fileId)['time_updated']);
+        return [
+            'date' => $this->client->file($fileId)['time_updated'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDateDiff('last modified', $properties['data']);
     }
 
     public function keywords(): array

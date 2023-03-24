@@ -15,7 +15,14 @@ final class LicenseBadge extends AbstractBadge
         $document = Yaml::parse(base64_decode($this->client->get($appId)['content']));
         $document = Yaml::parse(base64_decode($this->client->locale($appId, $document['PackageVersion'], $document['DefaultLocale'])['content']));
 
-        return $this->renderLicense($document['License']);
+        return [
+            'license' => $document['License'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderLicense($properties['license']);
     }
 
     public function keywords(): array

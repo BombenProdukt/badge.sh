@@ -11,7 +11,14 @@ final class GitHubBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo, ?string $branch = null): array
     {
-        return $this->renderStatus('build', $this->client->github($owner, $repo, $branch, $this->getRequestData('task'), $this->getRequestData('script')));
+        return [
+            'status' => $this->client->github($owner, $repo, $branch, $this->getRequestData('task'), $this->getRequestData('script')),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('build', $properties['status']);
     }
 
     public function keywords(): array

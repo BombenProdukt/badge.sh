@@ -11,7 +11,14 @@ final class PhpVersionBadge extends AbstractBadge
 {
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderVersion($this->client->info($extensionType, $extension)['requires_php'], 'PHP');
+        return [
+            'version' => $this->client->info($extensionType, $extension)['requires_php'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version'], 'PHP');
     }
 
     public function keywords(): array

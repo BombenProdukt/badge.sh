@@ -11,7 +11,14 @@ final class CoverageBadge extends AbstractBadge
 {
     public function handle(string $vcs, string $user, string $repo, ?string $branch = 'master'): array
     {
-        return $this->renderCoverage($this->client->get($vcs, $user, $repo)['applications'][$branch]['index']['_embedded']['project']['metric_values']['scrutinizer.test_coverage'] * 100);
+        return [
+            'count' => $this->client->get($vcs, $user, $repo)['applications'][$branch]['index']['_embedded']['project']['metric_values']['scrutinizer.test_coverage'] * 100,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderCoverage($properties['percentage']);
     }
 
     public function keywords(): array

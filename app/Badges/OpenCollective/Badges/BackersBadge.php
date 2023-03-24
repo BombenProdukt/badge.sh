@@ -6,19 +6,19 @@ namespace App\Badges\OpenCollective\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class BackersBadge extends AbstractBadge
 {
     public function handle(string $slug, ?string $tierId = null): array
     {
-        $response = $this->client->fetchCollectiveBackersCount($slug, 'users', $tierId);
-
         return [
-            'label'        => 'backers',
-            'message'      => FormatNumber::execute($response),
-            'messageColor' => 'green.600',
+            'count' => $this->client->fetchCollectiveBackersCount($slug, 'users', $tierId),
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('backers', $properties['count']);
     }
 
     public function keywords(): array

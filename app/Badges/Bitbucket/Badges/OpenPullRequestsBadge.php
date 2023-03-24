@@ -10,7 +10,14 @@ final class OpenPullRequestsBadge extends AbstractBadge
 {
     public function handle(string $user, string $repo): array
     {
-        return $this->renderNumber('open pull requests', $this->client->pullRequests($user, $repo));
+        return [
+            'count' => $this->client->pullRequests($user, $repo),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('open pull requests', $properties['count']);
     }
 
     public function keywords(): array

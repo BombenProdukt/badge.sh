@@ -11,7 +11,12 @@ final class WatchersBadge extends AbstractBadge
 {
     public function handle(string $pluginId): array
     {
-        return $this->renderNumber('watchers', $this->client->get($pluginId)['stats']['watchers']);
+        return $this->client->get($pluginId)['stats'];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('watchers', $properties['watchers']);
     }
 
     public function keywords(): array

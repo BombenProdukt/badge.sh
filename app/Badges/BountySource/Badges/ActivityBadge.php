@@ -11,7 +11,14 @@ final class ActivityBadge extends AbstractBadge
 {
     public function handle(string $team): array
     {
-        return $this->renderNumber('activity', $this->client->get($team)['activity_total']);
+        return [
+            'count' => $this->client->get($team)['activity_total'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('activity', $properties['count']);
     }
 
     public function keywords(): array

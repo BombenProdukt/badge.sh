@@ -11,9 +11,14 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $uuid): array
     {
-        $isOnline = $this->client->status($uuid);
+        return [
+            'status' => $this->client->status($uuid) ? 'online' : 'offline',
+        ];
+    }
 
-        return $this->renderText('status', $isOnline ? 'online' : 'offline', $isOnline ? 'green.600' : 'red.600');
+    public function render(array $properties): array
+    {
+        return $this->renderText('status', $properties['status'], $properties['status'] === 'online' ? 'green.600' : 'red.600');
     }
 
     public function keywords(): array

@@ -11,9 +11,12 @@ final class AutomatedBadge extends AbstractBadge
 {
     public function handle(string $scope, string $name): array
     {
-        $isAutomated = $this->client->info($scope, $name)['is_automated'];
+        return $this->client->info($scope, $name);
+    }
 
-        if ($isAutomated) {
+    public function render(array $properties): array
+    {
+        if ($properties['is_automated']) {
             return $this->renderText('docker build', 'automated', 'green.600');
         }
 

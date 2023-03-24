@@ -11,7 +11,12 @@ final class FailedCountBadge extends AbstractBadge
 {
     public function handle(string $org, string $project, string $space): array
     {
-        return $this->renderNumber('failed', $this->client->get($org, $project, $space)['failed']);
+        return $this->client->get($org, $project, $space);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('failed', $properties['failed']);
     }
 
     public function keywords(): array

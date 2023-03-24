@@ -11,7 +11,14 @@ final class InstallationsBadge extends AbstractBadge
 {
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderDownloads($this->client->info($extensionType, $extension)['active_installs']);
+        return [
+            'count' => $this->client->info($extensionType, $extension)['active_installs'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['count']);
     }
 
     public function keywords(): array

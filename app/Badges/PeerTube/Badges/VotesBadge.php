@@ -12,11 +12,14 @@ final class VotesBadge extends AbstractBadge
 {
     public function handle(string $instance, string $video): array
     {
-        $response = $this->client->get($instance, "videos/{$video}");
+        return $this->client->get($instance, "videos/{$video}");
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'votes',
-            'message'      => sprintf('%s 👍 %s 👎', FormatNumber::execute($response['likes']), FormatNumber::execute($response['dislikes'])),
+            'message'      => sprintf('%s 👍 %s 👎', FormatNumber::execute($properties['likes']), FormatNumber::execute($properties['dislikes'])),
             'messageColor' => 'F1680D',
         ];
     }

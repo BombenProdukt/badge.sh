@@ -14,6 +14,11 @@ final class ModuleEndorsement extends AbstractBadge
         return $this->renderStatus('endorsement', $this->client->module($user, $module)['endorsement']);
     }
 
+    public function render(array $properties): array
+    {
+        //
+    }
+
     public function keywords(): array
     {
         return [Category::SOCIAL];

@@ -7,19 +7,17 @@ namespace App\Badges\GitLab\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class ClosedIssuesBadge extends AbstractBadge
 {
     public function handle(string $repo): array
     {
-        $response = $this->client->graphql($repo, 'issues(state:closed){ count }')['issues']['count'];
+        return $this->client->graphql($repo, 'issues(state:closed){ count }')['issues'];
+    }
 
-        return [
-            'label'        => 'closed issues',
-            'message'      => FormatNumber::execute($response),
-            'messageColor' => 'blue.600',
-        ];
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('closed issues', $properties['count']);
     }
 
     public function keywords(): array

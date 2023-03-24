@@ -11,7 +11,14 @@ final class DownloadsPerWindowsBadge extends AbstractBadge
 {
     public function handle(string $packageName): array
     {
-        return $this->renderDownloadsPerWindows($this->client->get($packageName)['installs']['windows']);
+        return [
+            'downloads' => $this->client->get($packageName)['installs']['windows'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerWindows($properties['downloads']);
     }
 
     public function keywords(): array

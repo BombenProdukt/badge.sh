@@ -11,7 +11,14 @@ final class DownloadsPerWeekBadge extends AbstractBadge
 {
     public function handle(string $project, string $folder): array
     {
-        return $this->renderDownloads($this->client->stats($project, $folder, 6)['total']);
+        return [
+            'downloads' => $this->client->stats($project, $folder, 6)['total'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerWeek($properties['downloads']);
     }
 
     public function keywords(): array

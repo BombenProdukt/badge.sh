@@ -6,17 +6,19 @@ namespace App\Badges\CPAN\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class LikesBadge extends AbstractBadge
 {
     public function handle(string $distribution): array
     {
         return [
-            'label'        => 'likes',
-            'message'      => FormatNumber::execute($this->client->get('favorite/agg_by_distributions', ['distribution' => $distribution])['favorites'][$distribution] ?? 0),
-            'messageColor' => 'green.600',
+            'count' => $this->client->get('favorite/agg_by_distributions', ['distribution' => $distribution])['favorites'][$distribution],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('likes', $properties['count']);
     }
 
     public function keywords(): array

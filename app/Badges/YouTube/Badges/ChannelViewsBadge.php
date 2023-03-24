@@ -11,7 +11,14 @@ final class ChannelViewsBadge extends AbstractBadge
 {
     public function handle(string $channelId): array
     {
-        return $this->renderNumber('views', $this->client->channel($channelId)['viewCount']);
+        return [
+            'count' => $this->client->channel($channelId)['viewCount'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('views', $properties['count']);
     }
 
     public function keywords(): array

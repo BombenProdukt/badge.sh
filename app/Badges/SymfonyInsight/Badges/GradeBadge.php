@@ -11,7 +11,12 @@ final class GradeBadge extends AbstractBadge
 {
     public function handle(string $projectUuid): array
     {
-        return $this->renderGrade('grade', $this->client->get($projectUuid)['grade']);
+        return $this->client->get($projectUuid);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderGrade('grade', $properties['grade']);
     }
 
     public function keywords(): array

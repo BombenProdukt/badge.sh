@@ -6,20 +6,20 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Enums\Category;
 use App\Enums\RoutePattern;
-use Carbon\Carbon;
 use Illuminate\Routing\Route;
 
 final class LastCommitBadge extends AbstractBadge
 {
     public function handle(string $repo, ?string $ref = null): array
     {
-        $response = $this->client->rest($repo, $ref ? "repository/commits?ref={$ref}" : 'repository/commits')->json('0');
-
         return [
-            'label'        => 'last commit',
-            'message'      => Carbon::parse($response['committed_date'])->diffForHumans(),
-            'messageColor' => 'green.600',
+            'date' => $this->client->rest($repo, $ref ? "repository/commits?ref={$ref}" : 'repository/commits')->json('0.committed_date'),
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDateDiff('last commit', $properties['date']);
     }
 
     public function keywords(): array

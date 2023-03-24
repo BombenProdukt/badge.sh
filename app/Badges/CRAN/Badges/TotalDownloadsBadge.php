@@ -14,7 +14,12 @@ final class TotalDownloadsBadge extends AbstractBadge
     {
         $genesis = explode('T', Carbon::createFromTimestamp(0)->toISOString())[0];
 
-        return $this->renderDownloads($this->client->logs("downloads/total/{$genesis}:last-day/{$package}")[0]['downloads']);
+        return $this->client->logs("downloads/total/{$genesis}:last-day/{$package}")[0];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

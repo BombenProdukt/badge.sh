@@ -6,19 +6,19 @@ namespace App\Badges\MozillaAddOns\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class ReviewsBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $response = $this->client->get($package);
-
         return [
-            'label'        => 'reviews',
-            'message'      => FormatNumber::execute($response['ratings']['average']),
-            'messageColor' => 'green.600',
+            'rating' => $this->client->get($package)['ratings']['average'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderRating($properties['rating']);
     }
 
     public function keywords(): array

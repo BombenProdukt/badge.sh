@@ -15,9 +15,17 @@ final class InstallBadge extends AbstractBadge
         $response = $this->client->get($name);
 
         return [
+            'size'  => $response['install']['pretty'],
+            'color' => $response['install']['color'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'install size',
-            'message'      => $response['install']['pretty'],
-            'messageColor' => str_replace('#', '', $response['install']['color']),
+            'message'      => $properties['size'],
+            'messageColor' => str_replace('#', '', $properties['color']),
         ];
     }
 

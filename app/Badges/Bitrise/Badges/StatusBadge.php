@@ -11,13 +11,16 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $token, string $appId, ?string $branch = null): array
     {
-        $status = $this->client->get($token, $appId, $branch)['status'];
+        return $this->client->get($token, $appId, $branch);
+    }
 
-        return $this->renderText('status', $status === 'unknown' ? 'branch not found' : $status, [
+    public function render(array $properties): array
+    {
+        return $this->renderText('status', $properties['status'] === 'unknown' ? 'branch not found' : $properties['status'], [
             'error'   => 'red.600',
             'success' => 'green.600',
             'unknown' => 'gray.600',
-        ][$status]);
+        ][$properties['status']]);
     }
 
     public function keywords(): array

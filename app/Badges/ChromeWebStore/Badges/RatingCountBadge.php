@@ -21,8 +21,15 @@ final class RatingCountBadge extends AbstractBadge
             ->textContent;
 
         return [
+            'count' => Regex::match('/(\d+) users rated this item/', $textContent)->group(1),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'rating count',
-            'message'      => Regex::match('/(\d+) users rated this item/', $textContent)->group(1),
+            'message'      => $properties['count'],
             'messageColor' => 'green.600',
         ];
     }

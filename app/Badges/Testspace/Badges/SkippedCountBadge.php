@@ -11,7 +11,12 @@ final class SkippedCountBadge extends AbstractBadge
 {
     public function handle(string $org, string $project, string $space): array
     {
-        return $this->renderNumber('skipped', $this->client->get($org, $project, $space)['skipped'], 'yellow.600');
+        return $this->client->get($org, $project, $space);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('skipped', $properties['skipped'], 'yellow.600');
     }
 
     public function keywords(): array

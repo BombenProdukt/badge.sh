@@ -11,9 +11,12 @@ final class VersionFromBucketBadge extends AbstractBadge
 {
     public function handle(string $bucket, string $app): array
     {
-        $response = $bucket === 'main' ? $this->client->main($app) : $this->client->extra($app);
+        return $bucket === 'main' ? $this->client->main($app) : $this->client->extra($app);
+    }
 
-        return $this->renderVersion($response['version']);
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

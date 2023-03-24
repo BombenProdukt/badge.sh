@@ -7,19 +7,19 @@ namespace App\Badges\Packagist\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class GitHubForksBadge extends AbstractBadge
 {
     public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
-
         return [
-            'label'        => 'forks',
-            'message'      => FormatNumber::execute($packageMeta['github_forks']),
-            'messageColor' => 'green.600',
+            'forks' => $this->client->get($package)['github_forks'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('github forks', $properties['forks']);
     }
 
     public function keywords(): array

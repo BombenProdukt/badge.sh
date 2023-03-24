@@ -11,11 +11,16 @@ final class XLMBadge extends AbstractBadge
 {
     public function handle(string $address): array
     {
-        $response = $this->client->get($address, 'stellar');
+        return [
+            'address' => $this->client->get($address, 'stellar')['them']['stellar']['primary']['account_id'],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'XLM',
-            'message'      => $response['them']['stellar']['primary']['account_id'],
+            'message'      => $properties['address'],
             'messageColor' => 'blue.600',
         ];
     }

@@ -15,6 +15,17 @@ final class IndentBadge extends AbstractBadge
         $response = $this->client->get($name);
 
         if (empty($response['devDependencies']) || empty($response['devDependencies']['xo'])) {
+            return [];
+        }
+
+        return [
+            'indentation' => $this->getIndent($response['xo']['space'] ?? false),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if (empty($properties['indentation'])) {
             return [
                 'label'        => 'xo',
                 'message'      => 'not enabled',
@@ -23,9 +34,9 @@ final class IndentBadge extends AbstractBadge
         }
 
         return [
-            'label'        => 'xo',
-            'message'      => $this->getIndent($response['xo']['space'] ?? false),
-            'messageColor' => '5ed9c7',
+            'label'        => 'indentation',
+            'message'      => $properties['indentation'],
+            'messageColor' => '5ED9C7',
         ];
     }
 

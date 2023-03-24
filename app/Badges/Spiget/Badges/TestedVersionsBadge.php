@@ -12,14 +12,20 @@ final class TestedVersionsBadge extends AbstractBadge
     public function handle(string $resourceId): array
     {
         $testedVersions = $this->client->resource($resourceId)['testedVersions'];
-        $earliest       = $testedVersions[0];
-        $latest         = end($testedVersions);
 
-        if ($earliest === $latest) {
-            return $this->renderVersion($earliest);
+        return [
+            'earliest' => $testedVersions[0],
+            'latest'   => end($testedVersions),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if ($properties['earliest'] === $properties['latest']) {
+            return $this->renderVersion($properties['earliest']);
         }
 
-        return $this->renderVersion("{$earliest}-{$latest}", 'tested versions');
+        return $this->renderVersion($properties['earliest'].'-'.$properties['latest'], 'tested versions');
     }
 
     public function keywords(): array

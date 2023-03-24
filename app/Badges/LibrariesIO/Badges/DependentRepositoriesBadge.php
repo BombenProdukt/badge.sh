@@ -12,7 +12,14 @@ final class DependentRepositoriesBadge extends AbstractBadge
 {
     public function handle(string $platform, string $package): array
     {
-        return $this->renderNumber('dependent repositories', $this->client->get($platform, $package)['dependent_repos_count']);
+        return [
+            'count' => $this->client->get($platform, $package)['dependent_repos_count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('dependent repositories', $properties['count']);
     }
 
     public function keywords(): array

@@ -10,7 +10,14 @@ final class OpenIssuesBadge extends AbstractBadge
 {
     public function handle(string $user, string $repo): array
     {
-        return $this->renderNumber('open issues', $this->client->issues($user, $repo));
+        return [
+            'count' => $this->client->issues($user, $repo),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('open issues', $properties['count']);
     }
 
     public function keywords(): array

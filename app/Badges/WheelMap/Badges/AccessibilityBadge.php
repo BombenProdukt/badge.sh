@@ -11,9 +11,14 @@ final class AccessibilityBadge extends AbstractBadge
 {
     public function handle(string $nodeId): array
     {
-        $accessibility = $this->client->node($nodeId);
+        return [
+            'accessibility' => $this->client->node($nodeId),
+        ];
+    }
 
-        return $this->renderText('accessibility', $accessibility, match ($accessibility) {
+    public function render(array $properties): array
+    {
+        return $this->renderText('accessibility', $properties['accessibility'], match ($properties['accessibility']) {
             'yes'     => 'green.600',
             'limited' => 'yellow.600',
             'no'      => 'red.600',

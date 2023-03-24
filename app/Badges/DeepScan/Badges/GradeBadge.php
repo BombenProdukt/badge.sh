@@ -11,17 +11,20 @@ final class GradeBadge extends AbstractBadge
 {
     public function handle(string $teamId, string $projectId, string $branchId): array
     {
-        $response = $this->client->get($teamId, $projectId, $branchId);
+        return $this->client->get($teamId, $projectId, $branchId);
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'deepscan',
-            'message'      => strtolower($response['grade']),
+            'message'      => strtolower($properties['grade']),
             'messageColor' => [
                 'none'   => 'cecece',
                 'good'   => '89b414',
                 'normal' => '2148b1',
                 'poor'   => 'ff5a00',
-            ][strtolower($response['grade'])],
+            ][strtolower($properties['grade'])],
         ];
     }
 

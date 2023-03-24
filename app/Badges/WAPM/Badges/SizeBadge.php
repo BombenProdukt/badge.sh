@@ -7,17 +7,17 @@ namespace App\Badges\WAPM\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatBytes;
 
 final class SizeBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        return [
-            'label'        => 'distrib size',
-            'message'      => FormatBytes::execute($this->client->get($package)['distribution']['size']),
-            'messageColor' => 'green.600',
-        ];
+        return $this->client->get($package)['distribution'];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['size']);
     }
 
     public function keywords(): array

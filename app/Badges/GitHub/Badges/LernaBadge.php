@@ -12,9 +12,12 @@ final class LernaBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
-        $response = json_decode(base64_decode(GitHub::repos()->contents()->show($owner, $repo, 'lerna.json')['content']), true, JSON_THROW_ON_ERROR);
+        return json_decode(base64_decode(GitHub::repos()->contents()->show($owner, $repo, 'lerna.json')['content']), true, JSON_THROW_ON_ERROR);
+    }
 
-        return $this->renderText('lerna', $response['version'], 'blue.600');
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version'], 'lerna');
     }
 
     public function keywords(): array

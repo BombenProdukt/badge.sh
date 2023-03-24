@@ -19,12 +19,15 @@ final class StatusBadge extends AbstractBadge
 
     public function handle(string $apiKey): array
     {
-        $response = $this->client->get($apiKey);
+        return $this->client->get($apiKey);
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'status',
-            'message'      => $this->statuses[$response['status']][0],
-            'messageColor' => $this->statuses[$response['status']][1],
+            'message'      => $this->statuses[$properties['status']][0],
+            'messageColor' => $this->statuses[$properties['status']][1],
         ];
     }
 

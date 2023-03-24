@@ -12,11 +12,14 @@ final class UserIdBadge extends AbstractBadge
 {
     public function handle(string $userId): array
     {
-        $profile = $this->client->get($userId);
+        return $this->client->get($userId);
+    }
 
+    public function render(array $properties): array
+    {
         return [
-            'label'        => ucfirst($profile['username']),
-            'message'      => FormatNumber::execute($profile['score']),
+            'label'        => ucfirst($properties['username']),
+            'message'      => FormatNumber::execute($properties['score']),
             'messageColor' => 'f99a66',
         ];
     }

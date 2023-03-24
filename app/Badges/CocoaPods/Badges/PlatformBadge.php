@@ -12,10 +12,13 @@ final class PlatformBadge extends AbstractBadge
     public function handle(string $pod): array
     {
         return [
-            'label'        => 'platform',
-            'message'      => implode('|', array_keys($this->client->get($pod)['platforms'])),
-            'messageColor' => 'gray.600',
+            'platforms' => array_keys($this->client->get($pod)['platforms']),
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('platforms', implode(' | ', $properties['platforms']), 'blue.600');
     }
 
     public function keywords(): array

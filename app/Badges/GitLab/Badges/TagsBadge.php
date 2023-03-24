@@ -7,19 +7,19 @@ namespace App\Badges\GitLab\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class TagsBadge extends AbstractBadge
 {
     public function handle(string $repo): array
     {
-        $response = $this->client->rest($repo, 'repository/tags');
-
         return [
-            'label'        => 'tags',
-            'message'      => FormatNumber::execute((int) $response->header('x-total')),
-            'messageColor' => 'blue.600',
+            'count' => $this->client->rest($repo, 'repository/tags')->header('x-total'),
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('tags', $properties['count']);
     }
 
     public function keywords(): array

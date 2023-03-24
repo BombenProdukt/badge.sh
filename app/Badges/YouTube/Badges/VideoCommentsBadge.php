@@ -11,7 +11,14 @@ final class VideoCommentsBadge extends AbstractBadge
 {
     public function handle(string $videoId): array
     {
-        return $this->renderNumber('comments', $this->client->video($videoId)['commentCount']);
+        return [
+            'comments' => $this->client->video($videoId)['commentCount'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('comments', $properties['comments']);
     }
 
     public function keywords(): array

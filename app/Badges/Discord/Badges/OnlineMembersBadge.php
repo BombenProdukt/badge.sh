@@ -12,11 +12,16 @@ final class OnlineMembersBadge extends AbstractBadge
 {
     public function handle(string $inviteCode): array
     {
-        $response = $this->client->get($inviteCode);
+        return [
+            'count' => $this->client->get($inviteCode)['approximate_presence_count'],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => $response['guild']['name'] ?? 'discord',
-            'message'      => FormatNumber::execute($response['approximate_presence_count']).' online',
+            'message'      => FormatNumber::execute($properties['count']).' online',
             'messageColor' => '7289DA',
         ];
     }

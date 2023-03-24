@@ -11,7 +11,12 @@ final class StatementsBadge extends AbstractBadge
 {
     public function handle(string $user, string $repo): array
     {
-        return $this->renderText('statements', $this->client->get($user, $repo)['statements'] ?? 0);
+        return $this->client->get($user, $repo);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('statements', $properties['statements'] ?? 0);
     }
 
     public function keywords(): array

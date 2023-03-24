@@ -11,7 +11,12 @@ final class ViewsBadge extends AbstractBadge
 {
     public function handle(string $pluginId): array
     {
-        return $this->renderNumber('views', $this->client->get($pluginId)['stats']['views']);
+        return $this->client->get($pluginId)['stats'];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('views', $properties['views']);
     }
 
     public function keywords(): array

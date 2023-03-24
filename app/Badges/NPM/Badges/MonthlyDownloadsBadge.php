@@ -12,9 +12,12 @@ final class MonthlyDownloadsBadge extends AbstractBadge
 {
     public function handle(string $package, string $tag = 'latest'): array
     {
-        $downloads = $this->client->api("downloads/point/last-month/{$package}")['downloads'];
+        return $this->client->api("downloads/point/last-month/{$package}");
+    }
 
-        return $this->renderDownloadsPerMonth($downloads);
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerMonth($properties['downloads']);
     }
 
     public function keywords(): array

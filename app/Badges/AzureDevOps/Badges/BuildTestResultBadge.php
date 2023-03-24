@@ -31,19 +31,22 @@ final class BuildTestResultBadge extends AbstractBadge
             'buildId'      => $latestBuild['id'],
         ])->json('aggregatedResultsAnalysis');
 
-        $passed  = $response['resultsByOutcome']['Passed']['count'] ?? 0;
-        $failed  = $response['resultsByOutcome']['Failed']['count'] ?? 0;
-        $ignored = $response['resultsByOutcome']['NotExecuted']['count'] ?? $response['totalTests'] - $passed - $failed;
+        $passed = $response['resultsByOutcome']['Passed']['count'] ?? 0;
+        $failed = $response['resultsByOutcome']['Failed']['count'] ?? 0;
 
-        $status = collect([
-            $passed ? FormatNumber::execute($passed).' passed' : null,
-            $failed ? FormatNumber::execute($failed).' failed' : null,
-            $ignored ? FormatNumber::execute($ignored).' skipped' : null,
-        ])->filter()->implode(', ') ?: 'unknown';
+        return [
+            'failed'  => $failed,
+            'ignored' => $response['resultsByOutcome']['NotExecuted']['count'] ?? $response['totalTests'] - $passed - $failed,
+            'passed'  => $passed,
+            'total'   => $response['totalTests'],
+        ];
+    }
 
-        if ($response['totalTests'] === $passed) {
+    public function render(array $properties): array
+    {
+        if ($properties['total'] === $properties['passed']) {
             $color = $this->colors['succeeded'];
-        } elseif ($response['totalTests'] === $failed) {
+        } elseif ($properties['total'] === $properties['failed']) {
             $color = $this->colors['failed'];
         } else {
             $color = $this->colors['partiallySucceeded'];
@@ -51,7 +54,11 @@ final class BuildTestResultBadge extends AbstractBadge
 
         return [
             'label'        => 'Test',
-            'message'      => $status,
+            'message'      => collect([
+                $properties['passed'] ? FormatNumber::execute($properties['passed']).' passed' : null,
+                $properties['failed'] ? FormatNumber::execute($properties['failed']).' failed' : null,
+                $properties['ignored'] ? FormatNumber::execute($properties['ignored']).' skipped' : null,
+            ])->filter()->implode(', ') ?: 'unknown',
             'messageColor' => $color,
         ];
     }

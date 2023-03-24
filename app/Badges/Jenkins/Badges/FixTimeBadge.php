@@ -39,12 +39,20 @@ final class FixTimeBadge extends AbstractBadge
         $statusColorTime = ($fixTime / 3600000);
 
         return [
+            'fixTime'         => $fixTime,
+            'statusColorTime' => $statusColorTime,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'Fix Builds',
-            'message'      => $fixTime,
+            'message'      => $properties['fixTime'],
             'messageColor' => match (true) {
-                $statusColorTime < 2 => 'green.600',
-                $statusColorTime < 6 => 'orange.600',
-                default              => 'red.600',
+                $properties['statusColorTime'] < 2 => 'green.600',
+                $properties['statusColorTime'] < 6 => 'orange.600',
+                default                            => 'red.600',
             },
         ];
     }

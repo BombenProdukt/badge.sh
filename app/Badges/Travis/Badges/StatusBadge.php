@@ -19,10 +19,14 @@ final class StatusBadge extends AbstractBadge
         $result = $this->availableStates()->firstWhere(fn (array $state) => str_contains($org, $state[0]) || str_contains($com, $state[0]));
 
         return [
-            'label'        => 'travis',
-            'message'      => $result[0],
-            'messageColor' => $result[1],
+            'status'      => $result[0],
+            'statusColor' => $result[1],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('travis', $properties['status'], $properties['statusColor']);
     }
 
     public function keywords(): array

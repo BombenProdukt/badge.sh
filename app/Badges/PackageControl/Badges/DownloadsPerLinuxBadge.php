@@ -11,7 +11,14 @@ final class DownloadsPerLinuxBadge extends AbstractBadge
 {
     public function handle(string $packageName): array
     {
-        return $this->renderDownloadsPerLinux($this->client->get($packageName)['installs']['linux']);
+        return [
+            'downloads' => $this->client->get($packageName)['installs']['linux'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerLinux($properties['downloads']);
     }
 
     public function keywords(): array

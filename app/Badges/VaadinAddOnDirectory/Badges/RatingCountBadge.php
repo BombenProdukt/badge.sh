@@ -11,7 +11,14 @@ final class RatingCountBadge extends AbstractBadge
 {
     public function handle(string $packageName): array
     {
-        return $this->renderNumber('rating count', $this->client->get($packageName)['ratingCount']);
+        return [
+            'count' => $this->client->get($packageName)['ratingCount'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('rating count', $properties['count']);
     }
 
     public function keywords(): array

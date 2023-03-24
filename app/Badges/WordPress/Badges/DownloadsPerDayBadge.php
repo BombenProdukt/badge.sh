@@ -11,7 +11,14 @@ final class DownloadsPerDayBadge extends AbstractBadge
 {
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderDownloads($this->client->downloads($extensionType, $extension, 1));
+        return [
+            'downloads' => $this->client->downloads($extensionType, $extension, 1),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerDay($properties['downloads']);
     }
 
     public function keywords(): array

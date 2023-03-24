@@ -12,9 +12,14 @@ final class CoverageBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        $response = $this->client->get($project, 'test_reports');
+        return [
+            'percentage' => $this->client->get($project, 'test_reports')['attributes']['rating']['measure']['value'],
+        ];
+    }
 
-        return $this->renderCoverage($response['attributes']['rating']['measure']['value']);
+    public function render(array $properties): array
+    {
+        return $this->renderCoverage($properties['percentage']);
     }
 
     public function keywords(): array

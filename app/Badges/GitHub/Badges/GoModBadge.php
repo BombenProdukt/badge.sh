@@ -15,7 +15,14 @@ final class GoModBadge extends AbstractBadge
     {
         $response = base64_decode(GitHub::repos()->contents()->show($owner, $repo, 'src/go.mod')['content']);
 
-        return $this->renderVersion(Regex::match('/go (.+)/', $response)->group(1), 'go');
+        return [
+            'version' => Regex::match('/go (.+)/', $response)->group(1),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version'], 'go');
     }
 
     public function keywords(): array

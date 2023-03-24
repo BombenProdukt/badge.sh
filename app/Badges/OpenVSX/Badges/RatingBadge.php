@@ -15,8 +15,15 @@ final class RatingBadge extends AbstractBadge
         $response = $this->client->get($extension);
 
         return [
+            'rating' => $response['averageRating'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'rating',
-            'message'      => $response['averageRating'].'/5',
+            'message'      => $properties['rating'].'/5',
             'messageColor' => 'green.600',
         ];
     }

@@ -15,9 +15,17 @@ final class StatusBadge extends AbstractBadge
         $response = $this->client->get($project, $identifier);
 
         return [
+            'status'      => $response['status'],
+            'statusColor' => $response['colour'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'Dependabot',
-            'message'      => $response['status'],
-            'messageColor' => $response['colour'],
+            'message'      => $properties['status'],
+            'messageColor' => $properties['statusColor'],
         ];
     }
 

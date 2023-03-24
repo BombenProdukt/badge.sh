@@ -16,10 +16,15 @@ final class MilestonesBadge extends AbstractBadge
         $openIssues  = $milestone['open_issues'];
         $totalIssues = $openIssues + $milestone['closed_issues'];
 
-        return $this->renderPercentage(
-            $milestone['title'],
-            $totalIssues === 0 ? 0 : 100 - (($openIssues / $totalIssues) * 100),
-        );
+        return [
+            'label'      => $milestone['title'],
+            'percentage' => $totalIssues === 0 ? 0 : 100 - (($openIssues / $totalIssues) * 100),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage($properties['label'], $properties['percentage']);
     }
 
     public function keywords(): array

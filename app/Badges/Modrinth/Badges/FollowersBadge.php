@@ -11,7 +11,14 @@ final class FollowersBadge extends AbstractBadge
 {
     public function handle(string $projectId): array
     {
-        return $this->renderNumber('followers', $this->client->project($projectId)['followers']);
+        return [
+            'count' => $this->client->project($projectId)['followers'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('followers', $properties['count']);
     }
 
     public function keywords(): array

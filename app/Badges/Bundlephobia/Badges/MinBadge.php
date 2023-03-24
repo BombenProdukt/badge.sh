@@ -7,17 +7,17 @@ namespace App\Badges\Bundlephobia\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatBytes;
 
 final class MinBadge extends AbstractBadge
 {
     public function handle(string $name): array
     {
-        return [
-            'label'        => 'minified size',
-            'message'      => FormatBytes::execute($this->client->get($name)['size']),
-            'messageColor' => 'blue.600',
-        ];
+        return $this->client->get($name);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['size'], 'minified size');
     }
 
     public function keywords(): array

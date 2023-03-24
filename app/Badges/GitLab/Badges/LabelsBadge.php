@@ -7,7 +7,6 @@ namespace App\Badges\GitLab\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class LabelsBadge extends AbstractBadge
 {
@@ -17,10 +16,14 @@ final class LabelsBadge extends AbstractBadge
         $response    = $this->client->graphql($repo, "issues(labelName:\"{$label}\", {$stateFilter}) { count } label(title: \"{$label}\"){ color }");
 
         return [
-            'label'        => $label,
-            'message'      => FormatNumber::execute($response['issues']['count']),
-            'messageColor' => 'blue.600',
+            'label' => $label,
+            'count' => $response['issues']['count'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber($properties['label'], $properties['count']);
     }
 
     public function keywords(): array

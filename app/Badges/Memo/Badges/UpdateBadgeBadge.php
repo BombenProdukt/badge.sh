@@ -14,13 +14,18 @@ final class UpdateBadgeBadge extends AbstractBadge
     {
         $badge = [
             'label'        => $request->input('label'),
-            'message'      => $request->input('status'),
-            'messageColor' => $request->input('statusColor'),
+            'message'      => $request->input('message'),
+            'messageColor' => $request->input('messageColor'),
         ];
 
         Cache::rememberForever($name, $badge);
 
         return $badge;
+    }
+
+    public function render(array $properties): array
+    {
+        return $properties;
     }
 
     public function keywords(): array

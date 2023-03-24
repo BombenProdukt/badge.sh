@@ -12,9 +12,14 @@ final class CoverageGradeBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        $response = $this->client->get($project, 'test_reports');
+        return [
+            'letter' => $this->client->get($project, 'test_reports')['attributes']['rating']['letter'],
+        ];
+    }
 
-        return $this->renderGrade('coverage', $response['attributes']['rating']['letter']);
+    public function render(array $properties): array
+    {
+        return $this->renderGrade('coverage', $properties['letter']);
     }
 
     public function keywords(): array

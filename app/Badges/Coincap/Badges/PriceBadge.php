@@ -13,7 +13,15 @@ final class PriceBadge extends AbstractBadge
     {
         $response = $this->client->get($assetId);
 
-        return $this->renderMoney($response['name'], $response['priceUsd'], 'USD');
+        return [
+            'ticker' => $response['name'],
+            'price'  => $response['priceUsd'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderMoney($properties['ticker'], $properties['price'], 'USD');
     }
 
     public function keywords(): array

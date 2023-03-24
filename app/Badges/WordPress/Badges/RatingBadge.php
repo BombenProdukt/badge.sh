@@ -11,7 +11,12 @@ final class RatingBadge extends AbstractBadge
 {
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderDownloads($this->client->info($extensionType, $extension)['rating']);
+        return $this->client->info($extensionType, $extension);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderRating($properties['rating']);
     }
 
     public function keywords(): array

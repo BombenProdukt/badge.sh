@@ -11,7 +11,12 @@ final class UserLocationBadge extends AbstractBadge
 {
     public function handle(string $site, string $query): array
     {
-        return $this->renderText('location', $this->client->user($site, $query)['location']);
+        return $this->client->user($site, $query);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('location', $properties['location']);
     }
 
     public function keywords(): array

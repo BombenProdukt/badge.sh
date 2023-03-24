@@ -16,6 +16,19 @@ final class StatusBadge extends AbstractBadge
 
         if (empty($response['devDependencies']) || empty($response['devDependencies']['xo'])) {
             return [
+                'status' => 'disabled',
+            ];
+        }
+
+        return [
+            'status' => 'enabled',
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if ($properties['status'] === 'disabled') {
+            return [
                 'label'        => 'xo',
                 'message'      => 'not enabled',
                 'messageColor' => 'gray.600',

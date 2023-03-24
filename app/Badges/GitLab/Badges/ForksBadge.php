@@ -7,19 +7,19 @@ namespace App\Badges\GitLab\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class ForksBadge extends AbstractBadge
 {
     public function handle(string $repo): array
     {
-        $response = $this->client->graphql($repo, 'forksCount');
-
         return [
-            'label'        => 'forks',
-            'message'      => FormatNumber::execute($response['forksCount']),
-            'messageColor' => 'blue.600',
+            'count' => $this->client->graphql($repo, 'forksCount')['forksCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('forks', $properties['count']);
     }
 
     public function keywords(): array

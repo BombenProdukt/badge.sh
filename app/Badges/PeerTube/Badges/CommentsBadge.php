@@ -12,11 +12,16 @@ final class CommentsBadge extends AbstractBadge
 {
     public function handle(string $instance, string $video): array
     {
-        $response = $this->client->get($instance, "videos/{$video}/comment-threads");
+        return [
+            'count' => $this->client->get($instance, "videos/{$video}/comment-threads")['total'],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'comments',
-            'message'      => FormatNumber::execute($response['total']),
+            'message'      => FormatNumber::execute($properties['count']),
             'messageColor' => 'F1680D',
         ];
     }

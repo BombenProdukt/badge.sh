@@ -11,13 +11,15 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $account, string $project, ?string $branch = null): array
     {
-        $branch = $branch ? "/branch/{$branch}" : '';
-        $status = $this->client->get($account, $project, $branch)['build']['status'];
+        return $this->client->get($account, $project, $branch ? "/branch/{$branch}" : '')['build'];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'appveyor',
-            'message'      => $status,
-            'messageColor' => $status === 'success' ? 'green.600' : 'red.600',
+            'message'      => $properties['status'],
+            'messageColor' => $properties['status'] === 'success' ? 'green.600' : 'red.600',
         ];
     }
 

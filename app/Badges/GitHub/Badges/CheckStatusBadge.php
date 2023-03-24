@@ -32,17 +32,25 @@ final class CheckStatusBadge extends AbstractBadge
             $state = CombineStates::execute($state, 'state');
         }
 
-        if (is_string($state)) {
+        return [
+            'context' => $context,
+            'state'   => $state,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if (is_string($properties['state'])) {
             return [
-                'label'        => $context ?: 'status',
-                'message'      => $state,
+                'label'        => $properties['context'] ?: 'status',
+                'message'      => $properties['state'],
                 'messageColor' => [
                     'pending' => 'orange.600',
                     'success' => 'green.600',
                     'failure' => 'red.600',
                     'error'   => 'red.600',
                     'unknown' => 'gray.600',
-                ][$state],
+                ][$properties['state']],
             ];
         }
 

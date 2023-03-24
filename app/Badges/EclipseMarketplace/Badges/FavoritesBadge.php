@@ -11,7 +11,14 @@ final class FavoritesBadge extends AbstractBadge
 {
     public function handle(string $name): array
     {
-        return $this->renderNumber('favorites', $this->client->get($name)->filterXPath('//favorited')->text());
+        return [
+            'favorites' => $this->client->get($name)->filterXPath('//favorited')->text(),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('favorites', $properties['favorites']);
     }
 
     public function keywords(): array

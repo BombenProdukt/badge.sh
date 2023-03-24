@@ -12,7 +12,12 @@ final class LicenseBadge extends AbstractBadge
 {
     public function handle(string $package, string $tag = 'latest'): array
     {
-        return $this->renderLicense($this->client->unpkg("{$package}@{$tag}/package.json")['license']);
+        return $this->client->unpkg("{$package}@{$tag}/package.json");
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderLicense($properties['license']);
     }
 
     public function keywords(): array

@@ -35,9 +35,7 @@ final class SizeBadge extends AbstractBadge
 
         if (! $tagData) {
             return [
-                'label'        => 'docker',
-                'message'      => 'unknown tag',
-                'messageColor' => 'gray.600',
+                'size' => 'unknown tag',
             ];
         }
 
@@ -51,9 +49,7 @@ final class SizeBadge extends AbstractBadge
 
         if (! $imageData) {
             return [
-                'label'        => 'docker',
-                'message'      => 'unknown architecture',
-                'messageColor' => 'gray.600',
+                'size' => 'unknown architecture',
             ];
         }
 
@@ -68,14 +64,43 @@ final class SizeBadge extends AbstractBadge
 
             if (! $imageData) {
                 return [
-                    'label'        => 'docker',
-                    'message'      => 'unknown variant',
-                    'messageColor' => 'gray.600',
+                    'size' => 'unknown variant',
                 ];
             }
         }
 
-        $sizeInMegabytes = number_format($imageData['size'] / 1024 / 1024, 2);
+        return [
+            'size' => $imageData['size'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if ($properties['size'] === 'unknown tag') {
+            return [
+                'label'        => 'docker',
+                'message'      => 'unknown tag',
+                'messageColor' => 'gray.600',
+            ];
+        }
+
+        if ($properties['size'] === 'unknown architecture') {
+            return [
+                'label'        => 'docker',
+                'message'      => 'unknown architecture',
+                'messageColor' => 'gray.600',
+            ];
+        }
+
+        if ($properties['size'] === 'unknown variant') {
+            return [
+                'label'        => 'docker',
+                'message'      => 'unknown variant',
+                'messageColor' => 'gray.600',
+            ];
+        }
+
+        $sizeInMegabytes = number_format($properties['size'] / 1024 / 1024, 2);
 
         return [
             'label'        => 'docker size',

@@ -13,10 +13,13 @@ final class DependencyCountBadge extends AbstractBadge
     public function handle(string $name): array
     {
         return [
-            'label'        => 'dependency count',
-            'message'      => (string) $this->client->get($name)['dependencyCount'],
-            'messageColor' => 'blue.600',
+            'count' => $this->client->get($name)['dependencyCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('dependency count', $properties['count']);
     }
 
     public function keywords(): array

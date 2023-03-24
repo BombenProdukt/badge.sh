@@ -13,7 +13,14 @@ final class GradeBadge extends AbstractBadge
     {
         preg_match('/visibility=[^>]*?>([^<]+)<\//i', $this->client->get('grade', $projectId, $branch), $matches);
 
-        return $this->renderGrade('code quality', trim($matches[1]));
+        return [
+            'grade' => trim($matches[1]),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderGrade('code quality', $properties['grade']);
     }
 
     public function keywords(): array

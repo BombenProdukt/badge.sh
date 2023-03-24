@@ -14,12 +14,19 @@ final class VersionForFormulaBadge extends AbstractBadge
         $response = $this->client->get('formula', $package);
 
         if (isset($response['version'])) {
-            $version = $response['version'];
-        } else {
-            $version = $response['versions']['stable'];
+            return [
+                'version' => $response['version'],
+            ];
         }
 
-        return $this->renderVersion($version);
+        return [
+            'version' => $response['versions']['stable'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

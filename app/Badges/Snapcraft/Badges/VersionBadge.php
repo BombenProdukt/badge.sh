@@ -14,13 +14,16 @@ final class VersionBadge extends AbstractBadge
     {
         $channels = collect($this->client->get($snap, ['version'])['channel-map']);
 
-        $channel = match (true) {
+        return match (true) {
             $architecture && $channel => $channels->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture && Arr::get($item, 'channel.name') === $channel),
             $architecture             => $channels->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture),
             default                   => $channels->first(),
         };
+    }
 
-        return $this->renderVersion($channel['version']);
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

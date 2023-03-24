@@ -14,8 +14,15 @@ final class RatingBadge extends AbstractBadge
         preg_match('/<span>[^<]*?([\d.]+)\s/i', $this->client->web($package), $matches);
 
         return [
+            'rating' => $matches[1],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'rating',
-            'message'      => number_format((float) $matches[1], 2).'/5',
+            'message'      => number_format((float) $properties['rating'], 2).'/5',
             'messageColor' => 'green.600',
         ];
     }

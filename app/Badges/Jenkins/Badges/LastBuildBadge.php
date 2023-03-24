@@ -12,12 +12,17 @@ final class LastBuildBadge extends AbstractBadge
 {
     public function handle(string $hostname, string $job): array
     {
-        $response = $this->client->get($hostname, $job, 'lastBuild/api/json?tree=result,timestamp,estimatedDuration');
+        return [
+            'status' => $this->client->get($hostname, $job, 'lastBuild/api/json?tree=result,timestamp,estimatedDuration')['result'],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'Last Build',
-            'message'      => $response['result'],
-            'messageColor' => strtolower($response['result']) === 'success' ? 'green.600' : 'red.600',
+            'message'      => $properties['status'],
+            'messageColor' => strtolower($properties['status']) === 'success' ? 'green.600' : 'red.600',
         ];
     }
 

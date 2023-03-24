@@ -11,13 +11,16 @@ final class CloudBuildStatusBadge extends AbstractBadge
 {
     public function handle(string $scope, string $name): array
     {
-        $response = $this->client->build($scope, $name);
+        return $this->client->build($scope, $name);
+    }
 
-        if ($response['state'] === 'Success') {
+    public function render(array $properties): array
+    {
+        if ($properties['state'] === 'Success') {
             return $this->renderText('docker build', 'passing', 'green.600');
         }
 
-        if ($response['state'] === 'Failed') {
+        if ($properties['state'] === 'Failed') {
             return $this->renderText('docker build', 'failing', 'red.600');
         }
 

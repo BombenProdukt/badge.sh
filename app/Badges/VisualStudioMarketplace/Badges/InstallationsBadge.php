@@ -11,9 +11,14 @@ final class InstallationsBadge extends AbstractBadge
 {
     public function handle(string $extension): array
     {
-        $installations = collect($this->client->get($extension)['statistics'])->firstWhere('statisticName', 'install')['value'];
+        return [
+            'count' => collect($this->client->get($extension)['statistics'])->firstWhere('statisticName', 'install')['value'],
+        ];
+    }
 
-        return $this->renderNumber('installations', $installations);
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('installations', $properties['count']);
     }
 
     public function keywords(): array

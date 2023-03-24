@@ -6,19 +6,19 @@ namespace App\Badges\MozillaAddOns\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class UsersBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $response = $this->client->get($package);
-
         return [
-            'label'        => 'users',
-            'message'      => FormatNumber::execute($response['average_daily_users']),
-            'messageColor' => 'green.600',
+            'count' => $this->client->get($package)['average_daily_users'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('users', $properties['count']);
     }
 
     public function keywords(): array

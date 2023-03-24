@@ -12,9 +12,15 @@ final class GenericBadge extends AbstractBadge
 {
     public function handle(string $metric, string $component, string $branch): array
     {
-        $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch);
+        return [
+            'metric' => $metric,
+            'value'  => $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch)[$metric],
+        ];
+    }
 
-        return $this->renderNumber(Str::of($metric)->title()->lower()->toString(), $response[$metric]);
+    public function render(array $properties): array
+    {
+        return $this->renderNumber(Str::of($properties['metric'])->title()->lower()->toString(), $properties['value']);
     }
 
     public function keywords(): array

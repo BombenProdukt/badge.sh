@@ -7,7 +7,6 @@ namespace App\Badges\GitHub\Badges;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class DownloadsBadge extends AbstractBadge
 {
@@ -28,10 +27,13 @@ final class DownloadsBadge extends AbstractBadge
         }, 0);
 
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($downloadCount),
-            'messageColor' => 'green.600',
+            'downloads' => $downloadCount,
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

@@ -11,7 +11,14 @@ final class CollectionSizeBadge extends AbstractBadge
 {
     public function handle(string $collectionId): array
     {
-        return $this->renderNumber('size', count($this->client->collection($collectionId)['children']));
+        return [
+            'count' => count($this->client->collection($collectionId)['children']),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('size', $properties['count']);
     }
 
     public function keywords(): array

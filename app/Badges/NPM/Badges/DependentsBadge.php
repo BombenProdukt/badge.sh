@@ -7,7 +7,6 @@ namespace App\Badges\NPM\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class DependentsBadge extends AbstractBadge
 {
@@ -18,10 +17,13 @@ final class DependentsBadge extends AbstractBadge
         preg_match('/"dependentsCount"\s*:\s*(\d+)/', $response, $matches);
 
         return [
-            'label'        => 'dependents',
-            'message'      => FormatNumber::execute((int) $matches[1]),
-            'messageColor' => 'green.600',
+            'count' => $matches[1],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('dependents', $properties['count']);
     }
 
     public function keywords(): array

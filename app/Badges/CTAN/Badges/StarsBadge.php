@@ -6,7 +6,6 @@ namespace App\Badges\CTAN\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatStars;
 
 final class StarsBadge extends AbstractBadge
 {
@@ -15,10 +14,13 @@ final class StarsBadge extends AbstractBadge
         preg_match('/<span>[^<]*?([\d.]+)\s/i', $this->client->web($package), $matches);
 
         return [
-            'label'        => 'rating',
-            'message'      => FormatStars::execute($matches[1]),
-            'messageColor' => 'green.600',
+            'stars' => $matches[1],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStars('stars', $properties['stars']);
     }
 
     public function keywords(): array

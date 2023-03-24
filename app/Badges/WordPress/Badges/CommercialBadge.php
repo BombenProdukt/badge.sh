@@ -11,7 +11,12 @@ final class CommercialBadge extends AbstractBadge
 {
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderText('commercial', $this->client->info($extensionType, $extension)['is_commercial'] ? 'yes' : 'no');
+        return $this->client->info($extensionType, $extension);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('commercial', $properties['is_commercial'] ? 'yes' : 'no');
     }
 
     public function keywords(): array

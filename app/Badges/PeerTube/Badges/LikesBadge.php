@@ -12,11 +12,16 @@ final class LikesBadge extends AbstractBadge
 {
     public function handle(string $instance, string $video): array
     {
-        $response = $this->client->get($instance, "videos/{$video}");
-
         return [
-            'label'        => 'votes',
-            'message'      => FormatNumber::execute($response['likes']),
+            'count' => $this->client->get($instance, "videos/{$video}")['likes'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => 'likes',
+            'message'      => FormatNumber::execute($properties['count']),
             'messageColor' => 'F1680D',
         ];
     }

@@ -11,7 +11,14 @@ final class FileReleaseDateBadge extends AbstractBadge
 {
     public function handle(string $fileId): array
     {
-        return $this->renderDateDiff('last modified', $this->client->file($fileId)['time_created']);
+        return [
+            'date' => $this->client->file($fileId)['time_created'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDateDiff('last modified', $properties['date']);
     }
 
     public function keywords(): array

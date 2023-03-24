@@ -20,7 +20,14 @@ final class DownloadsPerMonthBadge extends AbstractBadge
             }
         }
 
-        return $this->renderDownloads($total);
+        return [
+            'downloads' => $total,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerMonth($properties['downloads']);
     }
 
     public function keywords(): array

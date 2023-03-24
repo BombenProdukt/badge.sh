@@ -7,19 +7,19 @@ namespace App\Badges\CodeClimate\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class IssuesBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        $response = $this->client->get($project, 'snapshots');
-
         return [
-            'label'        => 'issues',
-            'message'      => FormatNumber::execute($response['meta']['issues_count']),
-            'messageColor' => 'blue.600',
+            'count' => $this->client->get($project, 'snapshots')['meta']['issues_count'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('issues', $properties['count']);
     }
 
     public function keywords(): array

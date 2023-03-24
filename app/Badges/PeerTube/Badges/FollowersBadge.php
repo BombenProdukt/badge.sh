@@ -25,8 +25,15 @@ final class FollowersBadge extends AbstractBadge
         }
 
         return [
+            'count' => $followersCount,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'followers',
-            'message'      => FormatNumber::execute($followersCount),
+            'message'      => FormatNumber::execute($properties['count']),
             'messageColor' => 'F1680D',
         ];
     }

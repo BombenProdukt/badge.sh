@@ -7,19 +7,19 @@ namespace App\Badges\GitLab\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class OpenMergeRequestsBadge extends AbstractBadge
 {
     public function handle(string $repo): array
     {
-        $response = $this->client->rest($repo, 'merge_requests?state=opened');
-
         return [
-            'label'        => 'open MRs',
-            'message'      => FormatNumber::execute((int) $response->header('x-total')),
-            'messageColor' => 'blue.600',
+            'count' => $this->client->rest($repo, 'merge_requests?state=opened')->header('x-total'),
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('open MRs', $properties['count']);
     }
 
     public function keywords(): array

@@ -14,18 +14,31 @@ final class StatusBadge extends AbstractBadge
         $status = $this->client->status($projectId);
 
         if (str_contains($status, '#0F4A21')) {
-            $status = 'passing';
+            return [
+                'status' => 'passing',
+            ];
         }
 
         if (str_contains($status, '#800A20')) {
-            $status = 'failing';
+            return [
+                'status' => 'failing',
+            ];
         }
 
         if (str_contains($status, '#603408')) {
-            $status = 'building';
+            return [
+                'status' => 'building',
+            ];
         }
 
-        return $this->renderStatus('build', $status);
+        return [
+            'status' => 'unknown',
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('build', $properties['status']);
     }
 
     public function keywords(): array

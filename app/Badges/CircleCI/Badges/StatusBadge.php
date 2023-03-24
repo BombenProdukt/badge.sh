@@ -12,12 +12,15 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $vcs, string $repo, ?string $branch = null): array
     {
-        $status = $this->client->get($vcs, $repo, $branch)[0]['status'];
+        return $this->client->get($vcs, $repo, $branch)[0];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'circleci',
-            'message'      => str_replace('_', ' ', $status),
-            'messageColor' => ['failed'  => 'red.600', 'success' => 'green.600'][$status] ?? 'gray.600',
+            'message'      => str_replace('_', ' ', $properties['status']),
+            'messageColor' => ['failed'  => 'red.600', 'success' => 'green.600'][$properties['status']] ?? 'gray.600',
         ];
     }
 

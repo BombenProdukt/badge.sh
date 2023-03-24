@@ -11,7 +11,12 @@ final class StarsBadge extends AbstractBadge
 {
     public function handle(string $pluginId): array
     {
-        return $this->renderNumber('stars', $this->client->get($pluginId)['stats']['stars']);
+        return $this->client->get($pluginId)['stats'];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('stars', $properties['stars']);
     }
 
     public function keywords(): array

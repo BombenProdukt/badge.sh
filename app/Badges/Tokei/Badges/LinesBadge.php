@@ -11,7 +11,14 @@ final class LinesBadge extends AbstractBadge
 {
     public function handle(string $provider, string $user, string $repo): array
     {
-        return $this->renderLines($this->client->lines($provider, $user, $repo));
+        return [
+            'lines' => $this->client->lines($provider, $user, $repo),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderLines($properties['lines']);
     }
 
     public function keywords(): array

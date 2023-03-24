@@ -12,13 +12,16 @@ final class LinesBadge extends AbstractBadge
 {
     public function handle(string $provider, string $project, ?string $language = null): array
     {
-        dd($project);
         $response = $this->client->get($provider, $project, $language);
 
-        return $this->renderLines(
-            // $language ? 'lines: '.($this->languages[$response['lines']] ?? $language) : 'lines',
-            $language ? $response['lines'] : array_reduce($response['languages'], fn ($accu, $curr) => $accu + $curr['lines'], 0),
-        );
+        return [
+            'lines' => $language ? $response['lines'] : array_reduce($response['languages'], fn ($accu, $curr) => $accu + $curr['lines'], 0),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderLines($properties['lines']);
     }
 
     public function keywords(): array

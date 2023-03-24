@@ -12,7 +12,14 @@ final class DownloadBadge extends AbstractBadge
 {
     public function handle(string $userType, string $id): array
     {
-        return $this->renderText('download', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Download' : 'Download'), 'green.600');
+        return [
+            'downloads' => Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Download' : 'Download'),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

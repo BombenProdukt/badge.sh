@@ -11,7 +11,14 @@ final class ProgressBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        return $this->renderPercentage('progress', $this->client->project($project)['translated_percent']);
+        return [
+            'percentage' => $this->client->project($project)['translated_percent'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage('progress', $properties['percentage']);
     }
 
     public function keywords(): array

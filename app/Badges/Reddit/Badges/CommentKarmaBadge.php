@@ -13,8 +13,16 @@ final class CommentKarmaBadge extends AbstractBadge
     public function handle(string $user): array
     {
         return [
-            'label'        => "u/{$user}",
-            'message'      => FormatNumber::execute($this->client->get("user/{$user}/about.json")['comment_karma']).' comment karma',
+            'username' => $user,
+            'karma'    => $this->client->get("user/{$user}/about.json")['comment_karma'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => 'u/'.$properties['username'],
+            'message'      => FormatNumber::execute($properties['karma']).' comment karma',
             'messageColor' => 'ff4500',
         ];
     }

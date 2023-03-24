@@ -6,7 +6,6 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class ClosedPullRequestsBadge extends AbstractBadge
 {
@@ -15,10 +14,13 @@ final class ClosedPullRequestsBadge extends AbstractBadge
         $result = $this->client->makeRepoQuery($owner, $repo, 'pullRequests(states:[CLOSED, MERGED]) { totalCount }');
 
         return [
-            'label'        => 'closed PRs',
-            'message'      => FormatNumber::execute($result['pullRequests']['totalCount']),
-            'messageColor' => 'blue.600',
+            'count' => $result['pullRequests']['totalCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('closed PRs', $properties['count']);
     }
 
     public function keywords(): array

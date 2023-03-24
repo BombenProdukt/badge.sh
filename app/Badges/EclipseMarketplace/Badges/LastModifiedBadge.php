@@ -11,7 +11,14 @@ final class LastModifiedBadge extends AbstractBadge
 {
     public function handle(string $name): array
     {
-        return $this->renderDateDiff('last modified', $this->client->get($name)->filterXPath('//changed')->text());
+        return [
+            'date' => $this->client->get($name)->filterXPath('//changed')->text(),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDateDiff('last modified', $properties['date']);
     }
 
     public function keywords(): array

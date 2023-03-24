@@ -29,9 +29,16 @@ final class StabilityBadge extends AbstractBadge
         })->filter()->first();
 
         return [
+            'stability' => $stability,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'stability',
-            'message'      => str_replace('Production/Stable', 'stable', $stability),
-            'messageColor' => DetermineColorByVersion::execute($stability),
+            'message'      => str_replace('Production/Stable', 'stable', $properties['stability']),
+            'messageColor' => DetermineColorByVersion::execute($properties['stability']),
         ];
     }
 

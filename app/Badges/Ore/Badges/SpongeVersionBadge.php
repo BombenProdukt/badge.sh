@@ -11,13 +11,18 @@ final class SpongeVersionBadge extends AbstractBadge
 {
     public function handle(string $pluginId): array
     {
-        return $this->renderVersion(
-            collect($this->client->get($pluginId)['promoted_versions'])
+        return [
+            'version' => collect($this->client->get($pluginId)['promoted_versions'])
                 ->flatMap(fn (array $version) => $version['tags'])
                 ->filter(fn (array $tag) => strtolower($tag['name']) === 'sponge')
                 ->map(fn (array $tag) => $tag['display_data'])
-                ->first()
-        );
+                ->first(),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

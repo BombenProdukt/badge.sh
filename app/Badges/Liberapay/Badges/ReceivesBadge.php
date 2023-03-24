@@ -12,11 +12,14 @@ final class ReceivesBadge extends AbstractBadge
 {
     public function handle(string $username): array
     {
-        $response = $this->client->get($username);
+        return $this->client->get($username)['receiving'];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'receives',
-            'message'      => FormatMoney::execute((float) $response['receiving']['amount'], $response['receiving']['currency']).'/week',
+            'message'      => FormatMoney::execute((float) $properties['amount'], $properties['currency']).'/week',
             'messageColor' => 'yellow.600',
         ];
     }

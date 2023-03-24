@@ -7,19 +7,17 @@ namespace App\Badges\Packagist\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class DependentsBadge extends AbstractBadge
 {
     public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
+        return $this->client->get($package);
+    }
 
-        return [
-            'label'        => 'dependents',
-            'message'      => FormatNumber::execute($packageMeta['dependents']),
-            'messageColor' => 'green.600',
-        ];
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('dependents', $properties['dependents']);
     }
 
     public function keywords(): array

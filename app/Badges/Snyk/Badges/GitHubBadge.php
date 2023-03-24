@@ -8,29 +8,38 @@ use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
-final class GItHubBadge extends AbstractBadge
+final class GitHubBadge extends AbstractBadge
 {
     public function handle(string $project, string $targetFile = null): array
     {
         $svg = $this->client->get("test/github/{$project}", $targetFile);
 
         preg_match_all('/fill-opacity=[^>]*?>([^<]+)<\//i', $svg, $matchesText);
-        [$subject, $status] = $matchesText[1];
+        [$label, $message] = $matchesText[1];
 
         if (! preg_match('/<path[^>]*?fill="([^"]+)"[^>]*?d="M[^0]/i', $svg, $matchesColor)) {
             return [];
         }
 
-        $statusColor = trim(str_replace('#', '', $matchesColor[1]));
+        $messageColor = trim(str_replace('#', '', $matchesColor[1]));
 
-        if (is_null($status) || empty($statusColor)) {
+        if (is_null($message) || empty($messageColor)) {
             return [];
         }
 
         return [
-            'label'        => $subject ?? 'vulnerabilities',
-            'message'      => $status,
-            'messageColor' => $statusColor,
+            'label'        => $label,
+            'message'      => $message,
+            'messageColor' => $messageColor,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => $properties['label'] ?? 'vulnerabilities',
+            'message'      => $properties['message'],
+            'messageColor' => $properties['messageColor'],
         ];
     }
 

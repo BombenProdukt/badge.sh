@@ -18,6 +18,11 @@ final class LicenseBadge extends AbstractBadge
         return $this->renderLicense($matches[1]);
     }
 
+    public function render(array $properties): array
+    {
+        return $this->renderLicense($properties['license']);
+    }
+
     public function keywords(): array
     {
         return [Category::LICENSE];

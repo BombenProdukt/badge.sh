@@ -11,11 +11,12 @@ final class PlatformBadge extends AbstractBadge
 {
     public function handle(string $gem): array
     {
-        return [
-            'label'        => 'platform',
-            'message'      => $this->client->get("gems/{$gem}")['platform'],
-            'messageColor' => 'green.600',
-        ];
+        return $this->client->get("gems/{$gem}");
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('platform', $properties['platform']);
     }
 
     public function keywords(): array

@@ -12,13 +12,18 @@ final class TotalDownloadsBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        $totalDownloads = Http::get('https://azuresearch-usnc.nuget.org/query', [
-            'q'           => 'packageid:'.strtolower($project),
-            'prerelease'  => 'true',
-            'semVerLevel' => 2,
-        ])->throw()->json('data.0.totalDownloads');
+        return [
+            'downloads' => Http::get('https://azuresearch-usnc.nuget.org/query', [
+                'q'           => 'packageid:'.strtolower($project),
+                'prerelease'  => 'true',
+                'semVerLevel' => 2,
+            ])->throw()->json('data.0.totalDownloads'),
+        ];
+    }
 
-        return $this->renderDownloads($totalDownloads);
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

@@ -6,19 +6,19 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class MergedPullRequestsBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo)
     {
-        $result = $this->client->makeRepoQuery($owner, $repo, 'pullRequests(states:[MERGED]) { totalCount }');
-
         return [
-            'label'        => 'merged PRs',
-            'message'      => FormatNumber::execute($result['pullRequests']['totalCount']),
-            'messageColor' => 'blue.600',
+            'count' => $this->client->makeRepoQuery($owner, $repo, 'pullRequests(states:[MERGED]) { totalCount }')['pullRequests']['totalCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('merged PRs', $properties['count']);
     }
 
     public function keywords(): array

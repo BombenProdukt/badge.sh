@@ -17,17 +17,15 @@ final class AccountBadge extends AbstractBadge
             return (new UserIdBadge($this->client))->handle($username, $instance);
         }
 
-        $userId = $this->parseFeed($this->client->rss($instance, $username));
+        return (new UserIdBadge($this->client))->handle(
+            $this->parseFeed($this->client->rss($instance, $username)),
+            $instance
+        );
+    }
 
-        if (is_string($userId)) {
-            return (new UserIdBadge($this->client))->handle($userId, $instance);
-        }
-
-        return [
-            'label'        => 'TODO',
-            'message'      => 'TODO',
-            'messageColor' => 'TODO',
-        ];
+    public function render(array $properties): array
+    {
+        return (new UserIdBadge($this->client))->render($properties);
     }
 
     public function keywords(): array

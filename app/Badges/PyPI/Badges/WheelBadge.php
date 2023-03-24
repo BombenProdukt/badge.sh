@@ -28,9 +28,17 @@ final class WheelBadge extends AbstractBadge
         }
 
         return [
+            'hasWheel' => $hasWheel,
+            'hasEgg'   => $hasEgg,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'wheel',
-            'message'      => $hasWheel ? 'yes' : 'no',
-            'messageColor' => $hasWheel ? 'green.600' : 'red.600',
+            'message'      => $properties['hasWheel'] ? 'yes' : 'no',
+            'messageColor' => $properties['hasWheel'] ? 'green.600' : 'red.600',
         ];
     }
 

@@ -24,7 +24,7 @@ final class MakeBadgeResponse
                     'messageColor' => 'red.600',
                 ]);
             } else {
-                $badge = Badger::from($badge->handle(...$request->route()->parameters()));
+                $badge = Badger::from($badge->render($badge->handle(...$request->route()->parameters())));
             }
 
             $badge->withStyle($request->query('style', 'classic'));

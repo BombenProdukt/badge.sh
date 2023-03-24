@@ -11,7 +11,12 @@ final class PassedCountBadge extends AbstractBadge
 {
     public function handle(string $org, string $project, string $space): array
     {
-        return $this->renderNumber('passed', $this->client->get($org, $project, $space)['passed'], 'green.600');
+        return $this->client->get($org, $project, $space);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('passed', $properties['passed'], 'green.600');
     }
 
     public function keywords(): array

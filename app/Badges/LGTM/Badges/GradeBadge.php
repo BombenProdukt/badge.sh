@@ -15,15 +15,23 @@ final class GradeBadge extends AbstractBadge
         $response = $this->client->get($provider, $project, $language);
 
         return [
-            'label'        => 'code quality: '.($this->languages[$response['lines']] ?? $language),
-            'message'      => $response['grade'],
+            'language' => $this->languages[$response['lines']] ?? $language,
+            'grade'    => $response['grade'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => 'code quality: '.$properties['language'],
+            'message'      => $properties['grade'],
             'messageColor' => [
                 'A+' => 'green.600',
                 'A'  => '9C0',
                 'B'  => 'A4A61D',
                 'C'  => 'yellow.600',
                 'D'  => 'orange.600',
-            ][$response['grade']],
+            ][$properties['grade']],
         ];
     }
 

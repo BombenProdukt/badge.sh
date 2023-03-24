@@ -12,12 +12,17 @@ final class OpenIssuesBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
-        $result = $this->client->makeRepoQuery($owner, $repo, 'issues(states:[OPEN]) { totalCount }');
+        return [
+            'count' => $this->client->makeRepoQuery($owner, $repo, 'issues(states:[OPEN]) { totalCount }')['issues']['totalCount'],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'open issues',
-            'message'      => FormatNumber::execute($result['issues']['totalCount']),
-            'messageColor' => $result['issues']['totalCount'] === 0 ? 'green.600' : 'orange.600',
+            'message'      => FormatNumber::execute($properties['count']),
+            'messageColor' => $properties['count'] === 0 ? 'green.600' : 'orange.600',
         ];
     }
 

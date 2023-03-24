@@ -11,7 +11,12 @@ final class CommunityBadge extends AbstractBadge
 {
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderText('community', $this->client->info($extensionType, $extension)['is_community'] ? 'yes' : 'no');
+        return $this->client->info($extensionType, $extension);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('community', $properties['is_community'] ? 'yes' : 'no');
     }
 
     public function keywords(): array

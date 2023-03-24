@@ -7,17 +7,19 @@ namespace App\Badges\Bundlephobia\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatBytes;
 
 final class MinzipBadge extends AbstractBadge
 {
     public function handle(string $name): array
     {
         return [
-            'label'        => 'minzipped size',
-            'message'      => FormatBytes::execute($this->client->get($name)['gzip']),
-            'messageColor' => 'blue.600',
+            'size' => $this->client->get($name)['gzip'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['size'], 'minzipped size');
     }
 
     public function keywords(): array

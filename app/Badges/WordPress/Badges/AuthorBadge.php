@@ -11,7 +11,14 @@ final class AuthorBadge extends AbstractBadge
 {
     public function handle(string $extensionType, string $extension): array
     {
-        return $this->renderText('author', $this->client->info($extensionType, $extension)['author']['user_nicename']);
+        return [
+            'author' => $this->client->info($extensionType, $extension)['author']['user_nicename'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('author', $properties['author']);
     }
 
     public function keywords(): array

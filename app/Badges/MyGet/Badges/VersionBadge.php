@@ -14,18 +14,25 @@ final class VersionBadge extends AbstractBadge
         $versions = collect($this->client->get($feed, $project)['versions'])->pluck('version')->toArray();
 
         if ($channel === 'latest') {
-            $version = $this->latest($versions);
+            return [
+                'version' => $this->latest($versions),
+            ];
         }
 
         if ($channel === 'pre') {
-            $version = $this->latest($this->pre($versions));
+            return [
+                'version' => $this->latest($this->pre($versions)),
+            ];
         }
 
-        if (empty($channel)) {
-            $version = $this->latest($this->stable($versions));
-        }
+        return [
+            'version' => $this->latest($this->stable($versions)),
+        ];
+    }
 
-        return $this->renderVersion($version);
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

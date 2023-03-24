@@ -15,22 +15,31 @@ final class NPMBadge extends AbstractBadge
         $svg = $this->client->get('test/npm/'.implode('/', [$project, $branch]), $targetFile);
 
         preg_match_all('/fill-opacity=[^>]*?>([^<]+)<\//i', $svg, $matchesText);
-        [$subject, $status] = $matchesText[1];
+        [$label, $message] = $matchesText[1];
 
         if (! preg_match('/<path[^>]*?fill="([^"]+)"[^>]*?d="M[^0]/i', $svg, $matchesColor)) {
             return [];
         }
 
-        $statusColor = trim(str_replace('#', '', $matchesColor[1]));
+        $messageColor = trim(str_replace('#', '', $matchesColor[1]));
 
-        if (is_null($status) || empty($statusColor)) {
+        if (is_null($message) || empty($messageColor)) {
             return [];
         }
 
         return [
-            'label'        => $subject ?? 'vulnerabilities',
-            'message'      => $status,
-            'messageColor' => $statusColor,
+            'label'        => $label,
+            'message'      => $message,
+            'messageColor' => $messageColor,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => $properties['label'] ?? 'vulnerabilities',
+            'message'      => $properties['message'],
+            'messageColor' => $properties['messageColor'],
         ];
     }
 

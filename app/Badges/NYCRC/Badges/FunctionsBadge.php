@@ -11,7 +11,12 @@ final class FunctionsBadge extends AbstractBadge
 {
     public function handle(string $user, string $repo): array
     {
-        return $this->renderText('functions', $this->client->get($user, $repo)['functions'] ?? 0);
+        return $this->client->get($user, $repo);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('functions', $properties['functions'] ?? 0);
     }
 
     public function keywords(): array

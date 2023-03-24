@@ -11,7 +11,16 @@ final class MonthlyQuestionsBadge extends AbstractBadge
 {
     public function handle(string $site, string $query): array
     {
-        return $this->renderNumber("{$query}@{$site}", $this->client->questions($site, $query)['total']);
+        return [
+            'query' => $query,
+            'site'  => $site,
+            'count' => $this->client->questions($site, $query)['total'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber($properties['query'].'@'.$properties['site'], $properties['count']);
     }
 
     public function keywords(): array

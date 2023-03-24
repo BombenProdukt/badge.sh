@@ -13,8 +13,15 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
     public function handle(string $package): array
     {
         return [
+            'downloads' => $this->client->get($package)['recent_downloads'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'downloads',
-            'message'      => FormatNumber::execute($this->client->get($package)['recent_downloads']).' latest version',
+            'message'      => FormatNumber::execute($properties['downloads']).' latest version',
             'messageColor' => 'green.600',
         ];
     }

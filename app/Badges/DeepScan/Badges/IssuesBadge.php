@@ -12,12 +12,17 @@ final class IssuesBadge extends AbstractBadge
 {
     public function handle(string $teamId, string $projectId, string $branchId): array
     {
-        $response = $this->client->get($teamId, $projectId, $branchId);
+        return [
+            'count' => $this->client->get($teamId, $projectId, $branchId)['outstandingDefectCount'],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'issues',
-            'message'      => FormatNumber::execute($response['outstandingDefectCount']),
-            'messageColor' => $response['outstandingDefectCount'] ? 'green.600' : 'yellow.600',
+            'message'      => FormatNumber::execute($properties['count']),
+            'messageColor' => $properties['count'] ? 'green.600' : 'yellow.600',
         ];
     }
 

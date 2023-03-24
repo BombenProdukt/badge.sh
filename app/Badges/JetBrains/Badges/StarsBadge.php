@@ -12,10 +12,19 @@ final class StarsBadge extends AbstractBadge
     public function handle(string $pluginId): array
     {
         if (is_numeric($pluginId)) {
-            return $this->renderStars('rating', $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//rating')->text());
+            return [
+                'rating' => $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//rating')->text(),
+            ];
         }
 
-        return $this->renderStars('rating', $this->client->rating($pluginId)['meanRating']);
+        return [
+            'rating' => $this->client->rating($pluginId)['meanRating'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStars('rating', $properties['rating']);
     }
 
     public function keywords(): array

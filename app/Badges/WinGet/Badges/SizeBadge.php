@@ -6,17 +6,17 @@ namespace App\Badges\WinGet\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatBytes;
 
 final class SizeBadge extends AbstractBadge
 {
     public function handle(string $appId): array
     {
-        return [
-            'label'        => 'winget',
-            'message'      => FormatBytes::execute($this->client->get($appId)['size']),
-            'messageColor' => 'blue.600',
-        ];
+        return $this->client->get($appId);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['size']);
     }
 
     public function keywords(): array

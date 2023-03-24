@@ -12,9 +12,12 @@ final class WeeklyDownloadsBadge extends AbstractBadge
 {
     public function handle(string $package, string $tag = 'latest'): array
     {
-        $downloads = $this->client->api("downloads/point/last-week/{$package}")['downloads'];
+        return $this->client->api("downloads/point/last-week/{$package}");
+    }
 
-        return $this->renderDownloadsPerWeek($downloads);
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerWeek($properties['downloads']);
     }
 
     public function keywords(): array

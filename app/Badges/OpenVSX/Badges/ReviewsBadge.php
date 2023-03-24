@@ -12,13 +12,14 @@ final class ReviewsBadge extends AbstractBadge
 {
     public function handle(string $extension): array
     {
-        $response = $this->client->get($extension);
-
         return [
-            'label'        => 'reviews',
-            'message'      => (string) $response['reviewCount'],
-            'messageColor' => 'green.600',
+            'count' => $this->client->get($extension)['reviewCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('reviews', $properties['count']);
     }
 
     public function keywords(): array

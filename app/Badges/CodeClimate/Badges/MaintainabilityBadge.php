@@ -12,9 +12,12 @@ final class MaintainabilityBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        $response = $this->client->get($project, 'snapshots');
+        return $this->client->get($project, 'snapshots')['attributes']['ratings'][0];
+    }
 
-        return $this->renderGrade('maintainability', $response['attributes']['ratings'][0]['letter']);
+    public function render(array $properties): array
+    {
+        return $this->renderGrade('maintainability', $properties['letter']);
     }
 
     public function keywords(): array

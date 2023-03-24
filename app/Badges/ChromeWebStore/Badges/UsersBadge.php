@@ -6,7 +6,6 @@ namespace App\Badges\ChromeWebStore\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class UsersBadge extends AbstractBadge
 {
@@ -15,10 +14,13 @@ final class UsersBadge extends AbstractBadge
         preg_match('|<span class="e-f-ih" title="(.*?)">(.*?)</span>|', $this->client->get($itemId), $matches);
 
         return [
-            'label'        => 'rating',
-            'message'      => FormatNumber::execute((int) filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT)),
-            'messageColor' => 'green.600',
+            'count' => filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT),
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderRating($properties['count']);
     }
 
     public function keywords(): array

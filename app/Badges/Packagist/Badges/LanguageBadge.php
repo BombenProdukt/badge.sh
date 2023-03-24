@@ -12,13 +12,12 @@ final class LanguageBadge extends AbstractBadge
 {
     public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
+        return $this->client->get($package);
+    }
 
-        return [
-            'label'        => 'language',
-            'message'      => $packageMeta['language'],
-            'messageColor' => 'green.600',
-        ];
+    public function render(array $properties): array
+    {
+        return $this->renderText('language', $properties['language']);
     }
 
     public function keywords(): array

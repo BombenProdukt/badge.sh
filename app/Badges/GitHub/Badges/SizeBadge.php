@@ -12,7 +12,12 @@ final class SizeBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
-        return $this->renderSize(GitHub::connection()->repos()->show($owner, $repo)['size']);
+        return GitHub::connection()->repos()->show($owner, $repo);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['size']);
     }
 
     public function keywords(): array

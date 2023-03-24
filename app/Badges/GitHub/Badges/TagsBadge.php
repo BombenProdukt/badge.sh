@@ -6,7 +6,6 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class TagsBadge extends AbstractBadge
 {
@@ -15,10 +14,13 @@ final class TagsBadge extends AbstractBadge
         $result = $this->client->makeRepoQuery($owner, $repo, 'refs(first: 0, refPrefix: "refs/tags/") { totalCount }');
 
         return [
-            'label'        => 'tags',
-            'message'      => FormatNumber::execute($result['refs']['totalCount']),
-            'messageColor' => 'blue.600',
+            'count' => $result['refs']['totalCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('tags', $properties['count']);
     }
 
     public function keywords(): array

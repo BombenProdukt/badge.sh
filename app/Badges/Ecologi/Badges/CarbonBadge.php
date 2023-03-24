@@ -11,7 +11,14 @@ final class CarbonBadge extends AbstractBadge
 {
     public function handle(string $username): array
     {
-        return $this->renderNumber('carbon offset', $this->client->carbon($username));
+        return [
+            'count' => $this->client->carbon($username),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('carbon offset', $properties['count']);
     }
 
     public function keywords(): array

@@ -11,7 +11,12 @@ final class PlatformsBadge extends AbstractBadge
 {
     public function handle(string $packageName): array
     {
-        return $this->renderText('platforms', implode(' | ', $this->client->get($packageName)['platforms']), 'blue.600');
+        return $this->client->get($packageName);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('platforms', implode(' | ', $properties['platforms']), 'blue.600');
     }
 
     public function keywords(): array

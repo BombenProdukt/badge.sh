@@ -13,15 +13,20 @@ final class BrokenBuildBadge extends AbstractBadge
 {
     public function handle(string $hostname, string $job): array
     {
-        $builds = collect($this->client->builds($hostname, $job))->filter(fn (array $build) => strtolower($build['result']) !== 'success');
+        return [
+            'count' => collect($this->client->builds($hostname, $job))->filter(fn (array $build) => strtolower($build['result']) !== 'success')->count(),
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'Broken Builds',
-            'message'      => FormatNumber::execute($builds->count()),
+            'message'      => FormatNumber::execute($properties['count']),
             'messageColor' => match (true) {
-                $builds->count() < 10   => 'green.600',
-                $builds->count() < 20   => 'orange.600',
-                default                 => 'red.600',
+                $properties['count'] < 10 => 'green.600',
+                $properties['count'] < 20 => 'orange.600',
+                default                   => 'red.600',
             },
         ];
     }

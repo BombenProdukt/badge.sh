@@ -11,7 +11,12 @@ final class UntestedCountBadge extends AbstractBadge
 {
     public function handle(string $org, string $project, string $space): array
     {
-        return $this->renderNumber('untested', $this->client->get($org, $project, $space)['untested'], 'orange.600');
+        return $this->client->get($org, $project, $space);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('untested', $properties['untested'], 'orange.600');
     }
 
     public function keywords(): array

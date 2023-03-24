@@ -6,7 +6,6 @@ namespace App\Badges\MozillaAddOns\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatStars;
 
 final class StarsBadge extends AbstractBadge
 {
@@ -15,10 +14,13 @@ final class StarsBadge extends AbstractBadge
         $response = $this->client->get($package);
 
         return [
-            'label'        => 'stars',
-            'message'      => FormatStars::execute($response['ratings']['average']),
-            'messageColor' => 'green.600',
+            'stars' => $response['ratings']['average'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStars('stars', $properties['stars']);
     }
 
     public function keywords(): array

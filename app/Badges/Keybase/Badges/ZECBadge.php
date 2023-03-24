@@ -11,11 +11,16 @@ final class ZECBadge extends AbstractBadge
 {
     public function handle(string $address): array
     {
-        $response = $this->client->get($address, 'cryptocurrency_addresses');
+        return [
+            'address' => $this->client->get($address, 'cryptocurrency_addresses'),
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'ZCash',
-            'message'      => $response['them']['cryptocurrency_addresses']['zcash'][0]['address'],
+            'message'      => $properties['address'],
             'messageColor' => 'blue.600',
         ];
     }

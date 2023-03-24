@@ -6,19 +6,19 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class OpenPullRequestsBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
-        $result = $this->client->makeRepoQuery($owner, $repo, 'pullRequests(states:[OPEN]) { totalCount }');
-
         return [
-            'label'        => 'open PRs',
-            'message'      => FormatNumber::execute($result['pullRequests']['totalCount']),
-            'messageColor' => 'blue.600',
+            'count' => $this->client->makeRepoQuery($owner, $repo, 'pullRequests(states:[OPEN]) { totalCount }')['pullRequests']['totalCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('open PRs', $properties['count']);
     }
 
     public function keywords(): array

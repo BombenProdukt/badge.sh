@@ -12,7 +12,14 @@ final class DocsBadge extends AbstractBadge
 {
     public function handle(string $pod): array
     {
-        return $this->renderPercentage($this->service(), Arr::get($this->client->get($pod), 'cocoadocs.doc_percent', 0));
+        return [
+            'percentage' => Arr::get($this->client->get($pod), 'cocoadocs.doc_percent', 0),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage($this->service(), $properties['percentage']);
     }
 
     public function keywords(): array

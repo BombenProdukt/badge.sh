@@ -14,6 +14,11 @@ final class UserModuleCount extends AbstractBadge
         return $this->renderNumber('module count', $this->client->user($user)['module_count']);
     }
 
+    public function render(array $properties): array
+    {
+        //
+    }
+
     public function keywords(): array
     {
         return [Category::VERSION];

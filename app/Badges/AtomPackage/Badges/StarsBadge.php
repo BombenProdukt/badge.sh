@@ -6,17 +6,19 @@ namespace App\Badges\AtomPackage\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class StarsBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
         return [
-            'label'        => 'stars',
-            'message'      => FormatNumber::execute($this->client->get($package)['stargazers_count']),
-            'messageColor' => 'green.600',
+            'stars' => $this->client->get($package)['stargazers_count'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStars('stars', $properties['stars']);
     }
 
     public function keywords(): array

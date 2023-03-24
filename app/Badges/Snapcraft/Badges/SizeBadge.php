@@ -7,7 +7,6 @@ namespace App\Badges\Snapcraft\Badges;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
-use PreemStudio\Formatter\FormatBytes;
 
 final class SizeBadge extends AbstractBadge
 {
@@ -21,11 +20,12 @@ final class SizeBadge extends AbstractBadge
             default                   => $channels->first(),
         };
 
-        return [
-            'label'        => 'distrib size',
-            'message'      => FormatBytes::execute($channel['download']['size']),
-            'messageColor' => 'green.600',
-        ];
+        return $channel['download'];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['size']);
     }
 
     public function keywords(): array

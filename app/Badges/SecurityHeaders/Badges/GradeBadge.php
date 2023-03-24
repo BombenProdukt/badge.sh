@@ -11,7 +11,14 @@ final class GradeBadge extends AbstractBadge
 {
     public function handle(string $url): array
     {
-        return $this->renderGrade('security headers', $this->client->grade($url));
+        return [
+            'grade' => $this->client->grade($url),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderGrade('security headers', $properties['grade']);
     }
 
     public function keywords(): array

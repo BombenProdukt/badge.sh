@@ -11,6 +11,11 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $org, string $room): array
     {
+        return [];
+    }
+
+    public function render(array $properties): array
+    {
         return $this->renderText('gitter', 'on gitter', 'ed1965');
     }
 

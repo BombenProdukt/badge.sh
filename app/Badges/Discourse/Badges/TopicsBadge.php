@@ -11,7 +11,14 @@ final class TopicsBadge extends AbstractBadge
 {
     public function handle(string $server): array
     {
-        return $this->renderNumber('topics', $this->client->statistics($server)['topic_count']);
+        return [
+            'count' => $this->client->statistics($server)['topic_count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('topics', $properties['count']);
     }
 
     public function keywords(): array

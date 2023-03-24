@@ -11,9 +11,12 @@ final class SummaryBadge extends AbstractBadge
 {
     public function handle(string $org, string $project, string $space): array
     {
-        $response = $this->client->get($org, $project, $space);
+        return $this->client->get($org, $project, $space);
+    }
 
-        return $this->renderText('summary', $this->getMessage($response), $this->getMessageColor($response));
+    public function render(array $properties): array
+    {
+        return $this->renderText('summary', $this->getMessage($properties), $this->getMessageColor($properties));
     }
 
     public function keywords(): array

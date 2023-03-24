@@ -11,7 +11,14 @@ final class PercentageBadge extends AbstractBadge
 {
     public function handle(string $projectId): array
     {
-        return $this->renderCoverage($this->client->get($projectId)['tiered_percentage'], 'cii');
+        return [
+            'percentage' => $this->client->get($projectId)['tiered_percentage'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderCoverage($properties['percentage'], 'cii');
     }
 
     public function keywords(): array

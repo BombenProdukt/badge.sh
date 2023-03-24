@@ -19,13 +19,21 @@ final class DeploymentBadge extends AbstractBadge
         ], $environment ? ['definitionenvironment' => 'environment'] : []))->json('value.0');
 
         return [
+            'status'  => $response['deploymentStatus'],
+            'version' => $response['release']['name'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'Deployment Version',
-            'message'      => $response['release']['name'],
+            'message'      => $properties['version'],
             'messageColor' => [
                 'succeeded'          => 'green.600',
                 'partiallySucceeded' => 'yellow.600',
                 'failed'             => 'red.600',
-            ][$response['deploymentStatus']],
+            ][$properties['status']],
         ];
     }
 

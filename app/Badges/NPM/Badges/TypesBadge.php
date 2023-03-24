@@ -16,9 +16,7 @@ final class TypesBadge extends AbstractBadge
 
         if (isset($response['types']) || isset($response['typings']) || isset($response['exports']['types'])) {
             return [
-                'label'        => 'types',
-                'message'      => 'included',
-                'messageColor' => '0074c1',
+                'types' => 'included',
             ];
         }
 
@@ -26,9 +24,7 @@ final class TypesBadge extends AbstractBadge
             $this->client->unpkg("{$package}/index.d.ts");
 
             return [
-                'label'        => 'types',
-                'message'      => 'included',
-                'messageColor' => '0074c1',
+                'types' => 'included',
             ];
         } catch (\Throwable) {
             //
@@ -36,18 +32,39 @@ final class TypesBadge extends AbstractBadge
 
         try {
             return [
-                'label'        => 'types',
-                'message'      => $this->client->unpkg('@types/'.($package[0] === '@' ? str_replace('/', '__', substr($package, 1)) : $package).'/package.json')['name'],
-                'messageColor' => 'cyan.600',
+                'types' => $this->client->unpkg('@types/'.($package[0] === '@' ? str_replace('/', '__', substr($package, 1)) : $package).'/package.json')['name'],
             ];
         } catch (\Throwable) {
             //
         }
 
         return [
+            'types' => 'missing',
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if ($properties['types'] === 'missing') {
+            return [
+                'label'        => 'types',
+                'message'      => 'missing',
+                'messageColor' => 'orange.600',
+            ];
+        }
+
+        if ($properties['types'] === 'included') {
+            return [
+                'label'        => 'types',
+                'message'      => 'included',
+                'messageColor' => '0074c1',
+            ];
+        }
+
+        return [
             'label'        => 'types',
-            'message'      => 'missing',
-            'messageColor' => 'orange.600',
+            'message'      => $properties['types'],
+            'messageColor' => 'cyan.600',
         ];
     }
 

@@ -12,12 +12,15 @@ final class RankBadge extends AbstractBadge
 {
     public function handle(string $platform, string $package): array
     {
-        $rank = $this->client->data($platform, $package)['rank'];
+        return $this->client->data($platform, $package);
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'jsDelivr rank',
-            'message'      => $rank ? "#{$rank}" : 'none',
-            'messageColor' => $rank ? 'blue.600' : 'gray.600',
+            'message'      => $properties['rank'] ? '#'.$properties['rank'] : 'none',
+            'messageColor' => $properties['rank'] ? 'blue.600' : 'gray.600',
         ];
     }
 

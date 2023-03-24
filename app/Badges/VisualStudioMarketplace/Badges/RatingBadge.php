@@ -11,13 +11,19 @@ final class RatingBadge extends AbstractBadge
 {
     public function handle(string $extension): array
     {
-        $response      = collect($this->client->get($extension));
-        $averageRating = collect($response['statistics'])->firstWhere('statisticName', 'averagerating')['value'];
-        $ratingCount   = collect($response['statistics'])->firstWhere('statisticName', 'ratingcount')['value'];
+        $response = collect($this->client->get($extension));
 
         return [
+            'rating' => collect($response['statistics'])->firstWhere('statisticName', 'averagerating')['value'],
+            'count'  => collect($response['statistics'])->firstWhere('statisticName', 'ratingcount')['value'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'rating',
-            'message'      => number_format($averageRating)."/5 ({$ratingCount})",
+            'message'      => number_format($properties['rating']).'/5 ('.$properties['count'].')',
             'messageColor' => 'green.600',
         ];
     }

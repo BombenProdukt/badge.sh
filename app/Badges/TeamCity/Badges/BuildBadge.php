@@ -11,7 +11,14 @@ final class BuildBadge extends AbstractBadge
 {
     public function handle(string $buildId): array
     {
-        return $this->renderStatus('build', $this->client->build($this->getRequestData('instance'), $buildId)['statusText']);
+        return [
+            'status' => $this->client->build($this->getRequestData('instance'), $buildId)['statusText'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('build', $properties['status']);
     }
 
     public function keywords(): array

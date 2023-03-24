@@ -6,19 +6,17 @@ namespace App\Badges\DUB\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatStars;
 
 final class StarsBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $score = $this->client->get("{$package}/stats")['score'];
+        return $this->client->get("{$package}/stats");
+    }
 
-        return [
-            'label'        => 'stars',
-            'message'      => FormatStars::execute($score),
-            'messageColor' => 'green.600',
-        ];
+    public function render(array $properties): array
+    {
+        return $this->renderStars('stars', $properties['score']);
     }
 
     public function keywords(): array

@@ -13,7 +13,14 @@ final class LicenseBadge extends AbstractBadge
     {
         $result = $this->client->makeRepoQuery($owner, $repo, 'licenseInfo { spdxId }');
 
-        return $this->renderLicense($result['licenseInfo']['spdxId']);
+        return [
+            'license' => $result['licenseInfo']['spdxId'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderLicense($properties['license']);
     }
 
     public function keywords(): array

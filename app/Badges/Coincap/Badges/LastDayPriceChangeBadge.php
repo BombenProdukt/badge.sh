@@ -13,7 +13,15 @@ final class LastDayPriceChangeBadge extends AbstractBadge
     {
         $response = $this->client->get($assetId);
 
-        return $this->renderPercentage($response['name'], $response['changePercent24Hr']);
+        return [
+            'ticker'     => $response['name'],
+            'percentage' => $response['changePercent24Hr'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage($properties['ticker'], $properties['percentage']);
     }
 
     public function keywords(): array

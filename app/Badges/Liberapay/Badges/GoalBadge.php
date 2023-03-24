@@ -21,9 +21,16 @@ final class GoalBadge extends AbstractBadge
         }
 
         return [
+            'goal' => $goal,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'goal progress',
-            'message'      => FormatPercentage::execute($goal),
-            'messageColor' => isset($goal) ? 'yellow.600' : 'gray.600',
+            'message'      => FormatPercentage::execute($properties['goal']),
+            'messageColor' => isset($properties['goal']) ? 'yellow.600' : 'gray.600',
         ];
     }
 

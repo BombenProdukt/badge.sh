@@ -12,11 +12,14 @@ final class DislikesBadge extends AbstractBadge
 {
     public function handle(string $instance, string $video): array
     {
-        $response = $this->client->get($instance, "videos/{$video}");
+        return $this->client->get($instance, "videos/{$video}");
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'votes',
-            'message'      => FormatNumber::execute($response['dislikes']),
+            'message'      => FormatNumber::execute($properties['dislikes']),
             'messageColor' => 'F1680D',
         ];
     }

@@ -12,7 +12,14 @@ final class KeysBadge extends AbstractBadge
 {
     public function handle(string $userType, string $id): array
     {
-        return $this->renderNumber('keys', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Keys' : 'Keys'));
+        return [
+            'count' => Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Keys' : 'Keys'),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('keys', $properties['count']);
     }
 
     public function keywords(): array

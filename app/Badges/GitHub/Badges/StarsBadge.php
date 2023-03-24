@@ -6,19 +6,19 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class StarsBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
-        $result = $this->client->makeRepoQuery($owner, $repo, 'stargazers { totalCount }');
-
         return [
-            'label'        => 'stars',
-            'message'      => FormatNumber::execute($result['stargazers']['totalCount']),
-            'messageColor' => 'blue.600',
+            'stars' => $this->client->makeRepoQuery($owner, $repo, 'stargazers { totalCount }')['stargazers']['totalCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStars('stars', $properties['stars']);
     }
 
     public function keywords(): array

@@ -11,7 +11,14 @@ final class PostsBadge extends AbstractBadge
 {
     public function handle(string $server): array
     {
-        return $this->renderNumber('posts', $this->client->statistics($server)['post_count']);
+        return [
+            'count' => $this->client->statistics($server)['post_count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('posts', $properties['count']);
     }
 
     public function keywords(): array

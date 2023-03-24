@@ -14,7 +14,14 @@ final class InstallationsBadge extends AbstractBadge
         $results   = $this->client->usage($variant, $name);
         $resultKey = array_search("{$variant}:{$name}", array_map('strtolower', array_keys($results)), true);
 
-        return $this->renderNumber('installations', $results[$resultKey]['printouts']['Has website count'][0]);
+        return [
+            'count' => $results[$resultKey]['printouts']['Has website count'][0],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('installations', $properties['count']);
     }
 
     public function keywords(): array

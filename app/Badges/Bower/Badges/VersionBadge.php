@@ -13,7 +13,14 @@ final class VersionBadge extends AbstractBadge
     {
         $response = $this->client->get($packageName);
 
-        return $this->renderVersion($response[$channel === 'latest' ? 'latest_stable_release_number' : 'latest_release_number'] ?? $response['latest_release_number']);
+        return [
+            'version' => $response[$channel === 'latest' ? 'latest_stable_release_number' : 'latest_release_number'] ?? $response['latest_release_number'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

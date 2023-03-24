@@ -12,7 +12,12 @@ final class LanguageBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
-        return $this->renderText('language', GitHub::repos()->show($owner, $repo)['language'], 'blue.600');
+        return GitHub::repos()->show($owner, $repo);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('language', $properties['language'], 'blue.600');
     }
 
     public function keywords(): array

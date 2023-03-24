@@ -11,7 +11,14 @@ final class MaintainedBadge extends AbstractBadge
 {
     public function handle(string $year): array
     {
-        return $this->renderText('maintained', $year, 'green.600');
+        return [
+            'year' => $year,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('maintained', $properties['year'], 'green.600');
     }
 
     public function keywords(): array

@@ -13,9 +13,12 @@ final class PluginSizeBadge extends AbstractBadge
 {
     public function handle(string $plugin): array
     {
-        $response = Http::get('https://updates.jenkins-ci.org/current/update-center.actual.json')->throw()->json('plugins');
+        return Http::get('https://updates.jenkins-ci.org/current/update-center.actual.json')->throw()->json('plugins')[$plugin];
+    }
 
-        return $this->renderSize($response[$plugin]['size']);
+    public function render(array $properties): array
+    {
+        return $this->renderSize($properties['size']);
     }
 
     public function keywords(): array

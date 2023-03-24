@@ -11,10 +11,16 @@ final class TestsBadge extends AbstractBadge
 {
     public function handle(string $metric, string $component, string $branch): array
     {
-        $metric   = $metric === 'total_tests' ? 'tests' : $metric;
-        $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch)[$metric];
+        $metric = $metric === 'total_tests' ? 'tests' : $metric;
 
-        return $this->renderPercentage('tests', $response);
+        return [
+            'percentage' => $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch)[$metric],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage('tests', $properties['percentage']);
     }
 
     public function keywords(): array

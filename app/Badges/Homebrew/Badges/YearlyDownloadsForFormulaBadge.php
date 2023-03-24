@@ -12,11 +12,16 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $count = $this->client->get('formula', $package)['analytics']['install']['365d'][$package];
+        return [
+            'downloads' => $this->client->get('formula', $package)['analytics']['install']['365d'][$package],
+        ];
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'downloads',
-            'message'      => FormatNumber::execute($count).'/year',
+            'message'      => FormatNumber::execute($properties['downloads']).'/year',
             'messageColor' => 'green.600',
         ];
     }

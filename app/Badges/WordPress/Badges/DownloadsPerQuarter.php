@@ -14,6 +14,11 @@ final class DownloadsPerQuarter extends AbstractBadge
         return $this->renderDownloads($this->client->downloads($extensionType, $extension, 90));
     }
 
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
+    }
+
     public function keywords(): array
     {
         return [Category::DOWNLOADS];

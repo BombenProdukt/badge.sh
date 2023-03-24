@@ -12,7 +12,12 @@ final class ComplianceBadge extends AbstractBadge
 {
     public function handle(string $remote): array
     {
-        return $this->renderStatus('reuse', $this->client->get($remote)['status']);
+        return $this->client->get($remote);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('reuse', $properties['status']);
     }
 
     public function keywords(): array

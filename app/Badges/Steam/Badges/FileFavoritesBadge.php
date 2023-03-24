@@ -11,7 +11,12 @@ final class FileFavoritesBadge extends AbstractBadge
 {
     public function handle(string $fileId): array
     {
-        return $this->renderNumber('favorites', $this->client->file($fileId)['favorited']);
+        return $this->client->file($fileId);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('favorites', $properties['favorited']);
     }
 
     public function keywords(): array

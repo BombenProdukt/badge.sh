@@ -11,7 +11,12 @@ final class UserReputationBadge extends AbstractBadge
 {
     public function handle(string $site, string $query): array
     {
-        return $this->renderNumber('reputation', $this->client->user($site, $query)['reputation']);
+        return $this->client->user($site, $query);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('reputation', $properties['reputation']);
     }
 
     public function keywords(): array

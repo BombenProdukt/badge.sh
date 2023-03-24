@@ -12,12 +12,15 @@ final class NotebookBadge extends AbstractBadge
 {
     public function handle(string $owner, string $notebook, ?string $path = null): array
     {
-        $response = $this->client->get($owner, $notebook, $path);
+        return $this->client->get($owner, $notebook, $path);
+    }
 
+    public function render(array $properties): array
+    {
         return [
-            'label'        => $response['label'],
-            'message'      => $response['status'],
-            'messageColor' => $response['statusColor'],
+            'label'        => $properties['label'],
+            'message'      => $properties['message'],
+            'messageColor' => $properties['messageColor'],
         ];
     }
 

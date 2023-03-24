@@ -11,7 +11,14 @@ final class LastModifiedBadge extends AbstractBadge
 {
     public function handle(string $pluginId): array
     {
-        return $this->renderDateDiff('last modified', $this->client->get($pluginId)['last_updated']);
+        return [
+            'date' => $this->client->get($pluginId)['last_updated'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDateDiff('last modified', $properties['date']);
     }
 
     public function keywords(): array

@@ -20,7 +20,14 @@ final class DownloadsPerWeekBadge extends AbstractBadge
             }
         }
 
-        return $this->renderDownloads($total);
+        return [
+            'downloads' => $total,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

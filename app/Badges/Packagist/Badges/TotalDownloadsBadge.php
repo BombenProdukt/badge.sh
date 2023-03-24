@@ -12,9 +12,14 @@ final class TotalDownloadsBadge extends AbstractBadge
 {
     public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
+        return [
+            'downloads' => $this->client->get($package)['downloads']['total'],
+        ];
+    }
 
-        return $this->renderDownloads($packageMeta['downloads']['total']);
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

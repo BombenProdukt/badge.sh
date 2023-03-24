@@ -11,9 +11,14 @@ final class CloudAutomatedBuildBadge extends AbstractBadge
 {
     public function handle(string $scope, string $name): array
     {
-        $settings = $this->client->build($scope, $name)['build_settings'];
+        return [
+            'settingsCount' => count($this->client->build($scope, $name)['build_settings']),
+        ];
+    }
 
-        if (count($settings) >= 1) {
+    public function render(array $properties): array
+    {
+        if ($properties['settingsCount'] >= 1) {
             return $this->renderText('docker build', 'automated', 'green.600');
         }
 

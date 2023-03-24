@@ -14,7 +14,15 @@ final class TopLanguageBadge extends AbstractBadge
     {
         $languages = GitHub::repos()->languages($owner, $repo);
 
-        return $this->renderNumber(array_key_first($languages), head($languages));
+        return [
+            'label' => array_key_first($languages),
+            'value' => head($languages),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber($properties['label'], $properties['value']);
     }
 
     public function keywords(): array

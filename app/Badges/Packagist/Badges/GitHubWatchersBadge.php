@@ -7,19 +7,19 @@ namespace App\Badges\Packagist\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class GitHubWatchersBadge extends AbstractBadge
 {
     public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
-
         return [
-            'label'        => 'watchers',
-            'message'      => FormatNumber::execute($packageMeta['github_watchers']),
-            'messageColor' => 'green.600',
+            'watchers' => $this->client->get($package)['github_watchers'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('github watchers', $properties['watchers']);
     }
 
     public function keywords(): array

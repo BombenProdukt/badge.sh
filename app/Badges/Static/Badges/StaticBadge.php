@@ -18,6 +18,11 @@ final class StaticBadge extends AbstractBadge
         ];
     }
 
+    public function render(array $properties): array
+    {
+        return $properties;
+    }
+
     public function keywords(): array
     {
         return [Category::OTHER];

@@ -11,7 +11,15 @@ final class KarmaBadge extends AbstractBadge
 {
     public function handle(string $username): array
     {
-        return $this->renderNumber("u/{$username} karma", $this->client->karma($username));
+        return [
+            'username' => $username,
+            'karma'    => $this->client->karma($username),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('u/'.$properties['username'].' karma', $properties['karma']);
     }
 
     public function keywords(): array

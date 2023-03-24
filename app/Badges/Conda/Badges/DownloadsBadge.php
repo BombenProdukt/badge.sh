@@ -11,7 +11,14 @@ final class DownloadsBadge extends AbstractBadge
 {
     public function handle(string $channel, string $package): array
     {
-        return $this->renderDownloads(collect($this->client->get($channel, $package)['files'])->sum('ndownloads'));
+        return [
+            'downloads' => collect($this->client->get($channel, $package)['files'])->sum('ndownloads'),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

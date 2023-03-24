@@ -14,14 +14,20 @@ final class ProjectDependenciesBadge extends AbstractBadge
     {
         $dependencies = $this->client->dependencies($platform, $package, $version)['dependencies'];
 
-        $deprecatedCount = collect($dependencies)->filter(fn ($dependency) => $dependency['deprecated'] === true)->count();
-        if ($deprecatedCount > 0) {
-            return $this->renderText('dependencies', $deprecatedCount.' deprecated', 'red.600');
+        return [
+            'deprecatedCount' => collect($dependencies)->filter(fn ($dependency) => $dependency['deprecated'] === true)->count(),
+            'outdatedCount'   => collect($dependencies)->filter(fn ($dependency) => $dependency['outdated'] === true)->count(),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if ($properties['deprecatedCount'] > 0) {
+            return $this->renderText('dependencies', $properties['deprecatedCount'].' deprecated', 'red.600');
         }
 
-        $outdatedCount = collect($dependencies)->filter(fn ($dependency) => $dependency['outdated'] === true)->count();
-        if ($outdatedCount > 0) {
-            return $this->renderText('dependencies', $outdatedCount.' out of date', 'orange.600');
+        if ($properties['outdatedCount'] > 0) {
+            return $this->renderText('dependencies', $properties['outdatedCount'].' out of date', 'orange.600');
         }
 
         return $this->renderText('dependencies', 'up to date', 'green.600');

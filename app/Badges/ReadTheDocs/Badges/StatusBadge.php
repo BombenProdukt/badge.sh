@@ -12,10 +12,14 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $project, ?string $version = null): array
     {
-        return $this->renderStatus(
-            'docs',
-            Regex::match('|<text x="595" y="140" transform="scale\(.1\)" textLength="410">(.*)<\/text>|', $this->client->status($project, $version))->group(1),
-        );
+        return [
+            'status' => Regex::match('|<text x="595" y="140" transform="scale\(.1\)" textLength="410">(.*)<\/text>|', $this->client->status($project, $version))->group(1),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('docs', $properties['status']);
     }
 
     public function keywords(): array

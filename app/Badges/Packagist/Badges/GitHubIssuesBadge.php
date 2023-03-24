@@ -7,19 +7,19 @@ namespace App\Badges\Packagist\Badges;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class GitHubIssuesBadge extends AbstractBadge
 {
     public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
-
         return [
-            'label'        => 'issues',
-            'message'      => FormatNumber::execute($packageMeta['github_open_issues']),
-            'messageColor' => 'green.600',
+            'issues' => $this->client->get($package)['github_open_issues'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('github issues', $properties['issues']);
     }
 
     public function keywords(): array

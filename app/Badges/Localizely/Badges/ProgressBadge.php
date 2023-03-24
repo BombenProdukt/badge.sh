@@ -19,10 +19,15 @@ final class ProgressBadge extends AbstractBadge
             return $this->renderPercentage('localized', $response['reviewedProgress']);
         }
 
-        return $this->renderPercentage(
-            $languageCode,
-            collect($response['languages'])->find(fn (array $language) => $language['langCode'] === $languageCode)['reviewedProgress'],
-        );
+        return [
+            'language'   => $languageCode,
+            'percentage' => collect($response['languages'])->find(fn (array $language) => $language['langCode'] === $languageCode)['reviewedProgress'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage($properties['language'], $properties['percentage']);
     }
 
     public function keywords(): array

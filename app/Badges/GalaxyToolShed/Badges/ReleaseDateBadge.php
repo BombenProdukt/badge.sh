@@ -11,7 +11,14 @@ final class ReleaseDateBadge extends AbstractBadge
 {
     public function handle(string $user, string $repo): array
     {
-        return $this->renderDateDiff('release date', $this->client->fetchLastOrderedInstallableRevisionsSchema($user, $repo)['create_time']);
+        return [
+            'date' => $this->client->fetchLastOrderedInstallableRevisionsSchema($user, $repo)['create_time'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDateDiff('release date', $properties['date']);
     }
 
     public function keywords(): array

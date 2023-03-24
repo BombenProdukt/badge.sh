@@ -11,7 +11,14 @@ final class FileDownloadsBadge extends AbstractBadge
 {
     public function handle(string $fileId): array
     {
-        return $this->renderDownloads($this->client->file($fileId)['lifetime_subscriptions']);
+        return [
+            'subscriptions' => $this->client->file($fileId)['lifetime_subscriptions'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['subscriptions']);
     }
 
     public function keywords(): array

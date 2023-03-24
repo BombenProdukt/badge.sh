@@ -11,7 +11,14 @@ final class DownloadsPerDayBadge extends AbstractBadge
 {
     public function handle(string $project, string $folder): array
     {
-        return $this->renderDownloads($this->client->stats($project, $folder, 1)['total']);
+        return [
+            'downloads' => $this->client->stats($project, $folder, 1)['total'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerDay($properties['downloads']);
     }
 
     public function keywords(): array

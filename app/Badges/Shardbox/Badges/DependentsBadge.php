@@ -6,7 +6,6 @@ namespace App\Badges\Shardbox\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class DependentsBadge extends AbstractBadge
 {
@@ -15,10 +14,13 @@ final class DependentsBadge extends AbstractBadge
         preg_match('/Dependents[^>]*? class="count">([^<]+)<\\//i', $this->client->get($shard), $matches);
 
         return [
-            'label'        => 'dependents',
-            'message'      => FormatNumber::execute((int) $matches[1]),
-            'messageColor' => 'green.600',
+            'count' => $matches[1],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('dependents', $properties['count']);
     }
 
     public function keywords(): array

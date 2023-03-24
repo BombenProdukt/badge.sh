@@ -11,9 +11,14 @@ final class StatusBadge extends AbstractBadge
 {
     public function handle(string $platform, string $name): array
     {
-        $location = $this->client->get($platform, $name);
+        return [
+            'location' => $this->client->get($platform, $name),
+        ];
+    }
 
-        if (empty($location)) {
+    public function render(array $properties): array
+    {
+        if (empty($properties['location'])) {
             return [
                 'label'        => 'tidelift',
                 'message'      => 'not found',
@@ -21,7 +26,7 @@ final class StatusBadge extends AbstractBadge
             ];
         }
 
-        [, $status, $statusColor] = explode('-', parse_url(urldecode($location))['path']);
+        [, $status, $statusColor] = explode('-', parse_url(urldecode($properties['location']))['path']);
 
         return [
             'label'        => 'tidelift',

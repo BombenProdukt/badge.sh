@@ -7,7 +7,6 @@ namespace App\Badges\GitHub\Badges;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class CommitsBadge extends AbstractBadge
 {
@@ -21,10 +20,13 @@ final class CommitsBadge extends AbstractBadge
         $result = $this->client->makeRepoQuery($owner, $repo, "branch: ref(qualifiedName: \"{$reference}\") { target { ... on Commit { history(first: 0) { totalCount } } } }");
 
         return [
-            'label'        => 'commits',
-            'message'      => FormatNumber::execute($result['branch']['target']['history']['totalCount']),
-            'messageColor' => 'blue.600',
+            'count' => $result['branch']['target']['history']['totalCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('commits', $properties['count']);
     }
 
     public function keywords(): array

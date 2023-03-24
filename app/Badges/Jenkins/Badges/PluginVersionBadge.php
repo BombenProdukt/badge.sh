@@ -13,9 +13,12 @@ final class PluginVersionBadge extends AbstractBadge
 {
     public function handle(string $plugin): array
     {
-        $response = Http::get('https://updates.jenkins-ci.org/current/update-center.actual.json')->throw()->json('plugins');
+        return Http::get('https://updates.jenkins-ci.org/current/update-center.actual.json')->throw()->json('plugins')[$plugin];
+    }
 
-        return $this->renderVersion($response[$plugin]['version']);
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

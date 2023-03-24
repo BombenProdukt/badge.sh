@@ -14,6 +14,11 @@ final class ModulePdkVersion extends AbstractBadge
         return $this->renderVersion($this->client->module($user, $module)['current_release']['metadata']['pdk-version']);
     }
 
+    public function render(array $properties): array
+    {
+        //
+    }
+
     public function keywords(): array
     {
         return [Category::VERSION];

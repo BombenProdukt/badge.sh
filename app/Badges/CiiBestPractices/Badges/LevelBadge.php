@@ -12,9 +12,14 @@ final class LevelBadge extends AbstractBadge
 {
     public function handle(string $projectId): array
     {
-        $response = $this->client->get($projectId);
+        return [
+            'level' => $this->client->get($projectId)['badge_level'],
+        ];
+    }
 
-        return $this->renderText('cii', $response['badge_level'], DetermineColorByStatus::execute($response['badge_level']));
+    public function render(array $properties): array
+    {
+        return $this->renderText('cii', $properties['level'], DetermineColorByStatus::execute($properties['level']));
     }
 
     public function keywords(): array

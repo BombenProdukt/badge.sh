@@ -11,22 +11,24 @@ final class PerlBadge extends AbstractBadge
 {
     public function handle(string $distribution): array
     {
-        $version = $this->normalizeVersion($this->client->get("release/{$distribution}")['metadata']['prereqs']['runtime']['requires']['perl']);
+        $version = str_replace('_', '', $this->client->get("release/{$distribution}")['metadata']['prereqs']['runtime']['requires']['perl']);
 
-        return $this->renderVersion($version);
-    }
-
-    private function normalizeVersion(string $version): string
-    {
-        $version = str_replace('_', '', $version);
         if (! $version || str_starts_with($version, 'v')) {
             return $version;
         }
+
         [$major, $rest] = explode('.', $version, 2);
         $minor          = substr($rest, 0, 3);
         $patch          = str_pad(substr($rest, 3), 3, '0', STR_PAD_RIGHT);
 
-        return implode('.', array_map('intval', [$major, $minor, $patch]));
+        return [
+            'version' => implode('.', array_map('intval', [$major, $minor, $patch])),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version'], 'Perl');
     }
 
     public function keywords(): array

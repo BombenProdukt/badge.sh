@@ -17,7 +17,14 @@ final class LicenseBadge extends AbstractBadge
     {
         $packageMeta = $this->client->get($package);
 
-        return $this->renderLicense($packageMeta['versions'][$this->getVersion($packageMeta, $channel)]['license'][0]);
+        return [
+            'license' => $packageMeta['versions'][$this->getVersion($packageMeta, $channel)]['license'][0],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderLicense($properties['license']);
     }
 
     public function keywords(): array

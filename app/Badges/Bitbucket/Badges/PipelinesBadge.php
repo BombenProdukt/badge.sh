@@ -16,10 +16,19 @@ final class PipelinesBadge extends AbstractBadge
             ->filter(fn (array $value) => $value['state']['name'] === 'COMPLETED');
 
         if (count($values) > 0) {
-            return $this->renderStatus('build', $values[0]['state']['result']['name']);
+            return [
+                'status' => $values[0]['state']['result']['name'],
+            ];
         }
 
-        return $this->renderStatus('build', 'never built');
+        return [
+            'status' => 'never built',
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('build', $properties['status']);
     }
 
     public function keywords(): array

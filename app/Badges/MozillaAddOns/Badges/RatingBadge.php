@@ -11,13 +11,12 @@ final class RatingBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $response = $this->client->get($package);
+        return $this->client->get($package)['ratings'];
+    }
 
-        return [
-            'label'        => 'rating',
-            'message'      => (string) $response['ratings']['count'],
-            'messageColor' => 'green.600',
-        ];
+    public function render(array $properties): array
+    {
+        return $this->renderRating($properties['count']);
     }
 
     public function keywords(): array

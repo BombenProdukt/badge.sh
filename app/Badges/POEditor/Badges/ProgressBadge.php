@@ -14,7 +14,15 @@ final class ProgressBadge extends AbstractBadge
         $response = $this->client->get($apiToken, $projectId, $languageCode);
         $language = collect($response['result'])->firstWhere('code', $languageCode);
 
-        return $this->renderPercentage($language['name'], $language['percentage']);
+        return [
+            'language'   => $language['name'],
+            'percentage' => $language['percentage'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage($properties['language'], $properties['percentage']);
     }
 
     public function keywords(): array

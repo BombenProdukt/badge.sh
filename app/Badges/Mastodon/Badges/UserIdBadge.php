@@ -13,11 +13,19 @@ final class UserIdBadge extends AbstractBadge
     public function handle(string $userId, ?string $instance = 'mastodon.social'): array
     {
         $response = $this->client->get($instance, "accounts/{$userId}");
-        $account  = $response['username']."@{$instance}";
 
         return [
-            'label'        => "follow @{$account}",
-            'message'      => FormatNumber::execute($response['followers_count']),
+            'instance' => $instance,
+            'username' => $response['username'],
+            'count'    => $response['followers_count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => 'follow @'.$properties['username'].'@'.$properties['instance'],
+            'message'      => FormatNumber::execute($properties['count']),
             'messageColor' => '3487CE',
         ];
     }

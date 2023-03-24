@@ -11,7 +11,14 @@ final class VideoLikesBadge extends AbstractBadge
 {
     public function handle(string $videoId): array
     {
-        return $this->renderNumber('likes', $this->client->video($videoId)['likeCount']);
+        return[
+            'likes' => $this->client->video($videoId)['likeCount'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('likes', $properties['likes']);
     }
 
     public function keywords(): array

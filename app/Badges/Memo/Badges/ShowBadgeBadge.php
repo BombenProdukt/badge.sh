@@ -15,6 +15,11 @@ final class ShowBadgeBadge extends AbstractBadge
         return Cache::get($name);
     }
 
+    public function render(array $properties): array
+    {
+        //
+    }
+
     public function keywords(): array
     {
         return [Category::OTHER];

@@ -12,7 +12,14 @@ final class UploadBadge extends AbstractBadge
 {
     public function handle(string $userType, string $id): array
     {
-        return $this->renderText('upload', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Upload' : 'Upload'), 'green.600');
+        return [
+            'speed' => Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Upload' : 'Upload'),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('upload', $properties['speed'], 'green.600');
     }
 
     public function keywords(): array

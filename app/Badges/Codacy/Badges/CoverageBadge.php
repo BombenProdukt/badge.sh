@@ -13,7 +13,14 @@ final class CoverageBadge extends AbstractBadge
     {
         preg_match('/text-anchor=[^>]*?>([^<]+)<\//i', $this->client->get('coverage', $projectId, $branch), $matches);
 
-        return $this->renderCoverage(trim($matches[1]));
+        return [
+            'percentage' => trim($matches[1]),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderCoverage($properties['percentage']);
     }
 
     public function keywords(): array

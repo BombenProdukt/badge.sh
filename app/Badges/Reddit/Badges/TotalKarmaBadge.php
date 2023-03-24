@@ -13,8 +13,16 @@ final class TotalKarmaBadge extends AbstractBadge
     public function handle(string $user): array
     {
         return [
-            'label'        => "u/{$user}",
-            'message'      => FormatNumber::execute($this->client->get("user/{$user}/about.json")['total_karma']).' karma',
+            'username' => $user,
+            'karma'    => $this->client->get("user/{$user}/about.json")['total_karma'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => 'u/'.$properties['username'],
+            'message'      => FormatNumber::execute($properties['karma']).' karma',
             'messageColor' => 'ff4500',
         ];
     }

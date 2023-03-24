@@ -11,7 +11,12 @@ final class TotalDownloadsBadge extends AbstractBadge
 {
     public function handle(string $gem): array
     {
-        return $this->renderDownloads($this->client->get("gems/{$gem}")['downloads']);
+        return $this->client->get("gems/{$gem}");
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

@@ -11,7 +11,14 @@ final class UserDisplayNameBadge extends AbstractBadge
 {
     public function handle(string $site, string $query): array
     {
-        return $this->renderText('display-name', $this->client->user($site, $query)['display_name']);
+        return [
+            'name' => $this->client->user($site, $query)['display_name'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('display-name', $properties['name']);
     }
 
     public function keywords(): array

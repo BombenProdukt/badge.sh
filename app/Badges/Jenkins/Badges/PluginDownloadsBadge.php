@@ -16,10 +16,19 @@ final class PluginDownloadsBadge extends AbstractBadge
         $response = Http::get("https://stats.jenkins.io/plugin-installation-trend/{$plugin}.stats.json")->throw()->json();
 
         if (empty($version)) {
-            return $this->renderNumber('downloads', collect($response['installations'])->sum());
+            return [
+                'downloads' => collect($response['installations'])->sum(),
+            ];
         }
 
-        return $this->renderNumber('downloads', collect($response['installationsPerVersion'][$version])->sum());
+        return [
+            'downloads' => collect($response['installationsPerVersion'][$version])->sum(),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('downloads', $properties['downloads']);
     }
 
     public function keywords(): array

@@ -16,6 +16,17 @@ final class SemicolonBadge extends AbstractBadge
         $response = $this->client->get($name);
 
         if (empty($response['devDependencies']) || empty($response['devDependencies']['xo'])) {
+            return [];
+        }
+
+        return [
+            'semicolons' => Arr::get($response, 'xo.semicolon') ? 'enabled' : 'disabled',
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if (empty($properties['semicolons'])) {
             return [
                 'label'        => 'xo',
                 'message'      => 'not enabled',
@@ -25,7 +36,7 @@ final class SemicolonBadge extends AbstractBadge
 
         return [
             'label'        => 'semicolons',
-            'message'      => Arr::get($response, 'xo.semicolon') ? 'enabled' : 'disabled',
+            'message'      => $properties['semicolons'],
             'messageColor' => '5ED9C7',
         ];
     }

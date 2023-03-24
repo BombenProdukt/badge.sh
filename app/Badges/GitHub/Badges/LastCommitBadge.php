@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
-use Carbon\Carbon;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Routing\Route;
 
@@ -21,10 +20,13 @@ final class LastCommitBadge extends AbstractBadge
         $result = $this->client->makeRepoQuery($owner, $repo, "branch: ref(qualifiedName: \"{$reference}\") { target { ... on Commit { history(first: 1) { nodes { committedDate } } } } }");
 
         return [
-            'label'        => 'last commit',
-            'message'      => Carbon::parse($result['branch']['target']['history']['nodes'][0]['committedDate'])->diffForHumans(),
-            'messageColor' => 'green.600',
+            'date' => $result['branch']['target']['history']['nodes'][0]['committedDate'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDateDiff('last commit', $properties['date']);
     }
 
     public function keywords(): array

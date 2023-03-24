@@ -11,7 +11,14 @@ final class DownloadsPerMacBadge extends AbstractBadge
 {
     public function handle(string $packageName): array
     {
-        return $this->renderDownloadsPerMac($this->client->get($packageName)['installs']['osx']);
+        return [
+            'downloads' => $this->client->get($packageName)['installs']['osx'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerMac($properties['downloads']);
     }
 
     public function keywords(): array

@@ -11,7 +11,14 @@ final class DownloadsBadge extends AbstractBadge
 {
     public function handle(string $user, string $repo): array
     {
-        return $this->renderDownloads($this->client->fetchLastOrderedInstallableRevisionsSchema($user, $repo)['times_downloaded']);
+        return [
+            'downloads' => $this->client->fetchLastOrderedInstallableRevisionsSchema($user, $repo)['times_downloaded'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

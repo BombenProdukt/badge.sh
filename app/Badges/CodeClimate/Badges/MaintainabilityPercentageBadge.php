@@ -14,11 +14,15 @@ final class MaintainabilityPercentageBadge extends AbstractBadge
     {
         $response = $this->client->get($project, 'snapshots');
 
-        return $this->renderGrade(
-            'maintainability',
-            $response['attributes']['ratings'][0]['measure']['value'],
-            $response['attributes']['ratings'][0]['letter'],
-        );
+        return [
+            'percentage' => $response['attributes']['ratings'][0]['measure']['value'],
+            'letter'     => $response['attributes']['ratings'][0]['letter'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderGrade('maintainability', $properties['percentage'], $properties['letter']);
     }
 
     public function keywords(): array

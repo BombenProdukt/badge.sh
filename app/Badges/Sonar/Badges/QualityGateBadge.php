@@ -14,10 +14,19 @@ final class QualityGateBadge extends AbstractBadge
         $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch);
 
         if ($response['alert_status'] === 'OK') {
-            return $this->renderStatus('quality gate', 'passed');
+            return[
+                'status' => 'passed',
+            ];
         }
 
-        return $this->renderStatus('quality gate', 'failed');
+        return[
+            'status' => 'failed',
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStatus('quality gate', $properties['status']);
     }
 
     public function keywords(): array

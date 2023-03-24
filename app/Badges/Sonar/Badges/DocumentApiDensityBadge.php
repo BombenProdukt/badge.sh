@@ -10,9 +10,14 @@ final class DocumentApiDensityBadge extends AbstractBadge
 {
     public function handle(string $metric, string $component, string $branch): array
     {
-        $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch);
+        return [
+            'percentage' => $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch)['public_documented_api_density'],
+        ];
+    }
 
-        return $this->renderPercentage('public documented api density', $response['public_documented_api_density']);
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage('public documented api density', $properties['percentage']);
     }
 
     public function keywords(): array

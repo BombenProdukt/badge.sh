@@ -6,7 +6,6 @@ namespace App\Badges\Docker\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class LayersBadge extends AbstractBadge
 {
@@ -17,13 +16,14 @@ final class LayersBadge extends AbstractBadge
         string $architecture = 'amd64',
         string $variant = '',
     ): array {
-        $response = $this->client->config($scope, $name, $tag, $architecture, $variant);
-
         return [
-            'label'        => 'docker layers',
-            'message'      => FormatNumber::execute(count($response['history'])),
-            'messageColor' => 'blue.600',
+            'count' => count($this->client->config($scope, $name, $tag, $architecture, $variant)['history']),
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('docker layers', $properties['count']);
     }
 
     public function keywords(): array

@@ -12,7 +12,14 @@ final class ClicksBadge extends AbstractBadge
 {
     public function handle(string $userType, string $id): array
     {
-        return $this->renderNumber('clicks', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Clicks' : 'Clicks'));
+        return [
+            'count' => Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Clicks' : 'Clicks'),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('clicks', $properties['count']);
     }
 
     public function keywords(): array

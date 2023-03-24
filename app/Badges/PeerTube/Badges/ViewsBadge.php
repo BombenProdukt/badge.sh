@@ -12,11 +12,14 @@ final class ViewsBadge extends AbstractBadge
 {
     public function handle(string $instance, string $video): array
     {
-        $response = $this->client->get($instance, "videos/{$video}");
+        return $this->client->get($instance, "videos/{$video}");
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'views',
-            'message'      => FormatNumber::execute($response['views']),
+            'message'      => FormatNumber::execute($properties['views']),
             'messageColor' => 'F1680D',
         ];
     }

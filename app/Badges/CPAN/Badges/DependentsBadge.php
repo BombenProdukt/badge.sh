@@ -6,17 +6,19 @@ namespace App\Badges\CPAN\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class DependentsBadge extends AbstractBadge
 {
     public function handle(string $distribution): array
     {
         return [
-            'label'        => 'dependents',
-            'message'      => FormatNumber::execute($this->client->get("reverse_dependencies/dist/{$distribution}")['total'] ?? 0),
-            'messageColor' => 'green.600',
+            'count' => $this->client->get("reverse_dependencies/dist/{$distribution}")['total'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('dependents', $properties['count']);
     }
 
     public function keywords(): array

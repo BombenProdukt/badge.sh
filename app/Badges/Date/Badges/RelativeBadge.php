@@ -5,14 +5,20 @@ declare(strict_types=1);
 namespace App\Badges\Date\Badges;
 
 use App\Enums\Category;
-use Carbon\Carbon;
 use Illuminate\Routing\Route;
 
 final class RelativeBadge extends AbstractBadge
 {
     public function handle(string $timestamp): array
     {
-        return $this->renderText('date', Carbon::createFromTimestamp($timestamp)->diffForHumans(), 'blue.600');
+        return [
+            'timestamp' => $timestamp,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDateDiff('date', $properties['timestamp']);
     }
 
     public function keywords(): array

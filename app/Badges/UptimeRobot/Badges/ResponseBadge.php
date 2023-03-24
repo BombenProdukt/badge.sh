@@ -12,8 +12,15 @@ final class ResponseBadge extends AbstractBadge
     public function handle(string $apiKey): array
     {
         return [
+            'time' => $this->client->get($apiKey)['average_response_time'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'response',
-            'message'      => $this->client->get($apiKey)['average_response_time'].'ms',
+            'message'      => $properties['time'].'ms',
             'messageColor' => 'blue.600',
         ];
     }

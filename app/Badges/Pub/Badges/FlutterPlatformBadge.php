@@ -13,12 +13,18 @@ final class FlutterPlatformBadge extends AbstractBadge
     public function handle(string $package): array
     {
         $pubScores = $this->client->api("packages/{$package}/metrics")['scorecard'];
-        $platforms = implode('|', $this->parseTags($pubScores['panaReport']['derivedTags'], 'platform'));
 
         return [
+            'platforms' => $this->parseTags($pubScores['panaReport']['derivedTags'], 'platform'),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
             'label'        => 'flutter',
-            'message'      => $platforms ?? 'unknown',
-            'messageColor' => $platforms ? 'blue.600' : 'gray.600',
+            'message'      => $properties['platforms'] ? implode('|', $properties['platforms']) : 'unknown',
+            'messageColor' => $properties['platforms'] ? 'blue.600' : 'gray.600',
         ];
     }
 

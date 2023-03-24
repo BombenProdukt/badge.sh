@@ -6,17 +6,19 @@ namespace App\Badges\Docker\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class StarsBadge extends AbstractBadge
 {
     public function handle(string $scope, string $name): array
     {
         return [
-            'label'        => 'docker pulls',
-            'message'      => FormatNumber::execute($this->client->info($scope, $name)['star_count']),
-            'messageColor' => 'blue.600',
+            'stars' => $this->client->info($scope, $name)['star_count'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderStars('stars', $properties['stars']);
     }
 
     public function keywords(): array

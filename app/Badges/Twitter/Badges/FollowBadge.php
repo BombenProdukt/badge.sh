@@ -12,11 +12,17 @@ final class FollowBadge extends AbstractBadge
 {
     public function handle(string $username): array
     {
-        $response = $this->client->get($username);
-
         return [
-            'label'        => "follow @{$username}",
-            'message'      => FormatNumber::execute($response['followers_count']),
+            'username' => $username,
+            'count'    => $this->client->get($username)['followers_count'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => 'follow @'.$properties['username'],
+            'message'      => FormatNumber::execute($properties['count']),
             'messageColor' => '1da1f2',
         ];
     }

@@ -14,12 +14,20 @@ final class SummaryBadge extends AbstractBadge
     {
         $response = $this->client->get($projectId);
 
+        return [
+            'level'      => $response['badge_level'],
+            'percentage' => $response['tiered_percentage'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
         return $this->renderText('cii', match (true) {
-            $response['tiered_percentage'] < 100 => "in progress {$response['tiered_percentage']}%",
-            $response['tiered_percentage'] < 200 => 'passing',
-            $response['tiered_percentage'] < 300 => 'silver',
-            default                              => 'gold',
-        }, DetermineColorByStatus::execute($response['badge_level']));
+            $properties['percentage'] < 100 => "in progress {$properties['percentage']}%",
+            $properties['percentage'] < 200 => 'passing',
+            $properties['percentage'] < 300 => 'silver',
+            default                         => 'gold',
+        }, DetermineColorByStatus::execute($properties['level']));
     }
 
     public function keywords(): array

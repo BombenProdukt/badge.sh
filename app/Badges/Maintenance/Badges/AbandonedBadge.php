@@ -11,7 +11,12 @@ final class AbandonedBadge extends AbstractBadge
 {
     public function handle(string $year): array
     {
-        return $this->renderText('abandoned', $year, 'red.600');
+        return ['year' => $year];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('abandoned', $properties['year'], 'red.600');
     }
 
     public function keywords(): array

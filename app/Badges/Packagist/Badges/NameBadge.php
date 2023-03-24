@@ -12,11 +12,14 @@ final class NameBadge extends AbstractBadge
 {
     public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
+        return $this->client->get($package);
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'packagist',
-            'message'      => $packageMeta['name'],
+            'message'      => $properties['name'],
             'messageColor' => 'green.600',
         ];
     }

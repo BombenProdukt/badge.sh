@@ -12,9 +12,14 @@ final class MonthlyDownloadsBadge extends AbstractBadge
 {
     public function handle(string $package, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
+        return [
+            'downloads' => $this->client->get($package)['downloads']['monthly'],
+        ];
+    }
 
-        return $this->renderDownloadsPerMonth($packageMeta['downloads']['monthly']);
+    public function render(array $properties): array
+    {
+        return $this->renderDownloadsPerMonth($properties['downloads']);
     }
 
     public function keywords(): array

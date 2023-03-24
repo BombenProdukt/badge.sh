@@ -12,7 +12,14 @@ final class DependentsBadge extends AbstractBadge
 {
     public function handle(string $repo): array
     {
-        return $this->renderText('used by', $this->client->dependents($repo), 'green.600');
+        return [
+            'count' => $this->client->dependents($repo),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('used by', $properties['count']);
     }
 
     public function keywords(): array

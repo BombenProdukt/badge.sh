@@ -22,8 +22,16 @@ final class FrameworkBadge extends AbstractBadge
         })->filter();
 
         return [
-            'label'        => $frameworks->first()['framework'],
-            'message'      => $frameworks->map->version->filter()->implode(' | '),
+            'framework' => $frameworks->first()['framework'],
+            'versions'  => $frameworks->map->version->filter()->toArray(),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => $properties['framework'],
+            'message'      => implode(' | ', $properties['versions']),
             'messageColor' => 'blue.600',
         ];
     }

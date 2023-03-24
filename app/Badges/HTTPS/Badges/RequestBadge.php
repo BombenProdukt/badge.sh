@@ -12,12 +12,15 @@ final class RequestBadge extends AbstractBadge
 {
     public function handle(string $host, ?string $path = null): array
     {
-        $response = $this->client->get($host, $path);
+        return $this->client->get($host, $path);
+    }
 
+    public function render(array $properties): array
+    {
         return [
-            'label'        => $response['label'] ?? $response['subject'],
-            'message'      => $response['status'],
-            'messageColor' => $response['statusColor'] ?? $response['color'].'.600',
+            'label'        => $properties['label'],
+            'message'      => $properties['message'],
+            'messageColor' => $properties['messageColor'],
         ];
     }
 

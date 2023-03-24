@@ -13,9 +13,18 @@ final class RatingBadge extends AbstractBadge
     {
         $response = $this->client->get($scriptId);
 
+        return [
+            'good' => $response['good_ratings'],
+            'ok'   => $response['ok_ratings'],
+            'bad'  => $response['bad_ratings'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
         return $this->renderText(
             'rating',
-            sprintf('%s good, %s ok, %s bad', $response['good_ratings'], $response['ok_ratings'], $response['bad_ratings']),
+            sprintf('%s good, %s ok, %s bad', $properties['good'], $properties['ok'], $properties['bad']),
             'blue.600',
         );
     }

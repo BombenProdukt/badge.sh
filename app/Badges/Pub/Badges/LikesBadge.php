@@ -6,19 +6,19 @@ namespace App\Badges\Pub\Badges;
 
 use App\Enums\Category;
 use Illuminate\Routing\Route;
-use PreemStudio\Formatter\FormatNumber;
 
 final class LikesBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $likeCount = $this->client->api("packages/{$package}/score")['likeCount'];
-
         return [
-            'label'        => 'popularity',
-            'message'      => FormatNumber::execute($likeCount),
-            'messageColor' => 'green.600',
+            'count' => $this->client->api("packages/{$package}/score")['likeCount'],
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('popularity', $properties['count']);
     }
 
     public function keywords(): array

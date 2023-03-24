@@ -11,7 +11,14 @@ final class MonthlyDownloadsBadge extends AbstractBadge
 {
     public function handle(string $name): array
     {
-        return $this->renderDownloads($this->client->get($name)->filterXPath('//installsrecent')->text());
+        return [
+            'downloads' => $this->client->get($name)->filterXPath('//installsrecent')->text(),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function keywords(): array

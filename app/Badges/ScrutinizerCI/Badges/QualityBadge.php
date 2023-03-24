@@ -11,7 +11,14 @@ final class QualityBadge extends AbstractBadge
 {
     public function handle(string $vcs, string $user, string $repo, ?string $branch = 'master'): array
     {
-        return $this->renderNumber('quality', $this->client->get($vcs, $user, $repo)['applications'][$branch]['index']['_embedded']['project']['metric_values']['scrutinizer.quality']);
+        return [
+            'quality' => $this->client->get($vcs, $user, $repo)['applications'][$branch]['index']['_embedded']['project']['metric_values']['scrutinizer.quality'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('quality', $properties['quality']);
     }
 
     public function keywords(): array

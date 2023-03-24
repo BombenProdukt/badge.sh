@@ -11,7 +11,12 @@ final class ScoreBadge extends AbstractBadge
 {
     public function handle(string $host): array
     {
-        return $this->renderText('observatory', $this->client->get($host)['score'].'/100', 'blue.600');
+        return $this->client->get($host);
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('observatory', $properties['score']);
     }
 
     public function keywords(): array

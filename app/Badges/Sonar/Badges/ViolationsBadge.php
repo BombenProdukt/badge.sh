@@ -11,37 +11,49 @@ final class ViolationsBadge extends AbstractBadge
 {
     public function handle(string $metric, string $component, string $branch): array
     {
-        $violations = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch)['violations'];
+        $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch);
 
-        if ($violations === 0) {
+        return [
+            'total'    => $response['violations'],
+            'info'     => $response['violations']['info_violations'],
+            'minor'    => $response['violations']['minor_violations'],
+            'major'    => $response['violations']['major_violations'],
+            'critical' => $response['violations']['critical_violations'],
+            'blocker'  => $response['violations']['blocker_violations'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if ($properties['total'] === 0) {
             return $this->renderNumber('violations', 0);
         }
 
         $color            = null;
         $violationSummary = [];
 
-        if ($violations['info_violations'] > 0) {
-            $violationSummary[] = $violations['info_violations'].' info';
+        if ($properties['info'] > 0) {
+            $violationSummary[] = $properties['info'].' info';
             $color              = 'green.600';
         }
 
-        if ($violations['minor_violations'] > 0) {
-            $violationSummary[] = $violations['minor_violations'].' minor';
+        if ($properties['minor'] > 0) {
+            $violationSummary[] = $properties['minor'].' minor';
             $color              = 'yellow.600';
         }
 
-        if ($violations['major_violations'] > 0) {
-            $violationSummary[] = $violations['major_violations'].' major';
+        if ($properties['major'] > 0) {
+            $violationSummary[] = $properties['major'].' major';
             $color              = 'amber.600';
         }
 
-        if ($violations['critical_violations'] > 0) {
-            $violationSummary[] = $violations['critical_violations'].' critical';
+        if ($properties['critical'] > 0) {
+            $violationSummary[] = $properties['critical'].' critical';
             $color              = 'orange.600';
         }
 
-        if ($violations['blocker_violations'] > 0) {
-            $violationSummary[] = $violations['blocker_violations'].' blocker';
+        if ($properties['blocker'] > 0) {
+            $violationSummary[] = $properties['blocker'].' blocker';
             $color              = 'red.600';
         }
 

@@ -15,9 +15,18 @@ final class UrlBadge extends AbstractBadge
         $response = $this->client->get($compression, 'https:/'.str_replace(['https://', 'https/'], '', $path));
 
         return [
-            'label'        => $compression === 'normal' ? 'size' : "{$compression} size",
-            'message'      => $response['prettySize'],
-            'messageColor' => $response['color'],
+            'color'       => $response['color'],
+            'compression' => $compression,
+            'size'        => $response['prettySize'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return [
+            'label'        => $properties['compression'] === 'normal' ? 'size' : $properties['compression'].' size',
+            'message'      => $properties['size'],
+            'messageColor' => $properties['color'],
         ];
     }
 

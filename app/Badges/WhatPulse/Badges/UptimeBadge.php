@@ -12,7 +12,14 @@ final class UptimeBadge extends AbstractBadge
 {
     public function handle(string $userType, string $id): array
     {
-        return $this->renderText('uptime', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.UptimeLong' : 'UptimeLong'), 'green.600');
+        return [
+            'time' => Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.UptimeLong' : 'UptimeLong'),
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('uptime', $properties['time'], 'green.600');
     }
 
     public function keywords(): array

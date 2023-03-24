@@ -28,7 +28,14 @@ final class VersionBadge extends AbstractBadge
             $version = $this->latest($this->stable($versions));
         }
 
-        return $this->renderVersion($version);
+        return [
+            'version' => $version,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version']);
     }
 
     public function keywords(): array

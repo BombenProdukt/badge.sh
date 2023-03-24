@@ -12,12 +12,15 @@ final class PeerBadge extends AbstractBadge
 {
     public function handle(string $repo, string $path): array
     {
-        $status = $this->client->get($repo, $path, 'peer-')['status'];
+        return $this->client->get($repo, $path, 'peer-');
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'peerDependencies',
-            'message'      => $this->statusInfo[$status][0],
-            'messageColor' => $this->statusInfo[$status][1],
+            'message'      => $this->statusInfo[$properties['status']][0],
+            'messageColor' => $this->statusInfo[$properties['status']][1],
         ];
     }
 

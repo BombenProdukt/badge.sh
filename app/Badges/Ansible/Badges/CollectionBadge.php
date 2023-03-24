@@ -13,7 +13,14 @@ final class CollectionBadge extends AbstractBadge
     {
         $response = $this->client->collections($collectionId);
 
-        return $this->renderText('collection', $response['namespace']['name'].'.'.$response['name'], 'blue.600');
+        return [
+            'name' => $response['namespace']['name'].'.'.$response['name'],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('collection', $properties['name'], 'blue.600');
     }
 
     public function keywords(): array

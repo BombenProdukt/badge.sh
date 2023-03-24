@@ -13,10 +13,13 @@ final class ContributorsBadge extends AbstractBadge
     public function handle(string $owner, string $repo): array
     {
         return [
-            'label'        => 'contributors',
-            'message'      => (string) count(GitHub::api('repo')->contributors($owner, $repo)),
-            'messageColor' => 'blue.600',
+            'count' => count(GitHub::api('repo')->contributors($owner, $repo)),
         ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderNumber('contributors', $properties['count']);
     }
 
     public function keywords(): array

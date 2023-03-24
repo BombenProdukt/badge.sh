@@ -18,6 +18,11 @@ trait BelongsToService
         return explode(' Badge', Str::title(Str::snake(class_basename($this), ' ')))[0];
     }
 
+    public function render(array $properties): array
+    {
+        //
+    }
+
     public function keywords(): array
     {
         return [];

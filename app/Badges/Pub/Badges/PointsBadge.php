@@ -11,11 +11,14 @@ final class PointsBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $response = $this->client->api("packages/{$package}/score");
+        return $this->client->api("packages/{$package}/score");
+    }
 
+    public function render(array $properties): array
+    {
         return [
             'label'        => 'popularity',
-            'message'      => $response['grantedPoints'].'/'.$response['maxPoints'],
+            'message'      => $properties['grantedPoints'].'/'.$properties['maxPoints'],
             'messageColor' => 'green.600',
         ];
     }

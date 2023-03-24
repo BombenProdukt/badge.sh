@@ -15,7 +15,14 @@ final class SprintBadge extends AbstractBadge
         $numTotalIssues     = $response['total'];
         $numCompletedIssues = collect($response['issues'])->filter(fn ($issue) => $issue['fields']['resolution']['name'] !== 'Unresolved')->count();
 
-        return $this->renderPercentage('completion', $numTotalIssues > 0 ? ($numCompletedIssues / $numTotalIssues) * 100 : 0);
+        return [
+            'percentage' => $numTotalIssues > 0 ? ($numCompletedIssues / $numTotalIssues) * 100 : 0,
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderPercentage('completion', $properties['percentage']);
     }
 
     public function keywords(): array

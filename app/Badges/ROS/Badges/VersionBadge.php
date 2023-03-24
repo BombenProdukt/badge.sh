@@ -18,10 +18,12 @@ final class VersionBadge extends AbstractBadge
             ->sort()
             ->reverse();
 
-        return $this->renderVersion(
-            $this->client->content($distro, $tags[0] ? "refs/tags/{$distro}/{$tags[0]}" : 'refs/heads/master')['repositories'][$repoName]['release']['version'],
-            'ros | humble',
-        );
+        return $this->client->content($distro, $tags[0] ? "refs/tags/{$distro}/{$tags[0]}" : 'refs/heads/master')['repositories'][$repoName]['release'];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderVersion($properties['version'], 'ros | humble');
     }
 
     public function keywords(): array

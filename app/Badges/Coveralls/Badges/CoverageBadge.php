@@ -16,7 +16,14 @@ final class CoverageBadge extends AbstractBadge
 
         preg_match('/_(\d+)\.svg/', $response, $matches);
 
-        if (! is_numeric($matches[1])) {
+        return [
+            'percentage' => $matches[1],
+        ];
+    }
+
+    public function render(array $properties): array
+    {
+        if (! is_numeric($properties['percentage'])) {
             return [
                 'subject'      => 'coverage',
                 'message'      => 'invalid',
@@ -24,7 +31,7 @@ final class CoverageBadge extends AbstractBadge
             ];
         }
 
-        return $this->renderCoverage($matches[1]);
+        return $this->renderCoverage($properties['percentage']);
     }
 
     public function keywords(): array

@@ -11,7 +11,12 @@ final class CategoryBadge extends AbstractBadge
 {
     public function handle(string $pluginId): array
     {
-        return $this->renderText('category', $this->client->get($pluginId)['category']['title']);
+        return $this->client->get($pluginId)['category'];
+    }
+
+    public function render(array $properties): array
+    {
+        return $this->renderText('category', $properties['title']);
     }
 
     public function keywords(): array
