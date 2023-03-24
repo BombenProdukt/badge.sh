@@ -13,11 +13,16 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://forgeapi.puppetlabs.com/v3')->throw();
     }
 
-    public function get(string $appId): array
+    public function user(string $user): array
     {
-        return $this->client->get('')->json();
+        return $this->client->get("users/{$user}")->json();
+    }
+
+    public function module(string $user, string $module): array
+    {
+        return $this->client->get("modules/{$user}-{$module}")->json();
     }
 }

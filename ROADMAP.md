@@ -8,7 +8,6 @@
 
 - [jira](https://github.com/badges/shields/tree/master/services/jira)
 - [nexus](https://github.com/badges/shields/tree/master/services/nexus)
-- [puppetforge](https://github.com/badges/shields/tree/master/services/puppetforge)
 - [sonar](https://github.com/badges/shields/tree/master/services/sonar)
 - [teamcity](https://github.com/badges/shields/tree/master/services/teamcity)
 - [twitch](https://github.com/badges/shields/tree/master/services/twitch)
