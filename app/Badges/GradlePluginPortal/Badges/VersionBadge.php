@@ -7,6 +7,7 @@ namespace App\Badges\GradlePluginPortal\Badges;
 use App\Badges\AbstractBadge;
 use App\Badges\GradlePluginPortal\Client;
 use App\Enums\Category;
+use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
@@ -16,16 +17,16 @@ final class VersionBadge extends AbstractBadge
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $pluginId): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
+        $response = $this->client->get($pluginId);
 
-        return $this->renderVersion($version);
+        return $this->renderVersion($response->filterXPath('//version')->text());
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Gradle Plugin Portal';
     }
 
     public function keywords(): array
@@ -36,7 +37,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/gradle-plugin-portal/version/{pluginId}',
         ];
     }
 
@@ -47,7 +48,7 @@ final class VersionBadge extends AbstractBadge
 
     public function routeConstraints(Route $route): void
     {
-        //
+        $route->where('pathname', RoutePattern::CATCH_ALL->value);
     }
 
     public function staticPreviews(): array
@@ -58,8 +59,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/gradle-plugin-portal/version/com.gradle.plugin-publish' => 'version',
         ];
     }
 }

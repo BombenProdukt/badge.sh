@@ -6,8 +6,6 @@
 
 ## Badges
 
-- [gradle-plugin-portal](https://github.com/badges/shields/tree/master/services/gradle-plugin-portal)
-- [jenkins](https://github.com/badges/shields/tree/master/services/jenkins)
 - [jira](https://github.com/badges/shields/tree/master/services/jira)
 - [librariesio](https://github.com/badges/shields/tree/master/services/librariesio)
 - [nexus](https://github.com/badges/shields/tree/master/services/nexus)

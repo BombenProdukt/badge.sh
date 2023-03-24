@@ -6,6 +6,7 @@ namespace App\Badges\GradlePluginPortal;
 
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
+use Symfony\Component\DomCrawler\Crawler;
 
 final class Client
 {
@@ -13,11 +14,14 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://plugins.gradle.org')->throw();
     }
 
-    public function get(string $appId): array
+    public function get(string $pluginId): Crawler
     {
-        return $this->client->get('')->json();
+        $groupPath  = str_replace('.', '/', $pluginId);
+        $artifactId = "{$pluginId}.gradle.plugin";
+
+        return new Crawler($this->client->get("m2/{$groupPath}/{$artifactId}/maven-metadata.xml")->body());
     }
 }
