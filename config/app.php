@@ -359,7 +359,7 @@ return [
         App\Badges\Swagger\BadgeServiceProvider::class,
         App\Badges\SymfonyInsight\BadgeServiceProvider::class,
         App\Badges\TAS\BadgeServiceProvider::class,
-        // App\Badges\TeamCity\BadgeServiceProvider::class,
+        App\Badges\TeamCity\BadgeServiceProvider::class,
         App\Badges\Testspace\BadgeServiceProvider::class,
         App\Badges\Tidelift\BadgeServiceProvider::class,
         App\Badges\Tokei\BadgeServiceProvider::class,

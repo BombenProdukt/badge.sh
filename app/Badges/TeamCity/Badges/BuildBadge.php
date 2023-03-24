@@ -9,34 +9,39 @@ use App\Badges\TeamCity\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class BuildBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $buildId): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderStatus('build', $this->client->build($this->getRequestData('instance'), $buildId)['statusText']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'TeamCity';
     }
 
     public function keywords(): array
     {
-        return [Category::VERSION];
+        return [Category::BUILD];
     }
 
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/team-city/build/{buildId}',
+        ];
+    }
+
+    public function routeRules(): array
+    {
+        return [
+            'instance' => ['required', 'url'],
         ];
     }
 
@@ -58,8 +63,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/team-city/build/IntelliJIdeaCe_JavaDecompilerEngineTests?instance=https://teamcity.jetbrains.com' => 'build status',
         ];
     }
 }

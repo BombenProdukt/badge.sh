@@ -55,6 +55,11 @@ return [
         'password' => env('SYMFONY_INSIGHT_PASSWORD'),
     ],
 
+    'team_city' => [
+        'username' => env('TEAM_CITY_USERNAME'),
+        'password' => env('TEAM_CITY_PASSWORD'),
+    ],
+
     'twitch' => [
         'client_id'     => env('TWITCH_CLIENT_ID'),
         'client_secret' => env('TWITCH_CLIENT_SECRET'),

@@ -4,20 +4,29 @@ declare(strict_types=1);
 
 namespace App\Badges\TeamCity;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function build(string $instance, string $buildId): array
     {
-        $this->client = Http::baseUrl('')->throw();
+        $client = Http::baseUrl($instance)->throw();
+
+        if (config('services.team_city.username') && config('services.team_city.password')) {
+            $client->withBasicAuth(config('services.team_city.username'), config('services.team_city.password'));
+        }
+
+        return $client->get('app/rest/builds/'.urlencode("buildType:(id:{$buildId})"))->json();
     }
 
-    public function get(string $appId): array
+    public function coverage(string $instance, string $buildId): array
     {
-        return $this->client->get('')->json();
+        $client = Http::baseUrl($instance)->throw();
+
+        if (config('services.team_city.username') && config('services.team_city.password')) {
+            $client->withBasicAuth(config('services.team_city.username'), config('services.team_city.password'));
+        }
+
+        return $client->get('app/rest/builds/'.urlencode("buildType:(id:{$buildId})").'/statistics')->json('coverage');
     }
 }
