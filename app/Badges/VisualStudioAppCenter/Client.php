@@ -13,11 +13,20 @@ final class Client
 
     public function __construct()
     {
-        $this->client = Http::baseUrl('')->throw();
+        $this->client = Http::baseUrl('https://api.appcenter.ms/v0.1')->throw();
     }
 
-    public function get(string $appId): array
+    public function builds(string $owner, string $app, string $branch, string $token): string
     {
-        return $this->client->get('')->json();
+        $this->client->withHeaders(['X-API-Token' => $token]);
+
+        return $this->client->get("apps/{$owner}/{$app}/branches/{$branch}/builds")->json('0.result');
+    }
+
+    public function releases(string $owner, string $app, string $token): array
+    {
+        $this->client->withHeaders(['X-API-Token' => $token]);
+
+        return $this->client->get("apps/{$owner}/{$app}/releases/latest")->json('0.result');
     }
 }

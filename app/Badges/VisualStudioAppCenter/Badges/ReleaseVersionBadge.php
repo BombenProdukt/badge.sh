@@ -9,23 +9,21 @@ use App\Badges\VisualStudioAppCenter\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class ReleaseVersionBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $owner, string $app, string $token): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderSize($this->client->releases($owner, $app, $token)['short_version']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Visual Studio App Center';
     }
 
     public function keywords(): array
@@ -36,7 +34,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/visual-studio-app-center/version/{owner}/{app}/{token}',
         ];
     }
 
@@ -58,8 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/visual-studio-app-center/version/jct/my-amazing-app/ac70cv...' => 'version',
         ];
     }
 }
