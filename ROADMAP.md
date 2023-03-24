@@ -6,5 +6,4 @@
 
 ## Badges
 
-- [nexus](https://github.com/badges/shields/tree/master/services/nexus)
 - [sonar](https://github.com/badges/shields/tree/master/services/sonar)
