@@ -365,7 +365,7 @@ return [
         App\Badges\Tokei\BadgeServiceProvider::class,
         App\Badges\Travis\BadgeServiceProvider::class,
         App\Badges\Treeware\BadgeServiceProvider::class,
-        // App\Badges\Twitch\BadgeServiceProvider::class,
+        App\Badges\Twitch\BadgeServiceProvider::class,
         App\Badges\Twitter\BadgeServiceProvider::class,
         App\Badges\Ubuntu\BadgeServiceProvider::class,
         App\Badges\UptimeRobot\BadgeServiceProvider::class,

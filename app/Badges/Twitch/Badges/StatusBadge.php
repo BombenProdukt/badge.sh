@@ -9,32 +9,34 @@ use App\Badges\Twitch\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class LicenseBadge extends AbstractBadge
+final class StatusBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
         //
     }
 
-    public function handle(string $appId): array
+    public function handle(string $username): array
     {
-        return $this->renderLicense($this->client->get($appId)['License']);
+        $isLive = count($this->client->user($username)) > 1;
+
+        return $this->renderText('twitch', $isLive ? 'live' : 'offline', $isLive ? 'green.600' : 'red.600');
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Twitch';
     }
 
     public function keywords(): array
     {
-        return [Category::LICENSE];
+        return [Category::SOCIAL];
     }
 
     public function routePaths(): array
     {
         return [
-            '/service/{package}',
+            '/twitch/status/{username}',
         ];
     }
 
@@ -56,7 +58,7 @@ final class LicenseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/service/{package}' => '',
+            '/twitch/status/andyonthewings' => 'status',
         ];
     }
 }

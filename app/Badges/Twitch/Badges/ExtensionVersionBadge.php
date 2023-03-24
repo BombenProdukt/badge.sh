@@ -9,7 +9,7 @@ use App\Badges\Twitch\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
-final class VersionBadge extends AbstractBadge
+final class ExtensionVersionBadge extends AbstractBadge
 {
     public function __construct(private readonly Client $client)
     {
@@ -18,14 +18,12 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $appId): array
     {
-        $version = $this->client->get($appId)['CurrentVersion'];
-
-        return $this->renderVersion($version);
+        return $this->renderVersion($this->client->extension($appId)['version']);
     }
 
     public function service(): string
     {
-        return 'WIP';
+        return 'Twitch';
     }
 
     public function keywords(): array
@@ -36,7 +34,7 @@ final class VersionBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [
-            '/f-droid/version/{appId}',
+            '/twitch/extension-version/{appId}',
         ];
     }
 
@@ -58,8 +56,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/version/org.schabi.newpipe'    => 'version',
-            '/f-droid/version/com.amaze.filemanager' => 'version',
+            '/twitch/extension-version/2nq5cu1nc9f4p75b791w8d3yo9d195' => 'version',
         ];
     }
 }
