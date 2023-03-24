@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace App\Badges\Jira;
 
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 final class Client
 {
-    private PendingRequest $client;
-
-    public function __construct()
+    public function issue(string $instance, string $issue): array
     {
-        $this->client = Http::baseUrl('')->throw();
+        return Http::baseUrl($instance)->throw()->get("rest/api/2/issue/{$issue}")->json('fields.status');
     }
 
-    public function get(string $appId): array
+    public function sprint(string $instance, string $sprint): array
     {
-        return $this->client->get('')->json();
+        return Http::baseUrl($instance)->throw()->get('rest/api/2/search', [
+            'jql'        => 'sprint='.$sprint.' AND type IN (Bug,Improvement,Story,"Technical task")',
+            'fields'     => 'resolution',
+            'maxResults' => 500,
+        ])->json();
     }
 }

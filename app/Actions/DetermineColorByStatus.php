@@ -51,6 +51,7 @@ final class DetermineColorByStatus
             'preloaded'              => 'green.600',
             'processing'             => 'blue.600',
             'queued'                 => 'blue.600',
+            'resolved'               => 'green.600',
             'running'                => 'blue.600',
             'scheduled'              => 'blue.600',
             'skipped'                => 'blue.600',
