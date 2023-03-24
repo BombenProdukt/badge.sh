@@ -4,28 +4,16 @@ declare(strict_types=1);
 
 namespace App\Badges\Hackage\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Hackage\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package): array
     {
         $version = $this->client->hackage($package)['version'];
 
         return $this->renderVersion($version);
-    }
-
-    public function service(): string
-    {
-        return 'Hackage';
     }
 
     public function keywords(): array

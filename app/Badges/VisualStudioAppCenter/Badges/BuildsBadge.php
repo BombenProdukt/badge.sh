@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioAppCenter\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\VisualStudioAppCenter\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class BuildsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $owner, string $app, string $branch, string $token): array
     {
         return $this->renderStatus('build status', $this->client->builds($owner, $app, $branch, $token));
-    }
-
-    public function service(): string
-    {
-        return 'Visual Studio App Center';
     }
 
     public function keywords(): array

@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Dependabot\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Dependabot\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $project, ?string $identifier = null): array
     {
         $response = $this->client->get($project, $identifier);
@@ -26,11 +19,6 @@ final class StatusBadge extends AbstractBadge
             'message'      => $response['status'],
             'messageColor' => $response['colour'],
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Dependabot';
     }
 
     public function keywords(): array

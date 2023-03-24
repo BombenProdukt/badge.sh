@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\AzureDevOps\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\AzureDevOps\Client;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
 final class CoverageBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $organization, string $project, string $definition, ?string $environment = null): array
     {
         $buildId = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/builds", [
@@ -43,11 +36,6 @@ final class CoverageBadge extends AbstractBadge
         }
 
         return $this->renderCoverage($covered ? ($covered / $total) * 100 : 0);
-    }
-
-    public function service(): string
-    {
-        return 'Azure Pipelines';
     }
 
     public function keywords(): array

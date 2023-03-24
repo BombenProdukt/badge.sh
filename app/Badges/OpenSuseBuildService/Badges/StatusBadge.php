@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenSuseBuildService\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\OpenSuseBuildService\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $project, string $packageName, string $repository, string $arch): array
     {
         return $this->renderStatus('build status', $this->client->get($project, $packageName, $repository, $arch)['License']);
-    }
-
-    public function service(): string
-    {
-        return 'openSUSE Build Service';
     }
 
     public function keywords(): array

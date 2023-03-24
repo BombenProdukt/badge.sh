@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\VCPKG\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\VCPKG\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $packageName): array
     {
         $response = $this->client->get($packageName);
@@ -33,11 +26,6 @@ final class VersionBadge extends AbstractBadge
         }
 
         return $this->renderVersion($response['version']);
-    }
-
-    public function service(): string
-    {
-        return 'vcpkg';
     }
 
     public function keywords(): array

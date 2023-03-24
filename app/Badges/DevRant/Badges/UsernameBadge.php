@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\DevRant\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\DevRant\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class UsernameBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $username): array
     {
         $profile = $this->client->get($this->client->getUserIdFromName($username));
@@ -26,11 +19,6 @@ final class UsernameBadge extends AbstractBadge
             'message'      => FormatNumber::execute($profile['score']),
             'messageColor' => 'f99a66',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'devRant';
     }
 
     public function keywords(): array

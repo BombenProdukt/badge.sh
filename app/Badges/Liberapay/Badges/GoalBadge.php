@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Liberapay\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Liberapay\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatPercentage;
 
 final class GoalBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $username): array
     {
         $response = $this->client->get($username);
@@ -32,11 +25,6 @@ final class GoalBadge extends AbstractBadge
             'message'      => FormatPercentage::execute($goal),
             'messageColor' => isset($goal) ? 'yellow.600' : 'gray.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Liberapay';
     }
 
     public function keywords(): array

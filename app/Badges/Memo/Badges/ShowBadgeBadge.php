@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Memo\Badges;
 
-use App\Badges\AbstractBadge;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Cache;
@@ -14,11 +13,6 @@ final class ShowBadgeBadge extends AbstractBadge
     public function handle(string $name): array
     {
         return Cache::get($name);
-    }
-
-    public function service(): string
-    {
-        return 'Memo';
     }
 
     public function keywords(): array

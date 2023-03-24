@@ -4,27 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\DavidDM\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\DavidDM\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class DepBadge extends AbstractBadge
 {
-    private array $statusInfo = [
-        'insecure'      => ['insecure', 'red'],
-        'outofdate'     => ['out of date', 'orange'],
-        'notsouptodate' => ['up to date', 'yellow'],
-        'uptodate'      => ['up to date', 'green'],
-        'none'          => ['none', 'green'],
-    ];
-
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $repo, string $path): array
     {
         $status = $this->client->get($repo, $path)['status'];
@@ -34,11 +19,6 @@ final class DepBadge extends AbstractBadge
             'message'      => $this->statusInfo[$status][0],
             'messageColor' => $this->statusInfo[$status][1],
         ];
-    }
-
-    public function service(): string
-    {
-        return 'DavidDM';
     }
 
     public function keywords(): array

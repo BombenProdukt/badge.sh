@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\GitHub\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class OpenIssuesBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $owner, string $repo): array
     {
         $result = $this->client->makeRepoQuery($owner, $repo, 'issues(states:[OPEN]) { totalCount }');
@@ -26,11 +19,6 @@ final class OpenIssuesBadge extends AbstractBadge
             'message'      => FormatNumber::execute($result['issues']['totalCount']),
             'messageColor' => $result['issues']['totalCount'] === 0 ? 'green.600' : 'orange.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'GitHub';
     }
 
     public function keywords(): array

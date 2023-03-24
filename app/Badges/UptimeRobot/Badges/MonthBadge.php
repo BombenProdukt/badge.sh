@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\UptimeRobot\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\UptimeRobot\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatPercentage;
 
 final class MonthBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $apiKey): array
     {
         $response = $this->client->get($apiKey, 30);
@@ -34,11 +27,6 @@ final class MonthBadge extends AbstractBadge
                 default             => 'green.600',
             },
         ];
-    }
-
-    public function service(): string
-    {
-        return 'UptimeRobot';
     }
 
     public function keywords(): array

@@ -4,17 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badges\Mastodon\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Mastodon\Client;
 use Illuminate\Routing\Route;
 
 final class AccountBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $account): array
     {
         [$username, $instance] = explode('@', $account);
@@ -35,11 +28,6 @@ final class AccountBadge extends AbstractBadge
             'message'      => 'TODO',
             'messageColor' => 'TODO',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Mastodon';
     }
 
     public function keywords(): array

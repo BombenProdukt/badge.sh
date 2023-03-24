@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\FreeCodeCamp\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\FreeCodeCamp\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class PointsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $username): array
     {
         return [
@@ -24,11 +17,6 @@ final class PointsBadge extends AbstractBadge
             'message'      => FormatNumber::execute($this->client->get($username)['entities']['user'][$username]['points']),
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'FreeCodeCamp';
     }
 
     public function keywords(): array

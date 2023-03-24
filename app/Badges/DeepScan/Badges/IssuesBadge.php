@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\DeepScan\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\DeepScan\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class IssuesBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $teamId, string $projectId, string $branchId): array
     {
         $response = $this->client->get($teamId, $projectId, $branchId);
@@ -26,11 +19,6 @@ final class IssuesBadge extends AbstractBadge
             'message'      => FormatNumber::execute($response['outstandingDefectCount']),
             'messageColor' => $response['outstandingDefectCount'] ? 'green.600' : 'yellow.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'DeepScan';
     }
 
     public function keywords(): array

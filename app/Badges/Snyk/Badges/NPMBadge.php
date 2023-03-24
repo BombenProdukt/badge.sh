@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Snyk\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Snyk\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class NPMBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $project, ?string $branch = null, ?string $targetFile = null): array
     {
         $svg = $this->client->get('test/npm/'.implode('/', [$project, $branch]), $targetFile);
@@ -39,11 +32,6 @@ final class NPMBadge extends AbstractBadge
             'message'      => $status,
             'messageColor' => $statusColor,
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Snyk';
     }
 
     public function keywords(): array

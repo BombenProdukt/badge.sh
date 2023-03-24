@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\MyGet\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\MyGet\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $feed, string $project, ?string $channel = 'latest'): array
     {
         $versions = collect($this->client->get($feed, $project)['versions'])->pluck('version')->toArray();
@@ -33,11 +26,6 @@ final class VersionBadge extends AbstractBadge
         }
 
         return $this->renderVersion($version);
-    }
-
-    public function service(): string
-    {
-        return 'MyGet';
     }
 
     public function keywords(): array

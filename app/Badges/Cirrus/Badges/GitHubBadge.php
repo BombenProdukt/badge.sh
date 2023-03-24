@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\Cirrus\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Cirrus\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class GitHubBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $owner, string $repo, ?string $branch = null): array
     {
         return $this->renderStatus('build', $this->client->github($owner, $repo, $branch, $this->getRequestData('task'), $this->getRequestData('script')));
-    }
-
-    public function service(): string
-    {
-        return 'Cirrus';
     }
 
     public function keywords(): array

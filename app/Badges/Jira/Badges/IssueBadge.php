@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Jira\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Jira\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class IssueBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $issue): array
     {
         $response = $this->client->issue($this->getRequestData('instance'), $issue);
@@ -29,11 +22,6 @@ final class IssueBadge extends AbstractBadge
             'blue-gray'   => 'blue.600',
             default       => 'gray.600',
         });
-    }
-
-    public function service(): string
-    {
-        return 'Jira';
     }
 
     public function keywords(): array

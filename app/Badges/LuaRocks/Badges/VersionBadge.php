@@ -4,27 +4,15 @@ declare(strict_types=1);
 
 namespace App\Badges\LuaRocks\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\LuaRocks\Client;
 use App\Enums\Category;
 use Composer\Semver\Comparator;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $user, string $moduleName, ?string $version = null): array
     {
         return $this->renderVersion($this->latestVersion($this->client->get($user, $moduleName)));
-    }
-
-    public function service(): string
-    {
-        return 'LuaRocks';
     }
 
     public function keywords(): array

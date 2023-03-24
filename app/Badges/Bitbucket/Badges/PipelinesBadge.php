@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Bitbucket\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Bitbucket\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class PipelinesBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $user, string $repo, ?string $branch = null): array
     {
         $values = collect($this->client->pipelines($user, $repo, $branch))
@@ -27,11 +20,6 @@ final class PipelinesBadge extends AbstractBadge
         }
 
         return $this->renderStatus('build', 'never built');
-    }
-
-    public function service(): string
-    {
-        return 'Bitbucket';
     }
 
     public function keywords(): array

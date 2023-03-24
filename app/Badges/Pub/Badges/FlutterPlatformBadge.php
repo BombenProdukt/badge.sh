@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Pub\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Pub\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class FlutterPlatformBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package): array
     {
         $pubScores = $this->client->api("packages/{$package}/metrics")['scorecard'];
@@ -27,11 +20,6 @@ final class FlutterPlatformBadge extends AbstractBadge
             'message'      => $platforms ?? 'unknown',
             'messageColor' => $platforms ? 'blue.600' : 'gray.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Pub';
     }
 
     public function keywords(): array

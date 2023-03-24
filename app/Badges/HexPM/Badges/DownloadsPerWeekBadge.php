@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\HexPM\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\HexPM\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class DownloadsPerWeekBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $packageName): array
     {
         return $this->renderDownloads($this->client->get($packageName)['downloads']['week']);
-    }
-
-    public function service(): string
-    {
-        return 'hex.pm';
     }
 
     public function keywords(): array

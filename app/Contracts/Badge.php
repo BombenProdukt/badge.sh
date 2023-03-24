@@ -8,6 +8,8 @@ use Illuminate\Routing\Route;
 
 /**
  * @method array handle()
+ * @method void setRequest()
+ * @method void setRequestData()
  */
 interface Badge
 {

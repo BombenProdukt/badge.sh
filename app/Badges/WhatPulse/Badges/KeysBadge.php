@@ -4,27 +4,15 @@ declare(strict_types=1);
 
 namespace App\Badges\WhatPulse\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\WhatPulse\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
 final class KeysBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $userType, string $id): array
     {
         return $this->renderNumber('keys', Arr::get($this->client->get($userType, $id), $userType === 'team' ? 'Team.Keys' : 'Keys'));
-    }
-
-    public function service(): string
-    {
-        return 'WhatPulse';
     }
 
     public function keywords(): array

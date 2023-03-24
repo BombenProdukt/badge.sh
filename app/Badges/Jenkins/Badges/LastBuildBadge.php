@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Jenkins\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LastBuildBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $hostname, string $job): array
     {
         $response = $this->client->get($hostname, $job, 'lastBuild/api/json?tree=result,timestamp,estimatedDuration');
@@ -26,11 +19,6 @@ final class LastBuildBadge extends AbstractBadge
             'message'      => $response['result'],
             'messageColor' => strtolower($response['result']) === 'success' ? 'green.600' : 'red.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Jenkins';
     }
 
     public function keywords(): array

@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Coveralls\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Coveralls\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class CoverageBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $vcs, string $repo, ?string $branch = null): array
     {
         $response = $this->client->get($vcs, $repo, $branch);
@@ -32,11 +25,6 @@ final class CoverageBadge extends AbstractBadge
         }
 
         return $this->renderCoverage($matches[1]);
-    }
-
-    public function service(): string
-    {
-        return 'Coveralls';
     }
 
     public function keywords(): array

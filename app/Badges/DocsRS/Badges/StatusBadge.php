@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\DocsRS\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\DocsRS\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $crate, ?string $version = 'latest'): array
     {
         $label = "docs@{$version}";
@@ -25,11 +18,6 @@ final class StatusBadge extends AbstractBadge
         }
 
         return $this->renderStatus($label, 'failing');
-    }
-
-    public function service(): string
-    {
-        return 'docs.rs';
     }
 
     public function keywords(): array

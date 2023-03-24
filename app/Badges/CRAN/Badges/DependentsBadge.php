@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\CRAN\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class DependentsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package): array
     {
         $response = $this->client->db("/-/revdeps/{$package}");
@@ -26,11 +19,6 @@ final class DependentsBadge extends AbstractBadge
             'message'      => FormatNumber::execute(count($response[$package]['Depends'])),
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'CRAN';
     }
 
     public function keywords(): array

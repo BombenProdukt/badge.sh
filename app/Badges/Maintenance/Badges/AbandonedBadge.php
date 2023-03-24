@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Maintenance\Badges;
 
-use App\Badges\AbstractBadge;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -13,11 +12,6 @@ final class AbandonedBadge extends AbstractBadge
     public function handle(string $year): array
     {
         return $this->renderText('abandoned', $year, 'red.600');
-    }
-
-    public function service(): string
-    {
-        return 'Maintenance';
     }
 
     public function keywords(): array

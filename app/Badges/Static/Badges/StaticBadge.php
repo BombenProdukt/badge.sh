@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Static\Badges;
 
-use App\Badges\AbstractBadge;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -17,11 +16,6 @@ final class StaticBadge extends AbstractBadge
             'message'      => $message,
             'messageColor' => $messageColor,
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Static Badge';
     }
 
     public function keywords(): array

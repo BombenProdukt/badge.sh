@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Jenkins\Client;
 use App\Enums\Category;
-use Http;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Http;
 
 final class CoverageBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $format): array
     {
         $response = Http::get($this->getRequestData('job').'/lastCompletedBuild/api/json', match ($format) {
@@ -29,11 +22,6 @@ final class CoverageBadge extends AbstractBadge
             'jacoco' => $response['instructionCoverage']['percentage'],
             default  => collect($response['results']['elements'])->firstWhere('name', 'Lines')['ratio']
         };
-    }
-
-    public function service(): string
-    {
-        return 'Jenkins';
     }
 
     public function keywords(): array

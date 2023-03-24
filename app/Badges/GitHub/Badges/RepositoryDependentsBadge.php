@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
-use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Actions\RequestDependents;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
@@ -14,11 +13,6 @@ final class RepositoryDependentsBadge extends AbstractBadge
     public function handle(string $owner, string $repo): array
     {
         return RequestDependents::execute($owner, $repo, 'REPOSITORY');
-    }
-
-    public function service(): string
-    {
-        return 'GitHub';
     }
 
     public function keywords(): array

@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\AtomPackage\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\AtomPackage\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class StarsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package): array
     {
         return [
@@ -24,11 +17,6 @@ final class StarsBadge extends AbstractBadge
             'message'      => FormatNumber::execute($this->client->get($package)['stargazers_count']),
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Atom Package';
     }
 
     public function keywords(): array

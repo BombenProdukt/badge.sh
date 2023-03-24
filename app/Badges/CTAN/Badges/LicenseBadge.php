@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\CTAN\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\CTAN\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package): array
     {
         return $this->renderLicense($this->client->api($package)['license']);
-    }
-
-    public function service(): string
-    {
-        return 'CTAN';
     }
 
     public function keywords(): array

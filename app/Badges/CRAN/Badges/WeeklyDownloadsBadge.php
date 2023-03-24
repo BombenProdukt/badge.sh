@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\CRAN\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class WeeklyDownloadsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package): array
     {
         return $this->renderDownloadsPerWeek($this->client->logs("downloads/total/last-week/{$package}")[0]['downloads']);
-    }
-
-    public function service(): string
-    {
-        return 'CRAN';
     }
 
     public function keywords(): array

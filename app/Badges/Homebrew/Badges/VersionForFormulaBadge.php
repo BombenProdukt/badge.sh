@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Homebrew\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Homebrew\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionForFormulaBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package): array
     {
         $response = $this->client->get('formula', $package);
@@ -27,11 +20,6 @@ final class VersionForFormulaBadge extends AbstractBadge
         }
 
         return $this->renderVersion($version);
-    }
-
-    public function service(): string
-    {
-        return 'Homebrew';
     }
 
     public function keywords(): array

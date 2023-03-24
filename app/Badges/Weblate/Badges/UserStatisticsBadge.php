@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Weblate\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Weblate\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use InvalidArgumentException;
 
 final class UserStatisticsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $type, string $username): array
     {
         $response = $this->client->user($username);
@@ -29,11 +22,6 @@ final class UserStatisticsBadge extends AbstractBadge
             'languages'    => $response['languages'],
             default        => throw new InvalidArgumentException("Unknown type: {$type}")
         });
-    }
-
-    public function service(): string
-    {
-        return 'Weblate';
     }
 
     public function keywords(): array

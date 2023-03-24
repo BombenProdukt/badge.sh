@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Nexus\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Nexus\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $repo, string $groupId, string $artifactId): array
     {
         return $this->renderVersion(
@@ -28,11 +21,6 @@ final class VersionBadge extends AbstractBadge
                 $artifactId,
             )
         );
-    }
-
-    public function service(): string
-    {
-        return 'Sonatype Nexus';
     }
 
     public function keywords(): array

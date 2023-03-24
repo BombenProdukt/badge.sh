@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Twitter\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Twitter\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class FollowBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $username): array
     {
         $response = $this->client->get($username);
@@ -26,11 +19,6 @@ final class FollowBadge extends AbstractBadge
             'message'      => FormatNumber::execute($response['followers_count']),
             'messageColor' => '1da1f2',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Twitter';
     }
 
     public function keywords(): array

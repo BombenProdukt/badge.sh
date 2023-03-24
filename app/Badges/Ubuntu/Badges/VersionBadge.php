@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\Ubuntu\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Ubuntu\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $packageName, ?string $series = null): array
     {
         return $this->renderVersion($this->client->version($packageName, $series));
-    }
-
-    public function service(): string
-    {
-        return 'Ubuntu';
     }
 
     public function keywords(): array

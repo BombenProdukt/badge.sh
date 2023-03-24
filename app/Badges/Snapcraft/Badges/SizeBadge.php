@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Snapcraft\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Snapcraft\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
@@ -13,11 +11,6 @@ use PreemStudio\Formatter\FormatBytes;
 
 final class SizeBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $snap, ?string $architecture = null, ?string $channel = null): array
     {
         $channels = collect($this->client->get($snap, ['size'])['channel-map']);
@@ -33,11 +26,6 @@ final class SizeBadge extends AbstractBadge
             'message'      => FormatBytes::execute($channel['download']['size']),
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Snapcraft';
     }
 
     public function keywords(): array

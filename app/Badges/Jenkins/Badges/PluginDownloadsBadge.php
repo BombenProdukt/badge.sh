@@ -4,20 +4,13 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Jenkins\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
-use Http;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Http;
 
 final class PluginDownloadsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $plugin, ?string $version = null): array
     {
         $response = Http::get("https://stats.jenkins.io/plugin-installation-trend/{$plugin}.stats.json")->throw()->json();
@@ -27,11 +20,6 @@ final class PluginDownloadsBadge extends AbstractBadge
         }
 
         return $this->renderNumber('downloads', collect($response['installationsPerVersion'][$version])->sum());
-    }
-
-    public function service(): string
-    {
-        return 'Jenkins';
     }
 
     public function keywords(): array

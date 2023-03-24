@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\ChromeWebStore\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\ChromeWebStore\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
@@ -13,11 +11,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 final class RatingCountBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $itemId): array
     {
         $textContent = (new Crawler($this->client->get($itemId)))
@@ -32,11 +25,6 @@ final class RatingCountBadge extends AbstractBadge
             'message'      => Regex::match('/(\d+) users rated this item/', $textContent)->group(1),
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Chrome Web Store';
     }
 
     public function keywords(): array

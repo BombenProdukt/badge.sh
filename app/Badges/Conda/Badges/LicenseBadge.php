@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\Conda\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Conda\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $channel, string $package): array
     {
         return $this->renderLicense($this->client->get($channel, $package)['license']);
-    }
-
-    public function service(): string
-    {
-        return 'Conda';
     }
 
     public function keywords(): array

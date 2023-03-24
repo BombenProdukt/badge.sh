@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Gitter\Badges;
 
-use App\Badges\AbstractBadge;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -13,11 +12,6 @@ final class StatusBadge extends AbstractBadge
     public function handle(string $org, string $room): array
     {
         return $this->renderText('gitter', 'on gitter', 'ed1965');
-    }
-
-    public function service(): string
-    {
-        return 'Gitter';
     }
 
     public function keywords(): array

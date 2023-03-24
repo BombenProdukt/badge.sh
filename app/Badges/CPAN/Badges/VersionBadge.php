@@ -4,28 +4,16 @@ declare(strict_types=1);
 
 namespace App\Badges\CPAN\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\CPAN\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $distribution): array
     {
         $version = $this->normalizeVersion($this->client->get("release/{$distribution}")['version']);
 
         return $this->renderVersion($version);
-    }
-
-    public function service(): string
-    {
-        return 'CPAN';
     }
 
     public function keywords(): array

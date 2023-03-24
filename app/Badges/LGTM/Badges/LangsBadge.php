@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\LGTM\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LangsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $provider, string $project, ?string $language = null): array
     {
         $response = $this->client->get($provider, $project, $language);
@@ -28,11 +21,6 @@ final class LangsBadge extends AbstractBadge
             'message'      => implode(' | ', array_map(fn ($x) => $langLabelOverrides[$x['language']] ?? $x['language'], $response['languages'])),
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'LGTM';
     }
 
     public function keywords(): array

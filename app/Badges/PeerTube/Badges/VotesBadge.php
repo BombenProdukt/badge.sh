@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\PeerTube\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\PeerTube\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class VotesBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $instance, string $video): array
     {
         $response = $this->client->get($instance, "videos/{$video}");
@@ -26,11 +19,6 @@ final class VotesBadge extends AbstractBadge
             'message'      => sprintf('%s 👍 %s 👎', FormatNumber::execute($response['likes']), FormatNumber::execute($response['dislikes'])),
             'messageColor' => 'F1680D',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'PeerTube';
     }
 
     public function keywords(): array

@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\BStats\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\BStats\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class PlayersBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $projectId): array
     {
         return $this->renderNumber('players', $this->client->players($projectId));
-    }
-
-    public function service(): string
-    {
-        return 'bStats';
     }
 
     public function keywords(): array

@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Docker\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Docker\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class MetadataBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(
         string $type,
         string $scope,
@@ -31,11 +24,6 @@ final class MetadataBadge extends AbstractBadge
             'message'      => $response['container_config']['Labels']["org.label-schema.{$type}"] ?? $response['container_config']['Labels']["org.opencontainers.image.{$type}"],
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Docker';
     }
 
     public function keywords(): array

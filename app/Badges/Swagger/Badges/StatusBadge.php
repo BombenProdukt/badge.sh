@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Swagger\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Swagger\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(): array
     {
         $schemaValidationMessages = $this->client->debug($this->getRequestData('spec'));
@@ -25,11 +18,6 @@ final class StatusBadge extends AbstractBadge
         }
 
         return $this->renderStatus($this->service(), 'failed');
-    }
-
-    public function service(): string
-    {
-        return 'Swagger';
     }
 
     public function keywords(): array

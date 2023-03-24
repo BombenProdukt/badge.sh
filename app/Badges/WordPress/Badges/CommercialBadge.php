@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\WordPress\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\WordPress\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class CommercialBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $extensionType, string $extension): array
     {
         return $this->renderText('commercial', $this->client->info($extensionType, $extension)['is_commercial'] ? 'yes' : 'no');
-    }
-
-    public function service(): string
-    {
-        return 'WordPress';
     }
 
     public function keywords(): array

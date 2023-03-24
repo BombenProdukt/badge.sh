@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenVSX\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\OpenVSX\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class ReviewsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $extension): array
     {
         $response = $this->client->get($extension);
@@ -26,11 +19,6 @@ final class ReviewsBadge extends AbstractBadge
             'message'      => (string) $response['reviewCount'],
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Open VSX';
     }
 
     public function keywords(): array

@@ -4,28 +4,16 @@ declare(strict_types=1);
 
 namespace App\Badges\DeepScan\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\DeepScan\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LinesBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $teamId, string $projectId, string $branchId): array
     {
         $response = $this->client->get($teamId, $projectId, $branchId);
 
         return $this->renderLines($response['loc']);
-    }
-
-    public function service(): string
-    {
-        return 'DeepScan';
     }
 
     public function keywords(): array

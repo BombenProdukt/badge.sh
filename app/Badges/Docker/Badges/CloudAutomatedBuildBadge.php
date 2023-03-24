@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Docker\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Docker\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class CloudAutomatedBuildBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $scope, string $name): array
     {
         $settings = $this->client->build($scope, $name)['build_settings'];
@@ -25,11 +18,6 @@ final class CloudAutomatedBuildBadge extends AbstractBadge
         }
 
         return $this->renderText('docker build', 'manual', 'yellow.600');
-    }
-
-    public function service(): string
-    {
-        return 'Docker';
     }
 
     public function keywords(): array

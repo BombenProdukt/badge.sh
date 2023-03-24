@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Badges\Node\Badges;
 
 use App\Actions\DetermineColorByVersion;
-use App\Badges\AbstractBadge;
-use App\Badges\Node\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -14,11 +12,6 @@ use Illuminate\Support\Arr;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package, ?string $tag = 'latest'): array
     {
         $version = Arr::get($this->client->get($package, $tag, $this->getRequestData('registry')), 'engines.node');
@@ -28,11 +21,6 @@ final class VersionBadge extends AbstractBadge
             $version,
             DetermineColorByVersion::execute($version),
         );
-    }
-
-    public function service(): string
-    {
-        return 'Node';
     }
 
     public function keywords(): array

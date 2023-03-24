@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\XO\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\XO\Client;
 use App\Enums\Keyword;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -13,11 +11,6 @@ use Illuminate\Support\Arr;
 
 final class SemicolonBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $name): array
     {
         $response = $this->client->get($name);
@@ -35,11 +28,6 @@ final class SemicolonBadge extends AbstractBadge
             'message'      => Arr::get($response, 'xo.semicolon') ? 'enabled' : 'disabled',
             'messageColor' => '5ED9C7',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'XO';
     }
 
     public function keywords(): array

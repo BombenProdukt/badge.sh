@@ -4,30 +4,18 @@ declare(strict_types=1);
 
 namespace App\Badges\WinGet\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\WinGet\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Symfony\Component\Yaml\Yaml;
 
 final class LicenseBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $appId): array
     {
         $document = Yaml::parse(base64_decode($this->client->get($appId)['content']));
         $document = Yaml::parse(base64_decode($this->client->locale($appId, $document['PackageVersion'], $document['DefaultLocale'])['content']));
 
         return $this->renderLicense($document['License']);
-    }
-
-    public function service(): string
-    {
-        return 'winget';
     }
 
     public function keywords(): array

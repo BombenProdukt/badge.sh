@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\SymfonyInsight\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\SymfonyInsight\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class GradeBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $projectUuid): array
     {
         return $this->renderGrade('grade', $this->client->get($projectUuid)['grade']);
-    }
-
-    public function service(): string
-    {
-        return 'Symfony';
     }
 
     public function keywords(): array

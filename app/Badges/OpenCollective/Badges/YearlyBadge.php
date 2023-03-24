@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenCollective\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\OpenCollective\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatMoney;
 
 final class YearlyBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $slug, ?string $tier = null): array
     {
         $response = $this->client->get($slug, null, $tier);
@@ -26,11 +19,6 @@ final class YearlyBadge extends AbstractBadge
             'message'      => FormatMoney::execute($response['yearlyIncome'] / 100, $response['currency']),
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Open Collective';
     }
 
     public function keywords(): array

@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\ROS\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\ROS\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $distro, string $repoName): array
     {
         $tags = collect($this->client->refs($distro))
@@ -29,11 +22,6 @@ final class VersionBadge extends AbstractBadge
             $this->client->content($distro, $tags[0] ? "refs/tags/{$distro}/{$tags[0]}" : 'refs/heads/master')['repositories'][$repoName]['release']['version'],
             'ros | humble',
         );
-    }
-
-    public function service(): string
-    {
-        return 'ROS Index';
     }
 
     public function keywords(): array

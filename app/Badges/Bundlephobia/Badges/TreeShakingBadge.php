@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Bundlephobia\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Bundlephobia\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class TreeShakingBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $name): array
     {
         $response        = $this->client->get($name);
@@ -27,11 +20,6 @@ final class TreeShakingBadge extends AbstractBadge
             'message'      => $isTreeShakeable ? 'supported' : 'not supported',
             'messageColor' => $isTreeShakeable ? 'green.600' : 'red.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Bundlephobia';
     }
 
     public function keywords(): array

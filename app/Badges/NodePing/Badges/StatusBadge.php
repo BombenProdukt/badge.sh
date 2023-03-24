@@ -4,28 +4,16 @@ declare(strict_types=1);
 
 namespace App\Badges\NodePing\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\NodePing\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $uuid): array
     {
         $isOnline = $this->client->status($uuid);
 
         return $this->renderText('status', $isOnline ? 'online' : 'offline', $isOnline ? 'green.600' : 'red.600');
-    }
-
-    public function service(): string
-    {
-        return 'NodePing';
     }
 
     public function keywords(): array

@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Jenkins\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class FixTimeBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $hostname, string $job): array
     {
         $builds = $this->client->builds($hostname, $job);
@@ -54,11 +47,6 @@ final class FixTimeBadge extends AbstractBadge
                 default              => 'red.600',
             },
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Jenkins';
     }
 
     public function keywords(): array

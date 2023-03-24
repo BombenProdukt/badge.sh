@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\RunKit\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\RunKit\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class NotebookBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $owner, string $notebook, ?string $path = null): array
     {
         $response = $this->client->get($owner, $notebook, $path);
@@ -26,11 +19,6 @@ final class NotebookBadge extends AbstractBadge
             'message'      => $response['status'],
             'messageColor' => $response['statusColor'],
         ];
-    }
-
-    public function service(): string
-    {
-        return 'RunKit';
     }
 
     public function keywords(): array

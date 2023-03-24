@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\NuGet\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\NuGet\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $project, ?string $channel = null): array
     {
         $versions = $this->client->get($project)['versions'];
@@ -33,11 +26,6 @@ final class VersionBadge extends AbstractBadge
         }
 
         return $this->renderVersion($version);
-    }
-
-    public function service(): string
-    {
-        return 'NuGet';
     }
 
     public function keywords(): array

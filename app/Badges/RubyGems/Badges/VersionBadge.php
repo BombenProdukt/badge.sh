@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\RubyGems\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\RubyGems\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
     private array $preConditions = ['.rc', '.beta', '-rc', '-beta'];
-
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
 
     public function handle(string $gem, ?string $channel = null): array
     {
@@ -36,11 +29,6 @@ final class VersionBadge extends AbstractBadge
         }
 
         return $this->renderVersion($version);
-    }
-
-    public function service(): string
-    {
-        return 'RubyGems';
     }
 
     public function keywords(): array

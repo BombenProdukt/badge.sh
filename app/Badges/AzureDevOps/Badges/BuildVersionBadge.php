@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\AzureDevOps\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\AzureDevOps\Client;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
 final class BuildVersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $organization, string $project, string $definition, ?string $branch = null): array
     {
         $response = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/builds", array_merge([
@@ -35,11 +28,6 @@ final class BuildVersionBadge extends AbstractBadge
                 'failed'             => 'red.600',
             ][$response['status']],
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Azure Pipelines';
     }
 
     public function keywords(): array

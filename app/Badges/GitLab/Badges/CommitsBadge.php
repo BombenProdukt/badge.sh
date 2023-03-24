@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\GitLab\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\GitLab\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -13,11 +11,6 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class CommitsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $repo, ?string $ref = null): array
     {
         $response = $this->client->rest($repo, $ref ? "repository/commits?ref={$ref}" : 'repository/commits');
@@ -27,11 +20,6 @@ final class CommitsBadge extends AbstractBadge
             'message'      => FormatNumber::execute((int) $response->header('x-total')),
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'GitLab';
     }
 
     public function keywords(): array

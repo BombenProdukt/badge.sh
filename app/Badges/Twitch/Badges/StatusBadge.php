@@ -4,28 +4,16 @@ declare(strict_types=1);
 
 namespace App\Badges\Twitch\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Twitch\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $username): array
     {
         $isLive = count($this->client->user($username)) > 1;
 
         return $this->renderText('twitch', $isLive ? 'live' : 'offline', $isLive ? 'green.600' : 'red.600');
-    }
-
-    public function service(): string
-    {
-        return 'Twitch';
     }
 
     public function keywords(): array

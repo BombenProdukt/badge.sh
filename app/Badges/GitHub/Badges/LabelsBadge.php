@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\GitHub\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LabelsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $owner, string $repo, string $label, ?string $states = ''): array
     {
         $result = $this->client->makeRepoQuery($owner, $repo, $this->getQueryBody($label, $states));
@@ -25,11 +18,6 @@ final class LabelsBadge extends AbstractBadge
             'message'      => strval($result['label'] ? $result['label']['issues']['totalCount'] : 0),
             'messageColor' => $result['label'] ? $result['label']['color'] : 'gray.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'GitHub';
     }
 
     public function keywords(): array

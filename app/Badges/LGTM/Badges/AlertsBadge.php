@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\LGTM\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -13,17 +11,6 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class AlertsBadge extends AbstractBadge
 {
-    private array $languages = [
-        'cpp'        => 'c/c++',
-        'csharp'     => 'c#',
-        'javascript' => 'js/ts',
-    ];
-
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $provider, string $project, ?string $language = null): array
     {
         $response = $this->client->get($provider, $project, $language);
@@ -33,11 +20,6 @@ final class AlertsBadge extends AbstractBadge
             'message'      => FormatNumber::execute($response['alerts']),
             'messageColor' => $response['alerts'] === 0 ? 'green.600' : 'yellow.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'LGTM';
     }
 
     public function keywords(): array

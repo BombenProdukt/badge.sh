@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\TeamCity\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\TeamCity\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class CoverageBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $buildId): array
     {
         $response = $this->client->coverage($this->getRequestData('instance'), $buildId);
@@ -37,11 +30,6 @@ final class CoverageBadge extends AbstractBadge
         }
 
         return $this->renderCoverage($coverage ?? 0);
-    }
-
-    public function service(): string
-    {
-        return 'TeamCity';
     }
 
     public function keywords(): array

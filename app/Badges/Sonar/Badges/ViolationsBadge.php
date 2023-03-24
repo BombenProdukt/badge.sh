@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Sonar\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Sonar\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ViolationsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $metric, string $component, string $branch): array
     {
         $violations = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch)['violations'];
@@ -53,11 +46,6 @@ final class ViolationsBadge extends AbstractBadge
         }
 
         return $this->renderText('violations', implode(', ', $violationSummary), $color);
-    }
-
-    public function service(): string
-    {
-        return 'Sonar';
     }
 
     public function keywords(): array

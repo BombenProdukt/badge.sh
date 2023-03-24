@@ -4,28 +4,16 @@ declare(strict_types=1);
 
 namespace App\Badges\AtomPackage\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\AtomPackage\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package): array
     {
         $response = $this->client->get($package);
 
         return $this->renderLicense($response['versions'][$response['releases']['latest']]['license']);
-    }
-
-    public function service(): string
-    {
-        return 'Atom Package';
     }
 
     public function keywords(): array

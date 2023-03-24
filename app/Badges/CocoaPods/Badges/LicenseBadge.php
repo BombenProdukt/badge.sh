@@ -4,28 +4,16 @@ declare(strict_types=1);
 
 namespace App\Badges\CocoaPods\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\CocoaPods\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $pod): array
     {
         $response = $this->client->get($pod);
 
         return $this->renderLicense(is_array($response['license']) ? $response['license']['type'] : $response['license']);
-    }
-
-    public function service(): string
-    {
-        return 'CocoaPods';
     }
 
     public function keywords(): array

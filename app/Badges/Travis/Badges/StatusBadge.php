@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Travis\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Travis\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -13,11 +11,6 @@ use Illuminate\Support\Collection;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $project, ?string $branch = null): array
     {
         $org = $this->client->org($project, $branch);
@@ -30,11 +23,6 @@ final class StatusBadge extends AbstractBadge
             'message'      => $result[0],
             'messageColor' => $result[1],
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Travis';
     }
 
     public function keywords(): array

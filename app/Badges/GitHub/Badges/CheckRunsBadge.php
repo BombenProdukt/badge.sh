@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
-use App\Badges\AbstractBadge;
 use App\Badges\GitHub\Actions\CombineStates;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
@@ -57,11 +56,6 @@ final class CheckRunsBadge extends AbstractBadge
             'message'      => 'unknown',
             'messageColor' => 'gray.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'GitHub';
     }
 
     public function keywords(): array

@@ -4,28 +4,16 @@ declare(strict_types=1);
 
 namespace App\Badges\Shardbox\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Shardbox\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $shard): array
     {
         preg_match('/class="version">([^<]+)<\\//i', $this->client->get($shard), $matches);
 
         return $this->renderVersion($matches[1]);
-    }
-
-    public function service(): string
-    {
-        return 'Shardbox';
     }
 
     public function keywords(): array

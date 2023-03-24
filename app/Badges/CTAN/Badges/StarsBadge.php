@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\CTAN\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\CTAN\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatStars;
 
 final class StarsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package): array
     {
         preg_match('/<span>[^<]*?([\d.]+)\s/i', $this->client->web($package), $matches);
@@ -26,11 +19,6 @@ final class StarsBadge extends AbstractBadge
             'message'      => FormatStars::execute($matches[1]),
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'CTAN';
     }
 
     public function keywords(): array

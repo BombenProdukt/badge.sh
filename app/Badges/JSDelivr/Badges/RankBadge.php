@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\JSDelivr\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\JSDelivr\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class RankBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $platform, string $package): array
     {
         $rank = $this->client->data($platform, $package)['rank'];
@@ -26,11 +19,6 @@ final class RankBadge extends AbstractBadge
             'message'      => $rank ? "#{$rank}" : 'none',
             'messageColor' => $rank ? 'blue.600' : 'gray.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'jsDelivr';
     }
 
     public function keywords(): array

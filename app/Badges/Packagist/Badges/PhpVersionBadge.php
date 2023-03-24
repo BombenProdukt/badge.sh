@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
@@ -16,11 +14,6 @@ final class PhpVersionBadge extends AbstractBadge
 {
     use HandlesVersions;
 
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package, ?string $channel = null): array
     {
         $packageMeta = $this->client->get($package);
@@ -28,11 +21,6 @@ final class PhpVersionBadge extends AbstractBadge
         $pkg = Arr::get($packageMeta['versions'], $this->getVersion($packageMeta, $channel));
 
         return $this->renderVersion(Arr::get($pkg, 'require.php', '*'), 'php');
-    }
-
-    public function service(): string
-    {
-        return 'Packagist';
     }
 
     public function keywords(): array

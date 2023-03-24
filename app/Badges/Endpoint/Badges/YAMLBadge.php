@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Endpoint\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Endpoint\Client;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -13,11 +11,6 @@ use Symfony\Component\Yaml\Yaml;
 
 final class YAMLBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(): array
     {
         return Validator::make(
@@ -34,11 +27,6 @@ final class YAMLBadge extends AbstractBadge
                 'scale'         => ['nullable', 'integer'],
             ]
         )->validate();
-    }
-
-    public function service(): string
-    {
-        return 'Endpoint';
     }
 
     public function keywords(): array

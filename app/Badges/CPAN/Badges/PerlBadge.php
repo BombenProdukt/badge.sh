@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\CPAN\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\CPAN\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class PerlBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $distribution): array
     {
         $version = $this->normalizeVersion($this->client->get("release/{$distribution}")['metadata']['prereqs']['runtime']['requires']['perl']);
@@ -34,11 +27,6 @@ final class PerlBadge extends AbstractBadge
         $patch          = str_pad(substr($rest, 3), 3, '0', STR_PAD_RIGHT);
 
         return implode('.', array_map('intval', [$major, $minor, $patch]));
-    }
-
-    public function service(): string
-    {
-        return 'CPAN';
     }
 
     public function keywords(): array

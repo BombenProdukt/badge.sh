@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Badgesize\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Badgesize\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class GitHubBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $compression, string $repo, string $path): array
     {
         $response = $this->client->get($compression, "{$repo}/{$path}");
@@ -26,11 +19,6 @@ final class GitHubBadge extends AbstractBadge
             'message'      => $response['prettySize'],
             'messageColor' => $response['color'],
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Badgesize';
     }
 
     public function keywords(): array

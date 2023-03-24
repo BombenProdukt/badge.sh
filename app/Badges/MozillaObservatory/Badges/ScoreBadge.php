@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\MozillaObservatory\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\MozillaObservatory\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ScoreBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $host): array
     {
         return $this->renderText('observatory', $this->client->get($host)['score'].'/100', 'blue.600');
-    }
-
-    public function service(): string
-    {
-        return 'Mozilla Observatory';
     }
 
     public function keywords(): array

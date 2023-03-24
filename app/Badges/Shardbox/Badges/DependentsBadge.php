@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Shardbox\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Shardbox\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class DependentsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $shard): array
     {
         preg_match('/Dependents[^>]*? class="count">([^<]+)<\\//i', $this->client->get($shard), $matches);
@@ -26,11 +19,6 @@ final class DependentsBadge extends AbstractBadge
             'message'      => FormatNumber::execute((int) $matches[1]),
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Shardbox';
     }
 
     public function keywords(): array

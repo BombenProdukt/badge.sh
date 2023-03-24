@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\UptimeRobot\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\UptimeRobot\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ResponseBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $apiKey): array
     {
         return [
@@ -23,11 +16,6 @@ final class ResponseBadge extends AbstractBadge
             'message'      => $this->client->get($apiKey)['average_response_time'].'ms',
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'UptimeRobot';
     }
 
     public function keywords(): array

@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Badgesize\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Badgesize\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class UrlBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $compression, string $path): array
     {
         $response = $this->client->get($compression, 'https:/'.str_replace(['https://', 'https/'], '', $path));
@@ -26,11 +19,6 @@ final class UrlBadge extends AbstractBadge
             'message'      => $response['prettySize'],
             'messageColor' => $response['color'],
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Badgesize';
     }
 
     public function keywords(): array

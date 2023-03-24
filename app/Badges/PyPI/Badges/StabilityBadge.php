@@ -5,18 +5,11 @@ declare(strict_types=1);
 namespace App\Badges\PyPI\Badges;
 
 use App\Actions\DetermineColorByVersion;
-use App\Badges\AbstractBadge;
-use App\Badges\PyPI\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StabilityBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $project): array
     {
         $stability = collect($this->client->get($project)['info']['classifiers'])->map(function (string $classifier) {
@@ -40,11 +33,6 @@ final class StabilityBadge extends AbstractBadge
             'message'      => str_replace('Production/Stable', 'stable', $stability),
             'messageColor' => DetermineColorByVersion::execute($stability),
         ];
-    }
-
-    public function service(): string
-    {
-        return 'PyPI';
     }
 
     public function keywords(): array

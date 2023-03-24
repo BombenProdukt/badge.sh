@@ -4,29 +4,17 @@ declare(strict_types=1);
 
 namespace App\Badges\CodeClimate\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\CodeClimate\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LinesBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $project): array
     {
         $response = $this->client->get($project, 'snapshots');
 
         return $this->renderLines($response['attributes']['lines_of_code']);
-    }
-
-    public function service(): string
-    {
-        return 'Code Climate';
     }
 
     public function keywords(): array

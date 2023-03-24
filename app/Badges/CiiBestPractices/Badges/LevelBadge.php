@@ -5,28 +5,16 @@ declare(strict_types=1);
 namespace App\Badges\CiiBestPractices\Badges;
 
 use App\Actions\DetermineColorByStatus;
-use App\Badges\AbstractBadge;
-use App\Badges\CiiBestPractices\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class LevelBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $projectId): array
     {
         $response = $this->client->get($projectId);
 
         return $this->renderText('cii', $response['badge_level'], DetermineColorByStatus::execute($response['badge_level']));
-    }
-
-    public function service(): string
-    {
-        return 'CII Best Practices';
     }
 
     public function keywords(): array

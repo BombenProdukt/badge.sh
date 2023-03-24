@@ -4,29 +4,17 @@ declare(strict_types=1);
 
 namespace App\Badges\Codecov\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Codecov\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $service, string $repo, ?string $branch = null): array
     {
         $response = $this->client->get($service, $repo, $branch);
 
         return $this->renderCoverage($response['commit']['totals']['c']);
-    }
-
-    public function service(): string
-    {
-        return 'Codecov';
     }
 
     public function keywords(): array

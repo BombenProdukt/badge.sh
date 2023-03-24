@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\Twitch\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Twitch\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ExtensionVersionBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $appId): array
     {
         return $this->renderVersion($this->client->extension($appId)['version']);
-    }
-
-    public function service(): string
-    {
-        return 'Twitch';
     }
 
     public function keywords(): array

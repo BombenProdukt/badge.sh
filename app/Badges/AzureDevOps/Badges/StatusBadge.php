@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\AzureDevOps\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\AzureDevOps\Client;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $organization, string $project, string $definition, ?string $branch = null): array
     {
         $svg = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/status/{$definition}", ['branchName' => $branch])->body();
@@ -28,11 +21,6 @@ final class StatusBadge extends AbstractBadge
             'message'      => $texts[1][1],
             'messageColor' => trim(str_replace('#', '', $colors[1] ?? '')),
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Azure Pipelines';
     }
 
     public function keywords(): array

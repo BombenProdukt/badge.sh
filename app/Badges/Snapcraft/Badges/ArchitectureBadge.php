@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Snapcraft\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Snapcraft\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ArchitectureBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $snap): array
     {
         return [
@@ -23,11 +16,6 @@ final class ArchitectureBadge extends AbstractBadge
             'message'      => collect($this->client->get($snap)['channel-map'])->map->channel->map->architecture->unique()->implode(' | '),
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Snapcraft';
     }
 
     public function keywords(): array

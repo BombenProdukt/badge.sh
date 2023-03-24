@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\AzureDevOps\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\AzureDevOps\Client;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 use PreemStudio\Formatter\FormatNumber;
@@ -18,11 +16,6 @@ final class BuildTestResultBadge extends AbstractBadge
         'partiallySucceeded' => 'yellow.600',
         'failed'             => 'red.600',
     ];
-
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
 
     public function handle(string $organization, string $project, string $definition, ?string $branch = null): array
     {
@@ -61,11 +54,6 @@ final class BuildTestResultBadge extends AbstractBadge
             'message'      => $status,
             'messageColor' => $color,
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Azure Pipelines';
     }
 
     public function keywords(): array

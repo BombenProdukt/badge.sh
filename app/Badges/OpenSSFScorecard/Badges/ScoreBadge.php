@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenSSFScorecard\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\OpenSSFScorecard\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class ScoreBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $host, string $orgName, string $repoName): array
     {
         return $this->renderNumber('score', $this->client->score($host, $orgName, $repoName));
-    }
-
-    public function service(): string
-    {
-        return 'OpenSSF Scorecard';
     }
 
     public function keywords(): array

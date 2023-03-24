@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Hackage\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Hackage\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
 final class DependencyBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package): array
     {
         $client = Http::baseUrl('https://packdeps.haskellers.com/')->throw();
@@ -25,11 +18,6 @@ final class DependencyBadge extends AbstractBadge
         $outdated = str_contains($client->get("feed/{$package}")->body(), "Outdated dependencies for {$package}");
 
         return $this->renderText('dependencies', $outdated ? 'outdated' : 'up-to-date', $outdated ? 'red.600' : 'green.600');
-    }
-
-    public function service(): string
-    {
-        return 'Hackage';
     }
 
     public function keywords(): array

@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\Buildkite\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Buildkite\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $identifier, ?string $branch = null): array
     {
         return $this->renderStatus('build', $this->client->status($identifier, $branch));
-    }
-
-    public function service(): string
-    {
-        return 'Buildkite';
     }
 
     public function keywords(): array

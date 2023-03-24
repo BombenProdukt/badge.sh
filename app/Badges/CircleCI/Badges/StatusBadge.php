@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\CircleCI\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\CircleCI\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $vcs, string $repo, ?string $branch = null): array
     {
         $status = $this->client->get($vcs, $repo, $branch)[0]['status'];
@@ -26,11 +19,6 @@ final class StatusBadge extends AbstractBadge
             'message'      => str_replace('_', ' ', $status),
             'messageColor' => ['failed'  => 'red.600', 'success' => 'green.600'][$status] ?? 'gray.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'CircleCI';
     }
 
     public function keywords(): array

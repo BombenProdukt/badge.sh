@@ -5,18 +5,11 @@ declare(strict_types=1);
 namespace App\Badges\TAS\Badges;
 
 use App\Actions\DetermineColorByStatus;
-use App\Badges\AbstractBadge;
-use App\Badges\TAS\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $provider, string $org, string $repo): array
     {
         $response = $this->client->get($provider, $org, $repo);
@@ -28,11 +21,6 @@ final class StatusBadge extends AbstractBadge
                 : $response['status'],
             'messageColor' => DetermineColorByStatus::execute($response['status']),
         ];
-    }
-
-    public function service(): string
-    {
-        return 'TAS';
     }
 
     public function keywords(): array

@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\CocoaPods\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\CocoaPods\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class PlatformBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $pod): array
     {
         return [
@@ -23,11 +16,6 @@ final class PlatformBadge extends AbstractBadge
             'message'      => implode('|', array_keys($this->client->get($pod)['platforms'])),
             'messageColor' => 'gray.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'CocoaPods';
     }
 
     public function keywords(): array

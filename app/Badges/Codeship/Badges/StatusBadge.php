@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Codeship\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Codeship\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $projectId, ?string $branch = null): array
     {
         $response = $this->client->get($projectId, $branch);
@@ -29,11 +22,6 @@ final class StatusBadge extends AbstractBadge
         }
 
         return $this->renderStatus('build', 'failing');
-    }
-
-    public function service(): string
-    {
-        return 'CodeShip';
     }
 
     public function keywords(): array

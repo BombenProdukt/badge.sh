@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\Netlify\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Netlify\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $projectId): array
     {
         $status = $this->client->status($projectId);
@@ -33,11 +26,6 @@ final class StatusBadge extends AbstractBadge
         }
 
         return $this->renderStatus('build', $status);
-    }
-
-    public function service(): string
-    {
-        return 'Netlify';
     }
 
     public function keywords(): array

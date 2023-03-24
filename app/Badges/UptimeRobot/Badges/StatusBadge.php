@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\UptimeRobot\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\UptimeRobot\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -19,11 +17,6 @@ final class StatusBadge extends AbstractBadge
         '9' => ['down', 'red.600'],
     ];
 
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $apiKey): array
     {
         $response = $this->client->get($apiKey);
@@ -33,11 +26,6 @@ final class StatusBadge extends AbstractBadge
             'message'      => $this->statuses[$response['status']][0],
             'messageColor' => $this->statuses[$response['status']][1],
         ];
-    }
-
-    public function service(): string
-    {
-        return 'UptimeRobot';
     }
 
     public function keywords(): array

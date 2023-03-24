@@ -2,6 +2,9 @@
 
 ![Badge Mascot](/banner.png)
 
+> **Warning**
+> This project is still in early development.
+
 This project is a port of the popular [badgen/badgen.net](https://github.com/badgen/badgen.net) project by [amio](https://github.com/amio). The goal of this project is to reach feature parity with the original project and expand on it, but with a few differences:
 
 - Use [Laravel](https://laravel.com) as the framework

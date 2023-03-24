@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\LibrariesIO\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\LibrariesIO\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class ProjectDependenciesBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $platform, string $package, string $version = 'latest'): array
     {
         $dependencies = $this->client->dependencies($platform, $package, $version)['dependencies'];
@@ -32,11 +25,6 @@ final class ProjectDependenciesBadge extends AbstractBadge
         }
 
         return $this->renderText('dependencies', 'up to date', 'green.600');
-    }
-
-    public function service(): string
-    {
-        return 'Libraries.io';
     }
 
     public function keywords(): array

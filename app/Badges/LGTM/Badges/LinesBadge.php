@@ -4,25 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\LGTM\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class LinesBadge extends AbstractBadge
 {
-    private array $languages = [
-        'cpp'        => 'c/c++',
-        'csharp'     => 'c#',
-        'javascript' => 'js/ts',
-    ];
-
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $provider, string $project, ?string $language = null): array
     {
         dd($project);
@@ -32,11 +19,6 @@ final class LinesBadge extends AbstractBadge
             // $language ? 'lines: '.($this->languages[$response['lines']] ?? $language) : 'lines',
             $language ? $response['lines'] : array_reduce($response['languages'], fn ($accu, $curr) => $accu + $curr['lines'], 0),
         );
-    }
-
-    public function service(): string
-    {
-        return 'LGTM';
     }
 
     public function keywords(): array

@@ -4,27 +4,15 @@ declare(strict_types=1);
 
 namespace App\Badges\Sourcegraph\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Sourcegraph\Client;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 
 final class DependentsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $repo): array
     {
         return $this->renderText('used by', $this->client->dependents($repo), 'green.600');
-    }
-
-    public function service(): string
-    {
-        return 'Sourcegraph';
     }
 
     public function keywords(): array

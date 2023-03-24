@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\ChromeWebStore\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\ChromeWebStore\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class UsersBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $itemId): array
     {
         preg_match('|<span class="e-f-ih" title="(.*?)">(.*?)</span>|', $this->client->get($itemId), $matches);
@@ -26,11 +19,6 @@ final class UsersBadge extends AbstractBadge
             'message'      => FormatNumber::execute((int) filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT)),
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Chrome Web Store';
     }
 
     public function keywords(): array

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Packagist\Client;
 use App\Badges\Packagist\Concerns\HandlesVersions;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
@@ -15,21 +13,11 @@ final class LicenseBadge extends AbstractBadge
 {
     use HandlesVersions;
 
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $package, ?string $channel = null): array
     {
         $packageMeta = $this->client->get($package);
 
         return $this->renderLicense($packageMeta['versions'][$this->getVersion($packageMeta, $channel)]['license'][0]);
-    }
-
-    public function service(): string
-    {
-        return 'Packagist';
     }
 
     public function keywords(): array

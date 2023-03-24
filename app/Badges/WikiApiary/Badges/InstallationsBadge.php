@@ -4,29 +4,17 @@ declare(strict_types=1);
 
 namespace App\Badges\WikiApiary\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\WikiApiary\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class InstallationsBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $variant, string $name): array
     {
         $results   = $this->client->usage($variant, $name);
         $resultKey = array_search("{$variant}:{$name}", array_map('strtolower', array_keys($results)), true);
 
         return $this->renderNumber('installations', $results[$resultKey]['printouts']['Has website count'][0]);
-    }
-
-    public function service(): string
-    {
-        return 'WikiApiary';
     }
 
     public function keywords(): array

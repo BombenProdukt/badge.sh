@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\PyPI\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\PyPI\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class PythonBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $project): array
     {
         $versions = collect($this->client->get($project)['info']['classifiers'])
@@ -40,11 +33,6 @@ final class PythonBadge extends AbstractBadge
             'message'      => $versions,
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'PyPI';
     }
 
     public function keywords(): array

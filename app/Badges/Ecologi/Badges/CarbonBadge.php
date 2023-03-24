@@ -4,26 +4,14 @@ declare(strict_types=1);
 
 namespace App\Badges\Ecologi\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Ecologi\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class CarbonBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $username): array
     {
         return $this->renderNumber('carbon offset', $this->client->carbon($username));
-    }
-
-    public function service(): string
-    {
-        return 'Ecologi';
     }
 
     public function keywords(): array

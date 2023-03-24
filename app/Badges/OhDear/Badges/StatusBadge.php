@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Badges\OhDear\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\OhDear\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $domain, string $label): array
     {
         $site = collect($this->client->get($domain)['sites'])->flatten(1)->firstWhere('label', $label);
@@ -25,11 +18,6 @@ final class StatusBadge extends AbstractBadge
             'message'      => $site['status'],
             'messageColor' => $site['status'] === 'up' ? 'green.600' : 'red.600',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Oh Dear';
     }
 
     public function keywords(): array

@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badges\Discord\Badges;
 
-use App\Badges\AbstractBadge;
-use App\Badges\Discord\Client;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class OnlineMembersBadge extends AbstractBadge
 {
-    public function __construct(private readonly Client $client)
-    {
-        //
-    }
-
     public function handle(string $inviteCode): array
     {
         $response = $this->client->get($inviteCode);
@@ -26,11 +19,6 @@ final class OnlineMembersBadge extends AbstractBadge
             'message'      => FormatNumber::execute($response['approximate_presence_count']).' online',
             'messageColor' => '7289DA',
         ];
-    }
-
-    public function service(): string
-    {
-        return 'Discord';
     }
 
     public function keywords(): array
