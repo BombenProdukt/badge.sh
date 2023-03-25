@@ -7,6 +7,7 @@ namespace App\Badges\WinGet;
 final class Version
 {
     private string $_source;
+
     private array $_parts;
 
     public function __construct(string $input)

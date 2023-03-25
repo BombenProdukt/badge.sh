@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\CPAN\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class LikesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/cpan/likes/{distribution}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -37,11 +26,6 @@ final class LikesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('likes', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

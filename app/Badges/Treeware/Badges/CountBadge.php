@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Treeware\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class CountBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/treeware/trees/{owner}/{packageName}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::OTHER,
     ];
@@ -37,11 +26,6 @@ final class CountBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('trees', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

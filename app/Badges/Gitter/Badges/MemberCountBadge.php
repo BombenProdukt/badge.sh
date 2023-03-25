@@ -5,34 +5,18 @@ declare(strict_types=1);
 namespace App\Badges\Gitter\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class MemberCountBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/gitter/members/{org}/{room}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
 
-    /**
-     * The deprecation dates and reasons.
-     *
-     * @var array<string, string>
-     */
     protected array $deprecated = [
         '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
     ];
@@ -53,11 +37,6 @@ final class MemberCountBadge extends AbstractBadge
             'message' => FormatNumber::execute($properties['count']),
             'messageColor' => 'ed1965',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

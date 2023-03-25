@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\SymfonyInsight\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class ViolationsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/symfony-insight/violations/{projectUuid}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -84,11 +73,6 @@ final class ViolationsBadge extends AbstractBadge
         }
 
         return $this->renderText('violations', \implode(', ', $violationSummary), $messageColor);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

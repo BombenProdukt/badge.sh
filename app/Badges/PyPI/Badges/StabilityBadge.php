@@ -6,24 +6,13 @@ namespace App\Badges\PyPI\Badges;
 
 use App\Actions\DetermineColorByVersion;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class StabilityBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/pypi/stability/{project}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,
     ];
@@ -58,11 +47,6 @@ final class StabilityBadge extends AbstractBadge
             'message' => \str_replace('Production/Stable', 'stable', $properties['stability']),
             'messageColor' => DetermineColorByVersion::execute($properties['stability']),
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

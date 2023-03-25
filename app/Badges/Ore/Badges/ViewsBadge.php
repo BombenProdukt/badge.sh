@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Ore\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class ViewsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/ore/views/{pluginId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -35,11 +24,6 @@ final class ViewsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('views', $properties['views']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

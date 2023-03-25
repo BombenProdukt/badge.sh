@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\YouTube\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class ChannelSubscribersBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/youtube/channel/subscribers/{channelId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -39,17 +28,12 @@ final class ChannelSubscribersBadge extends AbstractBadge
         return $this->renderNumber('subscribers', $properties['count']);
     }
 
-    public function routeConstraints(Route $route): void
-    {
-        //
-    }
-
-    public function staticPresubscribers(): array
+    public function staticPreviews(): array
     {
         return [];
     }
 
-    public function dynamicPresubscribers(): array
+    public function dynamicPreviews(): array
     {
         return [
             '/youtube/channel/subscribers/UC8butISFwT-Wl7EV0hUK0BQ' => 'channel subscribers',

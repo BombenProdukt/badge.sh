@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class CommitsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/gitlab/commits/{repo}/{ref?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];

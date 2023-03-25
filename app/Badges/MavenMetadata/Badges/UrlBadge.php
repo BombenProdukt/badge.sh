@@ -11,20 +11,10 @@ use Illuminate\Support\Facades\Http;
 
 final class UrlBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/maven-metadata/version/{hostname}/{pathname}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::VERSION,
     ];

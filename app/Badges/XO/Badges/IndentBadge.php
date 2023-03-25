@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class IndentBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/xo/indentation/{name}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::CODE_FORMATTING,
     ];

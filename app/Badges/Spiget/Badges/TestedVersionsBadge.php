@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Spiget\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class TestedVersionsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/spiget/tested-versions/{resourceId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::VERSION,
     ];
@@ -44,11 +33,6 @@ final class TestedVersionsBadge extends AbstractBadge
         }
 
         return $this->renderVersion($properties['earliest'].'-'.$properties['latest'], 'tested versions');
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

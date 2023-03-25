@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Docker\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class LayersBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/docker/layers/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::BUILD,
     ];
@@ -42,11 +31,6 @@ final class LayersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('docker layers', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

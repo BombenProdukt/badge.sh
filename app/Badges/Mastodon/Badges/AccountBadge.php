@@ -4,15 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Mastodon\Badges;
 
-use Illuminate\Routing\Route;
-
 final class AccountBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/mastodon/follow/{account}',
     ];
@@ -41,11 +34,6 @@ final class AccountBadge extends AbstractBadge
     {
         return [
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

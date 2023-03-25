@@ -9,20 +9,10 @@ use Illuminate\Support\Facades\Http;
 
 final class ReleaseBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/azure-devops/release/{organization}/{project}/{definition}/{environment?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::BUILD,
     ];

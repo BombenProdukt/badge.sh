@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\SymfonyInsight\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class StarsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/symfony-insight/stars/{projectUuid}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -41,11 +30,6 @@ final class StarsBadge extends AbstractBadge
             'platinum' => 4,
             default => 0,
         });
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Shardbox\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class CrystalBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/shardbox/crystal-version/{shard}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,
     ];
@@ -43,11 +32,6 @@ final class CrystalBadge extends AbstractBadge
             'message' => \html_entity_decode($properties['version']),
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

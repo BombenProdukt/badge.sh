@@ -11,20 +11,10 @@ use Illuminate\Support\Facades\Http;
 
 final class PluginSizeBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/jenkins/plugin-size/{plugin}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SIZE,
     ];

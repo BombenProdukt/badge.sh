@@ -5,16 +5,10 @@ declare(strict_types=1);
 namespace App\Badges\Memo\Badges;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Cache;
 
 final class UpdateBadgeBadge extends AbstractBadge
 {
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [,
     ];
 
@@ -39,11 +33,6 @@ final class UpdateBadgeBadge extends AbstractBadge
     public function routePaths(): array
     {
         return [];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

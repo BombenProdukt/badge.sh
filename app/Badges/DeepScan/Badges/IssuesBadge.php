@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\DeepScan\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class IssuesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/deepscan/issues/team/{teamId}/project/{projectId}/branch/{branchId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -42,11 +31,6 @@ final class IssuesBadge extends AbstractBadge
             'message' => FormatNumber::execute($properties['count']),
             'messageColor' => $properties['count'] ? 'green.600' : 'yellow.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

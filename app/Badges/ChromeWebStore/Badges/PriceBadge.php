@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\ChromeWebStore\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Symfony\Component\DomCrawler\Crawler;
 
 final class PriceBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/chrome-web-store/price/{itemId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::OTHER,
     ];
@@ -41,11 +30,6 @@ final class PriceBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderMoney('price', $properties['amount'], $properties['currency']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

@@ -6,24 +6,13 @@ namespace App\Badges\CiiBestPractices\Badges;
 
 use App\Actions\DetermineColorByStatus;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class LevelBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/cii/level/{projectId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -38,11 +27,6 @@ final class LevelBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('cii', $properties['level'], DetermineColorByStatus::execute($properties['level']));
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

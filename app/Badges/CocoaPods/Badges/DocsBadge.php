@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\CocoaPods\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
 final class DocsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/cocoapods/doc-percent/{pod}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -38,11 +27,6 @@ final class DocsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage($this->service(), $properties['percentage']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

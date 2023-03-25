@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\AppVeyor\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/appveyor/status/{account}/{project}/{branch?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::BUILD,
     ];
@@ -39,11 +28,6 @@ final class StatusBadge extends AbstractBadge
             'message' => $properties['status'],
             'messageColor' => $properties['status'] === 'success' ? 'green.600' : 'red.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

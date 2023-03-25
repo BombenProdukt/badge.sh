@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Pub\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class PointsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/pub/points/{package}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -39,11 +28,6 @@ final class PointsBadge extends AbstractBadge
             'message' => $properties['grantedPoints'].'/'.$properties['maxPoints'],
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

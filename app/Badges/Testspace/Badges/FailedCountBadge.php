@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Testspace\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class FailedCountBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/testspace/failed-count/{org}/{project}/{space}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -35,11 +24,6 @@ final class FailedCountBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('failed', $properties['failed']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

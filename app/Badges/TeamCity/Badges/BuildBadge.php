@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\TeamCity\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class BuildBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/team-city/build/{buildId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::BUILD,
     ];
@@ -44,11 +33,6 @@ final class BuildBadge extends AbstractBadge
         return [
             'instance' => ['required', 'url'],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

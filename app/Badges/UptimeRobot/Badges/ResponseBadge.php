@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\UptimeRobot\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class ResponseBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/uptimerobot/response/{apiKey}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::MONITORING,
     ];
@@ -41,11 +30,6 @@ final class ResponseBadge extends AbstractBadge
             'message' => $properties['time'].'ms',
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

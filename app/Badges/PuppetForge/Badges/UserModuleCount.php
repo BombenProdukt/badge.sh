@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\PuppetForge\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class UserModuleCount extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/puppetforge/user-module-count/{user}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::VERSION,
     ];
@@ -33,11 +22,6 @@ final class UserModuleCount extends AbstractBadge
     }
 
     public function render(array $properties): array
-    {
-        //
-    }
-
-    public function routeConstraints(Route $route): void
     {
         //
     }

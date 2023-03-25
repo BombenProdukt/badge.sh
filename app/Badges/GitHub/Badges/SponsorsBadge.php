@@ -6,24 +6,13 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
-use Illuminate\Routing\Route;
 
 final class SponsorsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/github/sponsors/{username}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::FUNDING,
     ];
@@ -40,11 +29,6 @@ final class SponsorsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('sponsors', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

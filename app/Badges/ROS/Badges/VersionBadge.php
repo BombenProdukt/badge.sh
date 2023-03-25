@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\ROS\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
 
 final class VersionBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/ros/version/{distro}/{repoName}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::VERSION,
     ];
@@ -42,11 +31,6 @@ final class VersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version'], 'ros | humble');
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

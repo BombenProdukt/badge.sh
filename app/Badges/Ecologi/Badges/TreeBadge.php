@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Ecologi\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class TreeBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/ecologi/trees/{username}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::OTHER,
     ];
@@ -37,11 +26,6 @@ final class TreeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('trees', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

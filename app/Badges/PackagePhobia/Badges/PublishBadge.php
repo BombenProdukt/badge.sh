@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class PublishBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/packagephobia/publish/{name}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SIZE,
     ];

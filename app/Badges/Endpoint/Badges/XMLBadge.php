@@ -10,20 +10,10 @@ use Illuminate\Support\Facades\Validator;
 
 final class XMLBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/endpoint/xml',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::OTHER,
     ];

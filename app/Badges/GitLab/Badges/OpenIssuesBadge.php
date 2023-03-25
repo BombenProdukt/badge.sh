@@ -11,20 +11,10 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class OpenIssuesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/gitlab/open-issues/{repo}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ISSUE_TRACKING,
     ];

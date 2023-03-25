@@ -13,20 +13,10 @@ final class LicenseBadge extends AbstractBadge
 {
     use HandlesVersions;
 
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/packagist/license/{package}/{channel?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::LICENSE,
     ];

@@ -10,6 +10,7 @@ use App\Badges\DavidDM\Client;
 abstract class AbstractBadge extends Badge
 {
     protected string $service = 'DavidDM';
+
     protected array $statusInfo = [
         'insecure' => ['insecure', 'red'],
         'outofdate' => ['out of date', 'orange'],

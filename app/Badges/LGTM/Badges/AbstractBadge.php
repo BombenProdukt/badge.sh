@@ -10,6 +10,7 @@ use App\Badges\LGTM\Client;
 abstract class AbstractBadge extends Badge
 {
     protected string $service = 'LGTM';
+
     protected array $languages = [
         'cpp' => 'c/c++',
         'csharp' => 'c#',

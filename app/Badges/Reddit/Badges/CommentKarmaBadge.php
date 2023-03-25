@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\Reddit\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class CommentKarmaBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/reddit/comment-karma/{user}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -43,11 +32,6 @@ final class CommentKarmaBadge extends AbstractBadge
             'message' => FormatNumber::execute($properties['karma']).' comment karma',
             'messageColor' => 'ff4500',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

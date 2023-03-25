@@ -9,20 +9,10 @@ use Illuminate\Routing\Route;
 
 final class DownloadsPerDayBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/wordpress/{extensionType}/downloads-daily/{extension}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::DOWNLOADS,
     ];

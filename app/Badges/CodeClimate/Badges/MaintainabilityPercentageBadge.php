@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class MaintainabilityPercentageBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/codeclimate/maintainability-percentage/{project}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];

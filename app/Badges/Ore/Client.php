@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Http;
 final class Client
 {
     private PendingRequest $client;
+
     private array $session = [];
 
     public function __construct()

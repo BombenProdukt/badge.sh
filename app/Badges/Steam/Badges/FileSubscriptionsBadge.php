@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Steam\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class FileSubscriptionsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/steam/file-subscriptions/{fileId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -35,11 +24,6 @@ final class FileSubscriptionsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('subscriptions', $properties['subscriptions']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

@@ -8,20 +8,10 @@ use App\Enums\Category;
 
 final class DocumentApiDensityBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/sonar/public_documented_api_density/{component}/{branch}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];

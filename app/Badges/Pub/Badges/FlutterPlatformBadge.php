@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class FlutterPlatformBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/pub/flutter-platform/{package}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,
     ];

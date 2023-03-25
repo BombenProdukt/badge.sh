@@ -13354,16 +13354,16 @@
         },
         {
             "name": "preemstudio/php-cs-fixer-config",
-            "version": "1.3.0",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PreemStudio/php-cs-fixer-config.git",
-                "reference": "86702174470e595ae7b59a97335c14eb96ddc2a7"
+                "reference": "f5319329d78d68822c2a3d8e0ec65fc01f75ab80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PreemStudio/php-cs-fixer-config/zipball/86702174470e595ae7b59a97335c14eb96ddc2a7",
-                "reference": "86702174470e595ae7b59a97335c14eb96ddc2a7",
+                "url": "https://api.github.com/repos/PreemStudio/php-cs-fixer-config/zipball/f5319329d78d68822c2a3d8e0ec65fc01f75ab80",
+                "reference": "f5319329d78d68822c2a3d8e0ec65fc01f75ab80",
                 "shasum": ""
             },
             "require": {
@@ -13412,9 +13412,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PreemStudio/php-cs-fixer-config/issues",
-                "source": "https://github.com/PreemStudio/php-cs-fixer-config/tree/1.3.0"
+                "source": "https://github.com/PreemStudio/php-cs-fixer-config/tree/1.3.2"
             },
-            "time": "2023-03-25T07:17:24+00:00"
+            "time": "2023-03-25T08:13:14+00:00"
         },
         {
             "name": "spatie/backtrace",

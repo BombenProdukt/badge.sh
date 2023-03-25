@@ -26,10 +26,15 @@ use Throwable;
 abstract class AbstractBadge implements Badge
 {
     protected string $service = '';
+
     protected array $deprecated = [];
+
     protected array $keywords = [];
+
     protected array $routes = [];
+
     protected Request $request;
+
     protected array $requestData = [];
 
     public function setRequest(Request $request): void

@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\DeepScan\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class GradeBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/deepscan/grade/team/{teamId}/project/{projectId}/branch/{branchId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -44,11 +33,6 @@ final class GradeBadge extends AbstractBadge
                 'poor' => 'ff5a00',
             ][\mb_strtolower($properties['grade'])],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

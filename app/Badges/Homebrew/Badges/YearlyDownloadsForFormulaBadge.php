@@ -5,16 +5,10 @@ declare(strict_types=1);
 namespace App\Badges\Homebrew\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class YearlyDownloadsForFormulaBadge extends AbstractBadge
 {
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
@@ -42,11 +36,6 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
             '/homebrew/downloads-yearly/formula/{package}',
             '/homebrew/downloads-yearly/cask/{package}',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

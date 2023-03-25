@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class MinBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/bundlephobia/min/{name}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SIZE,
     ];

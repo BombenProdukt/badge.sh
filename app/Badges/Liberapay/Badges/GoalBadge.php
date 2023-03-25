@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\Liberapay\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatPercentage;
 
 final class GoalBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/liberapay/goal/{username}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::FUNDING,
     ];
@@ -50,11 +39,6 @@ final class GoalBadge extends AbstractBadge
             'message' => FormatPercentage::execute($properties['goal']),
             'messageColor' => isset($properties['goal']) ? 'yellow.600' : 'gray.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

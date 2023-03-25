@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 final class Client
 {
     private PendingRequest $client;
+
     private array $providers = [
         'github' => 'g',
         'bitbucket' => 'b',

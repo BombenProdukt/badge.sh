@@ -9,11 +9,6 @@ use Illuminate\Routing\Route;
 
 final class VersionForFormulaBadge extends AbstractBadge
 {
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::VERSION,
     ];

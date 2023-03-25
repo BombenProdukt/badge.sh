@@ -6,24 +6,13 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
-use Illuminate\Routing\Route;
 
 final class MilestonesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/github/milestones/{owner}/{repo}/{milestoneNumber}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ISSUE_TRACKING,
     ];
@@ -43,11 +32,6 @@ final class MilestonesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage($properties['label'], $properties['percentage']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

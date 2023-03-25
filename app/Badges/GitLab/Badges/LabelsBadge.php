@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class LabelsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/gitlab/issues-by-label/{repo}/{label}/{state?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ISSUE_TRACKING,
     ];

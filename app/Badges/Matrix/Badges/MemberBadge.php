@@ -5,17 +5,11 @@ declare(strict_types=1);
 namespace App\Badges\Matrix\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Str;
 use PreemStudio\Formatter\FormatNumber;
 
 final class MemberBadge extends AbstractBadge
 {
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -45,11 +39,6 @@ final class MemberBadge extends AbstractBadge
             '/matrix/members/{room}/gitter.im',
             '/matrix/members/{room}/{server?}',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

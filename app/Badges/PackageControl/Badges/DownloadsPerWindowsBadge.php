@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\PackageControl\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class DownloadsPerWindowsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/package-control/downloads-windows/{packageName}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::LICENSE,
     ];
@@ -37,11 +26,6 @@ final class DownloadsPerWindowsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloadsPerWindows($properties['downloads']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

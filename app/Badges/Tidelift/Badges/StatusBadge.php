@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Tidelift\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/tidelift/status/{platform}/{name}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::FUNDING,
     ];
@@ -51,11 +40,6 @@ final class StatusBadge extends AbstractBadge
             'message' => \str_replace('!', '', $status),
             'messageColor' => \str_replace('.svg', '', $statusColor),
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

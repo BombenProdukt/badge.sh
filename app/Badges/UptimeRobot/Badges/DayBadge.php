@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\UptimeRobot\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatPercentage;
 
 final class DayBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/uptimerobot/day/{apiKey}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::MONITORING,
     ];
@@ -48,11 +37,6 @@ final class DayBadge extends AbstractBadge
                 default => 'green.600',
             },
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

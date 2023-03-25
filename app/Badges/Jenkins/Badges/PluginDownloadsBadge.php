@@ -11,20 +11,10 @@ use Illuminate\Support\Facades\Http;
 
 final class PluginDownloadsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/jenkins/plugin-downloads/{plugin}/{version?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::DOWNLOADS,
     ];

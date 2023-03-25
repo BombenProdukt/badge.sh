@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\ReadTheDocs\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Spatie\Regex\Regex;
 
 final class StatusBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/readthedocs/status/{project}/{version?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::BUILD,
     ];
@@ -38,11 +27,6 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('docs', $properties['status']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

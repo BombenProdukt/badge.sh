@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class MonthlyDownloadsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/npm/downloads-monthly/{package}/{tag?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::DOWNLOADS,
     ];

@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\GalaxyToolShed\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class ReleaseDateBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/galaxy-tool-shed/release-date/{user}/{repo}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ACTIVITY,
     ];
@@ -37,11 +26,6 @@ final class ReleaseDateBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDateDiff('release date', $properties['date']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

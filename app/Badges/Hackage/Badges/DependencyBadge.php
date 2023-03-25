@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\Hackage\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
 final class DependencyBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/hackage/dependencies/{package}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::DEPENDENCIES,
     ];
@@ -41,11 +30,6 @@ final class DependencyBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('dependencies', $properties['outdated'] ? 'outdated' : 'up-to-date', $properties['outdated'] ? 'red.600' : 'green.600');
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

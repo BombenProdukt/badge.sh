@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\StackExchange\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class UserAcceptRateBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/stack-exchange/user/accept-rate/{site}/{query}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -37,11 +26,6 @@ final class UserAcceptRateBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage('accept rate', $properties['rate']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

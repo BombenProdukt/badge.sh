@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\PeerTube\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class DislikesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/peertube/dislikes/{instance}/{video}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -40,11 +29,6 @@ final class DislikesBadge extends AbstractBadge
             'message' => FormatNumber::execute($properties['dislikes']),
             'messageColor' => 'F1680D',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

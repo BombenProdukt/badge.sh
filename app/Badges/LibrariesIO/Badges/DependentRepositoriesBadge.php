@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class DependentRepositoriesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/libraries-io/dependent-repositories/{platform}/{package}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::DEPENDENCIES,
     ];

@@ -5,27 +5,17 @@ declare(strict_types=1);
 namespace App\Badges\RubyGems\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/rubygems/version/{gem}/{channel?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::VERSION,
     ];
+
     private array $preConditions = ['.rc', '.beta', '-rc', '-beta'];
 
     public function handle(string $gem, ?string $channel = null): array
@@ -53,11 +43,6 @@ final class VersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

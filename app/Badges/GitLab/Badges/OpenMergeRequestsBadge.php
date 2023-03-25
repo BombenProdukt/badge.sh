@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class OpenMergeRequestsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/gitlab/open-merge-requests/{repo}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ISSUE_TRACKING,
     ];

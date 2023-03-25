@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\OpenCollective\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class BalanceBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/opencollective/balance/{slug}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::FUNDING,
     ];
@@ -40,11 +29,6 @@ final class BalanceBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderMoney('balance', $properties['amount'], $properties['currency']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

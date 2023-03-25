@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\WinGet\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Symfony\Component\Yaml\Yaml;
 
 final class LicenseBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/winget/license/{appId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::LICENSE,
     ];
@@ -41,11 +30,6 @@ final class LicenseBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderLicense($properties['license']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

@@ -10,20 +10,10 @@ use Illuminate\Support\Arr;
 
 final class KeysBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/whatpulse/keys/{userType}/{id}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ACTIVITY,
     ];

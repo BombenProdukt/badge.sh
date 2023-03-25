@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class ABIBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/wapm/abi/{package}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,
     ];

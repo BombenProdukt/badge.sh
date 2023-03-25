@@ -10,29 +10,14 @@ use Illuminate\Routing\Route;
 
 final class LangsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/lgtm/languages/{provider}/{project}/{language?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
 
-    /**
-     * The deprecation dates and reasons.
-     *
-     * @var array<string, string>
-     */
     protected array $deprecated = [
         '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
     ];

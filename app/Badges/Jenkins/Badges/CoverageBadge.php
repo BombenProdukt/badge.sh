@@ -10,20 +10,10 @@ use Illuminate\Support\Facades\Http;
 
 final class CoverageBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/jenkins/coverage/{format}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::COVERAGE,
     ];

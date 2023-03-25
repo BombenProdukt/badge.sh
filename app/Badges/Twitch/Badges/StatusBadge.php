@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Twitch\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/twitch/status/{username}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -41,11 +30,6 @@ final class StatusBadge extends AbstractBadge
             $properties['status'] === 'online' ? 'live' : 'offline',
             $properties['status'] === 'online' ? 'green.600' : 'red.600',
         );
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

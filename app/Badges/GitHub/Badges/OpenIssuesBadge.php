@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class OpenIssuesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/github/open-issues/{owner}/{repo}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ISSUE_TRACKING,
     ];
@@ -42,11 +31,6 @@ final class OpenIssuesBadge extends AbstractBadge
             'message' => FormatNumber::execute($properties['count']),
             'messageColor' => $properties['count'] === 0 ? 'green.600' : 'orange.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

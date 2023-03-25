@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Bitrise\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/bitrise/version/{token}/{appId}/{branch?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::BUILD,
     ];
@@ -39,11 +28,6 @@ final class StatusBadge extends AbstractBadge
             'success' => 'green.600',
             'unknown' => 'gray.600',
         ][$properties['status']]);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

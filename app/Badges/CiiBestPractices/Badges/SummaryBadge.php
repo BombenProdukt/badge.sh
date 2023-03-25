@@ -6,24 +6,13 @@ namespace App\Badges\CiiBestPractices\Badges;
 
 use App\Actions\DetermineColorByStatus;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class SummaryBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/cii/summary/{projectId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -46,11 +35,6 @@ final class SummaryBadge extends AbstractBadge
             $properties['percentage'] < 300 => 'silver',
             default => 'gold',
         }, DetermineColorByStatus::execute($properties['level']));
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class GitHubBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/badgesize/{compression}/{repo}/{path}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SIZE,
     ];

@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\FactorioModPortal\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class LastModifiedBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/factorio-mod-portal/last-modified/{modName}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ACTIVITY,
     ];
@@ -37,11 +26,6 @@ final class LastModifiedBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDate('last modified', $properties['date']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

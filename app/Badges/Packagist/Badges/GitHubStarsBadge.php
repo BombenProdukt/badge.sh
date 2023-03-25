@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class GitHubStarsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/packagist/github-stars/{package}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::RATING,
     ];

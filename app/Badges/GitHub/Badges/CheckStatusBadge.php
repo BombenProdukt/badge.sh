@@ -13,20 +13,10 @@ use Illuminate\Support\Collection;
 
 final class CheckStatusBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/github/check-status/{owner}/{repo}/{reference?}/{context?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::BUILD,
     ];

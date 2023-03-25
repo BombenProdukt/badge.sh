@@ -10,23 +10,14 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class BuildTestResultBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/azure-devops/build-test/{organization}/{project}/{definition}/{branch?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::BUILD,
     ];
+
     private array $colors = [
         'completed' => 'green.600',
         'succeeded' => 'green.600',

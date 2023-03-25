@@ -9,20 +9,10 @@ use Illuminate\Routing\Route;
 
 final class StaleBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/maintenance/stale/{year}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ACTIVITY,
     ];

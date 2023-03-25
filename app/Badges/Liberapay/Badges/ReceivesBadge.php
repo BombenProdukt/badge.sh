@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\Liberapay\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatMoney;
 
 final class ReceivesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/liberapay/receives/{username}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::FUNDING,
     ];
@@ -40,11 +29,6 @@ final class ReceivesBadge extends AbstractBadge
             'message' => FormatMoney::execute((float) $properties['amount'], $properties['currency']).'/week',
             'messageColor' => 'yellow.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

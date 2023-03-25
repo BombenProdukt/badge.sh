@@ -5,27 +5,17 @@ declare(strict_types=1);
 namespace App\Badges\UptimeRobot\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/uptimerobot/status/{apiKey}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::CODE_FORMATTING,
     ];
+
     private array $statuses = [
         '0' => ['paused', 'yellow.600'],
         '1' => ['not checked yet', 'gray.600'],
@@ -46,11 +36,6 @@ final class StatusBadge extends AbstractBadge
             'message' => $this->statuses[$properties['status']][0],
             'messageColor' => $this->statuses[$properties['status']][1],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

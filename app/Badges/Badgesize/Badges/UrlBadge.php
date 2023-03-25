@@ -10,11 +10,6 @@ use Illuminate\Routing\Route;
 
 final class UrlBadge extends AbstractBadge
 {
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SIZE,
     ];

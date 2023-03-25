@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\YouTube\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class VideoLikesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/youtube/video/likes/{videoId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -37,11 +26,6 @@ final class VideoLikesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('likes', $properties['likes']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

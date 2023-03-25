@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Bugzilla\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/bugzilla/status/{bug}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ISSUE_TRACKING,
     ];
@@ -59,11 +48,6 @@ final class StatusBadge extends AbstractBadge
                 default => 'gray.600',
             },
         );
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Tokei\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class LinesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/tokei/lines/{provider}/{user}/{repo}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -37,11 +26,6 @@ final class LinesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderLines($properties['lines']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\StackExchange\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class UserWebsiteBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/stack-exchange/user/website/{site}/{query}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -37,11 +26,6 @@ final class UserWebsiteBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('website', $properties['url']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

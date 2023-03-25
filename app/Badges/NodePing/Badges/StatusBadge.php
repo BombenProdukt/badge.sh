@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\NodePing\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/nodeping/status/{uuid}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::MONITORING,
     ];
@@ -37,11 +26,6 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('status', $properties['status'], $properties['status'] === 'online' ? 'green.600' : 'red.600');
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

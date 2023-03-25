@@ -9,20 +9,10 @@ use Illuminate\Support\Facades\Http;
 
 final class DeploymentBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/azure-devops/deployment-version/{organization}/{project}/{definition}/{environment?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::BUILD,
     ];

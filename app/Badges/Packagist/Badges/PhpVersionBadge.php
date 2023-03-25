@@ -14,20 +14,10 @@ final class PhpVersionBadge extends AbstractBadge
 {
     use HandlesVersions;
 
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/packagist/php-version/{package}/{channel?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,
     ];

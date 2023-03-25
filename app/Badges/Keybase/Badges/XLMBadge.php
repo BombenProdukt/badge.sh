@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Keybase\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class XLMBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/keybase/xlm/{address}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -41,11 +30,6 @@ final class XLMBadge extends AbstractBadge
             'message' => $properties['address'],
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

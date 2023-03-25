@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\Docker\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
 final class SizeBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/docker/size/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SIZE,
     ];
@@ -132,11 +121,6 @@ final class SizeBadge extends AbstractBadge
             'message' => $sizeInMegabytes.' MB',
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

@@ -10,20 +10,10 @@ use Illuminate\Routing\Route;
 
 final class RequestBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/https/{host}/{path?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::OTHER,
     ];

@@ -6,24 +6,13 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Badges\GitHub\Actions\RequestDependents;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class PackageDependentsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/github/dependents-package/{owner}/{repo}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -36,11 +25,6 @@ final class PackageDependentsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $properties;
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

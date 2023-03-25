@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\WheelMap\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class AccessibilityBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/wheelmap/accessibility/{nodeId}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::OTHER,
     ];
@@ -42,11 +31,6 @@ final class AccessibilityBadge extends AbstractBadge
             'no' => 'red.600',
             default => 'gray.600',
         });
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

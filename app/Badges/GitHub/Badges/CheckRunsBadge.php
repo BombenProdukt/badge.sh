@@ -13,20 +13,10 @@ use Illuminate\Support\Collection;
 
 final class CheckRunsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/github/check-runs/{owner}/{repo}/{reference?}/{context?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];

@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\MozillaAddOns\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/amo/version/{package}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::VERSION,
     ];
@@ -35,11 +24,6 @@ final class VersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

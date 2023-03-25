@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\POEditor\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class ProgressBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/poeditor/progress/{apiToken}/{projectId}/{languageCode}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -41,11 +30,6 @@ final class ProgressBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage($properties['language'], $properties['percentage']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

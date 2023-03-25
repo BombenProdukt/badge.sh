@@ -5,15 +5,9 @@ declare(strict_types=1);
 namespace App\Badges\Homebrew\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
 {
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
@@ -37,11 +31,6 @@ final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
             '/homebrew/downloads-monthly/formula/{package}',
             '/homebrew/downloads-monthly/cask/{package}',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

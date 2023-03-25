@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\ElmPackage\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class ElmVersionBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/elm-package/elm-version/{project}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::PLATFORM_SUPPORT, Category::VERSION,
     ];
@@ -47,11 +36,6 @@ final class ElmVersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

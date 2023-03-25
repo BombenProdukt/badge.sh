@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Haxelib\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class LatestDownloadsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/haxelib/downloads-recently/{project}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
@@ -39,11 +28,6 @@ final class LatestDownloadsBadge extends AbstractBadge
             'message' => 'TODO',
             'messageColor' => 'TODO',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

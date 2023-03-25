@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\Discord\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class OnlineMembersBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/discord/online-members/{inviteCode}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -42,11 +31,6 @@ final class OnlineMembersBadge extends AbstractBadge
             'message' => FormatNumber::execute($properties['count']).' online',
             'messageColor' => '7289DA',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

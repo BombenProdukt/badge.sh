@@ -9,20 +9,10 @@ use Illuminate\Routing\Route;
 
 final class CoverageBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/scrutinizer-ci/coverage/{vcs}/{user}/{repo}/{branch?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];

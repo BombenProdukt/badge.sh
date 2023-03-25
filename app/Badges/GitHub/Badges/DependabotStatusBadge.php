@@ -5,25 +5,14 @@ declare(strict_types=1);
 namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
 final class DependabotStatusBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/github/dependabot/{owner}/{repo}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS, Category::DEPENDENCIES,
     ];
@@ -50,11 +39,6 @@ final class DependabotStatusBadge extends AbstractBadge
             'message' => 'not found',
             'messageColor' => 'gray.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

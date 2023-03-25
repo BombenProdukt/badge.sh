@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Liberapay\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class PatronsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/liberapay/patrons/{username}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::FUNDING,
     ];
@@ -37,11 +26,6 @@ final class PatronsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('patrons', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

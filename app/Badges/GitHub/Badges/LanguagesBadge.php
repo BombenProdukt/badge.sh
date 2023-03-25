@@ -6,24 +6,13 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
-use Illuminate\Routing\Route;
 
 final class LanguagesBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/github/languages/{owner}/{repo}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::ANALYSIS,
     ];
@@ -38,11 +27,6 @@ final class LanguagesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('languages', \implode(' | ', $properties['languages']), 'blue.600');
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

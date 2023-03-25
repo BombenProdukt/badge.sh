@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\Docker\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class MetadataBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/docker/metadata/{scope}/{name}/{type}/{tag?}/{architecture?}/{variant?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::BUILD,
     ];
@@ -50,11 +39,6 @@ final class MetadataBadge extends AbstractBadge
             'message' => $properties['metadata'],
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

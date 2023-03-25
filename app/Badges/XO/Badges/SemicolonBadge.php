@@ -11,20 +11,10 @@ use Illuminate\Support\Arr;
 
 final class SemicolonBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/xo/semicolon/{name}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Keyword::CODE_STYLE,
     ];

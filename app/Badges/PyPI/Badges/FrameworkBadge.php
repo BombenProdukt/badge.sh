@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\PyPI\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class FrameworkBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/pypi/framework/{project}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,
     ];
@@ -52,11 +41,6 @@ final class FrameworkBadge extends AbstractBadge
             'message' => \implode(' | ', $properties['versions']),
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

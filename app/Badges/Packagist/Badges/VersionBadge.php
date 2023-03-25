@@ -13,20 +13,10 @@ final class VersionBadge extends AbstractBadge
 {
     use HandlesVersions;
 
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/packagist/version/{package}/{channel?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::VERSION,
     ];

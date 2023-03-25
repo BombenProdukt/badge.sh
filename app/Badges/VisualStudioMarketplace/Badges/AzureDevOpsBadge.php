@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class AzureDevOpsBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/vs-marketplace/azure-devops-installations/{extension}/{measurement?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
@@ -49,11 +38,6 @@ final class AzureDevOpsBadge extends AbstractBadge
         }
 
         return $this->renderDownloads($properties['installations'] + $properties['onpremDownloads']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

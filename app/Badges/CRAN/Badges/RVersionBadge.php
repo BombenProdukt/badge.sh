@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Badges\CRAN\Badges;
 
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class RVersionBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/cran/r-version/{package}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::VERSION,
     ];
@@ -37,11 +26,6 @@ final class RVersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version'], 'R');
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array

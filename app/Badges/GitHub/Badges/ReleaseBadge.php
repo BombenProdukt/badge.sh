@@ -7,24 +7,13 @@ namespace App\Badges\GitHub\Badges;
 use App\Actions\ExtractVersion;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
-use Illuminate\Routing\Route;
 
 final class ReleaseBadge extends AbstractBadge
 {
-    /**
-     * The routes to access this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $routes = [
         '/github/release/{owner}/{repo}/{channel?}',
     ];
 
-    /**
-     * The keywords that describe this badge.
-     *
-     * @var array<int, string>
-     */
     protected array $keywords = [
         Category::VERSION,
     ];
@@ -69,11 +58,6 @@ final class ReleaseBadge extends AbstractBadge
             'message' => ExtractVersion::execute($properties['name'] ?? $properties['tagName']),
             'messageColor' => $properties['preRelease'] ? 'orange.600' : 'blue.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
     }
 
     public function staticPreviews(): array
