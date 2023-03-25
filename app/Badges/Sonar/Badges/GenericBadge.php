@@ -49,11 +49,6 @@ final class GenericBadge extends AbstractBadge
         ];
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('metric', [

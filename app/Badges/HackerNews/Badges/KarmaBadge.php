@@ -40,11 +40,6 @@ final class KarmaBadge extends AbstractBadge
         return $this->renderNumber('u/'.$properties['username'].' karma', $properties['karma']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

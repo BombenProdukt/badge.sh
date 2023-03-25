@@ -38,11 +38,6 @@ final class LernaBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'lerna');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -40,11 +40,6 @@ final class PulsesBadge extends AbstractBadge
         return $this->renderNumber('pulses', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('userType', ['user', 'team']);

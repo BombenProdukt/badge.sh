@@ -44,11 +44,6 @@ final class LastBuildBadge extends AbstractBadge
         ];
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('job', RoutePattern::CATCH_ALL->value);

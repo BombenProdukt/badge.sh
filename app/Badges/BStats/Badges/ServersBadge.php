@@ -39,11 +39,6 @@ final class ServersBadge extends AbstractBadge
         return $this->renderNumber('servers', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -37,11 +37,6 @@ final class StarsBadge extends AbstractBadge
         return $this->renderNumber('stars', $properties['stars']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

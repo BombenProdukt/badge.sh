@@ -39,11 +39,6 @@ final class CoverageBadge extends AbstractBadge
         return $this->renderCoverage($properties['percentage']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('vcs', ['g', 'gl', 'b']);

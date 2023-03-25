@@ -39,11 +39,6 @@ final class StaleBadge extends AbstractBadge
         return $this->renderText('stale', $properties['year'], 'blue.600');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereNumber('year');

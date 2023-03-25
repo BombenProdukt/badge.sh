@@ -38,11 +38,6 @@ final class MaintainabilityBadge extends AbstractBadge
         return $this->renderGrade('maintainability', $properties['letter']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('project', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);

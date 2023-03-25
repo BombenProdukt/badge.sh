@@ -42,11 +42,6 @@ final class LastDayPriceChangeBadge extends AbstractBadge
         return $this->renderPercentage($properties['ticker'], $properties['percentage']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

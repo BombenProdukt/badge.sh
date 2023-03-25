@@ -54,11 +54,6 @@ final class ReleaseBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'release');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('repo', RoutePattern::CATCH_ALL->value);

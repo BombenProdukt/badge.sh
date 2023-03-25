@@ -45,11 +45,6 @@ final class VersionBadge extends AbstractBadge
         );
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);

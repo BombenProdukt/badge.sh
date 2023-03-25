@@ -61,11 +61,6 @@ final class GitHubBadge extends AbstractBadge
         ];
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('targetFile', RoutePattern::CATCH_ALL->value);

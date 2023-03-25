@@ -44,11 +44,6 @@ final class LayersBadge extends AbstractBadge
         return $this->renderNumber('docker layers', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

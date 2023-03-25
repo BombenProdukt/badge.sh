@@ -44,11 +44,6 @@ final class VersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'ros | humble');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

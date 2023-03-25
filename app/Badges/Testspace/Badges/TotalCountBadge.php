@@ -39,11 +39,6 @@ final class TotalCountBadge extends AbstractBadge
         return $this->renderNumber('total', $properties['downloads']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

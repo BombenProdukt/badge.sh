@@ -37,11 +37,6 @@ final class CategoryBadge extends AbstractBadge
         return $this->renderText('category', $properties['title']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

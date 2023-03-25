@@ -38,11 +38,6 @@ final class ShowBadgeBadge extends AbstractBadge
         //
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -37,11 +37,6 @@ final class PopularityScoreBadge extends AbstractBadge
         return $this->renderNumber('popularity', $properties['popularity']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -37,11 +37,6 @@ final class UserReputationBadge extends AbstractBadge
         return $this->renderNumber('reputation', $properties['reputation']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

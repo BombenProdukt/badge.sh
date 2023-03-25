@@ -43,11 +43,6 @@ final class ProgressBadge extends AbstractBadge
         return $this->renderPercentage($properties['language'], $properties['percentage']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

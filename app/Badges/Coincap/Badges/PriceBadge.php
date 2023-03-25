@@ -42,11 +42,6 @@ final class PriceBadge extends AbstractBadge
         return $this->renderMoney($properties['ticker'], $properties['price'], 'USD');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

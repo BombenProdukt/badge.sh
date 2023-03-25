@@ -39,11 +39,6 @@ final class ChannelSubscribersBadge extends AbstractBadge
         return $this->renderNumber('subscribers', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

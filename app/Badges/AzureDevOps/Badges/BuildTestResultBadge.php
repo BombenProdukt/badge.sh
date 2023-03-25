@@ -80,11 +80,6 @@ final class BuildTestResultBadge extends AbstractBadge
         ];
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function staticPreviews(): array
     {
         return [];

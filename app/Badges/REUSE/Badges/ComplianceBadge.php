@@ -38,11 +38,6 @@ final class ComplianceBadge extends AbstractBadge
         return $this->renderStatus('reuse', $properties['status']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('remote', RoutePattern::CATCH_ALL->value);

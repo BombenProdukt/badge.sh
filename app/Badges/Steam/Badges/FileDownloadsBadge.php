@@ -39,11 +39,6 @@ final class FileDownloadsBadge extends AbstractBadge
         return $this->renderDownloads($properties['subscriptions']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -38,11 +38,6 @@ final class PackageDependentsBadge extends AbstractBadge
         return $properties;
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

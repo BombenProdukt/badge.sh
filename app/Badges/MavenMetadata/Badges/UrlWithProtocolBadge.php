@@ -45,11 +45,6 @@ final class UrlWithProtocolBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('protocol', 'https?:?');

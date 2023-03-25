@@ -37,11 +37,6 @@ final class StatementsBadge extends AbstractBadge
         return $this->renderText('statements', $properties['statements'] ?? 0);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

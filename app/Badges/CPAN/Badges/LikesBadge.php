@@ -39,11 +39,6 @@ final class LikesBadge extends AbstractBadge
         return $this->renderNumber('likes', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

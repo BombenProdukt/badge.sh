@@ -39,11 +39,6 @@ final class UserWebsiteBadge extends AbstractBadge
         return $this->renderText('website', $properties['url']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

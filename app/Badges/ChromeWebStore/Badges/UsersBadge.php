@@ -41,11 +41,6 @@ final class UsersBadge extends AbstractBadge
         return $this->renderRating($properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -39,11 +39,6 @@ final class FileLastModifiedBadge extends AbstractBadge
         return $this->renderDateDiff('last modified', $properties['data']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

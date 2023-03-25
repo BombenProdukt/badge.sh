@@ -39,11 +39,6 @@ final class DownloadsPerWeekBadge extends AbstractBadge
         return $this->renderDownloads($properties['downloads']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

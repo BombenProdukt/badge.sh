@@ -40,11 +40,6 @@ final class UptimeBadge extends AbstractBadge
         return $this->renderText('uptime', $properties['time'], 'green.600');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('userType', ['user', 'team']);

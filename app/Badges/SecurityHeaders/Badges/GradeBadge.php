@@ -39,11 +39,6 @@ final class GradeBadge extends AbstractBadge
         return $this->renderGrade('security headers', $properties['grade']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

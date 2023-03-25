@@ -39,11 +39,6 @@ final class ForksBadge extends AbstractBadge
         return $this->renderNumber('forks', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

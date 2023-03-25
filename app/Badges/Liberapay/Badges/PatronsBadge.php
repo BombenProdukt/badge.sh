@@ -39,11 +39,6 @@ final class PatronsBadge extends AbstractBadge
         return $this->renderNumber('patrons', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

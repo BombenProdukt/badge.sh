@@ -38,11 +38,6 @@ final class OpenPullRequestsBadge extends AbstractBadge
         return $this->renderNumber('open pull requests', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function staticPreviews(): array
     {
         return [];

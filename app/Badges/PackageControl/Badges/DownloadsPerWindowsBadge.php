@@ -39,11 +39,6 @@ final class DownloadsPerWindowsBadge extends AbstractBadge
         return $this->renderDownloadsPerWindows($properties['downloads']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

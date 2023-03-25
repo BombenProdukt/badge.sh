@@ -20,7 +20,15 @@ trait HasRoute
 
     public function routeParameters(): array
     {
-        return [];
+        return $this->request->route()->parameterNames();
+    }
+
+    public function allowedParameters(): array
+    {
+        return [
+            'query' => \array_keys($this->routeRules()),
+            'route' => $this->request->route()->parameterNames(),
+        ];
     }
 
     public function routeConstraints(Route $route): void

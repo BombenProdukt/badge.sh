@@ -40,11 +40,6 @@ final class GitHubWatchersBadge extends AbstractBadge
         return $this->renderNumber('github watchers', $properties['watchers']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);

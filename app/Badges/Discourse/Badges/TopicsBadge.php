@@ -39,11 +39,6 @@ final class TopicsBadge extends AbstractBadge
         return $this->renderNumber('topics', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

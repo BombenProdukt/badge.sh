@@ -37,11 +37,6 @@ final class FileFavoritesBadge extends AbstractBadge
         return $this->renderNumber('favorites', $properties['favorited']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

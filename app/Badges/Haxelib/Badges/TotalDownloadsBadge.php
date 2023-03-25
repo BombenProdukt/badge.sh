@@ -37,11 +37,6 @@ final class TotalDownloadsBadge extends AbstractBadge
         return $this->renderDownloads(0);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

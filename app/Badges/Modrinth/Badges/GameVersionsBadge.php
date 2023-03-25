@@ -39,11 +39,6 @@ final class GameVersionsBadge extends AbstractBadge
         return $this->renderVersion(\implode(' | ', $properties['versions']));
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

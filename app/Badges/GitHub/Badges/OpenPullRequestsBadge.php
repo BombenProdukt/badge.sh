@@ -39,11 +39,6 @@ final class OpenPullRequestsBadge extends AbstractBadge
         return $this->renderNumber('open PRs', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

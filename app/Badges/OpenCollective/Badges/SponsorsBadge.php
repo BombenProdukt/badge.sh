@@ -39,11 +39,6 @@ final class SponsorsBadge extends AbstractBadge
         return $this->renderNumber('sponsors', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

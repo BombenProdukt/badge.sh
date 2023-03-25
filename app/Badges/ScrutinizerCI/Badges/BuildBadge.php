@@ -37,11 +37,6 @@ final class BuildBadge extends AbstractBadge
         return $this->renderStatus('build', $properties['status']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('vcs', ['g', 'gl', 'b']);

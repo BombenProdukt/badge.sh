@@ -45,11 +45,6 @@ final class UrlBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('pathname', RoutePattern::CATCH_ALL->value);

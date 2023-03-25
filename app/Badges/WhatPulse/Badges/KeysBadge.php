@@ -40,11 +40,6 @@ final class KeysBadge extends AbstractBadge
         return $this->renderNumber('keys', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('userType', ['user', 'team']);

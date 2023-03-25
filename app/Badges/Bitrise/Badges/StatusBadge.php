@@ -41,11 +41,6 @@ final class StatusBadge extends AbstractBadge
         ][$properties['status']]);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -79,11 +79,6 @@ final class CheckStatusBadge extends AbstractBadge
         ];
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('context', RoutePattern::CATCH_ALL->value);

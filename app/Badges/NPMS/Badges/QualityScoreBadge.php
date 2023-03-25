@@ -37,11 +37,6 @@ final class QualityScoreBadge extends AbstractBadge
         return $this->renderNumber('quality', $properties['quality']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

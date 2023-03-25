@@ -37,11 +37,6 @@ final class StatusBadge extends AbstractBadge
         return $this->renderText('gitter', 'on gitter', 'ed1965');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

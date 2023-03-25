@@ -37,11 +37,6 @@ final class AbandonedBadge extends AbstractBadge
         return $this->renderText('abandoned', $properties['year'], 'red.600');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereNumber('year');

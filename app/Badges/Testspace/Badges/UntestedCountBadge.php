@@ -37,11 +37,6 @@ final class UntestedCountBadge extends AbstractBadge
         return $this->renderNumber('untested', $properties['untested'], 'orange.600');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

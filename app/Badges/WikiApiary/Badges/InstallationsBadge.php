@@ -42,11 +42,6 @@ final class InstallationsBadge extends AbstractBadge
         return $this->renderNumber('installations', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('variant', ['extension', 'skin', 'farm', 'generator', 'host']);

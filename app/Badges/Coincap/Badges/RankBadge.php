@@ -37,11 +37,6 @@ final class RankBadge extends AbstractBadge
         return $this->renderNumber($properties['name'], $properties['rank']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

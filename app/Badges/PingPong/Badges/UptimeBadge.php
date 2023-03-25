@@ -39,11 +39,6 @@ final class UptimeBadge extends AbstractBadge
         return $this->renderPercentage('uptime', $properties['percentage']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

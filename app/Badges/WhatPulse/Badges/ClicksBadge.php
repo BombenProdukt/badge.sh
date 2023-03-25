@@ -40,11 +40,6 @@ final class ClicksBadge extends AbstractBadge
         return $this->renderNumber('clicks', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('userType', ['user', 'team']);

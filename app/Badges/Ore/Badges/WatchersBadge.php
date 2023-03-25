@@ -37,11 +37,6 @@ final class WatchersBadge extends AbstractBadge
         return $this->renderNumber('watchers', $properties['watchers']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

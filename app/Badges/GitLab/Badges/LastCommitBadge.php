@@ -40,11 +40,6 @@ final class LastCommitBadge extends AbstractBadge
         return $this->renderDateDiff('last commit', $properties['date']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('repo', RoutePattern::CATCH_ALL->value);

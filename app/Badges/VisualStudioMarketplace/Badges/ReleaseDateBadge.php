@@ -39,11 +39,6 @@ final class ReleaseDateBadge extends AbstractBadge
         return $this->renderDate('release date', $properties['date']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -49,11 +49,6 @@ final class DownloadsPerMonthBadge extends AbstractBadge
         return $this->renderDownloadsPerMonth($properties['downloads']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

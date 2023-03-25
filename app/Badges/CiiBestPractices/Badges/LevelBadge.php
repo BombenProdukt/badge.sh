@@ -40,11 +40,6 @@ final class LevelBadge extends AbstractBadge
         return $this->renderText('cii', $properties['level'], DetermineColorByStatus::execute($properties['level']));
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

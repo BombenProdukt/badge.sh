@@ -42,11 +42,6 @@ final class BalanceBadge extends AbstractBadge
         return $this->renderMoney('balance', $properties['amount'], $properties['currency']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

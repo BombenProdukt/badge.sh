@@ -39,11 +39,6 @@ final class VotesBadge extends AbstractBadge
         return $this->renderNumber('votes', $properties['votes']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -37,11 +37,6 @@ final class PointsBadge extends AbstractBadge
         return $this->renderNumber('freecodecamp', $properties['points']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

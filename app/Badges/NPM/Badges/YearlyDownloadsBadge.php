@@ -40,11 +40,6 @@ final class YearlyDownloadsBadge extends AbstractBadge
         return $this->renderDownloadsPerYear($properties['downloads']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);

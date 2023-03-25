@@ -38,11 +38,6 @@ final class VersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('package', RoutePattern::CATCH_ALL->value);

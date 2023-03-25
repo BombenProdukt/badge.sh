@@ -43,11 +43,6 @@ final class GoModBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'go');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -37,11 +37,6 @@ final class PassedCountBadge extends AbstractBadge
         return $this->renderNumber('passed', $properties['passed'], 'green.600');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

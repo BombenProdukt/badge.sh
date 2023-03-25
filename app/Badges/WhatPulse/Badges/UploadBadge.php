@@ -40,11 +40,6 @@ final class UploadBadge extends AbstractBadge
         return $this->renderText('upload', $properties['speed'], 'green.600');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('userType', ['user', 'team']);

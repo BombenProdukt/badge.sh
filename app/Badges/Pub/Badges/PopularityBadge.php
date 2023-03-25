@@ -39,11 +39,6 @@ final class PopularityBadge extends AbstractBadge
         return $this->renderPercentage('popularity', $properties['popularity'] * 100);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

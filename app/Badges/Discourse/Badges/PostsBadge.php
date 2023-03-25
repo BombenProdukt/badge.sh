@@ -39,11 +39,6 @@ final class PostsBadge extends AbstractBadge
         return $this->renderNumber('posts', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

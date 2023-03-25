@@ -37,11 +37,6 @@ final class ScoreBadge extends AbstractBadge
         return $this->renderNumber('observatory', $properties['score']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

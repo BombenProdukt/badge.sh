@@ -40,11 +40,6 @@ final class LinesBadge extends AbstractBadge
         return $this->renderLines($properties['lines']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('project', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);

@@ -47,11 +47,6 @@ final class UrlBadge extends AbstractBadge
         ];
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('compression', ['brotli', 'gzip', 'normal']);

@@ -46,11 +46,6 @@ final class TestedVersionsBadge extends AbstractBadge
         return $this->renderVersion($properties['earliest'].'-'.$properties['latest'], 'tested versions');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

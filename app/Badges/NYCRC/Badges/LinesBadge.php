@@ -37,11 +37,6 @@ final class LinesBadge extends AbstractBadge
         return $this->renderText('lines', $properties['lines'] ?? 0);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -41,11 +41,6 @@ final class StaticBadge extends AbstractBadge
         return $properties;
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -37,11 +37,6 @@ final class PlatformsBadge extends AbstractBadge
         return $this->renderText('platforms', \implode(' | ', $properties['platforms']), 'blue.600');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

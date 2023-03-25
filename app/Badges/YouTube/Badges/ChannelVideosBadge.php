@@ -39,11 +39,6 @@ final class ChannelVideosBadge extends AbstractBadge
         return $this->renderNumber('videos', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

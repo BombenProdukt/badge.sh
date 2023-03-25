@@ -39,11 +39,6 @@ final class PluginVersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('job', RoutePattern::CATCH_ALL->value);

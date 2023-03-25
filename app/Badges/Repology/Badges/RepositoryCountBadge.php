@@ -40,11 +40,6 @@ final class RepositoryCountBadge extends AbstractBadge
         return $this->renderNumber('repositories', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

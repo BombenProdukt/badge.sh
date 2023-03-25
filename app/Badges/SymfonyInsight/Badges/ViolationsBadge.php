@@ -86,11 +86,6 @@ final class ViolationsBadge extends AbstractBadge
         return $this->renderText('violations', \implode(', ', $violationSummary), $messageColor);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

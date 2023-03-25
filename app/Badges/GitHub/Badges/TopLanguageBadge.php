@@ -43,11 +43,6 @@ final class TopLanguageBadge extends AbstractBadge
         return $this->renderNumber($properties['label'], $properties['value']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

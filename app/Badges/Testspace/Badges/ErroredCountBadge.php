@@ -37,11 +37,6 @@ final class ErroredCountBadge extends AbstractBadge
         return $this->renderNumber('errored', $properties['errored']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

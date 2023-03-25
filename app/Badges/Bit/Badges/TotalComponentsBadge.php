@@ -40,11 +40,6 @@ final class TotalComponentsBadge extends AbstractBadge
         return $this->renderNumber('components', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('collection', RoutePattern::CATCH_ALL->value);

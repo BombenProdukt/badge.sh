@@ -41,11 +41,6 @@ final class DependentsBadge extends AbstractBadge
         return $this->renderNumber('dependents', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

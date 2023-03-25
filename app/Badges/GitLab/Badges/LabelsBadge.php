@@ -44,11 +44,6 @@ final class LabelsBadge extends AbstractBadge
         return $this->renderNumber($properties['label'], $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('repo', RoutePattern::CATCH_ALL->value);

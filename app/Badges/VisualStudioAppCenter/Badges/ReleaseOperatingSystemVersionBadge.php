@@ -42,11 +42,6 @@ final class ReleaseOperatingSystemVersionBadge extends AbstractBadge
         return $this->renderText($properties['app'], '>='.$properties['min']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

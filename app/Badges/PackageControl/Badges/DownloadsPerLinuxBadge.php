@@ -39,11 +39,6 @@ final class DownloadsPerLinuxBadge extends AbstractBadge
         return $this->renderDownloadsPerLinux($properties['downloads']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

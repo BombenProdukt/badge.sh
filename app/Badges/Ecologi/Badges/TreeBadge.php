@@ -39,11 +39,6 @@ final class TreeBadge extends AbstractBadge
         return $this->renderNumber('trees', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

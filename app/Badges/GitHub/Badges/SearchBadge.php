@@ -41,11 +41,6 @@ final class SearchBadge extends AbstractBadge
         return $this->renderNumber($properties['label'], $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

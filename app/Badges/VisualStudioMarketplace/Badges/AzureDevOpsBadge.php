@@ -51,11 +51,6 @@ final class AzureDevOpsBadge extends AbstractBadge
         return $this->renderDownloads($properties['installations'] + $properties['onpremDownloads']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -56,11 +56,6 @@ final class ProgressBadge extends AbstractBadge
         ];
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('projectId', RoutePattern::CATCH_ALL->value);

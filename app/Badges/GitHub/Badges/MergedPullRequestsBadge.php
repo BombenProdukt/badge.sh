@@ -39,11 +39,6 @@ final class MergedPullRequestsBadge extends AbstractBadge
         return $this->renderNumber('merged PRs', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

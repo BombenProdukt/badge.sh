@@ -37,11 +37,6 @@ final class SummaryBadge extends AbstractBadge
         return $this->renderText('summary', $this->getMessage($properties), $this->getMessageColor($properties));
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

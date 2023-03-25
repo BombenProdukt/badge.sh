@@ -48,11 +48,6 @@ final class RatingBadge extends AbstractBadge
         return $this->renderRating('rating', $properties['rating']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

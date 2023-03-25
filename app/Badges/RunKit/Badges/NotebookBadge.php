@@ -42,11 +42,6 @@ final class NotebookBadge extends AbstractBadge
         ];
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('path', RoutePattern::CATCH_ALL->value);

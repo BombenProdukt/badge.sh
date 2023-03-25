@@ -39,11 +39,6 @@ final class PullRequestsBadge extends AbstractBadge
         return $this->renderNumber('PRs', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

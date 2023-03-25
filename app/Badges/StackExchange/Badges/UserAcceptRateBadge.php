@@ -39,11 +39,6 @@ final class UserAcceptRateBadge extends AbstractBadge
         return $this->renderPercentage('accept rate', $properties['rate']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

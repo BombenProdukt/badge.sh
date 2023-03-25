@@ -40,11 +40,6 @@ final class ReviewsBadge extends AbstractBadge
         return $this->renderNumber('reviews', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('extension', RoutePattern::CATCH_ALL->value);

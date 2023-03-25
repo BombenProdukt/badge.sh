@@ -40,11 +40,6 @@ final class LanguagesBadge extends AbstractBadge
         return $this->renderText('languages', \implode(' | ', $properties['languages']), 'blue.600');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

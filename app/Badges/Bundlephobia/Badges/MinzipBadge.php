@@ -40,11 +40,6 @@ final class MinzipBadge extends AbstractBadge
         return $this->renderSize($properties['size'], 'minzipped size');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('name', RoutePattern::CATCH_ALL->value);

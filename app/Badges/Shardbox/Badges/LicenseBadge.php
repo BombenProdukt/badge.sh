@@ -41,11 +41,6 @@ final class LicenseBadge extends AbstractBadge
         return $this->renderLicense($properties['license']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

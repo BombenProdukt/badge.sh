@@ -44,11 +44,6 @@ final class ReleaseBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function staticPreviews(): array
     {
         return [];

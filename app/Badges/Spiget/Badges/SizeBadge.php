@@ -47,11 +47,6 @@ final class SizeBadge extends AbstractBadge
         return $this->renderSize($properties['size']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

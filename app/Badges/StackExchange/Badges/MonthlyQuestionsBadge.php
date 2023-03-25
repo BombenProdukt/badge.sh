@@ -41,11 +41,6 @@ final class MonthlyQuestionsBadge extends AbstractBadge
         return $this->renderNumber($properties['query'].'@'.$properties['site'], $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

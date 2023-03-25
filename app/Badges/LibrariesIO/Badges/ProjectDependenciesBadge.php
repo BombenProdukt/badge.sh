@@ -51,11 +51,6 @@ final class ProjectDependenciesBadge extends AbstractBadge
         return $this->renderText('dependencies', 'up to date', 'green.600');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('package', RoutePattern::CATCH_ALL->value);

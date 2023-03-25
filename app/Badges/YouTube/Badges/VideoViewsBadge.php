@@ -39,11 +39,6 @@ final class VideoViewsBadge extends AbstractBadge
         return $this->renderNumber('views', $properties['views']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

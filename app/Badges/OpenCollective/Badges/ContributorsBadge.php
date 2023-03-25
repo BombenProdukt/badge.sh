@@ -39,11 +39,6 @@ final class ContributorsBadge extends AbstractBadge
         return $this->renderNumber('contributors', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

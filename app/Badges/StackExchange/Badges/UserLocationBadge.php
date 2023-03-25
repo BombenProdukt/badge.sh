@@ -37,11 +37,6 @@ final class UserLocationBadge extends AbstractBadge
         return $this->renderText('location', $properties['location']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

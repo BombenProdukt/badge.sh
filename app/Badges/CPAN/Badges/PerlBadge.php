@@ -49,11 +49,6 @@ final class PerlBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'Perl');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

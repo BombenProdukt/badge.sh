@@ -37,11 +37,6 @@ final class DailyDownloadsBadge extends AbstractBadge
         return $this->renderDownloadsPerDay($properties['downloads']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

@@ -39,11 +39,6 @@ final class VideoCommentsBadge extends AbstractBadge
         return $this->renderNumber('comments', $properties['comments']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

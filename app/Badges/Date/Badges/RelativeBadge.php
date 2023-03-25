@@ -39,11 +39,6 @@ final class RelativeBadge extends AbstractBadge
         return $this->renderDateDiff('date', $properties['timestamp']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereNumber('timestamp');

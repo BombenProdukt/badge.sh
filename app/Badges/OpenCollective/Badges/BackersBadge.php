@@ -39,11 +39,6 @@ final class BackersBadge extends AbstractBadge
         return $this->renderNumber('backers', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

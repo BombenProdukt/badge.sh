@@ -48,11 +48,6 @@ final class SummaryBadge extends AbstractBadge
         }, DetermineColorByStatus::execute($properties['level']));
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

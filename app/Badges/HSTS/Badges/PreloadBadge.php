@@ -39,11 +39,6 @@ final class PreloadBadge extends AbstractBadge
         return $this->renderStatus('hsts preloaded', $properties['status']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

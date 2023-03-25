@@ -40,11 +40,6 @@ final class StarsBadge extends AbstractBadge
         return $this->renderStars('stars', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('repo', RoutePattern::CATCH_ALL->value);

@@ -38,11 +38,6 @@ final class OpenIssuesBadge extends AbstractBadge
         return $this->renderNumber('open issues', $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function staticPreviews(): array
     {
         return [];

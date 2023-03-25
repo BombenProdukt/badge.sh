@@ -41,11 +41,6 @@ final class CollectionBadge extends AbstractBadge
         return $this->renderText('collection', $properties['name'], 'blue.600');
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //

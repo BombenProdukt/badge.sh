@@ -40,11 +40,6 @@ final class CoverageBadge extends AbstractBadge
         return $this->renderCoverage($properties['percentage']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('project', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);

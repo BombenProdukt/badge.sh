@@ -40,11 +40,6 @@ final class EntitiesBadge extends AbstractBadge
         return $this->renderNumber($properties['type'], $properties['count']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->whereIn('type', ['components', 'projects', 'users', 'languages']);

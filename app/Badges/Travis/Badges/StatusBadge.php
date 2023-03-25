@@ -47,11 +47,6 @@ final class StatusBadge extends AbstractBadge
         return $this->renderText('travis', $properties['status'], $properties['statusColor']);
     }
 
-    public function routeParameters(): array
-    {
-        return [];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('project', RoutePattern::CATCH_ALL->value);
