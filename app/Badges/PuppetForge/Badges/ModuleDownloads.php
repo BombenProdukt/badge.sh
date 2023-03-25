@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PuppetForge\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ModuleDownloads extends AbstractBadge
@@ -29,7 +30,11 @@ final class ModuleDownloads extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/puppetforge/module-downloads/camptocamp/openldap' => 'downloads',
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/puppetforge/module-downloads/camptocamp/openldap',
+                data: $this->render(['downloads' => '1']),
+            ),
         ];
     }
 }

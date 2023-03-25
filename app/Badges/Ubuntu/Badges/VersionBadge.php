@@ -35,12 +35,12 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/ubuntu/version/ubuntu-wallpapers',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version',
                 path: '/ubuntu/version/ubuntu-wallpapers/bionic',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

@@ -33,7 +33,7 @@ final class SizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'size',
                 path: '/winget/size/GitHub.cli',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
         ];
     }

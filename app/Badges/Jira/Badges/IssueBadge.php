@@ -54,7 +54,7 @@ final class IssueBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'issue',
                 path: '/jira/issue/KAFKA-2896?instance=https://issues.apache.org/jira',
-                data: $this->render([]),
+                data: $this->render(['label' => 'issue', 'name' => 'KAFKA-2896', 'colorName' => 'green']),
             ),
         ];
     }

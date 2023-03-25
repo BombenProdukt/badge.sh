@@ -37,7 +37,7 @@ final class MonthlyQuestionsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'monthly questions',
                 path: '/stack-exchange/monthly-questions/{package}',
-                data: $this->render([]),
+                data: $this->render(['query' => 'laravel', 'site' => 'stackoverflow', 'count' => '1000']),
             ),
         ];
     }

@@ -49,7 +49,7 @@ final class OptionalBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'optional dependencies',
                 path: '/david/optional/epoberezkin/ajv-keywords',
-                data: $this->render([]),
+                data: $this->render(['status' => 'uptodate']),
             ),
         ];
     }

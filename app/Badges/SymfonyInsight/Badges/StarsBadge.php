@@ -39,7 +39,27 @@ final class StarsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'stars',
                 path: '/symfony-insight/stars/825be328-29f8-44f7-a750-f82818ae9111',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'bronze']),
+            ),
+            new BadgePreviewData(
+                name: 'stars',
+                path: '/symfony-insight/stars/825be328-29f8-44f7-a750-f82818ae9111',
+                data: $this->render(['grade' => 'silver']),
+            ),
+            new BadgePreviewData(
+                name: 'stars',
+                path: '/symfony-insight/stars/825be328-29f8-44f7-a750-f82818ae9111',
+                data: $this->render(['grade' => 'gold']),
+            ),
+            new BadgePreviewData(
+                name: 'stars',
+                path: '/symfony-insight/stars/825be328-29f8-44f7-a750-f82818ae9111',
+                data: $this->render(['grade' => 'platinum']),
+            ),
+            new BadgePreviewData(
+                name: 'stars',
+                path: '/symfony-insight/stars/825be328-29f8-44f7-a750-f82818ae9111',
+                data: $this->render(['grade' => 'unknown']),
             ),
         ];
     }

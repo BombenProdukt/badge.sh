@@ -35,7 +35,7 @@ final class OpenPullRequestsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'open PRs',
                 path: '/github/open-pull-requests/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

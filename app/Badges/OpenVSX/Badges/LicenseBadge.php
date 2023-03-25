@@ -40,7 +40,7 @@ final class LicenseBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/open-vsx/license/idleberg/electron-builder',
-                data: $this->render([]),
+                data: $this->render(['license' => 'MIT']),
             ),
         ];
     }

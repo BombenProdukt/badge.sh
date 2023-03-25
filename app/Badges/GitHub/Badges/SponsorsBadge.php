@@ -38,7 +38,7 @@ final class SponsorsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'sponsors',
                 path: '/github/sponsors/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

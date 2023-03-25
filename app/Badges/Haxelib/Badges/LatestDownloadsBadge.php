@@ -37,7 +37,7 @@ final class LatestDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'downloads (latest version)',
                 path: '/haxelib/downloads-recently/hxnodejs',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

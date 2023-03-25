@@ -33,12 +33,12 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/scoop/version/1password-cli',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version',
                 path: '/scoop/version/adb',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

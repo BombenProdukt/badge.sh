@@ -42,7 +42,7 @@ final class TotalComponentsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'total components',
                 path: '/bit/components/ramda/ramda',
-                data: $this->render([]),
+                data: $this->render(['count' => '100']),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class DownloadsPerDayBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'daily downloads',
                 path: '/hex/downloads-daily/plug',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

@@ -42,7 +42,7 @@ final class DependencyCountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependency count',
                 path: '/bundlephobia/dependency-count/react',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

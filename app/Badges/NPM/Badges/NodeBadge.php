@@ -46,7 +46,7 @@ final class NodeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'node version',
                 path: '/npm/node-version/next',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

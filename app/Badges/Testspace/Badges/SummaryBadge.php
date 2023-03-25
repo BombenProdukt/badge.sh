@@ -33,7 +33,7 @@ final class SummaryBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'pass ratio',
                 path: '/testspace/summary/swellaby/swellaby:testspace-sample/main',
-                data: $this->render([]),
+                data: $this->render(['passed' => 1, 'failed' => 0, 'skipped' => 0, 'total' => 1]),
             ),
         ];
     }

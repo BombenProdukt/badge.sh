@@ -39,7 +39,7 @@ final class XLMBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'xlm address',
                 path: '/keybase/xlm/skyplabs',
-                data: $this->render([]),
+                data: $this->render(['address' => '0xbc275933e838f6d1f435ca99acc82e12d398281f']),
             ),
         ];
     }

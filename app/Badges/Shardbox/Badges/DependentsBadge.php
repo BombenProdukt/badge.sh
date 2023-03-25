@@ -37,7 +37,7 @@ final class DependentsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependents',
                 path: '/shardbox/dependents/lucky',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

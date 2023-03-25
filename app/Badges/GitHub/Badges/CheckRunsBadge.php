@@ -87,42 +87,42 @@ final class CheckRunsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'combined checks (default branch)',
                 path: '/github/check-runs/tunnckoCore/opensource',
-                data: $this->render([]),
+                data: $this->render(['context' => 'lint', 'state' => 'pending']),
             ),
             new BadgePreviewData(
                 name: 'combined checks (default branch)',
                 path: '/github/check-runs/node-formidable/node-formidable',
-                data: $this->render([]),
+                data: $this->render(['context' => 'lint', 'state' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'single checks (lint job)',
                 path: '/github/check-runs/node-formidable/node-formidable/master/lint',
-                data: $this->render([]),
+                data: $this->render(['context' => 'lint', 'state' => 'failure']),
             ),
             new BadgePreviewData(
                 name: 'single checks (test job)',
                 path: '/github/check-runs/node-formidable/node-formidable/master/test',
-                data: $this->render([]),
+                data: $this->render(['context' => 'lint', 'state' => 'error']),
             ),
             new BadgePreviewData(
                 name: 'single checks (linux)',
                 path: '/github/check-runs/node-formidable/node-formidable/master/ubuntu?label=linux',
-                data: $this->render([]),
+                data: $this->render(['context' => 'lint', 'state' => 'unknown']),
             ),
             new BadgePreviewData(
                 name: 'single checks (windows)',
                 path: '/github/check-runs/node-formidable/node-formidable/master/windows',
-                data: $this->render([]),
+                data: $this->render(['context' => 'lint', 'state' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'single checks (macos)',
                 path: '/github/check-runs/node-formidable/node-formidable/master/macos',
-                data: $this->render([]),
+                data: $this->render(['context' => 'lint', 'state' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'combined checks (branch)',
                 path: '/github/check-runs/styfle/packagephobia/main',
-                data: $this->render([]),
+                data: $this->render(['context' => 'lint', 'state' => 'success']),
             ),
         ];
     }

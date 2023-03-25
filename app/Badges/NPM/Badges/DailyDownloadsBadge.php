@@ -40,7 +40,7 @@ final class DailyDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'daily downloads',
                 path: '/npm/downloads-daily/express',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

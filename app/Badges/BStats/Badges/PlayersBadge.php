@@ -35,7 +35,7 @@ final class PlayersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'players',
                 path: '/bstats/players/74299',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

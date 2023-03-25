@@ -53,22 +53,22 @@ final class ProjectDependenciesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependencies',
                 path: '/libraries-io/project-dependencies/npm/got',
-                data: $this->render([]),
+                data: $this->render(['deprecatedCount' => 1, 'outdatedCount' => 0]),
             ),
             new BadgePreviewData(
                 name: 'dependencies (release)',
                 path: '/libraries-io/project-dependencies/npm/got/1.0.0',
-                data: $this->render([]),
+                data: $this->render(['deprecatedCount' => 1, 'outdatedCount' => 0]),
             ),
             new BadgePreviewData(
                 name: 'dependencies (scoped)',
                 path: '/libraries-io/project-dependencies/npm/@babel/core',
-                data: $this->render([]),
+                data: $this->render(['deprecatedCount' => 0, 'outdatedCount' => 1]),
             ),
             new BadgePreviewData(
                 name: 'dependencies (scoped, release)',
                 path: '/libraries-io/project-dependencies/npm/@babel/core/7.0.0',
-                data: $this->render([]),
+                data: $this->render(['deprecatedCount' => 0, 'outdatedCount' => 1]),
             ),
         ];
     }

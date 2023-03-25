@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Endpoint\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -36,11 +37,6 @@ final class XMLBadge extends AbstractBadge
         )->validate();
     }
 
-    public function render(array $properties): array
-    {
-        return $properties;
-    }
-
     public function routeRules(): array
     {
         return [
@@ -51,7 +47,15 @@ final class XMLBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/endpoint/xml?url'.route('services.endpoint.xml') => 'endpoint with XML',
+            new BadgePreviewData(
+                name: 'endpoint with XML',
+                path: '/endpoint/xml?url'.route('services.endpoint.xml'),
+                data: $this->render([
+                    'label' => 'XML',
+                    'message' => 'OK',
+                    'messageColor' => 'green.600',
+                ]),
+            ),
         ];
     }
 }

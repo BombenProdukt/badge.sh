@@ -36,12 +36,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/oss-lifecycle/status/Netflix/osstracker',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'status with branch',
                 path: '/oss-lifecycle/status/Netflix/osstracker/documentation',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

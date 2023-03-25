@@ -48,7 +48,22 @@ final class BuildVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build version',
                 path: '/azure-devops/build-version/dnceng/public/51',
-                data: $this->render([]),
+                data: $this->render(['buildNumber' => '1.0.0', 'status' => 'completed']),
+            ),
+            new BadgePreviewData(
+                name: 'build version',
+                path: '/azure-devops/build-version/dnceng/public/51',
+                data: $this->render(['buildNumber' => '1.0.0', 'status' => 'succeeded']),
+            ),
+            new BadgePreviewData(
+                name: 'build version',
+                path: '/azure-devops/build-version/dnceng/public/51',
+                data: $this->render(['buildNumber' => '1.0.0', 'status' => 'partiallySucceeded']),
+            ),
+            new BadgePreviewData(
+                name: 'build version',
+                path: '/azure-devops/build-version/dnceng/public/51',
+                data: $this->render(['buildNumber' => '1.0.0', 'status' => 'failed']),
             ),
         ];
     }

@@ -21,13 +21,13 @@ final class RatingsBadge extends AbstractBadge
     public function handle(string $extensionType, string $extension): array
     {
         return [
-            'count' => $this->client->info($extensionType, $extension)['num_ratings'],
+            'rating' => $this->client->info($extensionType, $extension)['num_ratings'],
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderNumber('ratings', $properties['count']);
+        return $this->renderNumber('ratings', $properties['rating']);
     }
 
     public function routeConstraints(Route $route): void
@@ -41,12 +41,12 @@ final class RatingsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'ratings (plugin)',
                 path: '/wordpress/plugin/ratings/bbpress',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
             new BadgePreviewData(
                 name: 'ratings (theme)',
                 path: '/wordpress/theme/ratings/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
         ];
     }

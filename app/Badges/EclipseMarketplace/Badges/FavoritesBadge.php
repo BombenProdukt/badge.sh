@@ -35,7 +35,7 @@ final class FavoritesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'favorites',
                 path: '/eclipse-marketplace/favorites/notepad4e',
-                data: $this->render([]),
+                data: $this->render(['favorites' => '1000']),
             ),
         ];
     }

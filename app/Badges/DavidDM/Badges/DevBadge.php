@@ -49,7 +49,7 @@ final class DevBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dev dependencies',
                 path: '/david/dev/zeit/pkg',
-                data: $this->render([]),
+                data: $this->render(['status' => 'uptodate']),
             ),
         ];
     }

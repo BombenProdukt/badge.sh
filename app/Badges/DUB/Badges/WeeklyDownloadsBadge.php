@@ -35,7 +35,7 @@ final class WeeklyDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'weekly downloads',
                 path: '/dub/downloads-weekly/vibe-d',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

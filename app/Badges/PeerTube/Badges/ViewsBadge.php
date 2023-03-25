@@ -27,7 +27,7 @@ final class ViewsBadge extends AbstractBadge
     {
         return [
             'label' => 'views',
-            'message' => FormatNumber::execute($properties['views']),
+            'message' => FormatNumber::execute((float) $properties['views']),
             'messageColor' => 'F1680D',
         ];
     }
@@ -38,7 +38,7 @@ final class ViewsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'views',
                 path: '/peertube/views/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d',
-                data: $this->render([]),
+                data: $this->render(['views' => '1000000']),
             ),
         ];
     }

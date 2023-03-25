@@ -42,7 +42,7 @@ final class GitHubIssuesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'github issues',
                 path: '/packagist/github-open-issues/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['issues' => 1000000000]),
             ),
         ];
     }

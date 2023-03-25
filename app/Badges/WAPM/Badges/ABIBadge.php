@@ -46,12 +46,12 @@ final class ABIBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'abi',
                 path: '/wapm/abi/jwmerrill/lox-repl',
-                data: $this->render([]),
+                data: $this->render(['abis' => ['wasm32-unknown-unknown']]),
             ),
             new BadgePreviewData(
                 name: 'abi',
                 path: '/wapm/abi/kherrick/pwgen',
-                data: $this->render([]),
+                data: $this->render(['abis' => []]),
             ),
         ];
     }

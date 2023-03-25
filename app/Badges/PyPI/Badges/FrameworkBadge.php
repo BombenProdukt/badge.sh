@@ -50,12 +50,12 @@ final class FrameworkBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'framework',
                 path: '/pypi/framework/black',
-                data: $this->render([]),
+                data: $this->render(['framework' => 'Django', 'versions' => ['1.11', '2.0', '2.1', '2.2', '3.0', '3.1', '3.2']]),
             ),
             new BadgePreviewData(
                 name: 'framework',
                 path: '/pypi/framework/plone.volto',
-                data: $this->render([]),
+                data: $this->render(['framework' => 'Plone', 'versions' => ['5.2']]),
             ),
         ];
     }

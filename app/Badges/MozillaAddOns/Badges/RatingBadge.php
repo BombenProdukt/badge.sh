@@ -33,7 +33,7 @@ final class RatingBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rating',
                 path: '/amo/rating/markdown-viewer-chrome',
-                data: $this->render([]),
+                data: $this->render(['count' => '4']),
             ),
         ];
     }

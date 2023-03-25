@@ -58,32 +58,32 @@ final class TestsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/skipped_tests/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '100']),
             ),
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/test_errors/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '100']),
             ),
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/test_execution_time/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '100']),
             ),
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/test_failures/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '100']),
             ),
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/test_success_density/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '100']),
             ),
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/total_tests/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '100']),
             ),
         ];
     }

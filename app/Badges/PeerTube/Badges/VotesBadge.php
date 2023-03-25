@@ -27,7 +27,7 @@ final class VotesBadge extends AbstractBadge
     {
         return [
             'label' => 'votes',
-            'message' => \sprintf('%s 👍 %s 👎', FormatNumber::execute($properties['likes']), FormatNumber::execute($properties['dislikes'])),
+            'message' => \sprintf('%s 👍 %s 👎', FormatNumber::execute((float) $properties['likes']), FormatNumber::execute((float) $properties['dislikes'])),
             'messageColor' => 'F1680D',
         ];
     }
@@ -38,7 +38,7 @@ final class VotesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'votes',
                 path: '/peertube/votes/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d',
-                data: $this->render([]),
+                data: $this->render(['likes' => '1000000', 'dislikes' => '1000000']),
             ),
         ];
     }

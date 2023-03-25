@@ -37,12 +37,12 @@ final class CoverageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'coverage',
                 path: '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
             new BadgePreviewData(
                 name: 'branch coverage',
                 path: '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e/master',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
         ];
     }

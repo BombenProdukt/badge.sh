@@ -33,7 +33,7 @@ final class UserReputationBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'reputation',
                 path: '/stack-exchange/user/reputation/stackoverflow/123',
-                data: $this->render([]),
+                data: $this->render(['reputation' => '1000000']),
             ),
         ];
     }

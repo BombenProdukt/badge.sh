@@ -40,7 +40,7 @@ final class MaintainabilityBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'maintainability',
                 path: '/codeclimate/maintainability/codeclimate/codeclimate',
-                data: $this->render([]),
+                data: $this->render(['letter' => 'A']),
             ),
         ];
     }

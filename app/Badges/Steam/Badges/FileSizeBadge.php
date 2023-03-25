@@ -35,7 +35,7 @@ final class FileSizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'file size',
                 path: '/steam/file-size/100',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
         ];
     }

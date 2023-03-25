@@ -35,7 +35,7 @@ final class VideoCommentsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'video comments',
                 path: '/youtube/video/comments/wGJHwc5ksMA',
-                data: $this->render([]),
+                data: $this->render(['comments' => '1000000']),
             ),
         ];
     }

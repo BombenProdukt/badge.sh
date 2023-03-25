@@ -35,7 +35,7 @@ final class UptimeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'uptime',
                 path: '/pingpong/uptime/sp_2e80bc00b6054faeb2b87e2464be337e',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '100']),
             ),
         ];
     }

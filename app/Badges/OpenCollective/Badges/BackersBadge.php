@@ -35,7 +35,7 @@ final class BackersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'backers',
                 path: '/opencollective/backers/webpack',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

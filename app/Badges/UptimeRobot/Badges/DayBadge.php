@@ -46,7 +46,7 @@ final class DayBadge extends AbstractBadge
             new BadgePreviewData(
                 name: '(24 hours) uptime',
                 path: '/uptimerobot/day/m780862024-50db2c44c703e5c68d6b1ebb',
-                data: $this->render([]),
+                data: $this->render(['percentage' => 99.9]),
             ),
         ];
     }

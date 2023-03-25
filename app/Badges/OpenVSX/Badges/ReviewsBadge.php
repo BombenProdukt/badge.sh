@@ -42,7 +42,7 @@ final class ReviewsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'reviews',
                 path: '/open-vsx/reviews/idleberg/electron-builder',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

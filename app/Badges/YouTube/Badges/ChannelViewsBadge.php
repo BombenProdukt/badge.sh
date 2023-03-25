@@ -20,13 +20,13 @@ final class ChannelViewsBadge extends AbstractBadge
     public function handle(string $channelId): array
     {
         return [
-            'count' => $this->client->channel($channelId)['viewCount'],
+            'views' => $this->client->channel($channelId)['viewCount'],
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderNumber('views', $properties['count']);
+        return $this->renderNumber('views', $properties['views']);
     }
 
     public function previews(): array
@@ -35,7 +35,7 @@ final class ChannelViewsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'channel views',
                 path: '/youtube/channel/views/UC8butISFwT-Wl7EV0hUK0BQ',
-                data: $this->render([]),
+                data: $this->render(['views' => '1000000']),
             ),
         ];
     }

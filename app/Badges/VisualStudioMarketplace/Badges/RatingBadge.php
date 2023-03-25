@@ -31,7 +31,7 @@ final class RatingBadge extends AbstractBadge
     {
         return [
             'label' => 'rating',
-            'message' => \number_format($properties['rating']).'/5 ('.$properties['count'].')',
+            'message' => \number_format((float) $properties['rating']).'/5 ('.$properties['count'].')',
             'messageColor' => 'green.600',
         ];
     }
@@ -42,7 +42,7 @@ final class RatingBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rating',
                 path: '/vs-marketplace/rating/vscodevim.vim',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5', 'count' => '100']),
             ),
         ];
     }

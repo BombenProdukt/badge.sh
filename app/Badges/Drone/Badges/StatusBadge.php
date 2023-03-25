@@ -35,7 +35,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/drone/status/badges/shields',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

@@ -22,13 +22,13 @@ final class StarsBadge extends AbstractBadge
     public function handle(string $repo): array
     {
         return [
-            'count' => $this->client->graphql($repo, 'starCount')['starCount'],
+            'stars' => $this->client->graphql($repo, 'starCount')['starCount'],
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderStars('stars', $properties['count']);
+        return $this->renderStars('stars', $properties['stars']);
     }
 
     public function routeConstraints(Route $route): void
@@ -42,7 +42,7 @@ final class StarsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'stars',
                 path: '/gitlab/stars/fdroid/fdroidclient',
-                data: $this->render([]),
+                data: $this->render(['stars' => '4.5']),
             ),
         ];
     }

@@ -40,7 +40,7 @@ final class TimezoneBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'timezone',
                 path: '/ohdear/timezone/status.laravel.com',
-                data: $this->render([]),
+                data: $this->render(['domain' => 'status.laravel.com', 'timezone' => 'UTC']),
             ),
         ];
     }

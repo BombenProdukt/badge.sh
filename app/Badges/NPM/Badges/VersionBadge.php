@@ -47,32 +47,32 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/npm/version/express',
-                data: $this->render([]),
+                data: $this->render(['tag' => 'latest', 'version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version',
                 path: '/npm/version/yarn',
-                data: $this->render([]),
+                data: $this->render(['tag' => 'latest', 'version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (tag)',
                 path: '/npm/version/yarn/berry',
-                data: $this->render([]),
+                data: $this->render(['tag' => 'latest', 'version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (tag)',
                 path: '/npm/version/yarn/legacy',
-                data: $this->render([]),
+                data: $this->render(['tag' => 'latest', 'version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (scoped package)',
                 path: '/npm/version/@babel/core',
-                data: $this->render([]),
+                data: $this->render(['tag' => 'latest', 'version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (scoped & tag)',
                 path: '/npm/version/@nestjs/core/beta',
-                data: $this->render([]),
+                data: $this->render(['tag' => 'latest', 'version' => '1.0.0']),
             ),
         ];
     }

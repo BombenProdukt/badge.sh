@@ -51,7 +51,7 @@ final class PipelinesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build status',
                 path: '/bitbucket/pipelines/atlassian/adf-builder-javascript/task/SECO-2168',
-                data: $this->render([]),
+                data: $this->render(['status' => 'SUCCESSFUL']),
             ),
         ];
     }

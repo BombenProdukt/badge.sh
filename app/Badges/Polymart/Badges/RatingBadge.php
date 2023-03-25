@@ -33,7 +33,7 @@ final class RatingBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rating',
                 path: '/polymart/rating/323',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

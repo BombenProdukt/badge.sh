@@ -44,7 +44,7 @@ final class RankBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rank',
                 path: '/jsdelivr/rank/npm/lodash',
-                data: $this->render([]),
+                data: $this->render(['rank' => 1]),
             ),
         ];
     }

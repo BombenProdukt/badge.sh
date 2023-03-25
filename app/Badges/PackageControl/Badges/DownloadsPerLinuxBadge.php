@@ -35,7 +35,7 @@ final class DownloadsPerLinuxBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'linux downloads',
                 path: '/package-control/downloads-linux/GitGutter',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

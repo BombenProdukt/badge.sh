@@ -35,7 +35,7 @@ final class PatronsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'patrons count',
                 path: '/liberapay/patrons/microG',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

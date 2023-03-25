@@ -39,7 +39,7 @@ final class LicenseBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/apm/license/linter',
-                data: $this->render([]),
+                data: $this->render(['license' => 'MIT']),
             ),
         ];
     }

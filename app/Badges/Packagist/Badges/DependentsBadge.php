@@ -40,7 +40,7 @@ final class DependentsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependents',
                 path: '/packagist/dependents/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['dependents' => 1000000000]),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class PopularityBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'popularity',
                 path: '/pub/popularity/mobx',
-                data: $this->render([]),
+                data: $this->render(['popularity' => 0.0]),
             ),
         ];
     }

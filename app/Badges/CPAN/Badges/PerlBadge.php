@@ -45,7 +45,7 @@ final class PerlBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'perl version',
                 path: '/cpan/perl-version/Plack',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

@@ -37,7 +37,7 @@ final class TagBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'latest tag',
                 path: '/github/tag/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

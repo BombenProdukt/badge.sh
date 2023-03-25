@@ -49,12 +49,12 @@ final class PublishBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'publish size',
                 path: '/packagephobia/publish/webpack',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024', 'color' => '#4c1']),
             ),
             new BadgePreviewData(
                 name: '(scoped pkg) publish size',
                 path: '/packagephobia/publish/@tusbar/cache-control',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024', 'color' => '#4c1']),
             ),
         ];
     }

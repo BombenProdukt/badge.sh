@@ -37,7 +37,7 @@ final class PointsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'pub points',
                 path: '/pub/points/rxdart',
-                data: $this->render([]),
+                data: $this->render(['grantedPoints' => 0, 'maxPoints' => '100']),
             ),
         ];
     }

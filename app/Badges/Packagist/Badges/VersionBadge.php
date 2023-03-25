@@ -45,17 +45,17 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/packagist/version/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (pre)',
                 path: '/packagist/version/monolog/monolog/pre',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (latest)',
                 path: '/packagist/version/monolog/monolog/latest',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

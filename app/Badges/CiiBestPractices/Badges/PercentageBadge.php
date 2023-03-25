@@ -35,7 +35,7 @@ final class PercentageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'percentage',
                 path: '/cii/percentage/29',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '100']),
             ),
         ];
     }

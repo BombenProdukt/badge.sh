@@ -38,7 +38,7 @@ final class LastDayPriceChangeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'price',
                 path: '/coincap/last-day-price-change/bitcoin',
-                data: $this->render([]),
+                data: $this->render(['ticker' => 'bitcoin', 'percentage' => 0.0]),
             ),
         ];
     }

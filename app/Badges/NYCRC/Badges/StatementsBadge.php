@@ -33,7 +33,7 @@ final class StatementsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'statements',
                 path: '/nycrc/statements/yargs/yargs',
-                data: $this->render([]),
+                data: $this->render(['statements' => 0]),
             ),
         ];
     }

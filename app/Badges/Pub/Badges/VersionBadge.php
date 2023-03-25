@@ -33,12 +33,12 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/pub/version/kt_dart',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version',
                 path: '/pub/version/mobx',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class InstallationsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'installation count',
                 path: '/vs-marketplace/installations/vscodevim.vim',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

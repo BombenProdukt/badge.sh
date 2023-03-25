@@ -35,12 +35,12 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/haxelib/version/tink_http',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version',
                 path: '/haxelib/version/nme',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

@@ -42,7 +42,7 @@ final class CoverageGradeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'coverage (letter)',
                 path: '/codeclimate/coverage-grade/codeclimate/codeclimate',
-                data: $this->render([]),
+                data: $this->render(['letter' => 'C']),
             ),
         ];
     }

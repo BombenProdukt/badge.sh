@@ -41,12 +41,12 @@ final class RatingBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rating',
                 path: '/jetbrains/rating/13441-laravel-idea',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
             new BadgePreviewData(
                 name: 'rating (legacy plugin)',
                 path: '/jetbrains/rating/9630',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
         ];
     }

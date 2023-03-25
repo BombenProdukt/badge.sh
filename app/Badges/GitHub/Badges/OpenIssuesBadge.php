@@ -29,7 +29,7 @@ final class OpenIssuesBadge extends AbstractBadge
     {
         return [
             'label' => 'open issues',
-            'message' => FormatNumber::execute($properties['count']),
+            'message' => FormatNumber::execute((float) $properties['count']),
             'messageColor' => $properties['count'] === 0 ? 'green.600' : 'orange.600',
         ];
     }
@@ -40,7 +40,7 @@ final class OpenIssuesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'open issues',
                 path: '/github/open-issues/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

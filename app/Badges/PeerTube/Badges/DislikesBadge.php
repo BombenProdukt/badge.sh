@@ -27,7 +27,7 @@ final class DislikesBadge extends AbstractBadge
     {
         return [
             'label' => 'votes',
-            'message' => FormatNumber::execute($properties['dislikes']),
+            'message' => FormatNumber::execute((float) $properties['dislikes']),
             'messageColor' => 'F1680D',
         ];
     }
@@ -38,7 +38,7 @@ final class DislikesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dislikes',
                 path: '/peertube/dislikes/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d',
-                data: $this->render([]),
+                data: $this->render(['dislikes' => '1000']),
             ),
         ];
     }

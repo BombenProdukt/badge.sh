@@ -42,7 +42,7 @@ final class UptimeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/whatpulse/uptime/user/179734',
-                data: $this->render([]),
+                data: $this->render(['time' => '1 year, 2 months, 3 days, 4 hours, 5 minutes, 6 seconds']),
             ),
         ];
     }

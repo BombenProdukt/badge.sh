@@ -42,17 +42,22 @@ final class GradeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'grade',
                 path: '/deepscan/grade/team/7382/project/9494/branch/123838',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'none']),
             ),
             new BadgePreviewData(
                 name: 'grade',
                 path: '/deepscan/grade/team/279/project/1302/branch/3514',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'good']),
             ),
             new BadgePreviewData(
                 name: 'grade',
                 path: '/deepscan/grade/team/8527/project/10741/branch/152550',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'normal']),
+            ),
+            new BadgePreviewData(
+                name: 'grade',
+                path: '/deepscan/grade/team/8527/project/10741/branch/152550',
+                data: $this->render(['grade' => 'poor']),
             ),
         ];
     }

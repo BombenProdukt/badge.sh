@@ -41,12 +41,12 @@ final class DownloadsPerWeekBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'weekly downloads (plugin)',
                 path: '/wordpress/plugin/downloads-weekly/bbpress',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'weekly downloads (theme)',
                 path: '/wordpress/theme/downloads-weekly/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

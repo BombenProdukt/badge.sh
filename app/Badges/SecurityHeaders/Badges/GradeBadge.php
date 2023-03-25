@@ -35,7 +35,7 @@ final class GradeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'grade',
                 path: '/security-headers/grade/shields.io',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'C']),
             ),
         ];
     }

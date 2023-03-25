@@ -50,22 +50,22 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'Sonatype Nexus (Releases)',
                 path: '/nexus/version/r/org.apache.commons/commoin-lang3?instance=https://nexus.pentaho.org',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'Sonatype Nexus (Snapshots)',
                 path: '/nexus/version/r/com.google.guava/guava?instance=https://oss.sonatype.org',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'Sonatype Nexus (Repository)',
                 path: '/nexus/version/r/developer/ai.h2o/h2o-automl?instance=https://repository.jboss.org/nexus',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'Sonatype Nexus (Query Options)',
                 path: '/nexus/version/r/fs-public-snapshots/com.progress.fuse/fusehq?instance=https://repository.jboss.org/nexus',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

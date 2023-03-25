@@ -46,7 +46,27 @@ final class WeekBadge extends AbstractBadge
             new BadgePreviewData(
                 name: '(past week) uptime',
                 path: '/uptimerobot/week/m780862024-50db2c44c703e5c68d6b1ebb',
-                data: $this->render([]),
+                data: $this->render(['percentage' => 99.9]),
+            ),
+            new BadgePreviewData(
+                name: '(past week) uptime',
+                path: '/uptimerobot/week/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render(['percentage' => 99]),
+            ),
+            new BadgePreviewData(
+                name: '(past week) uptime',
+                path: '/uptimerobot/week/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render(['percentage' => 97]),
+            ),
+            new BadgePreviewData(
+                name: '(past week) uptime',
+                path: '/uptimerobot/week/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render(['percentage' => 94]),
+            ),
+            new BadgePreviewData(
+                name: '(past week) uptime',
+                path: '/uptimerobot/week/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render(['percentage' => 80]),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class VotesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'votes',
                 path: '/aur/votes/google-chrome',
-                data: $this->render([]),
+                data: $this->render(['votes' => '1000000']),
             ),
         ];
     }

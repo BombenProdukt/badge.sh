@@ -35,7 +35,7 @@ final class DownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'downloads',
                 path: '/factorio-mod-portal/downloads/rso-mod',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

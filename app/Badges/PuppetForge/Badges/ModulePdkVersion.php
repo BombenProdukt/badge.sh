@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PuppetForge\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ModulePdkVersion extends AbstractBadge
@@ -18,18 +19,24 @@ final class ModulePdkVersion extends AbstractBadge
 
     public function handle(string $user, string $module): array
     {
-        return $this->renderVersion($this->client->module($user, $module)['current_release']['metadata']['pdk-version']);
+        return [
+            'version' => $this->client->module($user, $module)['current_release']['metadata']['pdk-version'],
+        ];
     }
 
     public function render(array $properties): array
     {
-        //
+        return $this->renderVersion($properties['version']);
     }
 
     public function previews(): array
     {
         return [
-            '/puppetforge/module-pdk-version/camptocamp/openldap' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/puppetforge/module-pdk-version/camptocamp/openldap',
+                data: $this->render(['version' => '1.0.0']),
+            ),
         ];
     }
 }

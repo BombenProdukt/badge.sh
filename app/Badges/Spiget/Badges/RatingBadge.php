@@ -33,7 +33,7 @@ final class RatingBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rating',
                 path: '/spiget/rating/9089',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
         ];
     }

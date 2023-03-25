@@ -33,7 +33,7 @@ final class MaintenanceScoreBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'maintenance score',
                 path: '/npms/maintenance-score/chalk',
-                data: $this->render([]),
+                data: $this->render(['maintenance' => '4.5']),
             ),
         ];
     }

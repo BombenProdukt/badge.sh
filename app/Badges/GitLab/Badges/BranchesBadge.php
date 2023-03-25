@@ -42,7 +42,7 @@ final class BranchesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'branches',
                 path: '/gitlab/branches/gitterHQ/webapp',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

@@ -36,7 +36,7 @@ final class DocsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'documentation coverage (percentage)',
                 path: '/cocoapods/doc-percent/AFNetworking',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '100']),
             ),
         ];
     }

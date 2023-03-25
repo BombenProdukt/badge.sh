@@ -43,7 +43,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependencies',
                 path: '/depfu/status/github/depfu/example-ruby',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

@@ -46,7 +46,7 @@ final class RepoBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/maven-central/version/com.google.code.gson/gson',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

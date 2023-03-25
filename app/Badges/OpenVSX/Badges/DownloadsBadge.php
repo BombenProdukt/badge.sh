@@ -42,7 +42,7 @@ final class DownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'downloads',
                 path: '/open-vsx/downloads/idleberg/electron-builder',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

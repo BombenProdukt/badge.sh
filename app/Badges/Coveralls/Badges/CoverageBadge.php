@@ -55,22 +55,22 @@ final class CoverageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'coverage (github)',
                 path: '/coveralls/coverage/github/jekyll/jekyll',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
             new BadgePreviewData(
                 name: 'coverage (github, branch)',
                 path: '/coveralls/coverage/github/jekyll/jekyll/master',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
             new BadgePreviewData(
                 name: 'coverage (bitbucket)',
                 path: '/coveralls/coverage/bitbucket/pyKLIP/pyklip',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
             new BadgePreviewData(
                 name: 'coverage (bitbucket, branch)',
                 path: '/coveralls/coverage/bitbucket/pyKLIP/pyklip/master',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
         ];
     }

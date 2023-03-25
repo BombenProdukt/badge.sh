@@ -64,7 +64,7 @@ final class GitHubBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'vulnerability scan',
                 path: '/snyk/github/badges/shields/badge-maker/package.json',
-                data: $this->render([]),
+                data: $this->render(['message' => 'passing', 'messageColor' => 'green.600']),
             ),
         ];
     }

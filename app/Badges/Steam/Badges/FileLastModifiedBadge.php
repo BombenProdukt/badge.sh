@@ -6,6 +6,7 @@ namespace App\Badges\Steam\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Carbon\Carbon;
 
 final class FileLastModifiedBadge extends AbstractBadge
 {
@@ -26,7 +27,7 @@ final class FileLastModifiedBadge extends AbstractBadge
 
     public function render(array $properties): array
     {
-        return $this->renderDateDiff('last modified', $properties['data']);
+        return $this->renderDateDiff('last modified', $properties['date']);
     }
 
     public function previews(): array
@@ -35,7 +36,7 @@ final class FileLastModifiedBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'file last modified',
                 path: '/steam/file-last-modified/100',
-                data: $this->render([]),
+                data: $this->render(['date' => Carbon::now()->unix()]),
             ),
         ];
     }

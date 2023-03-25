@@ -35,7 +35,7 @@ final class LicenseBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/cran/license/ggplot2',
-                data: $this->render([]),
+                data: $this->render(['license' => 'MIT']),
             ),
         ];
     }

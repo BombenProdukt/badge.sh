@@ -41,12 +41,12 @@ final class InstallationsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'active installations (plugin)',
                 path: '/wordpress/plugin/installations/bbpress',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'active installations (theme)',
                 path: '/wordpress/theme/installations/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000000']),
             ),
         ];
     }

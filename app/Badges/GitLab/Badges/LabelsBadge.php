@@ -46,17 +46,17 @@ final class LabelsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'issues by label',
                 path: '/gitlab/issues-by-label/NickBusey/HomelabOS/Bug',
-                data: $this->render([]),
+                data: $this->render(['label' => 'Bug', 'count' => '42']),
             ),
             new BadgePreviewData(
                 name: 'open issues by label',
                 path: '/gitlab/issues-by-label/NickBusey/HomelabOS/Enhancement/opened',
-                data: $this->render([]),
+                data: $this->render(['label' => 'Enhancement', 'count' => '42']),
             ),
             new BadgePreviewData(
                 name: 'closed issues by label',
                 path: '/gitlab/issues-by-label/NickBusey/HomelabOS/Help%20wanted/closed',
-                data: $this->render([]),
+                data: $this->render(['label' => 'Help wanted', 'count' => '42']),
             ),
         ];
     }

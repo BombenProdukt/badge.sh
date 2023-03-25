@@ -35,7 +35,7 @@ final class PlatformBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'platform',
                 path: '/conda/platform/conda-forge/python',
-                data: $this->render([]),
+                data: $this->render(['platforms' => ['linux-64', 'osx-64', 'win-64']]),
             ),
         ];
     }

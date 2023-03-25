@@ -45,7 +45,7 @@ final class MaintainabilityPercentageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'maintainability (percentage)',
                 path: '/codeclimate/maintainability-percentage/codeclimate/codeclimate',
-                data: $this->render([]),
+                data: $this->render(['percentage' => 4.5, 'letter' => 'F']),
             ),
         ];
     }

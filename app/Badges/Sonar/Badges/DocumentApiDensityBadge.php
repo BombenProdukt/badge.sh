@@ -43,7 +43,7 @@ final class DocumentApiDensityBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/public_documented_api_density/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '0.0']),
             ),
         ];
     }

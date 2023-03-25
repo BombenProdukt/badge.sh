@@ -25,7 +25,7 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($properties['downloads']).'/year',
+            'message' => FormatNumber::execute((float) $properties['downloads']).'/year',
             'messageColor' => 'green.600',
         ];
     }
@@ -45,7 +45,7 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'yearly downloads',
                 path: '/homebrew/downloads-yearly/fish',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

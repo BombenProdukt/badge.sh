@@ -31,7 +31,7 @@ final class HitsBadge extends AbstractBadge
     {
         return [
             'label' => 'jsDelivr',
-            'message' => FormatNumber::execute($properties['count']).'/month',
+            'message' => FormatNumber::execute((float) $properties['count']).'/month',
             'messageColor' => 'green.600',
         ];
     }
@@ -47,12 +47,12 @@ final class HitsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'hits (per month)',
                 path: '/jsdelivr/hits/gh/jquery/jquery',
-                data: $this->render([]),
+                data: $this->render(['count' => 1000000000]),
             ),
             new BadgePreviewData(
                 name: 'hits (per month)',
                 path: '/jsdelivr/hits/npm/lodash',
-                data: $this->render([]),
+                data: $this->render(['count' => 1000000000]),
             ),
         ];
     }

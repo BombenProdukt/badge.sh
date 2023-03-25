@@ -54,12 +54,12 @@ final class VersionForFormulaBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/homebrew/version/fish',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version',
                 path: '/homebrew/version/cake',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

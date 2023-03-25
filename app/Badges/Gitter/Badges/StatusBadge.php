@@ -33,12 +33,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/gitter/status/redom/lobby',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'status',
                 path: '/gitter/status/redom/redom',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

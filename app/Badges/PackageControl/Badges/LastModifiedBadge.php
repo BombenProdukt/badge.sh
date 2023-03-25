@@ -6,6 +6,7 @@ namespace App\Badges\PackageControl\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Carbon\Carbon;
 
 final class LastModifiedBadge extends AbstractBadge
 {
@@ -35,7 +36,7 @@ final class LastModifiedBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'last modified',
                 path: '/package-control/last-modified/GitGutter',
-                data: $this->render([]),
+                data: $this->render(['date' => Carbon::now()->unix()]),
             ),
         ];
     }

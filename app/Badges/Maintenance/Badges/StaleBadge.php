@@ -41,7 +41,7 @@ final class StaleBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'stale',
                 path: '/maintenance/stale/2023',
-                data: $this->render([]),
+                data: $this->render(['year' => 2023]),
             ),
         ];
     }

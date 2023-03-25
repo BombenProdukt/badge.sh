@@ -35,7 +35,7 @@ final class ContributorsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'contributors',
                 path: '/opencollective/contributors/webpack',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

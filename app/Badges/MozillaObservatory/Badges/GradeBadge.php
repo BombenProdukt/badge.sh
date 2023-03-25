@@ -33,7 +33,7 @@ final class GradeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'grade',
                 path: '/mozilla-observatory/grade/github.com',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'C']),
             ),
         ];
     }

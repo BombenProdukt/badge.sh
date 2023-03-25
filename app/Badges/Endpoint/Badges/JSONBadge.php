@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Endpoint\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -36,11 +37,6 @@ final class JSONBadge extends AbstractBadge
         )->validate();
     }
 
-    public function render(array $properties): array
-    {
-        return $properties;
-    }
-
     public function routeRules(): array
     {
         return [
@@ -51,7 +47,15 @@ final class JSONBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/endpoint/json?url'.route('services.endpoint.json') => 'endpoint with JSON',
+            new BadgePreviewData(
+                name: 'endpoint with JSON',
+                path: '/endpoint/json?url'.route('services.endpoint.json'),
+                data: $this->render([
+                    'label' => 'JSON',
+                    'message' => 'OK',
+                    'messageColor' => 'green.600',
+                ]),
+            ),
         ];
     }
 }

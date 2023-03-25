@@ -33,7 +33,7 @@ final class DownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'total downlodas',
                 path: '/clojars/downloads/prismic',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

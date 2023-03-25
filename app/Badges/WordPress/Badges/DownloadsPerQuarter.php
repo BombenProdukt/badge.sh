@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WordPress\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -35,8 +36,16 @@ final class DownloadsPerQuarter extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wordpress/plugin/downloads-quarterly/bbpress' => 'quarterly downloads (plugin)',
-            '/wordpress/theme/downloads-quarterly/twentyseventeen' => 'quarterly downloads (theme)',
+            new BadgePreviewData(
+                name: 'quarterly downloads (plugin)',
+                path: '/wordpress/plugin/downloads-quarterly/bbpress',
+                data: $this->render(['downloads' => 1000]),
+            ),
+            new BadgePreviewData(
+                name: 'quarterly downloads (theme)',
+                path: '/wordpress/theme/downloads-quarterly/twentyseventeen',
+                data: $this->render(['downloads' => 1000]),
+            ),
         ];
     }
 }

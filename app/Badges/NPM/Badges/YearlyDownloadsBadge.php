@@ -42,7 +42,7 @@ final class YearlyDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'yearly downloads',
                 path: '/npm/downloads-yearly/express',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

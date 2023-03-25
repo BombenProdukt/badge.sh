@@ -39,7 +39,7 @@ final class ResponseBadge extends AbstractBadge
             new BadgePreviewData(
                 name: '(last hour) response',
                 path: '/uptimerobot/response/m780862024-50db2c44c703e5c68d6b1ebb',
-                data: $this->render([]),
+                data: $this->render(['time' => 0]),
             ),
         ];
     }

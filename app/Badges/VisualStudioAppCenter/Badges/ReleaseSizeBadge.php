@@ -33,7 +33,7 @@ final class ReleaseSizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'size',
                 path: '/visual-studio-app-center/size/jct/my-amazing-app/ac70cv...',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
         ];
     }

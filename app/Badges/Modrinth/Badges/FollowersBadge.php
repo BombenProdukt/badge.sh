@@ -35,7 +35,7 @@ final class FollowersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'followers',
                 path: '/modrinth/followers/AANobbMI',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

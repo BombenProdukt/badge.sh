@@ -50,7 +50,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/swagger/validator?spec=https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-expanded.json',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

@@ -55,7 +55,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/netlify/status/e6d5a4e0-dee1-4261-833e-2f47f509c68f',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

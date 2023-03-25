@@ -35,7 +35,7 @@ final class RoleBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'downloads',
                 path: '/ansible/role/3078',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

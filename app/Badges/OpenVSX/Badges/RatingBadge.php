@@ -48,7 +48,7 @@ final class RatingBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rating',
                 path: '/open-vsx/rating/idleberg/electron-builder',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
         ];
     }

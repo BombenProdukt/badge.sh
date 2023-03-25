@@ -40,7 +40,7 @@ final class LanguageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'language',
                 path: '/packagist/language/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['language' => 'PHP']),
             ),
         ];
     }

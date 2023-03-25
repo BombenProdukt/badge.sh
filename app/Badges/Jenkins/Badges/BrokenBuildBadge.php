@@ -31,7 +31,7 @@ final class BrokenBuildBadge extends AbstractBadge
     {
         return [
             'label' => 'Broken Builds',
-            'message' => FormatNumber::execute($properties['count']),
+            'message' => FormatNumber::execute((float) $properties['count']),
             'messageColor' => match (true) {
                 $properties['count'] < 10 => 'green.600',
                 $properties['count'] < 20 => 'orange.600',
@@ -51,7 +51,7 @@ final class BrokenBuildBadge extends AbstractBadge
             new BadgePreviewData(
                 name: '# of broken builds',
                 path: '/jenkins/broken-build/jenkins.mono-project.com/job/test-mono-mainline',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

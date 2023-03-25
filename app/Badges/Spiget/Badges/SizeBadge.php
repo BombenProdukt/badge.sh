@@ -43,7 +43,7 @@ final class SizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'size',
                 path: '/spiget/size/9089',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
         ];
     }

@@ -49,7 +49,7 @@ final class LinesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'lines (java)',
                 path: '/lgtm/lines/github/apache/cloudstack/java',
-                data: $this->render([]),
+                data: $this->render(['lines' => '100000']),
             ),
         ];
     }

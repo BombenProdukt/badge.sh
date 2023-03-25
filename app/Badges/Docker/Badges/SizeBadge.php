@@ -130,17 +130,17 @@ final class SizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'size (library)',
                 path: '/docker/size/library/ubuntu',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
             new BadgePreviewData(
                 name: 'size (scoped/tag/architecture)',
                 path: '/docker/size/lukechilds/bitcoind/latest/amd64',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
             new BadgePreviewData(
                 name: 'size (scoped/tag/architecture/variant)',
                 path: '/docker/size/lucashalbert/curl/latest/arm/v6',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
         ];
     }

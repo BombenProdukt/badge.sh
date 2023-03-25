@@ -33,7 +33,7 @@ final class StarsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'stars',
                 path: '/dub/stars/silly',
-                data: $this->render([]),
+                data: $this->render(['score' => '4.5']),
             ),
         ];
     }

@@ -52,27 +52,27 @@ final class UserStatisticsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'comments',
                 path: '/weblate/statistics/comments/nijel',
-                data: $this->render([]),
+                data: $this->render(['type' => 'translations', 'count' => '0']),
             ),
             new BadgePreviewData(
                 name: 'languages',
                 path: '/weblate/statistics/languages/nijel',
-                data: $this->render([]),
+                data: $this->render(['type' => 'suggestions', 'count' => '0']),
             ),
             new BadgePreviewData(
                 name: 'suggestions',
                 path: '/weblate/statistics/suggestions/nijel',
-                data: $this->render([]),
+                data: $this->render(['type' => 'uploads', 'count' => '0']),
             ),
             new BadgePreviewData(
                 name: 'translations',
                 path: '/weblate/statistics/translations/nijel',
-                data: $this->render([]),
+                data: $this->render(['type' => 'comments', 'count' => '0']),
             ),
             new BadgePreviewData(
                 name: 'uploads',
                 path: '/weblate/statistics/uploads/nijel',
-                data: $this->render([]),
+                data: $this->render(['type' => 'languages', 'count' => '0']),
             ),
         ];
     }

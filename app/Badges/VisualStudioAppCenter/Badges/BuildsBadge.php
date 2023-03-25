@@ -35,7 +35,7 @@ final class BuildsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'builds',
                 path: '/visual-studio-app-center/builds/jct/my-amazing-app/master/ac70cv...',
-                data: $this->render([]),
+                data: $this->render(['status' => 'succeeded']),
             ),
         ];
     }

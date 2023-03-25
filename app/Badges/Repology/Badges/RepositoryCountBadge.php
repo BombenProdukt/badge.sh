@@ -36,7 +36,7 @@ final class RepositoryCountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'repository count',
                 path: '/repology/repositories/starship',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

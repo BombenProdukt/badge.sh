@@ -39,7 +39,7 @@ final class StarsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'stars',
                 path: '/apm/stars/linter',
-                data: $this->render([]),
+                data: $this->render(['stars' => '4.5']),
             ),
         ];
     }

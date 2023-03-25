@@ -35,7 +35,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/nodeping/status/jkiwn052-ntpp-4lbb-8d45-ihew6d9ucoei',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

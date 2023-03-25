@@ -33,7 +33,7 @@ final class FileViewsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'file views',
                 path: '/steam/file-views/100',
-                data: $this->render([]),
+                data: $this->render(['views' => '1000000']),
             ),
         ];
     }

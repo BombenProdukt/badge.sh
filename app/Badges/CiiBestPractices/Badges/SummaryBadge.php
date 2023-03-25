@@ -44,7 +44,22 @@ final class SummaryBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'summary',
                 path: '/cii/summary/33',
-                data: $this->render([]),
+                data: $this->render(['level' => 'passing', 'percentage' => '50']),
+            ),
+            new BadgePreviewData(
+                name: 'summary',
+                path: '/cii/summary/33',
+                data: $this->render(['level' => 'passing', 'percentage' => '100']),
+            ),
+            new BadgePreviewData(
+                name: 'summary',
+                path: '/cii/summary/33',
+                data: $this->render(['level' => 'passing', 'percentage' => '200']),
+            ),
+            new BadgePreviewData(
+                name: 'summary',
+                path: '/cii/summary/33',
+                data: $this->render(['level' => 'passing', 'percentage' => '300']),
             ),
         ];
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Mastodon\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
@@ -33,7 +34,7 @@ final class UserIdBadge extends AbstractBadge
     {
         return [
             'label' => 'follow @'.$properties['username'].'@'.$properties['instance'],
-            'message' => FormatNumber::execute($properties['count']),
+            'message' => FormatNumber::execute((float) $properties['count']),
             'messageColor' => '3487CE',
         ];
     }
@@ -45,6 +46,12 @@ final class UserIdBadge extends AbstractBadge
 
     public function previews(): array
     {
-        return [];
+        return [
+            new BadgePreviewData(
+                name: 'followers',
+                path: '/mastodon/follow/26471',
+                data: $this->render(['instance' => 'mastodon.social', 'username' => 'linuxxx', 'count' => '1000000']),
+            ),
+        ];
     }
 }

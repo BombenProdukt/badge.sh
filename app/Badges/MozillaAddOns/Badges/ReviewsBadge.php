@@ -35,7 +35,7 @@ final class ReviewsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'reviews',
                 path: '/amo/reviews/markdown-viewer-chrome',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
         ];
     }

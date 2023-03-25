@@ -42,7 +42,7 @@ final class CoverageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'coverage',
                 path: '/codeclimate/coverage/codeclimate/codeclimate',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
         ];
     }

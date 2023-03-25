@@ -56,12 +56,12 @@ final class StabilityBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'stability',
                 path: '/pypi/stability/black',
-                data: $this->render([]),
+                data: $this->render(['stability' => 'Production/Stable']),
             ),
             new BadgePreviewData(
                 name: 'stability',
                 path: '/pypi/stability/plone.volto',
-                data: $this->render([]),
+                data: $this->render(['stability' => 'Alpha']),
             ),
         ];
     }

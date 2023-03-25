@@ -33,7 +33,7 @@ final class RankBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'price',
                 path: '/coincap/rank/bitcoin',
-                data: $this->render([]),
+                data: $this->render(['name' => 'bitcoin', 'rank' => 1]),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class ReleaseVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/visual-studio-app-center/version/jct/my-amazing-app/ac70cv...',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

@@ -48,7 +48,7 @@ final class UrlWithProtocolBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/maven-metadata/version/https/repo1.maven.org/maven2/com/google/code/gson/gson/maven-metadata.xml',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

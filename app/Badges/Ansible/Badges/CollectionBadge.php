@@ -37,7 +37,7 @@ final class CollectionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'collection',
                 path: '/ansible/collection/278',
-                data: $this->render([]),
+                data: $this->render(['name' => 'community.general']),
             ),
         ];
     }

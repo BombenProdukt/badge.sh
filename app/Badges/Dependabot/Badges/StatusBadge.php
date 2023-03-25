@@ -53,12 +53,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/dependabot/status/thepracticaldev/dev.to',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success', 'statusColor' => 'green.600']),
             ),
             new BadgePreviewData(
                 name: 'status',
                 path: '/dependabot/status/dependabot/dependabot-core',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success', 'statusColor' => 'green.600']),
             ),
         ];
     }

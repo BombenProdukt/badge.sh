@@ -35,7 +35,7 @@ final class TotalDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'total downloads',
                 path: '/dub/downloads/vibe-d',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

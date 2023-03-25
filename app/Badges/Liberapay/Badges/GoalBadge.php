@@ -48,7 +48,7 @@ final class GoalBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'goal progress',
                 path: '/liberapay/goal/Changaco',
-                data: $this->render([]),
+                data: $this->render(['goal' => 50]),
             ),
         ];
     }

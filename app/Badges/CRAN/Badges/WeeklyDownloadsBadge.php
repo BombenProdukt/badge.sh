@@ -35,7 +35,7 @@ final class WeeklyDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'weekly downloads',
                 path: '/cran/downloads-weekly/Rcpp',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

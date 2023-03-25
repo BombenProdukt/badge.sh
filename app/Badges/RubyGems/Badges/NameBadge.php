@@ -37,7 +37,7 @@ final class NameBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'name',
                 path: '/rubygems/name/rails',
-                data: $this->render([]),
+                data: $this->render(['name' => 'rails']),
             ),
         ];
     }

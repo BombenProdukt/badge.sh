@@ -33,7 +33,7 @@ final class PlatformsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'total downloads',
                 path: '/package-control/downloads/GitGutter',
-                data: $this->render([]),
+                data: $this->render(['platforms' => ['Windows', 'Linux', 'OS X']]),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class DownloadsPerWeekBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'weekly downloads',
                 path: '/sourceforge/downloads-weekly/arianne/stendhal',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

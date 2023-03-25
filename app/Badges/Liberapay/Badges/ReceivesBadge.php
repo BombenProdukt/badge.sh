@@ -38,7 +38,7 @@ final class ReceivesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'receiving',
                 path: '/liberapay/receives/GIMP',
-                data: $this->render([]),
+                data: $this->render(['amount' => 0, 'currency' => 'EUR']),
             ),
         ];
     }

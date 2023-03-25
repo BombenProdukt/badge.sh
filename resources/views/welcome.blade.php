@@ -86,31 +86,14 @@
                             <div
                                 class="not-prose grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5">
                                 <div class="space-y-1">
-                                    @foreach ($examples as $link => $example)
+                                    @foreach ($examples as $example)
                                         <div class="grid gap-8 grid-cols-3 justify-center items-center">
-                                            @if(is_string($example))
-                                                <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">{{ $example }}</h3>
-                                            @else
-                                                <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">{{ $example->name }}</h3>
-                                            @endif
+                                            <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">{{ $example->name }}</h3>
 
-                                            @if(is_string($example))
-                                                <img src="{{ $link }}" />
-                                            @else
-                                                <x-badge :code="$example->data" />
-                                            @endif
+                                            <x-badge :code="$example->data" />
 
-                                            @if(is_string($example))
-                                                <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500" href="{{ $link }}" target="_blank">
-                                            @else
-                                                <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500" href="{{ $example->path }}" target="_blank">
-                                            @endif
-
-                                                @if(is_string($example))
-                                                    {{ Str::limit($link, 32) }}
-                                                @else
-                                                    {{ Str::limit($example->path, 32) }}
-                                                @endif
+                                            <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500" href="{{ $example->path }}" target="_blank">
+                                                {{ Str::limit($example->path, 32) }}
 
                                                 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"
                                                     class="mt-0.5 h-5 w-5 relative top-px -mr-1">

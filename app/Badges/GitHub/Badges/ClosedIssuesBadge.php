@@ -35,7 +35,7 @@ final class ClosedIssuesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'closed issues',
                 path: '/github/closed-issues/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

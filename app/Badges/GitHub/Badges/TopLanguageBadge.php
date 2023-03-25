@@ -39,7 +39,7 @@ final class TopLanguageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'top language',
                 path: '/github/top-language/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['label' => 'JavaScript', 'value' => '100']),
             ),
         ];
     }

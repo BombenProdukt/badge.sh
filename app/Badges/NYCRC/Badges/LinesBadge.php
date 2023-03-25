@@ -33,7 +33,7 @@ final class LinesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'lines',
                 path: '/nycrc/lines/yargs/yargs',
-                data: $this->render([]),
+                data: $this->render(['lines' => 1]),
             ),
         ];
     }

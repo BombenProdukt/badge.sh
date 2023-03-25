@@ -35,7 +35,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build status',
                 path: '/open-suse-build-service/status/openSUSE:Tools/osc/Debian_111/x86_64',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

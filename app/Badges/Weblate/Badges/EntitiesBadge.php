@@ -42,22 +42,22 @@ final class EntitiesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'components',
                 path: '/weblate/entities/components',
-                data: $this->render([]),
+                data: $this->render(['type' => 'components', 'count' => '1000']),
             ),
             new BadgePreviewData(
                 name: 'languages',
                 path: '/weblate/entities/languages',
-                data: $this->render([]),
+                data: $this->render(['type' => 'languages', 'count' => '1000']),
             ),
             new BadgePreviewData(
                 name: 'projects',
                 path: '/weblate/entities/projects',
-                data: $this->render([]),
+                data: $this->render(['type' => 'projects', 'count' => '1000']),
             ),
             new BadgePreviewData(
                 name: 'users',
                 path: '/weblate/entities/users',
-                data: $this->render([]),
+                data: $this->render(['type' => 'users', 'count' => '1000']),
             ),
         ];
     }

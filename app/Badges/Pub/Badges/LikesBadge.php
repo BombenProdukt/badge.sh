@@ -35,7 +35,7 @@ final class LikesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'likes',
                 path: '/pub/likes/firebase_core',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

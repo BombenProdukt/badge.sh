@@ -35,7 +35,7 @@ final class TotalDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'total downloads',
                 path: '/resharper/downloads/git',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

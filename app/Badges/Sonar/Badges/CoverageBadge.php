@@ -43,7 +43,7 @@ final class CoverageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/coverage/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
         ];
     }

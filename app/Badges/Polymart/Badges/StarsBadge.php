@@ -33,7 +33,7 @@ final class StarsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'stars',
                 path: '/polymart/stars/323',
-                data: $this->render([]),
+                data: $this->render(['stars' => '4.5']),
             ),
         ];
     }

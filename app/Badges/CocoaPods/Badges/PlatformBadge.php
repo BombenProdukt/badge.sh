@@ -35,7 +35,7 @@ final class PlatformBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'platform',
                 path: '/cocoapods/platform/AFNetworking',
-                data: $this->render([]),
+                data: $this->render(['platforms' => ['iOS', 'OS X', 'watchOS', 'tvOS']]),
             ),
         ];
     }

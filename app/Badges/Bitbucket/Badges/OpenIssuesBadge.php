@@ -35,7 +35,7 @@ final class OpenIssuesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'open issues',
                 path: '/bitbucket/open-issues/atlassian/adf-builder-javascript',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

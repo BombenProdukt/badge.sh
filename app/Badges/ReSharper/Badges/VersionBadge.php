@@ -35,17 +35,17 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version (stable channel)',
                 path: '/resharper/version/git',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (pre channel)',
                 path: '/resharper/version/git/pre',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (latest channel)',
                 path: '/resharper/version/git/latest',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

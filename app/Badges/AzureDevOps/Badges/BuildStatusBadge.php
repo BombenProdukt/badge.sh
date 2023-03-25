@@ -48,7 +48,22 @@ final class BuildStatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build status',
                 path: '/azure-devops/build-status/dnceng/public/51',
-                data: $this->render([]),
+                data: $this->render(['status' => 'completed']),
+            ),
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/azure-devops/build-status/dnceng/public/51',
+                data: $this->render(['status' => 'succeeded']),
+            ),
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/azure-devops/build-status/dnceng/public/51',
+                data: $this->render(['status' => 'partiallySucceeded']),
+            ),
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/azure-devops/build-status/dnceng/public/51',
+                data: $this->render(['status' => 'failed']),
             ),
         ];
     }

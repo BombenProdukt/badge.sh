@@ -42,7 +42,7 @@ final class KeysBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/whatpulse/keys/user/179734',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

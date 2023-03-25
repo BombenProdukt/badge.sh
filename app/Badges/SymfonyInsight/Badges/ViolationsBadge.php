@@ -82,7 +82,14 @@ final class ViolationsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'violations',
                 path: '/symfony-insight/violations/825be328-29f8-44f7-a750-f82818ae9111',
-                data: $this->render([]),
+                data: $this->render([
+                    'status' => 'finished',
+                    'number_of_violations' => 0,
+                    'number_of_critical_violations' => 0,
+                    'number_of_major_violations' => 0,
+                    'number_of_minor_violations' => 0,
+                    'number_of_info_violations' => 0,
+                ]),
             ),
         ];
     }

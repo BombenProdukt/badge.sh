@@ -41,12 +41,12 @@ final class AuthorBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version (plugin)',
                 path: '/wordpress/plugin/author/bbpress',
-                data: $this->render([]),
+                data: $this->render(['author' => 'johnjamesjacoby']),
             ),
             new BadgePreviewData(
                 name: 'version (theme)',
                 path: '/wordpress/theme/author/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['author' => 'johnjamesjacoby']),
             ),
         ];
     }

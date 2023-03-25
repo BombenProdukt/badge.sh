@@ -35,7 +35,7 @@ final class TotalCountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'total tests count',
                 path: '/testspace/total-count/swellaby/swellaby:testspace-sample/main',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

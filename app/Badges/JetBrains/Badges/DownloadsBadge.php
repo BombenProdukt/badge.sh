@@ -39,12 +39,12 @@ final class DownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'downloads',
                 path: '/jetbrains/downloads/13441-laravel-idea',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'downloads (legacy plugin)',
                 path: '/jetbrains/downloads/9630',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

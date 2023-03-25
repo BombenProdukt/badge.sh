@@ -41,7 +41,7 @@ final class PluginVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'plugin version',
                 path: '/jenkins/plugin-version/blueocean',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

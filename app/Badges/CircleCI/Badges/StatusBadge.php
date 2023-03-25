@@ -45,12 +45,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build',
                 path: '/circleci/status/github/circleci/ex',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'build (branch)',
                 path: '/circleci/status/github/circleci/ex/main',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

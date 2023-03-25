@@ -33,7 +33,7 @@ final class TechDebtBadge extends AbstractBadge
     {
         return [
             'label' => 'technical debt',
-            'message' => FormatNumber::execute($properties['ratio']),
+            'message' => FormatNumber::execute((float) $properties['ratio']),
             'messageColor' => match (true) {
                 $properties['ratio'] <= 5 => 'green.600' ,
                 $properties['ratio'] <= 10 => '9C1' ,
@@ -55,7 +55,27 @@ final class TechDebtBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'technical debt',
                 path: '/codeclimate/tech-debt/codeclimate/codeclimate',
-                data: $this->render([]),
+                data: $this->render(['ratio' => '0']),
+            ),
+            new BadgePreviewData(
+                name: 'technical debt',
+                path: '/codeclimate/tech-debt/codeclimate/codeclimate',
+                data: $this->render(['ratio' => '5']),
+            ),
+            new BadgePreviewData(
+                name: 'technical debt',
+                path: '/codeclimate/tech-debt/codeclimate/codeclimate',
+                data: $this->render(['ratio' => '10']),
+            ),
+            new BadgePreviewData(
+                name: 'technical debt',
+                path: '/codeclimate/tech-debt/codeclimate/codeclimate',
+                data: $this->render(['ratio' => '20']),
+            ),
+            new BadgePreviewData(
+                name: 'technical debt',
+                path: '/codeclimate/tech-debt/codeclimate/codeclimate',
+                data: $this->render(['ratio' => '50']),
             ),
         ];
     }

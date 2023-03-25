@@ -35,7 +35,7 @@ final class DownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'total downloads',
                 path: '/sourceforge/downloads/arianne/stendhal',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

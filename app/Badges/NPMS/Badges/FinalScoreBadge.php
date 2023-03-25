@@ -35,7 +35,7 @@ final class FinalScoreBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'final score',
                 path: '/npms/final-score/chalk',
-                data: $this->render([]),
+                data: $this->render(['score' => '4.5']),
             ),
         ];
     }

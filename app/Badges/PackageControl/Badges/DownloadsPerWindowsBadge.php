@@ -35,7 +35,7 @@ final class DownloadsPerWindowsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'windows downloads',
                 path: '/package-control/downloads-windows/GitGutter',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

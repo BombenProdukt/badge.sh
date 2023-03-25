@@ -35,7 +35,7 @@ final class VideoViewsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'video views',
                 path: '/youtube/video/views/wGJHwc5ksMA',
-                data: $this->render([]),
+                data: $this->render(['views' => '1000000']),
             ),
         ];
     }

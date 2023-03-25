@@ -35,7 +35,7 @@ final class TopicsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'topics',
                 path: '/discourse/topics/meta.discourse.org',
-                data: $this->render([]),
+                data: $this->render(['count' => '100']),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class DownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'total downloads',
                 path: '/eclipse-marketplace/downloads/notepad4e',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

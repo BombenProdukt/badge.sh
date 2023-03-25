@@ -35,7 +35,7 @@ final class RVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'r version',
                 path: '/cran/r-version/data.table',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

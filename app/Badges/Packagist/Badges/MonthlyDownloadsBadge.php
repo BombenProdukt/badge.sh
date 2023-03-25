@@ -42,7 +42,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'monthly downloads',
                 path: '/packagist/downloads-monthly/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

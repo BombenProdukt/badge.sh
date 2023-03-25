@@ -39,7 +39,7 @@ final class ProgressBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'progress',
                 path: '/poeditor/progress/abc123def456/323337/fr',
-                data: $this->render([]),
+                data: $this->render(['language' => 'French', 'percentage' => 0]),
             ),
         ];
     }

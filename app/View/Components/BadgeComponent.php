@@ -24,6 +24,10 @@ final class BadgeComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        return Badger::from($this->code)->render();
+        try {
+            return Badger::from($this->code)->render();
+        } catch (\Throwable $th) {
+            dd($this->code, $th);
+        }
     }
 }

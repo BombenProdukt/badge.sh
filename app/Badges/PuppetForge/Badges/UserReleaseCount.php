@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PuppetForge\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class UserReleaseCount extends AbstractBadge
@@ -18,18 +19,24 @@ final class UserReleaseCount extends AbstractBadge
 
     public function handle(string $user): array
     {
-        return $this->renderNumber('release count', $this->client->user($user)['release_count']);
+        return [
+            'count' => $this->client->user($user)['release_count'],
+        ];
     }
 
     public function render(array $properties): array
     {
-        //
+        return $this->renderNumber('release count', $properties['count']);
     }
 
     public function previews(): array
     {
         return [
-            '/puppetforge/user-release-count/camptocamp' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/puppetforge/user-release-count/camptocamp',
+                data: $this->render(['count' => '1']),
+            ),
         ];
     }
 }

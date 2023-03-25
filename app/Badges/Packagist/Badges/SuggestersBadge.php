@@ -40,7 +40,7 @@ final class SuggestersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'suggesters',
                 path: '/packagist/suggesters/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['suggesters' => '1']),
             ),
         ];
     }

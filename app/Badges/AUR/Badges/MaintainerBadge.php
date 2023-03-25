@@ -35,7 +35,7 @@ final class MaintainerBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'maintainer',
                 path: '/aur/maintainer/google-chrome',
-                data: $this->render([]),
+                data: $this->render(['maintainer' => 'archlinux']),
             ),
         ];
     }

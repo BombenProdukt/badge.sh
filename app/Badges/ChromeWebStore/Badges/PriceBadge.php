@@ -39,7 +39,7 @@ final class PriceBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'price',
                 path: '/chrome-web-store/price/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
-                data: $this->render([]),
+                data: $this->render(['amount' => '0', 'currency' => 'USD']),
             ),
         ];
     }

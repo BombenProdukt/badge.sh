@@ -34,7 +34,7 @@ final class FollowBadge extends AbstractBadge
     {
         return [
             'label' => 'follow @'.$properties['username'],
-            'message' => FormatNumber::execute($properties['count']),
+            'message' => FormatNumber::execute((float) $properties['count']),
             'messageColor' => '1da1f2',
         ];
     }
@@ -45,12 +45,12 @@ final class FollowBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'followers count',
                 path: '/twitter/follow/rustlang',
-                data: $this->render([]),
+                data: $this->render(['username' => 'rustlang', 'count' => '1000']),
             ),
             new BadgePreviewData(
                 name: 'followers count',
                 path: '/twitter/follow/golang',
-                data: $this->render([]),
+                data: $this->render(['username' => 'golang', 'count' => '1000']),
             ),
         ];
     }

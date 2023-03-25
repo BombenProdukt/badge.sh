@@ -64,9 +64,9 @@ final class BuildTestResultBadge extends AbstractBadge
         return [
             'label' => 'Test',
             'message' => collect([
-                $properties['passed'] ? FormatNumber::execute($properties['passed']).' passed' : null,
-                $properties['failed'] ? FormatNumber::execute($properties['failed']).' failed' : null,
-                $properties['ignored'] ? FormatNumber::execute($properties['ignored']).' skipped' : null,
+                $properties['passed'] ? FormatNumber::execute((float) $properties['passed']).' passed' : null,
+                $properties['failed'] ? FormatNumber::execute((float) $properties['failed']).' failed' : null,
+                $properties['ignored'] ? FormatNumber::execute((float) $properties['ignored']).' skipped' : null,
             ])->filter()->implode(', ') ?: 'unknown',
             'messageColor' => $color,
         ];
@@ -78,12 +78,17 @@ final class BuildTestResultBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'test results',
                 path: '/azure-devops/build-test/dnceng/public/51',
-                data: $this->render([]),
+                data: $this->render(['failed' => 1, 'ignored' => 0, 'passed' => 0, 'total' => 1]),
             ),
             new BadgePreviewData(
                 name: 'test results',
                 path: '/azure-devops/build-test/azuredevops-powershell/azuredevops-powershell/1',
-                data: $this->render([]),
+                data: $this->render(['failed' => 0, 'ignored' => 1, 'passed' => 0, 'total' => 1]),
+            ),
+            new BadgePreviewData(
+                name: 'test results',
+                path: '/azure-devops/build-test/azuredevops-powershell/azuredevops-powershell/1',
+                data: $this->render(['failed' => 0, 'ignored' => 0, 'passed' => 1, 'total' => 1]),
             ),
         ];
     }

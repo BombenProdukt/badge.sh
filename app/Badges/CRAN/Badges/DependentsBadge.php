@@ -35,7 +35,7 @@ final class DependentsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependents',
                 path: '/cran/dependents/R6',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

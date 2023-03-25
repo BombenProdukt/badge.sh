@@ -39,7 +39,7 @@ final class CloudAutomatedBuildBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'automated',
                 path: '/docker/cloud-automated/jrottenberg/ffmpeg',
-                data: $this->render([]),
+                data: $this->render(['settingsCount' => 1]),
             ),
         ];
     }

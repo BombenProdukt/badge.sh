@@ -33,7 +33,7 @@ final class DownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'downloads',
                 path: '/ore/downloads/nucleus',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

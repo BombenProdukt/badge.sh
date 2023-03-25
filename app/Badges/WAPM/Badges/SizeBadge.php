@@ -40,7 +40,7 @@ final class SizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'size',
                 path: '/wapm/size/coreutils',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
         ];
     }

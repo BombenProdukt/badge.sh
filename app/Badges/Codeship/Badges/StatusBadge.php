@@ -49,7 +49,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/codeship/status/0bdb0440-3af5-0133-00ea-0ebda3a33bf6',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class LatestVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/crates/version/regex',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

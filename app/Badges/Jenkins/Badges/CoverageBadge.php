@@ -58,17 +58,17 @@ final class CoverageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'coverage',
                 path: '/jenkins/coverage/api?job=https://jenkins.sqlalchemy.org/job/alembic_coverage',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
             new BadgePreviewData(
                 name: 'coverage',
                 path: '/jenkins/coverage/cobertura?job=https://jenkins.sqlalchemy.org/job/alembic_coverage',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
             new BadgePreviewData(
                 name: 'coverage',
                 path: '/jenkins/coverage/jacoco?job=https://jenkins.sqlalchemy.org/job/alembic_coverage',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
         ];
     }

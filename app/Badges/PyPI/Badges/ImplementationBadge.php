@@ -47,7 +47,7 @@ final class ImplementationBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'framework',
                 path: '/pypi/implementation/black',
-                data: $this->render([]),
+                data: $this->render(['implementation' => 'cpython']),
             ),
         ];
     }

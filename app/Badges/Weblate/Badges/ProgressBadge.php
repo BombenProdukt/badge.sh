@@ -35,7 +35,7 @@ final class ProgressBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'progress',
                 path: '/weblate/progress/godot-engine',
-                data: $this->render([]),
+                data: $this->render(['percentage' => 0]),
             ),
         ];
     }

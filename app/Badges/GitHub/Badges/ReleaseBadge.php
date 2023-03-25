@@ -67,17 +67,17 @@ final class ReleaseBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'stable release',
                 path: '/github/release/babel/babel',
-                data: $this->render([]),
+                data: $this->render(['name' => '1.0.0', 'preRelease' => true]),
             ),
             new BadgePreviewData(
                 name: 'latest release',
                 path: '/github/release/babel/babel/latest',
-                data: $this->render([]),
+                data: $this->render(['name' => '1.0.0', 'preRelease' => false]),
             ),
             new BadgePreviewData(
                 name: 'latest stable release',
                 path: '/github/release/babel/babel/stable',
-                data: $this->render([]),
+                data: $this->render(['name' => '1.0.0', 'preRelease' => false]),
             ),
         ];
     }

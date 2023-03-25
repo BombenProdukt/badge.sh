@@ -30,7 +30,7 @@ final class PostKarmaBadge extends AbstractBadge
     {
         return [
             'label' => 'u/'.$properties['username'],
-            'message' => FormatNumber::execute($properties['karma']).' post karma',
+            'message' => FormatNumber::execute((float) $properties['karma']).' post karma',
             'messageColor' => 'ff4500',
         ];
     }
@@ -41,7 +41,7 @@ final class PostKarmaBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'post karma',
                 path: '/reddit/post-karma/spez',
-                data: $this->render([]),
+                data: $this->render(['username' => 'spez', 'karma' => 0]),
             ),
         ];
     }

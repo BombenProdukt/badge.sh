@@ -43,7 +43,10 @@ final class YearlyBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'yearly income',
                 path: '/opencollective/yearly/webpack',
-                data: $this->render([]),
+                data: $this->render([
+                    'amount' => '1000000',
+                    'currency' => 'USD',
+                ]),
             ),
         ];
     }

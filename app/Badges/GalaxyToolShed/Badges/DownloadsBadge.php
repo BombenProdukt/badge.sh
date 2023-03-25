@@ -35,7 +35,7 @@ final class DownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'downloads',
                 path: '/galaxy-tool-shed/downloads/iuc/sra_tools',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

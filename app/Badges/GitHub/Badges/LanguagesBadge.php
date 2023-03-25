@@ -36,7 +36,7 @@ final class LanguagesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'languages',
                 path: '/github/languages/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['languages' => ['PHP', 'JavaScript', 'CSS']]),
             ),
         ];
     }

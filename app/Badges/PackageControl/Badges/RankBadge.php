@@ -35,7 +35,7 @@ final class RankBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rank',
                 path: '/package-control/rank/GitGutter',
-                data: $this->render([]),
+                data: $this->render(['rank' => 0]),
             ),
         ];
     }

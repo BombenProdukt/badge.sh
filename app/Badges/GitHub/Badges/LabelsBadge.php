@@ -34,7 +34,7 @@ final class LabelsBadge extends AbstractBadge
     {
         return [
             'label' => $properties['label'],
-            'message' => FormatNumber::execute($properties['count'] ?? 0),
+            'message' => FormatNumber::execute((float) $properties['count'] ?? 0),
             'messageColor' => $properties['color'] ? $properties['color'] : 'gray.600',
         ];
     }
@@ -51,17 +51,17 @@ final class LabelsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'issues by label',
                 path: '/github/issues-by-label/nodejs/node/ES%20Modules',
-                data: $this->render([]),
+                data: $this->render(['label' => 'Bug', 'count' => '1000', 'color' => 'green.600']),
             ),
             new BadgePreviewData(
                 name: 'open issues by label',
                 path: '/github/issues-by-label/atom/atom/help-wanted/open',
-                data: $this->render([]),
+                data: $this->render(['label' => 'Bug', 'count' => '1000', 'color' => 'green.600']),
             ),
             new BadgePreviewData(
                 name: 'closed issues by label',
                 path: '/github/issues-by-label/rust-lang/rust/B-RFC-approved/closed',
-                data: $this->render([]),
+                data: $this->render(['label' => 'Bug', 'count' => '1000', 'color' => 'red.600']),
             ),
         ];
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PuppetForge\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class UserModuleCount extends AbstractBadge
@@ -18,18 +19,24 @@ final class UserModuleCount extends AbstractBadge
 
     public function handle(string $user): array
     {
-        return $this->renderNumber('module count', $this->client->user($user)['module_count']);
+        return [
+            'count' => $this->client->user($user)['module_count'],
+        ];
     }
 
     public function render(array $properties): array
     {
-        //
+        return $this->renderNumber('module count', $properties['count']);
     }
 
     public function previews(): array
     {
         return [
-            '/puppetforge/user-module-count/camptocamp' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/puppetforge/user-module-count/camptocamp',
+                data: $this->render(['count' => '1']),
+            ),
         ];
     }
 }

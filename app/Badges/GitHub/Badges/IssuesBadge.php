@@ -35,7 +35,7 @@ final class IssuesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'issues',
                 path: '/github/issues/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

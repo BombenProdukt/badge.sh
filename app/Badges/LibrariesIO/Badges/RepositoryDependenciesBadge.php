@@ -53,7 +53,17 @@ final class RepositoryDependenciesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependencies',
                 path: '/libraries-io/repository-dependencies/phoenixframework/phoenix',
-                data: $this->render([]),
+                data: $this->render(['deprecatedCount' => 0, 'outdatedCount' => 0]),
+            ),
+            new BadgePreviewData(
+                name: 'dependencies',
+                path: '/libraries-io/repository-dependencies/phoenixframework/phoenix',
+                data: $this->render(['deprecatedCount' => 5, 'outdatedCount' => 0]),
+            ),
+            new BadgePreviewData(
+                name: 'dependencies',
+                path: '/libraries-io/repository-dependencies/phoenixframework/phoenix',
+                data: $this->render(['deprecatedCount' => 0, 'outdatedCount' => 5]),
             ),
         ];
     }

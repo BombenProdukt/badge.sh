@@ -37,7 +37,7 @@ final class ClosedPullRequestsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'closed PRs',
                 path: '/github/closed-pull-requests/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

@@ -37,7 +37,7 @@ final class AutomatedBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'automated',
                 path: '/docker/build-automated/jrottenberg/ffmpeg',
-                data: $this->render([]),
+                data: $this->render(['is_automated' => true]),
             ),
         ];
     }

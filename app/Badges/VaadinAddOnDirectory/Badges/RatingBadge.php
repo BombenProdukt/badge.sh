@@ -33,9 +33,9 @@ final class RatingBadge extends AbstractBadge
     {
         return [
             new BadgePreviewData(
-                name: '',
+                name: 'rating',
                 path: '/vaadin/rating/vaadinvaadin-grid',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
         ];
     }

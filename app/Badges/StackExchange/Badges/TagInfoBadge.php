@@ -37,7 +37,7 @@ final class TagInfoBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'tag info',
                 path: '/stack-exchange/tag-info/{package}',
-                data: $this->render([]),
+                data: $this->render(['query' => 'package', 'site' => 'stackoverflow', 'count' => '1000000']),
             ),
         ];
     }

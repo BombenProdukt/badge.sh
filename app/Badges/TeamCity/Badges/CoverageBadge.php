@@ -61,7 +61,7 @@ final class CoverageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'coverage status',
                 path: '/team-city/coverage/ReactJSNet_PullRequests?instance=https://teamcity.jetbrains.com',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
         ];
     }

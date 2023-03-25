@@ -20,13 +20,13 @@ final class UsersBadge extends AbstractBadge
     public function handle(string $package): array
     {
         return [
-            'count' => $this->client->get($package)['average_daily_users'],
+            'users' => $this->client->get($package)['average_daily_users'],
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderNumber('users', $properties['count']);
+        return $this->renderNumber('users', $properties['users']);
     }
 
     public function previews(): array
@@ -35,7 +35,7 @@ final class UsersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'users',
                 path: '/amo/users/markdown-viewer-chrome',
-                data: $this->render([]),
+                data: $this->render(['users' => '1000000']),
             ),
         ];
     }

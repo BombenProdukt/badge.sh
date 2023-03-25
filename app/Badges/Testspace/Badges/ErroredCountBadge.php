@@ -33,7 +33,7 @@ final class ErroredCountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'errored tests count',
                 path: '/testspace/errored-count/swellaby/swellaby:testspace-sample/main',
-                data: $this->render([]),
+                data: $this->render(['errored' => 1]),
             ),
         ];
     }

@@ -42,7 +42,7 @@ final class UploadBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/whatpulse/upload/user/179734',
-                data: $this->render([]),
+                data: $this->render(['speed' => '1024']),
             ),
         ];
     }

@@ -39,7 +39,7 @@ final class ArchitectureBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'supported architectures',
                 path: '/snapcraft/architecture/telegram-desktop',
-                data: $this->render([]),
+                data: $this->render(['architectures' => ['amd64', 'arm64', 'armhf', 'i386', 'ppc64el', 's390x']]),
             ),
         ];
     }

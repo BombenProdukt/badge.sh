@@ -64,12 +64,12 @@ final class NPMBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'vulnerability scan (branch)',
                 path: '/snyk/npm/@babel/core',
-                data: $this->render([]),
+                data: $this->render(['message' => '0', 'messageColor' => 'green.600']),
             ),
             new BadgePreviewData(
                 name: 'vulnerability scan (branch)',
                 path: '/snyk/npm/@babel/core/6.x',
-                data: $this->render([]),
+                data: $this->render(['message' => '0', 'messageColor' => 'green.600']),
             ),
         ];
     }

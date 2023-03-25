@@ -20,13 +20,13 @@ final class RatingCountBadge extends AbstractBadge
     public function handle(string $packageName): array
     {
         return [
-            'count' => $this->client->get($packageName)['ratingCount'],
+            'rating' => $this->client->get($packageName)['ratingCount'],
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderNumber('rating count', $properties['count']);
+        return $this->renderNumber('rating count', $properties['rating']);
     }
 
     public function previews(): array
@@ -35,7 +35,7 @@ final class RatingCountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rating count',
                 path: '/vaadin/rating-count/vaadinvaadin-grid',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
         ];
     }

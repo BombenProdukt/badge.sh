@@ -6,6 +6,7 @@ namespace App\Badges\VaadinAddOnDirectory\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Carbon\Carbon;
 
 final class ReleaseDateBadge extends AbstractBadge
 {
@@ -35,7 +36,7 @@ final class ReleaseDateBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'release date',
                 path: '/vaadin/release-date/vaadinvaadin-grid',
-                data: $this->render([]),
+                data: $this->render(['date' => Carbon::now()->unix()]),
             ),
         ];
     }

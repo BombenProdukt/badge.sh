@@ -39,7 +39,7 @@ final class GoModBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'lerna',
                 path: '/github/gomod/golang/go',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

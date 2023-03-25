@@ -29,7 +29,7 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($properties['downloads']).' /version',
+            'message' => FormatNumber::execute((float) $properties['downloads']).' /version',
             'messageColor' => 'green.600',
         ];
     }
@@ -40,7 +40,7 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'latest version downloads',
                 path: '/rubygems/downloads-recently/rails',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

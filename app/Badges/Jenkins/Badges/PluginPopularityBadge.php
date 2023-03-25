@@ -41,7 +41,7 @@ final class PluginPopularityBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'plugin popularity',
                 path: '/jenkins/plugin-popularity/blueocean',
-                data: $this->render([]),
+                data: $this->render(['popularity' => 0]),
             ),
         ];
     }

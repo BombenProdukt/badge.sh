@@ -35,7 +35,7 @@ final class PreloadBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/hsts/preload/github.com',
-                data: $this->render([]),
+                data: $this->render(['status' => 'unknown']),
             ),
         ];
     }

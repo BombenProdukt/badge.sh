@@ -45,7 +45,7 @@ final class DownloadsPerMonthBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'monthly downloads',
                 path: '/package-control/downloads-monthly/GitGutter',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

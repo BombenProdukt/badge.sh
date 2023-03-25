@@ -44,7 +44,7 @@ final class InstallationsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'installations',
                 path: '/wikiapiary/installations/extension/ParserFunctions',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000000']),
             ),
         ];
     }

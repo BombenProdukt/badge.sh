@@ -23,18 +23,17 @@ final class ShowBadgeBadge extends AbstractBadge
         return Cache::get($name);
     }
 
-    public function render(array $properties): array
-    {
-        //
-    }
-
     public function previews(): array
     {
         return [
             new BadgePreviewData(
                 name: 'memoized badge for deploy status',
                 path: '/memo/deployed',
-                data: $this->render([]),
+                data: $this->render([
+                    'label' => 'deployed',
+                    'message' => 'yes',
+                    'messageColor' => 'green.600',
+                ]),
             ),
         ];
     }

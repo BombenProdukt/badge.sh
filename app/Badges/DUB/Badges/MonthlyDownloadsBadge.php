@@ -33,7 +33,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'monthly downloads',
                 path: '/dub/downloads-monthly/vibe-d',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

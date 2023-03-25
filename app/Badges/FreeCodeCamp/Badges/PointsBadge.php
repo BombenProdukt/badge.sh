@@ -33,7 +33,7 @@ final class PointsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'points',
                 path: '/freecodecamp/points/sethi',
-                data: $this->render([]),
+                data: $this->render(['points' => 0]),
             ),
         ];
     }

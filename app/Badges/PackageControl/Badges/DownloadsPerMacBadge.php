@@ -35,7 +35,7 @@ final class DownloadsPerMacBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'macOS downloads',
                 path: '/package-control/downloads-mac/GitGutter',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

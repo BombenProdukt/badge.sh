@@ -46,7 +46,7 @@ final class SprintBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'sprint',
                 path: '/jira/sprint/94?instance=https://jira.spring.io',
-                data: $this->render([]),
+                data: $this->render(['percentage' => 0]),
             ),
         ];
     }

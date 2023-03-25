@@ -40,7 +40,13 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/tas/tests/github/tasdemo/axios',
-                data: $this->render([]),
+                data: $this->render([
+                    'status' => 'passed',
+                    'passed' => 1,
+                    'failed' => 0,
+                    'skipped' => 0,
+                    'total_tests' => 1,
+                ]),
             ),
         ];
     }

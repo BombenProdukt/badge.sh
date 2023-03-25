@@ -37,7 +37,7 @@ final class BTCBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'btc address',
                 path: '/keybase/btc/skyplabs',
-                data: $this->render([]),
+                data: $this->render(['address' => '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa']),
             ),
         ];
     }

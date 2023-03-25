@@ -33,7 +33,7 @@ final class CategoryBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'category',
                 path: '/ore/category/nucleus',
-                data: $this->render([]),
+                data: $this->render(['title' => 'Nucleus']),
             ),
         ];
     }

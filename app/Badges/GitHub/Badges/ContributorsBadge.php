@@ -36,7 +36,7 @@ final class ContributorsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'contributors',
                 path: '/github/contributors/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

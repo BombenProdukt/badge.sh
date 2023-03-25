@@ -48,12 +48,12 @@ final class DartPlatformBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dart-platform',
                 path: '/pub/dart-platform/rxdart',
-                data: $this->render([]),
+                data: $this->render(['versions' => ['dart', 'flutter']]),
             ),
             new BadgePreviewData(
                 name: 'dart-platform',
                 path: '/pub/dart-platform/google_sign_in',
-                data: $this->render([]),
+                data: $this->render(['versions' => ['dart', 'flutter']]),
             ),
         ];
     }

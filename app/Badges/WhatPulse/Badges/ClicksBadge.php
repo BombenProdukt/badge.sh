@@ -42,7 +42,7 @@ final class ClicksBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/whatpulse/clicks/user/179734',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

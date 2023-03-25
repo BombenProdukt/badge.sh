@@ -35,7 +35,7 @@ final class CountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'tree count',
                 path: '/treeware/trees/stoplightio/spectral',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

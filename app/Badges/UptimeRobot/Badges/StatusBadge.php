@@ -45,7 +45,27 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/uptimerobot/status/m780862024-50db2c44c703e5c68d6b1ebb',
-                data: $this->render([]),
+                data: $this->render(['status' => '0']),
+            ),
+            new BadgePreviewData(
+                name: 'status',
+                path: '/uptimerobot/status/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render(['status' => '1']),
+            ),
+            new BadgePreviewData(
+                name: 'status',
+                path: '/uptimerobot/status/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render(['status' => '2']),
+            ),
+            new BadgePreviewData(
+                name: 'status',
+                path: '/uptimerobot/status/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render(['status' => '8']),
+            ),
+            new BadgePreviewData(
+                name: 'status',
+                path: '/uptimerobot/status/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render(['status' => '9']),
             ),
         ];
     }

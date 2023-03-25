@@ -39,7 +39,7 @@ final class BuildBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build',
                 path: '/scrutinizer-ci/build/g/filp/whoops',
-                data: $this->render([]),
+                data: $this->render(['status' => 'passing']),
             ),
         ];
     }

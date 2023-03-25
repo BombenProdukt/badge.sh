@@ -6,6 +6,7 @@ namespace App\Badges\Steam\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Carbon\Carbon;
 
 final class FileReleaseDateBadge extends AbstractBadge
 {
@@ -35,7 +36,7 @@ final class FileReleaseDateBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'file last modified',
                 path: '/steam/file-release-date/100',
-                data: $this->render([]),
+                data: $this->render(['date' => Carbon::now()->unix()]),
             ),
         ];
     }

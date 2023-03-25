@@ -6,6 +6,7 @@ namespace App\Badges\VisualStudioMarketplace\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Carbon\Carbon;
 
 final class LastUpdateBadge extends AbstractBadge
 {
@@ -35,7 +36,7 @@ final class LastUpdateBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'last updated',
                 path: '/vs-marketplace/last-modified/vscodevim.vim',
-                data: $this->render([]),
+                data: $this->render(['date' => Carbon::now()->unix()]),
             ),
         ];
     }

@@ -21,14 +21,8 @@ final class ReleaseBadge extends AbstractBadge
 
     public function handle(string $repo): array
     {
-        $response = $this->client->rest($repo, 'releases')->json(0);
-
-        if (empty($response)) {
-            return [];
-        }
-
         return [
-            'version' => $response['name'],
+            'version' => $this->client->rest($repo, 'releases')->json('0.name'),
         ];
     }
 
@@ -56,7 +50,7 @@ final class ReleaseBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'latest release',
                 path: '/gitlab/latest-release/veloren/veloren',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

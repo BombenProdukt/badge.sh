@@ -29,7 +29,7 @@ final class LikesBadge extends AbstractBadge
     {
         return [
             'label' => 'likes',
-            'message' => FormatNumber::execute($properties['count']),
+            'message' => FormatNumber::execute((float) $properties['count']),
             'messageColor' => 'F1680D',
         ];
     }
@@ -40,7 +40,7 @@ final class LikesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'likes',
                 path: '/peertube/likes/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

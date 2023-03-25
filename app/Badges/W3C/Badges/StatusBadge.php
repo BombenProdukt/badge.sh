@@ -44,7 +44,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/w3c/status?url=https://youtube.com/',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

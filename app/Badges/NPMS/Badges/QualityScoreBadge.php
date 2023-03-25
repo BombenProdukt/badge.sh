@@ -33,7 +33,7 @@ final class QualityScoreBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'quality score',
                 path: '/npms/quality-score/chalk',
-                data: $this->render([]),
+                data: $this->render(['quality' => '4.5']),
             ),
         ];
     }

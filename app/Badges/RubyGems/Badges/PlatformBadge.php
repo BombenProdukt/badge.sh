@@ -33,7 +33,7 @@ final class PlatformBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'platform',
                 path: '/rubygems/platform/rails',
-                data: $this->render([]),
+                data: $this->render(['platform' => 'ruby']),
             ),
         ];
     }

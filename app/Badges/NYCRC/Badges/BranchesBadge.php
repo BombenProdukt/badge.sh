@@ -35,7 +35,7 @@ final class BranchesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'branches',
                 path: '/nycrc/branches/yargs/yargs',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

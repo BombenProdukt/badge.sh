@@ -33,7 +33,7 @@ final class ViewsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'views',
                 path: '/ore/views/nucleus',
-                data: $this->render([]),
+                data: $this->render(['views' => '1000000']),
             ),
         ];
     }

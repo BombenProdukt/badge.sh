@@ -80,7 +80,7 @@ final class FixTimeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'Time taken to fix a broken build',
                 path: '/jenkins/fix-time/jenkins.mono-project.com/job/test-mono-mainline',
-                data: $this->render([]),
+                data: $this->render(['fixTime' => '0', 'statusColorTime' => '0']),
             ),
         ];
     }

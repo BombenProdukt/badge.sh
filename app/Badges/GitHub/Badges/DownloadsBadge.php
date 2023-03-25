@@ -50,12 +50,12 @@ final class DownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'assets downloads for latest release',
                 path: '/github/downloads/electron/electron',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'assets downloads for a tag',
                 path: '/github/downloads/electron/electron/v7.0.0',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

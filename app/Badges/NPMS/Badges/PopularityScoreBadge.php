@@ -33,7 +33,7 @@ final class PopularityScoreBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'popularity score',
                 path: '/npms/popularity-score/chalk',
-                data: $this->render([]),
+                data: $this->render(['popularity' => '4.5']),
             ),
         ];
     }

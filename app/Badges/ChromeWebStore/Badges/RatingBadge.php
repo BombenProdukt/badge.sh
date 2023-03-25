@@ -44,7 +44,7 @@ final class RatingBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rating',
                 path: '/chrome-web-store/rating/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
         ];
     }

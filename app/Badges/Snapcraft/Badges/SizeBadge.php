@@ -42,17 +42,17 @@ final class SizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'distribution size',
                 path: '/snapcraft/size/beekeeper-studio',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
             new BadgePreviewData(
                 name: 'distribution size',
                 path: '/snapcraft/size/beekeeper-studio/arm64',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
             new BadgePreviewData(
                 name: 'distribution size',
                 path: '/snapcraft/size/beekeeper-studio/armhf/edge',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
         ];
     }

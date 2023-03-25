@@ -35,7 +35,7 @@ final class ScoreBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/ossf-scorecard/score/github.com/rohankh532/org-workflow-add',
-                data: $this->render([]),
+                data: $this->render(['score' => '4.5']),
             ),
         ];
     }

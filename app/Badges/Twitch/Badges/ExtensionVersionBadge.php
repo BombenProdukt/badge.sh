@@ -33,7 +33,7 @@ final class ExtensionVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/twitch/extension-version/2nq5cu1nc9f4p75b791w8d3yo9d195',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

@@ -40,7 +40,17 @@ final class AccessibilityBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/wheelmap/accessibility/26699541',
-                data: $this->render([]),
+                data: $this->render(['accessibility' => 'yes']),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/wheelmap/accessibility/26699541',
+                data: $this->render(['accessibility' => 'limited']),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/wheelmap/accessibility/26699541',
+                data: $this->render(['accessibility' => 'no']),
             ),
         ];
     }

@@ -40,7 +40,7 @@ final class FaversBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'favers',
                 path: '/packagist/favers/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['favers' => 1000000000]),
             ),
         ];
     }

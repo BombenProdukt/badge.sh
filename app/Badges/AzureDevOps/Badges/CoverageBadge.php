@@ -60,7 +60,7 @@ final class CoverageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'test coverage',
                 path: '/azure-devops/coverage/swellaby/opensource/25',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
         ];
     }

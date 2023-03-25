@@ -7,6 +7,7 @@ namespace App\Badges\GitLab\Badges;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
+use Carbon\Carbon;
 use Illuminate\Routing\Route;
 
 final class LastCommitBadge extends AbstractBadge
@@ -42,17 +43,17 @@ final class LastCommitBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'last commit',
                 path: '/gitlab/last-commit/gitlab-org/gitlab-development-kit',
-                data: $this->render([]),
+                data: $this->render(['date' => Carbon::now()->unix()]),
             ),
             new BadgePreviewData(
                 name: 'last commit (branch ref)',
                 path: '/gitlab/last-commit/gitlab-org/gitlab-development-kit/updating-chromedriver-install-v2',
-                data: $this->render([]),
+                data: $this->render(['date' => Carbon::now()->unix()]),
             ),
             new BadgePreviewData(
                 name: 'last commit (tag ref)',
                 path: '/gitlab/last-commit/gitlab-org/gitlab-development-kit/v0.2.5',
-                data: $this->render([]),
+                data: $this->render(['date' => Carbon::now()->unix()]),
             ),
         ];
     }

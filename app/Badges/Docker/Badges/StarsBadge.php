@@ -35,12 +35,12 @@ final class StarsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'stars (library)',
                 path: '/docker/stars/library/ubuntu',
-                data: $this->render([]),
+                data: $this->render(['stars' => '4.5']),
             ),
             new BadgePreviewData(
                 name: 'stars (icon & label)',
                 path: '/docker/stars/library/mongo',
-                data: $this->render([]),
+                data: $this->render(['stars' => '4.5']),
             ),
         ];
     }

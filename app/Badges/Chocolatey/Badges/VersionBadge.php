@@ -35,33 +35,18 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version (stable channel)',
                 path: '/chocolatey/version/git',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (pre channel)',
                 path: '/chocolatey/version/git/pre',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (latest channel)',
                 path: '/chocolatey/version/git/latest',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
-    }
-
-    private function pre(array $versions): array
-    {
-        return \array_filter($versions, fn ($v) => \str_contains($v, '-'));
-    }
-
-    private function stable(array $versions): array
-    {
-        return \array_filter($versions, fn ($v) => !\str_contains($v, '-'));
-    }
-
-    private function latest(array $versions): string|null
-    {
-        return \count($versions) > 0 ? \end($versions) : null;
     }
 }

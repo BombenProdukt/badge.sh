@@ -38,7 +38,7 @@ final class GivesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'giving',
                 path: '/liberapay/gives/aurelienpierre',
-                data: $this->render([]),
+                data: $this->render(['amount' => '10', 'currency' => 'EUR']),
             ),
         ];
     }

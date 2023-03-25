@@ -35,7 +35,7 @@ final class GameVersionsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'game versions',
                 path: '/modrinth/game-versions/AANobbMI',
-                data: $this->render([]),
+                data: $this->render(['versions' => ['1.16.5', '1.17.1']]),
             ),
         ];
     }

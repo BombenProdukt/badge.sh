@@ -41,7 +41,7 @@ final class CrystalBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'crystal version',
                 path: '/shardbox/crystal-version/amber',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

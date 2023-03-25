@@ -42,7 +42,7 @@ final class DownloadBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/whatpulse/download/user/179734',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

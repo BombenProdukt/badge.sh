@@ -42,12 +42,12 @@ final class MinzipBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'minified + gzip',
                 path: '/bundlephobia/minzip/react',
-                data: $this->render([]),
+                data: $this->render(['size' => '1000']),
             ),
             new BadgePreviewData(
                 name: '(scoped pkg) minified + gzip',
                 path: '/bundlephobia/minzip/@material-ui/core',
-                data: $this->render([]),
+                data: $this->render(['size' => '1000']),
             ),
         ];
     }

@@ -47,17 +47,17 @@ final class AzureDevOpsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'downloads',
                 path: '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository',
-                data: $this->render([]),
+                data: $this->render(['measurement' => 'services', 'installations' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'downloads',
                 path: '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/services',
-                data: $this->render([]),
+                data: $this->render(['measurement' => 'on-prem', 'onpremDownloads' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'downloads',
                 path: '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/on-prem',
-                data: $this->render([]),
+                data: $this->render(['measurement' => '', 'installations' => '1000000', 'onpremDownloads' => '1000000']),
             ),
         ];
     }

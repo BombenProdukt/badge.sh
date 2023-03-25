@@ -35,7 +35,7 @@ final class LinesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/tokei/lines/github/badges/shields',
-                data: $this->render([]),
+                data: $this->render(['lines' => '1000']),
             ),
         ];
     }

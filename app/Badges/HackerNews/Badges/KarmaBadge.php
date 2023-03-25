@@ -36,7 +36,7 @@ final class KarmaBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'karma',
                 path: '/hackernews/karma/pg',
-                data: $this->render([]),
+                data: $this->render(['username' => 'pg', 'karma' => '1000']),
             ),
         ];
     }

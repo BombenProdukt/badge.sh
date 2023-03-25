@@ -58,12 +58,12 @@ final class ProgressBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'progress',
                 path: '/localizely/progress/5cc34208-0418-40b1-8353-acc70c95f802/main?token=0f4d5e31a44f48dcbab966c52cfb0a67c5f1982186c14b85ab389a031dbc225a',
-                data: $this->render([]),
+                data: $this->render(['language' => 'en-US', 'percentage' => 0]),
             ),
             new BadgePreviewData(
                 name: 'progress for language',
                 path: '/localizely/progress/5cc34208-0418-40b1-8353-acc70c95f802/main?token=0f4d5e31a44f48dcbab966c52cfb0a67c5f1982186c14b85ab389a031dbc225a&languageCode=en-US',
-                data: $this->render([]),
+                data: $this->render(['language' => 'en-US', 'percentage' => 50]),
             ),
         ];
     }

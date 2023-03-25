@@ -55,32 +55,32 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'node version',
                 path: '/node/version/passport',
-                data: $this->render([]),
+                data: $this->render(['package' => 'passport', 'tag' => 'latest', 'version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'node version (tag)',
                 path: '/node/version/passport/latest',
-                data: $this->render([]),
+                data: $this->render(['package' => 'passport', 'tag' => 'latest', 'version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'node version (tag, custom registry)',
                 path: '/node/version/passport/latest?registry=https://registry.npmjs.com',
-                data: $this->render([]),
+                data: $this->render(['package' => 'passport', 'tag' => 'latest', 'version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'node version (scoped)',
                 path: '/node/version/@stdlib/stdlib',
-                data: $this->render([]),
+                data: $this->render(['package' => 'passport', 'tag' => 'latest', 'version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'node version (scoped, tag)',
                 path: '/node/version/@stdlib/stdlib/latest',
-                data: $this->render([]),
+                data: $this->render(['package' => 'passport', 'tag' => 'latest', 'version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'node version (scoped, tag, custom registry)',
                 path: '/node/version/@stdlib/stdlib/latest?registry=https://registry.npmjs.com',
-                data: $this->render([]),
+                data: $this->render(['package' => 'passport', 'tag' => 'latest', 'version' => '1.0.0']),
             ),
         ];
     }

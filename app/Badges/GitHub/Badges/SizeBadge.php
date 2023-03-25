@@ -34,7 +34,7 @@ final class SizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'size',
                 path: '/github/size/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
         ];
     }

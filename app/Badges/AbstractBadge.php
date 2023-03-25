@@ -18,6 +18,7 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use PreemStudio\Formatter\FormatBytes;
+use PreemStudio\Formatter\FormatMoney;
 use PreemStudio\Formatter\FormatNumber;
 use PreemStudio\Formatter\FormatPercentage;
 use PreemStudio\Formatter\FormatStars;
@@ -62,7 +63,10 @@ abstract class AbstractBadge implements Badge
         return \explode(' Badge', Str::title(Str::snake(class_basename($this), ' ')))[0];
     }
 
-    abstract public function render(array $properties): array;
+    public function render(array $properties): array
+    {
+        return $properties;
+    }
 
     public function deprecated(): array
     {
@@ -152,74 +156,74 @@ abstract class AbstractBadge implements Badge
         ];
     }
 
-    protected function renderDownloadsPerWindows(int $count): array
+    protected function renderDownloadsPerWindows(mixed $count): array
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($count).'/windows',
+            'message' => FormatNumber::execute((float) $count).'/windows',
             'messageColor' => 'green.600',
         ];
     }
 
-    protected function renderDownloadsPerMac(int $count): array
+    protected function renderDownloadsPerMac(mixed $count): array
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($count).'/mac',
+            'message' => FormatNumber::execute((float) $count).'/mac',
             'messageColor' => 'green.600',
         ];
     }
 
-    protected function renderDownloadsPerLinux(int $count): array
+    protected function renderDownloadsPerLinux(mixed $count): array
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($count).'/linux',
+            'message' => FormatNumber::execute((float) $count).'/linux',
             'messageColor' => 'green.600',
         ];
     }
 
-    protected function renderDownloadsPerDay(int $count): array
+    protected function renderDownloadsPerDay(mixed $count): array
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($count).'/day',
+            'message' => FormatNumber::execute((float) $count).'/day',
             'messageColor' => 'green.600',
         ];
     }
 
-    protected function renderDownloadsPerMonth(int $count): array
+    protected function renderDownloadsPerMonth(mixed $count): array
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($count).'/month',
+            'message' => FormatNumber::execute((float) $count).'/month',
             'messageColor' => 'green.600',
         ];
     }
 
-    protected function renderDownloadsPerQuarter(int $count): array
+    protected function renderDownloadsPerQuarter(mixed $count): array
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($count).'/quarter',
+            'message' => FormatNumber::execute((float) $count).'/quarter',
             'messageColor' => 'green.600',
         ];
     }
 
-    protected function renderDownloadsPerWeek(int $count): array
+    protected function renderDownloadsPerWeek(mixed $count): array
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($count).'/week',
+            'message' => FormatNumber::execute((float) $count).'/week',
             'messageColor' => 'green.600',
         ];
     }
 
-    protected function renderDownloadsPerYear(int $count): array
+    protected function renderDownloadsPerYear(mixed $count): array
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($count).'/year',
+            'message' => FormatNumber::execute((float) $count).'/year',
             'messageColor' => 'green.600',
         ];
     }
@@ -237,7 +241,7 @@ abstract class AbstractBadge implements Badge
     {
         return [
             'label' => 'installations',
-            'message' => FormatNumber::execute($count).'/windows',
+            'message' => FormatNumber::execute((float) $count).'/windows',
             'messageColor' => 'green.600',
         ];
     }
@@ -246,7 +250,7 @@ abstract class AbstractBadge implements Badge
     {
         return [
             'label' => 'installations',
-            'message' => FormatNumber::execute($count).'/mac',
+            'message' => FormatNumber::execute((float) $count).'/mac',
             'messageColor' => 'green.600',
         ];
     }
@@ -255,7 +259,7 @@ abstract class AbstractBadge implements Badge
     {
         return [
             'label' => 'installations',
-            'message' => FormatNumber::execute($count).'/linux',
+            'message' => FormatNumber::execute((float) $count).'/linux',
             'messageColor' => 'green.600',
         ];
     }
@@ -264,7 +268,7 @@ abstract class AbstractBadge implements Badge
     {
         return [
             'label' => 'installations',
-            'message' => FormatNumber::execute($count).'/day',
+            'message' => FormatNumber::execute((float) $count).'/day',
             'messageColor' => 'green.600',
         ];
     }
@@ -273,7 +277,7 @@ abstract class AbstractBadge implements Badge
     {
         return [
             'label' => 'installations',
-            'message' => FormatNumber::execute($count).'/month',
+            'message' => FormatNumber::execute((float) $count).'/month',
             'messageColor' => 'green.600',
         ];
     }
@@ -282,7 +286,7 @@ abstract class AbstractBadge implements Badge
     {
         return [
             'label' => 'installations',
-            'message' => FormatNumber::execute($count).'/quarter',
+            'message' => FormatNumber::execute((float) $count).'/quarter',
             'messageColor' => 'green.600',
         ];
     }
@@ -291,7 +295,7 @@ abstract class AbstractBadge implements Badge
     {
         return [
             'label' => 'installations',
-            'message' => FormatNumber::execute($count).'/week',
+            'message' => FormatNumber::execute((float) $count).'/week',
             'messageColor' => 'green.600',
         ];
     }
@@ -300,7 +304,7 @@ abstract class AbstractBadge implements Badge
     {
         return [
             'label' => 'installations',
-            'message' => FormatNumber::execute($count).'/year',
+            'message' => FormatNumber::execute((float) $count).'/year',
             'messageColor' => 'green.600',
         ];
     }
@@ -332,11 +336,11 @@ abstract class AbstractBadge implements Badge
         ];
     }
 
-    protected function renderLines(int $count): array
+    protected function renderLines(mixed $count): array
     {
         return [
             'label' => 'lines of code',
-            'message' => FormatNumber::execute($count),
+            'message' => FormatNumber::execute((int) $count),
             'messageColor' => 'blue.600',
         ];
     }
@@ -386,11 +390,11 @@ abstract class AbstractBadge implements Badge
         ];
     }
 
-    protected function renderSize(int $count, ?string $label = null): array
+    protected function renderSize(mixed $count, ?string $label = null): array
     {
         return [
             'label' => $label ?? 'size',
-            'message' => FormatBytes::execute($count),
+            'message' => FormatBytes::execute((int) $count),
             'messageColor' => 'blue.600',
         ];
     }

@@ -42,7 +42,7 @@ final class TagsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'tags',
                 path: '/gitlab/tags/commento/commento',
-                data: $this->render([]),
+                data: $this->render(['count' => '1']),
             ),
         ];
     }

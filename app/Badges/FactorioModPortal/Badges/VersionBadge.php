@@ -33,7 +33,7 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'mod portal version',
                 path: '/factorio-mod-portal/version/rso-mod',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

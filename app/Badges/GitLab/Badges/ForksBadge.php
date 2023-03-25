@@ -42,7 +42,7 @@ final class ForksBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'forks',
                 path: '/gitlab/forks/inkscape/inkscape',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

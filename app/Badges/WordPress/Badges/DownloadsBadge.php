@@ -41,12 +41,12 @@ final class DownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'total downloads (plugin)',
                 path: '/wordpress/plugin/downloads/bbpress',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'total downloads (theme)',
                 path: '/wordpress/theme/downloads/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

@@ -49,12 +49,12 @@ final class InstallBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'install size',
                 path: '/packagephobia/size/webpack',
-                data: $this->render([]),
+                data: $this->render(['size' => '1.2 kB', 'color' => '#4c1']),
             ),
             new BadgePreviewData(
                 name: 'install size',
                 path: '/packagephobia/size/@tusbar/cache-control',
-                data: $this->render([]),
+                data: $this->render(['size' => '1.2 kB', 'color' => '#4c1']),
             ),
         ];
     }

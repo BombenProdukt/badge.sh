@@ -55,7 +55,7 @@ final class LangsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'langs',
                 path: '/lgtm/languages/github/apache/cloudstack/java',
-                data: $this->render([]),
+                data: $this->render(['languages' => ['JavaScript', 'HTML', 'CSS']]),
             ),
         ];
     }

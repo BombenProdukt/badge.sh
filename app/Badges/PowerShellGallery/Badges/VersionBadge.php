@@ -35,17 +35,17 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version (stable channel)',
                 path: '/powershellgallery/version/Azure.Storage',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (pre channel)',
                 path: '/powershellgallery/version/Azure.Storage/pre',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (latest channel)',
                 path: '/powershellgallery/version/Azure.Storage/latest',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

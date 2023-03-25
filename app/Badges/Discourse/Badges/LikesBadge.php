@@ -35,7 +35,7 @@ final class LikesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'likes',
                 path: '/discourse/likes/meta.discourse.org',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

@@ -33,7 +33,7 @@ final class WatchersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'watchers',
                 path: '/ore/watchers/nucleus',
-                data: $this->render([]),
+                data: $this->render(['watchers' => '1000000']),
             ),
         ];
     }

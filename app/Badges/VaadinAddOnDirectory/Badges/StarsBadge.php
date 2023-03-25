@@ -20,13 +20,13 @@ final class StarsBadge extends AbstractBadge
     public function handle(string $packageName): array
     {
         return [
-            'rating' => $this->client->get($packageName)['averageRating'],
+            'stars' => $this->client->get($packageName)['averageRating'],
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderStars('rating', $properties['rating']);
+        return $this->renderStars('stars', $properties['stars']);
     }
 
     public function previews(): array
@@ -35,7 +35,7 @@ final class StarsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: '',
                 path: '/vaadin/stars/vaadinvaadin-grid',
-                data: $this->render([]),
+                data: $this->render(['stars' => '4.5']),
             ),
         ];
     }

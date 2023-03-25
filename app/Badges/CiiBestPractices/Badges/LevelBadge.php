@@ -36,7 +36,7 @@ final class LevelBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'level',
                 path: '/cii/level/1',
-                data: $this->render([]),
+                data: $this->render(['level' => 'silver']),
             ),
         ];
     }

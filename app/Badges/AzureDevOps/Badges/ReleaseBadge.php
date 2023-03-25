@@ -41,7 +41,7 @@ final class ReleaseBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'release version',
                 path: '/azure-devops/release/azuredevops-powershell/azuredevops-powershell/1',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

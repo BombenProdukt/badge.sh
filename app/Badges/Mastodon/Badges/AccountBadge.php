@@ -44,17 +44,17 @@ final class AccountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'followers',
                 path: '/mastodon/follow/Gargron@mastodon.social',
-                data: $this->render([]),
+                data: $this->render(['instance' => 'mastodon.social', 'username' => 'linuxxx', 'count' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'followers',
                 path: '/mastodon/follow/trumpet@mas.to',
-                data: $this->render([]),
+                data: $this->render(['instance' => 'mastodon.social', 'username' => 'linuxxx', 'count' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'followers (Pleroma)',
                 path: '/mastodon/follow/admin@cawfee.club',
-                data: $this->render([]),
+                data: $this->render(['instance' => 'mastodon.social', 'username' => 'linuxxx', 'count' => '1000000']),
             ),
         ];
     }

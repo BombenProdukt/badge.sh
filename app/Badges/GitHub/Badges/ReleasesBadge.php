@@ -35,7 +35,7 @@ final class ReleasesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'releases',
                 path: '/github/releases/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

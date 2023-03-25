@@ -40,7 +40,7 @@ final class ComplianceBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'compliance',
                 path: '/reuse/compliance/github.com/fsfe/reuse-tool',
-                data: $this->render([]),
+                data: $this->render(['status' => 'compliant']),
             ),
         ];
     }

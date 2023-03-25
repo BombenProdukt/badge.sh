@@ -28,7 +28,7 @@ final class UserIdBadge extends AbstractBadge
     {
         return [
             'label' => \ucfirst($properties['username']),
-            'message' => FormatNumber::execute($properties['score']),
+            'message' => FormatNumber::execute((float) $properties['score']),
             'messageColor' => 'f99a66',
         ];
     }
@@ -44,7 +44,7 @@ final class UserIdBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'score',
                 path: '/devrant/score/22941',
-                data: $this->render([]),
+                data: $this->render(['username' => 'Linuxxx', 'score' => '1000000']),
             ),
         ];
     }

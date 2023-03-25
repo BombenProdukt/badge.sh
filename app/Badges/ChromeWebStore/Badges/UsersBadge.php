@@ -22,13 +22,13 @@ final class UsersBadge extends AbstractBadge
         \preg_match('|<span class="e-f-ih" title="(.*?)">(.*?)</span>|', $this->client->get($itemId), $matches);
 
         return [
-            'count' => \filter_var($matches[1], \FILTER_SANITIZE_NUMBER_INT),
+            'users' => \filter_var($matches[1], \FILTER_SANITIZE_NUMBER_INT),
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderRating($properties['count']);
+        return $this->renderNumber('users', $properties['users']);
     }
 
     public function previews(): array
@@ -37,7 +37,7 @@ final class UsersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'users',
                 path: '/chrome-web-store/users/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
-                data: $this->render([]),
+                data: $this->render(['users' => '1000000']),
             ),
         ];
     }

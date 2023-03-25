@@ -88,17 +88,17 @@ final class TypesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'types',
                 path: '/npm/types/tslib',
-                data: $this->render([]),
+                data: $this->render(['types' => 'included']),
             ),
             new BadgePreviewData(
                 name: 'types',
                 path: '/npm/types/react',
-                data: $this->render([]),
+                data: $this->render(['types' => '@types/react']),
             ),
             new BadgePreviewData(
                 name: 'types',
                 path: '/npm/types/queri',
-                data: $this->render([]),
+                data: $this->render(['types' => 'missing']),
             ),
         ];
     }

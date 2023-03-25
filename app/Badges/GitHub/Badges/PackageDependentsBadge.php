@@ -23,18 +23,17 @@ final class PackageDependentsBadge extends AbstractBadge
         return RequestDependents::execute($owner, $repo, 'PACKAGE');
     }
 
-    public function render(array $properties): array
-    {
-        return $properties;
-    }
-
     public function previews(): array
     {
         return [
             new BadgePreviewData(
                 name: 'package dependents',
                 path: '/github/dependents-package/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render([
+                    'label' => 'dependents',
+                    'message' => '100',
+                    'messageColor' => 'blue.600',
+                ]),
             ),
         ];
     }

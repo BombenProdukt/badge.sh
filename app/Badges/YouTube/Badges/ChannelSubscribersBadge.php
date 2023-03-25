@@ -35,7 +35,7 @@ final class ChannelSubscribersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'channel subscribers',
                 path: '/youtube/channel/subscribers/UC8butISFwT-Wl7EV0hUK0BQ',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

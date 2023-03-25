@@ -39,7 +39,7 @@ final class DependencyBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependencies',
                 path: '/hackage/dependencies/Cabal',
-                data: $this->render([]),
+                data: $this->render(['outdated' => false]),
             ),
         ];
     }

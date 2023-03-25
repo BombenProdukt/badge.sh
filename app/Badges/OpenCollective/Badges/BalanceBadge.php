@@ -38,7 +38,7 @@ final class BalanceBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'balance',
                 path: '/opencollective/balance/webpack',
-                data: $this->render([]),
+                data: $this->render(['amount' => 1, 'currency' => 'USD']),
             ),
         ];
     }

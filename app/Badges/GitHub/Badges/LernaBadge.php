@@ -34,7 +34,7 @@ final class LernaBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'lerna',
                 path: '/github/lerna/lerna/lerna',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

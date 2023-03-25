@@ -35,12 +35,12 @@ final class PullsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'pulls (library)',
                 path: '/docker/pulls/library/ubuntu',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
             new BadgePreviewData(
                 name: 'pulls (scoped)',
                 path: '/docker/pulls/amio/node-chrome',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

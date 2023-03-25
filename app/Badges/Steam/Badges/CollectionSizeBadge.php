@@ -35,7 +35,7 @@ final class CollectionSizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'collection size',
                 path: '/steam/collection-size/180077636',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

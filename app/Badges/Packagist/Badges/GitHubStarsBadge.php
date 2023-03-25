@@ -42,7 +42,7 @@ final class GitHubStarsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'github stars',
                 path: '/packagist/github-stars/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['stars' => '4.5']),
             ),
         ];
     }

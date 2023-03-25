@@ -33,7 +33,7 @@ final class SizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'size',
                 path: '/cpan/size/Moose',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
         ];
     }

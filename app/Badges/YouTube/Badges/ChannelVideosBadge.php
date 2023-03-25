@@ -29,18 +29,13 @@ final class ChannelVideosBadge extends AbstractBadge
         return $this->renderNumber('videos', $properties['count']);
     }
 
-    public function staticPrevideos(): array
-    {
-        return [];
-    }
-
-    public function dynamicPrevideos(): array
+    public function previews(): array
     {
         return [
             new BadgePreviewData(
                 name: 'channel videos',
                 path: '/youtube/channel/videos/UC8butISFwT-Wl7EV0hUK0BQ',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

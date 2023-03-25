@@ -41,12 +41,12 @@ final class DownloadsPerMonthBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'monthly downloads (plugin)',
                 path: '/wordpress/plugin/downloads-monthly/bbpress',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'monthly downloads (theme)',
                 path: '/wordpress/theme/downloads-monthly/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

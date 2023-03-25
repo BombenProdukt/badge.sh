@@ -56,7 +56,12 @@ final class WheelBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'wheel',
                 path: '/pypi/wheel/black',
-                data: $this->render([]),
+                data: $this->render(['hasWheel' => true]),
+            ),
+            new BadgePreviewData(
+                name: 'wheel',
+                path: '/pypi/wheel/black',
+                data: $this->render(['hasWheel' => false]),
             ),
         ];
     }

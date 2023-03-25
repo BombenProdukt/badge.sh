@@ -37,12 +37,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'version',
                 path: '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304/master',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

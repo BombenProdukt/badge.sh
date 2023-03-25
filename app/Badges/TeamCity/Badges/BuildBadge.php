@@ -42,7 +42,7 @@ final class BuildBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build status',
                 path: '/team-city/build/IntelliJIdeaCe_JavaDecompilerEngineTests?instance=https://teamcity.jetbrains.com',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

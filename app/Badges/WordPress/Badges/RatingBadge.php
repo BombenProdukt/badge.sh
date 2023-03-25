@@ -39,12 +39,12 @@ final class RatingBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rating (plugin)',
                 path: '/wordpress/plugin/rating/bbpress',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
             new BadgePreviewData(
                 name: 'rating (theme)',
                 path: '/wordpress/theme/rating/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['rating' => '4.5']),
             ),
         ];
     }

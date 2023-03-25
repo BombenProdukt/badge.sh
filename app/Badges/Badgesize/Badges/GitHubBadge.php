@@ -52,17 +52,17 @@ final class GitHubBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'normal size',
                 path: '/badgesize/normal/amio/emoji.json/master/emoji-compact.json',
-                data: $this->render([]),
+                data: $this->render(['compression' => 'normal', 'size' => '1024', 'color' => 'blue.600']),
             ),
             new BadgePreviewData(
                 name: 'gzip size',
                 path: '/badgesize/gzip/amio/emoji.json/master/emoji-compact.json',
-                data: $this->render([]),
+                data: $this->render(['compression' => 'normal', 'size' => '1024', 'color' => 'blue.600']),
             ),
             new BadgePreviewData(
                 name: 'brotli size',
                 path: '/badgesize/brotli/amio/emoji.json/master/emoji-compact.json',
-                data: $this->render([]),
+                data: $this->render(['compression' => 'normal', 'size' => '1024', 'color' => 'blue.600']),
             ),
         ];
     }

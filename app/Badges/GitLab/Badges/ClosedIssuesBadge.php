@@ -40,7 +40,7 @@ final class ClosedIssuesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'issues',
                 path: '/gitlab/closed-issues/gitlab-org/gitlab-runner',
-                data: $this->render([]),
+                data: $this->render(['count' => '42']),
             ),
         ];
     }

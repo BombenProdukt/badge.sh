@@ -41,7 +41,7 @@ final class PGPBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'pgp key',
                 path: '/keybase/pgp/lukechilds',
-                data: $this->render([]),
+                data: $this->render(['key' => 'A1B2 C3D4 E5F6 G7H8']),
             ),
         ];
     }

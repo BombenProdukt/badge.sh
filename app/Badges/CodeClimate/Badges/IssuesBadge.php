@@ -42,7 +42,7 @@ final class IssuesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'issues',
                 path: '/codeclimate/issues/codeclimate/codeclimate',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

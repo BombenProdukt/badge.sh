@@ -39,7 +39,7 @@ final class SpongeVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'sponge version',
                 path: '/ore/sponge-version/nucleus',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

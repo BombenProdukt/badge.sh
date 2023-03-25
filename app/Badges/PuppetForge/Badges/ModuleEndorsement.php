@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PuppetForge\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ModuleEndorsement extends AbstractBadge
@@ -18,18 +19,22 @@ final class ModuleEndorsement extends AbstractBadge
 
     public function handle(string $user, string $module): array
     {
-        return $this->renderStatus('endorsement', $this->client->module($user, $module)['endorsement']);
+        return $this->client->module($user, $module);
     }
 
     public function render(array $properties): array
     {
-        //
+        return $this->renderStatus('endorsement', $properties['endorsement']);
     }
 
     public function previews(): array
     {
         return [
-            '/puppetforge/module-endorsement/camptocamp/openldap' => 'endorsement',
+            new BadgePreviewData(
+                name: 'endorsement',
+                path: '/puppetforge/module-endorsement/camptocamp/openldap',
+                data: $this->render(['endorsement' => 'supported']),
+            ),
         ];
     }
 }

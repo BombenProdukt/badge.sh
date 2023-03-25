@@ -42,7 +42,7 @@ final class TestedVersionsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'tested versions',
                 path: '/spiget/tested-versions/9089',
-                data: $this->render([]),
+                data: $this->render(['earliest' => '1.16.5', 'latest' => '1.16.5']),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class UserWebsiteBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'website',
                 path: '/stack-exchange/user/website/stackoverflow/123',
-                data: $this->render([]),
+                data: $this->render(['url' => 'https://stackoverflow.com/questions/123/java-lib-or-app-to-convert-csv-to-xml-file']),
             ),
         ];
     }

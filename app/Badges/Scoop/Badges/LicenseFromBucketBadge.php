@@ -48,7 +48,12 @@ final class LicenseFromBucketBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/scoop/license/extras/deluge',
-                data: $this->render([]),
+                data: $this->render(['bucket' => 'main', 'license' => 'GPL-3.0-or-later']),
+            ),
+            new BadgePreviewData(
+                name: 'license',
+                path: '/scoop/license/extras/deluge',
+                data: $this->render(['bucket' => 'extras', 'license' => 'GPL-3.0-or-later']),
             ),
         ];
     }

@@ -33,7 +33,7 @@ final class FileFavoritesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'file favorites',
                 path: '/steam/file-favorites/100',
-                data: $this->render([]),
+                data: $this->render(['favorited' => '1000']),
             ),
         ];
     }

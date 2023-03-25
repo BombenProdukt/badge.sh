@@ -33,7 +33,7 @@ final class PassedCountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'passed tests count',
                 path: '/testspace/passed-count/swellaby/swellaby:testspace-sample/main',
-                data: $this->render([]),
+                data: $this->render(['passed' => 1]),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class TreeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/ecologi/trees/ecologi',
-                data: $this->render([]),
+                data: $this->render(['count' => '100']),
             ),
         ];
     }

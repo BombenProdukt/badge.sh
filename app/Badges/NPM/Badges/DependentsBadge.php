@@ -46,7 +46,7 @@ final class DependentsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependents',
                 path: '/npm/dependents/got',
-                data: $this->render([]),
+                data: $this->render(['count' => 1000000000]),
             ),
         ];
     }

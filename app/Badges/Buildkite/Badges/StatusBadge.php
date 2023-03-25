@@ -35,12 +35,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build status',
                 path: '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'build status',
                 path: '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489/master',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

@@ -42,7 +42,7 @@ final class GitHubForksBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'github followers',
                 path: '/packagist/github-forks/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['forks' => 1000000000]),
             ),
         ];
     }

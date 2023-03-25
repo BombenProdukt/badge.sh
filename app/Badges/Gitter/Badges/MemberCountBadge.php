@@ -35,7 +35,7 @@ final class MemberCountBadge extends AbstractBadge
     {
         return [
             'label' => 'gitter',
-            'message' => FormatNumber::execute($properties['count']),
+            'message' => FormatNumber::execute((float) $properties['count']),
             'messageColor' => 'ed1965',
         ];
     }
@@ -46,12 +46,12 @@ final class MemberCountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'members',
                 path: '/gitter/members/redom/lobby',
-                data: $this->render([]),
+                data: $this->render(['count' => '100']),
             ),
             new BadgePreviewData(
                 name: 'members',
                 path: '/gitter/members/redom/redom',
-                data: $this->render([]),
+                data: $this->render(['count' => '100']),
             ),
         ];
     }

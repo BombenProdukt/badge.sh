@@ -6,6 +6,7 @@ namespace App\Badges\FactorioModPortal\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Carbon\Carbon;
 
 final class LastModifiedBadge extends AbstractBadge
 {
@@ -35,7 +36,7 @@ final class LastModifiedBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'factorio version',
                 path: '/factorio-mod-portal/last-modified/rso-mod',
-                data: $this->render([]),
+                data: $this->render(['date' => Carbon::now()->unix()]),
             ),
         ];
     }

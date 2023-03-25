@@ -35,7 +35,7 @@ final class PullRequestsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'PRs',
                 path: '/github/pull-requests/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

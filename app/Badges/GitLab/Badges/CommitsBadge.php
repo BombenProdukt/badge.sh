@@ -42,17 +42,17 @@ final class CommitsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'commits count',
                 path: '/gitlab/commits/cryptsetup/cryptsetup',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
             new BadgePreviewData(
                 name: 'commits count (branch ref)',
                 path: '/gitlab/commits/cryptsetup/cryptsetup/coverity_scan',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
             new BadgePreviewData(
                 name: 'commits count (tag ref)',
                 path: '/gitlab/commits/cryptsetup/cryptsetup/v2.2.2',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

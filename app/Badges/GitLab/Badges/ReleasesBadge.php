@@ -42,7 +42,7 @@ final class ReleasesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'release',
                 path: '/gitlab/releases/AuroraOSS/AuroraStore',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

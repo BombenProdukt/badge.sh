@@ -43,17 +43,17 @@ final class CommitsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'commits count',
                 path: '/github/commits/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
             new BadgePreviewData(
                 name: 'commits count (branch ref)',
                 path: '/github/commits/micromatch/micromatch/gh-pages',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
             new BadgePreviewData(
                 name: 'commits count (tag ref)',
                 path: '/github/commits/micromatch/micromatch/4.0.1',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

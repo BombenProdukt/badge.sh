@@ -29,7 +29,7 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
     {
         return [
             'label' => 'downloads',
-            'message' => FormatNumber::execute($properties['downloads']).' latest version',
+            'message' => FormatNumber::execute((float) $properties['downloads']).' latest version',
             'messageColor' => 'green.600',
         ];
     }
@@ -40,7 +40,7 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'downloads (latest version)',
                 path: '/crates/downloads-recently/regex',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

@@ -21,18 +21,18 @@ final class StarsBadge extends AbstractBadge
     {
         if (\is_numeric($pluginId)) {
             return [
-                'rating' => $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//rating')->text(),
+                'stars' => $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//rating')->text(),
             ];
         }
 
         return [
-            'rating' => $this->client->rating($pluginId)['meanRating'],
+            'stars' => $this->client->rating($pluginId)['meanRating'],
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderStars('rating', $properties['rating']);
+        return $this->renderStars('stars', $properties['stars']);
     }
 
     public function previews(): array
@@ -41,12 +41,12 @@ final class StarsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'stars',
                 path: '/jetbrains/stars/13441-laravel-idea',
-                data: $this->render([]),
+                data: $this->render(['stars' => '4.5']),
             ),
             new BadgePreviewData(
                 name: 'stars (legacy plugin)',
                 path: '/jetbrains/stars/9630',
-                data: $this->render([]),
+                data: $this->render(['stars' => '4.5']),
             ),
         ];
     }

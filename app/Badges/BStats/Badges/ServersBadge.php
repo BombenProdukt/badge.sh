@@ -35,7 +35,7 @@ final class ServersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'servers',
                 path: '/bstats/servers/57479',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

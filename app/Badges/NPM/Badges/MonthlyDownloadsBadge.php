@@ -40,7 +40,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'monthly downloads',
                 path: '/npm/downloads-monthly/express',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

@@ -40,7 +40,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/ohdear/status/status.laravel.com/forge.laravel.com',
-                data: $this->render([]),
+                data: $this->render(['label' => 'forge.laravel.com', 'status' => 'up']),
             ),
         ];
     }

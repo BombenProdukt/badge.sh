@@ -44,7 +44,7 @@ final class NameBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'name',
                 path: '/packagist/name/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['name' => 'monolog/monolog']),
             ),
         ];
     }

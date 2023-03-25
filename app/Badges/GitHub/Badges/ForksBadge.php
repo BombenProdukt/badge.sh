@@ -35,7 +35,7 @@ final class ForksBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'forks',
                 path: '/github/forks/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'monthly downloads',
                 path: '/eclipse-marketplace/downloads-monthly/notepad4e',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

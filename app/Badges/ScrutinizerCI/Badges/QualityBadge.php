@@ -41,7 +41,7 @@ final class QualityBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'quality',
                 path: '/scrutinizer-ci/quality/g/filp/whoops',
-                data: $this->render([]),
+                data: $this->render(['quality' => 9.8]),
             ),
         ];
     }

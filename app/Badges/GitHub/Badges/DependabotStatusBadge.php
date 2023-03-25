@@ -48,7 +48,12 @@ final class DependabotStatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependabot status',
                 path: '/github/dependabot/ubuntu/yaru',
-                data: $this->render([]),
+                data: $this->render(['successful' => true]),
+            ),
+            new BadgePreviewData(
+                name: 'dependabot status',
+                path: '/github/dependabot/ubuntu/yaru',
+                data: $this->render(['successful' => false]),
             ),
         ];
     }

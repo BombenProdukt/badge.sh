@@ -20,13 +20,13 @@ final class FileDownloadsBadge extends AbstractBadge
     public function handle(string $fileId): array
     {
         return [
-            'subscriptions' => $this->client->file($fileId)['lifetime_subscriptions'],
+            'downloads' => $this->client->file($fileId)['lifetime_subscriptions'],
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderDownloads($properties['subscriptions']);
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function previews(): array
@@ -35,7 +35,7 @@ final class FileDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'file downloads',
                 path: '/steam/file-downloads/{fileId}',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class MergedPullRequestsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'merged PRs',
                 path: '/github/merged-pull-requests/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

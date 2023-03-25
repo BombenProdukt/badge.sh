@@ -41,7 +41,7 @@ final class CloudBuildStatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build',
                 path: '/docker/cloud-build/jrottenberg/ffmpeg',
-                data: $this->render([]),
+                data: $this->render(['state' => 'success']),
             ),
         ];
     }

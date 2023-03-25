@@ -30,7 +30,7 @@ final class SubscribersBadge extends AbstractBadge
     {
         return [
             'label' => 'r/'.$properties['subreddit'],
-            'message' => FormatNumber::execute($properties['subscribers']).' subscribers',
+            'message' => FormatNumber::execute((float) $properties['subscribers']).' subscribers',
             'messageColor' => 'ff4500',
         ];
     }
@@ -41,7 +41,7 @@ final class SubscribersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'subreddit subscribers',
                 path: '/reddit/subscribers/programming',
-                data: $this->render([]),
+                data: $this->render(['subreddit' => 'programming', 'subscribers' => '123456']),
             ),
         ];
     }

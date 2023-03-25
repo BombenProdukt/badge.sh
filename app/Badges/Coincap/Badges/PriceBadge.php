@@ -38,7 +38,7 @@ final class PriceBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'price',
                 path: '/coincap/price/bitcoin',
-                data: $this->render([]),
+                data: $this->render(['ticker' => 'bitcoin', 'price' => 0]),
             ),
         ];
     }

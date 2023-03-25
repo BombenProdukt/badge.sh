@@ -42,7 +42,7 @@ final class LinesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'lines of code',
                 path: '/codeclimate/lines/codeclimate/codeclimate',
-                data: $this->render([]),
+                data: $this->render(['lines' => '1000']),
             ),
         ];
     }

@@ -43,7 +43,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/docsrs/version/regex',
-                data: $this->render([]),
+                data: $this->render(['status' => 'passing', 'version' => 'latest']),
             ),
         ];
     }

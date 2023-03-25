@@ -35,12 +35,12 @@ final class LinesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'lines',
                 path: '/deepscan/lines/team/8527/project/10741/branch/152550',
-                data: $this->render([]),
+                data: $this->render(['lines' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'lines',
                 path: '/deepscan/lines/team/7382/project/9494/branch/123838',
-                data: $this->render([]),
+                data: $this->render(['lines' => '1000000']),
             ),
         ];
     }

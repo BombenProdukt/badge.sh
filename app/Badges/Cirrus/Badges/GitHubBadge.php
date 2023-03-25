@@ -43,22 +43,22 @@ final class GitHubBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build status',
                 path: '/cirrus/github/flutter/flutter',
-                data: $this->render([]),
+                data: $this->render(['status' => 'unknown']),
             ),
             new BadgePreviewData(
                 name: 'build status',
                 path: '/cirrus/github/flutter/flutter/master',
-                data: $this->render([]),
+                data: $this->render(['status' => 'unknown']),
             ),
             new BadgePreviewData(
                 name: 'build status',
                 path: '/cirrus/github/flutter/flutter/master?task=build_docker',
-                data: $this->render([]),
+                data: $this->render(['status' => 'unknown']),
             ),
             new BadgePreviewData(
                 name: 'build status',
                 path: '/cirrus/github/flutter/flutter/master?task=build_docker&script=test',
-                data: $this->render([]),
+                data: $this->render(['status' => 'unknown']),
             ),
         ];
     }

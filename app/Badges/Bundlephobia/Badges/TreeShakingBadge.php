@@ -48,7 +48,12 @@ final class TreeShakingBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'tree-shaking support',
                 path: '/bundlephobia/tree-shaking/react-colorful',
-                data: $this->render([]),
+                data: $this->render(['isTreeShakeable' => true]),
+            ),
+            new BadgePreviewData(
+                name: 'tree-shaking support',
+                path: '/bundlephobia/tree-shaking/react-colorful',
+                data: $this->render(['isTreeShakeable' => false]),
             ),
         ];
     }

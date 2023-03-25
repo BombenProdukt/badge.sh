@@ -35,7 +35,7 @@ final class UserAcceptRateBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'accept rate',
                 path: '/stack-exchange/user/accept-rate/stackoverflow/123',
-                data: $this->render([]),
+                data: $this->render(['rate' => '100']),
             ),
         ];
     }

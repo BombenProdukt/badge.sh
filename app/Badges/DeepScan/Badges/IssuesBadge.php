@@ -29,7 +29,7 @@ final class IssuesBadge extends AbstractBadge
     {
         return [
             'label' => 'issues',
-            'message' => FormatNumber::execute($properties['count']),
+            'message' => FormatNumber::execute((float) $properties['count']),
             'messageColor' => $properties['count'] ? 'green.600' : 'yellow.600',
         ];
     }
@@ -40,12 +40,12 @@ final class IssuesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'issues',
                 path: '/deepscan/issues/team/8527/project/10741/branch/152550',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
             new BadgePreviewData(
                 name: 'issues',
                 path: '/deepscan/issues/team/7382/project/9494/branch/123838',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

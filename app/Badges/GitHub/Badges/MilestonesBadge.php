@@ -41,7 +41,7 @@ final class MilestonesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'milestone percentage',
                 path: '/github/milestones/chrislgarry/Apollo-11/1',
-                data: $this->render([]),
+                data: $this->render(['label' => '1.0.0', 'percentage' => 50]),
             ),
         ];
     }

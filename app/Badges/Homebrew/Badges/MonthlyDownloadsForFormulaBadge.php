@@ -40,7 +40,7 @@ final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'monthly downloads',
                 path: '/homebrew/downloads-monthly/fish',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

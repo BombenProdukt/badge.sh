@@ -29,7 +29,7 @@ final class OnlineMembersBadge extends AbstractBadge
     {
         return [
             'label' => $response['guild']['name'] ?? 'discord',
-            'message' => FormatNumber::execute($properties['count']).' online',
+            'message' => FormatNumber::execute((float) $properties['count']).' online',
             'messageColor' => '7289DA',
         ];
     }
@@ -40,7 +40,7 @@ final class OnlineMembersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'online members',
                 path: '/discord/online-members/8Jzqu3T',
-                data: $this->render([]),
+                data: $this->render(['count' => '100']),
             ),
         ];
     }

@@ -49,17 +49,17 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version (stable channel)',
                 path: '/nuget/version/Newtonsoft.Json',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (pre channel)',
                 path: '/nuget/version/Newtonsoft.Json/pre',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (latest channel)',
                 path: '/nuget/version/Newtonsoft.Json/latest',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

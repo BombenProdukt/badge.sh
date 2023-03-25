@@ -31,7 +31,7 @@ final class OpenIssuesBadge extends AbstractBadge
     {
         return [
             'label' => 'open issues',
-            'message' => FormatNumber::execute($properties['count']),
+            'message' => FormatNumber::execute((float) $properties['count']),
             'messageColor' => $properties['count'] === 0 ? 'green.600' : 'orange.600',
         ];
     }
@@ -47,7 +47,7 @@ final class OpenIssuesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'issues',
                 path: '/gitlab/open-issues/gitlab-org/gitlab-runner',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

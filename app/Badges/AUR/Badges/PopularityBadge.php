@@ -35,7 +35,7 @@ final class PopularityBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'popularity',
                 path: '/aur/popularity/google-chrome',
-                data: $this->render([]),
+                data: $this->render(['popularity' => 0]),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class DailyDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'daily downloads',
                 path: '/greasyfork/downloads-daily/407466',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

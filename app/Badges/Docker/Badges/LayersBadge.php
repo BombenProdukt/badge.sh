@@ -40,17 +40,17 @@ final class LayersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'layers (size)',
                 path: '/docker/layers/lucashalbert/curl/latest/arm/v7',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
             new BadgePreviewData(
                 name: 'layers (icon & label)',
                 path: '/docker/layers/lucashalbert/curl/latest/arm/v7',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
             new BadgePreviewData(
                 name: 'layers (label)',
                 path: '/docker/layers/lucashalbert/curl/latest/arm/v7',
-                data: $this->render([]),
+                data: $this->render(['count' => 1]),
             ),
         ];
     }

@@ -44,17 +44,17 @@ final class RequestBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'https endpoint',
                 path: '/https/cal-badge-icd0onfvrxx6.runkit.sh',
-                data: $this->render([]),
+                data: $this->render(['label' => 'Time', 'message' => 'Asia/Shanghai', 'messageColor' => 'blue.600']),
             ),
             new BadgePreviewData(
                 name: 'https endpoint (with path args)',
                 path: '/https/cal-badge-icd0onfvrxx6.runkit.sh/Asia/Shanghai',
-                data: $this->render([]),
+                data: $this->render(['label' => 'Time', 'message' => 'Asia/Shanghai', 'messageColor' => 'blue.600']),
             ),
             new BadgePreviewData(
                 name: 'https endpoint (with path args)',
                 path: '/https/cal-badge-icd0onfvrxx6.runkit.sh/America/Los_Angeles',
-                data: $this->render([]),
+                data: $this->render(['label' => 'Time', 'message' => 'America/Los_Angeles', 'messageColor' => 'blue.600']),
             ),
         ];
     }

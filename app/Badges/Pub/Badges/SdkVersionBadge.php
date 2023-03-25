@@ -35,7 +35,7 @@ final class SdkVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'sdk-version',
                 path: '/pub/sdk-version/uuid',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

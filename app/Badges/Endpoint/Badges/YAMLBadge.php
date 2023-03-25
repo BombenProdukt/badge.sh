@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Endpoint\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -37,11 +38,6 @@ final class YAMLBadge extends AbstractBadge
         )->validate();
     }
 
-    public function render(array $properties): array
-    {
-        return $properties;
-    }
-
     public function routeRules(): array
     {
         return [
@@ -52,7 +48,15 @@ final class YAMLBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/endpoint/yaml?url'.route('services.endpoint.yaml') => 'endpoint with YAML',
+            new BadgePreviewData(
+                name: 'endpoint with YAML',
+                path: '/endpoint/yaml?url'.route('services.endpoint.yaml'),
+                data: $this->render([
+                    'label' => 'YAML',
+                    'message' => 'OK',
+                    'messageColor' => 'green.600',
+                ]),
+            ),
         ];
     }
 }

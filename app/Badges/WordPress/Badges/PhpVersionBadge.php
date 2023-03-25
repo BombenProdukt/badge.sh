@@ -41,12 +41,12 @@ final class PhpVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'required PHP version (plugin)',
                 path: '/wordpress/plugin/php-version/bbpress',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'required PHP version (theme)',
                 path: '/wordpress/theme/php-version/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

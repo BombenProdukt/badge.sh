@@ -40,7 +40,7 @@ final class MinBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'minified',
                 path: '/bundlephobia/min/react',
-                data: $this->render([]),
+                data: $this->render(['size' => '1000']),
             ),
         ];
     }

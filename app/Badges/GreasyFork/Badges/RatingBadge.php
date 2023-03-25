@@ -43,7 +43,29 @@ final class RatingBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'rating',
                 path: '/greasyfork/rating/407466',
-                data: $this->render([]),
+                data: $this->render([
+                    'good' => 1,
+                    'ok' => 0,
+                    'bad' => 0,
+                ]),
+            ),
+            new BadgePreviewData(
+                name: 'rating',
+                path: '/greasyfork/rating/407466',
+                data: $this->render([
+                    'good' => 0,
+                    'ok' => 1,
+                    'bad' => 0,
+                ]),
+            ),
+            new BadgePreviewData(
+                name: 'rating',
+                path: '/greasyfork/rating/407466',
+                data: $this->render([
+                    'good' => 0,
+                    'ok' => 0,
+                    'bad' => 1,
+                ]),
             ),
         ];
     }

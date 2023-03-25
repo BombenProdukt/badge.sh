@@ -36,12 +36,12 @@ final class GradeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'grade',
                 path: '/codefactor/grade/github/microsoft/powertoys',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'C']),
             ),
             new BadgePreviewData(
                 name: 'grade (branch)',
                 path: '/codefactor/grade/github/microsoft/powertoys/main',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'C']),
             ),
         ];
     }

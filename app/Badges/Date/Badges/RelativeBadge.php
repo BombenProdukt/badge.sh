@@ -6,6 +6,7 @@ namespace App\Badges\Date\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Carbon\Carbon;
 use Illuminate\Routing\Route;
 
 final class RelativeBadge extends AbstractBadge
@@ -41,7 +42,7 @@ final class RelativeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'relative date',
                 path: '/date/relative/1540814400',
-                data: $this->render([]),
+                data: $this->render(['timestamp' => Carbon::now()->unix()]),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class OpenPullRequestsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'open pull requests',
                 path: '/bitbucket/open-pull-requests/atlassian/adf-builder-javascript',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

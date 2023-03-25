@@ -35,7 +35,7 @@ final class DownloadsPerMonthBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'monthly downloads',
                 path: '/sourceforge/downloads-monthly/arianne/stendhal',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

@@ -38,7 +38,7 @@ final class AlertsBadge extends AbstractBadge
     {
         return [
             'label' => 'alerts: '.$properties['language'],
-            'message' => FormatNumber::execute($properties['alerts']),
+            'message' => FormatNumber::execute((float) $properties['alerts']),
             'messageColor' => $properties['alerts'] === 0 ? 'green.600' : 'yellow.600',
         ];
     }
@@ -55,7 +55,7 @@ final class AlertsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'alerts',
                 path: '/lgtm/alerts/github/apache/cloudstack',
-                data: $this->render([]),
+                data: $this->render(['alerts' => '100', 'language' => 'java']),
             ),
         ];
     }

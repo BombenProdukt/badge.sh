@@ -45,7 +45,7 @@ final class ElmVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'elm version',
                 path: '/elm-package/elm-version/justinmimbs/date',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

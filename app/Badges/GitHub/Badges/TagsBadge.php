@@ -37,7 +37,7 @@ final class TagsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'tags',
                 path: '/github/tags/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['count' => '100']),
             ),
         ];
     }

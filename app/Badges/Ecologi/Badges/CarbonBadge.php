@@ -35,7 +35,7 @@ final class CarbonBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'license',
                 path: '/ecologi/carbon/ecologi',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

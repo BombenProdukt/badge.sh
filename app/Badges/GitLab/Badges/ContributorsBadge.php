@@ -42,7 +42,7 @@ final class ContributorsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'contributors',
                 path: '/gitlab/contributors/graphviz/graphviz',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

@@ -33,7 +33,7 @@ final class GradeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'grade',
                 path: '/symfony-insight/grade/825be328-29f8-44f7-a750-f82818ae9111',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'C']),
             ),
         ];
     }

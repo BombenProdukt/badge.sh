@@ -42,7 +42,7 @@ final class ClosedMergeRequestsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'closed MRs',
                 path: '/gitlab/closed-merge-requests/edouardklein/falsisign',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

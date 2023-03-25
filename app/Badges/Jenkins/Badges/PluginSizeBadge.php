@@ -41,7 +41,7 @@ final class PluginSizeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'plugin size',
                 path: '/jenkins/plugin-size/blueocean',
-                data: $this->render([]),
+                data: $this->render(['size' => '1024']),
             ),
         ];
     }

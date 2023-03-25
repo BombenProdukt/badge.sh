@@ -35,7 +35,7 @@ final class ScoreBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'score',
                 path: '/clearlydefined/score/npm/npmjs/-/jquery/3.4.1',
-                data: $this->render([]),
+                data: $this->render(['score' => '4.5']),
             ),
         ];
     }

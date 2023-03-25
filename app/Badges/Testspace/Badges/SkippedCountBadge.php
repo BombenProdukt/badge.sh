@@ -33,7 +33,7 @@ final class SkippedCountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'skipped tests count',
                 path: '/testspace/skipped-count/swellaby/swellaby:testspace-sample/main',
-                data: $this->render([]),
+                data: $this->render(['skipped' => 0]),
             ),
         ];
     }

@@ -35,7 +35,7 @@ final class UserDisplayNameBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'display-name',
                 path: '/stack-exchange/user/display-name/stackoverflow/123',
-                data: $this->render([]),
+                data: $this->render(['name' => 'John Doe']),
             ),
         ];
     }

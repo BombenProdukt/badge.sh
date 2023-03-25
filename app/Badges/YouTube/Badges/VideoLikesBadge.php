@@ -35,7 +35,7 @@ final class VideoLikesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'video likes',
                 path: '/youtube/video/likes/wGJHwc5ksMA',
-                data: $this->render([]),
+                data: $this->render(['likes' => '1000000']),
             ),
         ];
     }

@@ -40,12 +40,12 @@ final class SourceRankBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'sourcerank',
                 path: '/libraries-io/sourcerank/npm/got',
-                data: $this->render([]),
+                data: $this->render(['rank' => 1]),
             ),
             new BadgePreviewData(
                 name: 'sourcerank (scoped)',
                 path: '/libraries-io/sourcerank/npm/@babel/core',
-                data: $this->render([]),
+                data: $this->render(['rank' => 1]),
             ),
         ];
     }

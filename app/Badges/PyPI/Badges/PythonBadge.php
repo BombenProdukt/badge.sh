@@ -35,7 +35,7 @@ final class PythonBadge extends AbstractBadge
                 })
                 ->filter()
                 ->unique(fn (array $item) => $item['version'])
-                ->implode('version', ' | '),
+                ->pluck('version'),
         ];
     }
 
@@ -43,7 +43,7 @@ final class PythonBadge extends AbstractBadge
     {
         return [
             'label' => 'python',
-            'message' => $properties['versions'],
+            'message' => \implode(' | ', $properties['versions']),
             'messageColor' => 'blue.600',
         ];
     }
@@ -54,7 +54,7 @@ final class PythonBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'python version',
                 path: '/pypi/python-version/black',
-                data: $this->render([]),
+                data: $this->render(['versions' => ['3.6', '3.7', '3.8', '3.9']]),
             ),
         ];
     }

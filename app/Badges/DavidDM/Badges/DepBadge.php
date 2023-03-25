@@ -49,12 +49,12 @@ final class DepBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependencies',
                 path: '/david/dep/zeit/pkg',
-                data: $this->render([]),
+                data: $this->render(['status' => 'uptodate']),
             ),
             new BadgePreviewData(
                 name: 'dependencies (sub path)',
                 path: '/david/dep/babel/babel/packages/babel-cli',
-                data: $this->render([]),
+                data: $this->render(['status' => 'uptodate']),
             ),
         ];
     }

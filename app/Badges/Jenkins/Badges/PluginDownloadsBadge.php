@@ -51,12 +51,12 @@ final class PluginDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'plugin downloads',
                 path: '/jenkins/plugin-downloads/view-job-filters',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'plugin downloads per version',
                 path: '/jenkins/plugin-downloads/view-job-filters/1.26',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

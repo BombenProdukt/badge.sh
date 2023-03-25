@@ -33,7 +33,7 @@ final class UserLocationBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'location',
                 path: '/stack-exchange/user/location/stackoverflow/123',
-                data: $this->render([]),
+                data: $this->render(['location' => 'Earth']),
             ),
         ];
     }

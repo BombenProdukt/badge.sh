@@ -82,42 +82,42 @@ final class CheckStatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'combined statuses (default branch)',
                 path: '/github/check-status/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['context' => 'ci/circleci', 'state' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'combined statuses (branch)',
                 path: '/github/check-status/micromatch/micromatch/gh-pages',
-                data: $this->render([]),
+                data: $this->render(['context' => 'ci/circleci', 'state' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'combined statuses (commit)',
                 path: '/github/check-status/micromatch/micromatch/f4809eb6df80b',
-                data: $this->render([]),
+                data: $this->render(['context' => 'ci/circleci', 'state' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'combined statuses (tag)',
                 path: '/github/check-status/micromatch/micromatch/4.0.1',
-                data: $this->render([]),
+                data: $this->render(['context' => 'ci/circleci', 'state' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'single status',
                 path: '/github/check-status/facebook/react/main/ci/circleci:%20yarn_test',
-                data: $this->render([]),
+                data: $this->render(['context' => 'ci/circleci', 'state' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'combined statuses (ci*)',
                 path: '/github/check-status/zeit/hyper/master/ci',
-                data: $this->render([]),
+                data: $this->render(['context' => 'ci/circleci', 'state' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'combined statuses (ci/circleci*)',
                 path: '/github/check-status/zeit/hyper/master/ci/circleci',
-                data: $this->render([]),
+                data: $this->render(['context' => 'ci/circleci', 'state' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'single status',
                 path: '/github/check-status/zeit/hyper/master/ci/circleci:%20build',
-                data: $this->render([]),
+                data: $this->render(['context' => 'ci/circleci', 'state' => 'success']),
             ),
         ];
     }

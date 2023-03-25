@@ -49,7 +49,7 @@ final class PeerBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'peer dependencies',
                 path: '/david/peer/epoberezkin/ajv-keywords',
-                data: $this->render([]),
+                data: $this->render(['status' => 'uptodate']),
             ),
         ];
     }

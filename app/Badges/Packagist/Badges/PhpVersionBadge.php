@@ -50,7 +50,7 @@ final class PhpVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'php',
                 path: '/packagist/php-version/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

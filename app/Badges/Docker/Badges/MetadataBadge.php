@@ -48,22 +48,22 @@ final class MetadataBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'metadata (version)',
                 path: '/docker/metadata/lucashalbert/curl/version/latest/arm64/v8',
-                data: $this->render([]),
+                data: $this->render(['type' => 'version', 'metadata' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'metadata (architecture)',
                 path: '/docker/metadata/lucashalbert/curl/architecture/latest/arm64/v8',
-                data: $this->render([]),
+                data: $this->render(['type' => 'architecture', 'metadata' => 'arm64']),
             ),
             new BadgePreviewData(
                 name: 'metadata (build-date)',
                 path: '/docker/metadata/lucashalbert/curl/build-date/latest/arm64/v8',
-                data: $this->render([]),
+                data: $this->render(['type' => 'build-date', 'metadata' => '2021-01-01T00:00:00Z']),
             ),
             new BadgePreviewData(
                 name: 'metadata (maintainer)',
                 path: '/docker/metadata/lucashalbert/curl/maintainer/latest/arm64/v8',
-                data: $this->render([]),
+                data: $this->render(['type' => 'maintainer', 'metadata' => 'Lucas Halbert']),
             ),
         ];
     }

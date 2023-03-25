@@ -28,7 +28,7 @@ final class MemberBadge extends AbstractBadge
     {
         return [
             'label' => '#'.$properties['room'].':'.$properties['server'],
-            'message' => FormatNumber::execute($properties['count']).' '.Str::plural('member', $properties['count']),
+            'message' => FormatNumber::execute((float) $properties['count']).' '.Str::plural('member', $properties['count']),
             'messageColor' => 'blue.600',
         ];
     }
@@ -48,17 +48,17 @@ final class MemberBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'members',
                 path: '/matrix/members/rust/matrix.org',
-                data: $this->render([]),
+                data: $this->render(['room' => 'rust', 'server' => 'matrix.org', 'count' => '1000']),
             ),
             new BadgePreviewData(
                 name: 'members',
                 path: '/matrix/members/thisweekinmatrix',
-                data: $this->render([]),
+                data: $this->render(['room' => 'thisweekinmatrix', 'server' => 'matrix.org', 'count' => '1000']),
             ),
             new BadgePreviewData(
                 name: 'members',
                 path: '/matrix/members/archlinux/archlinux.org',
-                data: $this->render([]),
+                data: $this->render(['room' => 'archlinux', 'server' => 'archlinux.org', 'count' => '1000']),
             ),
         ];
     }

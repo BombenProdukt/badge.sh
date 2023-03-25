@@ -36,12 +36,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/readthedocs/status/pip',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'status',
                 path: '/readthedocs/status/pip/stable',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

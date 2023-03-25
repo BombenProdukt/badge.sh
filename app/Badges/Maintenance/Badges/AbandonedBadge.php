@@ -39,7 +39,7 @@ final class AbandonedBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'abandoned',
                 path: '/maintenance/abandoned/2023',
-                data: $this->render([]),
+                data: $this->render(['year' => 2023]),
             ),
         ];
     }

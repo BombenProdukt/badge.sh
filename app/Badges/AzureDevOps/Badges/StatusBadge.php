@@ -47,12 +47,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'pipeline status (definition name)',
                 path: '/azure-devops/status/dnceng/public/efcore-ci',
-                data: $this->render([]),
+                data: $this->render(['pipeline' => 'efcore-ci', 'status' => 'succeeded', 'statusColor' => '#28a745']),
             ),
             new BadgePreviewData(
                 name: 'pipeline status (definition id)',
                 path: '/azure-devops/status/dnceng/public/51',
-                data: $this->render([]),
+                data: $this->render(['pipeline' => 'efcore-ci', 'status' => 'succeeded', 'statusColor' => '#28a745']),
             ),
         ];
     }

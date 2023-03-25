@@ -33,7 +33,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/vaadin/status/vaadinvaadin-grid',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

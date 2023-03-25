@@ -35,7 +35,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'status',
                 path: '/coverity/status/3997',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

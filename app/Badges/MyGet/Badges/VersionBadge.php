@@ -49,17 +49,17 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version (stable channel)',
                 path: '/myget/version/mongodb/MongoDB.Driver.Core',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (pre channel)',
                 path: '/myget/version/mongodb/MongoDB.Driver.Core/pre',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (latest channel)',
                 path: '/myget/version/mongodb/MongoDB.Driver.Core/latest',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

@@ -49,12 +49,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'subscription',
                 path: '/tidelift/status/npm/minimist',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'subscription',
                 path: '/tidelift/status/npm/got',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

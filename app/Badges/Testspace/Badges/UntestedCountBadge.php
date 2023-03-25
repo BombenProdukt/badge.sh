@@ -33,7 +33,7 @@ final class UntestedCountBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'untested tests count',
                 path: '/testspace/untested-count/swellaby/swellaby:testspace-sample/main',
-                data: $this->render([]),
+                data: $this->render(['untested' => '5']),
             ),
         ];
     }

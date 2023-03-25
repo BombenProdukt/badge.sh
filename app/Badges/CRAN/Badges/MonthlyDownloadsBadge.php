@@ -33,7 +33,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'monthly downloads',
                 path: '/cran/downloads-monthly/Rcpp',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

@@ -46,7 +46,7 @@ final class RepoBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version',
                 path: '/jcenter/version/com.squareup.okhttp3/okhttp',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

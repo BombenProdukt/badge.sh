@@ -54,12 +54,12 @@ final class TechDebtBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/sqale_debt_ratio/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['ratio' => '0.1']),
             ),
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/tech_debt/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['ratio' => '0.1']),
             ),
         ];
     }

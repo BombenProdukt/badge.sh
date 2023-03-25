@@ -35,7 +35,7 @@ final class SponsorsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'sponsors',
                 path: '/opencollective/sponsors/webpack',
-                data: $this->render([]),
+                data: $this->render(['count' => 0]),
             ),
         ];
     }

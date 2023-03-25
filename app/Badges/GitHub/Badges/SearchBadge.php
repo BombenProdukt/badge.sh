@@ -21,14 +21,14 @@ final class SearchBadge extends AbstractBadge
     public function handle(string $owner, string $repo, string $query): array
     {
         return [
-            'label' => "{$query} counter",
+            'query' => "{$query} counter",
             'count' => GitHub::search()->code("{$query} repo:{$owner}/{$repo}")['total_count'],
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderNumber($properties['label'], $properties['count']);
+        return $this->renderNumber($properties['query'], $properties['count']);
     }
 
     public function previews(): array
@@ -37,7 +37,7 @@ final class SearchBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'search',
                 path: '/github/search/torvalds/linux/goto',
-                data: $this->render([]),
+                data: $this->render(['query' => 'goto', 'count' => 0]),
             ),
         ];
     }

@@ -60,12 +60,12 @@ final class QualityGateBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/alert_status/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['status' => 'passed']),
             ),
             new BadgePreviewData(
                 name: 'complexity',
                 path: '/sonar/quality_gate/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
-                data: $this->render([]),
+                data: $this->render(['status' => 'failed']),
             ),
         ];
     }

@@ -37,7 +37,7 @@ final class PassRatioBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'pass ratio',
                 path: '/testspace/pass-ratio/swellaby/swellaby:testspace-sample/main',
-                data: $this->render([]),
+                data: $this->render(['ratio' => '100']),
             ),
         ];
     }

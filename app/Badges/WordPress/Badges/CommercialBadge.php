@@ -39,12 +39,12 @@ final class CommercialBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'commercial status (plugin)',
                 path: '/wordpress/plugin/commercial/bbpress',
-                data: $this->render([]),
+                data: $this->render(['is_commercial' => true]),
             ),
             new BadgePreviewData(
                 name: 'commercial status (theme)',
                 path: '/wordpress/theme/commercial/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['is_commercial' => false]),
             ),
         ];
     }

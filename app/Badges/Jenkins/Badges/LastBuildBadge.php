@@ -46,7 +46,7 @@ final class LastBuildBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'Last build status',
                 path: '/jenkins/last-build/jenkins.mono-project.com/job/test-mono-mainline',
-                data: $this->render([]),
+                data: $this->render(['status' => 'Success']),
             ),
         ];
     }

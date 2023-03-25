@@ -37,12 +37,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build',
                 path: '/appveyor/status/gruntjs/grunt',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
             new BadgePreviewData(
                 name: 'build (branch)',
                 path: '/appveyor/status/gruntjs/grunt/deprecate',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success']),
             ),
         ];
     }

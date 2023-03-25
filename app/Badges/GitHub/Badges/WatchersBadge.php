@@ -29,7 +29,7 @@ final class WatchersBadge extends AbstractBadge
     {
         return [
             'label' => 'watchers',
-            'message' => FormatNumber::execute($properties['watchers']),
+            'message' => FormatNumber::execute((float) $properties['watchers']),
             'messageColor' => 'blue.600',
         ];
     }
@@ -40,7 +40,7 @@ final class WatchersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'watchers',
                 path: '/github/watchers/micromatch/micromatch',
-                data: $this->render([]),
+                data: $this->render(['watchers' => '1000000']),
             ),
         ];
     }

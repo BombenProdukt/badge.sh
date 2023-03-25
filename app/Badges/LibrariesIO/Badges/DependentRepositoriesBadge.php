@@ -42,12 +42,12 @@ final class DependentRepositoriesBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependent repositories',
                 path: '/libraries-io/dependent-repositories/npm/got',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
             new BadgePreviewData(
                 name: 'dependent repositories (scoped)',
                 path: '/libraries-io/dependent-repositories/npm/@babel/core',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

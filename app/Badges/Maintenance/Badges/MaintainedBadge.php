@@ -41,7 +41,7 @@ final class MaintainedBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'maintained',
                 path: '/maintenance/maintained/2023',
-                data: $this->render([]),
+                data: $this->render(['year' => 2023]),
             ),
         ];
     }

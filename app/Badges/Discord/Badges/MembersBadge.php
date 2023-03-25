@@ -29,7 +29,7 @@ final class MembersBadge extends AbstractBadge
     {
         return [
             'label' => $response['guild']['name'] ?? 'discord',
-            'message' => FormatNumber::execute($properties['count']).' members',
+            'message' => FormatNumber::execute((float) $properties['count']).' members',
             'messageColor' => '7289DA',
         ];
     }
@@ -40,7 +40,7 @@ final class MembersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'members',
                 path: '/discord/members/reactiflux',
-                data: $this->render([]),
+                data: $this->render(['count' => '100']),
             ),
         ];
     }

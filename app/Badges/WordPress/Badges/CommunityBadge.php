@@ -39,12 +39,12 @@ final class CommunityBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'community status (plugin)',
                 path: '/wordpress/plugin/community/bbpress',
-                data: $this->render([]),
+                data: $this->render(['is_community' => true]),
             ),
             new BadgePreviewData(
                 name: 'community status (theme)',
                 path: '/wordpress/theme/community/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['is_community' => false]),
             ),
         ];
     }

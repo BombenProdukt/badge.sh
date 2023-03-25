@@ -60,7 +60,12 @@ final class FormatBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'format',
                 path: '/pypi/format/black',
-                data: $this->render([]),
+                data: $this->render(['hasWheel' => true, 'hasEgg' => false]),
+            ),
+            new BadgePreviewData(
+                name: 'format',
+                path: '/pypi/format/black',
+                data: $this->render(['hasWheel' => false, 'hasEgg' => true]),
             ),
         ];
     }

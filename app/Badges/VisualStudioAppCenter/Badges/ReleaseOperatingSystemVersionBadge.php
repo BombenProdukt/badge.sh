@@ -38,7 +38,7 @@ final class ReleaseOperatingSystemVersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'minimum os version',
                 path: '/visual-studio-app-center/os-version/jct/my-amazing-app/ac70cv...',
-                data: $this->render([]),
+                data: $this->render(['app' => 'Android 10.0', 'min' => 'Android 5.0']),
             ),
         ];
     }

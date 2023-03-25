@@ -45,7 +45,7 @@ final class DownloadsPerWeekBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'weekly downloads',
                 path: '/package-control/downloads-weekly/GitGutter',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

@@ -52,7 +52,17 @@ final class DeploymentBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'deployment version',
                 path: '/azure-devops/deployment-version/azuredevops-powershell/azuredevops-powershell/1',
-                data: $this->render([]),
+                data: $this->render(['status' => 'succeeded', 'version' => '1.0.0']),
+            ),
+            new BadgePreviewData(
+                name: 'deployment version',
+                path: '/azure-devops/deployment-version/azuredevops-powershell/azuredevops-powershell/1',
+                data: $this->render(['status' => 'partiallySucceeded', 'version' => '1.0.0']),
+            ),
+            new BadgePreviewData(
+                name: 'deployment version',
+                path: '/azure-devops/deployment-version/azuredevops-powershell/azuredevops-powershell/1',
+                data: $this->render(['status' => 'failed', 'version' => '1.0.0']),
             ),
         ];
     }

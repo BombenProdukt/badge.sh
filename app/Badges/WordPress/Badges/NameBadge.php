@@ -39,12 +39,12 @@ final class NameBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version (plugin)',
                 path: '/wordpress/plugin/version/bbpress',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (theme)',
                 path: '/wordpress/theme/version/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

@@ -49,12 +49,12 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'build',
                 path: '/travis/status/babel/babel',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success', 'statusColor' => 'green.600']),
             ),
             new BadgePreviewData(
                 name: 'build (branch)',
                 path: '/travis/status/babel/babel/6.x',
-                data: $this->render([]),
+                data: $this->render(['status' => 'success', 'statusColor' => 'green.600']),
             ),
         ];
     }

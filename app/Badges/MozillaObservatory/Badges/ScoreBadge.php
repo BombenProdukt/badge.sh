@@ -33,7 +33,7 @@ final class ScoreBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'score',
                 path: '/mozilla-observatory/score/github.com',
-                data: $this->render([]),
+                data: $this->render(['score' => '4.5']),
             ),
         ];
     }

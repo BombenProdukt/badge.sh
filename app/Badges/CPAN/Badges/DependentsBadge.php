@@ -35,7 +35,7 @@ final class DependentsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'dependents',
                 path: '/cpan/dependents/DateTime',
-                data: $this->render([]),
+                data: $this->render(['count' => '1000']),
             ),
         ];
     }

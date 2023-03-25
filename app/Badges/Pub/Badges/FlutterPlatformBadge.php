@@ -48,7 +48,7 @@ final class FlutterPlatformBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'flutter-platform',
                 path: '/pub/flutter-platform/xml',
-                data: $this->render([]),
+                data: $this->render(['platforms' => ['android', 'ios', 'web']]),
             ),
         ];
     }

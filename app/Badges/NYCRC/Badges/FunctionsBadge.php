@@ -33,7 +33,7 @@ final class FunctionsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'functions',
                 path: '/nycrc/functions/yargs/yargs',
-                data: $this->render([]),
+                data: $this->render(['functions' => 1]),
             ),
         ];
     }

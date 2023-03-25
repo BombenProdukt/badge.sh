@@ -46,7 +46,7 @@ final class MonthBadge extends AbstractBadge
             new BadgePreviewData(
                 name: '(past month) uptime',
                 path: '/uptimerobot/month/m780862024-50db2c44c703e5c68d6b1ebb',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '99.9']),
             ),
         ];
     }

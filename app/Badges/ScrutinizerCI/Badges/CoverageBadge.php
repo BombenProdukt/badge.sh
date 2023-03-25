@@ -41,7 +41,7 @@ final class CoverageBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'coverage',
                 path: '/scrutinizer-ci/coverage/g/filp/whoops',
-                data: $this->render([]),
+                data: $this->render(['percentage' => '66.66']),
             ),
         ];
     }

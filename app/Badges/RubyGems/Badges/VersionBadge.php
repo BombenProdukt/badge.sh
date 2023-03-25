@@ -52,17 +52,17 @@ final class VersionBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'version (stable)',
                 path: '/rubygems/version/rails',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (pre)',
                 path: '/rubygems/version/rails/pre',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version (latest)',
                 path: '/rubygems/version/rails/latest',
-                data: $this->render([]),
+                data: $this->render(['version' => '1.0.0']),
             ),
         ];
     }

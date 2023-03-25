@@ -33,7 +33,7 @@ final class FileSubscriptionsBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'file subscriptions',
                 path: '/steam/file-subscriptions/100',
-                data: $this->render([]),
+                data: $this->render(['subscriptions' => '1000']),
             ),
         ];
     }

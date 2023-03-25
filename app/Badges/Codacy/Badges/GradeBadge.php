@@ -37,12 +37,12 @@ final class GradeBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'code quality',
                 path: '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'C']),
             ),
             new BadgePreviewData(
                 name: 'branch code quality',
                 path: '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e/master',
-                data: $this->render([]),
+                data: $this->render(['grade' => 'C']),
             ),
         ];
     }

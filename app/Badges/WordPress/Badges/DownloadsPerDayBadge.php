@@ -41,12 +41,12 @@ final class DownloadsPerDayBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'daily downloads (plugin)',
                 path: '/wordpress/plugin/downloads-daily/bbpress',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
             new BadgePreviewData(
                 name: 'daily downloads (theme)',
                 path: '/wordpress/theme/downloads-daily/twentyseventeen',
-                data: $this->render([]),
+                data: $this->render(['downloads' => '1000000']),
             ),
         ];
     }

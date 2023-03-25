@@ -42,7 +42,7 @@ final class GitHubWatchersBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'github watchers',
                 path: '/packagist-github/watchers/monolog/monolog',
-                data: $this->render([]),
+                data: $this->render(['watchers' => 1000000000]),
             ),
         ];
     }
