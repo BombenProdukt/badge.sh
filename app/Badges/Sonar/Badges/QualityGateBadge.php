@@ -53,12 +53,7 @@ final class QualityGateBadge extends AbstractBadge
         ]);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/sonar/alert_status/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',

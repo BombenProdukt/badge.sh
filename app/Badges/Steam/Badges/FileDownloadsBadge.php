@@ -28,12 +28,7 @@ final class FileDownloadsBadge extends AbstractBadge
         return $this->renderDownloads($properties['subscriptions']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/steam/file-downloads/{fileId}' => 'file downloads',

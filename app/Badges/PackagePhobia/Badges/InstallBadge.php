@@ -42,12 +42,7 @@ final class InstallBadge extends AbstractBadge
         $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/packagephobia/size/webpack' => 'install size',

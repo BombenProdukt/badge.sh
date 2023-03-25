@@ -28,12 +28,7 @@ final class PlatformBadge extends AbstractBadge
         return $this->renderText('platforms', \implode(' | ', $properties['platforms']), 'blue.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cocoapods/platform/AFNetworking' => 'platform',

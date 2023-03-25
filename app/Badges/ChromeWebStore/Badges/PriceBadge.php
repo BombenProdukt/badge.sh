@@ -32,12 +32,7 @@ final class PriceBadge extends AbstractBadge
         return $this->renderMoney('price', $properties['amount'], $properties['currency']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/chrome-web-store/price/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'price',

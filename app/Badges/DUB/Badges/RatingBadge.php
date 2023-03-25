@@ -30,12 +30,7 @@ final class RatingBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/dub/rating/pegged' => 'rating',

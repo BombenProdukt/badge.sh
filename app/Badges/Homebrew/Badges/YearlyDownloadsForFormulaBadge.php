@@ -38,12 +38,7 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/homebrew/downloads-yearly/fish' => 'yearly downloads',

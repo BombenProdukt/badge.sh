@@ -26,12 +26,7 @@ final class ScoreBadge extends AbstractBadge
         return $this->renderNumber('observatory', $properties['score']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/mozilla-observatory/score/github.com' => 'score',

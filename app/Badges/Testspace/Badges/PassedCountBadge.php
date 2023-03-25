@@ -26,12 +26,7 @@ final class PassedCountBadge extends AbstractBadge
         return $this->renderNumber('passed', $properties['passed'], 'green.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/testspace/passed-count/swellaby/swellaby:testspace-sample/main' => 'passed tests count',

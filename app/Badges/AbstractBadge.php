@@ -74,12 +74,7 @@ abstract class AbstractBadge implements Badge
         return $this->keywords ?? [];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [];
     }

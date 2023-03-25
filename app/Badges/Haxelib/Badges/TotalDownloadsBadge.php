@@ -26,12 +26,7 @@ final class TotalDownloadsBadge extends AbstractBadge
         return $this->renderDownloads(0);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/haxelib/downloads/hxnodejs' => 'total downloads',

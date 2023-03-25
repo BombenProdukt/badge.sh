@@ -36,12 +36,7 @@ final class LastCommitBadge extends AbstractBadge
         return $this->renderDateDiff('last commit', $properties['date']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/last-commit/micromatch/micromatch' => 'last commit',

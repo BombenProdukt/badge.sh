@@ -26,12 +26,7 @@ final class UserModuleCount extends AbstractBadge
         //
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/puppetforge/user-module-count/camptocamp' => 'version',

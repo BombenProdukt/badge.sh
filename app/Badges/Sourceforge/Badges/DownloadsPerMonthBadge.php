@@ -28,12 +28,7 @@ final class DownloadsPerMonthBadge extends AbstractBadge
         return $this->renderDownloadsPerMonth($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/sourceforge/downloads-monthly/arianne/stendhal' => 'monthly downloads',

@@ -40,12 +40,7 @@ final class ImplementationBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/pypi/implementation/black' => 'framework',

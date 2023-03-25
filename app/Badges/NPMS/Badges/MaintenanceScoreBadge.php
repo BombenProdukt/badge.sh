@@ -26,12 +26,7 @@ final class MaintenanceScoreBadge extends AbstractBadge
         return $this->renderNumber('maintenance', $properties['maintenance']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/npms/maintenance-score/chalk' => 'maintenance score',

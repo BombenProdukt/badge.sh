@@ -38,12 +38,7 @@ final class ElmVersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/elm-package/elm-version/justinmimbs/date' => 'elm version',

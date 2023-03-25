@@ -123,12 +123,7 @@ final class SizeBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/docker/size/library/ubuntu' => 'size (library)',

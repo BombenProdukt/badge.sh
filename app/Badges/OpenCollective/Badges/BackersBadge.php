@@ -28,12 +28,7 @@ final class BackersBadge extends AbstractBadge
         return $this->renderNumber('backers', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/opencollective/backers/webpack' => 'backers',

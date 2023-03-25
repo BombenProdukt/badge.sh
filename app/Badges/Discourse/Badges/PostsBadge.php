@@ -28,12 +28,7 @@ final class PostsBadge extends AbstractBadge
         return $this->renderNumber('posts', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/discourse/posts/meta.discourse.org' => 'posts',

@@ -30,12 +30,7 @@ final class StaticBadge extends AbstractBadge
         return $properties;
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/static/Swift/4.2/orange' => 'swift version',

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\XO\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -39,14 +40,14 @@ final class StatusBadge extends AbstractBadge
             return [
                 'label' => 'xo',
                 'message' => 'not enabled',
-                'messageColor' => 'gray.600',
+                'messageColor' => 'red.600',
             ];
         }
 
         return [
             'label' => 'code style',
             'message' => 'XO',
-            'messageColor' => '5ED9C7',
+            'messageColor' => 'teal.400',
         ];
     }
 
@@ -55,22 +56,29 @@ final class StatusBadge extends AbstractBadge
         $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
+    public function previews(): array
     {
         return [
-            [
-                'label' => 'code style',
-                'message' => 'XO',
-                'messageColor' => '5ED9C7',
-            ],
-        ];
-    }
-
-    public function dynamicPreviews(): array
-    {
-        return [
-            '/xo/status/chalk' => 'status',
-            '/xo/status/@tusbar/cache-control' => 'status',
+            BadgePreviewData::make(
+                name: 'semicolon',
+                path: '/xo/status/chalk',
+                data: $this->render(['status' => 'enabled']),
+            ),
+            BadgePreviewData::make(
+                name: 'status',
+                path: '/xo/status/chalk',
+                data: $this->render(['status' => 'disabled']),
+            ),
+            BadgePreviewData::make(
+                name: 'status',
+                path: '/xo/status/@tusbar/cache-control',
+                data: $this->render(['status' => 'enabled']),
+            ),
+            BadgePreviewData::make(
+                name: 'status',
+                path: '/xo/status/@tusbar/cache-control',
+                data: $this->render(['status' => 'disabled']),
+            ),
         ];
     }
 }

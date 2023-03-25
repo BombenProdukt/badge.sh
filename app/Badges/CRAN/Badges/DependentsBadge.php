@@ -28,12 +28,7 @@ final class DependentsBadge extends AbstractBadge
         return $this->renderNumber('dependents', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cran/dependents/R6' => 'dependents',

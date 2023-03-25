@@ -26,12 +26,7 @@ final class WatchersBadge extends AbstractBadge
         return $this->renderNumber('watchers', $properties['watchers']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ore/watchers/nucleus' => 'watchers',

@@ -51,12 +51,7 @@ final class CoverageBadge extends AbstractBadge
         $route->whereIn('format', ['api', 'cobertura', 'jacoco']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/jenkins/coverage/api?job=https://jenkins.sqlalchemy.org/job/alembic_coverage' => 'coverage',

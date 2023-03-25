@@ -33,12 +33,7 @@ final class IssuesBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/deepscan/issues/team/8527/project/10741/branch/152550' => 'issues',

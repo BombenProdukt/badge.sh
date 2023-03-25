@@ -33,12 +33,7 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/rubygems/downloads-recently/rails' => 'latest version downloads',

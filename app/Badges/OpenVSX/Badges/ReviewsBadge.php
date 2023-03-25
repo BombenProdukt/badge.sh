@@ -35,12 +35,7 @@ final class ReviewsBadge extends AbstractBadge
         $route->where('extension', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/open-vsx/reviews/idleberg/electron-builder' => 'reviews',

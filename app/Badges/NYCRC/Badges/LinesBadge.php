@@ -26,12 +26,7 @@ final class LinesBadge extends AbstractBadge
         return $this->renderText('lines', $properties['lines'] ?? 0);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/nycrc/lines/yargs/yargs' => 'lines',

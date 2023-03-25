@@ -29,12 +29,7 @@ final class LevelBadge extends AbstractBadge
         return $this->renderText('cii', $properties['level'], DetermineColorByStatus::execute($properties['level']));
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cii/level/1' => 'level',

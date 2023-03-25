@@ -28,12 +28,7 @@ final class VideoViewsBadge extends AbstractBadge
         return $this->renderNumber('views', $properties['views']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/youtube/video/views/wGJHwc5ksMA' => 'video views',

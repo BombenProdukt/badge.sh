@@ -28,12 +28,7 @@ final class PlayersBadge extends AbstractBadge
         return $this->renderNumber('players', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/bstats/players/74299' => 'players',

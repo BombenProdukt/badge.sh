@@ -30,12 +30,7 @@ final class MonthlyQuestionsBadge extends AbstractBadge
         return $this->renderNumber($properties['query'].'@'.$properties['site'], $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/stack-exchange/monthly-questions/{package}' => 'monthly questions',

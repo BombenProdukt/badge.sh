@@ -29,12 +29,7 @@ final class RepositoryCountBadge extends AbstractBadge
         return $this->renderNumber('repositories', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/repology/repositories/starship' => 'repository count',

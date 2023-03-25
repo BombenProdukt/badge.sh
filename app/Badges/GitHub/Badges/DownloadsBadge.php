@@ -43,12 +43,7 @@ final class DownloadsBadge extends AbstractBadge
         return $this->renderDownloads($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/downloads/electron/electron' => 'assets downloads for latest release',

@@ -41,12 +41,7 @@ final class BuildStatusBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/azure-devops/build-status/dnceng/public/51' => 'build status',

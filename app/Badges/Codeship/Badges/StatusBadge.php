@@ -42,12 +42,7 @@ final class StatusBadge extends AbstractBadge
         return $this->renderStatus('build', $properties['status']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/codeship/status/0bdb0440-3af5-0133-00ea-0ebda3a33bf6' => 'status',

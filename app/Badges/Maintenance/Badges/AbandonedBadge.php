@@ -32,12 +32,7 @@ final class AbandonedBadge extends AbstractBadge
         $route->whereNumber('year');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/maintenance/abandoned/2023' => 'abandoned',

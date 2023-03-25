@@ -39,12 +39,7 @@ final class SprintBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/jira/sprint/94?instance=https://jira.spring.io' => 'sprint',

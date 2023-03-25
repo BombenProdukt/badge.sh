@@ -48,12 +48,7 @@ final class StatusBadge extends AbstractBadge
         return $this->renderStatus('build', $properties['status']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/netlify/status/e6d5a4e0-dee1-4261-833e-2f47f509c68f' => 'license',

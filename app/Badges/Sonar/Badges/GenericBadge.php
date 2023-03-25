@@ -107,12 +107,7 @@ final class GenericBadge extends AbstractBadge
         ]);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/sonar/blocker_issues/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'blocker issues',

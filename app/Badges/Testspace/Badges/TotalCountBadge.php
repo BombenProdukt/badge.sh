@@ -28,12 +28,7 @@ final class TotalCountBadge extends AbstractBadge
         return $this->renderNumber('total', $properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/testspace/total-count/swellaby/swellaby:testspace-sample/main' => 'total tests count',

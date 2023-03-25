@@ -41,12 +41,7 @@ final class MemberBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/matrix/members/rust/matrix.org' => 'members',

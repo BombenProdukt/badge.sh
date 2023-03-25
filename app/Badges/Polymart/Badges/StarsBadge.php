@@ -26,12 +26,7 @@ final class StarsBadge extends AbstractBadge
         return $this->renderStars('rating', $properties['stars']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/polymart/stars/323' => 'stars',

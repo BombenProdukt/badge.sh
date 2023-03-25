@@ -28,12 +28,7 @@ final class ScoreBadge extends AbstractBadge
         return $this->renderNumber('score', $properties['score']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/clearlydefined/score/npm/npmjs/-/jquery/3.4.1' => 'score',

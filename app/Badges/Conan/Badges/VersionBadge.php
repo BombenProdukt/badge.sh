@@ -35,12 +35,7 @@ final class VersionBadge extends AbstractBadge
         $route->where('packageName', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/conan/version/boost' => 'version',

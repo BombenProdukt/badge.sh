@@ -26,12 +26,7 @@ final class RatingBadge extends AbstractBadge
         return $this->renderRating($properties['rating']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/spiget/rating/9089' => 'rating',

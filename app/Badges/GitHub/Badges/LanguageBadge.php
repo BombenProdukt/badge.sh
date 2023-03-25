@@ -27,12 +27,7 @@ final class LanguageBadge extends AbstractBadge
         return $this->renderText('language', $properties['language'], 'blue.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/language/micromatch/micromatch' => 'language',

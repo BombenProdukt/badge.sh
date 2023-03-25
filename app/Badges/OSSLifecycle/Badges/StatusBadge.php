@@ -29,12 +29,7 @@ final class StatusBadge extends AbstractBadge
         return $this->renderStatus('status', $properties['status']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/oss-lifecycle/status/Netflix/osstracker' => 'status',

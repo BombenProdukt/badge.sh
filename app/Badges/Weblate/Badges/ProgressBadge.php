@@ -28,12 +28,7 @@ final class ProgressBadge extends AbstractBadge
         return $this->renderPercentage('progress', $properties['percentage']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/weblate/progress/godot-engine' => 'progress',

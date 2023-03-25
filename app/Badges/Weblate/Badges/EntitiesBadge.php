@@ -35,12 +35,7 @@ final class EntitiesBadge extends AbstractBadge
         $route->whereIn('type', ['components', 'projects', 'users', 'languages']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/weblate/entities/components' => 'components',

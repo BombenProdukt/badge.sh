@@ -28,12 +28,7 @@ final class InstallationsBadge extends AbstractBadge
         return $this->renderNumber('installations', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/vs-marketplace/installations/vscodevim.vim' => 'installation count',

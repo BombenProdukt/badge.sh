@@ -28,12 +28,7 @@ final class DownloadsPerWeekBadge extends AbstractBadge
         return $this->renderDownloadsPerWeek($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/sourceforge/downloads-weekly/arianne/stendhal' => 'weekly downloads',

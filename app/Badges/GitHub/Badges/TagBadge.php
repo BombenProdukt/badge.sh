@@ -30,12 +30,7 @@ final class TagBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/tag/micromatch/micromatch' => 'latest tag',

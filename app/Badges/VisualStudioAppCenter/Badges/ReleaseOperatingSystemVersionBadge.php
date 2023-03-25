@@ -31,12 +31,7 @@ final class ReleaseOperatingSystemVersionBadge extends AbstractBadge
         return $this->renderText($properties['app'], '>='.$properties['min']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/visual-studio-app-center/os-version/jct/my-amazing-app/ac70cv...' => 'minimum os version',

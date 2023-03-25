@@ -35,12 +35,7 @@ final class UploadBadge extends AbstractBadge
         $route->whereIn('userType', ['user', 'team']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/whatpulse/upload/user/179734' => 'license',

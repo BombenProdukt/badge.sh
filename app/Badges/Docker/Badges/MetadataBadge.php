@@ -41,12 +41,7 @@ final class MetadataBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/docker/metadata/lucashalbert/curl/version/latest/arm64/v8' => 'metadata (version)',

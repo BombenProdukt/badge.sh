@@ -41,12 +41,7 @@ final class BuildVersionBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/azure-devops/build-version/dnceng/public/51' => 'build version',

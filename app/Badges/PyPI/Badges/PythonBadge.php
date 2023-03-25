@@ -47,12 +47,7 @@ final class PythonBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/pypi/python-version/black' => 'python version',

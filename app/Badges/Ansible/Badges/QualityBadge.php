@@ -28,12 +28,7 @@ final class QualityBadge extends AbstractBadge
         return $this->renderNumber('quality', $properties['score']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ansible/quality/432' => '',

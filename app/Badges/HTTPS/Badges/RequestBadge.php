@@ -37,12 +37,7 @@ final class RequestBadge extends AbstractBadge
         $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/https/cal-badge-icd0onfvrxx6.runkit.sh' => 'https endpoint',

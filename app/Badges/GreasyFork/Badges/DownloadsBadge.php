@@ -28,12 +28,7 @@ final class DownloadsBadge extends AbstractBadge
         return $this->renderDownloads($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/greasyfork/downloads/407466' => 'total downloads',

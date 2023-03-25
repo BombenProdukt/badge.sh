@@ -49,12 +49,7 @@ final class StabilityBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/pypi/stability/black' => 'stability',

@@ -26,12 +26,7 @@ final class RatingBadge extends AbstractBadge
         return $this->renderNumber('rating', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/polymart/rating/323' => 'rating',

@@ -26,12 +26,7 @@ final class ReleaseSizeBadge extends AbstractBadge
         return $this->renderSize($properties['size']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/visual-studio-app-center/size/jct/my-amazing-app/ac70cv...' => 'size',

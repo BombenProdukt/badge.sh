@@ -29,12 +29,7 @@ final class LanguagesBadge extends AbstractBadge
         return $this->renderText('languages', \implode(' | ', $properties['languages']), 'blue.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/languages/micromatch/micromatch' => 'languages',

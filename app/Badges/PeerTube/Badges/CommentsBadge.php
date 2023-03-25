@@ -33,12 +33,7 @@ final class CommentsBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/peertube/comments/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d' => 'comments',

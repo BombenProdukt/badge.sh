@@ -36,12 +36,7 @@ final class AccountBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/mastodon/follow/Gargron@mastodon.social' => 'followers',

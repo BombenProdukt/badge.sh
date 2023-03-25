@@ -42,12 +42,7 @@ final class StatusBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/tidelift/status/npm/minimist' => 'subscription',

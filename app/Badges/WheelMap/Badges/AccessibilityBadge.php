@@ -33,12 +33,7 @@ final class AccessibilityBadge extends AbstractBadge
         });
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/wheelmap/accessibility/26699541' => 'version',

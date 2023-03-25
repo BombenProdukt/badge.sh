@@ -28,12 +28,7 @@ final class LikesBadge extends AbstractBadge
         return $this->renderNumber('popularity', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/pub/likes/firebase_core' => 'likes',

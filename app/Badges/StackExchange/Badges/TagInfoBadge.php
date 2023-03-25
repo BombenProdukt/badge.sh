@@ -30,12 +30,7 @@ final class TagInfoBadge extends AbstractBadge
         return $this->renderNumber($properties['query'].'@'.$properties['site'], $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/stack-exchange/tag-info/{package}' => 'tag info',

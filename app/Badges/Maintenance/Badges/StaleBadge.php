@@ -34,12 +34,7 @@ final class StaleBadge extends AbstractBadge
         $route->whereNumber('year');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/maintenance/stale/2023' => 'stale',

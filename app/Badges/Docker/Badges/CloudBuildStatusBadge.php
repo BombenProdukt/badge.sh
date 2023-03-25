@@ -34,12 +34,7 @@ final class CloudBuildStatusBadge extends AbstractBadge
         return $this->renderText('docker build', 'building', 'blue.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/docker/cloud-build/jrottenberg/ffmpeg' => 'build',

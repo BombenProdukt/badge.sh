@@ -33,12 +33,7 @@ final class OnlineMembersBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/discord/online-members/8Jzqu3T' => 'online members',

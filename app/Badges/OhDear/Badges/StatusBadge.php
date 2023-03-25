@@ -33,12 +33,7 @@ final class StatusBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ohdear/status/status.laravel.com/forge.laravel.com' => 'status',

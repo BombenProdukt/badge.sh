@@ -28,12 +28,7 @@ final class DownloadsPerLinuxBadge extends AbstractBadge
         return $this->renderDownloadsPerLinux($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/package-control/downloads-linux/GitGutter' => 'linux downloads',

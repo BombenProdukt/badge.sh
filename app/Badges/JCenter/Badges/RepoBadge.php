@@ -39,12 +39,7 @@ final class RepoBadge extends AbstractBadge
         $route->where('pathname', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/jcenter/version/com.squareup.okhttp3/okhttp' => 'version',

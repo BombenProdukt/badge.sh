@@ -28,12 +28,7 @@ final class PullRequestsBadge extends AbstractBadge
         return $this->renderNumber('PRs', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/pull-requests/micromatch/micromatch' => 'PRs',

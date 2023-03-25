@@ -28,12 +28,7 @@ final class LinesBadge extends AbstractBadge
         return $this->renderLines($properties['lines']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/deepscan/lines/team/8527/project/10741/branch/152550' => 'lines',

@@ -28,12 +28,7 @@ final class ForksBadge extends AbstractBadge
         return $this->renderNumber('forks', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/forks/micromatch/micromatch' => 'forks',

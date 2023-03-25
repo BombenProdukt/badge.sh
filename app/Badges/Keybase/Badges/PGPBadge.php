@@ -34,12 +34,7 @@ final class PGPBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/keybase/pgp/lukechilds' => 'pgp key',

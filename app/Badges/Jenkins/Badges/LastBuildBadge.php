@@ -39,12 +39,7 @@ final class LastBuildBadge extends AbstractBadge
         $route->where('job', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/jenkins/last-build/jenkins.mono-project.com/job/test-mono-mainline' => 'Last build status',

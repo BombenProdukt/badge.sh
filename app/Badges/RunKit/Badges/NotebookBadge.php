@@ -37,12 +37,7 @@ final class NotebookBadge extends AbstractBadge
         $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/runkit/vladimyr/metaweather/44418/state' => 'metaweather (state)',

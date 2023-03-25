@@ -54,12 +54,7 @@ final class CoverageBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/team-city/coverage/ReactJSNet_PullRequests?instance=https://teamcity.jetbrains.com' => 'coverage status',

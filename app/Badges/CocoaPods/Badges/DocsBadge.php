@@ -29,12 +29,7 @@ final class DocsBadge extends AbstractBadge
         return $this->renderPercentage($this->service(), $properties['percentage']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cocoapods/doc-percent/AFNetworking' => 'documentation coverage (percentage)',

@@ -28,12 +28,7 @@ final class IssuesBadge extends AbstractBadge
         return $this->renderNumber('issues', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/issues/micromatch/micromatch' => 'issues',

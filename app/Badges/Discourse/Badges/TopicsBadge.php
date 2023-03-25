@@ -28,12 +28,7 @@ final class TopicsBadge extends AbstractBadge
         return $this->renderNumber('topics', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/discourse/topics/meta.discourse.org' => 'topics',

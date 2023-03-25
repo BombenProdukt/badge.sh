@@ -26,12 +26,7 @@ final class StatusBadge extends AbstractBadge
         return $this->renderText('gitter', 'on gitter', 'ed1965');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/gitter/status/redom/lobby' => 'status',

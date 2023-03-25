@@ -31,12 +31,7 @@ final class BalanceBadge extends AbstractBadge
         return $this->renderMoney('balance', $properties['amount'], $properties['currency']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/opencollective/balance/webpack' => 'balance',

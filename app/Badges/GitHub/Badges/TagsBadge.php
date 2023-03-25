@@ -30,12 +30,7 @@ final class TagsBadge extends AbstractBadge
         return $this->renderNumber('tags', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/tags/micromatch/micromatch' => 'tags',

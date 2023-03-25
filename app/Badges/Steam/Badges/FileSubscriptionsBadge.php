@@ -26,12 +26,7 @@ final class FileSubscriptionsBadge extends AbstractBadge
         return $this->renderNumber('subscriptions', $properties['subscriptions']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/steam/file-subscriptions/100' => 'file subscriptions',

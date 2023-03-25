@@ -26,12 +26,7 @@ final class FailedCountBadge extends AbstractBadge
         return $this->renderNumber('failed', $properties['failed']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/testspace/failed-count/swellaby/swellaby:testspace-sample/main' => 'failed tests count',

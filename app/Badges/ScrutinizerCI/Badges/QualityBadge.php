@@ -34,12 +34,7 @@ final class QualityBadge extends AbstractBadge
         $route->whereIn('vcs', ['g', 'gl', 'b']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/scrutinizer-ci/quality/g/filp/whoops' => 'quality',

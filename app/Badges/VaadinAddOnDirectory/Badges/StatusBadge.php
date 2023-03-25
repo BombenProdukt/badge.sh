@@ -26,12 +26,7 @@ final class StatusBadge extends AbstractBadge
         return $this->renderText('status', $properties['status']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/vaadin/status/vaadinvaadin-grid' => 'status',

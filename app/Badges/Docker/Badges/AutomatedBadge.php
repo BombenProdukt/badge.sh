@@ -30,12 +30,7 @@ final class AutomatedBadge extends AbstractBadge
         return $this->renderText('docker build', 'manual', 'yellow.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/docker/build-automated/jrottenberg/ffmpeg' => 'automated',

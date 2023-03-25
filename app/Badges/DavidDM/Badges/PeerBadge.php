@@ -42,12 +42,7 @@ final class PeerBadge extends AbstractBadge
         $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/david/peer/epoberezkin/ajv-keywords' => 'peer dependencies',

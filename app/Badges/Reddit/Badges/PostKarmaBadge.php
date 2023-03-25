@@ -34,12 +34,7 @@ final class PostKarmaBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/reddit/post-karma/spez' => 'post karma',

@@ -26,12 +26,7 @@ final class GradeBadge extends AbstractBadge
         return $this->renderGrade('grade', $properties['grade']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/symfony-insight/grade/825be328-29f8-44f7-a750-f82818ae9111' => 'grade',

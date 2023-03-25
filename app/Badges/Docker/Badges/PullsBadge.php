@@ -28,12 +28,7 @@ final class PullsBadge extends AbstractBadge
         return $this->renderNumber('docker pulls', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/docker/pulls/library/ubuntu' => 'pulls (library)',

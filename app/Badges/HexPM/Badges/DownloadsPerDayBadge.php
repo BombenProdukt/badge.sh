@@ -28,12 +28,7 @@ final class DownloadsPerDayBadge extends AbstractBadge
         return $this->renderDownloadsPerDay($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/hex/downloads-daily/plug' => 'daily downloads',

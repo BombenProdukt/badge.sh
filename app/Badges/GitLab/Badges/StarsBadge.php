@@ -35,12 +35,7 @@ final class StarsBadge extends AbstractBadge
         $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/gitlab/stars/fdroid/fdroidclient' => 'stars',

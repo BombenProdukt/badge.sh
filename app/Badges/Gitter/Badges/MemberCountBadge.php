@@ -39,12 +39,7 @@ final class MemberCountBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/gitter/members/redom/lobby' => 'members',

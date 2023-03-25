@@ -28,12 +28,7 @@ final class SponsorsBadge extends AbstractBadge
         return $this->renderNumber('sponsors', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/opencollective/sponsors/webpack' => 'sponsors',

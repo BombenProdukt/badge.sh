@@ -30,12 +30,7 @@ final class DependentsBadge extends AbstractBadge
         return $this->renderNumber('dependents', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/shardbox/dependents/lucky' => 'dependents',

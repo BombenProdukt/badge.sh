@@ -28,12 +28,7 @@ final class RankBadge extends AbstractBadge
         return $this->renderNumber('rank', $properties['rank']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/package-control/rank/GitGutter' => 'rank',

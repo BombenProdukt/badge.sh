@@ -28,12 +28,7 @@ final class BranchesBadge extends AbstractBadge
         return $this->renderNumber('branches', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/branches/micromatch/micromatch' => 'branches',

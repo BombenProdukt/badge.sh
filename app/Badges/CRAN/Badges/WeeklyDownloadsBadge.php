@@ -28,12 +28,7 @@ final class WeeklyDownloadsBadge extends AbstractBadge
         return $this->renderDownloadsPerWeek($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cran/downloads-weekly/Rcpp' => 'weekly downloads',

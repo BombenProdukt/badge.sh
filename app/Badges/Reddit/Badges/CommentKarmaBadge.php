@@ -34,12 +34,7 @@ final class CommentKarmaBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/reddit/comment-karma/spez' => 'comment karma',

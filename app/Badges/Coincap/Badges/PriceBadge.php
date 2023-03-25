@@ -31,12 +31,7 @@ final class PriceBadge extends AbstractBadge
         return $this->renderMoney($properties['ticker'], $properties['price'], 'USD');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/coincap/price/bitcoin' => 'price',

@@ -30,12 +30,7 @@ final class PassRatioBadge extends AbstractBadge
         return $this->renderPercentage($properties['ratio'] === 100 ? 'success' : 'critical', $properties['ratio']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/testspace/pass-ratio/swellaby/swellaby:testspace-sample/main' => 'pass ratio',

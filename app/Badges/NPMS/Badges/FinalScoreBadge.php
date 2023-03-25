@@ -28,12 +28,7 @@ final class FinalScoreBadge extends AbstractBadge
         return $this->renderNumber('score', $properties['score']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/npms/final-score/chalk' => 'final score',

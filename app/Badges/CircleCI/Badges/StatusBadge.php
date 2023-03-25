@@ -38,12 +38,7 @@ final class StatusBadge extends AbstractBadge
         $route->where('repo', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/circleci/status/github/circleci/ex' => 'build',

@@ -30,9 +30,7 @@ interface Badge
 
     public function routeConstraints(Route $route): void;
 
-    public function staticPreviews(): array;
-
-    public function dynamicPreviews(): array;
+    public function previews(): array;
 
     public function deprecated(): array;
 }

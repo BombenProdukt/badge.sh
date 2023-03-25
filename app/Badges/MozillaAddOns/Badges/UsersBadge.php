@@ -28,12 +28,7 @@ final class UsersBadge extends AbstractBadge
         return $this->renderNumber('users', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/amo/users/markdown-viewer-chrome' => 'users',

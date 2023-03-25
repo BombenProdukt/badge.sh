@@ -35,12 +35,7 @@ final class ForksBadge extends AbstractBadge
         $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/gitlab/forks/inkscape/inkscape' => 'forks',

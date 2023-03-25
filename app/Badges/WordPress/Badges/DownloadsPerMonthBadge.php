@@ -34,12 +34,7 @@ final class DownloadsPerMonthBadge extends AbstractBadge
         $route->whereIn('extensionType', ['plugin', 'theme']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/wordpress/plugin/downloads-monthly/bbpress' => 'monthly downloads (plugin)',

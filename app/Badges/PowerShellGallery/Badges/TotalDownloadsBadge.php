@@ -28,12 +28,7 @@ final class TotalDownloadsBadge extends AbstractBadge
         return $this->renderDownloads($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/powershellgallery/downloads/Azure.Storage' => 'total downloads',

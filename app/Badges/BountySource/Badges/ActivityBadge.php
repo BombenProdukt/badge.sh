@@ -28,12 +28,7 @@ final class ActivityBadge extends AbstractBadge
         return $this->renderNumber('activity', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/bountysource/activity/mozilla-core' => 'activity',

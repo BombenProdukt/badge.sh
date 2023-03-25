@@ -36,12 +36,7 @@ final class StatusBadge extends AbstractBadge
         return $this->renderStatus('docs@'.$properties['version'], $properties['status']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/docsrs/version/regex' => 'version',

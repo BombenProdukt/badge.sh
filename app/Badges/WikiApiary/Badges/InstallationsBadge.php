@@ -37,12 +37,7 @@ final class InstallationsBadge extends AbstractBadge
         $route->whereIn('variant', ['extension', 'skin', 'farm', 'generator', 'host']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/wikiapiary/installations/extension/ParserFunctions' => 'installations',

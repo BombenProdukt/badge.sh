@@ -26,12 +26,7 @@ final class QualityScoreBadge extends AbstractBadge
         return $this->renderNumber('quality', $properties['quality']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/npms/quality-score/chalk' => 'quality score',

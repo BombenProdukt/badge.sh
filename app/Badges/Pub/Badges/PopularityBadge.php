@@ -28,12 +28,7 @@ final class PopularityBadge extends AbstractBadge
         return $this->renderPercentage('popularity', $properties['popularity'] * 100);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/pub/popularity/mobx' => 'popularity',

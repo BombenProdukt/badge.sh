@@ -30,12 +30,7 @@ final class CoverageBadge extends AbstractBadge
         return $this->renderCoverage($properties['percentage']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e' => 'coverage',

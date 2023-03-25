@@ -28,12 +28,7 @@ final class RatingCountBadge extends AbstractBadge
         return $this->renderNumber('rating count', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/vaadin/rating-count/vaadinvaadin-grid' => 'rating count',

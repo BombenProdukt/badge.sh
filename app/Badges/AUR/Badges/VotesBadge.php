@@ -28,12 +28,7 @@ final class VotesBadge extends AbstractBadge
         return $this->renderNumber('votes', $properties['votes']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/aur/votes/google-chrome' => 'votes',

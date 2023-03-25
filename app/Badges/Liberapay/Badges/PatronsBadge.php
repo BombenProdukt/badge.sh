@@ -28,12 +28,7 @@ final class PatronsBadge extends AbstractBadge
         return $this->renderNumber('patrons', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/liberapay/patrons/microG' => 'patrons count',

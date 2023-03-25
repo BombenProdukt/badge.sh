@@ -34,12 +34,7 @@ final class ReleaseBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/azure-devops/release/azuredevops-powershell/azuredevops-powershell/1' => 'release version',

@@ -28,14 +28,7 @@ final class LicenseBadge extends AbstractBadge
         return $this->renderLicense($properties['license']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/f-droid/license/org.tasks' => 'license',

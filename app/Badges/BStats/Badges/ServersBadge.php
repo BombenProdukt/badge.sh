@@ -28,12 +28,7 @@ final class ServersBadge extends AbstractBadge
         return $this->renderNumber('servers', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/bstats/servers/57479' => 'servers',

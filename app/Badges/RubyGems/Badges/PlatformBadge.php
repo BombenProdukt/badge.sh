@@ -26,12 +26,7 @@ final class PlatformBadge extends AbstractBadge
         return $this->renderText('platform', $properties['platform']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/rubygems/platform/rails' => 'platform',

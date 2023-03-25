@@ -36,12 +36,7 @@ final class RatingBadge extends AbstractBadge
         );
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/greasyfork/rating/407466' => 'rating',

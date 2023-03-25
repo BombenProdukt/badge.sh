@@ -26,12 +26,7 @@ final class UserReputationBadge extends AbstractBadge
         return $this->renderNumber('reputation', $properties['reputation']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/stack-exchange/user/reputation/stackoverflow/123' => 'reputation',

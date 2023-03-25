@@ -28,12 +28,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
         return $this->renderDownloads($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/eclipse-marketplace/downloads-monthly/notepad4e' => 'monthly downloads',

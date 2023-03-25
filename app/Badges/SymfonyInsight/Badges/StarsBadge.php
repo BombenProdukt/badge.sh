@@ -32,12 +32,7 @@ final class StarsBadge extends AbstractBadge
         });
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/symfony-insight/stars/825be328-29f8-44f7-a750-f82818ae9111' => 'stars',

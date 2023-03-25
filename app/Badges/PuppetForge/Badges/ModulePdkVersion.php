@@ -26,12 +26,7 @@ final class ModulePdkVersion extends AbstractBadge
         //
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/puppetforge/module-pdk-version/camptocamp/openldap' => 'version',

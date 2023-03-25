@@ -32,12 +32,7 @@ final class ProgressBadge extends AbstractBadge
         return $this->renderPercentage($properties['language'], $properties['percentage']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/poeditor/progress/abc123def456/323337/fr' => 'progress',

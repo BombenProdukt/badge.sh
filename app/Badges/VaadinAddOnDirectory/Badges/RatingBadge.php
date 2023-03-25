@@ -28,12 +28,7 @@ final class RatingBadge extends AbstractBadge
         return $this->renderRating($properties['rating']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/vaadin/rating/vaadinvaadin-grid' => '',

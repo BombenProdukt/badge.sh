@@ -30,12 +30,7 @@ final class GradeBadge extends AbstractBadge
         return $this->renderGrade('code quality', $properties['grade']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e' => 'code quality',

@@ -34,12 +34,7 @@ final class RelativeBadge extends AbstractBadge
         $route->whereNumber('timestamp');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/date/relative/1540814400' => 'relative date',

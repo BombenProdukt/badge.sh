@@ -30,12 +30,7 @@ final class CollectionBadge extends AbstractBadge
         return $this->renderText('collection', $properties['name'], 'blue.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ansible/collection/278' => 'collection',

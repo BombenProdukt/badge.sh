@@ -35,12 +35,7 @@ final class DownloadsBadge extends AbstractBadge
         $route->where('extension', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/open-vsx/downloads/idleberg/electron-builder' => 'downloads',

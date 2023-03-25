@@ -26,12 +26,7 @@ final class ErroredCountBadge extends AbstractBadge
         return $this->renderNumber('errored', $properties['errored']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/testspace/errored-count/swellaby/swellaby:testspace-sample/main' => 'errored tests count',

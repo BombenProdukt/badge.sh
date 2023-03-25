@@ -28,12 +28,7 @@ final class ReleaseDateBadge extends AbstractBadge
         return $this->renderDate('release date', $properties['date']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/vaadin/release-date/vaadinvaadin-grid' => 'release date',

@@ -26,12 +26,7 @@ final class CategoryBadge extends AbstractBadge
         return $this->renderText('category', $properties['title']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ore/category/nucleus' => 'category',

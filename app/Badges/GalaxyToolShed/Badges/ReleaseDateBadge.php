@@ -28,12 +28,7 @@ final class ReleaseDateBadge extends AbstractBadge
         return $this->renderDateDiff('release date', $properties['date']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/galaxy-tool-shed/release-date/iuc/sra_tools' => 'release date',

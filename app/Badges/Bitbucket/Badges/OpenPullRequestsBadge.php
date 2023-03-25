@@ -28,12 +28,7 @@ final class OpenPullRequestsBadge extends AbstractBadge
         return $this->renderNumber('open pull requests', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/bitbucket/open-pull-requests/atlassian/adf-builder-javascript' => 'open pull requests',

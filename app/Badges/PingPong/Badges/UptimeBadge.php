@@ -28,12 +28,7 @@ final class UptimeBadge extends AbstractBadge
         return $this->renderPercentage('uptime', $properties['percentage']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/pingpong/uptime/sp_2e80bc00b6054faeb2b87e2464be337e' => 'uptime',

@@ -28,12 +28,7 @@ final class DownloadsPerMacBadge extends AbstractBadge
         return $this->renderDownloadsPerMac($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/package-control/downloads-mac/GitGutter' => 'macOS downloads',

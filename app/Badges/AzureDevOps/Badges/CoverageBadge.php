@@ -53,12 +53,7 @@ final class CoverageBadge extends AbstractBadge
         return $this->renderCoverage($properties['percentage']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/azure-devops/coverage/swellaby/opensource/25' => 'test coverage',

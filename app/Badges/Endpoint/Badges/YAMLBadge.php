@@ -49,12 +49,7 @@ final class YAMLBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/endpoint/yaml?url'.route('services.endpoint.yaml') => 'endpoint with YAML',

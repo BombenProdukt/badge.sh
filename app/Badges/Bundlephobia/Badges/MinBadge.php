@@ -33,12 +33,7 @@ final class MinBadge extends AbstractBadge
         $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/bundlephobia/min/react' => 'minified',

@@ -30,12 +30,7 @@ final class StarsBadge extends AbstractBadge
         return $this->renderStars('stars', $properties['stars']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/amo/stars/markdown-viewer-chrome' => 'stars',

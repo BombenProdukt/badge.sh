@@ -26,12 +26,7 @@ final class FunctionsBadge extends AbstractBadge
         return $this->renderText('functions', $properties['functions'] ?? 0);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/nycrc/functions/yargs/yargs' => 'functions',

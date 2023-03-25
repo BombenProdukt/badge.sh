@@ -28,12 +28,7 @@ final class UserWebsiteBadge extends AbstractBadge
         return $this->renderText('website', $properties['url']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/stack-exchange/user/website/stackoverflow/123' => 'website',

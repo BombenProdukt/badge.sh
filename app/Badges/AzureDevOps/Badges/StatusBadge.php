@@ -40,12 +40,7 @@ final class StatusBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/azure-devops/status/dnceng/public/efcore-ci' => 'pipeline status (definition name)',

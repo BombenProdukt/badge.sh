@@ -34,12 +34,7 @@ final class MilestonesBadge extends AbstractBadge
         return $this->renderPercentage($properties['label'], $properties['percentage']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/milestones/chrislgarry/Apollo-11/1' => 'milestone percentage',

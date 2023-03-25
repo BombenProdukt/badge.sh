@@ -43,12 +43,7 @@ final class VersionBadge extends AbstractBadge
         $route->whereIn('repo', ['r', 's']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/nexus/version/r/org.apache.commons/commoin-lang3?instance=https://nexus.pentaho.org' => 'Sonatype Nexus (Releases)',

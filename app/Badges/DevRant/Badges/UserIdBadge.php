@@ -37,12 +37,7 @@ final class UserIdBadge extends AbstractBadge
         $route->whereNumber('userId');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/devrant/score/22941' => 'score',

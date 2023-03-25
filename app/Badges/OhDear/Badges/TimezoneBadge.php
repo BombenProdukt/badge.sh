@@ -33,12 +33,7 @@ final class TimezoneBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ohdear/timezone/status.laravel.com' => 'timezone',

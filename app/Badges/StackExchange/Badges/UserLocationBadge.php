@@ -26,12 +26,7 @@ final class UserLocationBadge extends AbstractBadge
         return $this->renderText('location', $properties['location']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/stack-exchange/user/location/stackoverflow/123' => 'location',

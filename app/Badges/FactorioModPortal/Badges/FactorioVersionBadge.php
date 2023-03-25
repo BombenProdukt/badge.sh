@@ -28,12 +28,7 @@ final class FactorioVersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'factorio version');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/factorio-mod-portal/factorio-version/rso-mod' => 'factorio version',

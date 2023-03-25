@@ -28,12 +28,7 @@ final class BuildsBadge extends AbstractBadge
         return $this->renderStatus('build status', $properties['status']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/visual-studio-app-center/builds/jct/my-amazing-app/master/ac70cv...' => 'builds',

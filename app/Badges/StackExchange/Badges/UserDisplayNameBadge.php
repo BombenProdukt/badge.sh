@@ -28,12 +28,7 @@ final class UserDisplayNameBadge extends AbstractBadge
         return $this->renderText('display-name', $properties['name']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/stack-exchange/user/display-name/stackoverflow/123' => 'display-name',

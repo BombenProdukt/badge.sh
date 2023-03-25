@@ -36,12 +36,7 @@ final class GitHubBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cirrus/github/flutter/flutter' => 'build status',

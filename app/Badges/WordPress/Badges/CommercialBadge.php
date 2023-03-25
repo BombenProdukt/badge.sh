@@ -32,12 +32,7 @@ final class CommercialBadge extends AbstractBadge
         $route->whereIn('extensionType', ['plugin', 'theme']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/wordpress/plugin/commercial/bbpress' => 'commercial status (plugin)',

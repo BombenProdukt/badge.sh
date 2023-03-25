@@ -28,12 +28,7 @@ final class CountBadge extends AbstractBadge
         return $this->renderNumber('trees', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/treeware/trees/stoplightio/spectral' => 'tree count',

@@ -32,12 +32,7 @@ final class ZECBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/keybase/zec/skyplabs' => 'zec address',

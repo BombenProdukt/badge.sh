@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\XO\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -44,7 +45,7 @@ final class IndentBadge extends AbstractBadge
         return [
             'label' => 'indentation',
             'message' => $properties['indentation'],
-            'messageColor' => '5ED9C7',
+            'messageColor' => 'teal.400',
         ];
     }
 
@@ -53,37 +54,39 @@ final class IndentBadge extends AbstractBadge
         $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
+    public function previews(): array
     {
         return [
-            [
-                'label' => 'xo',
-                'message' => 'tab',
-                'messageColor' => '5ed9c7',
-            ],
-            [
-                'label' => 'xo',
-                'message' => '2 spaces',
-                'messageColor' => '5ed9c7',
-            ],
-            [
-                'label' => 'xo',
-                'message' => '1 space',
-                'messageColor' => '5ed9c7',
-            ],
-            [
-                'label' => 'xo',
-                'message' => '4 spaces',
-                'messageColor' => '5ed9c7',
-            ],
-        ];
-    }
-
-    public function dynamicPreviews(): array
-    {
-        return [
-            '/xo/indentation/chalk' => 'indentation',
-            '/xo/indentation/@tusbar/cache-control' => 'indentation',
+            BadgePreviewData::make(
+                name: 'indentation',
+                path: '/xo/indentation/chalk',
+                data: $this->render(['indentation' => 'tab']),
+            ),
+            BadgePreviewData::make(
+                name: 'indentation',
+                path: '/xo/indentation/chalk',
+                data: $this->render(['indentation' => '1 space']),
+            ),
+            BadgePreviewData::make(
+                name: 'indentation',
+                path: '/xo/indentation/chalk',
+                data: $this->render(['indentation' => '2 spaces']),
+            ),
+            BadgePreviewData::make(
+                name: 'indentation',
+                path: '/xo/indentation/@tusbar/cache-control',
+                data: $this->render(['indentation' => 'tab']),
+            ),
+            BadgePreviewData::make(
+                name: 'indentation',
+                path: '/xo/indentation/@tusbar/cache-control',
+                data: $this->render(['indentation' => '1 space']),
+            ),
+            BadgePreviewData::make(
+                name: 'indentation',
+                path: '/xo/indentation/@tusbar/cache-control',
+                data: $this->render(['indentation' => '2 spaces']),
+            ),
         ];
     }
 

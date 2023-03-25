@@ -30,12 +30,7 @@ final class SearchBadge extends AbstractBadge
         return $this->renderNumber($properties['label'], $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/search/torvalds/linux/goto' => 'search',

@@ -35,12 +35,7 @@ final class GradeBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/deepscan/grade/team/7382/project/9494/branch/123838' => 'grade',

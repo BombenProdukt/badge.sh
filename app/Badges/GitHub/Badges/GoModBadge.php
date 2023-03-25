@@ -32,12 +32,7 @@ final class GoModBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'go');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/gomod/golang/go' => 'lerna',

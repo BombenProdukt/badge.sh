@@ -33,12 +33,7 @@ final class ComplianceBadge extends AbstractBadge
         $route->where('remote', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/reuse/compliance/github.com/fsfe/reuse-tool' => 'compliance',

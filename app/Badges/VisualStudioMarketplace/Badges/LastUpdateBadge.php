@@ -28,12 +28,7 @@ final class LastUpdateBadge extends AbstractBadge
         return $this->renderDate('last modified', $properties['date']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/vs-marketplace/last-modified/vscodevim.vim' => 'last updated',

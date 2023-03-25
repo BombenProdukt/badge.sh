@@ -31,12 +31,7 @@ final class LastDayPriceChangeBadge extends AbstractBadge
         return $this->renderPercentage($properties['ticker'], $properties['percentage']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/coincap/last-day-price-change/bitcoin' => 'price',

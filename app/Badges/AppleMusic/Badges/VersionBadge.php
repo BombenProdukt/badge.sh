@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AppleMusic\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -28,21 +29,14 @@ final class VersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
-            [
-                'name' => 'version',
-                'link' => '/apple-music/version/803453959',
-                'code' => $this->render([
-                    'version' => '1.0.0',
-                ]),
-            ],
+            BadgePreviewData::make(
+                name: 'version',
+                path: '/apple-music/version/803453959',
+                data: $this->render(['version' => '1.0.0']),
+            ),
         ];
     }
 }

@@ -26,12 +26,7 @@ final class UntestedCountBadge extends AbstractBadge
         return $this->renderNumber('untested', $properties['untested'], 'orange.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/testspace/untested-count/swellaby/swellaby:testspace-sample/main' => 'untested tests count',

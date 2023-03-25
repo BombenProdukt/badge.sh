@@ -31,12 +31,7 @@ final class UsernameBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/devrant/score/Linuxxx' => 'score',

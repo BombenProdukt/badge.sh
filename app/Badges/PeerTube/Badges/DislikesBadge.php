@@ -31,15 +31,10 @@ final class DislikesBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
+    public function previews(): array
     {
         return [
             '/peertube/dislikes/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d' => 'dislikes',
         ];
-    }
-
-    public function dynamicPreviews(): array
-    {
-        return [];
     }
 }

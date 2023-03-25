@@ -27,12 +27,7 @@ final class PackageDependentsBadge extends AbstractBadge
         return $properties;
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/dependents-package/micromatch/micromatch' => 'package dependents',

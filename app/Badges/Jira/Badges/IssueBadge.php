@@ -47,12 +47,7 @@ final class IssueBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/jira/issue/KAFKA-2896?instance=https://issues.apache.org/jira' => 'issue',

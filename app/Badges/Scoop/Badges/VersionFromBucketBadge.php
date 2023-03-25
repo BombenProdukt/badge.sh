@@ -32,12 +32,7 @@ final class VersionFromBucketBadge extends AbstractBadge
         $route->whereIn('bucket', ['extras', 'versions']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/scoop/version/extras/age' => 'version',

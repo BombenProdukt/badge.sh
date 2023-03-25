@@ -28,12 +28,7 @@ final class PercentageBadge extends AbstractBadge
         return $this->renderCoverage($properties['percentage'], 'cii');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cii/percentage/29' => 'percentage',

@@ -26,12 +26,7 @@ final class ViewsBadge extends AbstractBadge
         return $this->renderNumber('views', $properties['views']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ore/views/nucleus' => 'views',

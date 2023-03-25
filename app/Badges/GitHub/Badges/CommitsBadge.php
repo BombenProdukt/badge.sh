@@ -36,12 +36,7 @@ final class CommitsBadge extends AbstractBadge
         return $this->renderNumber('commits', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/commits/micromatch/micromatch' => 'commits count',

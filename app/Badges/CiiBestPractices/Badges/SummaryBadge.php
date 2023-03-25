@@ -37,12 +37,7 @@ final class SummaryBadge extends AbstractBadge
         }, DetermineColorByStatus::execute($properties['level']));
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cii/summary/33' => 'summary',

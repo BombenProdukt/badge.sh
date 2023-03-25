@@ -26,12 +26,7 @@ final class GradeBadge extends AbstractBadge
         return $this->renderGrade('observatory', $properties['grade']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/mozilla-observatory/grade/github.com' => 'grade',

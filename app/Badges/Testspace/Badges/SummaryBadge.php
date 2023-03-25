@@ -26,12 +26,7 @@ final class SummaryBadge extends AbstractBadge
         return $this->renderText('summary', $this->getMessage($properties), $this->getMessageColor($properties));
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/testspace/summary/swellaby/swellaby:testspace-sample/main' => 'pass ratio',

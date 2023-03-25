@@ -47,12 +47,7 @@ final class VersionForFormulaBadge extends AbstractBadge
         $route->whereIn('type', ['cask', 'formula']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/homebrew/version/fish' => 'version',

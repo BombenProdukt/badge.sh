@@ -35,12 +35,7 @@ final class DailyDownloadsBadge extends AbstractBadge
         $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/packagist/downloads-daily/monolog/monolog' => 'daily downloads',

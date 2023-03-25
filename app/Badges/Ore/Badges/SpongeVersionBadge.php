@@ -32,12 +32,7 @@ final class SpongeVersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ore/sponge-version/nucleus' => 'sponge version',

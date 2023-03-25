@@ -28,12 +28,7 @@ final class FileLastModifiedBadge extends AbstractBadge
         return $this->renderDateDiff('last modified', $properties['data']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/steam/file-last-modified/100' => 'file last modified',

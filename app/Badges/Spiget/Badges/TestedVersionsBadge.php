@@ -35,12 +35,7 @@ final class TestedVersionsBadge extends AbstractBadge
         return $this->renderVersion($properties['earliest'].'-'.$properties['latest'], 'tested versions');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/spiget/tested-versions/9089' => 'tested versions',

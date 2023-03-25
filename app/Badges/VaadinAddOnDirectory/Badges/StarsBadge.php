@@ -28,12 +28,7 @@ final class StarsBadge extends AbstractBadge
         return $this->renderStars('rating', $properties['rating']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/vaadin/stars/vaadinvaadin-grid' => '',

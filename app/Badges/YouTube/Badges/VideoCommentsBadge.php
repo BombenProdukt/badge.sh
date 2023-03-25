@@ -28,12 +28,7 @@ final class VideoCommentsBadge extends AbstractBadge
         return $this->renderNumber('comments', $properties['comments']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/youtube/video/comments/wGJHwc5ksMA' => 'video comments',

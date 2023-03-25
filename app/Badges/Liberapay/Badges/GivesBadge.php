@@ -31,12 +31,7 @@ final class GivesBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/liberapay/gives/aurelienpierre' => 'giving',

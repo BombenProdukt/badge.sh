@@ -26,12 +26,7 @@ final class RatingBadge extends AbstractBadge
         return $this->renderRating($properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/amo/rating/markdown-viewer-chrome' => 'rating',

@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @method static void  add(string $badge)
  * @method static array all()
- * @method static array dynamicPreviews()
- * @method static array staticPreviews()
+ * @method static array previews()
  */
 final class BadgeService extends Facade
 {

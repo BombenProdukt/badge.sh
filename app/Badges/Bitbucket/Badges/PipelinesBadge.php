@@ -44,12 +44,7 @@ final class PipelinesBadge extends AbstractBadge
         $route->where('branch', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/bitbucket/pipelines/atlassian/adf-builder-javascript/task/SECO-2168' => 'build status',

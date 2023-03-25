@@ -28,12 +28,7 @@ final class FavoritesBadge extends AbstractBadge
         return $this->renderNumber('favorites', $properties['favorites']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/eclipse-marketplace/favorites/notepad4e' => 'favorites',

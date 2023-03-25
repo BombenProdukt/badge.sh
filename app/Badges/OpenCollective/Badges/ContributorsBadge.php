@@ -28,12 +28,7 @@ final class ContributorsBadge extends AbstractBadge
         return $this->renderNumber('contributors', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/opencollective/contributors/webpack' => 'contributors',

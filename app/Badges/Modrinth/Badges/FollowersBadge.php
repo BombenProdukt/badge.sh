@@ -28,12 +28,7 @@ final class FollowersBadge extends AbstractBadge
         return $this->renderNumber('followers', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/modrinth/followers/AANobbMI' => 'followers',

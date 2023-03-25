@@ -26,12 +26,7 @@ final class PointsBadge extends AbstractBadge
         return $this->renderNumber('freecodecamp', $properties['points']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/freecodecamp/points/sethi' => 'points',

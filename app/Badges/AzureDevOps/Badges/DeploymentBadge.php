@@ -45,12 +45,7 @@ final class DeploymentBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/azure-devops/deployment-version/azuredevops-powershell/azuredevops-powershell/1' => 'deployment version',

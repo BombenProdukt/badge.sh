@@ -34,12 +34,7 @@ final class MaintainedBadge extends AbstractBadge
         $route->whereNumber('year');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/maintenance/maintained/2023' => 'maintained',

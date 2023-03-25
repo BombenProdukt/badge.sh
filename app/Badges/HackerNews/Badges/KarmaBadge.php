@@ -29,12 +29,7 @@ final class KarmaBadge extends AbstractBadge
         return $this->renderNumber('u/'.$properties['username'].' karma', $properties['karma']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/hackernews/karma/pg' => 'karma',

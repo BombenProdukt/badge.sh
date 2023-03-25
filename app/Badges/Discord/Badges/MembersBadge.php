@@ -33,12 +33,7 @@ final class MembersBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/discord/members/reactiflux' => 'members',

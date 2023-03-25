@@ -30,12 +30,7 @@ final class PointsBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/pub/points/rxdart' => 'pub points',

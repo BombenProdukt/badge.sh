@@ -33,12 +33,7 @@ final class StatusBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/tas/tests/github/tasdemo/axios' => 'license',

@@ -30,12 +30,7 @@ final class LatestDownloadsBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/haxelib/downloads-recently/hxnodejs' => 'downloads (latest version)',

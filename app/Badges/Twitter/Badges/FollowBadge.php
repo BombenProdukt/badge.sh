@@ -38,12 +38,7 @@ final class FollowBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/twitter/follow/rustlang' => 'followers count',

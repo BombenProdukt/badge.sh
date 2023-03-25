@@ -37,12 +37,7 @@ final class RatingBadge extends AbstractBadge
         return $this->renderRating('rating', $properties['rating']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/chrome-web-store/rating/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'rating',

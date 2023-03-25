@@ -28,12 +28,7 @@ final class OpenIssuesBadge extends AbstractBadge
         return $this->renderNumber('open issues', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/bitbucket/open-issues/atlassian/adf-builder-javascript' => 'open issues',

@@ -32,12 +32,7 @@ final class XLMBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/keybase/xlm/skyplabs' => 'xlm address',

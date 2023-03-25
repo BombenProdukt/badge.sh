@@ -40,12 +40,7 @@ final class HitsBadge extends AbstractBadge
         $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/jsdelivr/hits/gh/jquery/jquery' => 'hits (per month)',

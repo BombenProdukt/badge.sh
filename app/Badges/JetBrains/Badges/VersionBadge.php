@@ -34,12 +34,7 @@ final class VersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/jetbrains/version/13441-laravel-idea' => 'version',

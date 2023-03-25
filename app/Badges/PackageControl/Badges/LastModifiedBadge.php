@@ -28,12 +28,7 @@ final class LastModifiedBadge extends AbstractBadge
         return $this->renderDateDiff('last modified', $properties['date']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/package-control/last-modified/GitGutter' => 'last modified',

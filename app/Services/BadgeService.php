@@ -23,24 +23,14 @@ final class BadgeService
         $this->badges[] = app($badge);
     }
 
-    public function staticPreviews(): array
-    {
-        return $this->previews('staticPreviews');
-    }
-
-    public function dynamicPreviews(): array
-    {
-        return $this->previews('dynamicPreviews');
-    }
-
-    public function previews(string $method): array
+    public function previews(): array
     {
         $result = [];
 
         foreach ($this->badges as $badge) {
             $result[$badge->service()] = [
                 ...($result[$badge->service()] ?? []),
-                ...$badge->{$method}(),
+                ...$badge->previews(),
             ];
         }
 

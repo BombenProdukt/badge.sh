@@ -28,12 +28,7 @@ final class DownloadsPerWindowsBadge extends AbstractBadge
         return $this->renderDownloadsPerWindows($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/package-control/downloads-windows/GitGutter' => 'windows downloads',

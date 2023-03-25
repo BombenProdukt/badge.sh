@@ -28,12 +28,7 @@ final class CarbonBadge extends AbstractBadge
         return $this->renderNumber('carbon offset', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ecologi/carbon/ecologi' => 'license',

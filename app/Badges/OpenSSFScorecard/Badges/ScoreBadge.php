@@ -28,12 +28,7 @@ final class ScoreBadge extends AbstractBadge
         return $this->renderNumber('score', $properties['score']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ossf-scorecard/score/github.com/rohankh532/org-workflow-add' => 'version',

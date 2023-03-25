@@ -28,12 +28,7 @@ final class VideoLikesBadge extends AbstractBadge
         return $this->renderNumber('likes', $properties['likes']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/youtube/video/likes/wGJHwc5ksMA' => 'video likes',

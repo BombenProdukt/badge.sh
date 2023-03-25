@@ -41,12 +41,7 @@ final class DependabotStatusBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/dependabot/ubuntu/yaru' => 'dependabot status',

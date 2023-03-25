@@ -32,12 +32,7 @@ final class DependencyBadge extends AbstractBadge
         return $this->renderText('dependencies', $properties['outdated'] ? 'outdated' : 'up-to-date', $properties['outdated'] ? 'red.600' : 'green.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/hackage/dependencies/Cabal' => 'dependencies',

@@ -34,12 +34,7 @@ final class StarsBadge extends AbstractBadge
         return $this->renderStars('rating', $properties['rating']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/jetbrains/stars/13441-laravel-idea' => 'stars',

@@ -28,12 +28,7 @@ final class RoleBadge extends AbstractBadge
         return $this->renderDownloads($properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ansible/role/3078' => 'downloads',

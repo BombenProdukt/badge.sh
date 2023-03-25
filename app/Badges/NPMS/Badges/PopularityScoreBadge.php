@@ -26,12 +26,7 @@ final class PopularityScoreBadge extends AbstractBadge
         return $this->renderNumber('popularity', $properties['popularity']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/npms/popularity-score/chalk' => 'popularity score',

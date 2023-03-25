@@ -35,12 +35,7 @@ final class SizeBadge extends AbstractBadge
         return $this->renderSize($properties['size']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/snapcraft/size/beekeeper-studio' => 'distribution size',

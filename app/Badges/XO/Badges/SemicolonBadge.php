@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\XO\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Keyword;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -45,7 +46,7 @@ final class SemicolonBadge extends AbstractBadge
         return [
             'label' => 'semicolons',
             'message' => $properties['semicolons'],
-            'messageColor' => '5ED9C7',
+            'messageColor' => 'teal.400',
         ];
     }
 
@@ -54,27 +55,29 @@ final class SemicolonBadge extends AbstractBadge
         $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
+    public function previews(): array
     {
         return [
-            [
-                'label' => 'semicolons',
-                'message' => 'enabled',
-                'messageColor' => '5ED9C7',
-            ],
-            [
-                'label' => 'semicolons',
-                'message' => 'disabled',
-                'messageColor' => '5ED9C7',
-            ],
-        ];
-    }
-
-    public function dynamicPreviews(): array
-    {
-        return [
-            '/xo/semicolon/chalk' => 'semicolon',
-            '/xo/semicolon/@tusbar/cache-control' => 'semicolon',
+            BadgePreviewData::make(
+                name: 'semicolon',
+                path: '/xo/semicolon/chalk',
+                data: $this->render(['semicolons' => 'enabled']),
+            ),
+            BadgePreviewData::make(
+                name: 'semicolon',
+                path: '/xo/semicolon/chalk',
+                data: $this->render(['semicolons' => 'disabled']),
+            ),
+            BadgePreviewData::make(
+                name: 'semicolon',
+                path: '/xo/semicolon/@tusbar/cache-control',
+                data: $this->render(['semicolons' => 'enabled']),
+            ),
+            BadgePreviewData::make(
+                name: 'semicolon',
+                path: '/xo/semicolon/@tusbar/cache-control',
+                data: $this->render(['semicolons' => 'disabled']),
+            ),
         ];
     }
 }

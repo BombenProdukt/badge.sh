@@ -26,12 +26,7 @@ final class StatusBadge extends AbstractBadge
         return $this->renderStatus('status', $properties['status']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/gerrit/status/1011478' => 'status',

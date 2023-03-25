@@ -32,12 +32,7 @@ final class BuildBadge extends AbstractBadge
         $route->whereIn('vcs', ['g', 'gl', 'b']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/scrutinizer-ci/build/g/filp/whoops' => 'build',

@@ -28,12 +28,7 @@ final class GameVersionsBadge extends AbstractBadge
         return $this->renderVersion(\implode(' | ', $properties['versions']));
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/modrinth/game-versions/AANobbMI' => 'game versions',

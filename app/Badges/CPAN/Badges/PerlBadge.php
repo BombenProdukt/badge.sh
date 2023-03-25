@@ -38,12 +38,7 @@ final class PerlBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'Perl');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cpan/perl-version/Plack' => 'perl version',

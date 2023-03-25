@@ -53,12 +53,7 @@ final class FormatBadge extends AbstractBadge
         return $this->renderText('format', 'source', 'yellow.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/pypi/format/black' => 'format',

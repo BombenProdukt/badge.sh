@@ -71,12 +71,7 @@ final class BuildTestResultBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/azure-devops/build-test/dnceng/public/51' => 'test results',

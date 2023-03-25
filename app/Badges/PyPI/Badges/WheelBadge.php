@@ -49,12 +49,7 @@ final class WheelBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/pypi/wheel/black' => 'wheel',

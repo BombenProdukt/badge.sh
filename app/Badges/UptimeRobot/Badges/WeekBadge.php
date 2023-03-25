@@ -39,12 +39,7 @@ final class WeekBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/uptimerobot/week/m780862024-50db2c44c703e5c68d6b1ebb' => '(past week) uptime',

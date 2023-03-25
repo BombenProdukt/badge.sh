@@ -26,12 +26,7 @@ final class SkippedCountBadge extends AbstractBadge
         return $this->renderNumber('skipped', $properties['skipped'], 'yellow.600');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/testspace/skipped-count/swellaby/swellaby:testspace-sample/main' => 'skipped tests count',

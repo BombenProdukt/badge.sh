@@ -26,12 +26,7 @@ final class DailyDownloadsBadge extends AbstractBadge
         return $this->renderDownloadsPerDay($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cran/downloads-daily/Rcpp' => 'daily downloads',

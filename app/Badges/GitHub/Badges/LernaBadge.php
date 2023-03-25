@@ -27,12 +27,7 @@ final class LernaBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'lerna');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/lerna/lerna/lerna' => 'lerna',

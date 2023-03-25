@@ -75,12 +75,7 @@ final class ViolationsBadge extends AbstractBadge
         return $this->renderText('violations', \implode(', ', $violationSummary), $messageColor);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/symfony-insight/violations/825be328-29f8-44f7-a750-f82818ae9111' => 'violations',

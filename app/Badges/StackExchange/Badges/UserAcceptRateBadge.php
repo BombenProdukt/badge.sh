@@ -28,12 +28,7 @@ final class UserAcceptRateBadge extends AbstractBadge
         return $this->renderPercentage('accept rate', $properties['rate']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/stack-exchange/user/accept-rate/stackoverflow/123' => 'accept rate',

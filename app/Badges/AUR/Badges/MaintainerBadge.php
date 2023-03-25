@@ -28,12 +28,7 @@ final class MaintainerBadge extends AbstractBadge
         return $this->renderText('maintainer', $properties['maintainer']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/aur/maintainer/google-chrome' => 'maintainer',

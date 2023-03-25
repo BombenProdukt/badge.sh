@@ -26,12 +26,7 @@ final class LicenseBadge extends AbstractBadge
         return $this->renderLicense($properties['license']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/conda/license/conda-forge/python' => 'license',

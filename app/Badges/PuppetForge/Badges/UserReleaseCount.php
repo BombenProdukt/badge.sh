@@ -26,12 +26,7 @@ final class UserReleaseCount extends AbstractBadge
         //
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/puppetforge/user-release-count/camptocamp' => 'version',

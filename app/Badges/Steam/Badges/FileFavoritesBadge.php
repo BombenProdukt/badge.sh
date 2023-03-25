@@ -26,12 +26,7 @@ final class FileFavoritesBadge extends AbstractBadge
         return $this->renderNumber('favorites', $properties['favorited']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/steam/file-favorites/100' => 'file favorites',

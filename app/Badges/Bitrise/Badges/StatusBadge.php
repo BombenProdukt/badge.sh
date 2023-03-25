@@ -30,12 +30,7 @@ final class StatusBadge extends AbstractBadge
         ][$properties['status']]);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304' => 'version',

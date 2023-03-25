@@ -27,12 +27,7 @@ final class ShowBadgeBadge extends AbstractBadge
         //
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/memo/deployed' => 'memoized badge for deploy status',

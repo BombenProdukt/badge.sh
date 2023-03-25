@@ -29,12 +29,7 @@ final class GradeBadge extends AbstractBadge
         return $this->renderGrade('code quality', $properties['grade']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/codefactor/grade/github/microsoft/powertoys' => 'grade',

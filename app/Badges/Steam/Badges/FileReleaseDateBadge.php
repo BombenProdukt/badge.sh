@@ -28,12 +28,7 @@ final class FileReleaseDateBadge extends AbstractBadge
         return $this->renderDateDiff('last modified', $properties['date']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/steam/file-release-date/100' => 'file last modified',

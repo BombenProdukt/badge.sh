@@ -50,12 +50,7 @@ final class StatusBadge extends AbstractBadge
         );
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/bugzilla/status/996038' => 'status',

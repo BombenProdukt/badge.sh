@@ -48,12 +48,7 @@ final class JSONBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/endpoint/json?url'.route('services.endpoint.json') => 'endpoint with JSON',

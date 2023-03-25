@@ -73,12 +73,7 @@ final class FixTimeBadge extends AbstractBadge
         $route->where('job', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/jenkins/fix-time/jenkins.mono-project.com/job/test-mono-mainline' => 'Time taken to fix a broken build',

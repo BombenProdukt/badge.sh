@@ -28,12 +28,7 @@ final class LikesBadge extends AbstractBadge
         return $this->renderNumber('likes', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cpan/likes/DBIx::Class' => 'likes',

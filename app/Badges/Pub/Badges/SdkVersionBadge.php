@@ -28,12 +28,7 @@ final class SdkVersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'dart sdk');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/pub/sdk-version/uuid' => 'sdk-version',

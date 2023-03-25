@@ -33,12 +33,7 @@ final class LayersBadge extends AbstractBadge
         return $this->renderNumber('docker layers', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/docker/layers/lucashalbert/curl/latest/arm/v7' => 'layers (size)',

@@ -48,12 +48,7 @@ final class VersionBadge extends AbstractBadge
         $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/node/version/passport' => 'node version',

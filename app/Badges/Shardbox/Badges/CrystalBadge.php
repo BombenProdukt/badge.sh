@@ -34,12 +34,7 @@ final class CrystalBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/shardbox/crystal-version/amber' => 'crystal version',

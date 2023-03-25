@@ -26,12 +26,7 @@ final class ExtensionVersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/twitch/extension-version/2nq5cu1nc9f4p75b791w8d3yo9d195' => 'version',

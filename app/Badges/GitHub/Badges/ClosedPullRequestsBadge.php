@@ -30,12 +30,7 @@ final class ClosedPullRequestsBadge extends AbstractBadge
         return $this->renderNumber('closed PRs', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/closed-pull-requests/micromatch/micromatch' => 'closed PRs',

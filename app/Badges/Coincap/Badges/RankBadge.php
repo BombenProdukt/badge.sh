@@ -26,12 +26,7 @@ final class RankBadge extends AbstractBadge
         return $this->renderNumber($properties['name'], $properties['rank']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/coincap/rank/bitcoin' => 'price',

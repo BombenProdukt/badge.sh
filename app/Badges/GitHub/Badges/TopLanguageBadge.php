@@ -32,12 +32,7 @@ final class TopLanguageBadge extends AbstractBadge
         return $this->renderNumber($properties['label'], $properties['value']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/top-language/micromatch/micromatch' => 'top language',

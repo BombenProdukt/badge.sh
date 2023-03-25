@@ -26,12 +26,7 @@ final class SizeBadge extends AbstractBadge
         return $this->renderSize($properties['size']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/winget/size/GitHub.cli' => 'size',

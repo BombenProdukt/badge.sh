@@ -28,12 +28,7 @@ final class TreeBadge extends AbstractBadge
         return $this->renderNumber('trees', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ecologi/trees/ecologi' => 'license',

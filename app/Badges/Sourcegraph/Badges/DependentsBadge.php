@@ -35,12 +35,7 @@ final class DependentsBadge extends AbstractBadge
         $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/sourcegraph/dependents/github.com/gorilla/mux' => 'dependents',

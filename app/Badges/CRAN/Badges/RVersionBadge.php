@@ -28,12 +28,7 @@ final class RVersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'R');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cran/r-version/data.table' => 'r version',

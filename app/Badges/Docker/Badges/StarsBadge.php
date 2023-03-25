@@ -28,12 +28,7 @@ final class StarsBadge extends AbstractBadge
         return $this->renderStars('stars', $properties['stars']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/docker/stars/library/ubuntu' => 'stars (library)',

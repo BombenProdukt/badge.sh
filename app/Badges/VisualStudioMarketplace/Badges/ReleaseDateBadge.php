@@ -28,12 +28,7 @@ final class ReleaseDateBadge extends AbstractBadge
         return $this->renderDate('release date', $properties['date']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/vs-marketplace/release-date/vscodevim.vim' => 'release date',

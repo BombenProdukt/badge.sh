@@ -28,12 +28,7 @@ final class CollectionSizeBadge extends AbstractBadge
         return $this->renderNumber('size', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/steam/collection-size/180077636' => 'collection size',

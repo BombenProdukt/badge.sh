@@ -28,12 +28,7 @@ final class ReleaseVersionBadge extends AbstractBadge
         return $this->renderSize($properties['version']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/visual-studio-app-center/version/jct/my-amazing-app/ac70cv...' => 'version',

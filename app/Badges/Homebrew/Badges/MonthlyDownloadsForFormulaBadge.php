@@ -33,12 +33,7 @@ final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/homebrew/downloads-monthly/fish' => 'monthly downloads',

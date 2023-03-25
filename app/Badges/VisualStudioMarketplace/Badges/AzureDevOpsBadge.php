@@ -40,12 +40,7 @@ final class AzureDevOpsBadge extends AbstractBadge
         return $this->renderDownloads($properties['installations'] + $properties['onpremDownloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository' => 'downloads',

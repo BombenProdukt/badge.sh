@@ -35,12 +35,7 @@ final class DependencyCountBadge extends AbstractBadge
         $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/bundlephobia/dependency-count/react' => 'dependency count',

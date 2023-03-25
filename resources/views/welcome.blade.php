@@ -62,7 +62,7 @@
                     badges to align with your preferred use-case and visual aesthetics!</p>
 
                 <div class="my-16 xl:max-w-none">
-                    @foreach (app('badge.service')->dynamicPreviews() as $group => $examples)
+                    @foreach (app('badge.service')->previews() as $group => $examples)
                         <div id="{{ Str::slug($group) }}">
                             <h2 id="{{ Str::slug($group) }}" class="scroll-mt-24">
                                 <a class="group text-inherit no-underline hover:text-inherit"
@@ -88,28 +88,28 @@
                                 <div class="space-y-1">
                                     @foreach ($examples as $link => $example)
                                         <div class="grid gap-8 grid-cols-3 justify-center items-center">
-                                            @if(is_array($example))
-                                                <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">{{ $example['name'] }}</h3>
+                                            @if(is_string($example))
+                                                <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">{{ $example }}</h3>
                                             @else
-                                                <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">{{ $link }}</h3>
+                                                <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">{{ $example->name }}</h3>
                                             @endif
 
-                                            @if(is_array($example))
-                                                <x-badge :code="$example['code']" />
-                                            @else
+                                            @if(is_string($example))
                                                 <img src="{{ $link }}" />
-                                            @endif
-
-                                            @if(is_array($example))
-                                                <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500" href="{{ $example['link'] }}" target="_blank">
                                             @else
-                                            <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500" href="{{ $link }}" target="_blank">
+                                                <x-badge :code="$example->data" />
                                             @endif
 
-                                                @if(is_array($example))
-                                                    {{ Str::limit($example['link'], 32) }}
-                                                @else
+                                            @if(is_string($example))
+                                                <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500" href="{{ $link }}" target="_blank">
+                                            @else
+                                                <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500" href="{{ $example->path }}" target="_blank">
+                                            @endif
+
+                                                @if(is_string($example))
                                                     {{ Str::limit($link, 32) }}
+                                                @else
+                                                    {{ Str::limit($example->path, 32) }}
                                                 @endif
 
                                                 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"

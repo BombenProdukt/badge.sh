@@ -28,12 +28,7 @@ final class StatusBadge extends AbstractBadge
         return $this->renderStatus('build status', $properties['status']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/open-suse-build-service/status/openSUSE:Tools/osc/Debian_111/x86_64' => 'build status',

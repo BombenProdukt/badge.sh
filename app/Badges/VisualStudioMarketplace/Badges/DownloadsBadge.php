@@ -32,12 +32,7 @@ final class DownloadsBadge extends AbstractBadge
         return $this->renderDownloads($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/vs-marketplace/downloads/vscodevim.vim' => 'downloads',

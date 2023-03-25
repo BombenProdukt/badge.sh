@@ -26,12 +26,7 @@ final class StarsBadge extends AbstractBadge
         return $this->renderNumber('stars', $properties['stars']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ore/stars/nucleus' => 'stars',

@@ -34,12 +34,7 @@ final class TotalKarmaBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/reddit/karma/spez' => 'karma',

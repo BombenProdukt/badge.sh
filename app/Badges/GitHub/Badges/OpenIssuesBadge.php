@@ -33,12 +33,7 @@ final class OpenIssuesBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/open-issues/micromatch/micromatch' => 'open issues',

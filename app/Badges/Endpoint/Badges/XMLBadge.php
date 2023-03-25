@@ -48,12 +48,7 @@ final class XMLBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/endpoint/xml?url'.route('services.endpoint.xml') => 'endpoint with XML',

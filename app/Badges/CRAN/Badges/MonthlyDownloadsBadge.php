@@ -26,12 +26,7 @@ final class MonthlyDownloadsBadge extends AbstractBadge
         return $this->renderDownloadsPerMonth($properties['downloads']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/cran/downloads-monthly/Rcpp' => 'monthly downloads',

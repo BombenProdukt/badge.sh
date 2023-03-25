@@ -28,12 +28,7 @@ final class ClosedIssuesBadge extends AbstractBadge
         return $this->renderNumber('closed issues', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/closed-issues/micromatch/micromatch' => 'closed issues',

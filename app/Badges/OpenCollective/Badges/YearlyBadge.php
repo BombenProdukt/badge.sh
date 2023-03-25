@@ -36,12 +36,7 @@ final class YearlyBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/opencollective/yearly/webpack' => 'yearly income',

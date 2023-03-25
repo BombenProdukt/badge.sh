@@ -32,12 +32,7 @@ final class ArchitectureBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/snapcraft/architecture/telegram-desktop' => 'supported architectures',

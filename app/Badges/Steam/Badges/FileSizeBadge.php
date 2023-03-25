@@ -28,12 +28,7 @@ final class FileSizeBadge extends AbstractBadge
         return $this->renderSize($properties['size']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/steam/file-size/100' => 'file size',

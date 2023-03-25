@@ -26,12 +26,7 @@ final class StatementsBadge extends AbstractBadge
         return $this->renderText('statements', $properties['statements'] ?? 0);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/nycrc/statements/yargs/yargs' => 'statements',

@@ -28,12 +28,7 @@ final class StatusBadge extends AbstractBadge
         return $this->renderStatus('build', $properties['status']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489' => 'build status',

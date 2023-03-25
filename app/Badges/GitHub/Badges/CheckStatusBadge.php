@@ -75,12 +75,7 @@ final class CheckStatusBadge extends AbstractBadge
         //
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/check-status/micromatch/micromatch' => 'combined statuses (default branch)',

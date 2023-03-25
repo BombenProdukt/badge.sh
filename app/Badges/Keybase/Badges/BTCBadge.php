@@ -30,12 +30,7 @@ final class BTCBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/keybase/btc/skyplabs' => 'btc address',

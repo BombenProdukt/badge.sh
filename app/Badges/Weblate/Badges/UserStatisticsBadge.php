@@ -45,12 +45,7 @@ final class UserStatisticsBadge extends AbstractBadge
         $route->whereIn('type', ['translations', 'suggestions', 'languages', 'uploads', 'comments']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/weblate/statistics/comments/nijel' => 'comments',

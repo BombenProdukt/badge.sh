@@ -57,12 +57,7 @@ final class NPMBadge extends AbstractBadge
         $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/snyk/npm/@babel/core' => 'vulnerability scan (branch)',

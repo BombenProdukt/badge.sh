@@ -28,12 +28,7 @@ final class ChannelViewsBadge extends AbstractBadge
         return $this->renderNumber('views', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/youtube/channel/views/UC8butISFwT-Wl7EV0hUK0BQ' => 'channel views',

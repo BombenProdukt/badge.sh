@@ -41,12 +41,7 @@ final class GoalBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/liberapay/goal/Changaco' => 'goal progress',

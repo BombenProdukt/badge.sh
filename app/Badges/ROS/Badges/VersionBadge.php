@@ -33,12 +33,7 @@ final class VersionBadge extends AbstractBadge
         return $this->renderVersion($properties['version'], 'ros | humble');
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/ros/version/humble/vision_msgs' => 'version',

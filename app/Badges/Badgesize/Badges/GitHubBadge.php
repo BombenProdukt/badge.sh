@@ -45,12 +45,7 @@ final class GitHubBadge extends AbstractBadge
         $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/badgesize/normal/amio/emoji.json/master/emoji-compact.json' => 'normal size',

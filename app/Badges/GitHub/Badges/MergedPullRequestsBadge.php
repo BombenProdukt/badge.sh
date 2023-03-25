@@ -28,12 +28,7 @@ final class MergedPullRequestsBadge extends AbstractBadge
         return $this->renderNumber('merged PRs', $properties['count']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/merged-pull-requests/micromatch/micromatch' => 'merged PRs',

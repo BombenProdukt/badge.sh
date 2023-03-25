@@ -53,12 +53,7 @@ final class GradeBadge extends AbstractBadge
         $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/lgtm/grade/github/apache/cloudstack/java' => 'grade (java)',

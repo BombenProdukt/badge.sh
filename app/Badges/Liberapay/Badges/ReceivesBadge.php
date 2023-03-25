@@ -31,12 +31,7 @@ final class ReceivesBadge extends AbstractBadge
         ];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/liberapay/receives/GIMP' => 'receiving',

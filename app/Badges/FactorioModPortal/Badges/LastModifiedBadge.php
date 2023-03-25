@@ -28,12 +28,7 @@ final class LastModifiedBadge extends AbstractBadge
         return $this->renderDate('last modified', $properties['date']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/factorio-mod-portal/last-modified/rso-mod' => 'factorio version',

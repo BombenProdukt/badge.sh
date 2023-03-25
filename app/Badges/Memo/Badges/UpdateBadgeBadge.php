@@ -35,12 +35,7 @@ final class UpdateBadgeBadge extends AbstractBadge
         return [];
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [];
     }

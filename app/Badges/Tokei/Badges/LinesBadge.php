@@ -28,12 +28,7 @@ final class LinesBadge extends AbstractBadge
         return $this->renderLines($properties['lines']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/tokei/lines/github/badges/shields' => 'version',

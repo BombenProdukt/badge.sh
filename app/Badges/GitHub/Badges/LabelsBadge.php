@@ -44,12 +44,7 @@ final class LabelsBadge extends AbstractBadge
         $route->whereIn('states', ['open', 'closed']);
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/github/issues-by-label/nodejs/node/ES%20Modules' => 'issues by label',

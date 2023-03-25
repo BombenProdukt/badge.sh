@@ -26,12 +26,7 @@ final class ModuleEndorsement extends AbstractBadge
         //
     }
 
-    public function staticPreviews(): array
-    {
-        return [];
-    }
-
-    public function dynamicPreviews(): array
+    public function previews(): array
     {
         return [
             '/puppetforge/module-endorsement/camptocamp/openldap' => 'endorsement',
