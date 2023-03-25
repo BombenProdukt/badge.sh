@@ -28,8 +28,6 @@ interface Badge
 
     public function routeRules(): array;
 
-    public function routeParameters(): array;
-
     public function routeConstraints(Route $route): void;
 
     public function staticPreviews(): array;

@@ -39,13 +39,6 @@ final class LicenseBadge extends AbstractBadge
         return $this->renderLicense($properties['license']);
     }
 
-    public function routeParameters(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public function routeConstraints(Route $route): void
     {
         //
@@ -62,13 +55,6 @@ final class LicenseBadge extends AbstractBadge
     {
         return [
             '/f-droid/license/org.tasks' => 'license',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            //
         ];
     }
 }

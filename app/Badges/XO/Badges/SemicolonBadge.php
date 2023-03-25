@@ -59,13 +59,6 @@ final class SemicolonBadge extends AbstractBadge
         ];
     }
 
-    public function routeParameters(): array
-    {
-        return [
-            'name' => 'The name of the package',
-        ];
-    }
-
     public function routeConstraints(Route $route): void
     {
         $route->where('name', RoutePattern::CATCH_ALL->value);

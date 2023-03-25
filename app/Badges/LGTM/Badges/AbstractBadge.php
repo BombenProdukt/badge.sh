@@ -4,31 +4,17 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
-use App\Badges\Concerns\BelongsToService;
-use App\Badges\Concerns\HasPreviews;
-use App\Badges\Concerns\HasRequest;
-use App\Badges\Concerns\HasRoute;
-use App\Badges\Concerns\HasTemplates;
+use App\Badges\AbstractBadge as Badge;
 use App\Badges\LGTM\Client;
-use App\Contracts\Badge;
 
-abstract class AbstractBadge implements Badge
+abstract class AbstractBadge extends Badge
 {
-    use BelongsToService;
-    use HasPreviews;
-    use HasRequest;
-    use HasRoute;
-    use HasTemplates;
+    protected string $service = 'LGTM';
     protected array $languages = [
         'cpp' => 'c/c++',
         'csharp' => 'c#',
         'javascript' => 'js/ts',
     ];
-
-    /**
-     * The service that this badge belongs to.
-     */
-    protected string $service = 'LGTM';
 
     public function __construct(protected readonly Client $client)
     {

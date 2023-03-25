@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Concerns;
+namespace App\Badges;
 
 use App\Actions\DetermineColorByAge;
 use App\Actions\DetermineColorByGrade;
@@ -11,16 +11,97 @@ use App\Actions\DetermineColorByStatus;
 use App\Actions\DetermineColorByVersion;
 use App\Actions\DetermineLicense;
 use App\Actions\ExtractVersion;
+use App\Contracts\Badge;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use PreemStudio\Formatter\FormatBytes;
-use PreemStudio\Formatter\FormatMoney;
 use PreemStudio\Formatter\FormatNumber;
 use PreemStudio\Formatter\FormatPercentage;
 use PreemStudio\Formatter\FormatStars;
 use Throwable;
 
-trait HasTemplates
+abstract class AbstractBadge implements Badge
 {
+    protected string $service = '';
+    protected array $deprecated = [];
+    protected array $keywords = [];
+    protected array $routes = [];
+    protected Request $request;
+    protected array $requestData = [];
+
+    public function setRequest(Request $request): void
+    {
+        $this->request = $request;
+    }
+
+    public function getRequestData(string $key, mixed $default = null): mixed
+    {
+        return Arr::get($this->requestData, $key, $default);
+    }
+
+    public function setRequestData(array $data): void
+    {
+        $this->requestData = $data;
+    }
+
+    public function service(): string
+    {
+        return $this->service ?? '';
+    }
+
+    public function title(): string
+    {
+        return \explode(' Badge', Str::title(Str::snake(class_basename($this), ' ')))[0];
+    }
+
+    abstract public function render(array $properties): array;
+
+    public function deprecated(): array
+    {
+        return $this->deprecated ?? [];
+    }
+
+    public function keywords(): array
+    {
+        return $this->keywords ?? [];
+    }
+
+    public function staticPreviews(): array
+    {
+        return [];
+    }
+
+    public function dynamicPreviews(): array
+    {
+        return [];
+    }
+
+    public function routePaths(): array
+    {
+        return $this->routes ?? [];
+    }
+
+    public function routeRules(): array
+    {
+        return [];
+    }
+
+    public function routeConstraints(Route $route): void
+    {
+        //
+    }
+
+    public function allowedParameters(): array
+    {
+        return [
+            'query' => \array_keys($this->routeRules()),
+            'route' => $this->request->route()->parameterNames(),
+        ];
+    }
+
     protected function renderCoverage(mixed $percentage, ?string $label = null): array
     {
         return $this->renderPercentage($label ?? 'coverage', $percentage);
