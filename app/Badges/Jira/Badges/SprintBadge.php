@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Jira\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class SprintBadge extends AbstractBadge
@@ -42,7 +43,11 @@ final class SprintBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jira/sprint/94?instance=https://jira.spring.io' => 'sprint',
+            new BadgePreviewData(
+                name: 'sprint',
+                path: '/jira/sprint/94?instance=https://jira.spring.io',
+                data: $this->render([]),
+            ),
         ];
     }
 }

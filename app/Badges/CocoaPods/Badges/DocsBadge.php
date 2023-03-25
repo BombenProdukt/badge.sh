@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CocoaPods\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Arr;
 
@@ -32,7 +33,11 @@ final class DocsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cocoapods/doc-percent/AFNetworking' => 'documentation coverage (percentage)',
+            new BadgePreviewData(
+                name: 'documentation coverage (percentage)',
+                path: '/cocoapods/doc-percent/AFNetworking',
+                data: $this->render([]),
+            ),
         ];
     }
 }

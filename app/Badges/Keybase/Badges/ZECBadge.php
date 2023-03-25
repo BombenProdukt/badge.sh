@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Keybase\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ZECBadge extends AbstractBadge
@@ -35,7 +36,11 @@ final class ZECBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/keybase/zec/skyplabs' => 'zec address',
+            new BadgePreviewData(
+                name: 'zec address',
+                path: '/keybase/zec/skyplabs',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DavidDM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -45,7 +46,11 @@ final class DevBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/david/dev/zeit/pkg' => 'dev dependencies',
+            new BadgePreviewData(
+                name: 'dev dependencies',
+                path: '/david/dev/zeit/pkg',
+                data: $this->render([]),
+            ),
         ];
     }
 }

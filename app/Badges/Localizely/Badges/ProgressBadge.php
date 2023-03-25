@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Localizely\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -54,8 +55,16 @@ final class ProgressBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/localizely/progress/5cc34208-0418-40b1-8353-acc70c95f802/main?token=0f4d5e31a44f48dcbab966c52cfb0a67c5f1982186c14b85ab389a031dbc225a' => 'progress',
-            '/localizely/progress/5cc34208-0418-40b1-8353-acc70c95f802/main?token=0f4d5e31a44f48dcbab966c52cfb0a67c5f1982186c14b85ab389a031dbc225a&languageCode=en-US' => 'progress for language',
+            new BadgePreviewData(
+                name: 'progress',
+                path: '/localizely/progress/5cc34208-0418-40b1-8353-acc70c95f802/main?token=0f4d5e31a44f48dcbab966c52cfb0a67c5f1982186c14b85ab389a031dbc225a',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'progress for language',
+                path: '/localizely/progress/5cc34208-0418-40b1-8353-acc70c95f802/main?token=0f4d5e31a44f48dcbab966c52cfb0a67c5f1982186c14b85ab389a031dbc225a&languageCode=en-US',
+                data: $this->render([]),
+            ),
         ];
     }
 }

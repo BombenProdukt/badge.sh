@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class BranchesBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class BranchesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/branches/micromatch/micromatch' => 'branches',
+            new BadgePreviewData(
+                name: 'branches',
+                path: '/github/branches/micromatch/micromatch',
+                data: $this->render([]),
+            ),
         ];
     }
 }

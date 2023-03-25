@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Homebrew\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -50,8 +51,16 @@ final class VersionForFormulaBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/homebrew/version/fish' => 'version',
-            '/homebrew/version/cake' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/homebrew/version/fish',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/homebrew/version/cake',
+                data: $this->render([]),
+            ),
         ];
     }
 }

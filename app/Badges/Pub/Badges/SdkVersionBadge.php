@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Pub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class SdkVersionBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class SdkVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pub/sdk-version/uuid' => 'sdk-version',
+            new BadgePreviewData(
+                name: 'sdk-version',
+                path: '/pub/sdk-version/uuid',
+                data: $this->render([]),
+            ),
         ];
     }
 }

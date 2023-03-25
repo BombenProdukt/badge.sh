@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Liberapay\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatPercentage;
 
@@ -44,7 +45,11 @@ final class GoalBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/liberapay/goal/Changaco' => 'goal progress',
+            new BadgePreviewData(
+                name: 'goal progress',
+                path: '/liberapay/goal/Changaco',
+                data: $this->render([]),
+            ),
         ];
     }
 }

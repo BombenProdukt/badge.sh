@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Discord\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -36,7 +37,11 @@ final class MembersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/discord/members/reactiflux' => 'members',
+            new BadgePreviewData(
+                name: 'members',
+                path: '/discord/members/reactiflux',
+                data: $this->render([]),
+            ),
         ];
     }
 }

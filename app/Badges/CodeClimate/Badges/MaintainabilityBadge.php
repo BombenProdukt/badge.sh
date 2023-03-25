@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CodeClimate\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -36,7 +37,11 @@ final class MaintainabilityBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/codeclimate/maintainability/codeclimate/codeclimate' => 'maintainability',
+            new BadgePreviewData(
+                name: 'maintainability',
+                path: '/codeclimate/maintainability/codeclimate/codeclimate',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -36,7 +37,11 @@ final class WeeklyDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/npm/downloads-weekly/express' => 'weekly downloads',
+            new BadgePreviewData(
+                name: 'weekly downloads',
+                path: '/npm/downloads-weekly/express',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Crates\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class TotalDownloadsBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/crates/downloads/regex' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/crates/downloads/regex',
+                data: $this->render([]),
+            ),
         ];
     }
 }

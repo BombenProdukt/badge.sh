@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CircleCI\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -41,8 +42,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/circleci/status/github/circleci/ex' => 'build',
-            '/circleci/status/github/circleci/ex/main' => 'build (branch)',
+            new BadgePreviewData(
+                name: 'build',
+                path: '/circleci/status/github/circleci/ex',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'build (branch)',
+                path: '/circleci/status/github/circleci/ex/main',
+                data: $this->render([]),
+            ),
         ];
     }
 }

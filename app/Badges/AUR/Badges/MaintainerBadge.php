@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AUR\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class MaintainerBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class MaintainerBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/aur/maintainer/google-chrome' => 'maintainer',
+            new BadgePreviewData(
+                name: 'maintainer',
+                path: '/aur/maintainer/google-chrome',
+                data: $this->render([]),
+            ),
         ];
     }
 }

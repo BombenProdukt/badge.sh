@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Docker\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StarsBadge extends AbstractBadge
@@ -31,8 +32,16 @@ final class StarsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/docker/stars/library/ubuntu' => 'stars (library)',
-            '/docker/stars/library/mongo' => 'stars (icon & label)',
+            new BadgePreviewData(
+                name: 'stars (library)',
+                path: '/docker/stars/library/ubuntu',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'stars (icon & label)',
+                path: '/docker/stars/library/mongo',
+                data: $this->render([]),
+            ),
         ];
     }
 }

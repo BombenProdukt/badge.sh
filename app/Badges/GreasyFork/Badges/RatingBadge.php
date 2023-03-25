@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GreasyFork\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class RatingBadge extends AbstractBadge
@@ -39,7 +40,11 @@ final class RatingBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/greasyfork/rating/407466' => 'rating',
+            new BadgePreviewData(
+                name: 'rating',
+                path: '/greasyfork/rating/407466',
+                data: $this->render([]),
+            ),
         ];
     }
 }

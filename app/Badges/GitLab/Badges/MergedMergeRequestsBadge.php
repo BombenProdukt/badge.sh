@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitLab\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class MergedMergeRequestsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/gitlab/merged-merge-requests/edouardklein/falsisign' => 'merged MRs',
+            new BadgePreviewData(
+                name: 'merged MRs',
+                path: '/gitlab/merged-merge-requests/edouardklein/falsisign',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Bitbucket\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -47,7 +48,11 @@ final class PipelinesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bitbucket/pipelines/atlassian/adf-builder-javascript/task/SECO-2168' => 'build status',
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/bitbucket/pipelines/atlassian/adf-builder-javascript/task/SECO-2168',
+                data: $this->render([]),
+            ),
         ];
     }
 }

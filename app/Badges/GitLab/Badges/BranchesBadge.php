@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitLab\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class BranchesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/gitlab/branches/gitterHQ/webapp' => 'branches',
+            new BadgePreviewData(
+                name: 'branches',
+                path: '/gitlab/branches/gitterHQ/webapp',
+                data: $this->render([]),
+            ),
         ];
     }
 }

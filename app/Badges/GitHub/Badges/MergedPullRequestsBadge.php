@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class MergedPullRequestsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class MergedPullRequestsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/merged-pull-requests/micromatch/micromatch' => 'merged PRs',
+            new BadgePreviewData(
+                name: 'merged PRs',
+                path: '/github/merged-pull-requests/micromatch/micromatch',
+                data: $this->render([]),
+            ),
         ];
     }
 }

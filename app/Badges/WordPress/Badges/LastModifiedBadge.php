@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WordPress\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -37,8 +38,16 @@ final class LastModifiedBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wordpress/plugin/last-modified/bbpress' => 'last modified (plugin)',
-            '/wordpress/theme/last-modified/twentyseventeen' => 'last modified (theme)',
+            new BadgePreviewData(
+                name: 'last modified (plugin)',
+                path: '/wordpress/plugin/last-modified/bbpress',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'last modified (theme)',
+                path: '/wordpress/theme/last-modified/twentyseventeen',
+                data: $this->render([]),
+            ),
         ];
     }
 }

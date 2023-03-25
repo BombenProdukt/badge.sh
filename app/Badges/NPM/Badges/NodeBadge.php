@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -42,7 +43,11 @@ final class NodeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/npm/node-version/next' => 'node version',
+            new BadgePreviewData(
+                name: 'node version',
+                path: '/npm/node-version/next',
+                data: $this->render([]),
+            ),
         ];
     }
 }

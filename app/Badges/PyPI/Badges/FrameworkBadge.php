@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PyPI\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class FrameworkBadge extends AbstractBadge
@@ -46,8 +47,16 @@ final class FrameworkBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pypi/framework/black' => 'framework',
-            '/pypi/framework/plone.volto' => 'framework',
+            new BadgePreviewData(
+                name: 'framework',
+                path: '/pypi/framework/black',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'framework',
+                path: '/pypi/framework/plone.volto',
+                data: $this->render([]),
+            ),
         ];
     }
 }

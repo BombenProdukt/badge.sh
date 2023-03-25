@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Bugzilla\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -53,7 +54,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bugzilla/status/996038' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/bugzilla/status/996038',
+                data: $this->render([]),
+            ),
         ];
     }
 }

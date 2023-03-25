@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Ore\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ore/license/nucleus' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/ore/license/nucleus',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 
@@ -37,7 +38,11 @@ final class MilestonesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/milestones/chrislgarry/Apollo-11/1' => 'milestone percentage',
+            new BadgePreviewData(
+                name: 'milestone percentage',
+                path: '/github/milestones/chrislgarry/Apollo-11/1',
+                data: $this->render([]),
+            ),
         ];
     }
 }

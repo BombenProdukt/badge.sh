@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WinGet\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class SizeBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class SizeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/winget/size/GitHub.cli' => 'size',
+            new BadgePreviewData(
+                name: 'size',
+                path: '/winget/size/GitHub.cli',
+                data: $this->render([]),
+            ),
         ];
     }
 }

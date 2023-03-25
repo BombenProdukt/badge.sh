@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Pub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PopularityBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class PopularityBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pub/popularity/mobx' => 'popularity',
+            new BadgePreviewData(
+                name: 'popularity',
+                path: '/pub/popularity/mobx',
+                data: $this->render([]),
+            ),
         ];
     }
 }

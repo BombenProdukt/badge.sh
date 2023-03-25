@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Modrinth\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class FollowersBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class FollowersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/modrinth/followers/AANobbMI' => 'followers',
+            new BadgePreviewData(
+                name: 'followers',
+                path: '/modrinth/followers/AANobbMI',
+                data: $this->render([]),
+            ),
         ];
     }
 }

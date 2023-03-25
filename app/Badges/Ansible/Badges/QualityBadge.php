@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Ansible\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class QualityBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class QualityBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ansible/quality/432' => '',
+            new BadgePreviewData(
+                name: '',
+                path: '/ansible/quality/432',
+                data: $this->render([]),
+            ),
         ];
     }
 }

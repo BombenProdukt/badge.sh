@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Cirrus\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class GitHubBadge extends AbstractBadge
@@ -39,10 +40,26 @@ final class GitHubBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cirrus/github/flutter/flutter' => 'build status',
-            '/cirrus/github/flutter/flutter/master' => 'build status',
-            '/cirrus/github/flutter/flutter/master?task=build_docker' => 'build status',
-            '/cirrus/github/flutter/flutter/master?task=build_docker&script=test' => 'build status',
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/cirrus/github/flutter/flutter',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/cirrus/github/flutter/flutter/master',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/cirrus/github/flutter/flutter/master?task=build_docker',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/cirrus/github/flutter/flutter/master?task=build_docker&script=test',
+                data: $this->render([]),
+            ),
         ];
     }
 }

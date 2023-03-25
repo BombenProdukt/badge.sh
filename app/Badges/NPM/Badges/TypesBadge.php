@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -84,9 +85,21 @@ final class TypesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/npm/types/tslib' => 'types',
-            '/npm/types/react' => 'types',
-            '/npm/types/queri' => 'types',
+            new BadgePreviewData(
+                name: 'types',
+                path: '/npm/types/tslib',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'types',
+                path: '/npm/types/react',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'types',
+                path: '/npm/types/queri',
+                data: $this->render([]),
+            ),
         ];
     }
 }

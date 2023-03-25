@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioAppCenter\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ReleaseVersionBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class ReleaseVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/visual-studio-app-center/version/jct/my-amazing-app/ac70cv...' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/visual-studio-app-center/version/jct/my-amazing-app/ac70cv...',
+                data: $this->render([]),
+            ),
         ];
     }
 }

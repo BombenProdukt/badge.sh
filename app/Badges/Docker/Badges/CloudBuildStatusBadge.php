@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Docker\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class CloudBuildStatusBadge extends AbstractBadge
@@ -37,7 +38,11 @@ final class CloudBuildStatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/docker/cloud-build/jrottenberg/ffmpeg' => 'build',
+            new BadgePreviewData(
+                name: 'build',
+                path: '/docker/cloud-build/jrottenberg/ffmpeg',
+                data: $this->render([]),
+            ),
         ];
     }
 }

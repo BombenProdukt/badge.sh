@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PeerTube\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -34,7 +35,11 @@ final class VotesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/peertube/votes/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d' => 'votes',
+            new BadgePreviewData(
+                name: 'votes',
+                path: '/peertube/votes/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d',
+                data: $this->render([]),
+            ),
         ];
     }
 }

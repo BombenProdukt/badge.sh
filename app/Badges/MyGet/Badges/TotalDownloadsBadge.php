@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\MyGet\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class TotalDownloadsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/myget/downloads/mongodb/MongoDB.Driver.Core' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/myget/downloads/mongodb/MongoDB.Driver.Core',
+                data: $this->render([]),
+            ),
         ];
     }
 }

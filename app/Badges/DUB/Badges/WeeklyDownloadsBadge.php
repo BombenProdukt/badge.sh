@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DUB\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class WeeklyDownloadsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class WeeklyDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/dub/downloads-weekly/vibe-d' => 'weekly downloads',
+            new BadgePreviewData(
+                name: 'weekly downloads',
+                path: '/dub/downloads-weekly/vibe-d',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Static\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StaticBadge extends AbstractBadge
@@ -33,12 +34,36 @@ final class StaticBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/static/Swift/4.2/orange' => 'swift version',
-            '/static/license/MIT/blue' => 'license MIT',
-            '/static/chat/on%20gitter/cyan' => 'chat on gitter',
-            '/static/stars/★★★★☆' => 'star rating',
-            '/static/become/a%20patron/F96854' => 'patron',
-            '/static/code%20style/standard/f2a' => 'code style: standard',
+            new BadgePreviewData(
+                name: 'swift version',
+                path: '/static/Swift/4.2/orange',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'license MIT',
+                path: '/static/license/MIT/blue',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'chat on gitter',
+                path: '/static/chat/on%20gitter/cyan',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'star rating',
+                path: '/static/stars/★★★★☆',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'patron',
+                path: '/static/become/a%20patron/F96854',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'code style: standard',
+                path: '/static/code%20style/standard/f2a',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\FDroid\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/f-droid/license/org.tasks' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/f-droid/license/org.tasks',
+                data: $this->render([]),
+            ),
         ];
     }
 }

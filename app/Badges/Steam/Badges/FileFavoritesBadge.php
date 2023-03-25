@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Steam\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class FileFavoritesBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class FileFavoritesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/steam/file-favorites/100' => 'file favorites',
+            new BadgePreviewData(
+                name: 'file favorites',
+                path: '/steam/file-favorites/100',
+                data: $this->render([]),
+            ),
         ];
     }
 }

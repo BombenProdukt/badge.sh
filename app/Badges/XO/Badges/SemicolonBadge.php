@@ -58,22 +58,22 @@ final class SemicolonBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'semicolon',
                 path: '/xo/semicolon/chalk',
                 data: $this->render(['semicolons' => 'enabled']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'semicolon',
                 path: '/xo/semicolon/chalk',
                 data: $this->render(['semicolons' => 'disabled']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'semicolon',
                 path: '/xo/semicolon/@tusbar/cache-control',
                 data: $this->render(['semicolons' => 'enabled']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'semicolon',
                 path: '/xo/semicolon/@tusbar/cache-control',
                 data: $this->render(['semicolons' => 'disabled']),

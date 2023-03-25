@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Spiget\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class SizeBadge extends AbstractBadge
@@ -39,7 +40,11 @@ final class SizeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/spiget/size/9089' => 'size',
+            new BadgePreviewData(
+                name: 'size',
+                path: '/spiget/size/9089',
+                data: $this->render([]),
+            ),
         ];
     }
 }

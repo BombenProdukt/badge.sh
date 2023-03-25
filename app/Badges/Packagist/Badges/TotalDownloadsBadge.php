@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/packagist/downloads/monolog/monolog' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/packagist/downloads/monolog/monolog',
+                data: $this->render([]),
+            ),
         ];
     }
 }

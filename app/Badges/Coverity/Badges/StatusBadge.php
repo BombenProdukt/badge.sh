@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Coverity\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/coverity/status/3997' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/coverity/status/3997',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\GitHub\Badges;
 
 use App\Badges\GitHub\Actions\RequestDependents;
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PackageDependentsBadge extends AbstractBadge
@@ -30,7 +31,11 @@ final class PackageDependentsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/dependents-package/micromatch/micromatch' => 'package dependents',
+            new BadgePreviewData(
+                name: 'package dependents',
+                path: '/github/dependents-package/micromatch/micromatch',
+                data: $this->render([]),
+            ),
         ];
     }
 }

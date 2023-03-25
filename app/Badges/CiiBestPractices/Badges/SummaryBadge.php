@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\CiiBestPractices\Badges;
 
 use App\Actions\DetermineColorByStatus;
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class SummaryBadge extends AbstractBadge
@@ -40,7 +41,11 @@ final class SummaryBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cii/summary/33' => 'summary',
+            new BadgePreviewData(
+                name: 'summary',
+                path: '/cii/summary/33',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\GitHub\Badges;
 
 use App\Actions\ExtractVersion;
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 
@@ -63,9 +64,21 @@ final class ReleaseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/release/babel/babel' => 'stable release',
-            '/github/release/babel/babel/latest' => 'latest release',
-            '/github/release/babel/babel/stable' => 'latest stable release',
+            new BadgePreviewData(
+                name: 'stable release',
+                path: '/github/release/babel/babel',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'latest release',
+                path: '/github/release/babel/babel/latest',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'latest stable release',
+                path: '/github/release/babel/babel/stable',
+                data: $this->render([]),
+            ),
         ];
     }
 }

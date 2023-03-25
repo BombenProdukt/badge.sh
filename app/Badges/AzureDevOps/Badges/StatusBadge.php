@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AzureDevOps\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -43,8 +44,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/azure-devops/status/dnceng/public/efcore-ci' => 'pipeline status (definition name)',
-            '/azure-devops/status/dnceng/public/51' => 'pipeline status (definition id)',
+            new BadgePreviewData(
+                name: 'pipeline status (definition name)',
+                path: '/azure-devops/status/dnceng/public/efcore-ci',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'pipeline status (definition id)',
+                path: '/azure-devops/status/dnceng/public/51',
+                data: $this->render([]),
+            ),
         ];
     }
 }

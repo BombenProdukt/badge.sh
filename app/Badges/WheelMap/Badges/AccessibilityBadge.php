@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WheelMap\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class AccessibilityBadge extends AbstractBadge
@@ -36,7 +37,11 @@ final class AccessibilityBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wheelmap/accessibility/26699541' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/wheelmap/accessibility/26699541',
+                data: $this->render([]),
+            ),
         ];
     }
 }

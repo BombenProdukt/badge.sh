@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Bitbucket\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class OpenPullRequestsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class OpenPullRequestsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bitbucket/open-pull-requests/atlassian/adf-builder-javascript' => 'open pull requests',
+            new BadgePreviewData(
+                name: 'open pull requests',
+                path: '/bitbucket/open-pull-requests/atlassian/adf-builder-javascript',
+                data: $this->render([]),
+            ),
         ];
     }
 }

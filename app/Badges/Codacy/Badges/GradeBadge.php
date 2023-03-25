@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Codacy\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class GradeBadge extends AbstractBadge
@@ -33,8 +34,16 @@ final class GradeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e' => 'code quality',
-            '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e/master' => 'branch code quality',
+            new BadgePreviewData(
+                name: 'code quality',
+                path: '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'branch code quality',
+                path: '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e/master',
+                data: $this->render([]),
+            ),
         ];
     }
 }

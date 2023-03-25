@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AppVeyor\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -33,8 +34,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/appveyor/status/gruntjs/grunt' => 'build',
-            '/appveyor/status/gruntjs/grunt/deprecate' => 'build (branch)',
+            new BadgePreviewData(
+                name: 'build',
+                path: '/appveyor/status/gruntjs/grunt',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'build (branch)',
+                path: '/appveyor/status/gruntjs/grunt/deprecate',
+                data: $this->render([]),
+            ),
         ];
     }
 }

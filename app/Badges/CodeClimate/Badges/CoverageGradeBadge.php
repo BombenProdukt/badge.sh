@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CodeClimate\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class CoverageGradeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/codeclimate/coverage-grade/codeclimate/codeclimate' => 'coverage (letter)',
+            new BadgePreviewData(
+                name: 'coverage (letter)',
+                path: '/codeclimate/coverage-grade/codeclimate/codeclimate',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenCollective\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class BalanceBadge extends AbstractBadge
@@ -34,7 +35,11 @@ final class BalanceBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/opencollective/balance/webpack' => 'balance',
+            new BadgePreviewData(
+                name: 'balance',
+                path: '/opencollective/balance/webpack',
+                data: $this->render([]),
+            ),
         ];
     }
 }

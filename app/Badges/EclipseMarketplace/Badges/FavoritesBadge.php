@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\EclipseMarketplace\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class FavoritesBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class FavoritesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/eclipse-marketplace/favorites/notepad4e' => 'favorites',
+            new BadgePreviewData(
+                name: 'favorites',
+                path: '/eclipse-marketplace/favorites/notepad4e',
+                data: $this->render([]),
+            ),
         ];
     }
 }

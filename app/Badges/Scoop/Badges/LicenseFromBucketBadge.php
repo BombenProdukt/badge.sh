@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Scoop\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -44,7 +45,11 @@ final class LicenseFromBucketBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/scoop/license/extras/deluge' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/scoop/license/extras/deluge',
+                data: $this->render([]),
+            ),
         ];
     }
 }

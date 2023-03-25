@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\UptimeRobot\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatPercentage;
 
@@ -42,7 +43,11 @@ final class DayBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/uptimerobot/day/m780862024-50db2c44c703e5c68d6b1ebb' => '(24 hours) uptime',
+            new BadgePreviewData(
+                name: '(24 hours) uptime',
+                path: '/uptimerobot/day/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render([]),
+            ),
         ];
     }
 }

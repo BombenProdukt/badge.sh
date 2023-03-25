@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenSuseBuildService\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/open-suse-build-service/status/openSUSE:Tools/osc/Debian_111/x86_64' => 'build status',
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/open-suse-build-service/status/openSUSE:Tools/osc/Debian_111/x86_64',
+                data: $this->render([]),
+            ),
         ];
     }
 }

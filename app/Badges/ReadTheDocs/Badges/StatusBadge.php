@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ReadTheDocs\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Spatie\Regex\Regex;
 
@@ -32,8 +33,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/readthedocs/status/pip' => 'status',
-            '/readthedocs/status/pip/stable' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/readthedocs/status/pip',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'status',
+                path: '/readthedocs/status/pip/stable',
+                data: $this->render([]),
+            ),
         ];
     }
 }

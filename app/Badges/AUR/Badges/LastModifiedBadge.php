@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AUR\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LastModifiedBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LastModifiedBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/aur/last-modified/google-chrome' => 'last modified',
+            new BadgePreviewData(
+                name: 'last modified',
+                path: '/aur/last-modified/google-chrome',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -59,22 +59,22 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'semicolon',
                 path: '/xo/status/chalk',
                 data: $this->render(['status' => 'enabled']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'status',
                 path: '/xo/status/chalk',
                 data: $this->render(['status' => 'disabled']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'status',
                 path: '/xo/status/@tusbar/cache-control',
                 data: $this->render(['status' => 'enabled']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'status',
                 path: '/xo/status/@tusbar/cache-control',
                 data: $this->render(['status' => 'disabled']),

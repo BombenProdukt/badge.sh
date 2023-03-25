@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Swagger\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -46,7 +47,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/swagger/validator?spec=https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-expanded.json' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/swagger/validator?spec=https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-expanded.json',
+                data: $this->render([]),
+            ),
         ];
     }
 }

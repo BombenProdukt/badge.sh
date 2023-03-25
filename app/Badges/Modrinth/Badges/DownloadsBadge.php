@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Modrinth\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class DownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/modrinth/downloads/AANobbMI' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/modrinth/downloads/AANobbMI',
+                data: $this->render([]),
+            ),
         ];
     }
 }

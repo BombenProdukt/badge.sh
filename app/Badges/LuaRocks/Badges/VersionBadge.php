@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\LuaRocks\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Composer\Semver\Comparator;
 
@@ -32,7 +33,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/luarocks/version/mpeterv/luacheck' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/luarocks/version/mpeterv/luacheck',
+                data: $this->render([]),
+            ),
         ];
     }
 

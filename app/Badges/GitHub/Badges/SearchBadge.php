@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 
@@ -33,7 +34,11 @@ final class SearchBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/search/torvalds/linux/goto' => 'search',
+            new BadgePreviewData(
+                name: 'search',
+                path: '/github/search/torvalds/linux/goto',
+                data: $this->render([]),
+            ),
         ];
     }
 }

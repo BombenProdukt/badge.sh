@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Node\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -51,12 +52,36 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/node/version/passport' => 'node version',
-            '/node/version/passport/latest' => 'node version (tag)',
-            '/node/version/passport/latest?registry=https://registry.npmjs.com' => 'node version (tag, custom registry)',
-            '/node/version/@stdlib/stdlib' => 'node version (scoped)',
-            '/node/version/@stdlib/stdlib/latest' => 'node version (scoped, tag)',
-            '/node/version/@stdlib/stdlib/latest?registry=https://registry.npmjs.com' => 'node version (scoped, tag, custom registry)',
+            new BadgePreviewData(
+                name: 'node version',
+                path: '/node/version/passport',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'node version (tag)',
+                path: '/node/version/passport/latest',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'node version (tag, custom registry)',
+                path: '/node/version/passport/latest?registry=https://registry.npmjs.com',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'node version (scoped)',
+                path: '/node/version/@stdlib/stdlib',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'node version (scoped, tag)',
+                path: '/node/version/@stdlib/stdlib/latest',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'node version (scoped, tag, custom registry)',
+                path: '/node/version/@stdlib/stdlib/latest?registry=https://registry.npmjs.com',
+                data: $this->render([]),
+            ),
         ];
     }
 }

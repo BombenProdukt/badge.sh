@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Coveralls\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -51,10 +52,26 @@ final class CoverageBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/coveralls/coverage/github/jekyll/jekyll' => 'coverage (github)',
-            '/coveralls/coverage/github/jekyll/jekyll/master' => 'coverage (github, branch)',
-            '/coveralls/coverage/bitbucket/pyKLIP/pyklip' => 'coverage (bitbucket)',
-            '/coveralls/coverage/bitbucket/pyKLIP/pyklip/master' => 'coverage (bitbucket, branch)',
+            new BadgePreviewData(
+                name: 'coverage (github)',
+                path: '/coveralls/coverage/github/jekyll/jekyll',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'coverage (github, branch)',
+                path: '/coveralls/coverage/github/jekyll/jekyll/master',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'coverage (bitbucket)',
+                path: '/coveralls/coverage/bitbucket/pyKLIP/pyklip',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'coverage (bitbucket, branch)',
+                path: '/coveralls/coverage/bitbucket/pyKLIP/pyklip/master',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Docker\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PullsBadge extends AbstractBadge
@@ -31,8 +32,16 @@ final class PullsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/docker/pulls/library/ubuntu' => 'pulls (library)',
-            '/docker/pulls/amio/node-chrome' => 'pulls (scoped)',
+            new BadgePreviewData(
+                name: 'pulls (library)',
+                path: '/docker/pulls/library/ubuntu',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'pulls (scoped)',
+                path: '/docker/pulls/amio/node-chrome',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Spatie\Regex\Regex;
@@ -35,7 +36,11 @@ final class GoModBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/gomod/golang/go' => 'lerna',
+            new BadgePreviewData(
+                name: 'lerna',
+                path: '/github/gomod/golang/go',
+                data: $this->render([]),
+            ),
         ];
     }
 }

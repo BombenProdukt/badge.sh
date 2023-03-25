@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\LibrariesIO\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -49,7 +50,11 @@ final class RepositoryDependenciesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/libraries-io/repository-dependencies/phoenixframework/phoenix' => 'dependencies',
+            new BadgePreviewData(
+                name: 'dependencies',
+                path: '/libraries-io/repository-dependencies/phoenixframework/phoenix',
+                data: $this->render([]),
+            ),
         ];
     }
 }

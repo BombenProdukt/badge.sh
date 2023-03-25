@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PackageControl\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsPerMacBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class DownloadsPerMacBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/package-control/downloads-mac/GitGutter' => 'macOS downloads',
+            new BadgePreviewData(
+                name: 'macOS downloads',
+                path: '/package-control/downloads-mac/GitGutter',
+                data: $this->render([]),
+            ),
         ];
     }
 }

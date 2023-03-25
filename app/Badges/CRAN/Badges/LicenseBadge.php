@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cran/license/ggplot2' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/cran/license/ggplot2',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\FactorioModPortal\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LastModifiedBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LastModifiedBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/factorio-mod-portal/last-modified/rso-mod' => 'factorio version',
+            new BadgePreviewData(
+                name: 'factorio version',
+                path: '/factorio-mod-portal/last-modified/rso-mod',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Hackage\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/hackage/license/Cabal' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/hackage/license/Cabal',
+                data: $this->render([]),
+            ),
         ];
     }
 }

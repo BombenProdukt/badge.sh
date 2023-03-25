@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Tidelift\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -45,8 +46,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/tidelift/status/npm/minimist' => 'subscription',
-            '/tidelift/status/npm/got' => 'subscription',
+            new BadgePreviewData(
+                name: 'subscription',
+                path: '/tidelift/status/npm/minimist',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'subscription',
+                path: '/tidelift/status/npm/got',
+                data: $this->render([]),
+            ),
         ];
     }
 }

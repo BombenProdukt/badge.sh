@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ScrutinizerCI\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -37,7 +38,11 @@ final class CoverageBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/scrutinizer-ci/coverage/g/filp/whoops' => 'coverage',
+            new BadgePreviewData(
+                name: 'coverage',
+                path: '/scrutinizer-ci/coverage/g/filp/whoops',
+                data: $this->render([]),
+            ),
         ];
     }
 }

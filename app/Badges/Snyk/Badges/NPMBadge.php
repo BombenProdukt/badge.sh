@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Snyk\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -60,8 +61,16 @@ final class NPMBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/snyk/npm/@babel/core' => 'vulnerability scan (branch)',
-            '/snyk/npm/@babel/core/6.x' => 'vulnerability scan (branch)',
+            new BadgePreviewData(
+                name: 'vulnerability scan (branch)',
+                path: '/snyk/npm/@babel/core',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'vulnerability scan (branch)',
+                path: '/snyk/npm/@babel/core/6.x',
+                data: $this->render([]),
+            ),
         ];
     }
 }

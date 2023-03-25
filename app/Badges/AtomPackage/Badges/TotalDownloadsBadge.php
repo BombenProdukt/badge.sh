@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AtomPackage\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class TotalDownloadsBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/apm/downloads/linter' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/apm/downloads/linter',
+                data: $this->render([]),
+            ),
         ];
     }
 }

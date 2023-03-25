@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ClosedIssuesBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class ClosedIssuesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/closed-issues/micromatch/micromatch' => 'closed issues',
+            new BadgePreviewData(
+                name: 'closed issues',
+                path: '/github/closed-issues/micromatch/micromatch',
+                data: $this->render([]),
+            ),
         ];
     }
 }

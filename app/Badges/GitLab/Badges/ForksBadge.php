@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitLab\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class ForksBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/gitlab/forks/inkscape/inkscape' => 'forks',
+            new BadgePreviewData(
+                name: 'forks',
+                path: '/gitlab/forks/inkscape/inkscape',
+                data: $this->render([]),
+            ),
         ];
     }
 }

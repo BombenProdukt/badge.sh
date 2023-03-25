@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Badges\Mastodon\Badges;
 
+use App\Data\BadgePreviewData;
+
 final class AccountBadge extends AbstractBadge
 {
     protected array $routes = [
@@ -39,9 +41,21 @@ final class AccountBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/mastodon/follow/Gargron@mastodon.social' => 'followers',
-            '/mastodon/follow/trumpet@mas.to' => 'followers',
-            '/mastodon/follow/admin@cawfee.club' => 'followers (Pleroma)',
+            new BadgePreviewData(
+                name: 'followers',
+                path: '/mastodon/follow/Gargron@mastodon.social',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'followers',
+                path: '/mastodon/follow/trumpet@mas.to',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'followers (Pleroma)',
+                path: '/mastodon/follow/admin@cawfee.club',
+                data: $this->render([]),
+            ),
         ];
     }
 

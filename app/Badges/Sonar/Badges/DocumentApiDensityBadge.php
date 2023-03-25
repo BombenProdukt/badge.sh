@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Sonar\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DocumentApiDensityBadge extends AbstractBadge
@@ -39,7 +40,11 @@ final class DocumentApiDensityBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/sonar/public_documented_api_density/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
+            new BadgePreviewData(
+                name: 'complexity',
+                path: '/sonar/public_documented_api_density/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
         ];
     }
 }

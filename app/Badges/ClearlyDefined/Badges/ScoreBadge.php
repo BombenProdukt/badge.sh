@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ClearlyDefined\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ScoreBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class ScoreBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/clearlydefined/score/npm/npmjs/-/jquery/3.4.1' => 'score',
+            new BadgePreviewData(
+                name: 'score',
+                path: '/clearlydefined/score/npm/npmjs/-/jquery/3.4.1',
+                data: $this->render([]),
+            ),
         ];
     }
 }

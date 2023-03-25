@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WAPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -36,7 +37,11 @@ final class SizeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wapm/size/coreutils' => 'size',
+            new BadgePreviewData(
+                name: 'size',
+                path: '/wapm/size/coreutils',
+                data: $this->render([]),
+            ),
         ];
     }
 }

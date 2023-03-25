@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\TAS\Badges;
 
 use App\Actions\DetermineColorByStatus;
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -36,7 +37,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/tas/tests/github/tasdemo/axios' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/tas/tests/github/tasdemo/axios',
+                data: $this->render([]),
+            ),
         ];
     }
 }

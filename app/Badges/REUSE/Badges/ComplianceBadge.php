@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\REUSE\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -36,7 +37,11 @@ final class ComplianceBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/reuse/compliance/github.com/fsfe/reuse-tool' => 'compliance',
+            new BadgePreviewData(
+                name: 'compliance',
+                path: '/reuse/compliance/github.com/fsfe/reuse-tool',
+                data: $this->render([]),
+            ),
         ];
     }
 }

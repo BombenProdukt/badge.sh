@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\JSDelivr\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -43,8 +44,16 @@ final class HitsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jsdelivr/hits/gh/jquery/jquery' => 'hits (per month)',
-            '/jsdelivr/hits/npm/lodash' => 'hits (per month)',
+            new BadgePreviewData(
+                name: 'hits (per month)',
+                path: '/jsdelivr/hits/gh/jquery/jquery',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'hits (per month)',
+                path: '/jsdelivr/hits/npm/lodash',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Gitter\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -42,8 +43,16 @@ final class MemberCountBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/gitter/members/redom/lobby' => 'members',
-            '/gitter/members/redom/redom' => 'members',
+            new BadgePreviewData(
+                name: 'members',
+                path: '/gitter/members/redom/lobby',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'members',
+                path: '/gitter/members/redom/redom',
+                data: $this->render([]),
+            ),
         ];
     }
 }

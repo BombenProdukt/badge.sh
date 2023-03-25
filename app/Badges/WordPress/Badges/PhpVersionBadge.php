@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WordPress\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -37,8 +38,16 @@ final class PhpVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wordpress/plugin/php-version/bbpress' => 'required PHP version (plugin)',
-            '/wordpress/theme/php-version/twentyseventeen' => 'required PHP version (theme)',
+            new BadgePreviewData(
+                name: 'required PHP version (plugin)',
+                path: '/wordpress/plugin/php-version/bbpress',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'required PHP version (theme)',
+                path: '/wordpress/theme/php-version/twentyseventeen',
+                data: $this->render([]),
+            ),
         ];
     }
 }

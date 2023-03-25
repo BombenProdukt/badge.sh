@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CPAN\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DependentsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class DependentsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cpan/dependents/DateTime' => 'dependents',
+            new BadgePreviewData(
+                name: 'dependents',
+                path: '/cpan/dependents/DateTime',
+                data: $this->render([]),
+            ),
         ];
     }
 }

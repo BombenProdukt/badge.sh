@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Conda\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PlatformBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class PlatformBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/conda/platform/conda-forge/python' => 'platform',
+            new BadgePreviewData(
+                name: 'platform',
+                path: '/conda/platform/conda-forge/python',
+                data: $this->render([]),
+            ),
         ];
     }
 }

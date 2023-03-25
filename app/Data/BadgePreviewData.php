@@ -15,9 +15,4 @@ final class BadgePreviewData extends Data
     ) {
         //
     }
-
-    public static function make(...$payloads): self
-    {
-        return self::from($payloads);
-    }
 }

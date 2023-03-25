@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CocoaPods\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PlatformBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class PlatformBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cocoapods/platform/AFNetworking' => 'platform',
+            new BadgePreviewData(
+                name: 'platform',
+                path: '/cocoapods/platform/AFNetworking',
+                data: $this->render([]),
+            ),
         ];
     }
 }

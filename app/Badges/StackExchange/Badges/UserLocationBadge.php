@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\StackExchange\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class UserLocationBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class UserLocationBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/stack-exchange/user/location/stackoverflow/123' => 'location',
+            new BadgePreviewData(
+                name: 'location',
+                path: '/stack-exchange/user/location/stackoverflow/123',
+                data: $this->render([]),
+            ),
         ];
     }
 }

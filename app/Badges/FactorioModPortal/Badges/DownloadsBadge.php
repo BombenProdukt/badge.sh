@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\FactorioModPortal\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class DownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/factorio-mod-portal/downloads/rso-mod' => 'downloads',
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/factorio-mod-portal/downloads/rso-mod',
+                data: $this->render([]),
+            ),
         ];
     }
 }

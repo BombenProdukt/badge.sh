@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Jira\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class IssueBadge extends AbstractBadge
@@ -50,7 +51,11 @@ final class IssueBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jira/issue/KAFKA-2896?instance=https://issues.apache.org/jira' => 'issue',
+            new BadgePreviewData(
+                name: 'issue',
+                path: '/jira/issue/KAFKA-2896?instance=https://issues.apache.org/jira',
+                data: $this->render([]),
+            ),
         ];
     }
 }

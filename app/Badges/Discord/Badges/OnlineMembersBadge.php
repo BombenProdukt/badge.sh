@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Discord\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -36,7 +37,11 @@ final class OnlineMembersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/discord/online-members/8Jzqu3T' => 'online members',
+            new BadgePreviewData(
+                name: 'online members',
+                path: '/discord/online-members/8Jzqu3T',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\MozillaObservatory\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ScoreBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class ScoreBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/mozilla-observatory/score/github.com' => 'score',
+            new BadgePreviewData(
+                name: 'score',
+                path: '/mozilla-observatory/score/github.com',
+                data: $this->render([]),
+            ),
         ];
     }
 }

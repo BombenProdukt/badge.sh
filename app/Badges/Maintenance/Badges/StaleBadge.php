@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Maintenance\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -37,7 +38,11 @@ final class StaleBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/maintenance/stale/2023' => 'stale',
+            new BadgePreviewData(
+                name: 'stale',
+                path: '/maintenance/stale/2023',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Treeware\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class CountBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class CountBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/treeware/trees/stoplightio/spectral' => 'tree count',
+            new BadgePreviewData(
+                name: 'tree count',
+                path: '/treeware/trees/stoplightio/spectral',
+                data: $this->render([]),
+            ),
         ];
     }
 }

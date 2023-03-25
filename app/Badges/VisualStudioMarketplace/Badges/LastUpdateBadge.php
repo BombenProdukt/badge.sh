@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LastUpdateBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LastUpdateBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/vs-marketplace/last-modified/vscodevim.vim' => 'last updated',
+            new BadgePreviewData(
+                name: 'last updated',
+                path: '/vs-marketplace/last-modified/vscodevim.vim',
+                data: $this->render([]),
+            ),
         ];
     }
 }

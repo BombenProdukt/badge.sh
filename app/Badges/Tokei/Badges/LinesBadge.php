@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Tokei\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LinesBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LinesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/tokei/lines/github/badges/shields' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/tokei/lines/github/badges/shields',
+                data: $this->render([]),
+            ),
         ];
     }
 }

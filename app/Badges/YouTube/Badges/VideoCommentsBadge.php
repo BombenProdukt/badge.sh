@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\YouTube\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VideoCommentsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class VideoCommentsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/youtube/video/comments/wGJHwc5ksMA' => 'video comments',
+            new BadgePreviewData(
+                name: 'video comments',
+                path: '/youtube/video/comments/wGJHwc5ksMA',
+                data: $this->render([]),
+            ),
         ];
     }
 }

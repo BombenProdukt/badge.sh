@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PackageControl\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LastModifiedBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LastModifiedBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/package-control/last-modified/GitGutter' => 'last modified',
+            new BadgePreviewData(
+                name: 'last modified',
+                path: '/package-control/last-modified/GitGutter',
+                data: $this->render([]),
+            ),
         ];
     }
 }

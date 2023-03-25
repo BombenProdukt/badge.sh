@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Fedora\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -31,8 +32,16 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/fedora/version/rpm' => 'version',
-            '/fedora/version/rpm/rawhide' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/fedora/version/rpm',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/fedora/version/rpm/rawhide',
+                data: $this->render([]),
+            ),
         ];
     }
 }

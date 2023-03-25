@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Nexus\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -46,10 +47,26 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/nexus/version/r/org.apache.commons/commoin-lang3?instance=https://nexus.pentaho.org' => 'Sonatype Nexus (Releases)',
-            '/nexus/version/r/com.google.guava/guava?instance=https://oss.sonatype.org' => 'Sonatype Nexus (Snapshots)',
-            '/nexus/version/r/developer/ai.h2o/h2o-automl?instance=https://repository.jboss.org/nexus' => 'Sonatype Nexus (Repository)',
-            '/nexus/version/r/fs-public-snapshots/com.progress.fuse/fusehq?instance=https://repository.jboss.org/nexus' => 'Sonatype Nexus (Query Options)',
+            new BadgePreviewData(
+                name: 'Sonatype Nexus (Releases)',
+                path: '/nexus/version/r/org.apache.commons/commoin-lang3?instance=https://nexus.pentaho.org',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'Sonatype Nexus (Snapshots)',
+                path: '/nexus/version/r/com.google.guava/guava?instance=https://oss.sonatype.org',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'Sonatype Nexus (Repository)',
+                path: '/nexus/version/r/developer/ai.h2o/h2o-automl?instance=https://repository.jboss.org/nexus',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'Sonatype Nexus (Query Options)',
+                path: '/nexus/version/r/fs-public-snapshots/com.progress.fuse/fusehq?instance=https://repository.jboss.org/nexus',
+                data: $this->render([]),
+            ),
         ];
     }
 }

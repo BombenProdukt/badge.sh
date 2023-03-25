@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CiiBestPractices\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PercentageBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class PercentageBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cii/percentage/29' => 'percentage',
+            new BadgePreviewData(
+                name: 'percentage',
+                path: '/cii/percentage/29',
+                data: $this->render([]),
+            ),
         ];
     }
 }

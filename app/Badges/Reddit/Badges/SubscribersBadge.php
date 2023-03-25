@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Reddit\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -37,7 +38,11 @@ final class SubscribersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/reddit/subscribers/programming' => 'subreddit subscribers',
+            new BadgePreviewData(
+                name: 'subreddit subscribers',
+                path: '/reddit/subscribers/programming',
+                data: $this->render([]),
+            ),
         ];
     }
 }

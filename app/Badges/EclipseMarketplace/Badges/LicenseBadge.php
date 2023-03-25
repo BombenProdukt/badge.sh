@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\EclipseMarketplace\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/eclipse-marketplace/license/notepad4e' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/eclipse-marketplace/license/notepad4e',
+                data: $this->render([]),
+            ),
         ];
     }
 }

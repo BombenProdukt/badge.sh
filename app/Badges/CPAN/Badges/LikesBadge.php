@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CPAN\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LikesBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LikesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cpan/likes/DBIx::Class' => 'likes',
+            new BadgePreviewData(
+                name: 'likes',
+                path: '/cpan/likes/DBIx::Class',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenCollective\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatMoney;
 
@@ -39,7 +40,11 @@ final class YearlyBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/opencollective/yearly/webpack' => 'yearly income',
+            new BadgePreviewData(
+                name: 'yearly income',
+                path: '/opencollective/yearly/webpack',
+                data: $this->render([]),
+            ),
         ];
     }
 }

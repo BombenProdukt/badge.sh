@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -45,7 +46,11 @@ final class LinesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/lgtm/lines/github/apache/cloudstack/java' => 'lines (java)',
+            new BadgePreviewData(
+                name: 'lines (java)',
+                path: '/lgtm/lines/github/apache/cloudstack/java',
+                data: $this->render([]),
+            ),
         ];
     }
 }

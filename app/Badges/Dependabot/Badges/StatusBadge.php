@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Dependabot\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -49,8 +50,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/dependabot/status/thepracticaldev/dev.to' => 'status',
-            '/dependabot/status/dependabot/dependabot-core' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/dependabot/status/thepracticaldev/dev.to',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'status',
+                path: '/dependabot/status/dependabot/dependabot-core',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Gerrit\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/gerrit/status/1011478' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/gerrit/status/1011478',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Pub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -44,8 +45,16 @@ final class DartPlatformBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pub/dart-platform/rxdart' => 'dart-platform',
-            '/pub/dart-platform/google_sign_in' => 'dart-platform',
+            new BadgePreviewData(
+                name: 'dart-platform',
+                path: '/pub/dart-platform/rxdart',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'dart-platform',
+                path: '/pub/dart-platform/google_sign_in',
+                data: $this->render([]),
+            ),
         ];
     }
 

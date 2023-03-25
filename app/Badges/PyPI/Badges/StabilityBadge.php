@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\PyPI\Badges;
 
 use App\Actions\DetermineColorByVersion;
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StabilityBadge extends AbstractBadge
@@ -52,8 +53,16 @@ final class StabilityBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pypi/stability/black' => 'stability',
-            '/pypi/stability/plone.volto' => 'stability',
+            new BadgePreviewData(
+                name: 'stability',
+                path: '/pypi/stability/black',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'stability',
+                path: '/pypi/stability/plone.volto',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -36,7 +37,11 @@ final class SuggestersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/packagist/suggesters/monolog/monolog' => 'suggesters',
+            new BadgePreviewData(
+                name: 'suggesters',
+                path: '/packagist/suggesters/monolog/monolog',
+                data: $this->render([]),
+            ),
         ];
     }
 }

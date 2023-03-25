@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ArchLinux\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/arch-linux/version/core/x86_64/pacman' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/arch-linux/version/core/x86_64/pacman',
+                data: $this->render([]),
+            ),
         ];
     }
 }

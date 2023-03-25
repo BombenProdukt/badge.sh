@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AUR\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VotesBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class VotesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/aur/votes/google-chrome' => 'votes',
+            new BadgePreviewData(
+                name: 'votes',
+                path: '/aur/votes/google-chrome',
+                data: $this->render([]),
+            ),
         ];
     }
 }

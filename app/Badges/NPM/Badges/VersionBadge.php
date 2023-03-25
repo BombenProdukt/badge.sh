@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -43,12 +44,36 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/npm/version/express' => 'version',
-            '/npm/version/yarn' => 'version',
-            '/npm/version/yarn/berry' => 'version (tag)',
-            '/npm/version/yarn/legacy' => 'version (tag)',
-            '/npm/version/@babel/core' => 'version (scoped package)',
-            '/npm/version/@nestjs/core/beta' => 'version (scoped & tag)',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/npm/version/express',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/npm/version/yarn',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (tag)',
+                path: '/npm/version/yarn/berry',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (tag)',
+                path: '/npm/version/yarn/legacy',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (scoped package)',
+                path: '/npm/version/@babel/core',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (scoped & tag)',
+                path: '/npm/version/@nestjs/core/beta',
+                data: $this->render([]),
+            ),
         ];
     }
 }

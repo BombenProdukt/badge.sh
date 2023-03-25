@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Crates\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -36,7 +37,11 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/crates/downloads-recently/regex' => 'downloads (latest version)',
+            new BadgePreviewData(
+                name: 'downloads (latest version)',
+                path: '/crates/downloads-recently/regex',
+                data: $this->render([]),
+            ),
         ];
     }
 }

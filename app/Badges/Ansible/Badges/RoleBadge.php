@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Ansible\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class RoleBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class RoleBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ansible/role/3078' => 'downloads',
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/ansible/role/3078',
+                data: $this->render([]),
+            ),
         ];
     }
 }

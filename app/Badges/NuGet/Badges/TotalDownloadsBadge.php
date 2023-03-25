@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NuGet\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -36,7 +37,11 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/nuget/downloads/Newtonsoft.Json' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/nuget/downloads/Newtonsoft.Json',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\Packagist\Badges;
 
 use App\Badges\Packagist\Concerns\HandlesVersions;
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -46,7 +47,11 @@ final class PhpVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/packagist/php-version/monolog/monolog' => 'php',
+            new BadgePreviewData(
+                name: 'php',
+                path: '/packagist/php-version/monolog/monolog',
+                data: $this->render([]),
+            ),
         ];
     }
 }

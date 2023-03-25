@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PyPI\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ImplementationBadge extends AbstractBadge
@@ -43,7 +44,11 @@ final class ImplementationBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pypi/implementation/black' => 'framework',
+            new BadgePreviewData(
+                name: 'framework',
+                path: '/pypi/implementation/black',
+                data: $this->render([]),
+            ),
         ];
     }
 }

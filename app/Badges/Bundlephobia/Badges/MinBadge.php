@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Bundlephobia\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -36,7 +37,11 @@ final class MinBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bundlephobia/min/react' => 'minified',
+            new BadgePreviewData(
+                name: 'minified',
+                path: '/bundlephobia/min/react',
+                data: $this->render([]),
+            ),
         ];
     }
 }

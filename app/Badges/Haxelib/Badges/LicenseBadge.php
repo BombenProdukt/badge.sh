@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Haxelib\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/haxelib/license/openfl' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/haxelib/license/openfl',
+                data: $this->render([]),
+            ),
         ];
     }
 }

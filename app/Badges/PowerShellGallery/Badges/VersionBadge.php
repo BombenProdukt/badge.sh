@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PowerShellGallery\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -31,9 +32,21 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/powershellgallery/version/Azure.Storage' => 'version (stable channel)',
-            '/powershellgallery/version/Azure.Storage/pre' => 'version (pre channel)',
-            '/powershellgallery/version/Azure.Storage/latest' => 'version (latest channel)',
+            new BadgePreviewData(
+                name: 'version (stable channel)',
+                path: '/powershellgallery/version/Azure.Storage',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (pre channel)',
+                path: '/powershellgallery/version/Azure.Storage/pre',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (latest channel)',
+                path: '/powershellgallery/version/Azure.Storage/latest',
+                data: $this->render([]),
+            ),
         ];
     }
 }

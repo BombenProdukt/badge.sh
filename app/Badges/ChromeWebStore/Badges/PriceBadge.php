@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ChromeWebStore\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -35,7 +36,11 @@ final class PriceBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/chrome-web-store/price/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'price',
+            new BadgePreviewData(
+                name: 'price',
+                path: '/chrome-web-store/price/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
+                data: $this->render([]),
+            ),
         ];
     }
 }

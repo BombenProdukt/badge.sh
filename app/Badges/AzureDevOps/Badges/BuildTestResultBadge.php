@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AzureDevOps\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 use PreemStudio\Formatter\FormatNumber;
@@ -74,8 +75,16 @@ final class BuildTestResultBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/azure-devops/build-test/dnceng/public/51' => 'test results',
-            '/azure-devops/build-test/azuredevops-powershell/azuredevops-powershell/1' => 'test results',
+            new BadgePreviewData(
+                name: 'test results',
+                path: '/azure-devops/build-test/dnceng/public/51',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'test results',
+                path: '/azure-devops/build-test/azuredevops-powershell/azuredevops-powershell/1',
+                data: $this->render([]),
+            ),
         ];
     }
 }

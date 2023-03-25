@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Ore\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class SpongeVersionBadge extends AbstractBadge
@@ -35,7 +36,11 @@ final class SpongeVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ore/sponge-version/nucleus' => 'sponge version',
+            new BadgePreviewData(
+                name: 'sponge version',
+                path: '/ore/sponge-version/nucleus',
+                data: $this->render([]),
+            ),
         ];
     }
 }

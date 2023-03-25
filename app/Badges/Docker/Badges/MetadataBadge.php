@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Docker\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class MetadataBadge extends AbstractBadge
@@ -44,10 +45,26 @@ final class MetadataBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/docker/metadata/lucashalbert/curl/version/latest/arm64/v8' => 'metadata (version)',
-            '/docker/metadata/lucashalbert/curl/architecture/latest/arm64/v8' => 'metadata (architecture)',
-            '/docker/metadata/lucashalbert/curl/build-date/latest/arm64/v8' => 'metadata (build-date)',
-            '/docker/metadata/lucashalbert/curl/maintainer/latest/arm64/v8' => 'metadata (maintainer)',
+            new BadgePreviewData(
+                name: 'metadata (version)',
+                path: '/docker/metadata/lucashalbert/curl/version/latest/arm64/v8',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'metadata (architecture)',
+                path: '/docker/metadata/lucashalbert/curl/architecture/latest/arm64/v8',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'metadata (build-date)',
+                path: '/docker/metadata/lucashalbert/curl/build-date/latest/arm64/v8',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'metadata (maintainer)',
+                path: '/docker/metadata/lucashalbert/curl/maintainer/latest/arm64/v8',
+                data: $this->render([]),
+            ),
         ];
     }
 }

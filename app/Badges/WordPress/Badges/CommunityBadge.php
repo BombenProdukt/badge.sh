@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WordPress\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -35,8 +36,16 @@ final class CommunityBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wordpress/plugin/community/bbpress' => 'community status (plugin)',
-            '/wordpress/theme/community/twentyseventeen' => 'community status (theme)',
+            new BadgePreviewData(
+                name: 'community status (plugin)',
+                path: '/wordpress/plugin/community/bbpress',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'community status (theme)',
+                path: '/wordpress/theme/community/twentyseventeen',
+                data: $this->render([]),
+            ),
         ];
     }
 }

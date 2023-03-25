@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenCollective\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ContributorsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class ContributorsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/opencollective/contributors/webpack' => 'contributors',
+            new BadgePreviewData(
+                name: 'contributors',
+                path: '/opencollective/contributors/webpack',
+                data: $this->render([]),
+            ),
         ];
     }
 }

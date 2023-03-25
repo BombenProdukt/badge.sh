@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\MavenMetadata\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -43,7 +44,11 @@ final class UrlBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/maven-metadata/version/repo1.maven.org/maven2/com/google/code/gson/gson/maven-metadata.xml' => 'version (maven metadata url)',
+            new BadgePreviewData(
+                name: 'version (maven metadata url)',
+                path: '/maven-metadata/version/repo1.maven.org/maven2/com/google/code/gson/gson/maven-metadata.xml',
+                data: $this->render([]),
+            ),
         ];
     }
 }

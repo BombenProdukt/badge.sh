@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Drone\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/drone/status/badges/shields' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/drone/status/badges/shields',
+                data: $this->render([]),
+            ),
         ];
     }
 }

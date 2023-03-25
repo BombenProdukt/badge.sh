@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DavidDM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -45,8 +46,16 @@ final class DepBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/david/dep/zeit/pkg' => 'dependencies',
-            '/david/dep/babel/babel/packages/babel-cli' => 'dependencies (sub path)',
+            new BadgePreviewData(
+                name: 'dependencies',
+                path: '/david/dep/zeit/pkg',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'dependencies (sub path)',
+                path: '/david/dep/babel/babel/packages/babel-cli',
+                data: $this->render([]),
+            ),
         ];
     }
 }

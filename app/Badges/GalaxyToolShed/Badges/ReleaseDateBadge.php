@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GalaxyToolShed\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ReleaseDateBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class ReleaseDateBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/galaxy-tool-shed/release-date/iuc/sra_tools' => 'release date',
+            new BadgePreviewData(
+                name: 'release date',
+                path: '/galaxy-tool-shed/release-date/iuc/sra_tools',
+                data: $this->render([]),
+            ),
         ];
     }
 }

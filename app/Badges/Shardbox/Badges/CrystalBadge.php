@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Shardbox\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class CrystalBadge extends AbstractBadge
@@ -37,7 +38,11 @@ final class CrystalBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/shardbox/crystal-version/amber' => 'crystal version',
+            new BadgePreviewData(
+                name: 'crystal version',
+                path: '/shardbox/crystal-version/amber',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\TeamCity\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class BuildBadge extends AbstractBadge
@@ -38,7 +39,11 @@ final class BuildBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/team-city/build/IntelliJIdeaCe_JavaDecompilerEngineTests?instance=https://teamcity.jetbrains.com' => 'build status',
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/team-city/build/IntelliJIdeaCe_JavaDecompilerEngineTests?instance=https://teamcity.jetbrains.com',
+                data: $this->render([]),
+            ),
         ];
     }
 }

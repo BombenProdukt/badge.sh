@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Homebrew\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -41,7 +42,11 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/homebrew/downloads-yearly/fish' => 'yearly downloads',
+            new BadgePreviewData(
+                name: 'yearly downloads',
+                path: '/homebrew/downloads-yearly/fish',
+                data: $this->render([]),
+            ),
         ];
     }
 }

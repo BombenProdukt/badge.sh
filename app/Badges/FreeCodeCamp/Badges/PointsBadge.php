@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\FreeCodeCamp\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PointsBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class PointsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/freecodecamp/points/sethi' => 'points',
+            new BadgePreviewData(
+                name: 'points',
+                path: '/freecodecamp/points/sethi',
+                data: $this->render([]),
+            ),
         ];
     }
 }

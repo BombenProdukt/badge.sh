@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AUR\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/aur/license/google-chrome' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/aur/license/google-chrome',
+                data: $this->render([]),
+            ),
         ];
     }
 }

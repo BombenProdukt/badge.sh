@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Spiget\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class TestedVersionsBadge extends AbstractBadge
@@ -38,7 +39,11 @@ final class TestedVersionsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/spiget/tested-versions/9089' => 'tested versions',
+            new BadgePreviewData(
+                name: 'tested versions',
+                path: '/spiget/tested-versions/9089',
+                data: $this->render([]),
+            ),
         ];
     }
 }

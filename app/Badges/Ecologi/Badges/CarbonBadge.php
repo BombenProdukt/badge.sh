@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Ecologi\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class CarbonBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class CarbonBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ecologi/carbon/ecologi' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/ecologi/carbon/ecologi',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenSSFScorecard\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ScoreBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class ScoreBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ossf-scorecard/score/github.com/rohankh532/org-workflow-add' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/ossf-scorecard/score/github.com/rohankh532/org-workflow-add',
+                data: $this->render([]),
+            ),
         ];
     }
 }

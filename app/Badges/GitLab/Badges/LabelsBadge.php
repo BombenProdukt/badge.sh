@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitLab\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -42,9 +43,21 @@ final class LabelsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/gitlab/issues-by-label/NickBusey/HomelabOS/Bug' => 'issues by label',
-            '/gitlab/issues-by-label/NickBusey/HomelabOS/Enhancement/opened' => 'open issues by label',
-            '/gitlab/issues-by-label/NickBusey/HomelabOS/Help%20wanted/closed' => 'closed issues by label',
+            new BadgePreviewData(
+                name: 'issues by label',
+                path: '/gitlab/issues-by-label/NickBusey/HomelabOS/Bug',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'open issues by label',
+                path: '/gitlab/issues-by-label/NickBusey/HomelabOS/Enhancement/opened',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'closed issues by label',
+                path: '/gitlab/issues-by-label/NickBusey/HomelabOS/Help%20wanted/closed',
+                data: $this->render([]),
+            ),
         ];
     }
 }

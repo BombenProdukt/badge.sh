@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -47,7 +48,11 @@ final class BrokenBuildBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jenkins/broken-build/jenkins.mono-project.com/job/test-mono-mainline' => '# of broken builds',
+            new BadgePreviewData(
+                name: '# of broken builds',
+                path: '/jenkins/broken-build/jenkins.mono-project.com/job/test-mono-mainline',
+                data: $this->render([]),
+            ),
         ];
     }
 }

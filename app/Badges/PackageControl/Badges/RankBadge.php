@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PackageControl\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class RankBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class RankBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/package-control/rank/GitGutter' => 'rank',
+            new BadgePreviewData(
+                name: 'rank',
+                path: '/package-control/rank/GitGutter',
+                data: $this->render([]),
+            ),
         ];
     }
 }

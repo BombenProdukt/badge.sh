@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\VaadinAddOnDirectory\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class RatingBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class RatingBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/vaadin/rating/vaadinvaadin-grid' => '',
+            new BadgePreviewData(
+                name: '',
+                path: '/vaadin/rating/vaadinvaadin-grid',
+                data: $this->render([]),
+            ),
         ];
     }
 }

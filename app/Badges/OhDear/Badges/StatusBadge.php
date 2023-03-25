@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OhDear\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -36,7 +37,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ohdear/status/status.laravel.com/forge.laravel.com' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/ohdear/status/status.laravel.com/forge.laravel.com',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\HTTPS\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -40,9 +41,21 @@ final class RequestBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/https/cal-badge-icd0onfvrxx6.runkit.sh' => 'https endpoint',
-            '/https/cal-badge-icd0onfvrxx6.runkit.sh/Asia/Shanghai' => 'https endpoint (with path args)',
-            '/https/cal-badge-icd0onfvrxx6.runkit.sh/America/Los_Angeles' => 'https endpoint (with path args)',
+            new BadgePreviewData(
+                name: 'https endpoint',
+                path: '/https/cal-badge-icd0onfvrxx6.runkit.sh',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'https endpoint (with path args)',
+                path: '/https/cal-badge-icd0onfvrxx6.runkit.sh/Asia/Shanghai',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'https endpoint (with path args)',
+                path: '/https/cal-badge-icd0onfvrxx6.runkit.sh/America/Los_Angeles',
+                data: $this->render([]),
+            ),
         ];
     }
 }

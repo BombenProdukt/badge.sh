@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WordPress\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -35,8 +36,16 @@ final class CommercialBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wordpress/plugin/commercial/bbpress' => 'commercial status (plugin)',
-            '/wordpress/theme/commercial/twentyseventeen' => 'commercial status (theme)',
+            new BadgePreviewData(
+                name: 'commercial status (plugin)',
+                path: '/wordpress/plugin/commercial/bbpress',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'commercial status (theme)',
+                path: '/wordpress/theme/commercial/twentyseventeen',
+                data: $this->render([]),
+            ),
         ];
     }
 }

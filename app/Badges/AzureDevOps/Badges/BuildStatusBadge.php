@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AzureDevOps\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -44,7 +45,11 @@ final class BuildStatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/azure-devops/build-status/dnceng/public/51' => 'build status',
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/azure-devops/build-status/dnceng/public/51',
+                data: $this->render([]),
+            ),
         ];
     }
 }

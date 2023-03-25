@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Feedz\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/feedz/version/shieldstests/mongodb/MongoDB.Driver.Core' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/feedz/version/shieldstests/mongodb/MongoDB.Driver.Core',
+                data: $this->render([]),
+            ),
         ];
     }
 }

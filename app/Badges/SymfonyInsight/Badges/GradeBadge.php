@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\SymfonyInsight\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class GradeBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class GradeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/symfony-insight/grade/825be328-29f8-44f7-a750-f82818ae9111' => 'grade',
+            new BadgePreviewData(
+                name: 'grade',
+                path: '/symfony-insight/grade/825be328-29f8-44f7-a750-f82818ae9111',
+                data: $this->render([]),
+            ),
         ];
     }
 }

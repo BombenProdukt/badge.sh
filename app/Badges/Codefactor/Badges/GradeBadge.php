@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Codefactor\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Spatie\Regex\Regex;
 
@@ -32,8 +33,16 @@ final class GradeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/codefactor/grade/github/microsoft/powertoys' => 'grade',
-            '/codefactor/grade/github/microsoft/powertoys/main' => 'grade (branch)',
+            new BadgePreviewData(
+                name: 'grade',
+                path: '/codefactor/grade/github/microsoft/powertoys',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'grade (branch)',
+                path: '/codefactor/grade/github/microsoft/powertoys/main',
+                data: $this->render([]),
+            ),
         ];
     }
 }

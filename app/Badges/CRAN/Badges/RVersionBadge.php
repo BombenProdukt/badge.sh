@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class RVersionBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class RVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cran/r-version/data.table' => 'r version',
+            new BadgePreviewData(
+                name: 'r version',
+                path: '/cran/r-version/data.table',
+                data: $this->render([]),
+            ),
         ];
     }
 }

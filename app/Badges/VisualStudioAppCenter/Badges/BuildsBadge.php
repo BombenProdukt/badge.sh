@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioAppCenter\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class BuildsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class BuildsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/visual-studio-app-center/builds/jct/my-amazing-app/master/ac70cv...' => 'builds',
+            new BadgePreviewData(
+                name: 'builds',
+                path: '/visual-studio-app-center/builds/jct/my-amazing-app/master/ac70cv...',
+                data: $this->render([]),
+            ),
         ];
     }
 }

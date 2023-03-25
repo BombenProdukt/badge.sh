@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DocsRS\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -39,7 +40,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/docsrs/version/regex' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/docsrs/version/regex',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
@@ -47,9 +48,21 @@ final class LabelsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/issues-by-label/nodejs/node/ES%20Modules' => 'issues by label',
-            '/github/issues-by-label/atom/atom/help-wanted/open' => 'open issues by label',
-            '/github/issues-by-label/rust-lang/rust/B-RFC-approved/closed' => 'closed issues by label',
+            new BadgePreviewData(
+                name: 'issues by label',
+                path: '/github/issues-by-label/nodejs/node/ES%20Modules',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'open issues by label',
+                path: '/github/issues-by-label/atom/atom/help-wanted/open',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'closed issues by label',
+                path: '/github/issues-by-label/rust-lang/rust/B-RFC-approved/closed',
+                data: $this->render([]),
+            ),
         ];
     }
 

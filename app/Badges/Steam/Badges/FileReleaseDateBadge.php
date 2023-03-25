@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Steam\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class FileReleaseDateBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class FileReleaseDateBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/steam/file-release-date/100' => 'file last modified',
+            new BadgePreviewData(
+                name: 'file last modified',
+                path: '/steam/file-release-date/100',
+                data: $this->render([]),
+            ),
         ];
     }
 }

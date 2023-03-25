@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ReSharper\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -31,9 +32,21 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/resharper/version/git' => 'version (stable channel)',
-            '/resharper/version/git/pre' => 'version (pre channel)',
-            '/resharper/version/git/latest' => 'version (latest channel)',
+            new BadgePreviewData(
+                name: 'version (stable channel)',
+                path: '/resharper/version/git',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (pre channel)',
+                path: '/resharper/version/git/pre',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (latest channel)',
+                path: '/resharper/version/git/latest',
+                data: $this->render([]),
+            ),
         ];
     }
 

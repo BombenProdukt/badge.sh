@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\BStats\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PlayersBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class PlayersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bstats/players/74299' => 'players',
+            new BadgePreviewData(
+                name: 'players',
+                path: '/bstats/players/74299',
+                data: $this->render([]),
+            ),
         ];
     }
 }

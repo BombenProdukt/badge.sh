@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\LibrariesIO\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,8 +39,16 @@ final class DependentsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/libraries-io/dependents/npm/got' => 'dependents',
-            '/libraries-io/dependents/npm/@babel/core' => 'dependents (scoped)',
+            new BadgePreviewData(
+                name: 'dependents',
+                path: '/libraries-io/dependents/npm/got',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'dependents (scoped)',
+                path: '/libraries-io/dependents/npm/@babel/core',
+                data: $this->render([]),
+            ),
         ];
     }
 }

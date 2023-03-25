@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Bitbucket\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class OpenIssuesBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class OpenIssuesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bitbucket/open-issues/atlassian/adf-builder-javascript' => 'open issues',
+            new BadgePreviewData(
+                name: 'open issues',
+                path: '/bitbucket/open-issues/atlassian/adf-builder-javascript',
+                data: $this->render([]),
+            ),
         ];
     }
 }

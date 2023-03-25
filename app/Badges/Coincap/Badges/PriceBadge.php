@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Coincap\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PriceBadge extends AbstractBadge
@@ -34,7 +35,11 @@ final class PriceBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/coincap/price/bitcoin' => 'price',
+            new BadgePreviewData(
+                name: 'price',
+                path: '/coincap/price/bitcoin',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -36,7 +37,11 @@ final class OpenIssuesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/open-issues/micromatch/micromatch' => 'open issues',
+            new BadgePreviewData(
+                name: 'open issues',
+                path: '/github/open-issues/micromatch/micromatch',
+                data: $this->render([]),
+            ),
         ];
     }
 }

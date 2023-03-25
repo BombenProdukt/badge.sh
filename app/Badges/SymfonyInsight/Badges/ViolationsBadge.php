@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\SymfonyInsight\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ViolationsBadge extends AbstractBadge
@@ -78,7 +79,11 @@ final class ViolationsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/symfony-insight/violations/825be328-29f8-44f7-a750-f82818ae9111' => 'violations',
+            new BadgePreviewData(
+                name: 'violations',
+                path: '/symfony-insight/violations/825be328-29f8-44f7-a750-f82818ae9111',
+                data: $this->render([]),
+            ),
         ];
     }
 }

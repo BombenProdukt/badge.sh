@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\JSDelivr\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -40,7 +41,11 @@ final class RankBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jsdelivr/rank/npm/lodash' => 'rank',
+            new BadgePreviewData(
+                name: 'rank',
+                path: '/jsdelivr/rank/npm/lodash',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Snapcraft\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ArchitectureBadge extends AbstractBadge
@@ -35,7 +36,11 @@ final class ArchitectureBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/snapcraft/architecture/telegram-desktop' => 'supported architectures',
+            new BadgePreviewData(
+                name: 'supported architectures',
+                path: '/snapcraft/architecture/telegram-desktop',
+                data: $this->render([]),
+            ),
         ];
     }
 }

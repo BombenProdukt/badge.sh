@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WinGet\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -31,8 +32,16 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/winget/version/GitHub.cli' => 'version',
-            '/winget/version/Balena.Etcher' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/winget/version/GitHub.cli',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/winget/version/Balena.Etcher',
+                data: $this->render([]),
+            ),
         ];
     }
 }

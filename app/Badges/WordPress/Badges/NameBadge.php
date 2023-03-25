@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WordPress\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -35,8 +36,16 @@ final class NameBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wordpress/plugin/version/bbpress' => 'version (plugin)',
-            '/wordpress/theme/version/twentyseventeen' => 'version (theme)',
+            new BadgePreviewData(
+                name: 'version (plugin)',
+                path: '/wordpress/plugin/version/bbpress',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (theme)',
+                path: '/wordpress/theme/version/twentyseventeen',
+                data: $this->render([]),
+            ),
         ];
     }
 }

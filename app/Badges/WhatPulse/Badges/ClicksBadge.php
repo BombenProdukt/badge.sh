@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WhatPulse\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
@@ -38,7 +39,11 @@ final class ClicksBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/whatpulse/clicks/user/179734' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/whatpulse/clicks/user/179734',
+                data: $this->render([]),
+            ),
         ];
     }
 }

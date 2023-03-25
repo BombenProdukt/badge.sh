@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ROS\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Spatie\Regex\Regex;
 
@@ -36,7 +37,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ros/version/humble/vision_msgs' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/ros/version/humble/vision_msgs',
+                data: $this->render([]),
+            ),
         ];
     }
 }

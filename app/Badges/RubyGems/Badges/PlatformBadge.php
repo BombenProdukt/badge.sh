@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\RubyGems\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PlatformBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class PlatformBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/rubygems/platform/rails' => 'platform',
+            new BadgePreviewData(
+                name: 'platform',
+                path: '/rubygems/platform/rails',
+                data: $this->render([]),
+            ),
         ];
     }
 }

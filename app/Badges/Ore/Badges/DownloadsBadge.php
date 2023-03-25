@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Ore\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class DownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ore/downloads/nucleus' => 'downloads',
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/ore/downloads/nucleus',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ChromeWebStore\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StarsBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class StarsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/chrome-web-store/stars/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'stars',
+            new BadgePreviewData(
+                name: 'stars',
+                path: '/chrome-web-store/stars/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
+                data: $this->render([]),
+            ),
         ];
     }
 }

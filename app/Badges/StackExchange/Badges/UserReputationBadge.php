@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\StackExchange\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class UserReputationBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class UserReputationBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/stack-exchange/user/reputation/stackoverflow/123' => 'reputation',
+            new BadgePreviewData(
+                name: 'reputation',
+                path: '/stack-exchange/user/reputation/stackoverflow/123',
+                data: $this->render([]),
+            ),
         ];
     }
 }

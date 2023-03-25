@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Codecov\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -39,12 +40,36 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/codecov/coverage/github/babel/babel' => 'coverage (github)',
-            '/codecov/coverage/github/babel/babel/6.x' => 'coverage (github, branch)',
-            '/codecov/coverage/bitbucket/ignitionrobotics/ign-math' => 'coverage (bitbucket)',
-            '/codecov/coverage/bitbucket/ignitionrobotics/ign-math/master' => 'coverage (bitbucket, branch)',
-            '/codecov/coverage/gitlab/gitlab-org/gitaly' => 'coverage (gitlab)',
-            '/codecov/coverage/gitlab/gitlab-org/gitaly/master' => 'coverage (gitlab, branch)',
+            new BadgePreviewData(
+                name: 'coverage (github)',
+                path: '/codecov/coverage/github/babel/babel',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'coverage (github, branch)',
+                path: '/codecov/coverage/github/babel/babel/6.x',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'coverage (bitbucket)',
+                path: '/codecov/coverage/bitbucket/ignitionrobotics/ign-math',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'coverage (bitbucket, branch)',
+                path: '/codecov/coverage/bitbucket/ignitionrobotics/ign-math/master',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'coverage (gitlab)',
+                path: '/codecov/coverage/gitlab/gitlab-org/gitaly',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'coverage (gitlab, branch)',
+                path: '/codecov/coverage/gitlab/gitlab-org/gitaly/master',
+                data: $this->render([]),
+            ),
         ];
     }
 }

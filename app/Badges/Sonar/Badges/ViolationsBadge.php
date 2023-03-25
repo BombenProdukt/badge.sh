@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Sonar\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -91,12 +92,36 @@ final class ViolationsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/sonar/blocker_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
-            '/sonar/critical_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'cognitive complexity',
-            '/sonar/info_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'duplicated blocks',
-            '/sonar/major_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'duplicated files',
-            '/sonar/minor_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'duplicated lines',
-            '/sonar/violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'duplicated lines density',
+            new BadgePreviewData(
+                name: 'complexity',
+                path: '/sonar/blocker_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'cognitive complexity',
+                path: '/sonar/critical_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'duplicated blocks',
+                path: '/sonar/info_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'duplicated files',
+                path: '/sonar/major_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'duplicated lines',
+                path: '/sonar/minor_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'duplicated lines density',
+                path: '/sonar/violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
         ];
     }
 }

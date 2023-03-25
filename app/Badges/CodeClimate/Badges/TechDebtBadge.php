@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CodeClimate\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -51,7 +52,11 @@ final class TechDebtBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/codeclimate/tech-debt/codeclimate/codeclimate' => 'technical debt',
+            new BadgePreviewData(
+                name: 'technical debt',
+                path: '/codeclimate/tech-debt/codeclimate/codeclimate',
+                data: $this->render([]),
+            ),
         ];
     }
 }

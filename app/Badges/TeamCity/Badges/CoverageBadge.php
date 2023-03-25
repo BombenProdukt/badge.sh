@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\TeamCity\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class CoverageBadge extends AbstractBadge
@@ -57,7 +58,11 @@ final class CoverageBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/team-city/coverage/ReactJSNet_PullRequests?instance=https://teamcity.jetbrains.com' => 'coverage status',
+            new BadgePreviewData(
+                name: 'coverage status',
+                path: '/team-city/coverage/ReactJSNet_PullRequests?instance=https://teamcity.jetbrains.com',
+                data: $this->render([]),
+            ),
         ];
     }
 }

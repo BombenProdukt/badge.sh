@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PyPI\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PythonBadge extends AbstractBadge
@@ -50,7 +51,11 @@ final class PythonBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pypi/python-version/black' => 'python version',
+            new BadgePreviewData(
+                name: 'python version',
+                path: '/pypi/python-version/black',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenVSX\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class ReleaseDateBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/open-vsx/release-date/idleberg/electron-builder' => 'release date',
+            new BadgePreviewData(
+                name: 'release date',
+                path: '/open-vsx/release-date/idleberg/electron-builder',
+                data: $this->render([]),
+            ),
         ];
     }
 }

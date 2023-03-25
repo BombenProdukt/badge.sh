@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -37,7 +38,11 @@ final class PluginVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jenkins/plugin-version/blueocean' => 'plugin version',
+            new BadgePreviewData(
+                name: 'plugin version',
+                path: '/jenkins/plugin-version/blueocean',
+                data: $this->render([]),
+            ),
         ];
     }
 }

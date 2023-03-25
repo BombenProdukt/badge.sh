@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -36,7 +37,11 @@ final class LanguageBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/packagist/language/monolog/monolog' => 'language',
+            new BadgePreviewData(
+                name: 'language',
+                path: '/packagist/language/monolog/monolog',
+                data: $this->render([]),
+            ),
         ];
     }
 }

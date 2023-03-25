@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class GitHubStarsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/packagist/github-stars/monolog/monolog' => 'github stars',
+            new BadgePreviewData(
+                name: 'github stars',
+                path: '/packagist/github-stars/monolog/monolog',
+                data: $this->render([]),
+            ),
         ];
     }
 }

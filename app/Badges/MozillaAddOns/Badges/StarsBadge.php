@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\MozillaAddOns\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StarsBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class StarsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/amo/stars/markdown-viewer-chrome' => 'stars',
+            new BadgePreviewData(
+                name: 'stars',
+                path: '/amo/stars/markdown-viewer-chrome',
+                data: $this->render([]),
+            ),
         ];
     }
 }

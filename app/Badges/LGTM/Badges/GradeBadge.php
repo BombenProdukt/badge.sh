@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -56,11 +57,31 @@ final class GradeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/lgtm/grade/github/apache/cloudstack/java' => 'grade (java)',
-            '/lgtm/grade/github/apache/cloudstack' => 'grade (auto)',
-            '/lgtm/grade/github/systemd/systemd' => 'grade (auto)',
-            '/lgtm/grade/bitbucket/wegtam/bitbucket-youtrack-broker' => 'grade (auto)',
-            '/lgtm/grade/gitlab/nekokatt/hikari' => 'grade (auto)',
+            new BadgePreviewData(
+                name: 'grade (java)',
+                path: '/lgtm/grade/github/apache/cloudstack/java',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'grade (auto)',
+                path: '/lgtm/grade/github/apache/cloudstack',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'grade (auto)',
+                path: '/lgtm/grade/github/systemd/systemd',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'grade (auto)',
+                path: '/lgtm/grade/bitbucket/wegtam/bitbucket-youtrack-broker',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'grade (auto)',
+                path: '/lgtm/grade/gitlab/nekokatt/hikari',
+                data: $this->render([]),
+            ),
         ];
     }
 }

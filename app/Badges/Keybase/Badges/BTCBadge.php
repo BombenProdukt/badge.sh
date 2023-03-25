@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Keybase\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class BTCBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class BTCBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/keybase/btc/skyplabs' => 'btc address',
+            new BadgePreviewData(
+                name: 'btc address',
+                path: '/keybase/btc/skyplabs',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\MavenCentral\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -42,7 +43,11 @@ final class RepoBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/maven-central/version/com.google.code.gson/gson' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/maven-central/version/com.google.code.gson/gson',
+                data: $this->render([]),
+            ),
         ];
     }
 }

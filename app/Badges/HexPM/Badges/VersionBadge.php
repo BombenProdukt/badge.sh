@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\HexPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/hex/version/plug' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/hex/version/plug',
+                data: $this->render([]),
+            ),
         ];
     }
 }

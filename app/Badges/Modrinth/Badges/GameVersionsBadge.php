@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Modrinth\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class GameVersionsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class GameVersionsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/modrinth/game-versions/AANobbMI' => 'game versions',
+            new BadgePreviewData(
+                name: 'game versions',
+                path: '/modrinth/game-versions/AANobbMI',
+                data: $this->render([]),
+            ),
         ];
     }
 }

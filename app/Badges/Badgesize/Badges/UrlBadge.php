@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Badgesize\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -51,8 +52,16 @@ final class UrlBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/badgesize/normal/file-url/https/unpkg.com/snarkdown/dist/snarkdown.js' => 'arbitrary url',
-            '/badgesize/normal/file-url/unpkg.com/snarkdown/dist/snarkdown.js' => 'arbitrary url',
+            new BadgePreviewData(
+                name: 'arbitrary url',
+                path: '/badgesize/normal/file-url/https/unpkg.com/snarkdown/dist/snarkdown.js',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'arbitrary url',
+                path: '/badgesize/normal/file-url/unpkg.com/snarkdown/dist/snarkdown.js',
+                data: $this->render([]),
+            ),
         ];
     }
 }

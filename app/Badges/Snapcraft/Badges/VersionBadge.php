@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Snapcraft\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Arr;
 
@@ -36,9 +37,21 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/snapcraft/version/joplin-desktop' => 'version',
-            '/snapcraft/version/mattermost-desktop/i386' => 'version',
-            '/snapcraft/version/telegram-desktop/arm64/edge' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/snapcraft/version/joplin-desktop',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/snapcraft/version/mattermost-desktop/i386',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/snapcraft/version/telegram-desktop/arm64/edge',
+                data: $this->render([]),
+            ),
         ];
     }
 }

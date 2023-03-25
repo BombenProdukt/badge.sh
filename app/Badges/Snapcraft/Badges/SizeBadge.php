@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Snapcraft\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Arr;
 
@@ -38,9 +39,21 @@ final class SizeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/snapcraft/size/beekeeper-studio' => 'distribution size',
-            '/snapcraft/size/beekeeper-studio/arm64' => 'distribution size',
-            '/snapcraft/size/beekeeper-studio/armhf/edge' => 'distribution size',
+            new BadgePreviewData(
+                name: 'distribution size',
+                path: '/snapcraft/size/beekeeper-studio',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'distribution size',
+                path: '/snapcraft/size/beekeeper-studio/arm64',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'distribution size',
+                path: '/snapcraft/size/beekeeper-studio/armhf/edge',
+                data: $this->render([]),
+            ),
         ];
     }
 }

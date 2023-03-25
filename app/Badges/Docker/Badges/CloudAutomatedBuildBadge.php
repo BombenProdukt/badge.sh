@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Docker\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class CloudAutomatedBuildBadge extends AbstractBadge
@@ -35,7 +36,11 @@ final class CloudAutomatedBuildBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/docker/cloud-automated/jrottenberg/ffmpeg' => 'automated',
+            new BadgePreviewData(
+                name: 'automated',
+                path: '/docker/cloud-automated/jrottenberg/ffmpeg',
+                data: $this->render([]),
+            ),
         ];
     }
 }

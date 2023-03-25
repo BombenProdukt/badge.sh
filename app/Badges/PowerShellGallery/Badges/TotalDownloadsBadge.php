@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PowerShellGallery\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class TotalDownloadsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/powershellgallery/downloads/Azure.Storage' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/powershellgallery/downloads/Azure.Storage',
+                data: $this->render([]),
+            ),
         ];
     }
 }

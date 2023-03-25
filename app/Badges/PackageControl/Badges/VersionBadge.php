@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PackageControl\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -29,8 +30,16 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version' => 'version',
-            '/f-droid/com.amaze.filemanager/version' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/f-droid/org.schabi.newpipe/version',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/f-droid/com.amaze.filemanager/version',
+                data: $this->render([]),
+            ),
         ];
     }
 }

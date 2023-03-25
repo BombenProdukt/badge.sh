@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Reddit\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -37,7 +38,11 @@ final class CommentKarmaBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/reddit/comment-karma/spez' => 'comment karma',
+            new BadgePreviewData(
+                name: 'comment karma',
+                path: '/reddit/comment-karma/spez',
+                data: $this->render([]),
+            ),
         ];
     }
 }

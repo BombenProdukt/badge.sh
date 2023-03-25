@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\StackExchange\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class TagInfoBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class TagInfoBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/stack-exchange/tag-info/{package}' => 'tag info',
+            new BadgePreviewData(
+                name: 'tag info',
+                path: '/stack-exchange/tag-info/{package}',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Spatie\Regex\Regex;
 
@@ -32,7 +33,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/opm/version/openresty/lua-resty-lrucache' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/opm/version/openresty/lua-resty-lrucache',
+                data: $this->render([]),
+            ),
         ];
     }
 }

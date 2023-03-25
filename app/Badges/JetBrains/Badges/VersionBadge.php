@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\JetBrains\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -37,8 +38,16 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jetbrains/version/13441-laravel-idea' => 'version',
-            '/jetbrains/version/9630' => 'version (legacy plugin)',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/jetbrains/version/13441-laravel-idea',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (legacy plugin)',
+                path: '/jetbrains/version/9630',
+                data: $this->render([]),
+            ),
         ];
     }
 }

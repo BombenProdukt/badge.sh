@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\JetBrains\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
@@ -35,8 +36,16 @@ final class DownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jetbrains/downloads/13441-laravel-idea' => 'downloads',
-            '/jetbrains/downloads/9630' => 'downloads (legacy plugin)',
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/jetbrains/downloads/13441-laravel-idea',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'downloads (legacy plugin)',
+                path: '/jetbrains/downloads/9630',
+                data: $this->render([]),
+            ),
         ];
     }
 }

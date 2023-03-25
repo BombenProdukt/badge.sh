@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\JCenter\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -42,7 +43,11 @@ final class RepoBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jcenter/version/com.squareup.okhttp3/okhttp' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/jcenter/version/com.squareup.okhttp3/okhttp',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Scoop\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -35,8 +36,16 @@ final class VersionFromBucketBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/scoop/version/extras/age' => 'version',
-            '/scoop/version/extras/codeblocks' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/scoop/version/extras/age',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/scoop/version/extras/codeblocks',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WikiApiary\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -40,7 +41,11 @@ final class InstallationsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wikiapiary/installations/extension/ParserFunctions' => 'installations',
+            new BadgePreviewData(
+                name: 'installations',
+                path: '/wikiapiary/installations/extension/ParserFunctions',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\GitHub\Badges;
 
 use App\Badges\GitHub\Actions\CombineStates;
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use GrahamCampbell\GitHub\Facades\GitHub;
@@ -78,14 +79,46 @@ final class CheckStatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/check-status/micromatch/micromatch' => 'combined statuses (default branch)',
-            '/github/check-status/micromatch/micromatch/gh-pages' => 'combined statuses (branch)',
-            '/github/check-status/micromatch/micromatch/f4809eb6df80b' => 'combined statuses (commit)',
-            '/github/check-status/micromatch/micromatch/4.0.1' => 'combined statuses (tag)',
-            '/github/check-status/facebook/react/main/ci/circleci:%20yarn_test' => 'single status',
-            '/github/check-status/zeit/hyper/master/ci' => 'combined statuses (ci*)',
-            '/github/check-status/zeit/hyper/master/ci/circleci' => 'combined statuses (ci/circleci*)',
-            '/github/check-status/zeit/hyper/master/ci/circleci:%20build' => 'single status',
+            new BadgePreviewData(
+                name: 'combined statuses (default branch)',
+                path: '/github/check-status/micromatch/micromatch',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'combined statuses (branch)',
+                path: '/github/check-status/micromatch/micromatch/gh-pages',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'combined statuses (commit)',
+                path: '/github/check-status/micromatch/micromatch/f4809eb6df80b',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'combined statuses (tag)',
+                path: '/github/check-status/micromatch/micromatch/4.0.1',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'single status',
+                path: '/github/check-status/facebook/react/main/ci/circleci:%20yarn_test',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'combined statuses (ci*)',
+                path: '/github/check-status/zeit/hyper/master/ci',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'combined statuses (ci/circleci*)',
+                path: '/github/check-status/zeit/hyper/master/ci/circleci',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'single status',
+                path: '/github/check-status/zeit/hyper/master/ci/circleci:%20build',
+                data: $this->render([]),
+            ),
         ];
     }
 }

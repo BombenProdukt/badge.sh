@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class MonthlyDownloadsBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class MonthlyDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cran/downloads-monthly/Rcpp' => 'monthly downloads',
+            new BadgePreviewData(
+                name: 'monthly downloads',
+                path: '/cran/downloads-monthly/Rcpp',
+                data: $this->render([]),
+            ),
         ];
     }
 }

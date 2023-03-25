@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\EclipseMarketplace\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LastModifiedBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LastModifiedBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/eclipse-marketplace/last-modified/notepad4e' => 'last modified',
+            new BadgePreviewData(
+                name: 'last modified',
+                path: '/eclipse-marketplace/last-modified/notepad4e',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Steam\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class FileDownloadsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class FileDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/steam/file-downloads/{fileId}' => 'file downloads',
+            new BadgePreviewData(
+                name: 'file downloads',
+                path: '/steam/file-downloads/{fileId}',
+                data: $this->render([]),
+            ),
         ];
     }
 }

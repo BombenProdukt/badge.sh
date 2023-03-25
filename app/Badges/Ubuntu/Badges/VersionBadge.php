@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Ubuntu\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -31,8 +32,16 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ubuntu/version/ubuntu-wallpapers' => 'version',
-            '/ubuntu/version/ubuntu-wallpapers/bionic' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/ubuntu/version/ubuntu-wallpapers',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/ubuntu/version/ubuntu-wallpapers/bionic',
+                data: $this->render([]),
+            ),
         ];
     }
 }

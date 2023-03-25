@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WAPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -36,7 +37,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wapm/license/huhn/hello-wasm' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/wapm/license/huhn/hello-wasm',
+                data: $this->render([]),
+            ),
         ];
     }
 }

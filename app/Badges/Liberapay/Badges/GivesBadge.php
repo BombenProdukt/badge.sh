@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Liberapay\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatMoney;
 
@@ -34,7 +35,11 @@ final class GivesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/liberapay/gives/aurelienpierre' => 'giving',
+            new BadgePreviewData(
+                name: 'giving',
+                path: '/liberapay/gives/aurelienpierre',
+                data: $this->render([]),
+            ),
         ];
     }
 }

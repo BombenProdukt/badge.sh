@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Homebrew\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
@@ -36,7 +37,11 @@ final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/homebrew/downloads-monthly/fish' => 'monthly downloads',
+            new BadgePreviewData(
+                name: 'monthly downloads',
+                path: '/homebrew/downloads-monthly/fish',
+                data: $this->render([]),
+            ),
         ];
     }
 }

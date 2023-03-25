@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\StackExchange\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class UserAcceptRateBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class UserAcceptRateBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/stack-exchange/user/accept-rate/stackoverflow/123' => 'accept rate',
+            new BadgePreviewData(
+                name: 'accept rate',
+                path: '/stack-exchange/user/accept-rate/stackoverflow/123',
+                data: $this->render([]),
+            ),
         ];
     }
 }

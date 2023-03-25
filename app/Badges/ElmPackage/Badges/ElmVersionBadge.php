@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ElmPackage\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ElmVersionBadge extends AbstractBadge
@@ -41,7 +42,11 @@ final class ElmVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/elm-package/elm-version/justinmimbs/date' => 'elm version',
+            new BadgePreviewData(
+                name: 'elm version',
+                path: '/elm-package/elm-version/justinmimbs/date',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 
@@ -30,7 +31,11 @@ final class SizeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/size/micromatch/micromatch' => 'size',
+            new BadgePreviewData(
+                name: 'size',
+                path: '/github/size/micromatch/micromatch',
+                data: $this->render([]),
+            ),
         ];
     }
 }

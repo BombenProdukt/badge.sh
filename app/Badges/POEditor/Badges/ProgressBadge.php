@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\POEditor\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ProgressBadge extends AbstractBadge
@@ -35,7 +36,11 @@ final class ProgressBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/poeditor/progress/abc123def456/323337/fr' => 'progress',
+            new BadgePreviewData(
+                name: 'progress',
+                path: '/poeditor/progress/abc123def456/323337/fr',
+                data: $this->render([]),
+            ),
         ];
     }
 }

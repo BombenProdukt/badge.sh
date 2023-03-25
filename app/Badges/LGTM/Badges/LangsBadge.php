@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -51,7 +52,11 @@ final class LangsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/lgtm/languages/github/apache/cloudstack/java' => 'langs',
+            new BadgePreviewData(
+                name: 'langs',
+                path: '/lgtm/languages/github/apache/cloudstack/java',
+                data: $this->render([]),
+            ),
         ];
     }
 }

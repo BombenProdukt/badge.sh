@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WordPress\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -37,8 +38,16 @@ final class DownloadsPerMonthBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wordpress/plugin/downloads-monthly/bbpress' => 'monthly downloads (plugin)',
-            '/wordpress/theme/downloads-monthly/twentyseventeen' => 'monthly downloads (theme)',
+            new BadgePreviewData(
+                name: 'monthly downloads (plugin)',
+                path: '/wordpress/plugin/downloads-monthly/bbpress',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'monthly downloads (theme)',
+                path: '/wordpress/theme/downloads-monthly/twentyseventeen',
+                data: $this->render([]),
+            ),
         ];
     }
 }

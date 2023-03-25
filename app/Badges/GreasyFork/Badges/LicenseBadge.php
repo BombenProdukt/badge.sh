@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GreasyFork\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/greasyfork/license/407466' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/greasyfork/license/407466',
+                data: $this->render([]),
+            ),
         ];
     }
 }

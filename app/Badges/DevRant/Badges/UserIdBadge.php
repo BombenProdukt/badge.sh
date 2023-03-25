@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DevRant\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
@@ -40,7 +41,11 @@ final class UserIdBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/devrant/score/22941' => 'score',
+            new BadgePreviewData(
+                name: 'score',
+                path: '/devrant/score/22941',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WinGet\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Symfony\Component\Yaml\Yaml;
 
@@ -35,7 +36,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/winget/license/GitHub.cli' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/winget/license/GitHub.cli',
+                data: $this->render([]),
+            ),
         ];
     }
 }

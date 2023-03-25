@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Codeship\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -45,7 +46,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/codeship/status/0bdb0440-3af5-0133-00ea-0ebda3a33bf6' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/codeship/status/0bdb0440-3af5-0133-00ea-0ebda3a33bf6',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PackagePhobia\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -45,8 +46,16 @@ final class PublishBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/packagephobia/publish/webpack' => 'publish size',
-            '/packagephobia/publish/@tusbar/cache-control' => '(scoped pkg) publish size',
+            new BadgePreviewData(
+                name: 'publish size',
+                path: '/packagephobia/publish/webpack',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: '(scoped pkg) publish size',
+                path: '/packagephobia/publish/@tusbar/cache-control',
+                data: $this->render([]),
+            ),
         ];
     }
 }

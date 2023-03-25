@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WordPress\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -35,8 +36,16 @@ final class RatingBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wordpress/plugin/rating/bbpress' => 'rating (plugin)',
-            '/wordpress/theme/rating/twentyseventeen' => 'rating (theme)',
+            new BadgePreviewData(
+                name: 'rating (plugin)',
+                path: '/wordpress/plugin/rating/bbpress',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'rating (theme)',
+                path: '/wordpress/theme/rating/twentyseventeen',
+                data: $this->render([]),
+            ),
         ];
     }
 }

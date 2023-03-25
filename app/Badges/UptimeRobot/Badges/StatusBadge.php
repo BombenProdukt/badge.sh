@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\UptimeRobot\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -41,7 +42,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/uptimerobot/status/m780862024-50db2c44c703e5c68d6b1ebb' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/uptimerobot/status/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render([]),
+            ),
         ];
     }
 }

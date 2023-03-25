@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Twitch\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -35,7 +36,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/twitch/status/andyonthewings' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/twitch/status/andyonthewings',
+                data: $this->render([]),
+            ),
         ];
     }
 }

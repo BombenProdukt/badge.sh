@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Twitch\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ExtensionVersionBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class ExtensionVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/twitch/extension-version/2nq5cu1nc9f4p75b791w8d3yo9d195' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/twitch/extension-version/2nq5cu1nc9f4p75b791w8d3yo9d195',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class OpenPullRequestsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class OpenPullRequestsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/open-pull-requests/micromatch/micromatch' => 'open PRs',
+            new BadgePreviewData(
+                name: 'open PRs',
+                path: '/github/open-pull-requests/micromatch/micromatch',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Snapcraft\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/snapcraft/license/okular' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/snapcraft/license/okular',
+                data: $this->render([]),
+            ),
         ];
     }
 }

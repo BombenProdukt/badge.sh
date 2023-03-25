@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NPMS\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class FinalScoreBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class FinalScoreBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/npms/final-score/chalk' => 'final score',
+            new BadgePreviewData(
+                name: 'final score',
+                path: '/npms/final-score/chalk',
+                data: $this->render([]),
+            ),
         ];
     }
 }

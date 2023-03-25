@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
@@ -54,9 +55,21 @@ final class CoverageBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jenkins/coverage/api?job=https://jenkins.sqlalchemy.org/job/alembic_coverage' => 'coverage',
-            '/jenkins/coverage/cobertura?job=https://jenkins.sqlalchemy.org/job/alembic_coverage' => 'coverage',
-            '/jenkins/coverage/jacoco?job=https://jenkins.sqlalchemy.org/job/alembic_coverage' => 'coverage',
+            new BadgePreviewData(
+                name: 'coverage',
+                path: '/jenkins/coverage/api?job=https://jenkins.sqlalchemy.org/job/alembic_coverage',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'coverage',
+                path: '/jenkins/coverage/cobertura?job=https://jenkins.sqlalchemy.org/job/alembic_coverage',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'coverage',
+                path: '/jenkins/coverage/jacoco?job=https://jenkins.sqlalchemy.org/job/alembic_coverage',
+                data: $this->render([]),
+            ),
         ];
     }
 }

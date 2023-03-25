@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\StackExchange\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class MonthlyQuestionsBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class MonthlyQuestionsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/stack-exchange/monthly-questions/{package}' => 'monthly questions',
+            new BadgePreviewData(
+                name: 'monthly questions',
+                path: '/stack-exchange/monthly-questions/{package}',
+                data: $this->render([]),
+            ),
         ];
     }
 }

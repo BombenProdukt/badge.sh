@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Travis\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -45,8 +46,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/travis/status/babel/babel' => 'build',
-            '/travis/status/babel/babel/6.x' => 'build (branch)',
+            new BadgePreviewData(
+                name: 'build',
+                path: '/travis/status/babel/babel',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'build (branch)',
+                path: '/travis/status/babel/babel/6.x',
+                data: $this->render([]),
+            ),
         ];
     }
 

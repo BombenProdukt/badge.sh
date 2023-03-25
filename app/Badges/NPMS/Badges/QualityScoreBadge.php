@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NPMS\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class QualityScoreBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class QualityScoreBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/npms/quality-score/chalk' => 'quality score',
+            new BadgePreviewData(
+                name: 'quality score',
+                path: '/npms/quality-score/chalk',
+                data: $this->render([]),
+            ),
         ];
     }
 }

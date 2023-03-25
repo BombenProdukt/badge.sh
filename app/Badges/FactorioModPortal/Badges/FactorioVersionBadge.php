@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\FactorioModPortal\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class FactorioVersionBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class FactorioVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/factorio-mod-portal/factorio-version/rso-mod' => 'factorio version',
+            new BadgePreviewData(
+                name: 'factorio version',
+                path: '/factorio-mod-portal/factorio-version/rso-mod',
+                data: $this->render([]),
+            ),
         ];
     }
 }

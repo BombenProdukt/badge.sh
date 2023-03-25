@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AzureDevOps\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -56,7 +57,11 @@ final class CoverageBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/azure-devops/coverage/swellaby/opensource/25' => 'test coverage',
+            new BadgePreviewData(
+                name: 'test coverage',
+                path: '/azure-devops/coverage/swellaby/opensource/25',
+                data: $this->render([]),
+            ),
         ];
     }
 }

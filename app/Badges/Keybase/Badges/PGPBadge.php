@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Keybase\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PGPBadge extends AbstractBadge
@@ -37,7 +38,11 @@ final class PGPBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/keybase/pgp/lukechilds' => 'pgp key',
+            new BadgePreviewData(
+                name: 'pgp key',
+                path: '/keybase/pgp/lukechilds',
+                data: $this->render([]),
+            ),
         ];
     }
 }

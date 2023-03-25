@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Date\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -37,7 +38,11 @@ final class RelativeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/date/relative/1540814400' => 'relative date',
+            new BadgePreviewData(
+                name: 'relative date',
+                path: '/date/relative/1540814400',
+                data: $this->render([]),
+            ),
         ];
     }
 }

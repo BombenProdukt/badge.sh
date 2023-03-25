@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Polymart\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StarsBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class StarsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/polymart/stars/323' => 'stars',
+            new BadgePreviewData(
+                name: 'stars',
+                path: '/polymart/stars/323',
+                data: $this->render([]),
+            ),
         ];
     }
 }

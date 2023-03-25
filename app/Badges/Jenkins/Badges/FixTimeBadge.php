@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -76,7 +77,11 @@ final class FixTimeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jenkins/fix-time/jenkins.mono-project.com/job/test-mono-mainline' => 'Time taken to fix a broken build',
+            new BadgePreviewData(
+                name: 'Time taken to fix a broken build',
+                path: '/jenkins/fix-time/jenkins.mono-project.com/job/test-mono-mainline',
+                data: $this->render([]),
+            ),
         ];
     }
 }

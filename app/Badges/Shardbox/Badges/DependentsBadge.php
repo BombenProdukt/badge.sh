@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Shardbox\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DependentsBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class DependentsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/shardbox/dependents/lucky' => 'dependents',
+            new BadgePreviewData(
+                name: 'dependents',
+                path: '/shardbox/dependents/lucky',
+                data: $this->render([]),
+            ),
         ];
     }
 }

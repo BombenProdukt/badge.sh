@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Bundlephobia\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -44,7 +45,11 @@ final class TreeShakingBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bundlephobia/tree-shaking/react-colorful' => 'tree-shaking support',
+            new BadgePreviewData(
+                name: 'tree-shaking support',
+                path: '/bundlephobia/tree-shaking/react-colorful',
+                data: $this->render([]),
+            ),
         ];
     }
 }

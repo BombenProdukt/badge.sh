@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Netlify\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -51,7 +52,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/netlify/status/e6d5a4e0-dee1-4261-833e-2f47f509c68f' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/netlify/status/e6d5a4e0-dee1-4261-833e-2f47f509c68f',
+                data: $this->render([]),
+            ),
         ];
     }
 }

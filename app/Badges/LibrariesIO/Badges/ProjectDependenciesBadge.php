@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\LibrariesIO\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -49,10 +50,26 @@ final class ProjectDependenciesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/libraries-io/project-dependencies/npm/got' => 'dependencies',
-            '/libraries-io/project-dependencies/npm/got/1.0.0' => 'dependencies (release)',
-            '/libraries-io/project-dependencies/npm/@babel/core' => 'dependencies (scoped)',
-            '/libraries-io/project-dependencies/npm/@babel/core/7.0.0' => 'dependencies (scoped, release)',
+            new BadgePreviewData(
+                name: 'dependencies',
+                path: '/libraries-io/project-dependencies/npm/got',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'dependencies (release)',
+                path: '/libraries-io/project-dependencies/npm/got/1.0.0',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'dependencies (scoped)',
+                path: '/libraries-io/project-dependencies/npm/@babel/core',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'dependencies (scoped, release)',
+                path: '/libraries-io/project-dependencies/npm/@babel/core/7.0.0',
+                data: $this->render([]),
+            ),
         ];
     }
 }

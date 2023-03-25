@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Coincap\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class RankBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class RankBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/coincap/rank/bitcoin' => 'price',
+            new BadgePreviewData(
+                name: 'price',
+                path: '/coincap/rank/bitcoin',
+                data: $this->render([]),
+            ),
         ];
     }
 }

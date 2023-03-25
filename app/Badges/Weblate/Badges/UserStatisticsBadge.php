@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Weblate\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 use InvalidArgumentException;
@@ -48,11 +49,31 @@ final class UserStatisticsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/weblate/statistics/comments/nijel' => 'comments',
-            '/weblate/statistics/languages/nijel' => 'languages',
-            '/weblate/statistics/suggestions/nijel' => 'suggestions',
-            '/weblate/statistics/translations/nijel' => 'translations',
-            '/weblate/statistics/uploads/nijel' => 'uploads',
+            new BadgePreviewData(
+                name: 'comments',
+                path: '/weblate/statistics/comments/nijel',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'languages',
+                path: '/weblate/statistics/languages/nijel',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'suggestions',
+                path: '/weblate/statistics/suggestions/nijel',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'translations',
+                path: '/weblate/statistics/translations/nijel',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'uploads',
+                path: '/weblate/statistics/uploads/nijel',
+                data: $this->render([]),
+            ),
         ];
     }
 }

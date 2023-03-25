@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ChromeWebStore\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/chrome-web-store/version/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/chrome-web-store/version/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
+                data: $this->render([]),
+            ),
         ];
     }
 }

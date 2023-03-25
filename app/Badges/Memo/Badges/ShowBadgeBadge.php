@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Memo\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Cache;
 
@@ -30,7 +31,11 @@ final class ShowBadgeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/memo/deployed' => 'memoized badge for deploy status',
+            new BadgePreviewData(
+                name: 'memoized badge for deploy status',
+                path: '/memo/deployed',
+                data: $this->render([]),
+            ),
         ];
     }
 }

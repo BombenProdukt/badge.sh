@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\SecurityHeaders\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class GradeBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class GradeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/security-headers/grade/shields.io' => 'grade',
+            new BadgePreviewData(
+                name: 'grade',
+                path: '/security-headers/grade/shields.io',
+                data: $this->render([]),
+            ),
         ];
     }
 }

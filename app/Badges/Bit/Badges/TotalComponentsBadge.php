@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Bit\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class TotalComponentsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bit/components/ramda/ramda' => 'total components',
+            new BadgePreviewData(
+                name: 'total components',
+                path: '/bit/components/ramda/ramda',
+                data: $this->render([]),
+            ),
         ];
     }
 }

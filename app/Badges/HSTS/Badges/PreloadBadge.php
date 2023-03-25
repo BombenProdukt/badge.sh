@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\HSTS\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PreloadBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class PreloadBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/hsts/preload/github.com' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/hsts/preload/github.com',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WAPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -42,8 +43,16 @@ final class ABIBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wapm/abi/jwmerrill/lox-repl' => 'abi',
-            '/wapm/abi/kherrick/pwgen' => 'abi',
+            new BadgePreviewData(
+                name: 'abi',
+                path: '/wapm/abi/jwmerrill/lox-repl',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'abi',
+                path: '/wapm/abi/kherrick/pwgen',
+                data: $this->render([]),
+            ),
         ];
     }
 }

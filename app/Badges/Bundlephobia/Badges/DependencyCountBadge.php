@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Bundlephobia\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class DependencyCountBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bundlephobia/dependency-count/react' => 'dependency count',
+            new BadgePreviewData(
+                name: 'dependency count',
+                path: '/bundlephobia/dependency-count/react',
+                data: $this->render([]),
+            ),
         ];
     }
 }

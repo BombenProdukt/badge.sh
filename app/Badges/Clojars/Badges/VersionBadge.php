@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Clojars\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/clojars/version/prismic' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/clojars/version/prismic',
+                data: $this->render([]),
+            ),
         ];
     }
 }

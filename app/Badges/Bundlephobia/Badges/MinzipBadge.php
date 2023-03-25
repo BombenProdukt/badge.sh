@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Bundlephobia\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,8 +39,16 @@ final class MinzipBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bundlephobia/minzip/react' => 'minified + gzip',
-            '/bundlephobia/minzip/@material-ui/core' => '(scoped pkg) minified + gzip',
+            new BadgePreviewData(
+                name: 'minified + gzip',
+                path: '/bundlephobia/minzip/react',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: '(scoped pkg) minified + gzip',
+                path: '/bundlephobia/minzip/@material-ui/core',
+                data: $this->render([]),
+            ),
         ];
     }
 }

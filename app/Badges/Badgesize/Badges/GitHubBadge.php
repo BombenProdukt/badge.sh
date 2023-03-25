@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Badgesize\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -48,9 +49,21 @@ final class GitHubBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/badgesize/normal/amio/emoji.json/master/emoji-compact.json' => 'normal size',
-            '/badgesize/gzip/amio/emoji.json/master/emoji-compact.json' => 'gzip size',
-            '/badgesize/brotli/amio/emoji.json/master/emoji-compact.json' => 'brotli size',
+            new BadgePreviewData(
+                name: 'normal size',
+                path: '/badgesize/normal/amio/emoji.json/master/emoji-compact.json',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'gzip size',
+                path: '/badgesize/gzip/amio/emoji.json/master/emoji-compact.json',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'brotli size',
+                path: '/badgesize/brotli/amio/emoji.json/master/emoji-compact.json',
+                data: $this->render([]),
+            ),
         ];
     }
 }

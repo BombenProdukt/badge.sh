@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenVSX\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class ReviewsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/open-vsx/reviews/idleberg/electron-builder' => 'reviews',
+            new BadgePreviewData(
+                name: 'reviews',
+                path: '/open-vsx/reviews/idleberg/electron-builder',
+                data: $this->render([]),
+            ),
         ];
     }
 }

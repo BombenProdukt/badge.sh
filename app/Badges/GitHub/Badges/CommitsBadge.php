@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 
@@ -39,9 +40,21 @@ final class CommitsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/commits/micromatch/micromatch' => 'commits count',
-            '/github/commits/micromatch/micromatch/gh-pages' => 'commits count (branch ref)',
-            '/github/commits/micromatch/micromatch/4.0.1' => 'commits count (tag ref)',
+            new BadgePreviewData(
+                name: 'commits count',
+                path: '/github/commits/micromatch/micromatch',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'commits count (branch ref)',
+                path: '/github/commits/micromatch/micromatch/gh-pages',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'commits count (tag ref)',
+                path: '/github/commits/micromatch/micromatch/4.0.1',
+                data: $this->render([]),
+            ),
         ];
     }
 }

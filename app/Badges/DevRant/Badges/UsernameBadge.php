@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DevRant\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -34,7 +35,11 @@ final class UsernameBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/devrant/score/Linuxxx' => 'score',
+            new BadgePreviewData(
+                name: 'score',
+                path: '/devrant/score/Linuxxx',
+                data: $this->render([]),
+            ),
         ];
     }
 }

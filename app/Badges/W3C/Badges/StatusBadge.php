@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\W3C\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -40,7 +41,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/w3c/status?url=https://youtube.com/' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/w3c/status?url=https://youtube.com/',
+                data: $this->render([]),
+            ),
         ];
     }
 }

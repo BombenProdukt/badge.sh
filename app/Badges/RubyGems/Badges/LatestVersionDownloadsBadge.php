@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\RubyGems\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -36,7 +37,11 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/rubygems/downloads-recently/rails' => 'latest version downloads',
+            new BadgePreviewData(
+                name: 'latest version downloads',
+                path: '/rubygems/downloads-recently/rails',
+                data: $this->render([]),
+            ),
         ];
     }
 }

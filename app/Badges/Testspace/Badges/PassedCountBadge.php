@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Testspace\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PassedCountBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class PassedCountBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/testspace/passed-count/swellaby/swellaby:testspace-sample/main' => 'passed tests count',
+            new BadgePreviewData(
+                name: 'passed tests count',
+                path: '/testspace/passed-count/swellaby/swellaby:testspace-sample/main',
+                data: $this->render([]),
+            ),
         ];
     }
 }

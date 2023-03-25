@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DUB\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StarsBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class StarsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/dub/stars/silly' => 'stars',
+            new BadgePreviewData(
+                name: 'stars',
+                path: '/dub/stars/silly',
+                data: $this->render([]),
+            ),
         ];
     }
 }

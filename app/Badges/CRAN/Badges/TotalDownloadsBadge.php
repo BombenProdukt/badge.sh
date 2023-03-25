@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Carbon\Carbon;
 
@@ -32,7 +33,11 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cran/downloads/Rcpp' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/cran/downloads/Rcpp',
+                data: $this->render([]),
+            ),
         ];
     }
 }

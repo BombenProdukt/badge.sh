@@ -32,7 +32,7 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'version',
                 path: '/apple-music/version/803453959',
                 data: $this->render(['version' => '1.0.0']),

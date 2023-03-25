@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PackageControl\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsPerLinuxBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class DownloadsPerLinuxBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/package-control/downloads-linux/GitGutter' => 'linux downloads',
+            new BadgePreviewData(
+                name: 'linux downloads',
+                path: '/package-control/downloads-linux/GitGutter',
+                data: $this->render([]),
+            ),
         ];
     }
 }

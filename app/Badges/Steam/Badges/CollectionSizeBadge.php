@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Steam\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class CollectionSizeBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class CollectionSizeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/steam/collection-size/180077636' => 'collection size',
+            new BadgePreviewData(
+                name: 'collection size',
+                path: '/steam/collection-size/180077636',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Docker\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LayersBadge extends AbstractBadge
@@ -36,9 +37,21 @@ final class LayersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/docker/layers/lucashalbert/curl/latest/arm/v7' => 'layers (size)',
-            '/docker/layers/lucashalbert/curl/latest/arm/v7' => 'layers (icon & label)',
-            '/docker/layers/lucashalbert/curl/latest/arm/v7' => 'layers (label)',
+            new BadgePreviewData(
+                name: 'layers (size)',
+                path: '/docker/layers/lucashalbert/curl/latest/arm/v7',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'layers (icon & label)',
+                path: '/docker/layers/lucashalbert/curl/latest/arm/v7',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'layers (label)',
+                path: '/docker/layers/lucashalbert/curl/latest/arm/v7',
+                data: $this->render([]),
+            ),
         ];
     }
 }

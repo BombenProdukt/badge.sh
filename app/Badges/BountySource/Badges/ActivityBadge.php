@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\BountySource\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ActivityBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class ActivityBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bountysource/activity/mozilla-core' => 'activity',
+            new BadgePreviewData(
+                name: 'activity',
+                path: '/bountysource/activity/mozilla-core',
+                data: $this->render([]),
+            ),
         ];
     }
 }

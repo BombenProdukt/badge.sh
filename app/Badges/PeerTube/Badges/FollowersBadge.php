@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PeerTube\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -48,8 +49,16 @@ final class FollowersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/peertube/followers/framatube.org/framasoft' => 'followers (account)',
-            '/peertube/followers/framatube.org/framasoft/framablog.audio' => 'followers (channel)',
+            new BadgePreviewData(
+                name: 'followers (account)',
+                path: '/peertube/followers/framatube.org/framasoft',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'followers (channel)',
+                path: '/peertube/followers/framatube.org/framasoft/framablog.audio',
+                data: $this->render([]),
+            ),
         ];
     }
 }

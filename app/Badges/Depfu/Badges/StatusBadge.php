@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Depfu\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -39,7 +40,11 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/depfu/status/github/depfu/example-ruby' => 'dependencies',
+            new BadgePreviewData(
+                name: 'dependencies',
+                path: '/depfu/status/github/depfu/example-ruby',
+                data: $this->render([]),
+            ),
         ];
     }
 }

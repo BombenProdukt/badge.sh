@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\VPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/vpm/version/com.vrchat.udonsharp' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/vpm/version/com.vrchat.udonsharp',
+                data: $this->render([]),
+            ),
         ];
     }
 }

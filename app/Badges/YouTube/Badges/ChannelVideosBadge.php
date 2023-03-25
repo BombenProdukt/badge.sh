@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\YouTube\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ChannelVideosBadge extends AbstractBadge
@@ -36,7 +37,11 @@ final class ChannelVideosBadge extends AbstractBadge
     public function dynamicPrevideos(): array
     {
         return [
-            '/youtube/channel/videos/UC8butISFwT-Wl7EV0hUK0BQ' => 'channel videos',
+            new BadgePreviewData(
+                name: 'channel videos',
+                path: '/youtube/channel/videos/UC8butISFwT-Wl7EV0hUK0BQ',
+                data: $this->render([]),
+            ),
         ];
     }
 }

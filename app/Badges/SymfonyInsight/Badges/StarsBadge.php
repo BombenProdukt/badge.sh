@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\SymfonyInsight\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StarsBadge extends AbstractBadge
@@ -35,7 +36,11 @@ final class StarsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/symfony-insight/stars/825be328-29f8-44f7-a750-f82818ae9111' => 'stars',
+            new BadgePreviewData(
+                name: 'stars',
+                path: '/symfony-insight/stars/825be328-29f8-44f7-a750-f82818ae9111',
+                data: $this->render([]),
+            ),
         ];
     }
 }

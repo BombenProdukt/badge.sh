@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenCollective\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class SponsorsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class SponsorsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/opencollective/sponsors/webpack' => 'sponsors',
+            new BadgePreviewData(
+                name: 'sponsors',
+                path: '/opencollective/sponsors/webpack',
+                data: $this->render([]),
+            ),
         ];
     }
 }

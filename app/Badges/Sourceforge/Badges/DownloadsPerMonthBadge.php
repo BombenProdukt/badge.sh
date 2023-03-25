@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Sourceforge\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsPerMonthBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class DownloadsPerMonthBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/sourceforge/downloads-monthly/arianne/stendhal' => 'monthly downloads',
+            new BadgePreviewData(
+                name: 'monthly downloads',
+                path: '/sourceforge/downloads-monthly/arianne/stendhal',
+                data: $this->render([]),
+            ),
         ];
     }
 }

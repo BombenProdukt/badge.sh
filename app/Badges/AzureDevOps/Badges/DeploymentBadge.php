@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AzureDevOps\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -48,7 +49,11 @@ final class DeploymentBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/azure-devops/deployment-version/azuredevops-powershell/azuredevops-powershell/1' => 'deployment version',
+            new BadgePreviewData(
+                name: 'deployment version',
+                path: '/azure-devops/deployment-version/azuredevops-powershell/azuredevops-powershell/1',
+                data: $this->render([]),
+            ),
         ];
     }
 }

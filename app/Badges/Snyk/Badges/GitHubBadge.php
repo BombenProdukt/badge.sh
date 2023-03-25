@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Snyk\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -60,7 +61,11 @@ final class GitHubBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/snyk/github/badges/shields/badge-maker/package.json' => 'vulnerability scan',
+            new BadgePreviewData(
+                name: 'vulnerability scan',
+                path: '/snyk/github/badges/shields/badge-maker/package.json',
+                data: $this->render([]),
+            ),
         ];
     }
 }

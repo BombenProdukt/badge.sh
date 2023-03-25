@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\MozillaAddOns\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class RatingBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class RatingBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/amo/rating/markdown-viewer-chrome' => 'rating',
+            new BadgePreviewData(
+                name: 'rating',
+                path: '/amo/rating/markdown-viewer-chrome',
+                data: $this->render([]),
+            ),
         ];
     }
 }

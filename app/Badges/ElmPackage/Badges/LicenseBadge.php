@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ElmPackage\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/elm-package/license/mdgriffith/elm-ui' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/elm-package/license/mdgriffith/elm-ui',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 
@@ -30,7 +31,11 @@ final class LernaBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/lerna/lerna/lerna' => 'lerna',
+            new BadgePreviewData(
+                name: 'lerna',
+                path: '/github/lerna/lerna/lerna',
+                data: $this->render([]),
+            ),
         ];
     }
 }

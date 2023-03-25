@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Codacy\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class CoverageBadge extends AbstractBadge
@@ -33,8 +34,16 @@ final class CoverageBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e' => 'coverage',
-            '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e/master' => 'branch coverage',
+            new BadgePreviewData(
+                name: 'coverage',
+                path: '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'branch coverage',
+                path: '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e/master',
+                data: $this->render([]),
+            ),
         ];
     }
 }

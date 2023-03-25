@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CPAN\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class SizeBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class SizeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cpan/size/Moose' => 'size',
+            new BadgePreviewData(
+                name: 'size',
+                path: '/cpan/size/Moose',
+                data: $this->render([]),
+            ),
         ];
     }
 }

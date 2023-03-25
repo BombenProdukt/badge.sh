@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DavidDM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -45,7 +46,11 @@ final class OptionalBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/david/optional/epoberezkin/ajv-keywords' => 'optional dependencies',
+            new BadgePreviewData(
+                name: 'optional dependencies',
+                path: '/david/optional/epoberezkin/ajv-keywords',
+                data: $this->render([]),
+            ),
         ];
     }
 }

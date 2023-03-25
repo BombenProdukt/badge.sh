@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Maintenance\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -35,7 +36,11 @@ final class AbandonedBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/maintenance/abandoned/2023' => 'abandoned',
+            new BadgePreviewData(
+                name: 'abandoned',
+                path: '/maintenance/abandoned/2023',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Haxelib\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LatestDownloadsBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class LatestDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/haxelib/downloads-recently/hxnodejs' => 'downloads (latest version)',
+            new BadgePreviewData(
+                name: 'downloads (latest version)',
+                path: '/haxelib/downloads-recently/hxnodejs',
+                data: $this->render([]),
+            ),
         ];
     }
 }

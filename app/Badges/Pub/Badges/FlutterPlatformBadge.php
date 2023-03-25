@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Pub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -44,7 +45,11 @@ final class FlutterPlatformBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pub/flutter-platform/xml' => 'flutter-platform',
+            new BadgePreviewData(
+                name: 'flutter-platform',
+                path: '/pub/flutter-platform/xml',
+                data: $this->render([]),
+            ),
         ];
     }
 

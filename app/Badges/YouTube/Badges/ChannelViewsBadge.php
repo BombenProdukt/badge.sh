@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\YouTube\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ChannelViewsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class ChannelViewsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/youtube/channel/views/UC8butISFwT-Wl7EV0hUK0BQ' => 'channel views',
+            new BadgePreviewData(
+                name: 'channel views',
+                path: '/youtube/channel/views/UC8butISFwT-Wl7EV0hUK0BQ',
+                data: $this->render([]),
+            ),
         ];
     }
 }

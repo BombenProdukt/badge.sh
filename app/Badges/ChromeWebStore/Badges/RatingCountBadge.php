@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ChromeWebStore\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Spatie\Regex\Regex;
 use Symfony\Component\DomCrawler\Crawler;
@@ -44,7 +45,11 @@ final class RatingCountBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/chrome-web-store/rating-count/ckkdlimhmcjmikdlpkmbgfkaikojcbjk' => 'rating count',
+            new BadgePreviewData(
+                name: 'rating count',
+                path: '/chrome-web-store/rating-count/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
+                data: $this->render([]),
+            ),
         ];
     }
 }

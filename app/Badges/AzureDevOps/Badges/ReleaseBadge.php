@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AzureDevOps\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -37,7 +38,11 @@ final class ReleaseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/azure-devops/release/azuredevops-powershell/azuredevops-powershell/1' => 'release version',
+            new BadgePreviewData(
+                name: 'release version',
+                path: '/azure-devops/release/azuredevops-powershell/azuredevops-powershell/1',
+                data: $this->render([]),
+            ),
         ];
     }
 }

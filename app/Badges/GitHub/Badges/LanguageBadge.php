@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 
@@ -30,7 +31,11 @@ final class LanguageBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/language/micromatch/micromatch' => 'language',
+            new BadgePreviewData(
+                name: 'language',
+                path: '/github/language/micromatch/micromatch',
+                data: $this->render([]),
+            ),
         ];
     }
 }

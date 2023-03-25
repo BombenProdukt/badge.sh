@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Pub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LikesBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LikesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pub/likes/firebase_core' => 'likes',
+            new BadgePreviewData(
+                name: 'likes',
+                path: '/pub/likes/firebase_core',
+                data: $this->render([]),
+            ),
         ];
     }
 }

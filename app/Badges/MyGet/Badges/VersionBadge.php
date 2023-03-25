@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\MyGet\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -45,9 +46,21 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/myget/version/mongodb/MongoDB.Driver.Core' => 'version (stable channel)',
-            '/myget/version/mongodb/MongoDB.Driver.Core/pre' => 'version (pre channel)',
-            '/myget/version/mongodb/MongoDB.Driver.Core/latest' => 'version (latest channel)',
+            new BadgePreviewData(
+                name: 'version (stable channel)',
+                path: '/myget/version/mongodb/MongoDB.Driver.Core',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (pre channel)',
+                path: '/myget/version/mongodb/MongoDB.Driver.Core/pre',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (latest channel)',
+                path: '/myget/version/mongodb/MongoDB.Driver.Core/latest',
+                data: $this->render([]),
+            ),
         ];
     }
 

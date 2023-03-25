@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\Packagist\Badges;
 
 use App\Badges\Packagist\Concerns\HandlesVersions;
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -41,9 +42,21 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/packagist/version/monolog/monolog' => 'version',
-            '/packagist/version/monolog/monolog/pre' => 'version (pre)',
-            '/packagist/version/monolog/monolog/latest' => 'version (latest)',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/packagist/version/monolog/monolog',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (pre)',
+                path: '/packagist/version/monolog/monolog/pre',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (latest)',
+                path: '/packagist/version/monolog/monolog/latest',
+                data: $this->render([]),
+            ),
         ];
     }
 }

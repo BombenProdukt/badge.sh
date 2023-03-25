@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Gitter\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -29,8 +30,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/gitter/status/redom/lobby' => 'status',
-            '/gitter/status/redom/redom' => 'status',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/gitter/status/redom/lobby',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'status',
+                path: '/gitter/status/redom/redom',
+                data: $this->render([]),
+            ),
         ];
     }
 }

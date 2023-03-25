@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DavidDM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -45,7 +46,11 @@ final class PeerBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/david/peer/epoberezkin/ajv-keywords' => 'peer dependencies',
+            new BadgePreviewData(
+                name: 'peer dependencies',
+                path: '/david/peer/epoberezkin/ajv-keywords',
+                data: $this->render([]),
+            ),
         ];
     }
 }

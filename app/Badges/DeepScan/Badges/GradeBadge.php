@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DeepScan\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class GradeBadge extends AbstractBadge
@@ -38,9 +39,21 @@ final class GradeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/deepscan/grade/team/7382/project/9494/branch/123838' => 'grade',
-            '/deepscan/grade/team/279/project/1302/branch/3514' => 'grade',
-            '/deepscan/grade/team/8527/project/10741/branch/152550' => 'grade',
+            new BadgePreviewData(
+                name: 'grade',
+                path: '/deepscan/grade/team/7382/project/9494/branch/123838',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'grade',
+                path: '/deepscan/grade/team/279/project/1302/branch/3514',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'grade',
+                path: '/deepscan/grade/team/8527/project/10741/branch/152550',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Sonar\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -54,12 +55,36 @@ final class TestsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/sonar/skipped_tests/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
-            '/sonar/test_errors/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
-            '/sonar/test_execution_time/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
-            '/sonar/test_failures/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
-            '/sonar/test_success_density/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
-            '/sonar/total_tests/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
+            new BadgePreviewData(
+                name: 'complexity',
+                path: '/sonar/skipped_tests/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'complexity',
+                path: '/sonar/test_errors/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'complexity',
+                path: '/sonar/test_execution_time/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'complexity',
+                path: '/sonar/test_failures/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'complexity',
+                path: '/sonar/test_success_density/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'complexity',
+                path: '/sonar/total_tests/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2',
+                data: $this->render([]),
+            ),
         ];
     }
 }

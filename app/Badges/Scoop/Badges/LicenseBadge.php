@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Scoop\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/scoop/license/caddy' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/scoop/license/caddy',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\HackerNews\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class KarmaBadge extends AbstractBadge
@@ -32,7 +33,11 @@ final class KarmaBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/hackernews/karma/pg' => 'karma',
+            new BadgePreviewData(
+                name: 'karma',
+                path: '/hackernews/karma/pg',
+                data: $this->render([]),
+            ),
         ];
     }
 }

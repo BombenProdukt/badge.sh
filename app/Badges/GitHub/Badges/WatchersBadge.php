@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -36,7 +37,11 @@ final class WatchersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/watchers/micromatch/micromatch' => 'watchers',
+            new BadgePreviewData(
+                name: 'watchers',
+                path: '/github/watchers/micromatch/micromatch',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\VCPKG\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -51,7 +52,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/vcpkg/version/entt' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/vcpkg/version/entt',
+                data: $this->render([]),
+            ),
         ];
     }
 }

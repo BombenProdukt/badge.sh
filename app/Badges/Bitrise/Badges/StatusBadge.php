@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Bitrise\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -33,8 +34,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304' => 'version',
-            '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304/master' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304/master',
+                data: $this->render([]),
+            ),
         ];
     }
 }

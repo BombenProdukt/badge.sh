@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\JetBrains\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class RatingBadge extends AbstractBadge
@@ -37,8 +38,16 @@ final class RatingBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jetbrains/rating/13441-laravel-idea' => 'rating',
-            '/jetbrains/rating/9630' => 'rating (legacy plugin)',
+            new BadgePreviewData(
+                name: 'rating',
+                path: '/jetbrains/rating/13441-laravel-idea',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'rating (legacy plugin)',
+                path: '/jetbrains/rating/9630',
+                data: $this->render([]),
+            ),
         ];
     }
 }

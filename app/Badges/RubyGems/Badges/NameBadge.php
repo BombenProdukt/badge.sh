@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\RubyGems\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class NameBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class NameBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/rubygems/name/rails' => 'name',
+            new BadgePreviewData(
+                name: 'name',
+                path: '/rubygems/name/rails',
+                data: $this->render([]),
+            ),
         ];
     }
 }

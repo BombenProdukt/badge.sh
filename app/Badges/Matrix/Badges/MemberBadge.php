@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Matrix\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Str;
 use PreemStudio\Formatter\FormatNumber;
@@ -44,9 +45,21 @@ final class MemberBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/matrix/members/rust/matrix.org' => 'members',
-            '/matrix/members/thisweekinmatrix' => 'members',
-            '/matrix/members/archlinux/archlinux.org' => 'members',
+            new BadgePreviewData(
+                name: 'members',
+                path: '/matrix/members/rust/matrix.org',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'members',
+                path: '/matrix/members/thisweekinmatrix',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'members',
+                path: '/matrix/members/archlinux/archlinux.org',
+                data: $this->render([]),
+            ),
         ];
     }
 }

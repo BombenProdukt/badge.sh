@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class AzureDevOpsBadge extends AbstractBadge
@@ -43,9 +44,21 @@ final class AzureDevOpsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository' => 'downloads',
-            '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/services' => 'downloads',
-            '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/on-prem' => 'downloads',
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/services',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/on-prem',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Liberapay\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PatronsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class PatronsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/liberapay/patrons/microG' => 'patrons count',
+            new BadgePreviewData(
+                name: 'patrons count',
+                path: '/liberapay/patrons/microG',
+                data: $this->render([]),
+            ),
         ];
     }
 }

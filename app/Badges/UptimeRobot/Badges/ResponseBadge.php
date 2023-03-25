@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\UptimeRobot\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ResponseBadge extends AbstractBadge
@@ -35,7 +36,11 @@ final class ResponseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/uptimerobot/response/m780862024-50db2c44c703e5c68d6b1ebb' => '(last hour) response',
+            new BadgePreviewData(
+                name: '(last hour) response',
+                path: '/uptimerobot/response/m780862024-50db2c44c703e5c68d6b1ebb',
+                data: $this->render([]),
+            ),
         ];
     }
 }

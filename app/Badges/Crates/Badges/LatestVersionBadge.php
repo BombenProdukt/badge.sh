@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Crates\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LatestVersionBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class LatestVersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/crates/version/regex' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/crates/version/regex',
+                data: $this->render([]),
+            ),
         ];
     }
 }

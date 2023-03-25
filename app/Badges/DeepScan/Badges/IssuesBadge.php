@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\DeepScan\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -36,8 +37,16 @@ final class IssuesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/deepscan/issues/team/8527/project/10741/branch/152550' => 'issues',
-            '/deepscan/issues/team/7382/project/9494/branch/123838' => 'issues',
+            new BadgePreviewData(
+                name: 'issues',
+                path: '/deepscan/issues/team/8527/project/10741/branch/152550',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'issues',
+                path: '/deepscan/issues/team/7382/project/9494/branch/123838',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\AtomPackage\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
@@ -35,7 +36,11 @@ final class LicenseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/apm/license/linter' => 'license',
+            new BadgePreviewData(
+                name: 'license',
+                path: '/apm/license/linter',
+                data: $this->render([]),
+            ),
         ];
     }
 }

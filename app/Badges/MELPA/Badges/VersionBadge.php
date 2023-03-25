@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\MELPA\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -33,7 +34,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/melpa/version/magit' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/melpa/version/magit',
+                data: $this->render([]),
+            ),
         ];
     }
 }

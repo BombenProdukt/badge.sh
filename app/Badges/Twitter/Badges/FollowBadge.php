@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Twitter\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -41,8 +42,16 @@ final class FollowBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/twitter/follow/rustlang' => 'followers count',
-            '/twitter/follow/golang' => 'followers count',
+            new BadgePreviewData(
+                name: 'followers count',
+                path: '/twitter/follow/rustlang',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'followers count',
+                path: '/twitter/follow/golang',
+                data: $this->render([]),
+            ),
         ];
     }
 }

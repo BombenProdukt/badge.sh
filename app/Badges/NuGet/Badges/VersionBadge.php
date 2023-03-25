@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NuGet\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -45,9 +46,21 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/nuget/version/Newtonsoft.Json' => 'version (stable channel)',
-            '/nuget/version/Newtonsoft.Json/pre' => 'version (pre channel)',
-            '/nuget/version/Newtonsoft.Json/latest' => 'version (latest channel)',
+            new BadgePreviewData(
+                name: 'version (stable channel)',
+                path: '/nuget/version/Newtonsoft.Json',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (pre channel)',
+                path: '/nuget/version/Newtonsoft.Json/pre',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (latest channel)',
+                path: '/nuget/version/Newtonsoft.Json/latest',
+                data: $this->render([]),
+            ),
         ];
     }
 

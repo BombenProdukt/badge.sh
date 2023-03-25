@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitLab\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -52,7 +53,11 @@ final class ReleaseBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/gitlab/latest-release/veloren/veloren' => 'latest release',
+            new BadgePreviewData(
+                name: 'latest release',
+                path: '/gitlab/latest-release/veloren/veloren',
+                data: $this->render([]),
+            ),
         ];
     }
 }

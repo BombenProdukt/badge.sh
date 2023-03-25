@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\MozillaAddOns\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/amo/version/markdown-viewer-chrome' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/amo/version/markdown-viewer-chrome',
+                data: $this->render([]),
+            ),
         ];
     }
 }

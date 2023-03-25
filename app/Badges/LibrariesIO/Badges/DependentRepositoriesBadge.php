@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\LibrariesIO\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,8 +39,16 @@ final class DependentRepositoriesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/libraries-io/dependent-repositories/npm/got' => 'dependent repositories',
-            '/libraries-io/dependent-repositories/npm/@babel/core' => 'dependent repositories (scoped)',
+            new BadgePreviewData(
+                name: 'dependent repositories',
+                path: '/libraries-io/dependent-repositories/npm/got',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'dependent repositories (scoped)',
+                path: '/libraries-io/dependent-repositories/npm/@babel/core',
+                data: $this->render([]),
+            ),
         ];
     }
 }

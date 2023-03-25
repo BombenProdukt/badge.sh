@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Buildkite\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
@@ -31,8 +32,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489' => 'build status',
-            '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489/master' => 'build status',
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'build status',
+                path: '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489/master',
+                data: $this->render([]),
+            ),
         ];
     }
 }

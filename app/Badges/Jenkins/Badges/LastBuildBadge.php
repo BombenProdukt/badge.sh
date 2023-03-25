@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -42,7 +43,11 @@ final class LastBuildBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jenkins/last-build/jenkins.mono-project.com/job/test-mono-mainline' => 'Last build status',
+            new BadgePreviewData(
+                name: 'Last build status',
+                path: '/jenkins/last-build/jenkins.mono-project.com/job/test-mono-mainline',
+                data: $this->render([]),
+            ),
         ];
     }
 }

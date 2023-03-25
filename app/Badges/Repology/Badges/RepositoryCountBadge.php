@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Repology\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Spatie\Regex\Regex;
 
@@ -32,7 +33,11 @@ final class RepositoryCountBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/repology/repositories/starship' => 'repository count',
+            new BadgePreviewData(
+                name: 'repository count',
+                path: '/repology/repositories/starship',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Flathub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class DownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/flathub/downloads/org.mozilla.firefox' => 'downloads',
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/flathub/downloads/org.mozilla.firefox',
+                data: $this->render([]),
+            ),
         ];
     }
 }

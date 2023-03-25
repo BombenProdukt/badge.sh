@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\ReSharper\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class TotalDownloadsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/resharper/downloads/git' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/resharper/downloads/git',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WordPress\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -37,8 +38,16 @@ final class DownloadsPerDayBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wordpress/plugin/downloads-daily/bbpress' => 'daily downloads (plugin)',
-            '/wordpress/theme/downloads-daily/twentyseventeen' => 'daily downloads (theme)',
+            new BadgePreviewData(
+                name: 'daily downloads (plugin)',
+                path: '/wordpress/plugin/downloads-daily/bbpress',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'daily downloads (theme)',
+                path: '/wordpress/theme/downloads-daily/twentyseventeen',
+                data: $this->render([]),
+            ),
         ];
     }
 }

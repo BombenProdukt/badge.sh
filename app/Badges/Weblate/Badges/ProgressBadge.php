@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Weblate\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class ProgressBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class ProgressBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/weblate/progress/godot-engine' => 'progress',
+            new BadgePreviewData(
+                name: 'progress',
+                path: '/weblate/progress/godot-engine',
+                data: $this->render([]),
+            ),
         ];
     }
 }

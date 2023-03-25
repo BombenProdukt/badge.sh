@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OhDear\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class TimezoneBadge extends AbstractBadge
@@ -36,7 +37,11 @@ final class TimezoneBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ohdear/timezone/status.laravel.com' => 'timezone',
+            new BadgePreviewData(
+                name: 'timezone',
+                path: '/ohdear/timezone/status.laravel.com',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PingPong\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class UptimeBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class UptimeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pingpong/uptime/sp_2e80bc00b6054faeb2b87e2464be337e' => 'uptime',
+            new BadgePreviewData(
+                name: 'uptime',
+                path: '/pingpong/uptime/sp_2e80bc00b6054faeb2b87e2464be337e',
+                data: $this->render([]),
+            ),
         ];
     }
 }

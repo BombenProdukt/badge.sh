@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NPMS\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PopularityScoreBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class PopularityScoreBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/npms/popularity-score/chalk' => 'popularity score',
+            new BadgePreviewData(
+                name: 'popularity score',
+                path: '/npms/popularity-score/chalk',
+                data: $this->render([]),
+            ),
         ];
     }
 }

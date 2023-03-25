@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Docker\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -126,9 +127,21 @@ final class SizeBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/docker/size/library/ubuntu' => 'size (library)',
-            '/docker/size/lukechilds/bitcoind/latest/amd64' => 'size (scoped/tag/architecture)',
-            '/docker/size/lucashalbert/curl/latest/arm/v6' => 'size (scoped/tag/architecture/variant)',
+            new BadgePreviewData(
+                name: 'size (library)',
+                path: '/docker/size/library/ubuntu',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'size (scoped/tag/architecture)',
+                path: '/docker/size/lukechilds/bitcoind/latest/amd64',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'size (scoped/tag/architecture/variant)',
+                path: '/docker/size/lucashalbert/curl/latest/arm/v6',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\RubyGems\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -48,9 +49,21 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/rubygems/version/rails' => 'version (stable)',
-            '/rubygems/version/rails/pre' => 'version (pre)',
-            '/rubygems/version/rails/latest' => 'version (latest)',
+            new BadgePreviewData(
+                name: 'version (stable)',
+                path: '/rubygems/version/rails',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (pre)',
+                path: '/rubygems/version/rails/pre',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version (latest)',
+                path: '/rubygems/version/rails/latest',
+                data: $this->render([]),
+            ),
         ];
     }
 

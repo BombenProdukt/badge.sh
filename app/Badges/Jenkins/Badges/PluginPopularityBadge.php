@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Jenkins\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -37,7 +38,11 @@ final class PluginPopularityBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/jenkins/plugin-popularity/blueocean' => 'plugin popularity',
+            new BadgePreviewData(
+                name: 'plugin popularity',
+                path: '/jenkins/plugin-popularity/blueocean',
+                data: $this->render([]),
+            ),
         ];
     }
 }

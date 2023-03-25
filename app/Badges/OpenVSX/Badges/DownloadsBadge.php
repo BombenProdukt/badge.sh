@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OpenVSX\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class DownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/open-vsx/downloads/idleberg/electron-builder' => 'downloads',
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/open-vsx/downloads/idleberg/electron-builder',
+                data: $this->render([]),
+            ),
         ];
     }
 }

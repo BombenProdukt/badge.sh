@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CRAN\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DependentsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class DependentsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cran/dependents/R6' => 'dependents',
+            new BadgePreviewData(
+                name: 'dependents',
+                path: '/cran/dependents/R6',
+                data: $this->render([]),
+            ),
         ];
     }
 }

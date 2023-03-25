@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use GrahamCampbell\GitHub\Facades\GitHub;
 
@@ -46,8 +47,16 @@ final class DownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/downloads/electron/electron' => 'assets downloads for latest release',
-            '/github/downloads/electron/electron/v7.0.0' => 'assets downloads for a tag',
+            new BadgePreviewData(
+                name: 'assets downloads for latest release',
+                path: '/github/downloads/electron/electron',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'assets downloads for a tag',
+                path: '/github/downloads/electron/electron/v7.0.0',
+                data: $this->render([]),
+            ),
         ];
     }
 }

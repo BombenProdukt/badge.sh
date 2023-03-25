@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -44,7 +45,11 @@ final class DependabotStatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/dependabot/ubuntu/yaru' => 'dependabot status',
+            new BadgePreviewData(
+                name: 'dependabot status',
+                path: '/github/dependabot/ubuntu/yaru',
+                data: $this->render([]),
+            ),
         ];
     }
 }

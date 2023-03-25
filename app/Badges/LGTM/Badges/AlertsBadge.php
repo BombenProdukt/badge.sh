@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\LGTM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -51,7 +52,11 @@ final class AlertsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/lgtm/alerts/github/apache/cloudstack' => 'alerts',
+            new BadgePreviewData(
+                name: 'alerts',
+                path: '/lgtm/alerts/github/apache/cloudstack',
+                data: $this->render([]),
+            ),
         ];
     }
 }

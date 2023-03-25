@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Testspace\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class SummaryBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class SummaryBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/testspace/summary/swellaby/swellaby:testspace-sample/main' => 'pass ratio',
+            new BadgePreviewData(
+                name: 'pass ratio',
+                path: '/testspace/summary/swellaby/swellaby:testspace-sample/main',
+                data: $this->render([]),
+            ),
         ];
     }
 

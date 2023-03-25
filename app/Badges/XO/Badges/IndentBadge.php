@@ -57,32 +57,32 @@ final class IndentBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'indentation',
                 path: '/xo/indentation/chalk',
                 data: $this->render(['indentation' => 'tab']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'indentation',
                 path: '/xo/indentation/chalk',
                 data: $this->render(['indentation' => '1 space']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'indentation',
                 path: '/xo/indentation/chalk',
                 data: $this->render(['indentation' => '2 spaces']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'indentation',
                 path: '/xo/indentation/@tusbar/cache-control',
                 data: $this->render(['indentation' => 'tab']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'indentation',
                 path: '/xo/indentation/@tusbar/cache-control',
                 data: $this->render(['indentation' => '1 space']),
             ),
-            BadgePreviewData::make(
+            new BadgePreviewData(
                 name: 'indentation',
                 path: '/xo/indentation/@tusbar/cache-control',
                 data: $this->render(['indentation' => '2 spaces']),

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\OSSLifecycle\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Spatie\Regex\Regex;
 
@@ -32,8 +33,16 @@ final class StatusBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/oss-lifecycle/status/Netflix/osstracker' => 'status',
-            '/oss-lifecycle/status/Netflix/osstracker/documentation' => 'status with branch',
+            new BadgePreviewData(
+                name: 'status',
+                path: '/oss-lifecycle/status/Netflix/osstracker',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'status with branch',
+                path: '/oss-lifecycle/status/Netflix/osstracker/documentation',
+                data: $this->render([]),
+            ),
         ];
     }
 }

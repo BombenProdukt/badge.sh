@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Ore\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class WatchersBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class WatchersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ore/watchers/nucleus' => 'watchers',
+            new BadgePreviewData(
+                name: 'watchers',
+                path: '/ore/watchers/nucleus',
+                data: $this->render([]),
+            ),
         ];
     }
 }

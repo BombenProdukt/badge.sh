@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Keybase\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class XLMBadge extends AbstractBadge
@@ -35,7 +36,11 @@ final class XLMBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/keybase/xlm/skyplabs' => 'xlm address',
+            new BadgePreviewData(
+                name: 'xlm address',
+                path: '/keybase/xlm/skyplabs',
+                data: $this->render([]),
+            ),
         ];
     }
 }

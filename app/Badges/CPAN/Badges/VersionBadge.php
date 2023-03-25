@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CPAN\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/cpan/version/App::cpanminus' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/cpan/version/App::cpanminus',
+                data: $this->render([]),
+            ),
         ];
     }
 

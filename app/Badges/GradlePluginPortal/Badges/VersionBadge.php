@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GradlePluginPortal\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/gradle-plugin-portal/version/com.gradle.plugin-publish' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/gradle-plugin-portal/version/com.gradle.plugin-publish',
+                data: $this->render([]),
+            ),
         ];
     }
 }

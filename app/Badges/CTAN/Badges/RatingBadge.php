@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\CTAN\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class RatingBadge extends AbstractBadge
@@ -37,7 +38,11 @@ final class RatingBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/ctan/rating/pgf-pie' => 'rating',
+            new BadgePreviewData(
+                name: 'rating',
+                path: '/ctan/rating/pgf-pie',
+                data: $this->render([]),
+            ),
         ];
     }
 }

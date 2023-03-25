@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Packagist\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class GitHubWatchersBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/packagist-github/watchers/monolog/monolog' => 'github watchers',
+            new BadgePreviewData(
+                name: 'github watchers',
+                path: '/packagist-github/watchers/monolog/monolog',
+                data: $this->render([]),
+            ),
         ];
     }
 }

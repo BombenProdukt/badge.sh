@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NPMS\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class MaintenanceScoreBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class MaintenanceScoreBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/npms/maintenance-score/chalk' => 'maintenance score',
+            new BadgePreviewData(
+                name: 'maintenance score',
+                path: '/npms/maintenance-score/chalk',
+                data: $this->render([]),
+            ),
         ];
     }
 }

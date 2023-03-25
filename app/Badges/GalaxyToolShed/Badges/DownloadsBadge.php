@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\GalaxyToolShed\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class DownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/galaxy-tool-shed/downloads/iuc/sra_tools' => 'downloads',
+            new BadgePreviewData(
+                name: 'downloads',
+                path: '/galaxy-tool-shed/downloads/iuc/sra_tools',
+                data: $this->render([]),
+            ),
         ];
     }
 }

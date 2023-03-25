@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PyPI\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class WheelBadge extends AbstractBadge
@@ -52,7 +53,11 @@ final class WheelBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pypi/wheel/black' => 'wheel',
+            new BadgePreviewData(
+                name: 'wheel',
+                path: '/pypi/wheel/black',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Badges\GitHub\Badges;
 
 use App\Badges\GitHub\Actions\CombineStates;
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use GrahamCampbell\GitHub\Facades\GitHub;
@@ -83,14 +84,46 @@ final class CheckRunsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/github/check-runs/tunnckoCore/opensource' => 'combined checks (default branch)',
-            '/github/check-runs/node-formidable/node-formidable' => 'combined checks (default branch)',
-            '/github/check-runs/node-formidable/node-formidable/master/lint' => 'single checks (lint job)',
-            '/github/check-runs/node-formidable/node-formidable/master/test' => 'single checks (test job)',
-            '/github/check-runs/node-formidable/node-formidable/master/ubuntu?label=linux' => 'single checks (linux)',
-            '/github/check-runs/node-formidable/node-formidable/master/windows' => 'single checks (windows)',
-            '/github/check-runs/node-formidable/node-formidable/master/macos' => 'single checks (macos)',
-            '/github/check-runs/styfle/packagephobia/main' => 'combined checks (branch)',
+            new BadgePreviewData(
+                name: 'combined checks (default branch)',
+                path: '/github/check-runs/tunnckoCore/opensource',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'combined checks (default branch)',
+                path: '/github/check-runs/node-formidable/node-formidable',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'single checks (lint job)',
+                path: '/github/check-runs/node-formidable/node-formidable/master/lint',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'single checks (test job)',
+                path: '/github/check-runs/node-formidable/node-formidable/master/test',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'single checks (linux)',
+                path: '/github/check-runs/node-formidable/node-formidable/master/ubuntu?label=linux',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'single checks (windows)',
+                path: '/github/check-runs/node-formidable/node-formidable/master/windows',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'single checks (macos)',
+                path: '/github/check-runs/node-formidable/node-formidable/master/macos',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'combined checks (branch)',
+                path: '/github/check-runs/styfle/packagephobia/main',
+                data: $this->render([]),
+            ),
         ];
     }
 }

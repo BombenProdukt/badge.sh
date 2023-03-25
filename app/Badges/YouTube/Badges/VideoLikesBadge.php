@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\YouTube\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class VideoLikesBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class VideoLikesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/youtube/video/likes/wGJHwc5ksMA' => 'video likes',
+            new BadgePreviewData(
+                name: 'video likes',
+                path: '/youtube/video/likes/wGJHwc5ksMA',
+                data: $this->render([]),
+            ),
         ];
     }
 }

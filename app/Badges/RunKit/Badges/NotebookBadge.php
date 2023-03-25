@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\RunKit\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -40,12 +41,36 @@ final class NotebookBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/runkit/vladimyr/metaweather/44418/state' => 'metaweather (state)',
-            '/runkit/vladimyr/metaweather/44418/temperature' => 'metaweather (temperature in °C)',
-            '/runkit/vladimyr/metaweather/44418/temperature/f' => 'metaweather (temperature in °F)',
-            '/runkit/vladimyr/metaweather/44418/wind' => 'metaweather (wind in km/h)',
-            '/runkit/vladimyr/metaweather/44418/wind/mph' => 'metaweather (wind in mph)',
-            '/runkit/vladimyr/metaweather/44418/humidity' => 'metaweather (humidity)',
+            new BadgePreviewData(
+                name: 'metaweather (state)',
+                path: '/runkit/vladimyr/metaweather/44418/state',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'metaweather (temperature in °C)',
+                path: '/runkit/vladimyr/metaweather/44418/temperature',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'metaweather (temperature in °F)',
+                path: '/runkit/vladimyr/metaweather/44418/temperature/f',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'metaweather (wind in km/h)',
+                path: '/runkit/vladimyr/metaweather/44418/wind',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'metaweather (wind in mph)',
+                path: '/runkit/vladimyr/metaweather/44418/wind/mph',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'metaweather (humidity)',
+                path: '/runkit/vladimyr/metaweather/44418/humidity',
+                data: $this->render([]),
+            ),
         ];
     }
 }

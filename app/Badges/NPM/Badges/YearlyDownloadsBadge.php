@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class YearlyDownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/npm/downloads-yearly/express' => 'yearly downloads',
+            new BadgePreviewData(
+                name: 'yearly downloads',
+                path: '/npm/downloads-yearly/express',
+                data: $this->render([]),
+            ),
         ];
     }
 }

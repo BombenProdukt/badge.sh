@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PackageControl\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class PlatformsBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class PlatformsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/package-control/downloads/GitGutter' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/package-control/downloads/GitGutter',
+                data: $this->render([]),
+            ),
         ];
     }
 }

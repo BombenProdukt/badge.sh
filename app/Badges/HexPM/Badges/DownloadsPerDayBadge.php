@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\HexPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsPerDayBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class DownloadsPerDayBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/hex/downloads-daily/plug' => 'daily downloads',
+            new BadgePreviewData(
+                name: 'daily downloads',
+                path: '/hex/downloads-daily/plug',
+                data: $this->render([]),
+            ),
         ];
     }
 }

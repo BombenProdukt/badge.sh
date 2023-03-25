@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NYCRC\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class StatementsBadge extends AbstractBadge
@@ -29,7 +30,11 @@ final class StatementsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/nycrc/statements/yargs/yargs' => 'statements',
+            new BadgePreviewData(
+                name: 'statements',
+                path: '/nycrc/statements/yargs/yargs',
+                data: $this->render([]),
+            ),
         ];
     }
 }

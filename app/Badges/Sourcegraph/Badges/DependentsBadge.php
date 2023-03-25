@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Sourcegraph\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -38,7 +39,11 @@ final class DependentsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/sourcegraph/dependents/github.com/gorilla/mux' => 'dependents',
+            new BadgePreviewData(
+                name: 'dependents',
+                path: '/sourcegraph/dependents/github.com/gorilla/mux',
+                data: $this->render([]),
+            ),
         ];
     }
 }

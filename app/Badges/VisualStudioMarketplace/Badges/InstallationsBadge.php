@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\VisualStudioMarketplace\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class InstallationsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class InstallationsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/vs-marketplace/installations/vscodevim.vim' => 'installation count',
+            new BadgePreviewData(
+                name: 'installation count',
+                path: '/vs-marketplace/installations/vscodevim.vim',
+                data: $this->render([]),
+            ),
         ];
     }
 }

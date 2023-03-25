@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PeerTube\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
@@ -36,7 +37,11 @@ final class CommentsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/peertube/comments/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d' => 'comments',
+            new BadgePreviewData(
+                name: 'comments',
+                path: '/peertube/comments/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d',
+                data: $this->render([]),
+            ),
         ];
     }
 }

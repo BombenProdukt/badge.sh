@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\PyPI\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class FormatBadge extends AbstractBadge
@@ -56,7 +57,11 @@ final class FormatBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/pypi/format/black' => 'format',
+            new BadgePreviewData(
+                name: 'format',
+                path: '/pypi/format/black',
+                data: $this->render([]),
+            ),
         ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Discourse\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class TopicsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class TopicsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/discourse/topics/meta.discourse.org' => 'topics',
+            new BadgePreviewData(
+                name: 'topics',
+                path: '/discourse/topics/meta.discourse.org',
+                data: $this->render([]),
+            ),
         ];
     }
 }

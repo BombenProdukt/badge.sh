@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Hackage\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Support\Facades\Http;
 
@@ -35,7 +36,11 @@ final class DependencyBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/hackage/dependencies/Cabal' => 'dependencies',
+            new BadgePreviewData(
+                name: 'dependencies',
+                path: '/hackage/dependencies/Cabal',
+                data: $this->render([]),
+            ),
         ];
     }
 }

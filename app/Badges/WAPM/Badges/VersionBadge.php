@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\WAPM\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
@@ -36,8 +37,16 @@ final class VersionBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/wapm/version/zamfofex/greg' => 'version',
-            '/wapm/version/cowsay' => 'version',
+            new BadgePreviewData(
+                name: 'version',
+                path: '/wapm/version/zamfofex/greg',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'version',
+                path: '/wapm/version/cowsay',
+                data: $this->render([]),
+            ),
         ];
     }
 }

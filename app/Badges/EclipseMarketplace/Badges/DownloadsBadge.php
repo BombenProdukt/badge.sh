@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\EclipseMarketplace\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
@@ -31,7 +32,11 @@ final class DownloadsBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/eclipse-marketplace/downloads/notepad4e' => 'total downloads',
+            new BadgePreviewData(
+                name: 'total downloads',
+                path: '/eclipse-marketplace/downloads/notepad4e',
+                data: $this->render([]),
+            ),
         ];
     }
 }

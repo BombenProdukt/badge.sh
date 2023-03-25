@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\Weblate\Badges;
 
+use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Illuminate\Routing\Route;
 
@@ -38,10 +39,26 @@ final class EntitiesBadge extends AbstractBadge
     public function previews(): array
     {
         return [
-            '/weblate/entities/components' => 'components',
-            '/weblate/entities/languages' => 'languages',
-            '/weblate/entities/projects' => 'projects',
-            '/weblate/entities/users' => 'users',
+            new BadgePreviewData(
+                name: 'components',
+                path: '/weblate/entities/components',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'languages',
+                path: '/weblate/entities/languages',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'projects',
+                path: '/weblate/entities/projects',
+                data: $this->render([]),
+            ),
+            new BadgePreviewData(
+                name: 'users',
+                path: '/weblate/entities/users',
+                data: $this->render([]),
+            ),
         ];
     }
 }
