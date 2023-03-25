@@ -86,14 +86,32 @@
                             <div
                                 class="not-prose grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5">
                                 <div class="space-y-1">
-                                    @foreach ($examples as $link => $label)
+                                    @foreach ($examples as $link => $example)
                                         <div class="grid gap-8 grid-cols-3 justify-center items-center">
-                                            <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">
-                                                {{ $label }}</h3>
-                                            <img src="{{ $link }}" />
-                                            <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500"
-                                                href="{{ $link }}" target="_blank">
-                                                {{ Str::limit($link, 32) }}
+                                            @if(is_array($example))
+                                                <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">{{ $example['name'] }}</h3>
+                                            @else
+                                                <h3 class="text-sm text-right font-semibold text-zinc-900 dark:text-white">{{ $link }}</h3>
+                                            @endif
+
+                                            @if(is_array($example))
+                                                <x-badge :code="$example['code']" />
+                                            @else
+                                                <img src="{{ $link }}" />
+                                            @endif
+
+                                            @if(is_array($example))
+                                                <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500" href="{{ $example['link'] }}" target="_blank">
+                                            @else
+                                            <a class="inline-flex gap-0.5 justify-between overflow-hidden text-sm font-medium transition text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500" href="{{ $link }}" target="_blank">
+                                            @endif
+
+                                                @if(is_array($example))
+                                                    {{ Str::limit($example['link'], 32) }}
+                                                @else
+                                                    {{ Str::limit($link, 32) }}
+                                                @endif
+
                                                 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"
                                                     class="mt-0.5 h-5 w-5 relative top-px -mr-1">
                                                     <path stroke="currentColor" stroke-linecap="round"

@@ -36,7 +36,13 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/apple-music/version/803453959' => 'version',
+            [
+                'name' => 'version',
+                'link' => '/apple-music/version/803453959',
+                'code' => $this->render([
+                    'version' => '1.0.0',
+                ]),
+            ],
         ];
     }
 }
