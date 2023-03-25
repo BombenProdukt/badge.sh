@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/npm/version/{package}/{tag?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $package, string $tag = 'latest'): array
     {
         return [
@@ -25,18 +43,6 @@ final class VersionBadge extends AbstractBadge
             $properties['tag'] === 'latest' ? 'npm' : 'npm@'.$properties['tag'],
             $properties['version'],
         );
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/npm/version/{package}/{tag?}',
-        ];
     }
 
     public function routeParameters(): array

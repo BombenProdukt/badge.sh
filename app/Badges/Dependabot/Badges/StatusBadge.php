@@ -10,6 +10,33 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/dependabot/status/{project}/{identifier?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
+    /**
+     * The deprecation dates and reasons.
+     *
+     * @var array<string, string>
+     */
+    protected array $deprecated = [
+        '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
+    ];
+
     public function handle(string $project, ?string $identifier = null): array
     {
         $response = $this->client->get($project, $identifier);
@@ -26,18 +53,6 @@ final class StatusBadge extends AbstractBadge
             'label' => 'Dependabot',
             'message' => $properties['status'],
             'messageColor' => $properties['statusColor'],
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/dependabot/status/{project}/{identifier?}',
         ];
     }
 
@@ -61,13 +76,6 @@ final class StatusBadge extends AbstractBadge
         return [
             '/dependabot/status/thepracticaldev/dev.to' => 'status',
             '/dependabot/status/dependabot/dependabot-core' => 'status',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
         ];
     }
 }

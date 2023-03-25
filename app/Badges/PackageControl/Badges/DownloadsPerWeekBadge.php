@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class DownloadsPerWeekBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/package-control/downloads-weekly/{packageName}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::LICENSE,
+    ];
+
     public function handle(string $packageName): array
     {
         $platforms = $this->client->get($packageName)['installs']['daily']['data'];
@@ -29,18 +47,6 @@ final class DownloadsPerWeekBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloads($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::LICENSE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/package-control/downloads-weekly/{packageName}',
-        ];
     }
 
     public function routeParameters(): array

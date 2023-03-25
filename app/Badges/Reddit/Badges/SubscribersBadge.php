@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class SubscribersBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/reddit/subscribers/{subreddit}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $subreddit): array
     {
         return [
@@ -24,18 +42,6 @@ final class SubscribersBadge extends AbstractBadge
             'label' => 'r/'.$properties['subreddit'],
             'message' => FormatNumber::execute($properties['subscribers']).' subscribers',
             'messageColor' => 'ff4500',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/reddit/subscribers/{subreddit}',
         ];
     }
 

@@ -10,6 +10,24 @@ use Spatie\Regex\Regex;
 
 final class RepositoryCountBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/repology/repositories/{packageName}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $packageName): array
     {
         return [
@@ -20,18 +38,6 @@ final class RepositoryCountBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('repositories', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/repology/repositories/{packageName}',
-        ];
     }
 
     public function routeParameters(): array

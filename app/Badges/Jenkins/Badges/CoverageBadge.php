@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Http;
 
 final class CoverageBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/jenkins/coverage/{format}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::COVERAGE,
+    ];
+
     public function handle(string $format): array
     {
         $response = Http::get($this->getRequestData('job').'/lastCompletedBuild/api/json', match ($format) {
@@ -29,18 +47,6 @@ final class CoverageBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderCoverage('percentage');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::COVERAGE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/jenkins/coverage/{format}',
-        ];
     }
 
     public function routeRules(): array

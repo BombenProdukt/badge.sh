@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class BTCBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/keybase/btc/{address}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $address): array
     {
         return $this->client->get($address, 'cryptocurrency_addresses.them.cryptocurrency_addresses.bitcoin.0');
@@ -20,18 +38,6 @@ final class BTCBadge extends AbstractBadge
             'label' => 'BTC',
             'message' => $properties['address'],
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/keybase/btc/{address}',
         ];
     }
 

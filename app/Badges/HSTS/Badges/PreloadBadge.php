@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PreloadBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/hsts/preload/{domain}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::MONITORING,
+    ];
+
     public function handle(string $domain): array
     {
         return [
@@ -19,18 +37,6 @@ final class PreloadBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('hsts preloaded', $properties['status']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::MONITORING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/hsts/preload/{domain}',
-        ];
     }
 
     public function routeParameters(): array

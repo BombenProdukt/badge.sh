@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class CoverageBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/coveralls/coverage/{vcs}/{repo}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $vcs, string $repo, ?string $branch = null): array
     {
         $response = $this->client->get($vcs, $repo, $branch);
@@ -32,18 +50,6 @@ final class CoverageBadge extends AbstractBadge
         }
 
         return $this->renderCoverage($properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/coveralls/coverage/{vcs}/{repo}/{branch?}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PerlBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/cpan/perl-version/{distribution}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::PLATFORM_SUPPORT, Category::VERSION,
+    ];
+
     public function handle(string $distribution): array
     {
         $version = \str_replace('_', '', $this->client->get("release/{$distribution}")['metadata']['prereqs']['runtime']['requires']['perl']);
@@ -29,18 +47,6 @@ final class PerlBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version'], 'Perl');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::PLATFORM_SUPPORT, Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/cpan/perl-version/{distribution}',
-        ];
     }
 
     public function routeParameters(): array

@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class SuggestersBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/packagist/suggesters/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $package, ?string $channel = null): array
     {
         return $this->client->get($package);
@@ -18,18 +36,6 @@ final class SuggestersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('suggesters', $properties['suggesters']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/packagist/suggesters/{package}',
-        ];
     }
 
     public function routeParameters(): array

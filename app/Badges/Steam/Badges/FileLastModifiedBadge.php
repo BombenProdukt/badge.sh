@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class FileLastModifiedBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/steam/file-last-modified/{fileId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ACTIVITY,
+    ];
+
     public function handle(string $fileId): array
     {
         return [
@@ -19,18 +37,6 @@ final class FileLastModifiedBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDateDiff('last modified', $properties['data']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ACTIVITY];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/steam/file-last-modified/{fileId}',
-        ];
     }
 
     public function routeParameters(): array

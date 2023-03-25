@@ -20,13 +20,13 @@ abstract class AbstractBadge implements Badge
     use HasRoute;
     use HasTemplates;
 
+    /**
+     * The service that this badge belongs to.
+     */
+    protected string $service = 'Codacy';
+
     public function __construct(protected readonly Client $client)
     {
         //
-    }
-
-    final public function service(): string
-    {
-        return 'Codacy';
     }
 }

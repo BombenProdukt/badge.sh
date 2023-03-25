@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class SupportersBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/opencollective/supporters/{slug}/{tierId?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::FUNDING,
+    ];
+
     public function handle(string $slug, ?string $tierId = null): array
     {
         return [
@@ -19,18 +37,6 @@ final class SupportersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('supporters', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::FUNDING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/opencollective/supporters/{slug}/{tierId?}',
-        ];
     }
 
     public function routeParameters(): array

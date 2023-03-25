@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class CommitsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/commits/{owner}/{repo}/{reference?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ACTIVITY,
+    ];
+
     public function handle(string $owner, string $repo, ?string $reference = null): array
     {
         if (empty($reference)) {
@@ -27,18 +45,6 @@ final class CommitsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('commits', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ACTIVITY];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/commits/{owner}/{repo}/{reference?}',
-        ];
     }
 
     public function routeParameters(): array

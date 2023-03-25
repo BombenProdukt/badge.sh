@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class DownloadsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/ore/downloads/{pluginId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $pluginId): array
     {
         return $this->client->get($pluginId)['stats'];
@@ -17,18 +35,6 @@ final class DownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloads($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/ore/downloads/{pluginId}',
-        ];
     }
 
     public function routeParameters(): array

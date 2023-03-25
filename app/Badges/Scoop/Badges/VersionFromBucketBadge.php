@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class VersionFromBucketBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/scoop/version/{bucket}/{app}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $bucket, string $app): array
     {
         return $bucket === 'main' ? $this->client->main($app) : $this->client->extra($app);
@@ -17,18 +35,6 @@ final class VersionFromBucketBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/scoop/version/{bucket}/{app}',
-        ];
     }
 
     public function routeParameters(): array

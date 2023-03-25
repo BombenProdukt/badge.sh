@@ -11,6 +11,24 @@ use Illuminate\Support\Facades\Http;
 
 final class PluginPopularityBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/jenkins/plugin-popularity/{plugin}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $plugin): array
     {
         return Http::get('https://updates.jenkins-ci.org/current/update-center.actual.json')->throw()->json('plugins')[$plugin];
@@ -19,18 +37,6 @@ final class PluginPopularityBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('popularity', $properties['popularity']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/jenkins/plugin-popularity/{plugin}',
-        ];
     }
 
     public function routeParameters(): array

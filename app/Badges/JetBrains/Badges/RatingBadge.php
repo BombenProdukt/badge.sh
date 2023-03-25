@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class RatingBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/jetbrains/rating/{pluginId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::RATING,
+    ];
+
     public function handle(string $pluginId): array
     {
         if (\is_numeric($pluginId)) {
@@ -25,18 +43,6 @@ final class RatingBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderRating($properties['rating']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::RATING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/jetbrains/rating/{pluginId}',
-        ];
     }
 
     public function routeParameters(): array

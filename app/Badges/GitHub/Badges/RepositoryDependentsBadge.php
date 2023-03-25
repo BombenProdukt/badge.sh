@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class RepositoryDependentsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/dependents-repo/{owner}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $owner, string $repo): array
     {
         return RequestDependents::execute($owner, $repo, 'REPOSITORY');
@@ -18,18 +36,6 @@ final class RepositoryDependentsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $properties;
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/dependents-repo/{owner}/{repo}',
-        ];
     }
 
     public function routeParameters(): array

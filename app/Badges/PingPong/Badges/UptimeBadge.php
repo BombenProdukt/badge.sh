@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class UptimeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/pingpong/uptime/{apiKey}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::MONITORING,
+    ];
+
     public function handle(string $apiKey): array
     {
         return [
@@ -19,18 +37,6 @@ final class UptimeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage('uptime', $properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::MONITORING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/pingpong/uptime/{apiKey}',
-        ];
     }
 
     public function routeParameters(): array

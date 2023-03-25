@@ -10,6 +10,24 @@ use InvalidArgumentException;
 
 final class UserStatisticsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/weblate/statistics/{type}/{username}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::METRICS,
+    ];
+
     public function handle(string $type, string $username): array
     {
         $response = $this->client->user($username);
@@ -30,18 +48,6 @@ final class UserStatisticsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber($properties['type'], $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::METRICS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/weblate/statistics/{type}/{username}',
-        ];
     }
 
     public function routeParameters(): array

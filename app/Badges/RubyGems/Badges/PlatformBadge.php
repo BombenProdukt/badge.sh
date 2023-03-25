@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PlatformBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/rubygems/platform/{gem}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::PLATFORM_SUPPORT,
+    ];
+
     public function handle(string $gem): array
     {
         return $this->client->get("gems/{$gem}");
@@ -17,18 +35,6 @@ final class PlatformBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('platform', $properties['platform']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::PLATFORM_SUPPORT];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/rubygems/platform/{gem}',
-        ];
     }
 
     public function routeParameters(): array

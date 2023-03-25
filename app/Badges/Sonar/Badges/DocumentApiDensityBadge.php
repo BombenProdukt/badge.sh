@@ -8,6 +8,24 @@ use App\Enums\Category;
 
 final class DocumentApiDensityBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/sonar/public_documented_api_density/{component}/{branch}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $metric, string $component, string $branch): array
     {
         return [
@@ -18,18 +36,6 @@ final class DocumentApiDensityBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage('public documented api density', $properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/sonar/public_documented_api_density/{component}/{branch}',
-        ];
     }
 
     public function routeRules(): array

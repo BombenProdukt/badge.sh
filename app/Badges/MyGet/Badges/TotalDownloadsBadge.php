@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class TotalDownloadsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/myget/downloads/{feed}/{project}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $feed, string $project): array
     {
         return [
@@ -19,18 +37,6 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloads($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/myget/downloads/{feed}/{project}',
-        ];
     }
 
     public function routeParameters(): array

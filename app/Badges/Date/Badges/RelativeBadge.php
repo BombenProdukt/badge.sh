@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class RelativeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/date/relative/{timestamp}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(string $timestamp): array
     {
         return [
@@ -19,18 +37,6 @@ final class RelativeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDateDiff('date', $properties['timestamp']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/date/relative/{timestamp}',
-        ];
     }
 
     public function routeParameters(): array

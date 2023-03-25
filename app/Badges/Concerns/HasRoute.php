@@ -10,7 +10,7 @@ trait HasRoute
 {
     public function routePaths(): array
     {
-        return [];
+        return $this->routes ?? [];
     }
 
     public function routeRules(): array

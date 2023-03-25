@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ForksBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/forks/{owner}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $owner, string $repo): array
     {
         return [
@@ -19,18 +37,6 @@ final class ForksBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('forks', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/forks/{owner}/{repo}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/greasyfork/version/{scriptId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $scriptId): array
     {
         return $this->client->get($scriptId);
@@ -17,18 +35,6 @@ final class VersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/greasyfork/version/{scriptId}',
-        ];
     }
 
     public function routeParameters(): array

@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Validator;
 
 final class XMLBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/endpoint/xml',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(): array
     {
         return Validator::make(
@@ -31,18 +49,6 @@ final class XMLBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $properties;
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/endpoint/xml',
-        ];
     }
 
     public function routeRules(): array

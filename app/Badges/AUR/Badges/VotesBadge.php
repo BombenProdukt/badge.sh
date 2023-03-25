@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class VotesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/aur/votes/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $package): array
     {
         return [
@@ -19,18 +37,6 @@ final class VotesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('votes', $properties['votes']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/aur/votes/{package}',
-        ];
     }
 
     public function routeParameters(): array

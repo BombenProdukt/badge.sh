@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class UsersBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/amo/users/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS, Category::SOCIAL,
+    ];
+
     public function handle(string $package): array
     {
         return [
@@ -19,18 +37,6 @@ final class UsersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('users', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS, Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/amo/users/{package}',
-        ];
     }
 
     public function routeParameters(): array

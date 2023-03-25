@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PointsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/freecodecamp/points/{username}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $username): array
     {
         return $this->client->get($username)['entities']['user'][$username];
@@ -17,18 +35,6 @@ final class PointsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('freecodecamp', $properties['points']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/freecodecamp/points/{username}',
-        ];
     }
 
     public function routeParameters(): array

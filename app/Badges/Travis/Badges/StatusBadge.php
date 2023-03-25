@@ -11,6 +11,24 @@ use Illuminate\Support\Collection;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/travis/status/{project}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $project, ?string $branch = null): array
     {
         $org = $this->client->org($project, $branch);
@@ -27,18 +45,6 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('travis', $properties['status'], $properties['statusColor']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/travis/status/{project}/{branch?}',
-        ];
     }
 
     public function routeParameters(): array

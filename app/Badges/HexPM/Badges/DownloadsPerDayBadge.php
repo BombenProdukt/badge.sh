@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class DownloadsPerDayBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/hex/downloads-daily/{packageName}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $packageName): array
     {
         return [
@@ -19,18 +37,6 @@ final class DownloadsPerDayBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloadsPerDay($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/hex/downloads-daily/{packageName}',
-        ];
     }
 
     public function routeParameters(): array

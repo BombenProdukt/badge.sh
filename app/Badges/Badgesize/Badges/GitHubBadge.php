@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class GitHubBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/badgesize/{compression}/{repo}/{path}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SIZE,
+    ];
+
     public function handle(string $compression, string $repo, string $path): array
     {
         $response = $this->client->get($compression, "{$repo}/{$path}");
@@ -27,18 +45,6 @@ final class GitHubBadge extends AbstractBadge
             'label' => $properties['compression'] === 'normal' ? 'size' : $properties['compression'].' size',
             'message' => $properties['size'],
             'messageColor' => $properties['color'],
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SIZE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/badgesize/{compression}/{repo}/{path}',
         ];
     }
 

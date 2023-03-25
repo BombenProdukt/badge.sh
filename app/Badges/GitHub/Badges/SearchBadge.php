@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class SearchBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/search/{owner}/{repo}/{query}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $owner, string $repo, string $query): array
     {
         return [
@@ -21,18 +39,6 @@ final class SearchBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber($properties['label'], $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/search/{owner}/{repo}/{query}',
-        ];
     }
 
     public function routeParameters(): array

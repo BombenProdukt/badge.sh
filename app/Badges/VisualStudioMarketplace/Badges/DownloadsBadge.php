@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class DownloadsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/vs-marketplace/downloads/{extension}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $extension): array
     {
         $response = $this->client->get($extension);
@@ -23,18 +41,6 @@ final class DownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloads($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/vs-marketplace/downloads/{extension}',
-        ];
     }
 
     public function routeParameters(): array

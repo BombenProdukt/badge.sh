@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class ClosedIssuesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/gitlab/closed-issues/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ISSUE_TRACKING,
+    ];
+
     public function handle(string $repo): array
     {
         return $this->client->graphql($repo, 'issues(state:closed){ count }')['issues'];
@@ -18,18 +36,6 @@ final class ClosedIssuesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('closed issues', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ISSUE_TRACKING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/gitlab/closed-issues/{repo}',
-        ];
     }
 
     public function routeParameters(): array

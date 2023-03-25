@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ReleaseDateBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/vs-marketplace/release-date/{extension}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $extension): array
     {
         return [
@@ -19,18 +37,6 @@ final class ReleaseDateBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDate('release date', $properties['date']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/vs-marketplace/release-date/{extension}',
-        ];
     }
 
     public function routeParameters(): array

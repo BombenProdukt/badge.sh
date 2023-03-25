@@ -10,6 +10,24 @@ use Illuminate\Support\Arr;
 
 final class UptimeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/whatpulse/uptime/{userType}/{id}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $userType, string $id): array
     {
         return [
@@ -20,18 +38,6 @@ final class UptimeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('uptime', $properties['time'], 'green.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/whatpulse/uptime/{userType}/{id}',
-        ];
     }
 
     public function routeParameters(): array

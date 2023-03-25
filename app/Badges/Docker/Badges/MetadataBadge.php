@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class MetadataBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/docker/metadata/{scope}/{name}/{type}/{tag?}/{architecture?}/{variant?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(
         string $type,
         string $scope,
@@ -31,18 +49,6 @@ final class MetadataBadge extends AbstractBadge
             'label' => $properties['type'],
             'message' => $properties['metadata'],
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/docker/metadata/{scope}/{name}/{type}/{tag?}/{architecture?}/{variant?}',
         ];
     }
 

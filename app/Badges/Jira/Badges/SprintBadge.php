@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class SprintBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/jira/sprint/{sprint}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ISSUE_TRACKING,
+    ];
+
     public function handle(string $sprint): array
     {
         $response = $this->client->sprint($this->getRequestData('instance'), $sprint);
@@ -23,18 +41,6 @@ final class SprintBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage('completion', $properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ISSUE_TRACKING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/jira/sprint/{sprint}',
-        ];
     }
 
     public function routeRules(): array

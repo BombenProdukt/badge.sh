@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/bitrise/version/{token}/{appId}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $token, string $appId, ?string $branch = null): array
     {
         return $this->client->get($token, $appId, $branch);
@@ -21,18 +39,6 @@ final class StatusBadge extends AbstractBadge
             'success' => 'green.600',
             'unknown' => 'gray.600',
         ][$properties['status']]);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/bitrise/version/{token}/{appId}/{branch?}',
-        ];
     }
 
     public function routeParameters(): array

@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class ProjectDependenciesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/libraries-io/project-dependencies/{platform}/{package}/{version?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DEPENDENCIES,
+    ];
+
     public function handle(string $platform, string $package, string $version = 'latest'): array
     {
         $dependencies = $this->client->dependencies($platform, $package, $version)['dependencies'];
@@ -31,18 +49,6 @@ final class ProjectDependenciesBadge extends AbstractBadge
         }
 
         return $this->renderText('dependencies', 'up to date', 'green.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DEPENDENCIES];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/libraries-io/project-dependencies/{platform}/{package}/{version?}',
-        ];
     }
 
     public function routeParameters(): array

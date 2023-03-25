@@ -10,6 +10,33 @@ use Illuminate\Routing\Route;
 
 final class LangsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/lgtm/languages/{provider}/{project}/{language?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
+    /**
+     * The deprecation dates and reasons.
+     *
+     * @var array<string, string>
+     */
+    protected array $deprecated = [
+        '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
+    ];
+
     public function handle(string $provider, string $project, ?string $language = null): array
     {
         $response = $this->client->get($provider, $project, $language);
@@ -27,18 +54,6 @@ final class LangsBadge extends AbstractBadge
             'label' => 'languages',
             'message' => \implode(' | ', $properties['languages']),
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/lgtm/languages/{provider}/{project}/{language?}',
         ];
     }
 
@@ -62,13 +77,6 @@ final class LangsBadge extends AbstractBadge
     {
         return [
             '/lgtm/languages/github/apache/cloudstack/java' => 'langs',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
         ];
     }
 }

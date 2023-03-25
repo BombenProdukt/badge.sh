@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class UserReleaseCount extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/puppetforge/user-release-count/{user}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $user): array
     {
         return $this->renderNumber('release count', $this->client->user($user)['release_count']);
@@ -17,18 +35,6 @@ final class UserReleaseCount extends AbstractBadge
     public function render(array $properties): array
     {
         //
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/puppetforge/user-release-count/{user}',
-        ];
     }
 
     public function routeParameters(): array

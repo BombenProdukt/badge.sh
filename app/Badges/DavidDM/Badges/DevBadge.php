@@ -10,6 +10,33 @@ use Illuminate\Routing\Route;
 
 final class DevBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/david/dev/{repo}/{path?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DEPENDENCIES,
+    ];
+
+    /**
+     * The deprecation dates and reasons.
+     *
+     * @var array<string, string>
+     */
+    protected array $deprecated = [
+        '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
+    ];
+
     public function handle(string $repo, string $path): array
     {
         return $this->client->get($repo, $path, 'dev-');
@@ -21,18 +48,6 @@ final class DevBadge extends AbstractBadge
             'label' => 'devDependencies',
             'message' => $this->statusInfo[$properties['status']][0],
             'messageColor' => $this->statusInfo[$properties['status']][1],
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DEPENDENCIES];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/david/dev/{repo}/{path?}',
         ];
     }
 
@@ -56,13 +71,6 @@ final class DevBadge extends AbstractBadge
     {
         return [
             '/david/dev/zeit/pkg' => 'dev dependencies',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
         ];
     }
 }

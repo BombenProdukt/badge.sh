@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Http;
 
 final class DependabotStatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/dependabot/{owner}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS, Category::DEPENDENCIES,
+    ];
+
     public function handle(string $owner, string $repo): array
     {
         return [
@@ -31,18 +49,6 @@ final class DependabotStatusBadge extends AbstractBadge
             'label' => 'github',
             'message' => 'not found',
             'messageColor' => 'gray.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS, Category::DEPENDENCIES];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/dependabot/{owner}/{repo}',
         ];
     }
 

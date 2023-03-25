@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class BuildsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/visual-studio-app-center/builds/{owner}/{app}/{branch}/{token}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $owner, string $app, string $branch, string $token): array
     {
         return [
@@ -19,18 +37,6 @@ final class BuildsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('build status', $properties['status']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/visual-studio-app-center/builds/{owner}/{app}/{branch}/{token}',
-        ];
     }
 
     public function routeParameters(): array

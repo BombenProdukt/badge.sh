@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class FollowersBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/peertube/followers/{instance}/{account}/{channel?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $instance, string $account, ?string $channel = null): array
     {
         if (empty($channel)) {
@@ -35,18 +53,6 @@ final class FollowersBadge extends AbstractBadge
             'label' => 'followers',
             'message' => FormatNumber::execute($properties['count']),
             'messageColor' => 'F1680D',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/peertube/followers/{instance}/{account}/{channel?}',
         ];
     }
 

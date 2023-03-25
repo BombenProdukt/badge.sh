@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class OpenMergeRequestsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/gitlab/open-merge-requests/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ISSUE_TRACKING,
+    ];
+
     public function handle(string $repo): array
     {
         return [
@@ -20,18 +38,6 @@ final class OpenMergeRequestsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('open MRs', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ISSUE_TRACKING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/gitlab/open-merge-requests/{repo}',
-        ];
     }
 
     public function routeParameters(): array

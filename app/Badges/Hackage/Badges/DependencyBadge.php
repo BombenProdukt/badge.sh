@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Http;
 
 final class DependencyBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/hackage/dependencies/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DEPENDENCIES,
+    ];
+
     public function handle(string $package): array
     {
         $client = Http::baseUrl('https://packdeps.haskellers.com/')->throw();
@@ -23,18 +41,6 @@ final class DependencyBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('dependencies', $properties['outdated'] ? 'outdated' : 'up-to-date', $properties['outdated'] ? 'red.600' : 'green.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DEPENDENCIES];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/hackage/dependencies/{package}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class CoverageBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/codacy/coverage/{projectId}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $projectId, ?string $branch = null): array
     {
         \preg_match('/text-anchor=[^>]*?>([^<]+)<\//i', $this->client->get('coverage', $projectId, $branch), $matches);
@@ -21,18 +39,6 @@ final class CoverageBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderCoverage($properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/codacy/coverage/{projectId}/{branch?}',
-        ];
     }
 
     public function routeParameters(): array

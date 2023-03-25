@@ -10,6 +10,24 @@ use Illuminate\Support\Arr;
 
 final class VersionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/snapcraft/version/{snap}/{architecture?}/{channel?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $snap, ?string $architecture = null, ?string $channel = null): array
     {
         $channels = collect($this->client->get($snap, ['version'])['channel-map']);
@@ -24,18 +42,6 @@ final class VersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/snapcraft/version/{snap}/{architecture?}/{channel?}',
-        ];
     }
 
     public function routeParameters(): array

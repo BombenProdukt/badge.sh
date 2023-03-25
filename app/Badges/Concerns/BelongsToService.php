@@ -10,7 +10,7 @@ trait BelongsToService
 {
     public function service(): string
     {
-        return '';
+        return $this->service ?? '';
     }
 
     public function title(): string
@@ -20,16 +20,16 @@ trait BelongsToService
 
     public function render(array $properties): array
     {
-        //
-    }
-
-    public function keywords(): array
-    {
-        return [];
+        return $properties;
     }
 
     public function deprecated(): array
     {
         return [];
+    }
+
+    public function keywords(): array
+    {
+        return $this->keywords ?? [];
     }
 }

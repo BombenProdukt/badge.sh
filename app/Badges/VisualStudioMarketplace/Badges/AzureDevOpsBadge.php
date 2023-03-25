@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class AzureDevOpsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/vs-marketplace/azure-devops-installations/{extension}/{measurement?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $extension, ?string $measurement = null): array
     {
         $response = $this->client->get($extension);
@@ -31,18 +49,6 @@ final class AzureDevOpsBadge extends AbstractBadge
         }
 
         return $this->renderDownloads($properties['installations'] + $properties['onpremDownloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/vs-marketplace/azure-devops-installations/{extension}/{measurement?}',
-        ];
     }
 
     public function routeParameters(): array

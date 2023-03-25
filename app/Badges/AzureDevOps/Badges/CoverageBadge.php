@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Http;
 
 final class CoverageBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/azure-devops/coverage/{organization}/{project}/{definition}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $organization, string $project, string $definition, ?string $environment = null): array
     {
         $buildId = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/builds", [
@@ -43,18 +61,6 @@ final class CoverageBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderCoverage($properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/azure-devops/coverage/{organization}/{project}/{definition}',
-        ];
     }
 
     public function routeParameters(): array

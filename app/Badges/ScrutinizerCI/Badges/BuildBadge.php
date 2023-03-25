@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class BuildBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/scrutinizer-ci/build/{vcs}/{user}/{repo}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $vcs, string $user, string $repo, ?string $branch = 'master'): array
     {
         return $this->client->get($vcs, $user, $repo)['applications'][$branch]['build_status'];
@@ -17,18 +35,6 @@ final class BuildBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('build', $properties['status']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/scrutinizer-ci/build/{vcs}/{user}/{repo}/{branch?}',
-        ];
     }
 
     public function routeParameters(): array

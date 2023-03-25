@@ -11,6 +11,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class TechDebtBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/codeclimate/tech-debt/{project}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $project): array
     {
         $response = $this->client->get($project, 'snapshots');
@@ -32,18 +50,6 @@ final class TechDebtBadge extends AbstractBadge
                 $properties['ratio'] <= 50 => 'DC2' ,
                 default => 'orange.600',
             },
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/codeclimate/tech-debt/{project}',
         ];
     }
 

@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class RequestBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/https/{host}/{path?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(string $host, ?string $path = null): array
     {
         return $this->client->get($host, $path);
@@ -21,18 +39,6 @@ final class RequestBadge extends AbstractBadge
             'label' => $properties['label'],
             'message' => $properties['message'],
             'messageColor' => $properties['messageColor'],
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/https/{host}/{path?}',
         ];
     }
 

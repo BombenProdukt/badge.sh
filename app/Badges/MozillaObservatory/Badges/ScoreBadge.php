@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ScoreBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/mozilla-observatory/score/{host}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $host): array
     {
         return $this->client->get($host);
@@ -17,18 +35,6 @@ final class ScoreBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('observatory', $properties['score']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/mozilla-observatory/score/{host}',
-        ];
     }
 
     public function routeParameters(): array

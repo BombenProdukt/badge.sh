@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class DependentsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/cpan/dependents/{distribution}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $distribution): array
     {
         return [
@@ -19,18 +37,6 @@ final class DependentsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('dependents', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/cpan/dependents/{distribution}',
-        ];
     }
 
     public function routeParameters(): array

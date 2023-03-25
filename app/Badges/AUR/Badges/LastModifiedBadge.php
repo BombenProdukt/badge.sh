@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class LastModifiedBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/aur/last-modified/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ACTIVITY,
+    ];
+
     public function handle(string $package): array
     {
         return [
@@ -19,18 +37,6 @@ final class LastModifiedBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDate('last modified', $properties['date']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ACTIVITY];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/aur/last-modified/{package}',
-        ];
     }
 
     public function routeParameters(): array

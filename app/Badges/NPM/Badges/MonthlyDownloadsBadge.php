@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class MonthlyDownloadsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/npm/downloads-monthly/{package}/{tag?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $package, string $tag = 'latest'): array
     {
         return $this->client->api("downloads/point/last-month/{$package}");
@@ -18,18 +36,6 @@ final class MonthlyDownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloadsPerMonth($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/npm/downloads-monthly/{package}/{tag?}',
-        ];
     }
 
     public function routeParameters(): array

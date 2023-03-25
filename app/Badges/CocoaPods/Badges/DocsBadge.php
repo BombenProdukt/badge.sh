@@ -10,6 +10,24 @@ use Illuminate\Support\Arr;
 
 final class DocsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/cocoapods/doc-percent/{pod}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $pod): array
     {
         return [
@@ -20,18 +38,6 @@ final class DocsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage($this->service(), $properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/cocoapods/doc-percent/{pod}',
-        ];
     }
 
     public function routeParameters(): array

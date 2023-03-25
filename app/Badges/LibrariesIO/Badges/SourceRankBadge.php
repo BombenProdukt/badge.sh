@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class SourceRankBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/libraries-io/sourcerank/{platform}/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $platform, string $package): array
     {
         return $this->client->get($platform, $package);
@@ -18,18 +36,6 @@ final class SourceRankBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('sourcerank', $properties['rank']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/libraries-io/sourcerank/{platform}/{package}',
-        ];
     }
 
     public function routeParameters(): array

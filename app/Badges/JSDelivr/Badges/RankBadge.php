@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class RankBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/jsdelivr/rank/{platform}/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $platform, string $package): array
     {
         return $this->client->data($platform, $package);
@@ -21,18 +39,6 @@ final class RankBadge extends AbstractBadge
             'label' => 'jsDelivr rank',
             'message' => $properties['rank'] ? '#'.$properties['rank'] : 'none',
             'messageColor' => $properties['rank'] ? 'blue.600' : 'gray.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/jsdelivr/rank/{platform}/{package}',
         ];
     }
 

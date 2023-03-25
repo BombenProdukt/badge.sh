@@ -8,6 +8,15 @@ use Illuminate\Routing\Route;
 
 final class AccountBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/mastodon/follow/{account}',
+    ];
+
     public function handle(string $account): array
     {
         [$username, $instance] = \explode('@', $account);
@@ -31,13 +40,6 @@ final class AccountBadge extends AbstractBadge
     public function keywords(): array
     {
         return [
-        ];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/mastodon/follow/{account}',
         ];
     }
 

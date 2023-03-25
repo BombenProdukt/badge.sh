@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class MaintainabilityPercentageBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/codeclimate/maintainability-percentage/{project}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $project): array
     {
         $response = $this->client->get($project, 'snapshots');
@@ -23,18 +41,6 @@ final class MaintainabilityPercentageBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderGrade('maintainability', $properties['percentage'], $properties['letter']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/codeclimate/maintainability-percentage/{project}',
-        ];
     }
 
     public function routeParameters(): array

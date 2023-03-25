@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class MergedPullRequestsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/merged-pull-requests/{owner}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ISSUE_TRACKING,
+    ];
+
     public function handle(string $owner, string $repo)
     {
         return [
@@ -19,18 +37,6 @@ final class MergedPullRequestsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('merged PRs', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ISSUE_TRACKING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/merged-pull-requests/{owner}/{repo}',
-        ];
     }
 
     public function routeParameters(): array

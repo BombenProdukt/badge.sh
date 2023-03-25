@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class RatingBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/greasyfork/rating/{scriptId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $scriptId): array
     {
         $response = $this->client->get($scriptId);
@@ -27,18 +45,6 @@ final class RatingBadge extends AbstractBadge
             \sprintf('%s good, %s ok, %s bad', $properties['good'], $properties['ok'], $properties['bad']),
             'blue.600',
         );
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/greasyfork/rating/{scriptId}',
-        ];
     }
 
     public function routeParameters(): array

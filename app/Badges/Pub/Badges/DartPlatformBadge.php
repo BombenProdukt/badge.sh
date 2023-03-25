@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class DartPlatformBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/pub/dart-platform/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::PLATFORM_SUPPORT,
+    ];
+
     public function handle(string $package): array
     {
         $pubScores = $this->client->api("packages/{$package}/metrics")['scorecard'];
@@ -25,18 +43,6 @@ final class DartPlatformBadge extends AbstractBadge
             'label' => 'dart',
             'message' => $properties['versions'] ? \implode('|', $properties['versions']) : 'unknown',
             'messageColor' => $properties['versions'] ? 'blue.600' : 'gray.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::PLATFORM_SUPPORT];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/pub/dart-platform/{package}',
         ];
     }
 

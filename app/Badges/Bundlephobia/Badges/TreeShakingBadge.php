@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class TreeShakingBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/bundlephobia/tree-shaking/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $name): array
     {
         $response = $this->client->get($name);
@@ -25,18 +43,6 @@ final class TreeShakingBadge extends AbstractBadge
             'label' => 'tree shaking',
             'message' => $properties['isTreeShakeable'] ? 'supported' : 'not supported',
             'messageColor' => $properties['isTreeShakeable'] ? 'green.600' : 'red.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/bundlephobia/tree-shaking/{name}',
         ];
     }
 

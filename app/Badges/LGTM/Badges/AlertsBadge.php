@@ -11,6 +11,33 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class AlertsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/lgtm/alerts/{provider}/{project}/{language?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
+    /**
+     * The deprecation dates and reasons.
+     *
+     * @var array<string, string>
+     */
+    protected array $deprecated = [
+        '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
+    ];
+
     public function handle(string $provider, string $project, ?string $language = null): array
     {
         $response = $this->client->get($provider, $project, $language);
@@ -27,18 +54,6 @@ final class AlertsBadge extends AbstractBadge
             'label' => 'alerts: '.$properties['language'],
             'message' => FormatNumber::execute($properties['alerts']),
             'messageColor' => $properties['alerts'] === 0 ? 'green.600' : 'yellow.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/lgtm/alerts/{provider}/{project}/{language?}',
         ];
     }
 
@@ -62,13 +77,6 @@ final class AlertsBadge extends AbstractBadge
     {
         return [
             '/lgtm/alerts/github/apache/cloudstack' => 'alerts',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
         ];
     }
 }

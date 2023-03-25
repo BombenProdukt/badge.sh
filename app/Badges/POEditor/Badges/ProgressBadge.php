@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ProgressBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/poeditor/progress/{apiToken}/{projectId}/{languageCode}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $apiToken, string $projectId, string $languageCode): array
     {
         $response = $this->client->get($apiToken, $projectId, $languageCode);
@@ -23,18 +41,6 @@ final class ProgressBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage($properties['language'], $properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/poeditor/progress/{apiToken}/{projectId}/{languageCode}',
-        ];
     }
 
     public function routeParameters(): array

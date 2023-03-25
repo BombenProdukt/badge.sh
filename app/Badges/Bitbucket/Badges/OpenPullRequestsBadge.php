@@ -8,6 +8,24 @@ use App\Enums\Category;
 
 final class OpenPullRequestsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/bitbucket/open-pull-requests/{user}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ACTIVITY,
+    ];
+
     public function handle(string $user, string $repo): array
     {
         return [
@@ -18,18 +36,6 @@ final class OpenPullRequestsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('open pull requests', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ACTIVITY];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/bitbucket/open-pull-requests/{user}/{repo}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/feedz/version/{organization}/{repository}/{packageName}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $organization, string $repository, string $packageName): array
     {
         return [
@@ -19,18 +37,6 @@ final class VersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/feedz/version/{organization}/{repository}/{packageName}',
-        ];
     }
 
     public function routeParameters(): array

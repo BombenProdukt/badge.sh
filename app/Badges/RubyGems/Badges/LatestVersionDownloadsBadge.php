@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class LatestVersionDownloadsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/rubygems/downloads-recently/{gem}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $gem): array
     {
         return [
@@ -23,18 +41,6 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
             'label' => 'downloads',
             'message' => FormatNumber::execute($properties['downloads']).' /version',
             'messageColor' => 'green.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/rubygems/downloads-recently/{gem}',
         ];
     }
 

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class QualityGateBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/sonar/{metric}/{component}/{branch}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $metric, string $component, string $branch): array
     {
         $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch);
@@ -27,18 +45,6 @@ final class QualityGateBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('quality gate', $properties['status']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/sonar/{metric}/{component}/{branch}',
-        ];
     }
 
     public function routeRules(): array

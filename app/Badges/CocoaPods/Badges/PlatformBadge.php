@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PlatformBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/cocoapods/platform/{pod}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::PLATFORM_SUPPORT,
+    ];
+
     public function handle(string $pod): array
     {
         return [
@@ -19,18 +37,6 @@ final class PlatformBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('platforms', \implode(' | ', $properties['platforms']), 'blue.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::PLATFORM_SUPPORT];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/cocoapods/platform/{pod}',
-        ];
     }
 
     public function routeParameters(): array

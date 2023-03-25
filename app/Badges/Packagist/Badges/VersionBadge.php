@@ -13,6 +13,24 @@ final class VersionBadge extends AbstractBadge
 {
     use HandlesVersions;
 
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/packagist/version/{package}/{channel?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $package, ?string $channel = null): array
     {
         return [
@@ -23,18 +41,6 @@ final class VersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/packagist/version/{package}/{channel?}',
-        ];
     }
 
     public function routeParameters(): array

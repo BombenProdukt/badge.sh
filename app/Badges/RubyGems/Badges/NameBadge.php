@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class NameBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/rubygems/name/{gem}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(string $gem): array
     {
         return $this->client->get("gems/{$gem}");
@@ -20,18 +38,6 @@ final class NameBadge extends AbstractBadge
             'label' => 'name',
             'message' => $properties['name'],
             'messageColor' => 'green.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/rubygems/name/{gem}',
         ];
     }
 

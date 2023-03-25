@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class CollectionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/ansible/collection/{collectionId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(string $collectionId): array
     {
         $response = $this->client->collections($collectionId);
@@ -21,18 +39,6 @@ final class CollectionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('collection', $properties['name'], 'blue.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/ansible/collection/{collectionId}',
-        ];
     }
 
     public function routeParameters(): array

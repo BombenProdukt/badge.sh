@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StarsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/docker/stars/{scope}/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::RATING,
+    ];
+
     public function handle(string $scope, string $name): array
     {
         return [
@@ -19,18 +37,6 @@ final class StarsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStars('stars', $properties['stars']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::RATING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/docker/stars/{scope}/{name}',
-        ];
     }
 
     public function routeParameters(): array

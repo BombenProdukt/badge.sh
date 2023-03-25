@@ -10,6 +10,24 @@ use Symfony\Component\DomCrawler\Crawler;
 
 final class PriceBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/chrome-web-store/price/{itemId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(string $itemId): array
     {
         $crawler = new Crawler($this->client->get($itemId));
@@ -23,18 +41,6 @@ final class PriceBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderMoney('price', $properties['amount'], $properties['currency']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/chrome-web-store/price/{itemId}',
-        ];
     }
 
     public function routeParameters(): array

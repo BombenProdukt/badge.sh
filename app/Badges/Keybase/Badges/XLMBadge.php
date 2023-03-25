@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class XLMBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/keybase/xlm/{address}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $address): array
     {
         return [
@@ -22,18 +40,6 @@ final class XLMBadge extends AbstractBadge
             'label' => 'XLM',
             'message' => $properties['address'],
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/keybase/xlm/{address}',
         ];
     }
 

@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/circleci/status/{vcs}/{repo}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $vcs, string $repo, ?string $branch = null): array
     {
         return $this->client->get($vcs, $repo, $branch)[0];
@@ -21,18 +39,6 @@ final class StatusBadge extends AbstractBadge
             'label' => 'circleci',
             'message' => \str_replace('_', ' ', $properties['status']),
             'messageColor' => ['failed' => 'red.600', 'success' => 'green.600'][$properties['status']] ?? 'gray.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/circleci/status/{vcs}/{repo}/{branch?}',
         ];
     }
 

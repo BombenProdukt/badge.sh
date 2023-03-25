@@ -11,6 +11,24 @@ use Illuminate\Support\Arr;
 
 final class VersionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/node/version/{package}/{tag?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $package, ?string $tag = 'latest'): array
     {
         return [
@@ -26,18 +44,6 @@ final class VersionBadge extends AbstractBadge
             $properties['tag'] === 'latest' ? $properties['package'] : $properties['package'].'@'.$properties['tag'],
             $properties['version'],
         );
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/node/version/{package}/{tag?}',
-        ];
     }
 
     public function routeRules(): array

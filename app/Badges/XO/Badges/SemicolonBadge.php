@@ -11,6 +11,24 @@ use Illuminate\Support\Arr;
 
 final class SemicolonBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/xo/semicolon/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Keyword::CODE_STYLE,
+    ];
+
     public function handle(string $name): array
     {
         $response = $this->client->get($name);
@@ -38,18 +56,6 @@ final class SemicolonBadge extends AbstractBadge
             'label' => 'semicolons',
             'message' => $properties['semicolons'],
             'messageColor' => '5ED9C7',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Keyword::CODE_STYLE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/xo/semicolon/{name}',
         ];
     }
 

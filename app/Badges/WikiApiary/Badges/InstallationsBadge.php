@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class InstallationsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/wikiapiary/installations/{variant}/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $variant, string $name): array
     {
         $results = $this->client->usage($variant, $name);
@@ -22,18 +40,6 @@ final class InstallationsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('installations', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/wikiapiary/installations/{variant}/{name}',
-        ];
     }
 
     public function routeParameters(): array

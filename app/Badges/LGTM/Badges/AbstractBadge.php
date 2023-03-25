@@ -25,13 +25,13 @@ abstract class AbstractBadge implements Badge
         'javascript' => 'js/ts',
     ];
 
+    /**
+     * The service that this badge belongs to.
+     */
+    protected string $service = 'LGTM';
+
     public function __construct(protected readonly Client $client)
     {
         //
-    }
-
-    final public function service(): string
-    {
-        return 'LGTM';
     }
 }

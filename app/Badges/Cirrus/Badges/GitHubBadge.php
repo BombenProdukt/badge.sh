@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class GitHubBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/cirrus/github/{owner}/{repo}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $owner, string $repo, ?string $branch = null): array
     {
         return [
@@ -19,18 +37,6 @@ final class GitHubBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('build', $properties['status']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/cirrus/github/{owner}/{repo}/{branch?}',
-        ];
     }
 
     public function routeRules(): array

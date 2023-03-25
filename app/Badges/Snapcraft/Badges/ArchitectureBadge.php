@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ArchitectureBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/snapcraft/architecture/{snap}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::PLATFORM_SUPPORT,
+    ];
+
     public function handle(string $snap): array
     {
         return [
@@ -22,18 +40,6 @@ final class ArchitectureBadge extends AbstractBadge
             'label' => 'architecture',
             'message' => \implode(' | ', $properties['architectures']),
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::PLATFORM_SUPPORT];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/snapcraft/architecture/{snap}',
         ];
     }
 

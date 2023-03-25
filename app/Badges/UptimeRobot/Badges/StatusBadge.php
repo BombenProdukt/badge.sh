@@ -9,6 +9,23 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/uptimerobot/status/{apiKey}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::CODE_FORMATTING,
+    ];
     private array $statuses = [
         '0' => ['paused', 'yellow.600'],
         '1' => ['not checked yet', 'gray.600'],
@@ -28,18 +45,6 @@ final class StatusBadge extends AbstractBadge
             'label' => 'status',
             'message' => $this->statuses[$properties['status']][0],
             'messageColor' => $this->statuses[$properties['status']][1],
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::CODE_FORMATTING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/uptimerobot/status/{apiKey}',
         ];
     }
 

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class EntitiesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/weblate/entities/{type}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::METRICS,
+    ];
+
     public function handle(string $type): array
     {
         return [
@@ -20,18 +38,6 @@ final class EntitiesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber($properties['type'], $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::METRICS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/weblate/entities/{type}',
-        ];
     }
 
     public function routeParameters(): array

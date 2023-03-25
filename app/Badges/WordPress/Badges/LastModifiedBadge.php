@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class LastModifiedBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/wordpress/{extensionType}/last-modified/{extension}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $extensionType, string $extension): array
     {
         return [
@@ -19,18 +37,6 @@ final class LastModifiedBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDateDiff('commercial', $properties['date']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/wordpress/{extensionType}/last-modified/{extension}',
-        ];
     }
 
     public function routeConstraints(Route $route): void

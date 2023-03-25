@@ -11,6 +11,15 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class MemberBadge extends AbstractBadge
 {
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $room, string $server = 'matrix.org'): array
     {
         return [
@@ -27,11 +36,6 @@ final class MemberBadge extends AbstractBadge
             'message' => FormatNumber::execute($properties['count']).' '.Str::plural('member', $properties['count']),
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
     }
 
     public function routePaths(): array

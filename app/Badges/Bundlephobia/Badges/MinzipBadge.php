@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class MinzipBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/bundlephobia/minzip/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SIZE,
+    ];
+
     public function handle(string $name): array
     {
         return [
@@ -20,18 +38,6 @@ final class MinzipBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderSize($properties['size'], 'minzipped size');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SIZE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/bundlephobia/minzip/{name}',
-        ];
     }
 
     public function routeParameters(): array

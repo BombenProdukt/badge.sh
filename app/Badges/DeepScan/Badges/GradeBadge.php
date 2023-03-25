@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class GradeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/deepscan/grade/team/{teamId}/project/{projectId}/branch/{branchId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $teamId, string $projectId, string $branchId): array
     {
         return $this->client->get($teamId, $projectId, $branchId);
@@ -25,18 +43,6 @@ final class GradeBadge extends AbstractBadge
                 'normal' => '2148b1',
                 'poor' => 'ff5a00',
             ][\mb_strtolower($properties['grade'])],
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/deepscan/grade/team/{teamId}/project/{projectId}/branch/{branchId}',
         ];
     }
 

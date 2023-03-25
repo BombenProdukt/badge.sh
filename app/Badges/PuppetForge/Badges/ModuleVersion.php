@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ModuleVersion extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/puppetforge/module-version/{user}/{module}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $user, string $module): array
     {
         return $this->renderVersion($this->client->module($user, $module)['current_release']['version']);
@@ -17,18 +35,6 @@ final class ModuleVersion extends AbstractBadge
     public function render(array $properties): array
     {
         //
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/puppetforge/module-version/{user}/{module}',
-        ];
     }
 
     public function routeParameters(): array

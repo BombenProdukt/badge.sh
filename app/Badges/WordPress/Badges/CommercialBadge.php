@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class CommercialBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/wordpress/{extensionType}/commercial/{extension}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $extensionType, string $extension): array
     {
         return $this->client->info($extensionType, $extension);
@@ -17,18 +35,6 @@ final class CommercialBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('commercial', $properties['is_commercial'] ? 'yes' : 'no');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/wordpress/{extensionType}/commercial/{extension}',
-        ];
     }
 
     public function routeConstraints(Route $route): void

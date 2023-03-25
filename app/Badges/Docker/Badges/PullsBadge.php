@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PullsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/docker/pulls/{scope}/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $scope, string $name): array
     {
         return [
@@ -19,18 +37,6 @@ final class PullsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('docker pulls', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/docker/pulls/{scope}/{name}',
-        ];
     }
 
     public function routeParameters(): array

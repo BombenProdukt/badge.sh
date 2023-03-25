@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ReleaseDateBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/galaxy-tool-shed/release-date/{user}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ACTIVITY,
+    ];
+
     public function handle(string $user, string $repo): array
     {
         return [
@@ -19,18 +37,6 @@ final class ReleaseDateBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDateDiff('release date', $properties['date']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ACTIVITY];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/galaxy-tool-shed/release-date/{user}/{repo}',
-        ];
     }
 
     public function routeParameters(): array

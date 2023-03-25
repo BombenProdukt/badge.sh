@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/ohdear/status/{domain}/{label}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::MONITORING,
+    ];
+
     public function handle(string $domain, string $label): array
     {
         return [
@@ -23,18 +41,6 @@ final class StatusBadge extends AbstractBadge
             'label' => $properties['label'],
             'message' => $properties['status'],
             'messageColor' => $properties['status'] === 'up' ? 'green.600' : 'red.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::MONITORING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/ohdear/status/{domain}/{label}',
         ];
     }
 

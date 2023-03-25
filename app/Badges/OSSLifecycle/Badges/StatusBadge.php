@@ -10,6 +10,24 @@ use Spatie\Regex\Regex;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/oss-lifecycle/status/{user}/{repo}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::LICENSE,
+    ];
+
     public function handle(string $user, string $repo, ?string $branch = null): array
     {
         return [
@@ -20,18 +38,6 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('status', $properties['status']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::LICENSE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/oss-lifecycle/status/{user}/{repo}/{branch?}',
-        ];
     }
 
     public function routeParameters(): array

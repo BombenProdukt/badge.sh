@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class DailyDownloadsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/cran/downloads-daily/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $package): array
     {
         return $this->client->logs("downloads/total/last-day/{$package}")[0];
@@ -17,18 +35,6 @@ final class DailyDownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloadsPerDay($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/cran/downloads-daily/{package}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class TagInfoBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/stack-exchange/tag-info/{site}/{query}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $site, string $query): array
     {
         return [
@@ -21,18 +39,6 @@ final class TagInfoBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber($properties['query'].'@'.$properties['site'], $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/stack-exchange/tag-info/{site}/{query}',
-        ];
     }
 
     public function routeParameters(): array

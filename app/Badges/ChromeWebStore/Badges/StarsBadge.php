@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StarsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/chrome-web-store/stars/{itemId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::RATING,
+    ];
+
     public function handle(string $itemId): array
     {
         return (new RatingBadge($this->client))->handle($itemId);
@@ -17,18 +35,6 @@ final class StarsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStars('stars', $properties['score']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::RATING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/chrome-web-store/stars/{itemId}',
-        ];
     }
 
     public function routeParameters(): array

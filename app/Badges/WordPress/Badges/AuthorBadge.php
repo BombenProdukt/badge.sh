@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class AuthorBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/wordpress/{extensionType}/author/{extension}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $extensionType, string $extension): array
     {
         return [
@@ -19,18 +37,6 @@ final class AuthorBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('author', $properties['author']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/wordpress/{extensionType}/author/{extension}',
-        ];
     }
 
     public function routeConstraints(Route $route): void

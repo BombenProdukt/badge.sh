@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class DownloadsPerMonthBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/sourceforge/downloads-monthly/{project}/{folder}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $project, string $folder): array
     {
         return [
@@ -19,18 +37,6 @@ final class DownloadsPerMonthBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloadsPerMonth($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/sourceforge/downloads-monthly/{project}/{folder}',
-        ];
     }
 
     public function routeParameters(): array

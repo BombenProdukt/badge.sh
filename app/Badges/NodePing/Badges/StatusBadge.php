@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/nodeping/status/{uuid}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::MONITORING,
+    ];
+
     public function handle(string $uuid): array
     {
         return [
@@ -19,18 +37,6 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('status', $properties['status'], $properties['status'] === 'online' ? 'green.600' : 'red.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::MONITORING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/nodeping/status/{uuid}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ReleaseVersionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/visual-studio-app-center/version/{owner}/{app}/{token}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $owner, string $app, string $token): array
     {
         return [
@@ -19,18 +37,6 @@ final class ReleaseVersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderSize($properties['version']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/visual-studio-app-center/version/{owner}/{app}/{token}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/twitch/status/{username}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $username): array
     {
         return [
@@ -23,18 +41,6 @@ final class StatusBadge extends AbstractBadge
             $properties['status'] === 'online' ? 'live' : 'offline',
             $properties['status'] === 'online' ? 'green.600' : 'red.600',
         );
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/twitch/status/{username}',
-        ];
     }
 
     public function routeParameters(): array

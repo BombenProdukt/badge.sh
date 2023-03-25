@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class BranchesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/gitlab/branches/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ACTIVITY,
+    ];
+
     public function handle(string $repo): array
     {
         return [
@@ -20,18 +38,6 @@ final class BranchesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('branches', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ACTIVITY];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/gitlab/branches/{repo}',
-        ];
     }
 
     public function routeParameters(): array

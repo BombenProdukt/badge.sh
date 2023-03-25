@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class LastBuildBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/jenkins/last-build/{hostname}/{job}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $hostname, string $job): array
     {
         return [
@@ -23,18 +41,6 @@ final class LastBuildBadge extends AbstractBadge
             'label' => 'Last Build',
             'message' => $properties['status'],
             'messageColor' => \mb_strtolower($properties['status']) === 'success' ? 'green.600' : 'red.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/jenkins/last-build/{hostname}/{job}',
         ];
     }
 

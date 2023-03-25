@@ -27,13 +27,13 @@ abstract class AbstractBadge implements Badge
         'none' => ['none', 'green'],
     ];
 
+    /**
+     * The service that this badge belongs to.
+     */
+    protected string $service = 'DavidDM';
+
     public function __construct(protected readonly Client $client)
     {
         //
-    }
-
-    final public function service(): string
-    {
-        return 'DavidDM';
     }
 }

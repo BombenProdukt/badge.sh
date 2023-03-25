@@ -13,6 +13,24 @@ use Illuminate\Support\Collection;
 
 final class CheckRunsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/check-runs/{owner}/{repo}/{reference?}/{context?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $owner, string $repo, ?string $reference = '', ?string $context = '')
     {
         if (empty($reference)) {
@@ -63,18 +81,6 @@ final class CheckRunsBadge extends AbstractBadge
             'label' => 'checks',
             'message' => 'unknown',
             'messageColor' => 'gray.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/check-runs/{owner}/{repo}/{reference?}/{context?}',
         ];
     }
 

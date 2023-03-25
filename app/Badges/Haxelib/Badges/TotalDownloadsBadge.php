@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class TotalDownloadsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/haxelib/downloads/{project}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $project): array
     {
         return $this->client->get($project);
@@ -17,18 +35,6 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloads(0);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/haxelib/downloads/{project}',
-        ];
     }
 
     public function routeParameters(): array

@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class FixTimeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/jenkins/fix-time/{hostname}/{job}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $hostname, string $job): array
     {
         $builds = $this->client->builds($hostname, $job);
@@ -57,18 +75,6 @@ final class FixTimeBadge extends AbstractBadge
                 $properties['statusColorTime'] < 6 => 'orange.600',
                 default => 'red.600',
             },
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/jenkins/fix-time/{hostname}/{job}',
         ];
     }
 

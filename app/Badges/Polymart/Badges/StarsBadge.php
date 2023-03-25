@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StarsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/polymart/stars/{resourceId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $resourceId): array
     {
         return $this->client->get($resourceId)['reviews'];
@@ -17,18 +35,6 @@ final class StarsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStars('rating', $properties['stars']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/polymart/stars/{resourceId}',
-        ];
     }
 
     public function routeParameters(): array

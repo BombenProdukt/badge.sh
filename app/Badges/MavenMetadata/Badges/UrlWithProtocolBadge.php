@@ -11,6 +11,24 @@ use Illuminate\Support\Facades\Http;
 
 final class UrlWithProtocolBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/maven-metadata/version/{protocol}/{hostname}/{pathname}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $protocol, string $hostname, string $pathname): array
     {
         $response = Http::get("{$protocol}://{$hostname}/{$pathname}")->throw()->body();
@@ -25,18 +43,6 @@ final class UrlWithProtocolBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/maven-metadata/version/{protocol}/{hostname}/{pathname}',
-        ];
     }
 
     public function routeParameters(): array

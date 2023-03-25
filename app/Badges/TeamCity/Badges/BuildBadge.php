@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class BuildBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/team-city/build/{buildId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $buildId): array
     {
         return [
@@ -19,18 +37,6 @@ final class BuildBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('build', $properties['status']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/team-city/build/{buildId}',
-        ];
     }
 
     public function routeRules(): array

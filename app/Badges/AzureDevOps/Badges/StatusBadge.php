@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Http;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/azure-devops/status/{organization}/{project}/{definition}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $organization, string $project, string $definition, ?string $branch = null): array
     {
         $svg = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/status/{$definition}", ['branchName' => $branch])->body();
@@ -29,18 +47,6 @@ final class StatusBadge extends AbstractBadge
             'label' => $properties['pipeline'] ?: 'Azure Pipelines',
             'message' => $properties['status'],
             'messageColor' => \trim(\str_replace('#', '', $properties['statusColor'] ?? '')),
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/azure-devops/status/{organization}/{project}/{definition}/{branch?}',
         ];
     }
 

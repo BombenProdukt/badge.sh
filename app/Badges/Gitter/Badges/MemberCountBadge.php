@@ -10,6 +10,33 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class MemberCountBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/gitter/members/{org}/{room}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
+    /**
+     * The deprecation dates and reasons.
+     *
+     * @var array<string, string>
+     */
+    protected array $deprecated = [
+        '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
+    ];
+
     public function handle(string $org, string $room): array
     {
         \preg_match('/"userCount"\s*:\s*(\d+)/', $this->client->get($org, $room), $matches);
@@ -25,18 +52,6 @@ final class MemberCountBadge extends AbstractBadge
             'label' => 'gitter',
             'message' => FormatNumber::execute($properties['count']),
             'messageColor' => 'ed1965',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/gitter/members/{org}/{room}',
         ];
     }
 
@@ -60,13 +75,6 @@ final class MemberCountBadge extends AbstractBadge
         return [
             '/gitter/members/redom/lobby' => 'members',
             '/gitter/members/redom/redom' => 'members',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
         ];
     }
 }

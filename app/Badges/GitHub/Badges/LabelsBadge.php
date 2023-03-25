@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class LabelsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/issues-by-label/{owner}/{repo}/{label}/{states?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ISSUE_TRACKING,
+    ];
+
     public function handle(string $owner, string $repo, string $label, ?string $states = ''): array
     {
         $result = $this->client->makeRepoQuery($owner, $repo, $this->getQueryBody($label, $states));
@@ -27,18 +45,6 @@ final class LabelsBadge extends AbstractBadge
             'label' => $properties['label'],
             'message' => FormatNumber::execute($properties['count'] ?? 0),
             'messageColor' => $properties['color'] ? $properties['color'] : 'gray.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ISSUE_TRACKING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/issues-by-label/{owner}/{repo}/{label}/{states?}',
         ];
     }
 

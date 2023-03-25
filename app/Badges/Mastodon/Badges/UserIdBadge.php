@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class UserIdBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/mastodon/follow/{userId}/{instance?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $userId, ?string $instance = 'mastodon.social'): array
     {
         $response = $this->client->get($instance, "accounts/{$userId}");
@@ -27,18 +45,6 @@ final class UserIdBadge extends AbstractBadge
             'label' => 'follow @'.$properties['username'].'@'.$properties['instance'],
             'message' => FormatNumber::execute($properties['count']),
             'messageColor' => '3487CE',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/mastodon/follow/{userId}/{instance?}',
         ];
     }
 

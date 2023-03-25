@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class UserLocationBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/stack-exchange/user/location/{site}/{query}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $site, string $query): array
     {
         return $this->client->user($site, $query);
@@ -17,18 +35,6 @@ final class UserLocationBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('location', $properties['location']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/stack-exchange/user/location/{site}/{query}',
-        ];
     }
 
     public function routeParameters(): array

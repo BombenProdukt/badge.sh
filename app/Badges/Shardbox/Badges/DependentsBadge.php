@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class DependentsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/shardbox/dependents/{shard}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $shard): array
     {
         \preg_match('/Dependents[^>]*? class="count">([^<]+)<\\//i', $this->client->get($shard), $matches);
@@ -21,18 +39,6 @@ final class DependentsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('dependents', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/shardbox/dependents/{shard}',
-        ];
     }
 
     public function routeParameters(): array

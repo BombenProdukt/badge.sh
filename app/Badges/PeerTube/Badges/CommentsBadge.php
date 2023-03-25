@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class CommentsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/peertube/comments/{instance}/{video}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $instance, string $video): array
     {
         return [
@@ -23,18 +41,6 @@ final class CommentsBadge extends AbstractBadge
             'label' => 'comments',
             'message' => FormatNumber::execute($properties['count']),
             'messageColor' => 'F1680D',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/peertube/comments/{instance}/{video}',
         ];
     }
 

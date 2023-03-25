@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class TimezoneBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/ohdear/timezone/{domain}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::MONITORING,
+    ];
+
     public function handle(string $domain): array
     {
         return [
@@ -23,18 +41,6 @@ final class TimezoneBadge extends AbstractBadge
             'label' => $properties['domain'],
             'message' => $properties['timezone'],
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::MONITORING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/ohdear/timezone/{domain}',
         ];
     }
 

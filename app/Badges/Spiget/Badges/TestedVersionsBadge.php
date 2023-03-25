@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class TestedVersionsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/spiget/tested-versions/{resourceId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $resourceId): array
     {
         $testedVersions = $this->client->resource($resourceId)['testedVersions'];
@@ -26,18 +44,6 @@ final class TestedVersionsBadge extends AbstractBadge
         }
 
         return $this->renderVersion($properties['earliest'].'-'.$properties['latest'], 'tested versions');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/spiget/tested-versions/{resourceId}',
-        ];
     }
 
     public function routeParameters(): array

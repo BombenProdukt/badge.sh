@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class InstallationsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/wordpress/{extensionType}/installations/{extension}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $extensionType, string $extension): array
     {
         return [
@@ -19,18 +37,6 @@ final class InstallationsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloads($properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/wordpress/{extensionType}/installations/{extension}',
-        ];
     }
 
     public function routeConstraints(Route $route): void

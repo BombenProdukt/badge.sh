@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class TotalComponentsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/bit/components/{collection}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SIZE,
+    ];
+
     public function handle(string $collection): array
     {
         return [
@@ -20,18 +38,6 @@ final class TotalComponentsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('components', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SIZE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/bit/components/{collection}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class CollectionSizeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/steam/collection-size/{collectionId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SIZE,
+    ];
+
     public function handle(string $collectionId): array
     {
         return [
@@ -19,18 +37,6 @@ final class CollectionSizeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('size', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SIZE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/steam/collection-size/{collectionId}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class UserDisplayNameBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/stack-exchange/user/display-name/{site}/{query}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $site, string $query): array
     {
         return [
@@ -19,18 +37,6 @@ final class UserDisplayNameBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('display-name', $properties['name']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/stack-exchange/user/display-name/{site}/{query}',
-        ];
     }
 
     public function routeParameters(): array

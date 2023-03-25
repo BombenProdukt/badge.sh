@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class VideoCommentsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/youtube/video/comments/{videoId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $videoId): array
     {
         return [
@@ -19,18 +37,6 @@ final class VideoCommentsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('comments', $properties['comments']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/youtube/video/comments/{videoId}',
-        ];
     }
 
     public function routeParameters(): array

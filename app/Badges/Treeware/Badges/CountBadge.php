@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class CountBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/treeware/trees/{owner}/{packageName}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(string $owner, string $packageName): array
     {
         return [
@@ -19,18 +37,6 @@ final class CountBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('trees', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/treeware/trees/{owner}/{packageName}',
-        ];
     }
 
     public function routeParameters(): array

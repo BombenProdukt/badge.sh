@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatMoney;
 
 final class GivesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/liberapay/gives/{username}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::FUNDING,
+    ];
+
     public function handle(string $username): array
     {
         return $this->client->get($username)['giving'];
@@ -21,18 +39,6 @@ final class GivesBadge extends AbstractBadge
             'label' => 'gives',
             'message' => FormatMoney::execute((float) $properties['amount'], $properties['currency']).'/week',
             'messageColor' => 'yellow.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::FUNDING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/liberapay/gives/{username}',
         ];
     }
 

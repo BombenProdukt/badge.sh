@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class SizeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/wapm/size/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SIZE,
+    ];
+
     public function handle(string $package): array
     {
         return $this->client->get($package)['distribution'];
@@ -18,18 +36,6 @@ final class SizeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderSize($properties['size']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SIZE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/wapm/size/{package}',
-        ];
     }
 
     public function routeParameters(): array

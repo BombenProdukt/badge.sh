@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class AccessibilityBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/wheelmap/accessibility/{nodeId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(string $nodeId): array
     {
         return [
@@ -24,18 +42,6 @@ final class AccessibilityBadge extends AbstractBadge
             'no' => 'red.600',
             default => 'gray.600',
         });
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/wheelmap/accessibility/{nodeId}',
-        ];
     }
 
     public function routeParameters(): array

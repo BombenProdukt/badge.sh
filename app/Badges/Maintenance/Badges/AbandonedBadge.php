@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class AbandonedBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/maintenance/abandoned/{year}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ACTIVITY,
+    ];
+
     public function handle(string $year): array
     {
         return ['year' => $year];
@@ -17,18 +35,6 @@ final class AbandonedBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('abandoned', $properties['year'], 'red.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ACTIVITY];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/maintenance/abandoned/{year}',
-        ];
     }
 
     public function routeParameters(): array

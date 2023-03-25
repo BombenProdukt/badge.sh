@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class DownloadsPerLinuxBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/package-control/downloads-linux/{packageName}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::LICENSE,
+    ];
+
     public function handle(string $packageName): array
     {
         return [
@@ -19,18 +37,6 @@ final class DownloadsPerLinuxBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloadsPerLinux($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::LICENSE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/package-control/downloads-linux/{packageName}',
-        ];
     }
 
     public function routeParameters(): array

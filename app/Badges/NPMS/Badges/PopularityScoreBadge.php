@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PopularityScoreBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/npms/popularity-score/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $package): array
     {
         return $this->client->get($package)['detail'];
@@ -17,18 +35,6 @@ final class PopularityScoreBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('popularity', $properties['popularity']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/npms/popularity-score/{package}',
-        ];
     }
 
     public function routeParameters(): array

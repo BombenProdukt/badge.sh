@@ -10,6 +10,15 @@ use Illuminate\Routing\Route;
 
 final class UrlBadge extends AbstractBadge
 {
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SIZE,
+    ];
+
     public function handle(string $compression, string $path): array
     {
         $response = $this->client->get($compression, 'https:/'.\str_replace(['https://', 'https/'], '', $path));
@@ -28,11 +37,6 @@ final class UrlBadge extends AbstractBadge
             'message' => $properties['size'],
             'messageColor' => $properties['color'],
         ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SIZE];
     }
 
     public function routePaths(): array

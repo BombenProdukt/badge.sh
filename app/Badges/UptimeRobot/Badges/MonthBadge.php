@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatPercentage;
 
 final class MonthBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/uptimerobot/month/{apiKey}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::MONITORING,
+    ];
+
     public function handle(string $apiKey): array
     {
         return [
@@ -29,18 +47,6 @@ final class MonthBadge extends AbstractBadge
                 $properties['percentage'] >= 94 => 'red.600',
                 default => 'green.600',
             },
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::MONITORING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/uptimerobot/month/{apiKey}',
         ];
     }
 

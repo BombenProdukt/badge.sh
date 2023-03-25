@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class NPMBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/snyk/npm/{project}/{targetFile?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $project, ?string $branch = null, ?string $targetFile = null): array
     {
         $svg = $this->client->get('test/npm/'.\implode('/', [$project, $branch]), $targetFile);
@@ -40,18 +58,6 @@ final class NPMBadge extends AbstractBadge
             'label' => $properties['label'] ?? 'vulnerabilities',
             'message' => $properties['message'],
             'messageColor' => $properties['messageColor'],
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/snyk/npm/{project}/{targetFile?}',
         ];
     }
 

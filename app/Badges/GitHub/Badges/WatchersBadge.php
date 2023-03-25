@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class WatchersBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/watchers/{owner}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $owner, string $repo): array
     {
         return [
@@ -23,18 +41,6 @@ final class WatchersBadge extends AbstractBadge
             'label' => 'watchers',
             'message' => FormatNumber::execute($properties['watchers']),
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/watchers/{owner}/{repo}',
         ];
     }
 

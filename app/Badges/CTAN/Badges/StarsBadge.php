@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StarsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/ctan/stars/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::RATING,
+    ];
+
     public function handle(string $package): array
     {
         \preg_match('/<span>[^<]*?([\d.]+)\s/i', $this->client->web($package), $matches);
@@ -21,18 +39,6 @@ final class StarsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStars('stars', $properties['stars']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::RATING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/ctan/stars/{package}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class FinalScoreBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/npms/final-score/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $package): array
     {
         return [
@@ -19,18 +37,6 @@ final class FinalScoreBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('score', $properties['score']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/npms/final-score/{package}',
-        ];
     }
 
     public function routeParameters(): array

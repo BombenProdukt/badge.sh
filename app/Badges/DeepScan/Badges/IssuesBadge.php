@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class IssuesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/deepscan/issues/team/{teamId}/project/{projectId}/branch/{branchId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $teamId, string $projectId, string $branchId): array
     {
         return [
@@ -23,18 +41,6 @@ final class IssuesBadge extends AbstractBadge
             'label' => 'issues',
             'message' => FormatNumber::execute($properties['count']),
             'messageColor' => $properties['count'] ? 'green.600' : 'yellow.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/deepscan/issues/team/{teamId}/project/{projectId}/branch/{branchId}',
         ];
     }
 

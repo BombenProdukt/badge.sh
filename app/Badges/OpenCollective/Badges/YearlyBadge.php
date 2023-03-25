@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatMoney;
 
 final class YearlyBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/opencollective/yearly/{slug}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::FUNDING,
+    ];
+
     public function handle(string $slug, ?string $tier = null): array
     {
         $response = $this->client->get($slug, null, $tier);
@@ -26,18 +44,6 @@ final class YearlyBadge extends AbstractBadge
             'label' => 'yearly income',
             'message' => FormatMoney::execute($properties['amount'] / 100, $properties['currency']),
             'messageColor' => 'green.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::FUNDING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/opencollective/yearly/{slug}',
         ];
     }
 

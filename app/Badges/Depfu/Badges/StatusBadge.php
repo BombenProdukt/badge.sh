@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/depfu/status/{vcs}/{project}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS, Category::DEPENDENCIES,
+    ];
+
     public function handle(string $vcs, string $project): array
     {
         return [
@@ -20,18 +38,6 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus($this->service(), $properties['status']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS, Category::DEPENDENCIES];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/depfu/status/{vcs}/{project}',
-        ];
     }
 
     public function routeParameters(): array

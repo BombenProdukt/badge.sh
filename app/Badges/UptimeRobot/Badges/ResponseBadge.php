@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ResponseBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/uptimerobot/response/{apiKey}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::MONITORING,
+    ];
+
     public function handle(string $apiKey): array
     {
         return [
@@ -22,18 +40,6 @@ final class ResponseBadge extends AbstractBadge
             'label' => 'response',
             'message' => $properties['time'].'ms',
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::MONITORING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/uptimerobot/response/{apiKey}',
         ];
     }
 

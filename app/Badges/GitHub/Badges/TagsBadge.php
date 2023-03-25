@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class TagsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/tags/{owner}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $owner, string $repo): array
     {
         $result = $this->client->makeRepoQuery($owner, $repo, 'refs(first: 0, refPrefix: "refs/tags/") { totalCount }');
@@ -21,18 +39,6 @@ final class TagsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('tags', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/tags/{owner}/{repo}',
-        ];
     }
 
     public function routeParameters(): array

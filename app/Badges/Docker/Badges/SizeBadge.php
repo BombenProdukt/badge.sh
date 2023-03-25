@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Http;
 
 final class SizeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/docker/size/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SIZE,
+    ];
+
     public function handle(
         string $scope,
         string $name,
@@ -113,18 +131,6 @@ final class SizeBadge extends AbstractBadge
             'label' => 'docker size',
             'message' => $sizeInMegabytes.' MB',
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SIZE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/docker/size/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
         ];
     }
 

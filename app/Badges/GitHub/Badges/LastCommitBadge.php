@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class LastCommitBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/last-commit/{owner}/{repo}/{reference?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ACTIVITY,
+    ];
+
     public function handle(string $owner, string $repo, ?string $reference = null): array
     {
         if (empty($reference)) {
@@ -27,18 +45,6 @@ final class LastCommitBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDateDiff('last commit', $properties['date']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ACTIVITY];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/last-commit/{owner}/{repo}/{reference?}',
-        ];
     }
 
     public function routeParameters(): array

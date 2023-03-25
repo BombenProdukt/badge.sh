@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class CloudAutomatedBuildBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/docker/cloud-automated/{scope}/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $scope, string $name): array
     {
         return [
@@ -23,18 +41,6 @@ final class CloudAutomatedBuildBadge extends AbstractBadge
         }
 
         return $this->renderText('docker build', 'manual', 'yellow.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/docker/cloud-automated/{scope}/{name}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class TestsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/sonar/{metric}/{component}/{branch}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $metric, string $component, string $branch): array
     {
         $metric = $metric === 'total_tests' ? 'tests' : $metric;
@@ -21,18 +39,6 @@ final class TestsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage('tests', $properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/sonar/{metric}/{component}/{branch}',
-        ];
     }
 
     public function routeRules(): array

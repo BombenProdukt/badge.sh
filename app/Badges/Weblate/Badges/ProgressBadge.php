@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ProgressBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/weblate/progress/{project}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::METRICS,
+    ];
+
     public function handle(string $project): array
     {
         return [
@@ -19,18 +37,6 @@ final class ProgressBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage('progress', $properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::METRICS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/weblate/progress/{project}',
-        ];
     }
 
     public function routeParameters(): array

@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class MembersBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/discord/members/{inviteCode}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $inviteCode): array
     {
         return [
@@ -23,18 +41,6 @@ final class MembersBadge extends AbstractBadge
             'label' => $response['guild']['name'] ?? 'discord',
             'message' => FormatNumber::execute($properties['count']).' members',
             'messageColor' => '7289DA',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/discord/members/{inviteCode}',
         ];
     }
 

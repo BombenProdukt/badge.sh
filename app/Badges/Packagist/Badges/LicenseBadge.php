@@ -13,6 +13,24 @@ final class LicenseBadge extends AbstractBadge
 {
     use HandlesVersions;
 
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/packagist/license/{package}/{channel?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::LICENSE,
+    ];
+
     public function handle(string $package, ?string $channel = null): array
     {
         $packageMeta = $this->client->get($package);
@@ -25,18 +43,6 @@ final class LicenseBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderLicense($properties['license']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::LICENSE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/packagist/license/{package}/{channel?}',
-        ];
     }
 
     public function routeParameters(): array

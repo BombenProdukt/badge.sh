@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class GradeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/codacy/grade/{projectId}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $projectId, ?string $branch = null): array
     {
         \preg_match('/visibility=[^>]*?>([^<]+)<\//i', $this->client->get('grade', $projectId, $branch), $matches);
@@ -21,18 +39,6 @@ final class GradeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderGrade('code quality', $properties['grade']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/codacy/grade/{projectId}/{branch?}',
-        ];
     }
 
     public function routeParameters(): array

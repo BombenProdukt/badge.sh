@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class FollowersBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/modrinth/followers/{projectId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $projectId): array
     {
         return [
@@ -19,18 +37,6 @@ final class FollowersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('followers', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/modrinth/followers/{projectId}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PlayersBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/bstats/players/{projectId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::METRICS,
+    ];
+
     public function handle(string $projectId): array
     {
         return [
@@ -19,18 +37,6 @@ final class PlayersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('players', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::METRICS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/bstats/players/{projectId}',
-        ];
     }
 
     public function routeParameters(): array

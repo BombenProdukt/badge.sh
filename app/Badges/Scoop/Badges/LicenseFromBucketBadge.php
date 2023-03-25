@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class LicenseFromBucketBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/scoop/license/{bucket}/{app}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::LICENSE,
+    ];
+
     public function handle(string $bucket, string $app): array
     {
         $response = $bucket === 'main' ? $this->client->main($app) : $this->client->extra($app);
@@ -25,18 +43,6 @@ final class LicenseFromBucketBadge extends AbstractBadge
             'label' => $properties['bucket'] === 'main' ? 'scoop' : 'scoop-extras',
             'message' => $properties['license'],
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::LICENSE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/scoop/license/{bucket}/{app}',
         ];
     }
 

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ChannelVideosBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/youtube/channel/videos/{channelId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::LICENSE,
+    ];
+
     public function handle(string $channelId): array
     {
         return [
@@ -19,18 +37,6 @@ final class ChannelVideosBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('videos', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::LICENSE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/youtube/channel/videos/{channelId}',
-        ];
     }
 
     public function routeParameters(): array

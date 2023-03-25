@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StaticBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/static/{label}/{message}/{messageColor?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(string $label, string $message, ?string $messageColor = 'green.600'): array
     {
         return [
@@ -21,18 +39,6 @@ final class StaticBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $properties;
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/static/{label}/{message}/{messageColor?}',
-        ];
     }
 
     public function routeParameters(): array

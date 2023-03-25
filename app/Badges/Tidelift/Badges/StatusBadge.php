@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/tidelift/status/{platform}/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::FUNDING,
+    ];
+
     public function handle(string $platform, string $name): array
     {
         return [
@@ -32,18 +50,6 @@ final class StatusBadge extends AbstractBadge
             'label' => 'tidelift',
             'message' => \str_replace('!', '', $status),
             'messageColor' => \str_replace('.svg', '', $statusColor),
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::FUNDING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/tidelift/status/{platform}/{name}',
         ];
     }
 

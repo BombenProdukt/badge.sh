@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ExtensionVersionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/twitch/extension-version/{appId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $appId): array
     {
         return $this->client->extension($appId);
@@ -17,18 +35,6 @@ final class ExtensionVersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/twitch/extension-version/{appId}',
-        ];
     }
 
     public function routeParameters(): array

@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/tas/tests/{provider}/{org}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::TEST_RESULTS,
+    ];
+
     public function handle(string $provider, string $org, string $repo): array
     {
         return $this->client->get($provider, $org, $repo);
@@ -23,18 +41,6 @@ final class StatusBadge extends AbstractBadge
                 ? \sprintf('%s passed, %s failed, %s skipped, %s total', $properties['passed'], $properties['failed'], $properties['skipped'], $properties['total_tests'])
                 : $properties['status'],
             'messageColor' => DetermineColorByStatus::execute($properties['status']),
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::TEST_RESULTS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/tas/tests/{provider}/{org}/{repo}',
         ];
     }
 

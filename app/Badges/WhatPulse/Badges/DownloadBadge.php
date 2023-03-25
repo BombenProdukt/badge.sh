@@ -10,6 +10,24 @@ use Illuminate\Support\Arr;
 
 final class DownloadBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/whatpulse/download/{userType}/{id}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $userType, string $id): array
     {
         return [
@@ -20,18 +38,6 @@ final class DownloadBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloads($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/whatpulse/download/{userType}/{id}',
-        ];
     }
 
     public function routeParameters(): array

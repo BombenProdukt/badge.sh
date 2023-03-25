@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StarsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/vaadin/stars/{packageName}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::RATING,
+    ];
+
     public function handle(string $packageName): array
     {
         return [
@@ -19,18 +37,6 @@ final class StarsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStars('rating', $properties['rating']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::RATING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/vaadin/stars/{packageName}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StarsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/symfony-insight/stars/{projectUuid}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $projectUuid): array
     {
         return $this->client->get($projectUuid);
@@ -23,18 +41,6 @@ final class StarsBadge extends AbstractBadge
             'platinum' => 4,
             default => 0,
         });
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/symfony-insight/stars/{projectUuid}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class CategoryBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/ore/category/{pluginId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $pluginId): array
     {
         return $this->client->get($pluginId)['category'];
@@ -17,18 +35,6 @@ final class CategoryBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('category', $properties['title']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/ore/category/{pluginId}',
-        ];
     }
 
     public function routeParameters(): array

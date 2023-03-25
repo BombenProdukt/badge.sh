@@ -11,6 +11,24 @@ use Illuminate\Routing\Route;
 
 final class ReleaseBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/release/{owner}/{repo}/{channel?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $owner, string $repo, ?string $channel = 'stable'): array
     {
         $releases = GitHub::api('repo')->releases()->all($owner, $repo);
@@ -50,18 +68,6 @@ final class ReleaseBadge extends AbstractBadge
             'label' => 'release',
             'message' => ExtractVersion::execute($properties['name'] ?? $properties['tagName']),
             'messageColor' => $properties['preRelease'] ? 'orange.600' : 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/release/{owner}/{repo}/{channel?}',
         ];
     }
 

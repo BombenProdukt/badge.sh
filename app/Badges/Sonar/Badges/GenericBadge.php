@@ -10,6 +10,24 @@ use Illuminate\Support\Str;
 
 final class GenericBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/sonar/{metric}/{component}/{branch}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $metric, string $component, string $branch): array
     {
         return [
@@ -21,18 +39,6 @@ final class GenericBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber(Str::of($properties['metric'])->title()->lower()->toString(), $properties['value']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/sonar/{metric}/{component}/{branch}',
-        ];
     }
 
     public function routeRules(): array

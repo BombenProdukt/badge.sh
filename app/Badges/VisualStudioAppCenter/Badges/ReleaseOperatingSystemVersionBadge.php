@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ReleaseOperatingSystemVersionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/visual-studio-app-center/os-version/{owner}/{app}/{token}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $owner, string $app, string $token): array
     {
         $response = $this->client->releases($owner, $app, $token);
@@ -22,18 +40,6 @@ final class ReleaseOperatingSystemVersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText($properties['app'], '>='.$properties['min']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/visual-studio-app-center/os-version/{owner}/{app}/{token}',
-        ];
     }
 
     public function routeParameters(): array

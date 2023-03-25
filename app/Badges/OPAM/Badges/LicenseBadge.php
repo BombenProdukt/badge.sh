@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/opam/license/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::LICENSE,
+    ];
+
     public function handle(string $name): array
     {
         \preg_match('/<th>license<\/th>\s*<td>([^<]+)<\//i', $this->client->get($name), $matches);
@@ -21,18 +39,6 @@ final class LicenseBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderLicense($properties['license']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::LICENSE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/opam/license/{name}',
-        ];
     }
 
     public function routeParameters(): array

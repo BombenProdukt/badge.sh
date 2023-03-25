@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class OpenIssuesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/open-issues/{owner}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ISSUE_TRACKING,
+    ];
+
     public function handle(string $owner, string $repo): array
     {
         return [
@@ -23,18 +41,6 @@ final class OpenIssuesBadge extends AbstractBadge
             'label' => 'open issues',
             'message' => FormatNumber::execute($properties['count']),
             'messageColor' => $properties['count'] === 0 ? 'green.600' : 'orange.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ISSUE_TRACKING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/open-issues/{owner}/{repo}',
         ];
     }
 

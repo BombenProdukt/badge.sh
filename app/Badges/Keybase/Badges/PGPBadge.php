@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PGPBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/keybase/pgp/{username}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $username): array
     {
         $response = $this->client->get($username, 'public_keys');
@@ -24,18 +42,6 @@ final class PGPBadge extends AbstractBadge
             'label' => 'PGP',
             'message' => $properties['key'],
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/keybase/pgp/{username}',
         ];
     }
 

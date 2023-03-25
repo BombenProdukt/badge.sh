@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class GitHubIssuesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/packagist/github-open-issues/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ISSUE_TRACKING,
+    ];
+
     public function handle(string $package, ?string $channel = null): array
     {
         return [
@@ -20,18 +38,6 @@ final class GitHubIssuesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('github issues', $properties['issues']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ISSUE_TRACKING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/packagist/github-open-issues/{package}',
-        ];
     }
 
     public function routeParameters(): array

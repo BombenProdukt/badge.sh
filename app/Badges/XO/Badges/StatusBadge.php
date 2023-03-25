@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/xo/status/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::CODE_FORMATTING,
+    ];
+
     public function handle(string $name): array
     {
         $response = $this->client->get($name);
@@ -39,18 +57,6 @@ final class StatusBadge extends AbstractBadge
             'label' => 'code style',
             'message' => 'XO',
             'messageColor' => '5ED9C7',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::CODE_FORMATTING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/xo/status/{name}',
         ];
     }
 

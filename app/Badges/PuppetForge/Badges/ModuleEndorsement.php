@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ModuleEndorsement extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/puppetforge/module-endorsement/{user}/{module}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $user, string $module): array
     {
         return $this->renderStatus('endorsement', $this->client->module($user, $module)['endorsement']);
@@ -17,18 +35,6 @@ final class ModuleEndorsement extends AbstractBadge
     public function render(array $properties): array
     {
         //
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/puppetforge/module-endorsement/{user}/{module}',
-        ];
     }
 
     public function routeParameters(): array

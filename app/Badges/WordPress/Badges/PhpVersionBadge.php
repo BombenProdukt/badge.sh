@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PhpVersionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/wordpress/{extensionType}/php-version/{extension}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $extensionType, string $extension): array
     {
         return [
@@ -19,18 +37,6 @@ final class PhpVersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version'], 'PHP');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/wordpress/{extensionType}/php-version/{extension}',
-        ];
     }
 
     public function routeConstraints(Route $route): void

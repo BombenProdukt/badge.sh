@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class BalanceBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/opencollective/balance/{slug}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::FUNDING,
+    ];
+
     public function handle(string $slug): array
     {
         $response = $this->client->get($slug);
@@ -22,18 +40,6 @@ final class BalanceBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderMoney('balance', $properties['amount'], $properties['currency']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::FUNDING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/opencollective/balance/{slug}',
-        ];
     }
 
     public function routeParameters(): array

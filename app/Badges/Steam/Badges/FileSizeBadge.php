@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class FileSizeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/steam/file-size/{fileId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SIZE,
+    ];
+
     public function handle(string $fileId): array
     {
         return [
@@ -19,18 +37,6 @@ final class FileSizeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderSize($properties['size']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SIZE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/steam/file-size/{fileId}',
-        ];
     }
 
     public function routeParameters(): array

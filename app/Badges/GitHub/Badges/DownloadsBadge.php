@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class DownloadsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/downloads/{owner}/{repo}/{tag?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $owner, string $repo, ?string $tag = ''): array
     {
         $release = GitHub::api('repo')->releases()->show($owner, $repo, $tag ? "tags/{$tag}" : 'latest');
@@ -34,18 +52,6 @@ final class DownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloads($properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/downloads/{owner}/{repo}/{tag?}',
-        ];
     }
 
     public function routeParameters(): array

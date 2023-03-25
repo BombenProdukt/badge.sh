@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class GitHubBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/snyk/github/{project}/{targetFile?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $project, ?string $targetFile = null): array
     {
         $svg = $this->client->get("test/github/{$project}", $targetFile);
@@ -40,18 +58,6 @@ final class GitHubBadge extends AbstractBadge
             'label' => $properties['label'] ?? 'vulnerabilities',
             'message' => $properties['message'],
             'messageColor' => $properties['messageColor'],
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/snyk/github/{project}/{targetFile?}',
         ];
     }
 

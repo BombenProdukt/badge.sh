@@ -11,6 +11,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class HitsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/jsdelivr/hits/{platform}/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $platform, string $package): array
     {
         return [
@@ -24,18 +42,6 @@ final class HitsBadge extends AbstractBadge
             'label' => 'jsDelivr',
             'message' => FormatNumber::execute($properties['count']).'/month',
             'messageColor' => 'green.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/jsdelivr/hits/{platform}/{package}',
         ];
     }
 

@@ -10,6 +10,15 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class YearlyDownloadsForFormulaBadge extends AbstractBadge
 {
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $package): array
     {
         return [
@@ -24,11 +33,6 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
             'message' => FormatNumber::execute($properties['downloads']).'/year',
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
     }
 
     public function routePaths(): array

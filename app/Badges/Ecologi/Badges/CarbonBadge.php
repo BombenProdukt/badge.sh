@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class CarbonBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/ecologi/carbon/{username}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(string $username): array
     {
         return [
@@ -19,18 +37,6 @@ final class CarbonBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('carbon offset', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/ecologi/carbon/{username}',
-        ];
     }
 
     public function routeParameters(): array

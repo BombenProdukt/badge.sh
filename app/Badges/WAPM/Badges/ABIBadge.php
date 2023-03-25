@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class ABIBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/wapm/abi/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::PLATFORM_SUPPORT,
+    ];
+
     public function handle(string $package): array
     {
         return [
@@ -23,18 +41,6 @@ final class ABIBadge extends AbstractBadge
             'label' => 'abi',
             'message' => \implode(' | ', $properties['abis']),
             'messageColor' => $properties['abis'] ? 'blue.600' : 'green.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::PLATFORM_SUPPORT];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/wapm/abi/{package}',
         ];
     }
 

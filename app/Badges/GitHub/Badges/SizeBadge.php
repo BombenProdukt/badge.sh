@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class SizeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/size/{owner}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SIZE,
+    ];
+
     public function handle(string $owner, string $repo): array
     {
         return GitHub::connection()->repos()->show($owner, $repo);
@@ -18,18 +36,6 @@ final class SizeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderSize($properties['size']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SIZE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/size/{owner}/{repo}',
-        ];
     }
 
     public function routeParameters(): array

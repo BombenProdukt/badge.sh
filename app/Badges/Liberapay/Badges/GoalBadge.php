@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatPercentage;
 
 final class GoalBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/liberapay/goal/{username}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::FUNDING,
+    ];
+
     public function handle(string $username): array
     {
         $response = $this->client->get($username);
@@ -31,18 +49,6 @@ final class GoalBadge extends AbstractBadge
             'label' => 'goal progress',
             'message' => FormatPercentage::execute($properties['goal']),
             'messageColor' => isset($properties['goal']) ? 'yellow.600' : 'gray.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::FUNDING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/liberapay/goal/{username}',
         ];
     }
 

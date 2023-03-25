@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class UserIdBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/devrant/score/{userId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $userId): array
     {
         return $this->client->get($userId);
@@ -21,18 +39,6 @@ final class UserIdBadge extends AbstractBadge
             'label' => \ucfirst($properties['username']),
             'message' => FormatNumber::execute($properties['score']),
             'messageColor' => 'f99a66',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/devrant/score/{userId}',
         ];
     }
 

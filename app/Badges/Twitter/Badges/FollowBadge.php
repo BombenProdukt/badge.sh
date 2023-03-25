@@ -10,6 +10,33 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class FollowBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/twitter/follow/{username}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
+    /**
+     * The deprecation dates and reasons.
+     *
+     * @var array<string, string>
+     */
+    protected array $deprecated = [
+        '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
+    ];
+
     public function handle(string $username): array
     {
         return [
@@ -24,18 +51,6 @@ final class FollowBadge extends AbstractBadge
             'label' => 'follow @'.$properties['username'],
             'message' => FormatNumber::execute($properties['count']),
             'messageColor' => '1da1f2',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/twitter/follow/{username}',
         ];
     }
 
@@ -59,13 +74,6 @@ final class FollowBadge extends AbstractBadge
         return [
             '/twitter/follow/rustlang' => 'followers count',
             '/twitter/follow/golang' => 'followers count',
-        ];
-    }
-
-    public function deprecated(): array
-    {
-        return [
-            '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
         ];
     }
 }

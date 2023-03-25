@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class RatingBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/vs-marketplace/rating/{extension}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::RATING,
+    ];
+
     public function handle(string $extension): array
     {
         $response = collect($this->client->get($extension));
@@ -25,18 +43,6 @@ final class RatingBadge extends AbstractBadge
             'label' => 'rating',
             'message' => \number_format($properties['rating']).'/5 ('.$properties['count'].')',
             'messageColor' => 'green.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::RATING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/vs-marketplace/rating/{extension}',
         ];
     }
 

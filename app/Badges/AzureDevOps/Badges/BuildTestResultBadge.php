@@ -10,6 +10,23 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class BuildTestResultBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/azure-devops/build-test/{organization}/{project}/{definition}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
     private array $colors = [
         'completed' => 'green.600',
         'succeeded' => 'green.600',
@@ -60,18 +77,6 @@ final class BuildTestResultBadge extends AbstractBadge
                 $properties['ignored'] ? FormatNumber::execute($properties['ignored']).' skipped' : null,
             ])->filter()->implode(', ') ?: 'unknown',
             'messageColor' => $color,
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/azure-devops/build-test/{organization}/{project}/{definition}/{branch?}',
         ];
     }
 

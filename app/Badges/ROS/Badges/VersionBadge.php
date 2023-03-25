@@ -10,6 +10,24 @@ use Spatie\Regex\Regex;
 
 final class VersionBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/ros/version/{distro}/{repoName}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $distro, string $repoName): array
     {
         $tags = collect($this->client->refs($distro))
@@ -24,18 +42,6 @@ final class VersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version'], 'ros | humble');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/ros/version/{distro}/{repoName}',
-        ];
     }
 
     public function routeParameters(): array

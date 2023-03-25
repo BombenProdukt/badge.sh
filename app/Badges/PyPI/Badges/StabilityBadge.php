@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class StabilityBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/pypi/stability/{project}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::PLATFORM_SUPPORT,
+    ];
+
     public function handle(string $project): array
     {
         $stability = collect($this->client->get($project)['info']['classifiers'])->map(function (string $classifier) {
@@ -39,18 +57,6 @@ final class StabilityBadge extends AbstractBadge
             'label' => 'stability',
             'message' => \str_replace('Production/Stable', 'stable', $properties['stability']),
             'messageColor' => DetermineColorByVersion::execute($properties['stability']),
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::PLATFORM_SUPPORT];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/pypi/stability/{project}',
         ];
     }
 

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ViolationsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/symfony-insight/violations/{projectUuid}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $projectUuid): array
     {
         $response = $this->client->get($projectUuid);
@@ -66,18 +84,6 @@ final class ViolationsBadge extends AbstractBadge
         }
 
         return $this->renderText('violations', \implode(', ', $violationSummary), $messageColor);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/symfony-insight/violations/{projectUuid}',
-        ];
     }
 
     public function routeParameters(): array

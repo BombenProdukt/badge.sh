@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Cache;
 
 final class UpdateBadgeBadge extends AbstractBadge
 {
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [,
+    ];
+
     public function handle(Request $request, string $name): array
     {
         $badge = [
@@ -26,11 +34,6 @@ final class UpdateBadgeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $properties;
-    }
-
-    public function keywords(): array
-    {
-        return [];
     }
 
     public function routePaths(): array

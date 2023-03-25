@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/appveyor/status/{account}/{project}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $account, string $project, ?string $branch = null): array
     {
         return $this->client->get($account, $project, $branch ? "/branch/{$branch}" : '')['build'];
@@ -20,18 +38,6 @@ final class StatusBadge extends AbstractBadge
             'label' => 'appveyor',
             'message' => $properties['status'],
             'messageColor' => $properties['status'] === 'success' ? 'green.600' : 'red.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/appveyor/status/{account}/{project}/{branch?}',
         ];
     }
 

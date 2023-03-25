@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class GradeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/security-headers/grade/{url}/',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $url): array
     {
         return [
@@ -19,18 +37,6 @@ final class GradeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderGrade('security headers', $properties['grade']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/security-headers/grade/{url}/',
-        ];
     }
 
     public function routeParameters(): array

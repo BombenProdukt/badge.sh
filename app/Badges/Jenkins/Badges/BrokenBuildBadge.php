@@ -11,6 +11,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class BrokenBuildBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/jenkins/broken-build/{hostname}/{job}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $hostname, string $job): array
     {
         return [
@@ -28,18 +46,6 @@ final class BrokenBuildBadge extends AbstractBadge
                 $properties['count'] < 20 => 'orange.600',
                 default => 'red.600',
             },
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/jenkins/broken-build/{hostname}/{job}',
         ];
     }
 

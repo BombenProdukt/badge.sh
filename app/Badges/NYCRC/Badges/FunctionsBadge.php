@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class FunctionsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/nycrc/functions/{user}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::LICENSE,
+    ];
+
     public function handle(string $user, string $repo): array
     {
         return $this->client->get($user, $repo);
@@ -17,18 +35,6 @@ final class FunctionsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('functions', $properties['functions'] ?? 0);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::LICENSE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/nycrc/functions/{user}/{repo}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class LastUpdateBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/vs-marketplace/last-modified/{extension}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ACTIVITY,
+    ];
+
     public function handle(string $extension): array
     {
         return [
@@ -19,18 +37,6 @@ final class LastUpdateBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDate('last modified', $properties['date']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ACTIVITY];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/vs-marketplace/last-modified/{extension}',
-        ];
     }
 
     public function routeParameters(): array

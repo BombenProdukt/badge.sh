@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class RepositoryDependenciesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/libraries-io/repository-dependencies/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DEPENDENCIES,
+    ];
+
     public function handle(string $package): array
     {
         $dependencies = $this->client->github($package)['dependencies'];
@@ -31,18 +49,6 @@ final class RepositoryDependenciesBadge extends AbstractBadge
         }
 
         return $this->renderText('dependencies', 'up to date', 'green.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DEPENDENCIES];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/libraries-io/repository-dependencies/{package}',
-        ];
     }
 
     public function routeParameters(): array

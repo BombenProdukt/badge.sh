@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/codecov/coverage/{service}/{repo}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS, Category::COVERAGE,
+    ];
+
     public function handle(string $service, string $repo, ?string $branch = null): array
     {
         return [
@@ -20,18 +38,6 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderCoverage($properties['percentage']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS, Category::COVERAGE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/codecov/coverage/{service}/{repo}/{branch?}',
-        ];
     }
 
     public function routeParameters(): array

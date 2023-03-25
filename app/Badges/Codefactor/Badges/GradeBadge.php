@@ -10,6 +10,24 @@ use Spatie\Regex\Regex;
 
 final class GradeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/codefactor/grade/{vcs}/{user}/{repo}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $vcs, string $user, string $repo, ?string $channel = 'main'): array
     {
         return [
@@ -20,18 +38,6 @@ final class GradeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderGrade('code quality', $properties['grade']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/codefactor/grade/{vcs}/{user}/{repo}/{branch?}',
-        ];
     }
 
     public function routeParameters(): array

@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class LabelsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/gitlab/issues-by-label/{repo}/{label}/{state?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ISSUE_TRACKING,
+    ];
+
     public function handle(string $repo, string $label, ?string $state = null): array
     {
         $stateFilter = $state ? 'state:'.\mb_strtolower($state) : '';
@@ -24,18 +42,6 @@ final class LabelsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber($properties['label'], $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ISSUE_TRACKING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/gitlab/issues-by-label/{repo}/{label}/{state?}',
-        ];
     }
 
     public function routeParameters(): array

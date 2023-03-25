@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class UntestedCountBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/testspace/untested-count/{org}/{project}/{space}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $org, string $project, string $space): array
     {
         return $this->client->get($org, $project, $space);
@@ -17,18 +35,6 @@ final class UntestedCountBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('untested', $properties['untested'], 'orange.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/testspace/untested-count/{org}/{project}/{space}',
-        ];
     }
 
     public function routeParameters(): array

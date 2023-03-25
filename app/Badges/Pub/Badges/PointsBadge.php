@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PointsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/pub/points/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $package): array
     {
         return $this->client->api("packages/{$package}/score");
@@ -20,18 +38,6 @@ final class PointsBadge extends AbstractBadge
             'label' => 'popularity',
             'message' => $properties['grantedPoints'].'/'.$properties['maxPoints'],
             'messageColor' => 'green.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/pub/points/{package}',
         ];
     }
 

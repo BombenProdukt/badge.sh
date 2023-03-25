@@ -10,6 +10,24 @@ use Illuminate\Support\Arr;
 
 final class SizeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/snapcraft/size/{snap}/{architecture?}/{channel?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SIZE,
+    ];
+
     public function handle(string $snap, ?string $architecture = null, ?string $channel = null): array
     {
         $channels = collect($this->client->get($snap, ['size'])['channel-map']);
@@ -26,18 +44,6 @@ final class SizeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderSize($properties['size']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SIZE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/snapcraft/size/{snap}/{architecture?}/{channel?}',
-        ];
     }
 
     public function routeParameters(): array

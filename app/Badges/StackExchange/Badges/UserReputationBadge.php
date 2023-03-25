@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class UserReputationBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/stack-exchange/user/reputation/{site}/{query}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $site, string $query): array
     {
         return $this->client->user($site, $query);
@@ -17,18 +35,6 @@ final class UserReputationBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('reputation', $properties['reputation']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/stack-exchange/user/reputation/{site}/{query}',
-        ];
     }
 
     public function routeParameters(): array

@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class LayersBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/docker/layers/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(
         string $scope,
         string $name,
@@ -24,18 +42,6 @@ final class LayersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('docker layers', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/docker/layers/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
-        ];
     }
 
     public function routeParameters(): array

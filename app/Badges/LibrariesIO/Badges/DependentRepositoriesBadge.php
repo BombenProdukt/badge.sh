@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class DependentRepositoriesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/libraries-io/dependent-repositories/{platform}/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DEPENDENCIES,
+    ];
+
     public function handle(string $platform, string $package): array
     {
         return [
@@ -20,18 +38,6 @@ final class DependentRepositoriesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('dependent repositories', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DEPENDENCIES];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/libraries-io/dependent-repositories/{platform}/{package}',
-        ];
     }
 
     public function routeParameters(): array

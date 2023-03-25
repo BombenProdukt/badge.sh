@@ -11,6 +11,24 @@ use Symfony\Component\DomCrawler\Crawler;
 
 final class RatingBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/chrome-web-store/rating/{itemId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::RATING,
+    ];
+
     public function handle(string $itemId): array
     {
         $textContent = (new Crawler($this->client->get($itemId)))
@@ -28,18 +46,6 @@ final class RatingBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderRating('rating', $properties['rating']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::RATING];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/chrome-web-store/rating/{itemId}',
-        ];
     }
 
     public function routeParameters(): array

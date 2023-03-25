@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class LanguageBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/language/{owner}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $owner, string $repo): array
     {
         return GitHub::repos()->show($owner, $repo);
@@ -18,18 +36,6 @@ final class LanguageBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('language', $properties['language'], 'blue.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/language/{owner}/{repo}',
-        ];
     }
 
     public function routeParameters(): array

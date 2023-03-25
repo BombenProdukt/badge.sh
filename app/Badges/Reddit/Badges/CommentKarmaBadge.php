@@ -10,6 +10,24 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class CommentKarmaBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/reddit/comment-karma/{user}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $user): array
     {
         return [
@@ -24,18 +42,6 @@ final class CommentKarmaBadge extends AbstractBadge
             'label' => 'u/'.$properties['username'],
             'message' => FormatNumber::execute($properties['karma']).' comment karma',
             'messageColor' => 'ff4500',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/reddit/comment-karma/{user}',
         ];
     }
 

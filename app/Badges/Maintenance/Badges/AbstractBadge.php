@@ -19,8 +19,8 @@ abstract class AbstractBadge implements Badge
     use HasRoute;
     use HasTemplates;
 
-    final public function service(): string
-    {
-        return 'Maintenance';
-    }
+    /**
+     * The service that this badge belongs to.
+     */
+    protected string $service = 'Maintenance';
 }

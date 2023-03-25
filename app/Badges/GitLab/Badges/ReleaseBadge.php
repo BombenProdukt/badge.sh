@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class ReleaseBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/gitlab/latest-release/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::VERSION,
+    ];
+
     public function handle(string $repo): array
     {
         $response = $this->client->rest($repo, 'releases')->json(0);
@@ -34,18 +52,6 @@ final class ReleaseBadge extends AbstractBadge
         }
 
         return $this->renderVersion($properties['version'], 'release');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::VERSION];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/gitlab/latest-release/{repo}',
-        ];
     }
 
     public function routeParameters(): array

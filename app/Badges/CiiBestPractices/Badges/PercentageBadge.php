@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class PercentageBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/cii/percentage/{projectId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $projectId): array
     {
         return [
@@ -19,18 +37,6 @@ final class PercentageBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderCoverage($properties['percentage'], 'cii');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/cii/percentage/{projectId}',
-        ];
     }
 
     public function routeParameters(): array

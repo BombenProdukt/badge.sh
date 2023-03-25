@@ -13,6 +13,24 @@ use Illuminate\Support\Collection;
 
 final class CheckStatusBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/check-status/{owner}/{repo}/{reference?}/{context?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $owner, string $repo, ?string $reference = null, ?string $context = null): array
     {
         if (empty($reference)) {
@@ -58,18 +76,6 @@ final class CheckStatusBadge extends AbstractBadge
             'label' => 'status',
             'message' => 'unknown',
             'messageColor' => 'gray.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/check-status/{owner}/{repo}/{reference?}/{context?}',
         ];
     }
 

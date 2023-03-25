@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Http;
 
 final class DeploymentBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/azure-devops/deployment-version/{organization}/{project}/{definition}/{environment?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $organization, string $project, string $definition, ?string $environment = null): array
     {
         $response = Http::get("https://vsrm.dev.azure.com/{$organization}/{$project}/_apis/release/deployments", \array_merge([
@@ -34,18 +52,6 @@ final class DeploymentBadge extends AbstractBadge
                 'partiallySucceeded' => 'yellow.600',
                 'failed' => 'red.600',
             ][$properties['status']],
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/azure-devops/deployment-version/{organization}/{project}/{definition}/{environment?}',
         ];
     }
 

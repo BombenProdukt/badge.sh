@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Cache;
 
 final class ShowBadgeBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/memo/{name}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::OTHER,
+    ];
+
     public function handle(string $name): array
     {
         return Cache::get($name);
@@ -18,18 +36,6 @@ final class ShowBadgeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         //
-    }
-
-    public function keywords(): array
-    {
-        return [Category::OTHER];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/memo/{name}',
-        ];
     }
 
     public function routeParameters(): array

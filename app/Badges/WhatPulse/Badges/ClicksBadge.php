@@ -10,6 +10,24 @@ use Illuminate\Support\Arr;
 
 final class ClicksBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/whatpulse/clicks/{userType}/{id}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $userType, string $id): array
     {
         return [
@@ -20,18 +38,6 @@ final class ClicksBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('clicks', $properties['count']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/whatpulse/clicks/{userType}/{id}',
-        ];
     }
 
     public function routeParameters(): array

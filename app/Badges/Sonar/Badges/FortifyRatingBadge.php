@@ -8,6 +8,24 @@ use App\Enums\Category;
 
 final class FortifyRatingBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/sonar/fortify-security-rating/{component}/{branch}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::COVERAGE,
+    ];
+
     public function handle(string $metric, string $component, string $branch): array
     {
         return [
@@ -18,18 +36,6 @@ final class FortifyRatingBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderPercentage('fortify security rating', $properties['rating']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::COVERAGE];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/sonar/fortify-security-rating/{component}/{branch}',
-        ];
     }
 
     public function routeRules(): array

@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class PipelinesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/bitbucket/pipelines/{user}/{repo}/{branch?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $user, string $repo, ?string $branch = null): array
     {
         $values = collect($this->client->pipelines($user, $repo, $branch))
@@ -29,18 +47,6 @@ final class PipelinesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('build', $properties['status']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/bitbucket/pipelines/{user}/{repo}/{branch?}',
-        ];
     }
 
     public function routeParameters(): array

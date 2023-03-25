@@ -10,6 +10,24 @@ use Illuminate\Support\Arr;
 
 final class UploadBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/whatpulse/upload/{userType}/{id}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $userType, string $id): array
     {
         return [
@@ -20,18 +38,6 @@ final class UploadBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('upload', $properties['speed'], 'green.600');
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/whatpulse/upload/{userType}/{id}',
-        ];
     }
 
     public function routeParameters(): array

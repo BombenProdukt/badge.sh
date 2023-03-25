@@ -11,6 +11,24 @@ use Illuminate\Support\Facades\Http;
 
 final class PluginDownloadsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/jenkins/plugin-downloads/{plugin}/{version?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::DOWNLOADS,
+    ];
+
     public function handle(string $plugin, ?string $version = null): array
     {
         $response = Http::get("https://stats.jenkins.io/plugin-installation-trend/{$plugin}.stats.json")->throw()->json();
@@ -29,18 +47,6 @@ final class PluginDownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('downloads', $properties['downloads']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::DOWNLOADS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/jenkins/plugin-downloads/{plugin}/{version?}',
-        ];
     }
 
     public function routeParameters(): array

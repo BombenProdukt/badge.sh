@@ -10,6 +10,24 @@ use Illuminate\Routing\Route;
 
 final class TopLanguageBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/github/top-language/{owner}/{repo}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::ANALYSIS,
+    ];
+
     public function handle(string $owner, string $repo): array
     {
         $languages = GitHub::repos()->languages($owner, $repo);
@@ -23,18 +41,6 @@ final class TopLanguageBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber($properties['label'], $properties['value']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::ANALYSIS];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/github/top-language/{owner}/{repo}',
-        ];
     }
 
     public function routeParameters(): array

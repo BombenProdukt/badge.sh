@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ImplementationBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/pypi/implementation/{project}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::PLATFORM_SUPPORT,
+    ];
+
     public function handle(string $project): array
     {
         return [
@@ -30,18 +48,6 @@ final class ImplementationBadge extends AbstractBadge
             'label' => 'implementation',
             'message' => empty($properties['implementation']) ? 'cpython' : $properties['implementation'],
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function keywords(): array
-    {
-        return [Category::PLATFORM_SUPPORT];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/pypi/implementation/{project}',
         ];
     }
 

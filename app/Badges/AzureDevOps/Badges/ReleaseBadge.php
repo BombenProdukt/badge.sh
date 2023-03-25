@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Http;
 
 final class ReleaseBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/azure-devops/release/{organization}/{project}/{definition}/{environment?}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::BUILD,
+    ];
+
     public function handle(string $organization, string $project, string $definition, ?string $environment = null): array
     {
         return [
@@ -24,18 +42,6 @@ final class ReleaseBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::BUILD];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/azure-devops/release/{organization}/{project}/{definition}/{environment?}',
-        ];
     }
 
     public function routeParameters(): array

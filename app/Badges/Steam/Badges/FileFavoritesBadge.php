@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class FileFavoritesBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/steam/file-favorites/{fileId}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $fileId): array
     {
         return $this->client->file($fileId);
@@ -17,18 +35,6 @@ final class FileFavoritesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('favorites', $properties['favorited']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/steam/file-favorites/{fileId}',
-        ];
     }
 
     public function routeParameters(): array

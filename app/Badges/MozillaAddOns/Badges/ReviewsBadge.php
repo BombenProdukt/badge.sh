@@ -9,6 +9,24 @@ use Illuminate\Routing\Route;
 
 final class ReviewsBadge extends AbstractBadge
 {
+    /**
+     * The routes to access this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $routes = [
+        '/amo/reviews/{package}',
+    ];
+
+    /**
+     * The keywords that describe this badge.
+     *
+     * @var array<int, string>
+     */
+    protected array $keywords = [
+        Category::SOCIAL,
+    ];
+
     public function handle(string $package): array
     {
         return [
@@ -19,18 +37,6 @@ final class ReviewsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderRating($properties['rating']);
-    }
-
-    public function keywords(): array
-    {
-        return [Category::SOCIAL];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/amo/reviews/{package}',
-        ];
     }
 
     public function routeParameters(): array
