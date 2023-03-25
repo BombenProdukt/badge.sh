@@ -19,9 +19,9 @@ final class Client
     public function get(string $package): array
     {
         return $this->client->get('rpc', [
-            'v'    => 5,
+            'v' => 5,
             'type' => 'info',
-            'arg'  => $package,
+            'arg' => $package,
         ])->json('results.0');
     }
 }

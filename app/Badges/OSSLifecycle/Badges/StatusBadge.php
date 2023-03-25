@@ -52,7 +52,7 @@ final class StatusBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/oss-lifecycle/status/Netflix/osstracker'               => 'status',
+            '/oss-lifecycle/status/Netflix/osstracker' => 'status',
             '/oss-lifecycle/status/Netflix/osstracker/documentation' => 'status with branch',
         ];
     }

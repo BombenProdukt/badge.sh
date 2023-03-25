@@ -12,26 +12,26 @@ final class FrameworkBadge extends AbstractBadge
     public function handle(string $project): array
     {
         $frameworks = collect($this->client->get($project)['info']['classifiers'])->map(function (string $classifier) {
-            if (! str_starts_with($classifier, 'Framework ::')) {
+            if (!\str_starts_with($classifier, 'Framework ::')) {
                 return null;
             }
 
-            $classifier = explode(' :: ', $classifier);
+            $classifier = \explode(' :: ', $classifier);
 
             return ['framework' => $classifier[1], 'version' => $classifier[2] ?? null];
         })->filter();
 
         return [
             'framework' => $frameworks->first()['framework'],
-            'versions'  => $frameworks->map->version->filter()->toArray(),
+            'versions' => $frameworks->map->version->filter()->toArray(),
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['framework'],
-            'message'      => implode(' | ', $properties['versions']),
+            'label' => $properties['framework'],
+            'message' => \implode(' | ', $properties['versions']),
             'messageColor' => 'blue.600',
         ];
     }
@@ -66,7 +66,7 @@ final class FrameworkBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/framework/black'       => 'framework',
+            '/pypi/framework/black' => 'framework',
             '/pypi/framework/plone.volto' => 'framework',
         ];
     }

@@ -14,12 +14,12 @@ final class QualityGateBadge extends AbstractBadge
         $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch);
 
         if ($response['alert_status'] === 'OK') {
-            return[
+            return [
                 'status' => 'passed',
             ];
         }
 
-        return[
+        return [
             'status' => 'failed',
         ];
     }
@@ -44,7 +44,7 @@ final class QualityGateBadge extends AbstractBadge
     public function routeRules(): array
     {
         return [
-            'instance'     => ['required', 'url'],
+            'instance' => ['required', 'url'],
             'sonarVersion' => ['required', 'numeric'],
         ];
     }

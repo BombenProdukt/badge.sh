@@ -44,7 +44,7 @@ final class RatingBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/rating/bbpress'        => 'rating (plugin)',
+            '/wordpress/plugin/rating/bbpress' => 'rating (plugin)',
             '/wordpress/theme/rating/twentyseventeen' => 'rating (theme)',
         ];
     }

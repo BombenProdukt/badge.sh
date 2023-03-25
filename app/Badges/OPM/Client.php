@@ -20,7 +20,7 @@ final class Client
     {
         return $this->client->head('pkg/fetch', [
             'account' => $user,
-            'name'    => $moduleName,
+            'name' => $moduleName,
         ])->header('location');
     }
 }

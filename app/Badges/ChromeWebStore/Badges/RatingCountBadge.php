@@ -28,8 +28,8 @@ final class RatingCountBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'rating count',
-            'message'      => $properties['count'],
+            'label' => 'rating count',
+            'message' => $properties['count'],
             'messageColor' => 'green.600',
         ];
     }

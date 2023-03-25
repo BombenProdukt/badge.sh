@@ -14,8 +14,8 @@ final class TotalDownloadsBadge extends AbstractBadge
     {
         return [
             'downloads' => Http::get('https://azuresearch-usnc.nuget.org/query', [
-                'q'           => 'packageid:'.strtolower($project),
-                'prerelease'  => 'true',
+                'q' => 'packageid:'.\mb_strtolower($project),
+                'prerelease' => 'true',
                 'semVerLevel' => 2,
             ])->throw()->json('data.0.totalDownloads'),
         ];

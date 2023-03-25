@@ -39,6 +39,6 @@ final class Client
 
     private function getPath(string $appId): string
     {
-        return strtolower(substr($appId, 0, 1)).'/'.str_replace('.', '/', $appId);
+        return \mb_strtolower(\mb_substr($appId, 0, 1)).'/'.\str_replace('.', '/', $appId);
     }
 }

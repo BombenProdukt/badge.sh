@@ -20,7 +20,7 @@ final class Client
     {
         return $this->client->post('extensionquery?api-version=3.0-preview.1', [
             'filters' => [['criteria' => [['filterType' => 7, 'value' => $extension]]]],
-            'flags'   => 914,
+            'flags' => 914,
         ])->json('results.0.extensions.0');
     }
 }

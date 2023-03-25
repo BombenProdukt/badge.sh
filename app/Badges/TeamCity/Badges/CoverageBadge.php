@@ -13,8 +13,9 @@ final class CoverageBadge extends AbstractBadge
     {
         $response = $this->client->coverage($this->getRequestData('instance'), $buildId);
 
-        $total   = null;
+        $total = null;
         $covered = null;
+
         foreach ($response['property'] as $property) {
             if ($property['name'] === 'CodeCoverageAbsSCovered') {
                 $covered = (int) $property['value'];

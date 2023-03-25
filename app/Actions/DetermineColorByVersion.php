@@ -28,7 +28,7 @@ final class DetermineColorByVersion
             return 'red.600';
         }
 
-        if (str_starts_with($value, '0.')) {
+        if (\str_starts_with($value, '0.')) {
             return 'orange.600';
         }
 

@@ -20,7 +20,7 @@ final class Client
     {
         return $this->client->get("app/{$appId}/status.json", [
             'branch' => $branch,
-            'token'  => $token,
+            'token' => $token,
         ])->json();
     }
 }

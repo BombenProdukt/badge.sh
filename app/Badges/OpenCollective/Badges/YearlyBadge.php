@@ -15,7 +15,7 @@ final class YearlyBadge extends AbstractBadge
         $response = $this->client->get($slug, null, $tier);
 
         return [
-            'amount'   => $response['yearlyIncome'],
+            'amount' => $response['yearlyIncome'],
             'currency' => $response['currency'],
         ];
     }
@@ -23,8 +23,8 @@ final class YearlyBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'yearly income',
-            'message'      => FormatMoney::execute($properties['amount'] / 100, $properties['currency']),
+            'label' => 'yearly income',
+            'message' => FormatMoney::execute($properties['amount'] / 100, $properties['currency']),
             'messageColor' => 'green.600',
         ];
     }

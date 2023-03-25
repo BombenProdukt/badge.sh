@@ -18,10 +18,10 @@ final class Client
     public function pipelines(string $user, string $repo, ?string $branch = null): array
     {
         return $this->client->repositories()->workspaces($user)->pipelines($repo)->list([
-            'fields'          => 'values.state',
-            'page'            => 1,
-            'pagelen'         => 2,
-            'sort'            => '-created_on',
+            'fields' => 'values.state',
+            'page' => 1,
+            'pagelen' => 2,
+            'sort' => '-created_on',
             'target.ref_type' => 'BRANCH',
             'target.ref_name' => $branch,
         ])['values'];
@@ -31,7 +31,7 @@ final class Client
     {
         return $this->client->repositories()->workspaces($user)->issues($repo)->list([
             'limit' => 0,
-            'q'     => '(state = "new" OR state = "open")',
+            'q' => '(state = "new" OR state = "open")',
         ])['size'];
     }
 

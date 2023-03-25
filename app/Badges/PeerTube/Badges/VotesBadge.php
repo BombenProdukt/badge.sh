@@ -18,8 +18,8 @@ final class VotesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'votes',
-            'message'      => sprintf('%s 👍 %s 👎', FormatNumber::execute($properties['likes']), FormatNumber::execute($properties['dislikes'])),
+            'label' => 'votes',
+            'message' => \sprintf('%s 👍 %s 👎', FormatNumber::execute($properties['likes']), FormatNumber::execute($properties['dislikes'])),
             'messageColor' => 'F1680D',
         ];
     }

@@ -14,7 +14,7 @@ final class VersionBadge extends AbstractBadge
     {
         return [
             'package' => $package,
-            'tag'     => $tag,
+            'tag' => $tag,
             'version' => $this->client->unpkg("{$package}@{$tag}/package.json"),
         ];
     }
@@ -57,11 +57,11 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/npm/version/express'           => 'version',
-            '/npm/version/yarn'              => 'version',
-            '/npm/version/yarn/berry'        => 'version (tag)',
-            '/npm/version/yarn/legacy'       => 'version (tag)',
-            '/npm/version/@babel/core'       => 'version (scoped package)',
+            '/npm/version/express' => 'version',
+            '/npm/version/yarn' => 'version',
+            '/npm/version/yarn/berry' => 'version (tag)',
+            '/npm/version/yarn/legacy' => 'version (tag)',
+            '/npm/version/@babel/core' => 'version (scoped package)',
             '/npm/version/@nestjs/core/beta' => 'version (scoped & tag)',
         ];
     }

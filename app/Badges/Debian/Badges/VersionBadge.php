@@ -12,7 +12,7 @@ final class VersionBadge extends AbstractBadge
     public function handle(string $packageName, ?string $distribution = 'stable'): array
     {
         return [
-            'version' => array_key_first($this->client->version($packageName, $distribution)),
+            'version' => \array_key_first($this->client->version($packageName, $distribution)),
         ];
     }
 
@@ -51,7 +51,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/debian/version/apt'          => 'version',
+            '/debian/version/apt' => 'version',
             '/debian/version/apt/unstable' => 'version',
         ];
     }

@@ -17,8 +17,8 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'appveyor',
-            'message'      => $properties['status'],
+            'label' => 'appveyor',
+            'message' => $properties['status'],
             'messageColor' => $properties['status'] === 'success' ? 'green.600' : 'red.600',
         ];
     }
@@ -53,7 +53,7 @@ final class StatusBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/appveyor/status/gruntjs/grunt'           => 'build',
+            '/appveyor/status/gruntjs/grunt' => 'build',
             '/appveyor/status/gruntjs/grunt/deprecate' => 'build (branch)',
         ];
     }

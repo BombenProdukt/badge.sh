@@ -10,6 +10,6 @@ final class Client
 {
     public function get(string $user, string $repo, ?string $branch): string
     {
-        return base64_decode(GitHub::repos()->contents()->show($user, $repo, 'OSSMETADATA')['content']);
+        return \base64_decode(GitHub::repos()->contents()->show($user, $repo, 'OSSMETADATA')['content'], true);
     }
 }

@@ -14,7 +14,7 @@ final class Client
         return Http::baseUrl('https://gitlab.com/api/v4')
             ->withToken(config('services.gitlab.token'))
             ->throw()
-            ->get('projects/'.urlencode($repo)."/{$path}");
+            ->get('projects/'.\urlencode($repo)."/{$path}");
     }
 
     public function graphql(string $repo, string $query): array

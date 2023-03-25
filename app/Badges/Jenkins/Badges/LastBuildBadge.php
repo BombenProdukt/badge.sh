@@ -20,9 +20,9 @@ final class LastBuildBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'Last Build',
-            'message'      => $properties['status'],
-            'messageColor' => strtolower($properties['status']) === 'success' ? 'green.600' : 'red.600',
+            'label' => 'Last Build',
+            'message' => $properties['status'],
+            'messageColor' => \mb_strtolower($properties['status']) === 'success' ? 'green.600' : 'red.600',
         ];
     }
 

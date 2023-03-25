@@ -20,15 +20,15 @@ final class Client
     {
         if ($server === 'gitter.im') {
             // TODO: Throw deprecated exception
-            [$gitterOrg, $gitterRoom] = explode('_', $roomName);
+            [$gitterOrg, $gitterRoom] = \explode('_', $roomName);
 
-            preg_match('/"userCount"\s*:\s*(\d+)/', $this->client->get("https://gitter.im/{$gitterOrg}/{$gitterRoom}")->body(), $matches);
+            \preg_match('/"userCount"\s*:\s*(\d+)/', $this->client->get("https://gitter.im/{$gitterOrg}/{$gitterRoom}")->body(), $matches);
 
             return (int) $matches[1];
         }
 
         $client = Http::baseUrl($this->getHomeserver($server).'/_matrix/client/r0');
-        $room   = $this->findPublicRoom($client, "#{$roomName}:{$server}");
+        $room = $this->findPublicRoom($client, "#{$roomName}:{$server}");
 
         return (int) $room['num_joined_members'];
     }
@@ -40,18 +40,18 @@ final class Client
 
     private function findPublicRoom(PendingRequest $client, string $roomAlias): ?array
     {
-        $roomId       = $this->getRoomId($client, $roomAlias);
+        $roomId = $this->getRoomId($client, $roomAlias);
         $searchParams = ['query' => ['limit' => '500']];
-        $nextBatch    = null;
+        $nextBatch = null;
 
         do {
             if ($nextBatch) {
                 $searchParams['query']['since'] = $nextBatch;
             }
 
-            $json      = $client->get('publicRooms', $searchParams)->json();
+            $json = $client->get('publicRooms', $searchParams)->json();
             $nextBatch = $json['next_batch'] ?? null;
-            $chunk     = $json['chunk'] ?? [];
+            $chunk = $json['chunk'] ?? [];
 
             foreach ($chunk as $room) {
                 if ($room['room_id'] === $roomId) {
@@ -65,6 +65,6 @@ final class Client
 
     private function getRoomId(PendingRequest $client, string $roomAlias): ?string
     {
-        return $client->get('directory/room/'.urlencode($roomAlias))->json('room_id');
+        return $client->get('directory/room/'.\urlencode($roomAlias))->json('room_id');
     }
 }

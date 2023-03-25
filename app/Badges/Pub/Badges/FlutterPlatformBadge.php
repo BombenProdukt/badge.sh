@@ -22,8 +22,8 @@ final class FlutterPlatformBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'flutter',
-            'message'      => $properties['platforms'] ? implode('|', $properties['platforms']) : 'unknown',
+            'label' => 'flutter',
+            'message' => $properties['platforms'] ? \implode('|', $properties['platforms']) : 'unknown',
             'messageColor' => $properties['platforms'] ? 'blue.600' : 'gray.600',
         ];
     }
@@ -65,15 +65,16 @@ final class FlutterPlatformBadge extends AbstractBadge
     private function parseTags(array $tags, string $group): array
     {
         $types = [];
+
         foreach ($tags as $tag) {
-            if (! str_starts_with($tag, $group.':')) {
+            if (!\str_starts_with($tag, $group.':')) {
                 continue;
             }
-            [, $name] = explode(':', $tag);
-            [$type]   = explode('-', $name);
-            $types[]  = $type;
+            [, $name] = \explode(':', $tag);
+            [$type] = \explode('-', $name);
+            $types[] = $type;
         }
 
-        return array_values(array_unique($types));
+        return \array_values(\array_unique($types));
     }
 }

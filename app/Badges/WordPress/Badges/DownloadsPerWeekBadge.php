@@ -46,7 +46,7 @@ final class DownloadsPerWeekBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/downloads-weekly/bbpress'        => 'weekly downloads (plugin)',
+            '/wordpress/plugin/downloads-weekly/bbpress' => 'weekly downloads (plugin)',
             '/wordpress/theme/downloads-weekly/twentyseventeen' => 'weekly downloads (theme)',
         ];
     }

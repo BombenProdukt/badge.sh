@@ -14,17 +14,17 @@ final class MemberBadge extends AbstractBadge
     public function handle(string $room, string $server = 'matrix.org'): array
     {
         return [
-            'room'   => $room,
+            'room' => $room,
             'server' => $server,
-            'count'  => $this->client->fetchMembersCount($room, $server),
+            'count' => $this->client->fetchMembersCount($room, $server),
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => '#'.$properties['room'].':'.$properties['server'],
-            'message'      => FormatNumber::execute($properties['count']).' '.Str::plural('member', $properties['count']),
+            'label' => '#'.$properties['room'].':'.$properties['server'],
+            'message' => FormatNumber::execute($properties['count']).' '.Str::plural('member', $properties['count']),
             'messageColor' => 'blue.600',
         ];
     }
@@ -61,8 +61,8 @@ final class MemberBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/matrix/members/rust/matrix.org'         => 'members',
-            '/matrix/members/thisweekinmatrix'        => 'members',
+            '/matrix/members/rust/matrix.org' => 'members',
+            '/matrix/members/thisweekinmatrix' => 'members',
             '/matrix/members/archlinux/archlinux.org' => 'members',
         ];
     }

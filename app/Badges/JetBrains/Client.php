@@ -19,17 +19,17 @@ final class Client
 
     public function info(string $pluginId): array
     {
-        return $this->client->get('api/plugins/'.preg_replace('/[^0-9]/', '', $pluginId))->json();
+        return $this->client->get('api/plugins/'.\preg_replace('/[^0-9]/', '', $pluginId))->json();
     }
 
     public function updates(string $pluginId): array
     {
-        return $this->client->get('api/plugins/'.preg_replace('/[^0-9]/', '', $pluginId).'/updates')->json();
+        return $this->client->get('api/plugins/'.\preg_replace('/[^0-9]/', '', $pluginId).'/updates')->json();
     }
 
     public function rating(string $pluginId): array
     {
-        return $this->client->get('api/plugins/'.preg_replace('/[^0-9]/', '', $pluginId).'/rating')->json();
+        return $this->client->get('api/plugins/'.\preg_replace('/[^0-9]/', '', $pluginId).'/rating')->json();
     }
 
     public function legacy(string $pluginId): Crawler

@@ -36,9 +36,9 @@ final class VersionBadge extends AbstractBadge
     public function routeRules(): array
     {
         return [
-            'instance'     => ['required', 'url'],
+            'instance' => ['required', 'url'],
             'nexusVersion' => ['required', 'in:2,3'],
-            'query'        => ['nullable', 'string'],
+            'query' => ['nullable', 'string'],
         ];
     }
 
@@ -60,9 +60,9 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/nexus/version/r/org.apache.commons/commoin-lang3?instance=https://nexus.pentaho.org'                      => 'Sonatype Nexus (Releases)',
-            '/nexus/version/r/com.google.guava/guava?instance=https://oss.sonatype.org'                                 => 'Sonatype Nexus (Snapshots)',
-            '/nexus/version/r/developer/ai.h2o/h2o-automl?instance=https://repository.jboss.org/nexus'                  => 'Sonatype Nexus (Repository)',
+            '/nexus/version/r/org.apache.commons/commoin-lang3?instance=https://nexus.pentaho.org' => 'Sonatype Nexus (Releases)',
+            '/nexus/version/r/com.google.guava/guava?instance=https://oss.sonatype.org' => 'Sonatype Nexus (Snapshots)',
+            '/nexus/version/r/developer/ai.h2o/h2o-automl?instance=https://repository.jboss.org/nexus' => 'Sonatype Nexus (Repository)',
             '/nexus/version/r/fs-public-snapshots/com.progress.fuse/fusehq?instance=https://repository.jboss.org/nexus' => 'Sonatype Nexus (Query Options)',
         ];
     }

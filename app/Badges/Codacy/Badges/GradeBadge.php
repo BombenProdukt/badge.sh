@@ -11,10 +11,10 @@ final class GradeBadge extends AbstractBadge
 {
     public function handle(string $projectId, ?string $branch = null): array
     {
-        preg_match('/visibility=[^>]*?>([^<]+)<\//i', $this->client->get('grade', $projectId, $branch), $matches);
+        \preg_match('/visibility=[^>]*?>([^<]+)<\//i', $this->client->get('grade', $projectId, $branch), $matches);
 
         return [
-            'grade' => trim($matches[1]),
+            'grade' => \trim($matches[1]),
         ];
     }
 
@@ -53,7 +53,7 @@ final class GradeBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e'        => 'code quality',
+            '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e' => 'code quality',
             '/codacy/grade/f0875490cea1497a9eca9c25f3f7774e/master' => 'branch code quality',
         ];
     }

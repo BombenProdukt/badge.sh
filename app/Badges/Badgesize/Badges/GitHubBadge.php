@@ -16,16 +16,16 @@ final class GitHubBadge extends AbstractBadge
 
         return [
             'compression' => $compression,
-            'size'        => $response['prettySize'],
-            'color'       => $response['color'],
+            'size' => $response['prettySize'],
+            'color' => $response['color'],
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['compression'] === 'normal' ? 'size' : $properties['compression'].' size',
-            'message'      => $properties['size'],
+            'label' => $properties['compression'] === 'normal' ? 'size' : $properties['compression'].' size',
+            'message' => $properties['size'],
             'messageColor' => $properties['color'],
         ];
     }
@@ -63,7 +63,7 @@ final class GitHubBadge extends AbstractBadge
     {
         return [
             '/badgesize/normal/amio/emoji.json/master/emoji-compact.json' => 'normal size',
-            '/badgesize/gzip/amio/emoji.json/master/emoji-compact.json'   => 'gzip size',
+            '/badgesize/gzip/amio/emoji.json/master/emoji-compact.json' => 'gzip size',
             '/badgesize/brotli/amio/emoji.json/master/emoji-compact.json' => 'brotli size',
         ];
     }

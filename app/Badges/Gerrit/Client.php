@@ -18,6 +18,6 @@ final class Client
 
     public function get(string $changeId): array
     {
-        return json_decode(explode("\n", $this->client->get("changes/{$changeId}")->body())[1], true, JSON_THROW_ON_ERROR);
+        return \json_decode(\explode("\n", $this->client->get("changes/{$changeId}")->body())[1], true, \JSON_THROW_ON_ERROR);
     }
 }

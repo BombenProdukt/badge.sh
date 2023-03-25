@@ -11,6 +11,6 @@ final class Client
 {
     public function get(string $packageName): array
     {
-        return Yaml::parse(base64_decode(GitHub::repos()->contents()->show('conan-io', 'conan-center-index', "recipes/{$packageName}/config.yml")['content']));
+        return Yaml::parse(\base64_decode(GitHub::repos()->contents()->show('conan-io', 'conan-center-index', "recipes/{$packageName}/config.yml")['content'], true));
     }
 }

@@ -44,7 +44,7 @@ final class NameBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/version/bbpress'        => 'version (plugin)',
+            '/wordpress/plugin/version/bbpress' => 'version (plugin)',
             '/wordpress/theme/version/twentyseventeen' => 'version (theme)',
         ];
     }

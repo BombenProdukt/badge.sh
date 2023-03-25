@@ -19,7 +19,7 @@ final class Client
 
     public function get(string $project, string $type): array
     {
-        $meta   = $this->client->get('repos', ['github_slug' => $project])->json('data.0');
+        $meta = $this->client->get('repos', ['github_slug' => $project])->json('data.0');
         $report = $meta['relationships']['latest_default_branch_'.Str::singular($type)]['data'];
 
         return $this->client->get('repos/'.$meta['id']."/{$type}/".$report['id'])->json('data');

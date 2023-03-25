@@ -11,7 +11,7 @@ final class VersionBadge extends AbstractBadge
 {
     public function handle(string $pluginId): array
     {
-        if (is_numeric($pluginId)) {
+        if (\is_numeric($pluginId)) {
             return [
                 'version' => $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//version')->text(),
             ];
@@ -58,7 +58,7 @@ final class VersionBadge extends AbstractBadge
     {
         return [
             '/jetbrains/version/13441-laravel-idea' => 'version',
-            '/jetbrains/version/9630'               => 'version (legacy plugin)',
+            '/jetbrains/version/9630' => 'version (legacy plugin)',
         ];
     }
 }

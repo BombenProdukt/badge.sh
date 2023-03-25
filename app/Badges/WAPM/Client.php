@@ -18,14 +18,14 @@ final class Client
 
     public function get(string $package, string $namespace = '_'): array
     {
-        if (str_contains($package, '/')) {
-            [$namespace, $package] = explode('/', $package);
+        if (\str_contains($package, '/')) {
+            [$namespace, $package] = \explode('/', $package);
         }
 
         return $this->client->post('graphql', [
-            'query'         => 'query packageQuery($name: String!, $version: String) { packageVersion: getPackageVersion(name: $name, version: $version) { version license createdAt distribution { size } commands { command module { name } } modules { name abi } } }',
+            'query' => 'query packageQuery($name: String!, $version: String) { packageVersion: getPackageVersion(name: $name, version: $version) { version license createdAt distribution { size } commands { command module { name } } modules { name abi } } }',
             'operationName' => 'packageQuery',
-            'variables'     => ['name' => "{$namespace}/{$package}"],
+            'variables' => ['name' => "{$namespace}/{$package}"],
         ])->json('data.packageVersion');
     }
 }

@@ -51,7 +51,6 @@ final class LanguageBadge extends AbstractBadge
     {
         return [
             '/github/language/micromatch/micromatch' => 'language',
-
         ];
     }
 }

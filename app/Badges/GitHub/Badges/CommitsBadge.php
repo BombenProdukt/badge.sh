@@ -13,7 +13,7 @@ final class CommitsBadge extends AbstractBadge
     public function handle(string $owner, string $repo, ?string $reference = null): array
     {
         if (empty($reference)) {
-            $response  = GitHub::connection('main')->api('repo')->show($owner, $repo);
+            $response = GitHub::connection('main')->api('repo')->show($owner, $repo);
             $reference = $response['default_branch'];
         }
 
@@ -59,9 +59,9 @@ final class CommitsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/commits/micromatch/micromatch'          => 'commits count',
+            '/github/commits/micromatch/micromatch' => 'commits count',
             '/github/commits/micromatch/micromatch/gh-pages' => 'commits count (branch ref)',
-            '/github/commits/micromatch/micromatch/4.0.1'    => 'commits count (tag ref)',
+            '/github/commits/micromatch/micromatch/4.0.1' => 'commits count (tag ref)',
         ];
     }
 }

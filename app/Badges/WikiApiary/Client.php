@@ -20,7 +20,7 @@ final class Client
     {
         return $this->client->get('w/api.php', [
             'action' => 'ask',
-            'query'  => `[[{$variant}:{$name}]]|?Has_website_count`,
+            'query' => \shell_exec("[[{$variant}:{$name}]]|?Has_website_count"),
             'format' => 'json',
         ])->json('query.results');
     }

@@ -32,24 +32,24 @@ final class Client
             throw new RuntimeException('No analysis found for this project.');
         }
 
-        $numViolations         = 0;
+        $numViolations = 0;
         $numCriticalViolations = 0;
-        $numMajorViolations    = 0;
-        $numMinorViolations    = 0;
-        $numInfoViolations     = 0;
+        $numMajorViolations = 0;
+        $numMinorViolations = 0;
+        $numInfoViolations = 0;
 
         $violationContainer = $lastAnalysis['violations'];
 
         if ($violationContainer && $violationContainer['violation']) {
             $violations = [];
 
-            if (is_array($violationContainer['violation'])) {
+            if (\is_array($violationContainer['violation'])) {
                 $violations = $violationContainer['violation'];
             } else {
                 $violations[] = $violationContainer['violation'];
             }
 
-            $numViolations = count($violations);
+            $numViolations = \count($violations);
 
             foreach ($violations as $violation) {
                 if ($violation['severity'] === 'critical') {
@@ -65,13 +65,13 @@ final class Client
         }
 
         return [
-            'status'                => $lastAnalysis['status'],
-            'grade'                 => $lastAnalysis['grade'],
-            'numViolations'         => $numViolations,
+            'status' => $lastAnalysis['status'],
+            'grade' => $lastAnalysis['grade'],
+            'numViolations' => $numViolations,
             'numCriticalViolations' => $numCriticalViolations,
-            'numMajorViolations'    => $numMajorViolations,
-            'numMinorViolations'    => $numMinorViolations,
-            'numInfoViolations'     => $numInfoViolations,
+            'numMajorViolations' => $numMajorViolations,
+            'numMinorViolations' => $numMinorViolations,
+            'numInfoViolations' => $numInfoViolations,
         ];
     }
 }

@@ -18,8 +18,8 @@ final class DepBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'dependencies',
-            'message'      => $this->statusInfo[$properties['status']][0],
+            'label' => 'dependencies',
+            'message' => $this->statusInfo[$properties['status']][0],
             'messageColor' => $this->statusInfo[$properties['status']][1],
         ];
     }
@@ -55,7 +55,7 @@ final class DepBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/david/dep/zeit/pkg'                       => 'dependencies',
+            '/david/dep/zeit/pkg' => 'dependencies',
             '/david/dep/babel/babel/packages/babel-cli' => 'dependencies (sub path)',
         ];
     }

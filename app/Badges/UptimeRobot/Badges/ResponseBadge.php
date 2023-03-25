@@ -19,8 +19,8 @@ final class ResponseBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'response',
-            'message'      => $properties['time'].'ms',
+            'label' => 'response',
+            'message' => $properties['time'].'ms',
             'messageColor' => 'blue.600',
         ];
     }

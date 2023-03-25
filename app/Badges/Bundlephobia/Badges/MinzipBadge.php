@@ -52,7 +52,7 @@ final class MinzipBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/bundlephobia/minzip/react'             => 'minified + gzip',
+            '/bundlephobia/minzip/react' => 'minified + gzip',
             '/bundlephobia/minzip/@material-ui/core' => '(scoped pkg) minified + gzip',
         ];
     }

@@ -13,15 +13,15 @@ final class CoverageBadge extends AbstractBadge
     public function handle(string $format): array
     {
         $response = Http::get($this->getRequestData('job').'/lastCompletedBuild/api/json', match ($format) {
-            'api'       => ['tree' => 'results[elements[name,ratio]]'],
+            'api' => ['tree' => 'results[elements[name,ratio]]'],
             'cobertura' => ['tree' => 'results[elements[name,ratio]]'],
-            'jacoco'    => ['tree' => 'instructionCoverage[shortDescription]'],
+            'jacoco' => ['tree' => 'instructionCoverage[shortDescription]'],
         })->throw()->json();
 
         return [
             'percentage' => match ($format) {
                 'jacoco' => $response['instructionCoverage']['percentage'],
-                default  => collect($response['results']['elements'])->firstWhere('name', 'Lines')['ratio']
+                default => collect($response['results']['elements'])->firstWhere('name', 'Lines')['ratio'],
             },
         ];
     }
@@ -68,9 +68,9 @@ final class CoverageBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/jenkins/coverage/api?job=https://jenkins.sqlalchemy.org/job/alembic_coverage'       => 'coverage',
+            '/jenkins/coverage/api?job=https://jenkins.sqlalchemy.org/job/alembic_coverage' => 'coverage',
             '/jenkins/coverage/cobertura?job=https://jenkins.sqlalchemy.org/job/alembic_coverage' => 'coverage',
-            '/jenkins/coverage/jacoco?job=https://jenkins.sqlalchemy.org/job/alembic_coverage'    => 'coverage',
+            '/jenkins/coverage/jacoco?job=https://jenkins.sqlalchemy.org/job/alembic_coverage' => 'coverage',
         ];
     }
 }

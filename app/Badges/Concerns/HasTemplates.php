@@ -35,8 +35,8 @@ trait HasTemplates
         }
 
         return [
-            'label'        => $label,
-            'message'      => $carbon->toDateString(),
+            'label' => $label,
+            'message' => $carbon->toDateString(),
             'messageColor' => 'green.600',
         ];
     }
@@ -50,8 +50,8 @@ trait HasTemplates
         }
 
         return [
-            'label'        => $label,
-            'message'      => $carbon->toDateTimeString(),
+            'label' => $label,
+            'message' => $carbon->toDateTimeString(),
             'messageColor' => 'green.600',
         ];
     }
@@ -65,8 +65,8 @@ trait HasTemplates
         }
 
         return [
-            'label'        => $label,
-            'message'      => $carbon->diffForHumans(),
+            'label' => $label,
+            'message' => $carbon->diffForHumans(),
             'messageColor' => DetermineColorByAge::execute($carbon->diffInDays()),
         ];
     }
@@ -74,8 +74,8 @@ trait HasTemplates
     protected function renderDownloadsPerWindows(int $count): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($count).'/windows',
+            'label' => 'downloads',
+            'message' => FormatNumber::execute($count).'/windows',
             'messageColor' => 'green.600',
         ];
     }
@@ -83,8 +83,8 @@ trait HasTemplates
     protected function renderDownloadsPerMac(int $count): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($count).'/mac',
+            'label' => 'downloads',
+            'message' => FormatNumber::execute($count).'/mac',
             'messageColor' => 'green.600',
         ];
     }
@@ -92,8 +92,8 @@ trait HasTemplates
     protected function renderDownloadsPerLinux(int $count): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($count).'/linux',
+            'label' => 'downloads',
+            'message' => FormatNumber::execute($count).'/linux',
             'messageColor' => 'green.600',
         ];
     }
@@ -101,8 +101,8 @@ trait HasTemplates
     protected function renderDownloadsPerDay(int $count): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($count).'/day',
+            'label' => 'downloads',
+            'message' => FormatNumber::execute($count).'/day',
             'messageColor' => 'green.600',
         ];
     }
@@ -110,8 +110,8 @@ trait HasTemplates
     protected function renderDownloadsPerMonth(int $count): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($count).'/month',
+            'label' => 'downloads',
+            'message' => FormatNumber::execute($count).'/month',
             'messageColor' => 'green.600',
         ];
     }
@@ -119,8 +119,8 @@ trait HasTemplates
     protected function renderDownloadsPerQuarter(int $count): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($count).'/quarter',
+            'label' => 'downloads',
+            'message' => FormatNumber::execute($count).'/quarter',
             'messageColor' => 'green.600',
         ];
     }
@@ -128,8 +128,8 @@ trait HasTemplates
     protected function renderDownloadsPerWeek(int $count): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($count).'/week',
+            'label' => 'downloads',
+            'message' => FormatNumber::execute($count).'/week',
             'messageColor' => 'green.600',
         ];
     }
@@ -137,8 +137,8 @@ trait HasTemplates
     protected function renderDownloadsPerYear(int $count): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($count).'/year',
+            'label' => 'downloads',
+            'message' => FormatNumber::execute($count).'/year',
             'messageColor' => 'green.600',
         ];
     }
@@ -146,8 +146,8 @@ trait HasTemplates
     protected function renderDownloads(mixed $count): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute((float) $count),
+            'label' => 'downloads',
+            'message' => FormatNumber::execute((float) $count),
             'messageColor' => 'green.600',
         ];
     }
@@ -155,8 +155,8 @@ trait HasTemplates
     protected function renderInstallationsPerWindows(int $count): array
     {
         return [
-            'label'        => 'installations',
-            'message'      => FormatNumber::execute($count).'/windows',
+            'label' => 'installations',
+            'message' => FormatNumber::execute($count).'/windows',
             'messageColor' => 'green.600',
         ];
     }
@@ -164,8 +164,8 @@ trait HasTemplates
     protected function renderInstallationsPerMac(int $count): array
     {
         return [
-            'label'        => 'installations',
-            'message'      => FormatNumber::execute($count).'/mac',
+            'label' => 'installations',
+            'message' => FormatNumber::execute($count).'/mac',
             'messageColor' => 'green.600',
         ];
     }
@@ -173,8 +173,8 @@ trait HasTemplates
     protected function renderInstallationsPerLinux(int $count): array
     {
         return [
-            'label'        => 'installations',
-            'message'      => FormatNumber::execute($count).'/linux',
+            'label' => 'installations',
+            'message' => FormatNumber::execute($count).'/linux',
             'messageColor' => 'green.600',
         ];
     }
@@ -182,8 +182,8 @@ trait HasTemplates
     protected function renderInstallationsPerDay(int $count): array
     {
         return [
-            'label'        => 'installations',
-            'message'      => FormatNumber::execute($count).'/day',
+            'label' => 'installations',
+            'message' => FormatNumber::execute($count).'/day',
             'messageColor' => 'green.600',
         ];
     }
@@ -191,8 +191,8 @@ trait HasTemplates
     protected function renderInstallationsPerMonth(int $count): array
     {
         return [
-            'label'        => 'installations',
-            'message'      => FormatNumber::execute($count).'/month',
+            'label' => 'installations',
+            'message' => FormatNumber::execute($count).'/month',
             'messageColor' => 'green.600',
         ];
     }
@@ -200,8 +200,8 @@ trait HasTemplates
     protected function renderInstallationsPerQuarter(int $count): array
     {
         return [
-            'label'        => 'installations',
-            'message'      => FormatNumber::execute($count).'/quarter',
+            'label' => 'installations',
+            'message' => FormatNumber::execute($count).'/quarter',
             'messageColor' => 'green.600',
         ];
     }
@@ -209,8 +209,8 @@ trait HasTemplates
     protected function renderInstallationsPerWeek(int $count): array
     {
         return [
-            'label'        => 'installations',
-            'message'      => FormatNumber::execute($count).'/week',
+            'label' => 'installations',
+            'message' => FormatNumber::execute($count).'/week',
             'messageColor' => 'green.600',
         ];
     }
@@ -218,8 +218,8 @@ trait HasTemplates
     protected function renderInstallationsPerYear(int $count): array
     {
         return [
-            'label'        => 'installations',
-            'message'      => FormatNumber::execute($count).'/year',
+            'label' => 'installations',
+            'message' => FormatNumber::execute($count).'/year',
             'messageColor' => 'green.600',
         ];
     }
@@ -227,8 +227,8 @@ trait HasTemplates
     protected function renderInstallations(mixed $count): array
     {
         return [
-            'label'        => 'installations',
-            'message'      => FormatNumber::execute((float) $count),
+            'label' => 'installations',
+            'message' => FormatNumber::execute((float) $count),
             'messageColor' => 'green.600',
         ];
     }
@@ -236,8 +236,8 @@ trait HasTemplates
     protected function renderGrade(string $label, mixed $value, ?string $grade = null): array
     {
         return [
-            'label'        => $label,
-            'message'      => is_numeric($value) ? FormatPercentage::execute($value) : $value,
+            'label' => $label,
+            'message' => \is_numeric($value) ? FormatPercentage::execute($value) : $value,
             'messageColor' => DetermineColorByGrade::execute($grade ?? $value),
         ];
     }
@@ -245,8 +245,8 @@ trait HasTemplates
     protected function renderLicense(mixed $license): array
     {
         return [
-            'label'        => 'license',
-            'message'      => DetermineLicense::execute($license),
+            'label' => 'license',
+            'message' => DetermineLicense::execute($license),
             'messageColor' => 'blue.600',
         ];
     }
@@ -254,8 +254,8 @@ trait HasTemplates
     protected function renderLines(int $count): array
     {
         return [
-            'label'        => 'lines of code',
-            'message'      => FormatNumber::execute($count),
+            'label' => 'lines of code',
+            'message' => FormatNumber::execute($count),
             'messageColor' => 'blue.600',
         ];
     }
@@ -263,8 +263,8 @@ trait HasTemplates
     protected function renderMoney(string $label, mixed $value, string $currency): array
     {
         return [
-            'label'        => $label,
-            'message'      => FormatMoney::execute((float) $value, $currency),
+            'label' => $label,
+            'message' => FormatMoney::execute((float) $value, $currency),
             'messageColor' => 'green.600',
         ];
     }
@@ -272,8 +272,8 @@ trait HasTemplates
     protected function renderNumber(string $label, mixed $value): array
     {
         return [
-            'label'        => $label,
-            'message'      => FormatNumber::execute((float) $value),
+            'label' => $label,
+            'message' => FormatNumber::execute((float) $value),
             'messageColor' => 'green.600',
         ];
     }
@@ -281,8 +281,8 @@ trait HasTemplates
     protected function renderRating(mixed $value): array
     {
         return [
-            'label'        => 'rating',
-            'message'      => FormatNumber::execute((float) $value),
+            'label' => 'rating',
+            'message' => FormatNumber::execute((float) $value),
             'messageColor' => 'green.600',
         ];
     }
@@ -290,8 +290,8 @@ trait HasTemplates
     protected function renderStars(string $label, mixed $value): array
     {
         return [
-            'label'        => $label,
-            'message'      => FormatStars::execute($value),
+            'label' => $label,
+            'message' => FormatStars::execute($value),
             'messageColor' => 'green.600',
         ];
     }
@@ -299,8 +299,8 @@ trait HasTemplates
     protected function renderPercentage(string $label, mixed $percentage): array
     {
         return [
-            'label'        => $label,
-            'message'      => FormatPercentage::execute($percentage ?? 0),
+            'label' => $label,
+            'message' => FormatPercentage::execute($percentage ?? 0),
             'messageColor' => DetermineColorByPercentage::execute($percentage),
         ];
     }
@@ -308,8 +308,8 @@ trait HasTemplates
     protected function renderSize(int $count, ?string $label = null): array
     {
         return [
-            'label'        => $label ?? 'size',
-            'message'      => FormatBytes::execute($count),
+            'label' => $label ?? 'size',
+            'message' => FormatBytes::execute($count),
             'messageColor' => 'blue.600',
         ];
     }
@@ -317,8 +317,8 @@ trait HasTemplates
     protected function renderStatus(string $service, string $status): array
     {
         return [
-            'label'        => strtolower($service),
-            'message'      => strtolower($status),
+            'label' => \mb_strtolower($service),
+            'message' => \mb_strtolower($status),
             'messageColor' => DetermineColorByStatus::execute($status),
         ];
     }
@@ -326,8 +326,8 @@ trait HasTemplates
     protected function renderText(string $label, mixed $message, string $messageColor = 'blue.600'): array
     {
         return [
-            'label'        => $label,
-            'message'      => (string) $message,
+            'label' => $label,
+            'message' => (string) $message,
             'messageColor' => $messageColor,
         ];
     }
@@ -335,8 +335,8 @@ trait HasTemplates
     protected function renderVersion(string $version, ?string $label = null): array
     {
         return [
-            'label'        => $label ?? $this->service(),
-            'message'      => ExtractVersion::execute($version),
+            'label' => $label ?? $this->service(),
+            'message' => ExtractVersion::execute($version),
             'messageColor' => DetermineColorByVersion::execute($version),
         ];
     }

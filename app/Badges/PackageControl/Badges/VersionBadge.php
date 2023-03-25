@@ -53,7 +53,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/f-droid/org.schabi.newpipe/version'    => 'version',
+            '/f-droid/org.schabi.newpipe/version' => 'version',
             '/f-droid/com.amaze.filemanager/version' => 'version',
         ];
     }

@@ -16,21 +16,21 @@ final class GradeBadge extends AbstractBadge
 
         return [
             'language' => $this->languages[$response['lines']] ?? $language,
-            'grade'    => $response['grade'],
+            'grade' => $response['grade'],
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => 'code quality: '.$properties['language'],
-            'message'      => $properties['grade'],
+            'label' => 'code quality: '.$properties['language'],
+            'message' => $properties['grade'],
             'messageColor' => [
                 'A+' => 'green.600',
-                'A'  => '9C0',
-                'B'  => 'A4A61D',
-                'C'  => 'yellow.600',
-                'D'  => 'orange.600',
+                'A' => '9C0',
+                'B' => 'A4A61D',
+                'C' => 'yellow.600',
+                'D' => 'orange.600',
             ][$properties['grade']],
         ];
     }
@@ -66,11 +66,11 @@ final class GradeBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/lgtm/grade/github/apache/cloudstack/java'              => 'grade (java)',
-            '/lgtm/grade/github/apache/cloudstack'                   => 'grade (auto)',
-            '/lgtm/grade/github/systemd/systemd'                     => 'grade (auto)',
+            '/lgtm/grade/github/apache/cloudstack/java' => 'grade (java)',
+            '/lgtm/grade/github/apache/cloudstack' => 'grade (auto)',
+            '/lgtm/grade/github/systemd/systemd' => 'grade (auto)',
             '/lgtm/grade/bitbucket/wegtam/bitbucket-youtrack-broker' => 'grade (auto)',
-            '/lgtm/grade/gitlab/nekokatt/hikari'                     => 'grade (auto)',
+            '/lgtm/grade/gitlab/nekokatt/hikari' => 'grade (auto)',
         ];
     }
 

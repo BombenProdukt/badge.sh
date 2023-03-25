@@ -52,7 +52,7 @@ final class StatusBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/readthedocs/status/pip'        => 'status',
+            '/readthedocs/status/pip' => 'status',
             '/readthedocs/status/pip/stable' => 'status',
         ];
     }

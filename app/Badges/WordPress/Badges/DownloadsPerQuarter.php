@@ -44,7 +44,7 @@ final class DownloadsPerQuarter extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/downloads-quarterly/bbpress'        => 'quarterly downloads (plugin)',
+            '/wordpress/plugin/downloads-quarterly/bbpress' => 'quarterly downloads (plugin)',
             '/wordpress/theme/downloads-quarterly/twentyseventeen' => 'quarterly downloads (theme)',
         ];
     }

@@ -14,7 +14,7 @@ final class CoverageBadge extends AbstractBadge
     {
         $response = $this->client->get($vcs, $repo, $branch);
 
-        preg_match('/_(\d+)\.svg/', $response, $matches);
+        \preg_match('/_(\d+)\.svg/', $response, $matches);
 
         return [
             'percentage' => $matches[1],
@@ -23,10 +23,10 @@ final class CoverageBadge extends AbstractBadge
 
     public function render(array $properties): array
     {
-        if (! is_numeric($properties['percentage'])) {
+        if (!\is_numeric($properties['percentage'])) {
             return [
-                'subject'      => 'coverage',
-                'message'      => 'invalid',
+                'subject' => 'coverage',
+                'message' => 'invalid',
                 'messageColor' => 'gray.600',
             ];
         }
@@ -65,9 +65,9 @@ final class CoverageBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/coveralls/coverage/github/jekyll/jekyll'           => 'coverage (github)',
-            '/coveralls/coverage/github/jekyll/jekyll/master'    => 'coverage (github, branch)',
-            '/coveralls/coverage/bitbucket/pyKLIP/pyklip'        => 'coverage (bitbucket)',
+            '/coveralls/coverage/github/jekyll/jekyll' => 'coverage (github)',
+            '/coveralls/coverage/github/jekyll/jekyll/master' => 'coverage (github, branch)',
+            '/coveralls/coverage/bitbucket/pyKLIP/pyklip' => 'coverage (bitbucket)',
             '/coveralls/coverage/bitbucket/pyKLIP/pyklip/master' => 'coverage (bitbucket, branch)',
         ];
     }

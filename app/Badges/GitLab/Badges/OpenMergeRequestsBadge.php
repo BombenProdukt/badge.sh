@@ -53,7 +53,6 @@ final class OpenMergeRequestsBadge extends AbstractBadge
     {
         return [
             '/gitlab/open-merge-requests/edouardklein/falsisign' => 'open MRs',
-
         ];
     }
 }

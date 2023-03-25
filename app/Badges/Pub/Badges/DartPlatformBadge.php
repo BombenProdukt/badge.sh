@@ -22,8 +22,8 @@ final class DartPlatformBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'dart',
-            'message'      => $properties['versions'] ? implode('|', $properties['versions']) : 'unknown',
+            'label' => 'dart',
+            'message' => $properties['versions'] ? \implode('|', $properties['versions']) : 'unknown',
             'messageColor' => $properties['versions'] ? 'blue.600' : 'gray.600',
         ];
     }
@@ -58,7 +58,7 @@ final class DartPlatformBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/pub/dart-platform/rxdart'         => 'dart-platform',
+            '/pub/dart-platform/rxdart' => 'dart-platform',
             '/pub/dart-platform/google_sign_in' => 'dart-platform',
         ];
     }
@@ -66,15 +66,16 @@ final class DartPlatformBadge extends AbstractBadge
     private function parseTags(array $tags, string $group): array
     {
         $types = [];
+
         foreach ($tags as $tag) {
-            if (! str_starts_with($tag, $group.':')) {
+            if (!\str_starts_with($tag, $group.':')) {
                 continue;
             }
-            [, $name] = explode(':', $tag);
-            [$type]   = explode('-', $name);
-            $types[]  = $type;
+            [, $name] = \explode(':', $tag);
+            [$type] = \explode('-', $name);
+            $types[] = $type;
         }
 
-        return array_values(array_unique($types));
+        return \array_values(\array_unique($types));
     }
 }

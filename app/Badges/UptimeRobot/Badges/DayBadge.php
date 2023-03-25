@@ -13,21 +13,21 @@ final class DayBadge extends AbstractBadge
     public function handle(string $apiKey): array
     {
         return [
-            'percentage' => explode('-', $this->client->get($apiKey, 1)['custom_uptime_ratio'])[0],
+            'percentage' => \explode('-', $this->client->get($apiKey, 1)['custom_uptime_ratio'])[0],
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => 'uptime /24h',
-            'message'      => FormatPercentage::execute($properties['percentage']),
+            'label' => 'uptime /24h',
+            'message' => FormatPercentage::execute($properties['percentage']),
             'messageColor' => match (true) {
                 $properties['percentage'] >= 99.9 => '9C1',
-                $properties['percentage'] >= 99   => 'EA2',
-                $properties['percentage'] >= 97   => 'orange.600',
-                $properties['percentage'] >= 94   => 'red.600',
-                default                           => 'green.600',
+                $properties['percentage'] >= 99 => 'EA2',
+                $properties['percentage'] >= 97 => 'orange.600',
+                $properties['percentage'] >= 94 => 'red.600',
+                default => 'green.600',
             },
         ];
     }

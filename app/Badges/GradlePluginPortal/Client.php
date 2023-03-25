@@ -19,7 +19,7 @@ final class Client
 
     public function get(string $pluginId): Crawler
     {
-        $groupPath  = str_replace('.', '/', $pluginId);
+        $groupPath = \str_replace('.', '/', $pluginId);
         $artifactId = "{$pluginId}.gradle.plugin";
 
         return new Crawler($this->client->get("m2/{$groupPath}/{$artifactId}/maven-metadata.xml")->body());

@@ -11,8 +11,8 @@ final class DownloadsBadge extends AbstractBadge
 {
     public function handle(string $extension): array
     {
-        $response    = $this->client->get($extension);
-        $install     = collect($response['statistics'])->firstWhere('statisticName', 'install')['value'];
+        $response = $this->client->get($extension);
+        $install = collect($response['statistics'])->firstWhere('statisticName', 'install')['value'];
         $updateCount = collect($response['statistics'])->firstWhere('statisticName', 'updateCount')['value'];
 
         return [

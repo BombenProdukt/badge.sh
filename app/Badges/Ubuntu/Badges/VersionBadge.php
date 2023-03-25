@@ -51,7 +51,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/ubuntu/version/ubuntu-wallpapers'        => 'version',
+            '/ubuntu/version/ubuntu-wallpapers' => 'version',
             '/ubuntu/version/ubuntu-wallpapers/bionic' => 'version',
         ];
     }

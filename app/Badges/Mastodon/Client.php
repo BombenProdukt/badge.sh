@@ -19,7 +19,7 @@ final class Client
     public function rss(string $instance, string $username): string
     {
         return Http::baseUrl("https://{$instance}/")
-            ->get("@$username.rss")
+            ->get("@{$username}.rss")
             ->throw()
             ->body();
     }

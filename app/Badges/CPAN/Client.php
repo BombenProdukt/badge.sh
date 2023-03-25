@@ -18,6 +18,6 @@ final class Client
 
     public function get(string $path, array $query = []): array
     {
-        return $this->client->get(str_replace('::', '-', $path), $query)->json();
+        return $this->client->get(\str_replace('::', '-', $path), $query)->json();
     }
 }

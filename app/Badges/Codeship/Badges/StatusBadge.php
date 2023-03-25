@@ -13,13 +13,13 @@ final class StatusBadge extends AbstractBadge
     {
         $response = $this->client->get($projectId, $branch);
 
-        if (str_contains($response, 'id="project not found"')) {
+        if (\str_contains($response, 'id="project not found"')) {
             return [
                 'status' => 'project not found',
             ];
         }
 
-        if (str_contains($response, 'id="passing"')) {
+        if (\str_contains($response, 'id="passing"')) {
             return [
                 'status' => 'passing',
             ];

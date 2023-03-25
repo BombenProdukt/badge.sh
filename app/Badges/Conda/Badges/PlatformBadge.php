@@ -18,7 +18,7 @@ final class PlatformBadge extends AbstractBadge
 
     public function render(array $properties): array
     {
-        return $this->renderText('platforms', implode(' | ', $properties['platforms']), 'blue.600');
+        return $this->renderText('platforms', \implode(' | ', $properties['platforms']), 'blue.600');
     }
 
     public function keywords(): array

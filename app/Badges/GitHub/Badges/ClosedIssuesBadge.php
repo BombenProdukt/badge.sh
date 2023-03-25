@@ -52,7 +52,6 @@ final class ClosedIssuesBadge extends AbstractBadge
     {
         return [
             '/github/closed-issues/micromatch/micromatch' => 'closed issues',
-
         ];
     }
 }

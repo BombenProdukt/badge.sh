@@ -23,14 +23,14 @@ final class TechDebtBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'technical debt',
-            'message'      => FormatNumber::execute($properties['ratio']),
+            'label' => 'technical debt',
+            'message' => FormatNumber::execute($properties['ratio']),
             'messageColor' => match (true) {
-                $properties['ratio'] <= 5  => 'green.600' ,
+                $properties['ratio'] <= 5 => 'green.600' ,
                 $properties['ratio'] <= 10 => '9C1' ,
                 $properties['ratio'] <= 20 => 'AA2' ,
                 $properties['ratio'] <= 50 => 'DC2' ,
-                default                    => 'orange.600',
+                default => 'orange.600',
             },
         ];
     }

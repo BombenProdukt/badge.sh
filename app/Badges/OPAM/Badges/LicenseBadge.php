@@ -11,7 +11,7 @@ final class LicenseBadge extends AbstractBadge
 {
     public function handle(string $name): array
     {
-        preg_match('/<th>license<\/th>\s*<td>([^<]+)<\//i', $this->client->get($name), $matches);
+        \preg_match('/<th>license<\/th>\s*<td>([^<]+)<\//i', $this->client->get($name), $matches);
 
         return [
             'license' => $matches[1],

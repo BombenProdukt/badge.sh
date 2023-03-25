@@ -52,9 +52,9 @@ final class LastCommitBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/last-commit/gitlab-org/gitlab-development-kit'                                  => 'last commit',
+            '/gitlab/last-commit/gitlab-org/gitlab-development-kit' => 'last commit',
             '/gitlab/last-commit/gitlab-org/gitlab-development-kit/updating-chromedriver-install-v2' => 'last commit (branch ref)',
-            '/gitlab/last-commit/gitlab-org/gitlab-development-kit/v0.2.5'                           => 'last commit (tag ref)',
+            '/gitlab/last-commit/gitlab-org/gitlab-development-kit/v0.2.5' => 'last commit (tag ref)',
         ];
     }
 }

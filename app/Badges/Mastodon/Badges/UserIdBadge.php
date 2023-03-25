@@ -17,15 +17,15 @@ final class UserIdBadge extends AbstractBadge
         return [
             'instance' => $instance,
             'username' => $response['username'],
-            'count'    => $response['followers_count'],
+            'count' => $response['followers_count'],
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => 'follow @'.$properties['username'].'@'.$properties['instance'],
-            'message'      => FormatNumber::execute($properties['count']),
+            'label' => 'follow @'.$properties['username'].'@'.$properties['instance'],
+            'message' => FormatNumber::execute($properties['count']),
             'messageColor' => '3487CE',
         ];
     }

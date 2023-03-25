@@ -14,14 +14,14 @@ final class PythonBadge extends AbstractBadge
         return [
             'versions' => collect($this->client->get($project)['info']['classifiers'])
                 ->map(function (string $classifier) {
-                    preg_match('/^Programming Language :: Python :: ([\d.]+)( :: Only)?$/i', $classifier, $matches);
+                    \preg_match('/^Programming Language :: Python :: ([\d.]+)( :: Only)?$/i', $classifier, $matches);
 
                     if (empty($matches)) {
                         return [];
                     }
 
                     return [
-                        'version'     => $matches[1],
+                        'version' => $matches[1],
                         'isExclusive' => isset($matches[2]),
                     ];
                 })
@@ -34,8 +34,8 @@ final class PythonBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'python',
-            'message'      => $properties['versions'],
+            'label' => 'python',
+            'message' => $properties['versions'],
             'messageColor' => 'blue.600',
         ];
     }

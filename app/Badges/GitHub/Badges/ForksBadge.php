@@ -52,7 +52,6 @@ final class ForksBadge extends AbstractBadge
     {
         return [
             '/github/forks/micromatch/micromatch' => 'forks',
-
         ];
     }
 }

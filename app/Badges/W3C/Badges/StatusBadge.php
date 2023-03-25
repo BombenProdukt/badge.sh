@@ -13,7 +13,7 @@ final class StatusBadge extends AbstractBadge
     {
         return [
             'count' => collect($this->client->get($this->getRequestData('url'))['messages'])
-                ->filter(fn ($message) => in_array($message['type'], ['error', 'warning']))
+                ->filter(fn ($message) => \in_array($message['type'], ['error', 'warning'], true))
                 ->count(),
         ];
     }

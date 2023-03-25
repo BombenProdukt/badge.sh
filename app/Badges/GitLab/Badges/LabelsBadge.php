@@ -12,8 +12,8 @@ final class LabelsBadge extends AbstractBadge
 {
     public function handle(string $repo, string $label, ?string $state = null): array
     {
-        $stateFilter = $state ? 'state:'.strtolower($state) : '';
-        $response    = $this->client->graphql($repo, "issues(labelName:\"{$label}\", {$stateFilter}) { count } label(title: \"{$label}\"){ color }");
+        $stateFilter = $state ? 'state:'.\mb_strtolower($state) : '';
+        $response = $this->client->graphql($repo, "issues(labelName:\"{$label}\", {$stateFilter}) { count } label(title: \"{$label}\"){ color }");
 
         return [
             'label' => $label,
@@ -56,8 +56,8 @@ final class LabelsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/issues-by-label/NickBusey/HomelabOS/Bug'                  => 'issues by label',
-            '/gitlab/issues-by-label/NickBusey/HomelabOS/Enhancement/opened'   => 'open issues by label',
+            '/gitlab/issues-by-label/NickBusey/HomelabOS/Bug' => 'issues by label',
+            '/gitlab/issues-by-label/NickBusey/HomelabOS/Enhancement/opened' => 'open issues by label',
             '/gitlab/issues-by-label/NickBusey/HomelabOS/Help%20wanted/closed' => 'closed issues by label',
         ];
     }

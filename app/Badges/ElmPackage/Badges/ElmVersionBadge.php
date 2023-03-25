@@ -11,15 +11,15 @@ final class ElmVersionBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        $parts = preg_split('/\s+/', $this->client->get($project)['elm-version']);
-        $parts = array_filter($parts, fn ($it) => $it !== 'v');
+        $parts = \preg_split('/\s+/', $this->client->get($project)['elm-version']);
+        $parts = \array_filter($parts, fn ($it) => $it !== 'v');
 
-        if (count($parts) === 1) {
+        if (\count($parts) === 1) {
             return $parts[0];
         }
 
-        [$lower, $lowerOp, $upperOp, $upper] = array_values($parts);
-        $lowerOp                             = preg_replace('/^</', '>', $lowerOp);
+        [$lower, $lowerOp, $upperOp, $upper] = \array_values($parts);
+        $lowerOp = \preg_replace('/^</', '>', $lowerOp);
 
         return [
             'version' => "{$lowerOp}{$lower} {$upperOp}{$upper}",

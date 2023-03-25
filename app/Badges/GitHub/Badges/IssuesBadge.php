@@ -52,7 +52,6 @@ final class IssuesBadge extends AbstractBadge
     {
         return [
             '/github/issues/micromatch/micromatch' => 'issues',
-
         ];
     }
 }

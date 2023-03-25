@@ -14,6 +14,6 @@ final class Client
 {
     public function get(string $user, string $repo)
     {
-        return json_decode(base64_decode(GitHub::repos()->contents()->show($user, $repo, '.nycrc')['content']), true, JSON_THROW_ON_ERROR);
+        return \json_decode(\base64_decode(GitHub::repos()->contents()->show($user, $repo, '.nycrc')['content'], true), true, \JSON_THROW_ON_ERROR);
     }
 }

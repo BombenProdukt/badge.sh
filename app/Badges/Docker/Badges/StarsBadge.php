@@ -52,7 +52,7 @@ final class StarsBadge extends AbstractBadge
     {
         return [
             '/docker/stars/library/ubuntu' => 'stars (library)',
-            '/docker/stars/library/mongo'  => 'stars (icon & label)',
+            '/docker/stars/library/mongo' => 'stars (icon & label)',
         ];
     }
 }

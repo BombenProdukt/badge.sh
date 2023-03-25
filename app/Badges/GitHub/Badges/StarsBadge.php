@@ -52,7 +52,6 @@ final class StarsBadge extends AbstractBadge
     {
         return [
             '/github/stars/micromatch/micromatch' => 'stars',
-
         ];
     }
 }

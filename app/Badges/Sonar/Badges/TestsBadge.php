@@ -38,7 +38,7 @@ final class TestsBadge extends AbstractBadge
     public function routeRules(): array
     {
         return [
-            'instance'     => ['required', 'url'],
+            'instance' => ['required', 'url'],
             'sonarVersion' => ['required', 'numeric'],
         ];
     }
@@ -68,12 +68,12 @@ final class TestsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/sonar/skipped_tests/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'        => 'complexity',
-            '/sonar/test_errors/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'          => 'complexity',
-            '/sonar/test_execution_time/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'  => 'complexity',
-            '/sonar/test_failures/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'        => 'complexity',
+            '/sonar/skipped_tests/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
+            '/sonar/test_errors/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
+            '/sonar/test_execution_time/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
+            '/sonar/test_failures/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
             '/sonar/test_success_density/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
-            '/sonar/total_tests/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'          => 'complexity',
+            '/sonar/total_tests/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
         ];
     }
 }

@@ -18,9 +18,9 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'circleci',
-            'message'      => str_replace('_', ' ', $properties['status']),
-            'messageColor' => ['failed'  => 'red.600', 'success' => 'green.600'][$properties['status']] ?? 'gray.600',
+            'label' => 'circleci',
+            'message' => \str_replace('_', ' ', $properties['status']),
+            'messageColor' => ['failed' => 'red.600', 'success' => 'green.600'][$properties['status']] ?? 'gray.600',
         ];
     }
 
@@ -55,7 +55,7 @@ final class StatusBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/circleci/status/github/circleci/ex'      => 'build',
+            '/circleci/status/github/circleci/ex' => 'build',
             '/circleci/status/github/circleci/ex/main' => 'build (branch)',
         ];
     }

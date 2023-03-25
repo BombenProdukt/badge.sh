@@ -16,10 +16,10 @@ final class StatusBadge extends AbstractBadge
         $org = $this->client->org($project, $branch);
         $com = $this->client->com($project, $branch);
 
-        $result = $this->availableStates()->firstWhere(fn (array $state) => str_contains($org, $state[0]) || str_contains($com, $state[0]));
+        $result = $this->availableStates()->firstWhere(fn (array $state) => \str_contains($org, $state[0]) || \str_contains($com, $state[0]));
 
         return [
-            'status'      => $result[0],
+            'status' => $result[0],
             'statusColor' => $result[1],
         ];
     }
@@ -59,7 +59,7 @@ final class StatusBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/travis/status/babel/babel'     => 'build',
+            '/travis/status/babel/babel' => 'build',
             '/travis/status/babel/babel/6.x' => 'build (branch)',
         ];
     }

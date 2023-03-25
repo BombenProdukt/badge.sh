@@ -20,8 +20,8 @@ final class LatestVersionDownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($properties['downloads']).' /version',
+            'label' => 'downloads',
+            'message' => FormatNumber::execute($properties['downloads']).' /version',
             'messageColor' => 'green.600',
         ];
     }

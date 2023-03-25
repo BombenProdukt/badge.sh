@@ -49,7 +49,7 @@ final class VersionFromBucketBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/scoop/version/extras/age'        => 'version',
+            '/scoop/version/extras/age' => 'version',
             '/scoop/version/extras/codeblocks' => 'version',
         ];
     }

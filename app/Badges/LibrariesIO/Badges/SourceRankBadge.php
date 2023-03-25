@@ -50,7 +50,7 @@ final class SourceRankBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/libraries-io/sourcerank/npm/got'         => 'sourcerank',
+            '/libraries-io/sourcerank/npm/got' => 'sourcerank',
             '/libraries-io/sourcerank/npm/@babel/core' => 'sourcerank (scoped)',
         ];
     }

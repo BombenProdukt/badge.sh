@@ -14,15 +14,15 @@ final class PostKarmaBadge extends AbstractBadge
     {
         return [
             'username' => $user,
-            'karma'    => $this->client->get("user/{$user}/about.json")['link_karma'],
+            'karma' => $this->client->get("user/{$user}/about.json")['link_karma'],
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => 'u/'.$properties['username'],
-            'message'      => FormatNumber::execute($properties['karma']).' post karma',
+            'label' => 'u/'.$properties['username'],
+            'message' => FormatNumber::execute($properties['karma']).' post karma',
             'messageColor' => 'ff4500',
         ];
     }

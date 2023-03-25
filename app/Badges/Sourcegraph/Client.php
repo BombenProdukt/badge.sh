@@ -18,6 +18,6 @@ final class Client
 
     public function dependents(string $repo): string
     {
-        return trim($this->client->get("repos/{$repo}/-/shield")->json('value'));
+        return \trim($this->client->get("repos/{$repo}/-/shield")->json('value'));
     }
 }

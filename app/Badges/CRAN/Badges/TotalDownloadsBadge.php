@@ -12,7 +12,7 @@ final class TotalDownloadsBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        $genesis = explode('T', Carbon::createFromTimestamp(0)->toISOString())[0];
+        $genesis = \explode('T', Carbon::createFromTimestamp(0)->toISOString())[0];
 
         return $this->client->logs("downloads/total/{$genesis}:last-day/{$package}")[0];
     }

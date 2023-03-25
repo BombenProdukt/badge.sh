@@ -19,8 +19,8 @@ final class ArchitectureBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'architecture',
-            'message'      => implode(' | ', $properties['architectures']),
+            'label' => 'architecture',
+            'message' => \implode(' | ', $properties['architectures']),
             'messageColor' => 'blue.600',
         ];
     }

@@ -15,7 +15,7 @@ final class UrlWithProtocolBadge extends AbstractBadge
     {
         $response = Http::get("{$protocol}://{$hostname}/{$pathname}")->throw()->body();
 
-        preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
+        \preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
 
         return [
             'version' => $matches[1],

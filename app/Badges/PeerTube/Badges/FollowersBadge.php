@@ -32,8 +32,8 @@ final class FollowersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'followers',
-            'message'      => FormatNumber::execute($properties['count']),
+            'label' => 'followers',
+            'message' => FormatNumber::execute($properties['count']),
             'messageColor' => 'F1680D',
         ];
     }
@@ -68,7 +68,7 @@ final class FollowersBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/peertube/followers/framatube.org/framasoft'                 => 'followers (account)',
+            '/peertube/followers/framatube.org/framasoft' => 'followers (account)',
             '/peertube/followers/framatube.org/framasoft/framablog.audio' => 'followers (channel)',
         ];
     }

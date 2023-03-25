@@ -18,8 +18,8 @@ final class RankBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'jsDelivr rank',
-            'message'      => $properties['rank'] ? '#'.$properties['rank'] : 'none',
+            'label' => 'jsDelivr rank',
+            'message' => $properties['rank'] ? '#'.$properties['rank'] : 'none',
             'messageColor' => $properties['rank'] ? 'blue.600' : 'gray.600',
         ];
     }

@@ -15,20 +15,20 @@ final class DetermineLicense
             return 'unknown';
         }
 
-        if (is_array($value)) {
+        if (\is_array($value)) {
             $value = $value[0];
         }
 
-        $value      = trim(strip_tags($value));
-        $licenseIds = collect(json_decode(file_get_contents(resource_path('licenses.json')), true, JSON_THROW_ON_ERROR)['licenses'])
+        $value = \trim(\strip_tags($value));
+        $licenseIds = collect(\json_decode(\file_get_contents(resource_path('licenses.json')), true, \JSON_THROW_ON_ERROR)['licenses'])
             ->pluck('licenseId')
-            ->sortByDesc(fn (string $licenseId) => strlen($licenseId));
+            ->sortByDesc(fn (string $licenseId) => \mb_strlen($licenseId));
 
         if ($licenseIds->contains($value)) {
             return $value;
         }
 
-        $expression = Regex::matchAll('/'.$licenseIds->map(fn (string $licenseId) => preg_quote($licenseId))->implode('|').'/i', $value);
+        $expression = Regex::matchAll('/'.$licenseIds->map(fn (string $licenseId) => \preg_quote($licenseId))->implode('|').'/i', $value);
 
         if ($expression->hasMatch()) {
             return collect($expression->results())

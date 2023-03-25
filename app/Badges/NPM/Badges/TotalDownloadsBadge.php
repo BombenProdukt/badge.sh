@@ -13,7 +13,7 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function handle(string $package, string $tag = 'latest'): array
     {
         return [
-            'downloads' => collect($this->client->api('downloads/range/2005-01-01:'.date('Y')."-01-01/{$package}")['downloads'])->sum('downloads'),
+            'downloads' => collect($this->client->api('downloads/range/2005-01-01:'.\date('Y')."-01-01/{$package}")['downloads'])->sum('downloads'),
         ];
     }
 

@@ -20,7 +20,7 @@ final class MetadataBadge extends AbstractBadge
         $response = $this->client->config($scope, $name, $tag, $architecture, $variant);
 
         return [
-            'type'     => $type,
+            'type' => $type,
             'metadata' => $response['container_config']['Labels']["org.label-schema.{$type}"] ?? $response['container_config']['Labels']["org.opencontainers.image.{$type}"],
         ];
     }
@@ -28,8 +28,8 @@ final class MetadataBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['type'],
-            'message'      => $properties['metadata'],
+            'label' => $properties['type'],
+            'message' => $properties['metadata'],
             'messageColor' => 'blue.600',
         ];
     }
@@ -64,10 +64,10 @@ final class MetadataBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/docker/metadata/lucashalbert/curl/version/latest/arm64/v8'      => 'metadata (version)',
+            '/docker/metadata/lucashalbert/curl/version/latest/arm64/v8' => 'metadata (version)',
             '/docker/metadata/lucashalbert/curl/architecture/latest/arm64/v8' => 'metadata (architecture)',
-            '/docker/metadata/lucashalbert/curl/build-date/latest/arm64/v8'   => 'metadata (build-date)',
-            '/docker/metadata/lucashalbert/curl/maintainer/latest/arm64/v8'   => 'metadata (maintainer)',
+            '/docker/metadata/lucashalbert/curl/build-date/latest/arm64/v8' => 'metadata (build-date)',
+            '/docker/metadata/lucashalbert/curl/maintainer/latest/arm64/v8' => 'metadata (maintainer)',
         ];
     }
 }

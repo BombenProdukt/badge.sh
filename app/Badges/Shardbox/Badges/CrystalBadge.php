@@ -11,7 +11,7 @@ final class CrystalBadge extends AbstractBadge
 {
     public function handle(string $shard): array
     {
-        preg_match('/Crystal<\\/span>\\s*<span[^>]*?>([^<]+)<\\//i', $this->client->get($shard), $matches);
+        \preg_match('/Crystal<\\/span>\\s*<span[^>]*?>([^<]+)<\\//i', $this->client->get($shard), $matches);
 
         return [
             'version' => $matches[1],
@@ -21,8 +21,8 @@ final class CrystalBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'crystal',
-            'message'      => html_entity_decode($properties['version']),
+            'label' => 'crystal',
+            'message' => \html_entity_decode($properties['version']),
             'messageColor' => 'green.600',
         ];
     }

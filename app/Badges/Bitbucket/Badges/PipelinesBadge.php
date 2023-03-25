@@ -15,7 +15,7 @@ final class PipelinesBadge extends AbstractBadge
         $values = collect($this->client->pipelines($user, $repo, $branch))
             ->filter(fn (array $value) => $value['state']['name'] === 'COMPLETED');
 
-        if (count($values) > 0) {
+        if (\count($values) > 0) {
             return [
                 'status' => $values[0]['state']['result']['name'],
             ];

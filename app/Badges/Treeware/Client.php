@@ -18,6 +18,6 @@ final class Client
 
     public function get(string $owner, string $packageName): array
     {
-        return $this->client->get('users/treeware/trees', ['ref' => md5("{$owner}/{$packageName}")])->json();
+        return $this->client->get('users/treeware/trees', ['ref' => \md5("{$owner}/{$packageName}")])->json();
     }
 }

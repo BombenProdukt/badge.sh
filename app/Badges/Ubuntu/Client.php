@@ -20,11 +20,11 @@ final class Client
     {
         return $this->client->get('+archive/primary', [
             'distro_series' => $series ? "`https://api.launchpad.net/1.0/ubuntu/{$series}" : null,
-            'exact_match'   => 'true',
+            'exact_match' => 'true',
             'order_by_date' => 'true',
-            'source_name'   => $packageName,
-            'status'        => 'Published',
-            'ws.op'         => 'getPublishedSources',
+            'source_name' => $packageName,
+            'status' => 'Published',
+            'ws.op' => 'getPublishedSources',
         ])->json('entries.0.source_package_version');
     }
 }

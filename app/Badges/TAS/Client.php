@@ -20,8 +20,8 @@ final class Client
     {
         return $this->client->get('repo/badge', [
             'git_provider' => $provider,
-            'org'          => $org,
-            'repo'         => $repo,
+            'org' => $org,
+            'repo' => $repo,
         ])->json('badge');
     }
 }

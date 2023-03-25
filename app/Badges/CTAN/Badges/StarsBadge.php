@@ -11,7 +11,7 @@ final class StarsBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        preg_match('/<span>[^<]*?([\d.]+)\s/i', $this->client->web($package), $matches);
+        \preg_match('/<span>[^<]*?([\d.]+)\s/i', $this->client->web($package), $matches);
 
         return [
             'stars' => $matches[1],

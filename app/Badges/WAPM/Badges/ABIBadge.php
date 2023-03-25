@@ -20,8 +20,8 @@ final class ABIBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'abi',
-            'message'      => implode(' | ', $properties['abis']),
+            'label' => 'abi',
+            'message' => \implode(' | ', $properties['abis']),
             'messageColor' => $properties['abis'] ? 'blue.600' : 'green.600',
         ];
     }
@@ -57,7 +57,7 @@ final class ABIBadge extends AbstractBadge
     {
         return [
             '/wapm/abi/jwmerrill/lox-repl' => 'abi',
-            '/wapm/abi/kherrick/pwgen'     => 'abi',
+            '/wapm/abi/kherrick/pwgen' => 'abi',
         ];
     }
 }

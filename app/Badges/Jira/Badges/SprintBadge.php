@@ -11,8 +11,8 @@ final class SprintBadge extends AbstractBadge
 {
     public function handle(string $sprint): array
     {
-        $response           = $this->client->sprint($this->getRequestData('instance'), $sprint);
-        $numTotalIssues     = $response['total'];
+        $response = $this->client->sprint($this->getRequestData('instance'), $sprint);
+        $numTotalIssues = $response['total'];
         $numCompletedIssues = collect($response['issues'])->filter(fn ($issue) => $issue['fields']['resolution']['name'] !== 'Unresolved')->count();
 
         return [

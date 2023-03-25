@@ -10,7 +10,7 @@ trait HandlesVersions
 {
     protected function getVersion(array $packageMeta, ?string $channel): string
     {
-        $versions = collect(array_keys($packageMeta['versions']));
+        $versions = collect(\array_keys($packageMeta['versions']));
 
         if ($versions->contains($channel)) {
             return $channel;
@@ -21,10 +21,14 @@ trait HandlesVersions
         switch ($channel) {
             case 'latest':
                 $version = $this->latest($this->noDev($versions));
+
                 break;
+
             case 'pre':
                 $version = $this->latest($this->pre($versions));
+
                 break;
+
             default:
                 $version = $this->latest($this->stable($versions));
         }
@@ -35,18 +39,18 @@ trait HandlesVersions
     protected function pre(Collection $versions): Collection
     {
         return $versions
-            ->filter(fn (string $version) => str_contains($version, '-'))
-            ->filter(fn (string $version) => str_contains($version, 'dev'));
+            ->filter(fn (string $version) => \str_contains($version, '-'))
+            ->filter(fn (string $version) => \str_contains($version, 'dev'));
     }
 
     protected function stable(Collection $versions): Collection
     {
-        return $versions->reject(fn (string $version) => str_contains($version, '-'));
+        return $versions->reject(fn (string $version) => \str_contains($version, '-'));
     }
 
     protected function noDev(Collection $versions): Collection
     {
-        return $versions->reject(fn (string $version) => str_contains($version, 'dev'));
+        return $versions->reject(fn (string $version) => \str_contains($version, 'dev'));
     }
 
     protected function latest(Collection $versions): string

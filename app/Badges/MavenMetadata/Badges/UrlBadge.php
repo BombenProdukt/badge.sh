@@ -15,7 +15,7 @@ final class UrlBadge extends AbstractBadge
     {
         $response = Http::get("https://{$hostname}/{$pathname}")->throw()->body();
 
-        preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
+        \preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
 
         return [
             'version' => $matches[1],

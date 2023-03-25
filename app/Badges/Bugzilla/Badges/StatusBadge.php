@@ -14,8 +14,8 @@ final class StatusBadge extends AbstractBadge
         $response = $this->client->get($bug);
 
         return [
-            'bug'    => $bug,
-            'status' => strtolower($response['status'] === 'RESOLVED' ? $response['resolution'] : $response['status']),
+            'bug' => $bug,
+            'status' => \mb_strtolower($response['status'] === 'RESOLVED' ? $response['resolution'] : $response['status']),
         ];
     }
 
@@ -25,21 +25,21 @@ final class StatusBadge extends AbstractBadge
             'bug '.$properties['bug'],
             match ($properties['status']) {
                 'worksforme' => 'works for me',
-                'wontfix'    => "won't fix",
-                default      => $properties['status'],
+                'wontfix' => "won't fix",
+                default => $properties['status'],
             },
             match ($properties['status']) {
                 'unconfirmed' => 'blue.600',
-                'new'         => 'blue.600',
-                'assigned'    => 'green.600',
-                'fixed'       => 'emerald.600',
-                'invalid'     => 'yellow.600',
-                'wontfix'     => 'orange.600',
-                'duplicate'   => 'slate.600',
-                'worksforme'  => 'lime.600',
-                'incomplete'  => 'red.600',
-                default       => 'gray.600',
-            }
+                'new' => 'blue.600',
+                'assigned' => 'green.600',
+                'fixed' => 'emerald.600',
+                'invalid' => 'yellow.600',
+                'wontfix' => 'orange.600',
+                'duplicate' => 'slate.600',
+                'worksforme' => 'lime.600',
+                'incomplete' => 'red.600',
+                default => 'gray.600',
+            },
         );
     }
 

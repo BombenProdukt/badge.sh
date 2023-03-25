@@ -15,7 +15,7 @@ trait BelongsToService
 
     public function title(): string
     {
-        return explode(' Badge', Str::title(Str::snake(class_basename($this), ' ')))[0];
+        return \explode(' Badge', Str::title(Str::snake(class_basename($this), ' ')))[0];
     }
 
     public function render(array $properties): array

@@ -14,7 +14,7 @@ final class DependentsBadge extends AbstractBadge
     {
         $response = $this->client->web("package/{$package}");
 
-        preg_match('/"dependentsCount"\s*:\s*(\d+)/', $response, $matches);
+        \preg_match('/"dependentsCount"\s*:\s*(\d+)/', $response, $matches);
 
         return [
             'count' => $matches[1],

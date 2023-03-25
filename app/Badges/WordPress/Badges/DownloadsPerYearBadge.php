@@ -46,7 +46,7 @@ final class DownloadsPerYearBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/downloads-yearly/bbpress'        => 'yearly downloads (plugin)',
+            '/wordpress/plugin/downloads-yearly/bbpress' => 'yearly downloads (plugin)',
             '/wordpress/theme/downloads-yearly/twentyseventeen' => 'yearly downloads (theme)',
         ];
     }

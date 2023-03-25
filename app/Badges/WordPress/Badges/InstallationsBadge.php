@@ -46,7 +46,7 @@ final class InstallationsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/installations/bbpress'        => 'active installations (plugin)',
+            '/wordpress/plugin/installations/bbpress' => 'active installations (plugin)',
             '/wordpress/theme/installations/twentyseventeen' => 'active installations (theme)',
         ];
     }

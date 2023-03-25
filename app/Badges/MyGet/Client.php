@@ -19,8 +19,8 @@ final class Client
     public function get(string $feed, string $project): array
     {
         return $this->client->get($this->getSearchQueryService($feed), [
-            'q'           => 'packageid:'.strtolower($project),
-            'prerelease'  => true,
+            'q' => 'packageid:'.\mb_strtolower($project),
+            'prerelease' => true,
             'semVerLevel' => '2',
         ])->json('data.0');
     }

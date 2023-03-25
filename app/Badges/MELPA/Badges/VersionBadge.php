@@ -11,10 +11,10 @@ final class VersionBadge extends AbstractBadge
 {
     public function handle(string $package): array
     {
-        preg_match('/<title>([^<]+)<\//i', $this->client->get($package), $matches);
+        \preg_match('/<title>([^<]+)<\//i', $this->client->get($package), $matches);
 
         return [
-            'version' => explode(':', trim($matches[1]))[1],
+            'version' => \explode(':', \trim($matches[1]))[1],
         ];
     }
 

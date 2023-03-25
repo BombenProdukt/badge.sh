@@ -46,7 +46,7 @@ final class DownloadsPerMonthBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/downloads-monthly/bbpress'        => 'monthly downloads (plugin)',
+            '/wordpress/plugin/downloads-monthly/bbpress' => 'monthly downloads (plugin)',
             '/wordpress/theme/downloads-monthly/twentyseventeen' => 'monthly downloads (theme)',
         ];
     }

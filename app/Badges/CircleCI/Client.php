@@ -23,8 +23,8 @@ final class Client
         $branch = $branch ? "/tree/{$branch}" : '';
 
         return $this->client->get("project/{$vcs}/{$repo}{$branch}", [
-            'filter'  => 'completed',
-            'limit'   => 1,
+            'filter' => 'completed',
+            'limit' => 1,
             'shallow' => true,
         ])->json();
     }

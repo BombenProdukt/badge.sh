@@ -17,7 +17,7 @@ final class LayersBadge extends AbstractBadge
         string $variant = '',
     ): array {
         return [
-            'count' => count($this->client->config($scope, $name, $tag, $architecture, $variant)['history']),
+            'count' => \count($this->client->config($scope, $name, $tag, $architecture, $variant)['history']),
         ];
     }
 

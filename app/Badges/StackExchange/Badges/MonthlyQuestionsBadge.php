@@ -13,7 +13,7 @@ final class MonthlyQuestionsBadge extends AbstractBadge
     {
         return [
             'query' => $query,
-            'site'  => $site,
+            'site' => $site,
             'count' => $this->client->questions($site, $query)['total'],
         ];
     }

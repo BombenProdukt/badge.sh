@@ -14,7 +14,7 @@ final class LicenseFromBucketBadge extends AbstractBadge
         $response = $bucket === 'main' ? $this->client->main($app) : $this->client->extra($app);
 
         return [
-            'bucket'  => $bucket,
+            'bucket' => $bucket,
             'license' => $response['license'],
         ];
     }
@@ -22,8 +22,8 @@ final class LicenseFromBucketBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['bucket'] === 'main' ? 'scoop' : 'scoop-extras',
-            'message'      => $properties['license'],
+            'label' => $properties['bucket'] === 'main' ? 'scoop' : 'scoop-extras',
+            'message' => $properties['license'],
             'messageColor' => 'blue.600',
         ];
     }

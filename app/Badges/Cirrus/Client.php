@@ -21,7 +21,7 @@ final class Client
         return $this->client->get("github/{$owner}/{$repo}.json", [
             'branch' => $branch,
             'script' => $script,
-            'task'   => $task,
+            'task' => $task,
         ])->json('status');
     }
 }

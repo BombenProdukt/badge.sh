@@ -11,18 +11,18 @@ final class PerlBadge extends AbstractBadge
 {
     public function handle(string $distribution): array
     {
-        $version = str_replace('_', '', $this->client->get("release/{$distribution}")['metadata']['prereqs']['runtime']['requires']['perl']);
+        $version = \str_replace('_', '', $this->client->get("release/{$distribution}")['metadata']['prereqs']['runtime']['requires']['perl']);
 
-        if (! $version || str_starts_with($version, 'v')) {
+        if (!$version || \str_starts_with($version, 'v')) {
             return $version;
         }
 
-        [$major, $rest] = explode('.', $version, 2);
-        $minor          = substr($rest, 0, 3);
-        $patch          = str_pad(substr($rest, 3), 3, '0', STR_PAD_RIGHT);
+        [$major, $rest] = \explode('.', $version, 2);
+        $minor = \mb_substr($rest, 0, 3);
+        $patch = \str_pad(\mb_substr($rest, 3), 3, '0', \STR_PAD_RIGHT);
 
         return [
-            'version' => implode('.', array_map('intval', [$major, $minor, $patch])),
+            'version' => \implode('.', \array_map('intval', [$major, $minor, $patch])),
         ];
     }
 

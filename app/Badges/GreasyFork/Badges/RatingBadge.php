@@ -15,8 +15,8 @@ final class RatingBadge extends AbstractBadge
 
         return [
             'good' => $response['good_ratings'],
-            'ok'   => $response['ok_ratings'],
-            'bad'  => $response['bad_ratings'],
+            'ok' => $response['ok_ratings'],
+            'bad' => $response['bad_ratings'],
         ];
     }
 
@@ -24,7 +24,7 @@ final class RatingBadge extends AbstractBadge
     {
         return $this->renderText(
             'rating',
-            sprintf('%s good, %s ok, %s bad', $properties['good'], $properties['ok'], $properties['bad']),
+            \sprintf('%s good, %s ok, %s bad', $properties['good'], $properties['ok'], $properties['bad']),
             'blue.600',
         );
     }

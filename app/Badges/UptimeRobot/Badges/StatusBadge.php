@@ -25,8 +25,8 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'status',
-            'message'      => $this->statuses[$properties['status']][0],
+            'label' => 'status',
+            'message' => $this->statuses[$properties['status']][0],
             'messageColor' => $this->statuses[$properties['status']][1],
         ];
     }

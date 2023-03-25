@@ -16,7 +16,7 @@ final class MaintainabilityPercentageBadge extends AbstractBadge
 
         return [
             'percentage' => $response['attributes']['ratings'][0]['measure']['value'],
-            'letter'     => $response['attributes']['ratings'][0]['letter'],
+            'letter' => $response['attributes']['ratings'][0]['letter'],
         ];
     }
 

@@ -55,35 +55,35 @@ final class SummaryBadge extends AbstractBadge
 
     private function getMessage(array $response): string
     {
-        $passed       = $response['passed'];
-        $failed       = $response['failed'];
-        $skipped      = $response['skipped'];
-        $total        = $response['total'];
-        $passedLabel  = $response['passedLabel'] ?? 'passed';
-        $failedLabel  = $response['failedLabel'] ?? 'failed';
+        $passed = $response['passed'];
+        $failed = $response['failed'];
+        $skipped = $response['skipped'];
+        $total = $response['total'];
+        $passedLabel = $response['passedLabel'] ?? 'passed';
+        $failedLabel = $response['failedLabel'] ?? 'failed';
         $skippedLabel = $response['skippedLabel'] ?? 'skipped';
-        $isCompact    = $response['isCompact'] ?? false;
+        $isCompact = $response['isCompact'] ?? false;
 
         if ($total === 0) {
             return 'no tests';
         }
 
         if ($isCompact) {
-            $passedLabel  = '✔';
-            $failedLabel  = '✘';
+            $passedLabel = '✔';
+            $failedLabel = '✘';
             $skippedLabel = '➟';
 
-            return implode(' | ', array_filter([
-                "$passedLabel $passed",
-                $failed > 0 ? "$failedLabel $failed" : null,
-                $skipped > 0 ? "$skippedLabel $skipped" : null,
+            return \implode(' | ', \array_filter([
+                "{$passedLabel} {$passed}",
+                $failed > 0 ? "{$failedLabel} {$failed}" : null,
+                $skipped > 0 ? "{$skippedLabel} {$skipped}" : null,
             ]));
         }
 
-        return implode(', ', array_filter([
-            "$passed $passedLabel",
-            $failed > 0 ? "$failed $failedLabel" : null,
-            $skipped > 0 ? "$skipped $skippedLabel" : null,
+        return \implode(', ', \array_filter([
+            "{$passed} {$passedLabel}",
+            $failed > 0 ? "{$failed} {$failedLabel}" : null,
+            $skipped > 0 ? "{$skipped} {$skippedLabel}" : null,
         ]));
     }
 

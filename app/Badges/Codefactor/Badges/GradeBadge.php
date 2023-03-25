@@ -52,7 +52,7 @@ final class GradeBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/codefactor/grade/github/microsoft/powertoys'      => 'grade',
+            '/codefactor/grade/github/microsoft/powertoys' => 'grade',
             '/codefactor/grade/github/microsoft/powertoys/main' => 'grade (branch)',
         ];
     }

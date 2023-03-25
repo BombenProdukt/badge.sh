@@ -15,14 +15,14 @@ final class UserStatisticsBadge extends AbstractBadge
         $response = $this->client->user($username);
 
         return [
-            'type'  => $type,
+            'type' => $type,
             'count' => match ($type) {
                 'translations' => $response['translated'],
-                'suggestions'  => $response['suggested'],
-                'uploads'      => $response['uploaded'],
-                'comments'     => $response['commented'],
-                'languages'    => $response['languages'],
-                default        => throw new InvalidArgumentException("Unknown type: {$type}")
+                'suggestions' => $response['suggested'],
+                'uploads' => $response['uploaded'],
+                'comments' => $response['commented'],
+                'languages' => $response['languages'],
+                default => throw new InvalidArgumentException("Unknown type: {$type}"),
             },
         ];
     }
@@ -62,11 +62,11 @@ final class UserStatisticsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/weblate/statistics/comments/nijel'     => 'comments',
-            '/weblate/statistics/languages/nijel'    => 'languages',
-            '/weblate/statistics/suggestions/nijel'  => 'suggestions',
+            '/weblate/statistics/comments/nijel' => 'comments',
+            '/weblate/statistics/languages/nijel' => 'languages',
+            '/weblate/statistics/suggestions/nijel' => 'suggestions',
             '/weblate/statistics/translations/nijel' => 'translations',
-            '/weblate/statistics/uploads/nijel'      => 'uploads',
+            '/weblate/statistics/uploads/nijel' => 'uploads',
         ];
     }
 }

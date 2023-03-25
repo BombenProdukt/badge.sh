@@ -16,7 +16,7 @@ final class ProjectDependenciesBadge extends AbstractBadge
 
         return [
             'deprecatedCount' => collect($dependencies)->filter(fn ($dependency) => $dependency['deprecated'] === true)->count(),
-            'outdatedCount'   => collect($dependencies)->filter(fn ($dependency) => $dependency['outdated'] === true)->count(),
+            'outdatedCount' => collect($dependencies)->filter(fn ($dependency) => $dependency['outdated'] === true)->count(),
         ];
     }
 
@@ -63,9 +63,9 @@ final class ProjectDependenciesBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/libraries-io/project-dependencies/npm/got'               => 'dependencies',
-            '/libraries-io/project-dependencies/npm/got/1.0.0'         => 'dependencies (release)',
-            '/libraries-io/project-dependencies/npm/@babel/core'       => 'dependencies (scoped)',
+            '/libraries-io/project-dependencies/npm/got' => 'dependencies',
+            '/libraries-io/project-dependencies/npm/got/1.0.0' => 'dependencies (release)',
+            '/libraries-io/project-dependencies/npm/@babel/core' => 'dependencies (scoped)',
             '/libraries-io/project-dependencies/npm/@babel/core/7.0.0' => 'dependencies (scoped, release)',
         ];
     }

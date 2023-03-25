@@ -7,10 +7,10 @@ namespace App\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
+ * @method static void  add(string $badge)
  * @method static array all()
- * @method static void add(string $badge)
- * @method static array staticPreviews()
  * @method static array dynamicPreviews()
+ * @method static array staticPreviews()
  */
 final class BadgeService extends Facade
 {

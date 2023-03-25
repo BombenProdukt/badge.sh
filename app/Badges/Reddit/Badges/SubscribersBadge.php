@@ -13,7 +13,7 @@ final class SubscribersBadge extends AbstractBadge
     public function handle(string $subreddit): array
     {
         return [
-            'subreddit'   => $subreddit,
+            'subreddit' => $subreddit,
             'subscribers' => $this->client->get("r/{$subreddit}/about.json")['subscribers'],
         ];
     }
@@ -21,8 +21,8 @@ final class SubscribersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'r/'.$properties['subreddit'],
-            'message'      => FormatNumber::execute($properties['subscribers']).' subscribers',
+            'label' => 'r/'.$properties['subreddit'],
+            'message' => FormatNumber::execute($properties['subscribers']).' subscribers',
             'messageColor' => 'ff4500',
         ];
     }

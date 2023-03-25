@@ -37,7 +37,7 @@ final class GitHubBadge extends AbstractBadge
     {
         return [
             'script' => ['string'],
-            'task'   => ['string'],
+            'task' => ['string'],
         ];
     }
 
@@ -59,9 +59,9 @@ final class GitHubBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/cirrus/github/flutter/flutter'                                      => 'build status',
-            '/cirrus/github/flutter/flutter/master'                               => 'build status',
-            '/cirrus/github/flutter/flutter/master?task=build_docker'             => 'build status',
+            '/cirrus/github/flutter/flutter' => 'build status',
+            '/cirrus/github/flutter/flutter/master' => 'build status',
+            '/cirrus/github/flutter/flutter/master?task=build_docker' => 'build status',
             '/cirrus/github/flutter/flutter/master?task=build_docker&script=test' => 'build status',
         ];
     }

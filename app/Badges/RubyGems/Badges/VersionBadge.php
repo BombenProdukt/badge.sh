@@ -13,8 +13,8 @@ final class VersionBadge extends AbstractBadge
 
     public function handle(string $gem, ?string $channel = null): array
     {
-        $versions = array_column($this->client->get("versions/{$gem}"), 'number');
-        rsort($versions);
+        $versions = \array_column($this->client->get("versions/{$gem}"), 'number');
+        \rsort($versions);
 
         if ($channel === 'latest') {
             $version = $this->latest($versions);
@@ -68,17 +68,17 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/rubygems/version/rails'        => 'version (stable)',
-            '/rubygems/version/rails/pre'    => 'version (pre)',
+            '/rubygems/version/rails' => 'version (stable)',
+            '/rubygems/version/rails/pre' => 'version (pre)',
             '/rubygems/version/rails/latest' => 'version (latest)',
         ];
     }
 
     private function pre($versions)
     {
-        return array_filter($versions, function ($v) {
+        return \array_filter($versions, function ($v) {
             foreach ($this->preConditions as $condition) {
-                if (! str_contains($v, $condition)) {
+                if (!\str_contains($v, $condition)) {
                     return false;
                 }
             }
@@ -89,9 +89,9 @@ final class VersionBadge extends AbstractBadge
 
     private function stable($versions)
     {
-        return array_filter($versions, function ($v) {
+        return \array_filter($versions, function ($v) {
             foreach ($this->preConditions as $condition) {
-                if (str_contains($v, $condition)) {
+                if (\str_contains($v, $condition)) {
                     return false;
                 }
             }
@@ -102,6 +102,6 @@ final class VersionBadge extends AbstractBadge
 
     private function latest($versions)
     {
-        return count($versions) > 0 ? end($versions) : null;
+        return \count($versions) > 0 ? \end($versions) : null;
     }
 }

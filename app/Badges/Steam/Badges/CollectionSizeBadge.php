@@ -12,7 +12,7 @@ final class CollectionSizeBadge extends AbstractBadge
     public function handle(string $collectionId): array
     {
         return [
-            'count' => count($this->client->collection($collectionId)['children']),
+            'count' => \count($this->client->collection($collectionId)['children']),
         ];
     }
 

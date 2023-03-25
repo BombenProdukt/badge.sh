@@ -23,20 +23,20 @@ final class DetermineColorByScale
             throw new InvalidArgumentException('When invoking colorScale, steps should be provided.');
         }
 
-        if (! count(self::$defaultColors[count($steps)])) {
-            throw new RuntimeException('No default colors for '.count($steps).' steps.');
+        if (!\count(self::$defaultColors[\count($steps)])) {
+            throw new RuntimeException('No default colors for '.\count($steps).' steps.');
         }
 
-        $colors = self::$defaultColors[count($steps)];
+        $colors = self::$defaultColors[\count($steps)];
 
-        if (count($steps) !== count($colors) - 1) {
+        if (\count($steps) !== \count($colors) - 1) {
             throw new RuntimeException('When colors are provided, there should be n + 1 colors for n steps.');
         }
 
         if ($reversed) {
-            $colors = array_reverse($colors);
+            $colors = \array_reverse($colors);
         }
 
-        return array_slice($colors, array_search(true, array_map(fn ($step) => $value < $step, $steps)))[0];
+        return \array_slice($colors, \array_search(true, \array_map(fn ($step) => $value < $step, $steps), true))[0];
     }
 }

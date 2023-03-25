@@ -19,8 +19,8 @@ final class XLMBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'XLM',
-            'message'      => $properties['address'],
+            'label' => 'XLM',
+            'message' => $properties['address'],
             'messageColor' => 'blue.600',
         ];
     }

@@ -16,7 +16,7 @@ final class CheckRunsBadge extends AbstractBadge
     public function handle(string $owner, string $repo, ?string $reference = '', ?string $context = '')
     {
         if (empty($reference)) {
-            $response  = GitHub::connection('main')->api('repo')->show($owner, $repo);
+            $response = GitHub::connection('main')->api('repo')->show($owner, $repo);
             $reference = $response['default_branch'];
         }
 
@@ -24,10 +24,10 @@ final class CheckRunsBadge extends AbstractBadge
 
         $state = collect($response['check_runs']);
 
-        if (is_string($context)) {
+        if (\is_string($context)) {
             $state = $state->filter(function (array $check) use ($context): bool {
-                $checkName = str_contains(strtolower($check['name']), $context);
-                $appName   = str_contains(strtolower($check['app']['slug']), $context);
+                $checkName = \str_contains(\mb_strtolower($check['name']), $context);
+                $appName = \str_contains(\mb_strtolower($check['app']['slug']), $context);
 
                 return $checkName || $appName;
             });
@@ -39,29 +39,29 @@ final class CheckRunsBadge extends AbstractBadge
 
         return [
             'context' => $context,
-            'state'   => $state,
+            'state' => $state,
         ];
     }
 
     public function render(array $properties): array
     {
-        if (is_string($properties['state'])) {
+        if (\is_string($properties['state'])) {
             return [
-                'label'        => $properties['context'] ?: 'checks',
-                'message'      => $properties['state'],
+                'label' => $properties['context'] ?: 'checks',
+                'message' => $properties['state'],
                 'messageColor' => [
                     'pending' => 'orange.600',
                     'success' => 'green.600',
                     'failure' => 'red.600',
-                    'error'   => 'red.600',
+                    'error' => 'red.600',
                     'unknown' => 'gray.600',
                 ][$properties['state']],
             ];
         }
 
         return [
-            'label'        => 'checks',
-            'message'      => 'unknown',
+            'label' => 'checks',
+            'message' => 'unknown',
             'messageColor' => 'gray.600',
         ];
     }
@@ -97,14 +97,14 @@ final class CheckRunsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/check-runs/tunnckoCore/opensource'                                    => 'combined checks (default branch)',
-            '/github/check-runs/node-formidable/node-formidable'                           => 'combined checks (default branch)',
-            '/github/check-runs/node-formidable/node-formidable/master/lint'               => 'single checks (lint job)',
-            '/github/check-runs/node-formidable/node-formidable/master/test'               => 'single checks (test job)',
+            '/github/check-runs/tunnckoCore/opensource' => 'combined checks (default branch)',
+            '/github/check-runs/node-formidable/node-formidable' => 'combined checks (default branch)',
+            '/github/check-runs/node-formidable/node-formidable/master/lint' => 'single checks (lint job)',
+            '/github/check-runs/node-formidable/node-formidable/master/test' => 'single checks (test job)',
             '/github/check-runs/node-formidable/node-formidable/master/ubuntu?label=linux' => 'single checks (linux)',
-            '/github/check-runs/node-formidable/node-formidable/master/windows'            => 'single checks (windows)',
-            '/github/check-runs/node-formidable/node-formidable/master/macos'              => 'single checks (macos)',
-            '/github/check-runs/styfle/packagephobia/main'                                 => 'combined checks (branch)',
+            '/github/check-runs/node-formidable/node-formidable/master/windows' => 'single checks (windows)',
+            '/github/check-runs/node-formidable/node-formidable/master/macos' => 'single checks (macos)',
+            '/github/check-runs/styfle/packagephobia/main' => 'combined checks (branch)',
         ];
     }
 }

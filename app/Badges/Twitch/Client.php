@@ -15,7 +15,7 @@ final class Client
     {
         $this->client = Http::baseUrl('https://api.twitch.tv/helix')->throw();
 
-        if (! empty(config('services.twitch.client_id'))) {
+        if (!empty(config('services.twitch.client_id'))) {
             $this->client->withHeaders(['Client-ID' => config('services.twitch.client_id')]);
         }
     }
@@ -45,7 +45,7 @@ final class Client
         }
 
         $this->client->withToken(
-            Http::post('https://id.twitch.tv/oauth2/token?grant_type=client_credentials&client_id='.config('services.twitch.client_id').'&client_secret='.config('services.twitch.client_secret'))->json('access_token')
+            Http::post('https://id.twitch.tv/oauth2/token?grant_type=client_credentials&client_id='.config('services.twitch.client_id').'&client_secret='.config('services.twitch.client_secret'))->json('access_token'),
         );
     }
 }

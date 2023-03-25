@@ -20,8 +20,8 @@ final class NodeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'node',
-            'message'      => $properties['version'],
+            'label' => 'node',
+            'message' => $properties['version'],
             'messageColor' => 'green.600',
         ];
     }

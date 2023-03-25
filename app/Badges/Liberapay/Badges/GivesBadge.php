@@ -18,8 +18,8 @@ final class GivesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'gives',
-            'message'      => FormatMoney::execute((float) $properties['amount'], $properties['currency']).'/week',
+            'label' => 'gives',
+            'message' => FormatMoney::execute((float) $properties['amount'], $properties['currency']).'/week',
             'messageColor' => 'yellow.600',
         ];
     }

@@ -25,6 +25,6 @@ final class Client
     {
         $userType ??= 'all';
 
-        return count($this->client->get("{$collective}/members/{$userType}.json", ['TierId' => $tierId])->json());
+        return \count($this->client->get("{$collective}/members/{$userType}.json", ['TierId' => $tierId])->json());
     }
 }

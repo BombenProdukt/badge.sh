@@ -12,7 +12,7 @@ final class LernaBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
-        return json_decode(base64_decode(GitHub::repos()->contents()->show($owner, $repo, 'lerna.json')['content']), true, JSON_THROW_ON_ERROR);
+        return \json_decode(\base64_decode(GitHub::repos()->contents()->show($owner, $repo, 'lerna.json')['content'], true), true, \JSON_THROW_ON_ERROR);
     }
 
     public function render(array $properties): array
@@ -51,7 +51,6 @@ final class LernaBadge extends AbstractBadge
     {
         return [
             '/github/lerna/lerna/lerna' => 'lerna',
-
         ];
     }
 }

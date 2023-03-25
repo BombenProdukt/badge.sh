@@ -19,13 +19,12 @@ abstract class AbstractBadge implements Badge
     use HasRequest;
     use HasRoute;
     use HasTemplates;
-
     protected array $statusInfo = [
-        'insecure'      => ['insecure', 'red'],
-        'outofdate'     => ['out of date', 'orange'],
+        'insecure' => ['insecure', 'red'],
+        'outofdate' => ['out of date', 'orange'],
         'notsouptodate' => ['up to date', 'yellow'],
-        'uptodate'      => ['up to date', 'green'],
-        'none'          => ['none', 'green'],
+        'uptodate' => ['up to date', 'green'],
+        'none' => ['none', 'green'],
     ];
 
     public function __construct(protected readonly Client $client)
@@ -33,7 +32,7 @@ abstract class AbstractBadge implements Badge
         //
     }
 
-    public function service(): string
+    final public function service(): string
     {
         return 'DavidDM';
     }

@@ -57,14 +57,15 @@ final class VersionBadge extends AbstractBadge
 
     private function normalizeVersion(string $version): string
     {
-        $version = str_replace('_', '', $version);
-        if (! $version || str_starts_with($version, 'v')) {
+        $version = \str_replace('_', '', $version);
+
+        if (!$version || \str_starts_with($version, 'v')) {
             return $version;
         }
-        [$major, $rest] = explode('.', $version, 2);
-        $minor          = substr($rest, 0, 3);
-        $patch          = str_pad(substr($rest, 3), 3, '0', STR_PAD_RIGHT);
+        [$major, $rest] = \explode('.', $version, 2);
+        $minor = \mb_substr($rest, 0, 3);
+        $patch = \str_pad(\mb_substr($rest, 3), 3, '0', \STR_PAD_RIGHT);
 
-        return implode('.', array_map('intval', [$major, $minor, $patch]));
+        return \implode('.', \array_map('intval', [$major, $minor, $patch]));
     }
 }

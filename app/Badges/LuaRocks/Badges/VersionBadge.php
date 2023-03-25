@@ -60,13 +60,13 @@ final class VersionBadge extends AbstractBadge
     {
         return collect($versions)
             ->keys()
-            ->map(fn ($version) => str_starts_with($version, 'v') ? substr($version, 1) : $version)
+            ->map(fn ($version) => \str_starts_with($version, 'v') ? \mb_substr($version, 1) : $version)
             ->sort(fn ($a, $b) => Comparator::greaterThan($this->parseVersion($b), $this->parseVersion($a)))
             ->first();
     }
 
     private function parseVersion(string $versionString): string
     {
-        return explode('-', $versionString)[0];
+        return \explode('-', $versionString)[0];
     }
 }

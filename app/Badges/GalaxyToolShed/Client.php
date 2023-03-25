@@ -19,7 +19,7 @@ final class Client
     public function fetchOrderedInstallableRevisionsSchema(string $user, string $repo): string
     {
         return $this->client->get('get_ordered_installable_revisions', [
-            'name'  => $repo,
+            'name' => $repo,
             'owner' => $user,
         ])->json('0');
     }
@@ -27,8 +27,8 @@ final class Client
     public function fetchRepositoryRevisionInstallInfoSchema(string $user, string $repo, string $changesetRevision): array
     {
         return $this->client->get('get_repository_revision_install_info', [
-            'name'               => $repo,
-            'owner'              => $user,
+            'name' => $repo,
+            'owner' => $user,
             'changeset_revision' => $changesetRevision,
         ])->json('0');
     }

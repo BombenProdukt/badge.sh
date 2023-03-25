@@ -17,7 +17,7 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('status', $properties['status'] === 'unknown' ? 'branch not found' : $properties['status'], [
-            'error'   => 'red.600',
+            'error' => 'red.600',
             'success' => 'green.600',
             'unknown' => 'gray.600',
         ][$properties['status']]);
@@ -53,7 +53,7 @@ final class StatusBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304'        => 'version',
+            '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304' => 'version',
             '/bitrise/version/lESRN9rEFFfDq92JtXs_jw/3ff11fe8457bd304/master' => 'version',
         ];
     }

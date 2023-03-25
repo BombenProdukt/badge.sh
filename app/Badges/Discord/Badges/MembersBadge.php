@@ -20,8 +20,8 @@ final class MembersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $response['guild']['name'] ?? 'discord',
-            'message'      => FormatNumber::execute($properties['count']).' members',
+            'label' => $response['guild']['name'] ?? 'discord',
+            'message' => FormatNumber::execute($properties['count']).' members',
             'messageColor' => '7289DA',
         ];
     }

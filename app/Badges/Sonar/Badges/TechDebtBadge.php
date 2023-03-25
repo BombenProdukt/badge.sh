@@ -38,7 +38,7 @@ final class TechDebtBadge extends AbstractBadge
     public function routeRules(): array
     {
         return [
-            'instance'     => ['required', 'url'],
+            'instance' => ['required', 'url'],
             'sonarVersion' => ['required', 'numeric'],
         ];
     }
@@ -65,7 +65,7 @@ final class TechDebtBadge extends AbstractBadge
     {
         return [
             '/sonar/sqale_debt_ratio/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
-            '/sonar/tech_debt/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'        => 'complexity',
+            '/sonar/tech_debt/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
         ];
     }
 }

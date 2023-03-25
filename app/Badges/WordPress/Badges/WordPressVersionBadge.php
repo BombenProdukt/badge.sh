@@ -46,7 +46,7 @@ final class WordPressVersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/wordpress-version/bbpress'        => 'required WordPress version (plugin)',
+            '/wordpress/plugin/wordpress-version/bbpress' => 'required WordPress version (plugin)',
             '/wordpress/theme/wordpress-version/twentyseventeen' => 'required WordPress version (theme)',
         ];
     }

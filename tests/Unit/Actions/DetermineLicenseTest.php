@@ -8,10 +8,10 @@ use App\Actions\DetermineLicense;
 
 it('can extract the license from any string', function (string $license): void {
     expect(DetermineLicense::execute($license))->toBe($license);
-    expect(DetermineLicense::execute("license is $license"))->toBe($license);
-    expect(DetermineLicense::execute("$license is the license"))->toBe($license);
-    expect(DetermineLicense::execute("[$license]"))->toBe($license);
-    expect(DetermineLicense::execute("($license)"))->toBe($license);
+    expect(DetermineLicense::execute("license is {$license}"))->toBe($license);
+    expect(DetermineLicense::execute("{$license} is the license"))->toBe($license);
+    expect(DetermineLicense::execute("[{$license}]"))->toBe($license);
+    expect(DetermineLicense::execute("({$license})"))->toBe($license);
 })->with([
     '0BSD',
     'AAL',

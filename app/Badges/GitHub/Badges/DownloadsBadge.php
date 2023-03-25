@@ -14,15 +14,15 @@ final class DownloadsBadge extends AbstractBadge
     {
         $release = GitHub::api('repo')->releases()->show($owner, $repo, $tag ? "tags/{$tag}" : 'latest');
 
-        if (! $release || ! $release['assets'] || ! count($release['assets'])) {
+        if (!$release || !$release['assets'] || !\count($release['assets'])) {
             return [
-                'label'        => 'downloads',
-                'message'      => 'no assets',
+                'label' => 'downloads',
+                'message' => 'no assets',
                 'messageColor' => 'gray.600',
             ];
         }
 
-        $downloadCount = array_reduce($release['assets'], function ($result, $asset) {
+        $downloadCount = \array_reduce($release['assets'], function ($result, $asset) {
             return $result + $asset['download_count'];
         }, 0);
 
@@ -66,7 +66,7 @@ final class DownloadsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/downloads/electron/electron'        => 'assets downloads for latest release',
+            '/github/downloads/electron/electron' => 'assets downloads for latest release',
             '/github/downloads/electron/electron/v7.0.0' => 'assets downloads for a tag',
         ];
     }

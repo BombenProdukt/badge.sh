@@ -28,15 +28,15 @@ final class SemicolonBadge extends AbstractBadge
     {
         if (empty($properties['semicolons'])) {
             return [
-                'label'        => 'xo',
-                'message'      => 'not enabled',
+                'label' => 'xo',
+                'message' => 'not enabled',
                 'messageColor' => 'gray.600',
             ];
         }
 
         return [
-            'label'        => 'semicolons',
-            'message'      => $properties['semicolons'],
+            'label' => 'semicolons',
+            'message' => $properties['semicolons'],
             'messageColor' => '5ED9C7',
         ];
     }
@@ -69,13 +69,13 @@ final class SemicolonBadge extends AbstractBadge
     {
         return [
             [
-                'label'        => 'semicolons',
-                'message'      => 'enabled',
+                'label' => 'semicolons',
+                'message' => 'enabled',
                 'messageColor' => '5ED9C7',
             ],
             [
-                'label'        => 'semicolons',
-                'message'      => 'disabled',
+                'label' => 'semicolons',
+                'message' => 'disabled',
                 'messageColor' => '5ED9C7',
             ],
         ];
@@ -84,7 +84,7 @@ final class SemicolonBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/xo/semicolon/chalk'                 => 'semicolon',
+            '/xo/semicolon/chalk' => 'semicolon',
             '/xo/semicolon/@tusbar/cache-control' => 'semicolon',
         ];
     }

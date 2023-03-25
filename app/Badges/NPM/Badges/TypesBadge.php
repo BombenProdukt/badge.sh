@@ -32,7 +32,7 @@ final class TypesBadge extends AbstractBadge
 
         try {
             return [
-                'types' => $this->client->unpkg('@types/'.($package[0] === '@' ? str_replace('/', '__', substr($package, 1)) : $package).'/package.json')['name'],
+                'types' => $this->client->unpkg('@types/'.($package[0] === '@' ? \str_replace('/', '__', \mb_substr($package, 1)) : $package).'/package.json')['name'],
             ];
         } catch (\Throwable) {
             //
@@ -47,23 +47,23 @@ final class TypesBadge extends AbstractBadge
     {
         if ($properties['types'] === 'missing') {
             return [
-                'label'        => 'types',
-                'message'      => 'missing',
+                'label' => 'types',
+                'message' => 'missing',
                 'messageColor' => 'orange.600',
             ];
         }
 
         if ($properties['types'] === 'included') {
             return [
-                'label'        => 'types',
-                'message'      => 'included',
+                'label' => 'types',
+                'message' => 'included',
                 'messageColor' => '0074c1',
             ];
         }
 
         return [
-            'label'        => 'types',
-            'message'      => $properties['types'],
+            'label' => 'types',
+            'message' => $properties['types'],
             'messageColor' => 'cyan.600',
         ];
     }

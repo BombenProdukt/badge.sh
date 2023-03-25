@@ -20,8 +20,8 @@ final class IssuesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'issues',
-            'message'      => FormatNumber::execute($properties['count']),
+            'label' => 'issues',
+            'message' => FormatNumber::execute($properties['count']),
             'messageColor' => $properties['count'] ? 'green.600' : 'yellow.600',
         ];
     }
@@ -57,7 +57,7 @@ final class IssuesBadge extends AbstractBadge
     {
         return [
             '/deepscan/issues/team/8527/project/10741/branch/152550' => 'issues',
-            '/deepscan/issues/team/7382/project/9494/branch/123838'  => 'issues',
+            '/deepscan/issues/team/7382/project/9494/branch/123838' => 'issues',
         ];
     }
 }

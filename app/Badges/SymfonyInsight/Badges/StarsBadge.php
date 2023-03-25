@@ -17,11 +17,11 @@ final class StarsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStars('stars', match ($properties['grade']) {
-            'bronze'   => 1,
-            'silver'   => 2,
-            'gold'     => 3,
+            'bronze' => 1,
+            'silver' => 2,
+            'gold' => 3,
             'platinum' => 4,
-            default    => 0
+            default => 0,
         });
     }
 

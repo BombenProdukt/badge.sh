@@ -51,7 +51,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/fedora/version/rpm'         => 'version',
+            '/fedora/version/rpm' => 'version',
             '/fedora/version/rpm/rawhide' => 'version',
         ];
     }

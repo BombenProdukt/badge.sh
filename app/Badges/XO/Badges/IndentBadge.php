@@ -27,15 +27,15 @@ final class IndentBadge extends AbstractBadge
     {
         if (empty($properties['indentation'])) {
             return [
-                'label'        => 'xo',
-                'message'      => 'not enabled',
+                'label' => 'xo',
+                'message' => 'not enabled',
                 'messageColor' => 'gray.600',
             ];
         }
 
         return [
-            'label'        => 'indentation',
-            'message'      => $properties['indentation'],
+            'label' => 'indentation',
+            'message' => $properties['indentation'],
             'messageColor' => '5ED9C7',
         ];
     }
@@ -68,23 +68,23 @@ final class IndentBadge extends AbstractBadge
     {
         return [
             [
-                'label'        => 'xo',
-                'message'      => 'tab',
+                'label' => 'xo',
+                'message' => 'tab',
                 'messageColor' => '5ed9c7',
             ],
             [
-                'label'        => 'xo',
-                'message'      => '2 spaces',
+                'label' => 'xo',
+                'message' => '2 spaces',
                 'messageColor' => '5ed9c7',
             ],
             [
-                'label'        => 'xo',
-                'message'      => '1 space',
+                'label' => 'xo',
+                'message' => '1 space',
                 'messageColor' => '5ed9c7',
             ],
             [
-                'label'        => 'xo',
-                'message'      => '4 spaces',
+                'label' => 'xo',
+                'message' => '4 spaces',
                 'messageColor' => '5ed9c7',
             ],
         ];
@@ -93,7 +93,7 @@ final class IndentBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/xo/indentation/chalk'                 => 'indentation',
+            '/xo/indentation/chalk' => 'indentation',
             '/xo/indentation/@tusbar/cache-control' => 'indentation',
         ];
     }

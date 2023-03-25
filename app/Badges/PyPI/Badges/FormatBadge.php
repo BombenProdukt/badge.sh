@@ -11,25 +11,25 @@ final class FormatBadge extends AbstractBadge
 {
     public function handle(string $project): array
     {
-        $urls     = $this->client->get($project)['urls'];
+        $urls = $this->client->get($project)['urls'];
         $hasWheel = false;
-        $hasEgg   = false;
+        $hasEgg = false;
 
         foreach ($urls as $url) {
             $packageType = $url['packagetype'];
 
-            if (in_array($packageType, ['wheel', 'bdist_wheel'])) {
+            if (\in_array($packageType, ['wheel', 'bdist_wheel'], true)) {
                 $hasWheel = true;
             }
 
-            if (in_array($packageType, ['egg', 'bdist_egg'])) {
+            if (\in_array($packageType, ['egg', 'bdist_egg'], true)) {
                 $hasEgg = true;
             }
         }
 
         return [
             'hasWheel' => $hasWheel,
-            'hasEgg'   => $hasEgg,
+            'hasEgg' => $hasEgg,
         ];
     }
 

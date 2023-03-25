@@ -61,7 +61,7 @@ final class PluginDownloadsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/jenkins/plugin-downloads/view-job-filters'      => 'plugin downloads',
+            '/jenkins/plugin-downloads/view-job-filters' => 'plugin downloads',
             '/jenkins/plugin-downloads/view-job-filters/1.26' => 'plugin downloads per version',
         ];
     }

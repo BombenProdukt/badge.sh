@@ -13,7 +13,7 @@ final class GoModBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo): array
     {
-        $response = base64_decode(GitHub::repos()->contents()->show($owner, $repo, 'src/go.mod')['content']);
+        $response = \base64_decode(GitHub::repos()->contents()->show($owner, $repo, 'src/go.mod')['content'], true);
 
         return [
             'version' => Regex::match('/go (.+)/', $response)->group(1),
@@ -56,7 +56,6 @@ final class GoModBadge extends AbstractBadge
     {
         return [
             '/github/gomod/golang/go' => 'lerna',
-
         ];
     }
 }

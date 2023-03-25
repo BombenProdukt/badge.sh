@@ -18,8 +18,8 @@ final class NotebookBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['label'],
-            'message'      => $properties['message'],
+            'label' => $properties['label'],
+            'message' => $properties['message'],
             'messageColor' => $properties['messageColor'],
         ];
     }
@@ -54,12 +54,12 @@ final class NotebookBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/runkit/vladimyr/metaweather/44418/state'         => 'metaweather (state)',
-            '/runkit/vladimyr/metaweather/44418/temperature'   => 'metaweather (temperature in °C)',
+            '/runkit/vladimyr/metaweather/44418/state' => 'metaweather (state)',
+            '/runkit/vladimyr/metaweather/44418/temperature' => 'metaweather (temperature in °C)',
             '/runkit/vladimyr/metaweather/44418/temperature/f' => 'metaweather (temperature in °F)',
-            '/runkit/vladimyr/metaweather/44418/wind'          => 'metaweather (wind in km/h)',
-            '/runkit/vladimyr/metaweather/44418/wind/mph'      => 'metaweather (wind in mph)',
-            '/runkit/vladimyr/metaweather/44418/humidity'      => 'metaweather (humidity)',
+            '/runkit/vladimyr/metaweather/44418/wind' => 'metaweather (wind in km/h)',
+            '/runkit/vladimyr/metaweather/44418/wind/mph' => 'metaweather (wind in mph)',
+            '/runkit/vladimyr/metaweather/44418/humidity' => 'metaweather (humidity)',
         ];
     }
 }

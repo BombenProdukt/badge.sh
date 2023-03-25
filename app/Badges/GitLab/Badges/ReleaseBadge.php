@@ -27,8 +27,8 @@ final class ReleaseBadge extends AbstractBadge
     {
         if (empty($properties['version'])) {
             return [
-                'label'        => 'release',
-                'message'      => 'none',
+                'label' => 'release',
+                'message' => 'none',
                 'messageColor' => 'yellow.600',
             ];
         }

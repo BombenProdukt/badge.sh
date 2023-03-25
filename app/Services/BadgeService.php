@@ -8,7 +8,9 @@ use App\Contracts\Badge;
 
 final class BadgeService
 {
-    /** @var Badge[] */
+    /**
+     * @var Badge[]
+     */
     private array $badges = [];
 
     public function all(): array

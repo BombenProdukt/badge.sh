@@ -12,7 +12,7 @@ final class TimezoneBadge extends AbstractBadge
     public function handle(string $domain): array
     {
         return [
-            'domain'   => $domain,
+            'domain' => $domain,
             'timezone' => $this->client->get($domain)['timezone'],
         ];
     }
@@ -20,8 +20,8 @@ final class TimezoneBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['domain'],
-            'message'      => $properties['timezone'],
+            'label' => $properties['domain'],
+            'message' => $properties['timezone'],
             'messageColor' => 'blue.600',
         ];
     }

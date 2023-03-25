@@ -51,7 +51,6 @@ final class SizeBadge extends AbstractBadge
     {
         return [
             '/github/size/micromatch/micromatch' => 'size',
-
         ];
     }
 }

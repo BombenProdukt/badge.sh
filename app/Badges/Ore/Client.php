@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Http;
 final class Client
 {
     private PendingRequest $client;
-
     private array $session = [];
 
     public function __construct()
@@ -41,7 +40,7 @@ final class Client
     {
         $response = $this->client->post('authenticate', ['expires_in' => 600])->json();
 
-        $this->session['token']   = $response['session'];
+        $this->session['token'] = $response['session'];
         $this->session['expires'] = Carbon::parse($response['expires']);
     }
 }

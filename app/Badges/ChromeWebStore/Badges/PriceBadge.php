@@ -15,7 +15,7 @@ final class PriceBadge extends AbstractBadge
         $crawler = new Crawler($this->client->get($itemId));
 
         return [
-            'amount'   => $crawler->filterXPath('//meta[@itemprop="price"]')->getNode(0)->attributes->getNamedItem('content')->textContent,
+            'amount' => $crawler->filterXPath('//meta[@itemprop="price"]')->getNode(0)->attributes->getNamedItem('content')->textContent,
             'currency' => $crawler->filterXPath('//meta[@itemprop="priceCurrency"]')->getNode(0)->attributes->getNamedItem('content')->textContent,
         ];
     }

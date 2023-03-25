@@ -12,7 +12,7 @@ final class StatusBadge extends AbstractBadge
     public function handle(string $username): array
     {
         return [
-            'status' => count($this->client->user($username)) > 1 ? 'online' : 'offline',
+            'status' => \count($this->client->user($username)) > 1 ? 'online' : 'offline',
         ];
     }
 

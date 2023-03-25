@@ -13,8 +13,8 @@ final class UpdateBadgeBadge extends AbstractBadge
     public function handle(Request $request, string $name): array
     {
         $badge = [
-            'label'        => $request->input('label'),
-            'message'      => $request->input('message'),
+            'label' => $request->input('label'),
+            'message' => $request->input('message'),
             'messageColor' => $request->input('messageColor'),
         ];
 

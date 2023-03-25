@@ -18,6 +18,6 @@ final class Client
 
     public function get(string $project): array
     {
-        return $this->client->get(strtolower($project).'/index.json')->json();
+        return $this->client->get(\mb_strtolower($project).'/index.json')->json();
     }
 }

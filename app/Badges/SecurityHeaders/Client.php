@@ -19,8 +19,8 @@ final class Client
     public function grade(string $url): string
     {
         return $this->client->head('/', [
-            'q'               => $url,
-            'hide'            => 'on',
+            'q' => $url,
+            'hide' => 'on',
             'followRedirects' => 'on',
         ])->header('x-grade');
     }

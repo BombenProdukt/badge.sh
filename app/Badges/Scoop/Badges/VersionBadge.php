@@ -50,7 +50,7 @@ final class VersionBadge extends AbstractBadge
     {
         return [
             '/scoop/version/1password-cli' => 'version',
-            '/scoop/version/adb'           => 'version',
+            '/scoop/version/adb' => 'version',
         ];
     }
 }

@@ -25,7 +25,7 @@ abstract class AbstractBadge implements Badge
         //
     }
 
-    public function service(): string
+    final public function service(): string
     {
         return 'Eclipse Marketplace';
     }

@@ -46,7 +46,7 @@ final class PhpVersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/php-version/bbpress'        => 'required PHP version (plugin)',
+            '/wordpress/plugin/php-version/bbpress' => 'required PHP version (plugin)',
             '/wordpress/theme/php-version/twentyseventeen' => 'required PHP version (theme)',
         ];
     }

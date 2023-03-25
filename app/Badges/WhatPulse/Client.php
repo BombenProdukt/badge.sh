@@ -20,7 +20,7 @@ final class Client
     {
         return $this->client->get("{$userType}.php", [
             $userType => $id,
-            'format'  => 'json',
+            'format' => 'json',
         ])->json();
     }
 }

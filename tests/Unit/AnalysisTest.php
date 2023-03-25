@@ -7,6 +7,11 @@ namespace Tests\Unit;
 use GrahamCampbell\Analyzer\AnalysisTrait;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 final class AnalysisTest extends TestCase
 {
     use AnalysisTrait;
@@ -14,7 +19,7 @@ final class AnalysisTest extends TestCase
     protected static function getPaths(): array
     {
         return [
-            realpath(__DIR__.'/../../app'),
+            \realpath(__DIR__.'/../../app'),
         ];
     }
 }

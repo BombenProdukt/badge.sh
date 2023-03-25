@@ -19,8 +19,8 @@ final class ZECBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'ZCash',
-            'message'      => $properties['address'],
+            'label' => 'ZCash',
+            'message' => $properties['address'],
             'messageColor' => 'blue.600',
         ];
     }

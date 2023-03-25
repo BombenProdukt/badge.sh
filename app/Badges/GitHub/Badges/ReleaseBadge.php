@@ -23,15 +23,15 @@ final class ReleaseBadge extends AbstractBadge
             $stable = collect($releases)->firstWhere('prerelease', false);
 
             return [
-                'name'       => $stable['name'],
-                'tagName'    => $stable['tag_name'],
+                'name' => $stable['name'],
+                'tagName' => $stable['tag_name'],
                 'prerelease' => $stable['prerelease'],
             ];
         }
 
         return [
-            'name'       => $releases[0]['name'],
-            'tagName'    => $releases[0]['tag_name'],
+            'name' => $releases[0]['name'],
+            'tagName' => $releases[0]['tag_name'],
             'prerelease' => $releases[0]['prerelease'],
         ];
     }
@@ -40,15 +40,15 @@ final class ReleaseBadge extends AbstractBadge
     {
         if (empty($properties['name'])) {
             return [
-                'label'        => 'release',
-                'message'      => 'none',
+                'label' => 'release',
+                'message' => 'none',
                 'messageColor' => 'yellow.600',
             ];
         }
 
         return [
-            'label'        => 'release',
-            'message'      => ExtractVersion::execute($properties['name'] ?? $properties['tagName']),
+            'label' => 'release',
+            'message' => ExtractVersion::execute($properties['name'] ?? $properties['tagName']),
             'messageColor' => $properties['preRelease'] ? 'orange.600' : 'blue.600',
         ];
     }
@@ -83,7 +83,7 @@ final class ReleaseBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/release/babel/babel'        => 'stable release',
+            '/github/release/babel/babel' => 'stable release',
             '/github/release/babel/babel/latest' => 'latest release',
             '/github/release/babel/babel/stable' => 'latest stable release',
         ];

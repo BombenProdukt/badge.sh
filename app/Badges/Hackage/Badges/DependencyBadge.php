@@ -16,7 +16,7 @@ final class DependencyBadge extends AbstractBadge
         $client->get("licenses/{$package}");
 
         return [
-            'outdated' => str_contains($client->get("feed/{$package}")->body(), "Outdated dependencies for {$package}"),
+            'outdated' => \str_contains($client->get("feed/{$package}")->body(), "Outdated dependencies for {$package}"),
         ];
     }
 

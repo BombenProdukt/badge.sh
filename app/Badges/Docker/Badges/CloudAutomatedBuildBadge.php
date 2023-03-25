@@ -12,7 +12,7 @@ final class CloudAutomatedBuildBadge extends AbstractBadge
     public function handle(string $scope, string $name): array
     {
         return [
-            'settingsCount' => count($this->client->build($scope, $name)['build_settings']),
+            'settingsCount' => \count($this->client->build($scope, $name)['build_settings']),
         ];
     }
 

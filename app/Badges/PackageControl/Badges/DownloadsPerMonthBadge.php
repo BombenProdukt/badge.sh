@@ -14,6 +14,7 @@ final class DownloadsPerMonthBadge extends AbstractBadge
         $platforms = $this->client->get($packageName)['installs']['daily']['data'];
 
         $total = 0;
+
         foreach ($platforms as $platform) {
             for ($i = 0; $i < 30; $i++) {
                 $total += $platform['totals'][$i];

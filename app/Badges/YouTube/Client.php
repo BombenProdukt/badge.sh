@@ -19,8 +19,8 @@ final class Client
     public function channel(string $id): array
     {
         return $this->client->get('channels', [
-            'id'   => $id,
-            'key'  => config('services.youtube.token'),
+            'id' => $id,
+            'key' => config('services.youtube.token'),
             'part' => 'statistics',
         ])->json('items.0.statistics');
     }
@@ -28,8 +28,8 @@ final class Client
     public function video(string $id): array
     {
         return $this->client->get('videos', [
-            'id'   => $id,
-            'key'  => config('services.youtube.token'),
+            'id' => $id,
+            'key' => config('services.youtube.token'),
             'part' => 'statistics',
         ])->json('items.0.statistics');
     }

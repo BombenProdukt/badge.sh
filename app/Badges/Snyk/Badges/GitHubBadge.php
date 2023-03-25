@@ -10,26 +10,26 @@ use Illuminate\Routing\Route;
 
 final class GitHubBadge extends AbstractBadge
 {
-    public function handle(string $project, string $targetFile = null): array
+    public function handle(string $project, ?string $targetFile = null): array
     {
         $svg = $this->client->get("test/github/{$project}", $targetFile);
 
-        preg_match_all('/fill-opacity=[^>]*?>([^<]+)<\//i', $svg, $matchesText);
+        \preg_match_all('/fill-opacity=[^>]*?>([^<]+)<\//i', $svg, $matchesText);
         [$label, $message] = $matchesText[1];
 
-        if (! preg_match('/<path[^>]*?fill="([^"]+)"[^>]*?d="M[^0]/i', $svg, $matchesColor)) {
+        if (!\preg_match('/<path[^>]*?fill="([^"]+)"[^>]*?d="M[^0]/i', $svg, $matchesColor)) {
             return [];
         }
 
-        $messageColor = trim(str_replace('#', '', $matchesColor[1]));
+        $messageColor = \trim(\str_replace('#', '', $matchesColor[1]));
 
-        if (is_null($message) || empty($messageColor)) {
+        if (null === $message || empty($messageColor)) {
             return [];
         }
 
         return [
-            'label'        => $label,
-            'message'      => $message,
+            'label' => $label,
+            'message' => $message,
             'messageColor' => $messageColor,
         ];
     }
@@ -37,8 +37,8 @@ final class GitHubBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['label'] ?? 'vulnerabilities',
-            'message'      => $properties['message'],
+            'label' => $properties['label'] ?? 'vulnerabilities',
+            'message' => $properties['message'],
             'messageColor' => $properties['messageColor'],
         ];
     }

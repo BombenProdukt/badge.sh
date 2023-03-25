@@ -17,8 +17,8 @@ final class RatingBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'rating',
-            'message'      => number_format($properties['score'] / 5, 2),
+            'label' => 'rating',
+            'message' => \number_format($properties['score'] / 5, 2),
             'messageColor' => 'green.600',
         ];
     }

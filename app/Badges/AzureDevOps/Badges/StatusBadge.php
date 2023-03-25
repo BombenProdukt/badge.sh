@@ -13,12 +13,12 @@ final class StatusBadge extends AbstractBadge
     {
         $svg = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/status/{$definition}", ['branchName' => $branch])->body();
 
-        preg_match_all('/fill-opacity=[^>]*?>([^<]+)<\//i', $svg, $texts);
-        preg_match('/<rect[^>]*?fill="([^"]+)"[^>]*?x=/i', $svg, $colors);
+        \preg_match_all('/fill-opacity=[^>]*?>([^<]+)<\//i', $svg, $texts);
+        \preg_match('/<rect[^>]*?fill="([^"]+)"[^>]*?x=/i', $svg, $colors);
 
         return [
-            'pipeline'    => $texts[1][0],
-            'status'      => $texts[1][1],
+            'pipeline' => $texts[1][0],
+            'status' => $texts[1][1],
             'statusColor' => $colors[1],
         ];
     }
@@ -26,9 +26,9 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['pipeline'] ?: 'Azure Pipelines',
-            'message'      => $properties['status'],
-            'messageColor' => trim(str_replace('#', '', $properties['statusColor'] ?? '')),
+            'label' => $properties['pipeline'] ?: 'Azure Pipelines',
+            'message' => $properties['status'],
+            'messageColor' => \trim(\str_replace('#', '', $properties['statusColor'] ?? '')),
         ];
     }
 
@@ -58,7 +58,7 @@ final class StatusBadge extends AbstractBadge
     {
         return [
             '/azure-devops/status/dnceng/public/efcore-ci' => 'pipeline status (definition name)',
-            '/azure-devops/status/dnceng/public/51'        => 'pipeline status (definition id)',
+            '/azure-devops/status/dnceng/public/51' => 'pipeline status (definition id)',
         ];
     }
 }

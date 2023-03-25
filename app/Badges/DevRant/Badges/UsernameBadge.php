@@ -18,8 +18,8 @@ final class UsernameBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => ucfirst($properties['username']),
-            'message'      => FormatNumber::execute($properties['score']),
+            'label' => \ucfirst($properties['username']),
+            'message' => FormatNumber::execute($properties['score']),
             'messageColor' => 'f99a66',
         ];
     }

@@ -14,15 +14,15 @@ final class FollowBadge extends AbstractBadge
     {
         return [
             'username' => $username,
-            'count'    => $this->client->get($username)['followers_count'],
+            'count' => $this->client->get($username)['followers_count'],
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => 'follow @'.$properties['username'],
-            'message'      => FormatNumber::execute($properties['count']),
+            'label' => 'follow @'.$properties['username'],
+            'message' => FormatNumber::execute($properties['count']),
             'messageColor' => '1da1f2',
         ];
     }
@@ -58,7 +58,7 @@ final class FollowBadge extends AbstractBadge
     {
         return [
             '/twitter/follow/rustlang' => 'followers count',
-            '/twitter/follow/golang'   => 'followers count',
+            '/twitter/follow/golang' => 'followers count',
         ];
     }
 

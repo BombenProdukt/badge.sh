@@ -15,9 +15,9 @@ final class GoalBadge extends AbstractBadge
         $response = $this->client->get($username);
 
         if ($response['goal']) {
-            $goalAmount     = floatval($response['goal']['amount']);
-            $receivesAmount = floatval($response['receiving']['amount']);
-            $goal           = round(($receivesAmount / $goalAmount) * 100);
+            $goalAmount = (float) $response['goal']['amount'];
+            $receivesAmount = (float) $response['receiving']['amount'];
+            $goal = \round(($receivesAmount / $goalAmount) * 100);
         }
 
         return [
@@ -28,8 +28,8 @@ final class GoalBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'goal progress',
-            'message'      => FormatPercentage::execute($properties['goal']),
+            'label' => 'goal progress',
+            'message' => FormatPercentage::execute($properties['goal']),
             'messageColor' => isset($properties['goal']) ? 'yellow.600' : 'gray.600',
         ];
     }

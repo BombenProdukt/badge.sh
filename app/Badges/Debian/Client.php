@@ -19,8 +19,8 @@ final class Client
     public function version(string $packageName, ?string $distribution): array
     {
         return $this->client->get('madison', [
-            'f'       => 'json',
-            's'       => $distribution,
+            'f' => 'json',
+            's' => $distribution,
             'package' => $packageName,
         ])->json($distribution ? "0.{$packageName}.{$distribution}" : "0.{$packageName}");
     }

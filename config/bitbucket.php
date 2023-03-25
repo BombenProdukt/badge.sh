@@ -12,7 +12,6 @@ declare(strict_types=1);
  */
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Connection Name
@@ -39,13 +38,11 @@ return [
     */
 
     'connections' => [
-
         'main' => [
-            'method'   => 'password',
+            'method' => 'password',
             'username' => env('BITBUCKET_USERNAME'),
             'password' => env('BITBUCKET_PASSWORD'),
         ],
-
     ],
 
     /*
@@ -60,21 +57,18 @@ return [
     */
 
     'cache' => [
-
         'main' => [
-            'driver'    => 'illuminate',
+            'driver' => 'illuminate',
             'connector' => null, // null means use default driver
             // 'min'       => 43200,
             // 'max'       => 172800
         ],
 
         'bar' => [
-            'driver'    => 'illuminate',
+            'driver' => 'illuminate',
             'connector' => 'redis', // config/cache.php
             // 'min'       => 43200,
             // 'max'       => 172800
         ],
-
     ],
-
 ];

@@ -13,12 +13,12 @@ final class Client
         $counts = Http::get("https://{$org}.testspace.com/api/projects/{$project}/spaces/{$space}/results")->throw()->json('0.case_counts');
 
         return [
-            'passed'   => $counts[0],
-            'failed'   => $counts[1],
-            'skipped'  => $counts[2],
-            'errored'  => $counts[3],
+            'passed' => $counts[0],
+            'failed' => $counts[1],
+            'skipped' => $counts[2],
+            'errored' => $counts[3],
             'untested' => $counts[4],
-            'total'    => $counts[0] + $counts[1] + $counts[2] + $counts[3] + $counts[4],
+            'total' => $counts[0] + $counts[1] + $counts[2] + $counts[3] + $counts[4],
         ];
     }
 }

@@ -51,7 +51,7 @@ final class PullsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/docker/pulls/library/ubuntu'   => 'pulls (library)',
+            '/docker/pulls/library/ubuntu' => 'pulls (library)',
             '/docker/pulls/amio/node-chrome' => 'pulls (scoped)',
         ];
     }

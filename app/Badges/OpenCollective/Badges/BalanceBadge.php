@@ -14,7 +14,7 @@ final class BalanceBadge extends AbstractBadge
         $response = $this->client->get($slug);
 
         return [
-            'amount'   => $response['balance'] / 100,
+            'amount' => $response['balance'] / 100,
             'currency' => $response['currency'],
         ];
     }

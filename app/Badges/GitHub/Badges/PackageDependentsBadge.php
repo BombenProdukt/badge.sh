@@ -51,7 +51,6 @@ final class PackageDependentsBadge extends AbstractBadge
     {
         return [
             '/github/dependents-package/micromatch/micromatch' => 'package dependents',
-
         ];
     }
 }

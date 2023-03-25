@@ -18,12 +18,12 @@ final class Client
 
     public function get(string $platform, string $package): array
     {
-        return $this->client->get("{$platform}/".urlencode($package))->json();
+        return $this->client->get("{$platform}/".\urlencode($package))->json();
     }
 
     public function dependencies(string $platform, string $package, string $version): array
     {
-        return $this->client->get("{$platform}/".urlencode($package)."/{$version}/dependencies")->json();
+        return $this->client->get("{$platform}/".\urlencode($package)."/{$version}/dependencies")->json();
     }
 
     public function github(string $package): array

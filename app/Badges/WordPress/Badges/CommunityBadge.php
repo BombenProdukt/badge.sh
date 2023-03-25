@@ -44,7 +44,7 @@ final class CommunityBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/community/bbpress'        => 'community status (plugin)',
+            '/wordpress/plugin/community/bbpress' => 'community status (plugin)',
             '/wordpress/theme/community/twentyseventeen' => 'community status (theme)',
         ];
     }

@@ -17,8 +17,8 @@ final class BTCBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'BTC',
-            'message'      => $properties['address'],
+            'label' => 'BTC',
+            'message' => $properties['address'],
             'messageColor' => 'blue.600',
         ];
     }

@@ -21,15 +21,15 @@ final class DependabotStatusBadge extends AbstractBadge
     {
         if ($properties['successful']) {
             return [
-                'label'        => 'dependabot',
-                'message'      => 'Active',
+                'label' => 'dependabot',
+                'message' => 'Active',
                 'messageColor' => 'green.600',
             ];
         }
 
         return [
-            'label'        => 'github',
-            'message'      => 'not found',
+            'label' => 'github',
+            'message' => 'not found',
             'messageColor' => 'gray.600',
         ];
     }

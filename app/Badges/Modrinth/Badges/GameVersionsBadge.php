@@ -18,7 +18,7 @@ final class GameVersionsBadge extends AbstractBadge
 
     public function render(array $properties): array
     {
-        return $this->renderVersion(implode(' | ', $properties['versions']));
+        return $this->renderVersion(\implode(' | ', $properties['versions']));
     }
 
     public function keywords(): array

@@ -11,7 +11,7 @@ final class LicenseBadge extends AbstractBadge
 {
     public function handle(string $shard): array
     {
-        preg_match('/opensource.org\\/licenses\\/[^>]+?>([^<]+)<\\//i', $this->client->get($shard), $matches);
+        \preg_match('/opensource.org\\/licenses\\/[^>]+?>([^<]+)<\\//i', $this->client->get($shard), $matches);
 
         return [
             'license' => $matches[1],

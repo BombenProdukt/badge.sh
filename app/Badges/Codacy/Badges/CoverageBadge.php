@@ -11,10 +11,10 @@ final class CoverageBadge extends AbstractBadge
 {
     public function handle(string $projectId, ?string $branch = null): array
     {
-        preg_match('/text-anchor=[^>]*?>([^<]+)<\//i', $this->client->get('coverage', $projectId, $branch), $matches);
+        \preg_match('/text-anchor=[^>]*?>([^<]+)<\//i', $this->client->get('coverage', $projectId, $branch), $matches);
 
         return [
-            'percentage' => trim($matches[1]),
+            'percentage' => \trim($matches[1]),
         ];
     }
 
@@ -53,7 +53,7 @@ final class CoverageBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e'        => 'coverage',
+            '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e' => 'coverage',
             '/codacy/coverage/f0875490cea1497a9eca9c25f3f7774e/master' => 'branch coverage',
         ];
     }

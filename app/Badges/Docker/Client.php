@@ -43,9 +43,9 @@ final class Client
 
     public function config(string $scope, string $name, string $tag, string $architecture, string $variant): array
     {
-        $token     = $this->getDockerAuthToken($scope, $name);
+        $token = $this->getDockerAuthToken($scope, $name);
         $manifests = $this->getManifestList($token, $scope, $name, $tag, $architecture, $variant);
-        $manifest  = $this->getImageManifest($token, $scope, $name, $manifests['digest']);
+        $manifest = $this->getImageManifest($token, $scope, $name, $manifests['digest']);
 
         return $this->getImageConfig($token, $scope, $name, $manifest['config']['digest']);
     }
@@ -54,7 +54,7 @@ final class Client
     {
         return Http::baseUrl('https://auth.docker.io/')->get('token', [
             'service' => 'registry.docker.io',
-            'scope'   => "repository:{$scope}/{$name}:pull",
+            'scope' => "repository:{$scope}/{$name}:pull",
         ])->json('token');
     }
 
@@ -62,13 +62,13 @@ final class Client
     {
         $manifests = $this->registry($token, "{$scope}/{$name}/manifests/{$tag}")['manifests'];
 
-        if (! $manifests) {
+        if (!$manifests) {
             throw new \Exception("The tag is unknown: {$tag}");
         }
 
         $manifest = collect($manifests)->firstWhere(fn ($item) => $item['platform']['architecture'] === $architecture);
 
-        if (! $manifest) {
+        if (!$manifest) {
             throw new \Exception("The architecture is unknown: {$architecture}");
         }
 
@@ -77,12 +77,12 @@ final class Client
                 ->filter(fn ($item) => $item['platform']['architecture'] === $architecture)
                 ->firstWhere('platform.variant', $variant);
 
-            if (! $manifest) {
+            if (!$manifest) {
                 throw new \Exception("The variant is unknown: {$variant}");
             }
         }
 
-        if (! $manifest['digest']) {
+        if (!$manifest['digest']) {
             throw new \Exception("Failed to digest the image: {$scope}/{$name}:{$tag}");
         }
 

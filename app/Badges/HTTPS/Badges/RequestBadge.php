@@ -18,8 +18,8 @@ final class RequestBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['label'],
-            'message'      => $properties['message'],
+            'label' => $properties['label'],
+            'message' => $properties['message'],
             'messageColor' => $properties['messageColor'],
         ];
     }
@@ -54,8 +54,8 @@ final class RequestBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/https/cal-badge-icd0onfvrxx6.runkit.sh'                     => 'https endpoint',
-            '/https/cal-badge-icd0onfvrxx6.runkit.sh/Asia/Shanghai'       => 'https endpoint (with path args)',
+            '/https/cal-badge-icd0onfvrxx6.runkit.sh' => 'https endpoint',
+            '/https/cal-badge-icd0onfvrxx6.runkit.sh/Asia/Shanghai' => 'https endpoint (with path args)',
             '/https/cal-badge-icd0onfvrxx6.runkit.sh/America/Los_Angeles' => 'https endpoint (with path args)',
         ];
     }

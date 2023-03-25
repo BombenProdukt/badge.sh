@@ -11,7 +11,7 @@ final class DependentsBadge extends AbstractBadge
 {
     public function handle(string $shard): array
     {
-        preg_match('/Dependents[^>]*? class="count">([^<]+)<\\//i', $this->client->get($shard), $matches);
+        \preg_match('/Dependents[^>]*? class="count">([^<]+)<\\//i', $this->client->get($shard), $matches);
 
         return [
             'count' => $matches[1],

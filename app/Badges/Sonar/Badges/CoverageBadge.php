@@ -35,7 +35,7 @@ final class CoverageBadge extends AbstractBadge
     public function routeRules(): array
     {
         return [
-            'instance'     => ['required', 'url'],
+            'instance' => ['required', 'url'],
             'sonarVersion' => ['required', 'numeric'],
         ];
     }

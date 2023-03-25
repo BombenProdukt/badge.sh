@@ -16,15 +16,15 @@ final class JSONBadge extends AbstractBadge
             Http::get($this->getRequestData('url'))->throw()->json(),
             [
                 'schemaVersion' => ['required', 'in:1'],
-                'label'         => ['required', 'string'],
-                'labelColor'    => ['nullable', 'string'],
-                'message'       => ['required', 'string'],
-                'messageColor'  => ['required', 'string'],
-                'style'         => ['nullable', 'string'],
-                'icon'          => ['nullable', 'string'],
-                'iconWidth'     => ['nullable', 'integer'],
-                'scale'         => ['nullable', 'integer'],
-            ]
+                'label' => ['required', 'string'],
+                'labelColor' => ['nullable', 'string'],
+                'message' => ['required', 'string'],
+                'messageColor' => ['required', 'string'],
+                'style' => ['nullable', 'string'],
+                'icon' => ['nullable', 'string'],
+                'iconWidth' => ['nullable', 'integer'],
+                'scale' => ['nullable', 'integer'],
+            ],
         )->validate();
     }
 

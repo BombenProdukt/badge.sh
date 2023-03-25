@@ -24,23 +24,23 @@ final class Client
 
     private function nexus2(string $instance, string $query, string $repo, string $groupId, string $artifactId): string
     {
-        $searchParams = array_merge([
+        $searchParams = \array_merge([
             'g' => $groupId,
             'a' => $artifactId,
         ], match ($repo) {
-            's'     => [],
-            'r'     => [],
-            default => ['r' => $repo, 'v' => 'LATEST']
+            's' => [],
+            'r' => [],
+            default => ['r' => $repo, 'v' => 'LATEST'],
         });
 
-        if (! empty($query)) {
+        if (!empty($query)) {
             $searchParams = $this->addQueryParamsToQueryString($searchParams, $query);
         }
 
         $response = Http::baseUrl($instance)->throw()->get(match ($repo) {
-            's'     => 'service/local/lucene/search',
-            'r'     => 'service/local/lucene/search',
-            default => 'service/local/artifact/maven/resolve'
+            's' => 'service/local/lucene/search',
+            'r' => 'service/local/lucene/search',
+            default => 'service/local/artifact/maven/resolve',
         })->json();
 
         if ($repo === 'r') {
@@ -64,17 +64,17 @@ final class Client
 
     private function nexus3(string $instance, string $query, string $repo, string $groupId, string $artifactId): string
     {
-        $searchParams = array_merge([
+        $searchParams = \array_merge([
             'group' => $groupId,
-            'name'  => $artifactId,
-            'sort'  => 'version',
+            'name' => $artifactId,
+            'sort' => 'version',
         ], match ($repo) {
-            's'     => ['prerelease' => 'true'],
-            'r'     => ['prerelease' => 'false'],
-            default => ['repository' => $repo]
+            's' => ['prerelease' => 'true'],
+            'r' => ['prerelease' => 'false'],
+            default => ['repository' => $repo],
         });
 
-        if (! empty($query)) {
+        if (!empty($query)) {
             $searchParams = $this->addQueryParamsToQueryString($searchParams, $query);
         }
 
@@ -83,12 +83,12 @@ final class Client
 
     private function addQueryParamsToQueryString(array $searchParams, string $queryOpt): array
     {
-        $keyValuePairs = explode(':', $queryOpt);
+        $keyValuePairs = \explode(':', $queryOpt);
 
         foreach ($keyValuePairs as $keyValuePair) {
-            $paramParts              = explode('=', $keyValuePair);
-            $paramKey                = $paramParts[0];
-            $paramValue              = $paramParts[1];
+            $paramParts = \explode('=', $keyValuePair);
+            $paramKey = $paramParts[0];
+            $paramValue = $paramParts[1];
             $searchParams[$paramKey] = $paramValue;
         }
 
@@ -97,6 +97,6 @@ final class Client
 
     private function isSnapshotVersion(string $version): bool
     {
-        return str_contains($version, '-SNAPSHOT');
+        return \str_contains($version, '-SNAPSHOT');
     }
 }

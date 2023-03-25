@@ -52,9 +52,9 @@ final class CommitsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/gitlab/commits/cryptsetup/cryptsetup'                                                  => 'commits count',
-            '/gitlab/commits/cryptsetup/cryptsetup/coverity_scan'                                    => 'commits count (branch ref)',
-            '/gitlab/commits/cryptsetup/cryptsetup/v2.2.2'                                           => 'commits count (tag ref)',
+            '/gitlab/commits/cryptsetup/cryptsetup' => 'commits count',
+            '/gitlab/commits/cryptsetup/cryptsetup/coverity_scan' => 'commits count (branch ref)',
+            '/gitlab/commits/cryptsetup/cryptsetup/v2.2.2' => 'commits count (tag ref)',
         ];
     }
 }

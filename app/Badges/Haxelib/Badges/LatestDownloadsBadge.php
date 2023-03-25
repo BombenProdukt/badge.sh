@@ -17,8 +17,8 @@ final class LatestDownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'TODO',
-            'message'      => 'TODO',
+            'label' => 'TODO',
+            'message' => 'TODO',
             'messageColor' => 'TODO',
         ];
     }

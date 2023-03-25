@@ -13,13 +13,13 @@ final class LanguagesBadge extends AbstractBadge
     public function handle(string $owner, string $repo): array
     {
         return [
-            'languages' => array_keys(GitHub::repos()->languages($owner, $repo)),
+            'languages' => \array_keys(GitHub::repos()->languages($owner, $repo)),
         ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderText('languages', implode(' | ', $properties['languages']), 'blue.600');
+        return $this->renderText('languages', \implode(' | ', $properties['languages']), 'blue.600');
     }
 
     public function keywords(): array
@@ -53,7 +53,6 @@ final class LanguagesBadge extends AbstractBadge
     {
         return [
             '/github/languages/micromatch/micromatch' => 'languages',
-
         ];
     }
 }

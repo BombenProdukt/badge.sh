@@ -16,7 +16,7 @@ final class AlertsBadge extends AbstractBadge
         $response = $this->client->get($provider, $project, $language);
 
         return [
-            'alerts'   => $response['alerts'],
+            'alerts' => $response['alerts'],
             'language' => $this->languages[$response['lines']] ?? $language,
         ];
     }
@@ -24,8 +24,8 @@ final class AlertsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'alerts: '.$properties['language'],
-            'message'      => FormatNumber::execute($properties['alerts']),
+            'label' => 'alerts: '.$properties['language'],
+            'message' => FormatNumber::execute($properties['alerts']),
             'messageColor' => $properties['alerts'] === 0 ? 'green.600' : 'yellow.600',
         ];
     }

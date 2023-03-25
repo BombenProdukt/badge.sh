@@ -18,8 +18,8 @@ final class ViewsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'views',
-            'message'      => FormatNumber::execute($properties['views']),
+            'label' => 'views',
+            'message' => FormatNumber::execute($properties['views']),
             'messageColor' => 'F1680D',
         ];
     }

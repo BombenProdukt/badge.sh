@@ -11,7 +11,7 @@ final class VersionBadge extends AbstractBadge
 {
     public function handle(string $name): array
     {
-        preg_match('/class="package-version">([^<]+)<\//i', $this->client->get($name), $matches);
+        \preg_match('/class="package-version">([^<]+)<\//i', $this->client->get($name), $matches);
 
         return [
             'version' => $matches[1],
@@ -53,7 +53,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/opam/version/merlin'      => 'version',
+            '/opam/version/merlin' => 'version',
             '/opam/version/ocamlformat' => 'version',
         ];
     }

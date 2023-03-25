@@ -20,9 +20,9 @@ final class BadgeServiceProvider extends ServiceProvider
 
         Route::get('/endpoint/demo/json', fn () => [
             'schemaVersion' => 1,
-            'label'         => 'is it monday',
-            'message'       => 'no',
-            'messageColor'  => 'orange.600',
+            'label' => 'is it monday',
+            'message' => 'no',
+            'messageColor' => 'orange.600',
         ])->name('services.endpoint.json');
 
         Route::get('/endpoint/demo/xml', function () {
@@ -37,9 +37,9 @@ final class BadgeServiceProvider extends ServiceProvider
 
         Route::get('/endpoint/demo/yaml', fn () => Yaml::dump([
             'schemaVersion' => 1,
-            'label'         => 'is it monday',
-            'message'       => 'no',
-            'messageColor'  => 'orange.600',
+            'label' => 'is it monday',
+            'message' => 'no',
+            'messageColor' => 'orange.600',
         ]))->name('services.endpoint.yaml');
     }
 }

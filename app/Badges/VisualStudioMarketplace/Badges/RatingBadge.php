@@ -15,15 +15,15 @@ final class RatingBadge extends AbstractBadge
 
         return [
             'rating' => collect($response['statistics'])->firstWhere('statisticName', 'averagerating')['value'],
-            'count'  => collect($response['statistics'])->firstWhere('statisticName', 'ratingcount')['value'],
+            'count' => collect($response['statistics'])->firstWhere('statisticName', 'ratingcount')['value'],
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => 'rating',
-            'message'      => number_format($properties['rating']).'/5 ('.$properties['count'].')',
+            'label' => 'rating',
+            'message' => \number_format($properties['rating']).'/5 ('.$properties['count'].')',
             'messageColor' => 'green.600',
         ];
     }

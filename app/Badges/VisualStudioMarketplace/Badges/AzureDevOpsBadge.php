@@ -14,8 +14,8 @@ final class AzureDevOpsBadge extends AbstractBadge
         $response = $this->client->get($extension);
 
         return [
-            'measurement'     => $measurement,
-            'installations'   => collect($response['statistics'])->firstWhere('statisticName', 'install')['value'],
+            'measurement' => $measurement,
+            'installations' => collect($response['statistics'])->firstWhere('statisticName', 'install')['value'],
             'onpremDownloads' => collect($response['statistics'])->firstWhere('statisticName', 'onpremDownloads')['value'],
         ];
     }
@@ -63,9 +63,9 @@ final class AzureDevOpsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository'          => 'downloads',
+            '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository' => 'downloads',
             '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/services' => 'downloads',
-            '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/on-prem'  => 'downloads',
+            '/vs-marketplace/azure-devops-installations/swellaby.mirror-git-repository/on-prem' => 'downloads',
         ];
     }
 }

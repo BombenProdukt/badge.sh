@@ -21,8 +21,8 @@ final class OpenIssuesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'open issues',
-            'message'      => FormatNumber::execute($properties['count']),
+            'label' => 'open issues',
+            'message' => FormatNumber::execute($properties['count']),
             'messageColor' => $properties['count'] === 0 ? 'green.600' : 'orange.600',
         ];
     }

@@ -16,8 +16,8 @@ final class VersionBadge extends AbstractBadge
 
         return match (true) {
             $architecture && $channel => $channels->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture && Arr::get($item, 'channel.name') === $channel),
-            $architecture             => $channels->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture),
-            default                   => $channels->first(),
+            $architecture => $channels->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture),
+            default => $channels->first(),
         };
     }
 
@@ -56,8 +56,8 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/snapcraft/version/joplin-desktop'              => 'version',
-            '/snapcraft/version/mattermost-desktop/i386'     => 'version',
+            '/snapcraft/version/joplin-desktop' => 'version',
+            '/snapcraft/version/mattermost-desktop/i386' => 'version',
             '/snapcraft/version/telegram-desktop/arm64/edge' => 'version',
         ];
     }

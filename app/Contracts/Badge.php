@@ -8,13 +8,13 @@ use Illuminate\Routing\Route;
 
 /**
  * @method array handle()
- * @method void setRequest()
- * @method void setRequestData()
+ * @method void  setRequest()
+ * @method void  setRequestData()
  */
 interface Badge
 {
     /**
-     * @param  array<string,mixed>  $properties
+     * @param array<string,mixed> $properties
      */
     public function render(array $properties): array;
 

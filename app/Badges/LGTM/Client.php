@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Http;
 final class Client
 {
     private PendingRequest $client;
-
     private array $providers = [
-        'github'    => 'g',
+        'github' => 'g',
         'bitbucket' => 'b',
-        'gitlab'    => 'gl',
+        'gitlab' => 'gl',
     ];
 
     public function __construct()
@@ -31,7 +30,7 @@ final class Client
 
     private function detailsByLang(array $data, ?string $lang): mixed
     {
-        $found = $lang && array_filter($data['languages'], function ($x) use ($lang) {
+        $found = $lang && \array_filter($data['languages'], function ($x) use ($lang) {
             return $x['language'] === $lang;
         });
 
@@ -39,7 +38,7 @@ final class Client
             return $found[0];
         }
 
-        return array_reduce($data['languages'], function ($accu, $curr) {
+        return \array_reduce($data['languages'], function ($accu, $curr) {
             return $curr['lines'] > $accu['lines'] ? $curr : $accu;
         });
     }

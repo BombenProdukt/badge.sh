@@ -45,17 +45,17 @@ final class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
+        $this->reportable(function (Throwable $e): void {
             //
         });
 
         $this->renderable(function (NotFoundHttpException $e) {
             return response(
                 Badger::from([
-                    'label'        => 'badge.sh',
-                    'message'      => 'not found',
+                    'label' => 'badge.sh',
+                    'message' => 'not found',
                     'messageColor' => 'red.600',
-                ])->withStyle('classic')->render()
+                ])->withStyle('classic')->render(),
             )->setStatusCode(200)->header('Content-Type', 'image/svg+xml;charset=base64');
         });
     }

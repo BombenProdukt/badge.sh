@@ -14,12 +14,12 @@ final class ViolationsBadge extends AbstractBadge
         $response = $this->client->get($this->getRequestData('instance'), $this->getRequestData('sonarVersion'), $metric, $component, $branch);
 
         return [
-            'total'    => $response['violations'],
-            'info'     => $response['violations']['info_violations'],
-            'minor'    => $response['violations']['minor_violations'],
-            'major'    => $response['violations']['major_violations'],
+            'total' => $response['violations'],
+            'info' => $response['violations']['info_violations'],
+            'minor' => $response['violations']['minor_violations'],
+            'major' => $response['violations']['major_violations'],
             'critical' => $response['violations']['critical_violations'],
-            'blocker'  => $response['violations']['blocker_violations'],
+            'blocker' => $response['violations']['blocker_violations'],
         ];
     }
 
@@ -29,35 +29,35 @@ final class ViolationsBadge extends AbstractBadge
             return $this->renderNumber('violations', 0);
         }
 
-        $color            = null;
+        $color = null;
         $violationSummary = [];
 
         if ($properties['info'] > 0) {
             $violationSummary[] = $properties['info'].' info';
-            $color              = 'green.600';
+            $color = 'green.600';
         }
 
         if ($properties['minor'] > 0) {
             $violationSummary[] = $properties['minor'].' minor';
-            $color              = 'yellow.600';
+            $color = 'yellow.600';
         }
 
         if ($properties['major'] > 0) {
             $violationSummary[] = $properties['major'].' major';
-            $color              = 'amber.600';
+            $color = 'amber.600';
         }
 
         if ($properties['critical'] > 0) {
             $violationSummary[] = $properties['critical'].' critical';
-            $color              = 'orange.600';
+            $color = 'orange.600';
         }
 
         if ($properties['blocker'] > 0) {
             $violationSummary[] = $properties['blocker'].' blocker';
-            $color              = 'red.600';
+            $color = 'red.600';
         }
 
-        return $this->renderText('violations', implode(', ', $violationSummary), $color);
+        return $this->renderText('violations', \implode(', ', $violationSummary), $color);
     }
 
     public function keywords(): array
@@ -75,7 +75,7 @@ final class ViolationsBadge extends AbstractBadge
     public function routeRules(): array
     {
         return [
-            'instance'     => ['required', 'url'],
+            'instance' => ['required', 'url'],
             'sonarVersion' => ['required', 'numeric'],
         ];
     }
@@ -105,12 +105,12 @@ final class ViolationsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/sonar/blocker_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'  => 'complexity',
+            '/sonar/blocker_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'complexity',
             '/sonar/critical_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'cognitive complexity',
-            '/sonar/info_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'     => 'duplicated blocks',
-            '/sonar/major_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'    => 'duplicated files',
-            '/sonar/minor_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'    => 'duplicated lines',
-            '/sonar/violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2'          => 'duplicated lines density',
+            '/sonar/info_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'duplicated blocks',
+            '/sonar/major_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'duplicated files',
+            '/sonar/minor_violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'duplicated lines',
+            '/sonar/violations/org.ow2.petals:petals-se-ase/master?instance=http://sonar.petalslink.com&sonarVersion=4.2' => 'duplicated lines density',
         ];
     }
 }

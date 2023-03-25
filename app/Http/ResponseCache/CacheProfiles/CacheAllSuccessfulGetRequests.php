@@ -15,6 +15,6 @@ final class CacheAllSuccessfulGetRequests extends BaseCacheProfile
             return true;
         }
 
-        return str_starts_with($response->headers->get('Content-Type', ''), 'image/svg');
+        return \str_starts_with($response->headers->get('Content-Type', ''), 'image/svg');
     }
 }

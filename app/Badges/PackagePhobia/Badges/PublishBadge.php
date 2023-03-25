@@ -15,7 +15,7 @@ final class PublishBadge extends AbstractBadge
         $response = $this->client->get($name);
 
         return [
-            'size'  => $response['publish']['pretty'],
+            'size' => $response['publish']['pretty'],
             'color' => $response['publish']['color'],
         ];
     }
@@ -23,9 +23,9 @@ final class PublishBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'publish size',
-            'message'      => $properties['size'],
-            'messageColor' => str_replace('#', '', $properties['color']),
+            'label' => 'publish size',
+            'message' => $properties['size'],
+            'messageColor' => \str_replace('#', '', $properties['color']),
         ];
     }
 
@@ -59,7 +59,7 @@ final class PublishBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagephobia/publish/webpack'               => 'publish size',
+            '/packagephobia/publish/webpack' => 'publish size',
             '/packagephobia/publish/@tusbar/cache-control' => '(scoped pkg) publish size',
         ];
     }

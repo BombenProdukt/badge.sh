@@ -46,7 +46,7 @@ final class DownloadsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/downloads/bbpress'        => 'total downloads (plugin)',
+            '/wordpress/plugin/downloads/bbpress' => 'total downloads (plugin)',
             '/wordpress/theme/downloads/twentyseventeen' => 'total downloads (theme)',
         ];
     }

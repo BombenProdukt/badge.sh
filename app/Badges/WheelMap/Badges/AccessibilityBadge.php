@@ -19,10 +19,10 @@ final class AccessibilityBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('accessibility', $properties['accessibility'], match ($properties['accessibility']) {
-            'yes'     => 'green.600',
+            'yes' => 'green.600',
             'limited' => 'yellow.600',
-            'no'      => 'red.600',
-            default   => 'gray.600',
+            'no' => 'red.600',
+            default => 'gray.600',
         });
     }
 

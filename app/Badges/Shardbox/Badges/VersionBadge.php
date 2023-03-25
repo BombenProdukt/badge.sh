@@ -11,7 +11,7 @@ final class VersionBadge extends AbstractBadge
 {
     public function handle(string $shard): array
     {
-        preg_match('/class="version">([^<]+)<\\//i', $this->client->get($shard), $matches);
+        \preg_match('/class="version">([^<]+)<\\//i', $this->client->get($shard), $matches);
 
         return [
             'version' => $matches[1],

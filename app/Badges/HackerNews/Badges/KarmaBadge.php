@@ -13,7 +13,7 @@ final class KarmaBadge extends AbstractBadge
     {
         return [
             'username' => $username,
-            'karma'    => $this->client->karma($username),
+            'karma' => $this->client->karma($username),
         ];
     }
 

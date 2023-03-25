@@ -12,7 +12,7 @@ final class StatusBadge extends AbstractBadge
     public function handle(string $domain, string $label): array
     {
         return [
-            'label'  => $label,
+            'label' => $label,
             'status' => collect($this->client->get($domain)['sites'])->flatten(1)->firstWhere('label', $label)['status'],
         ];
     }
@@ -20,8 +20,8 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['label'],
-            'message'      => $properties['status'],
+            'label' => $properties['label'],
+            'message' => $properties['status'],
             'messageColor' => $properties['status'] === 'up' ? 'green.600' : 'red.600',
         ];
     }

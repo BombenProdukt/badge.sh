@@ -19,8 +19,8 @@ final class Client
     public function get(string $project, ?string $identifier): array
     {
         return $this->client->get('badges/status', [
-            'host'       => 'github',
-            'repo'       => $project,
+            'host' => 'github',
+            'repo' => $project,
             'identifier' => $identifier,
         ])->json();
     }

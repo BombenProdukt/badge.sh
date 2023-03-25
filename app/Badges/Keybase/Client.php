@@ -20,7 +20,7 @@ final class Client
     {
         return $this->client->get('user/lookup.json', [
             'username' => $username,
-            'fields'   => $fields,
+            'fields' => $fields,
         ])->json();
     }
 }

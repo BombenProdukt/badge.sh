@@ -14,7 +14,7 @@ final class LastDayPriceChangeBadge extends AbstractBadge
         $response = $this->client->get($assetId);
 
         return [
-            'ticker'     => $response['name'],
+            'ticker' => $response['name'],
             'percentage' => $response['changePercent24Hr'],
         ];
     }

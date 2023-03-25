@@ -38,7 +38,7 @@ final class LicenseBadge extends AbstractBadge
 
     public function routeConstraints(Route $route): void
     {
-            //
+        //
     }
 
     public function staticPreviews(): array

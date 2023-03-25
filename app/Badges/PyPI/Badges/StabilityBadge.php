@@ -21,11 +21,11 @@ final class StabilityBadge extends AbstractBadge
             // Development Status :: 6 - Mature
             // Development Status :: 7 - Inactive
 
-            if (! str_starts_with($classifier, 'Development Status ::')) {
+            if (!\str_starts_with($classifier, 'Development Status ::')) {
                 return null;
             }
 
-            return trim(explode('-', explode(' :: ', $classifier)[1])[1]);
+            return \trim(\explode('-', \explode(' :: ', $classifier)[1])[1]);
         })->filter()->first();
 
         return [
@@ -36,8 +36,8 @@ final class StabilityBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'stability',
-            'message'      => str_replace('Production/Stable', 'stable', $properties['stability']),
+            'label' => 'stability',
+            'message' => \str_replace('Production/Stable', 'stable', $properties['stability']),
             'messageColor' => DetermineColorByVersion::execute($properties['stability']),
         ];
     }
@@ -72,7 +72,7 @@ final class StabilityBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/stability/black'       => 'stability',
+            '/pypi/stability/black' => 'stability',
             '/pypi/stability/plone.volto' => 'stability',
         ];
     }

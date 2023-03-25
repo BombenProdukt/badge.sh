@@ -13,7 +13,7 @@ final class LicenseBadge extends AbstractBadge
     {
         $response = $this->client->web("packages/{$package}");
 
-        preg_match('/License<\/h3>\s*<p>([^(]+)\(/i', $response, $matches);
+        \preg_match('/License<\/h3>\s*<p>([^(]+)\(/i', $response, $matches);
 
         return $this->renderLicense($matches[1]);
     }

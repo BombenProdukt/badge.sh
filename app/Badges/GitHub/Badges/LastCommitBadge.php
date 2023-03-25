@@ -13,7 +13,7 @@ final class LastCommitBadge extends AbstractBadge
     public function handle(string $owner, string $repo, ?string $reference = null): array
     {
         if (empty($reference)) {
-            $response  = GitHub::connection('main')->api('repo')->show($owner, $repo);
+            $response = GitHub::connection('main')->api('repo')->show($owner, $repo);
             $reference = $response['default_branch'];
         }
 
@@ -59,9 +59,9 @@ final class LastCommitBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/last-commit/micromatch/micromatch'          => 'last commit',
+            '/github/last-commit/micromatch/micromatch' => 'last commit',
             '/github/last-commit/micromatch/micromatch/gh-pages' => 'last commit (branch ref)',
-            '/github/last-commit/micromatch/micromatch/4.0.1'    => 'last commit (tag ref)',
+            '/github/last-commit/micromatch/micromatch/4.0.1' => 'last commit (tag ref)',
         ];
     }
 }

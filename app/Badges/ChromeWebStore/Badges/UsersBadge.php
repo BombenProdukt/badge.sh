@@ -11,10 +11,10 @@ final class UsersBadge extends AbstractBadge
 {
     public function handle(string $itemId): array
     {
-        preg_match('|<span class="e-f-ih" title="(.*?)">(.*?)</span>|', $this->client->get($itemId), $matches);
+        \preg_match('|<span class="e-f-ih" title="(.*?)">(.*?)</span>|', $this->client->get($itemId), $matches);
 
         return [
-            'count' => filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT),
+            'count' => \filter_var($matches[1], \FILTER_SANITIZE_NUMBER_INT),
         ];
     }
 

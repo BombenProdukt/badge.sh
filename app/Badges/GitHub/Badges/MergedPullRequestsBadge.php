@@ -52,7 +52,6 @@ final class MergedPullRequestsBadge extends AbstractBadge
     {
         return [
             '/github/merged-pull-requests/micromatch/micromatch' => 'merged PRs',
-
         ];
     }
 }

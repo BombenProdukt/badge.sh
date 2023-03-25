@@ -50,7 +50,7 @@ final class VersionBadge extends AbstractBadge
     {
         return [
             '/pub/version/kt_dart' => 'version',
-            '/pub/version/mobx'    => 'version',
+            '/pub/version/mobx' => 'version',
         ];
     }
 }

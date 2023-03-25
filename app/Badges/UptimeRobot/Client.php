@@ -19,9 +19,9 @@ final class Client
     public function get(string $apiKey, int $numberOfDays = 30): array
     {
         return $this->client->post('getMonitors', [
-            'api_key'              => $apiKey,
+            'api_key' => $apiKey,
             'custom_uptime_ratios' => $numberOfDays,
-            'response_times'       => 1,
+            'response_times' => 1,
             'response_times_limit' => 12,
         ])->json('monitors.0');
     }

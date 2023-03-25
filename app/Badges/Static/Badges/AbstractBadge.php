@@ -19,7 +19,7 @@ abstract class AbstractBadge implements Badge
     use HasRoute;
     use HasTemplates;
 
-    public function service(): string
+    final public function service(): string
     {
         return 'Static Badge';
     }

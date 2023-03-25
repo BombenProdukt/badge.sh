@@ -15,7 +15,7 @@ final class PriceBadge extends AbstractBadge
 
         return [
             'ticker' => $response['name'],
-            'price'  => $response['priceUsd'],
+            'price' => $response['priceUsd'],
         ];
     }
 

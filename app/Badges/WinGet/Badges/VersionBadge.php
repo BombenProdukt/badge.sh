@@ -51,7 +51,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/winget/version/GitHub.cli'    => 'version',
+            '/winget/version/GitHub.cli' => 'version',
             '/winget/version/Balena.Etcher' => 'version',
         ];
     }

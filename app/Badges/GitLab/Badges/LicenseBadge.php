@@ -53,7 +53,6 @@ final class LicenseBadge extends AbstractBadge
     {
         return [
             '/gitlab/license/gitlab-org/omnibus-gitlab' => 'license',
-
         ];
     }
 }

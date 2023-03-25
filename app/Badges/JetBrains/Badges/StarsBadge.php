@@ -11,7 +11,7 @@ final class StarsBadge extends AbstractBadge
 {
     public function handle(string $pluginId): array
     {
-        if (is_numeric($pluginId)) {
+        if (\is_numeric($pluginId)) {
             return [
                 'rating' => $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//rating')->text(),
             ];
@@ -58,7 +58,7 @@ final class StarsBadge extends AbstractBadge
     {
         return [
             '/jetbrains/stars/13441-laravel-idea' => 'stars',
-            '/jetbrains/stars/9630'               => 'stars (legacy plugin)',
+            '/jetbrains/stars/9630' => 'stars (legacy plugin)',
         ];
     }
 }

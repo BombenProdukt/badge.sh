@@ -20,8 +20,8 @@ final class CommentsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'comments',
-            'message'      => FormatNumber::execute($properties['count']),
+            'label' => 'comments',
+            'message' => FormatNumber::execute($properties['count']),
             'messageColor' => 'F1680D',
         ];
     }
@@ -56,7 +56,7 @@ final class CommentsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/peertube/comments/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d'       => 'comments',
+            '/peertube/comments/framatube.org/9c9de5e8-0a1e-484a-b099-e80766180a6d' => 'comments',
         ];
     }
 }

@@ -14,7 +14,7 @@ final class LicenseBadge extends AbstractBadge
         $response = $this->client->get($pod);
 
         return [
-            'license' => is_array($response['license']) ? $response['license']['type'] : $response['license'],
+            'license' => \is_array($response['license']) ? $response['license']['type'] : $response['license'],
         ];
     }
 

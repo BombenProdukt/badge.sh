@@ -15,7 +15,7 @@ final class VersionBadge extends AbstractBadge
     {
         return [
             'package' => $package,
-            'tag'     => $tag,
+            'tag' => $tag,
             'version' => Arr::get($this->client->get($package, $tag, $this->getRequestData('registry')), 'engines.node'),
         ];
     }
@@ -24,7 +24,7 @@ final class VersionBadge extends AbstractBadge
     {
         return $this->renderVersion(
             $properties['tag'] === 'latest' ? $properties['package'] : $properties['package'].'@'.$properties['tag'],
-            $properties['version']
+            $properties['version'],
         );
     }
 
@@ -65,11 +65,11 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/node/version/passport'                                                  => 'node version',
-            '/node/version/passport/latest'                                           => 'node version (tag)',
-            '/node/version/passport/latest?registry=https://registry.npmjs.com'       => 'node version (tag, custom registry)',
-            '/node/version/@stdlib/stdlib'                                            => 'node version (scoped)',
-            '/node/version/@stdlib/stdlib/latest'                                     => 'node version (scoped, tag)',
+            '/node/version/passport' => 'node version',
+            '/node/version/passport/latest' => 'node version (tag)',
+            '/node/version/passport/latest?registry=https://registry.npmjs.com' => 'node version (tag, custom registry)',
+            '/node/version/@stdlib/stdlib' => 'node version (scoped)',
+            '/node/version/@stdlib/stdlib/latest' => 'node version (scoped, tag)',
             '/node/version/@stdlib/stdlib/latest?registry=https://registry.npmjs.com' => 'node version (scoped, tag, custom registry)',
         ];
     }

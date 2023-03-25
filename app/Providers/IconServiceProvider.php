@@ -14,9 +14,9 @@ final class IconServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->callAfterResolving(Factory::class, function (Factory $factory) {
+        $this->callAfterResolving(Factory::class, function (Factory $factory): void {
             $factory->add('simple-icons', [
-                'path'   => resource_path('icons/simple-icons'),
+                'path' => resource_path('icons/simple-icons'),
                 'prefix' => 'simpleicons',
             ]);
         });

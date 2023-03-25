@@ -15,7 +15,7 @@ final class TopLanguageBadge extends AbstractBadge
         $languages = GitHub::repos()->languages($owner, $repo);
 
         return [
-            'label' => array_key_first($languages),
+            'label' => \array_key_first($languages),
             'value' => head($languages),
         ];
     }
@@ -56,7 +56,6 @@ final class TopLanguageBadge extends AbstractBadge
     {
         return [
             '/github/top-language/micromatch/micromatch' => 'top language',
-
         ];
     }
 }

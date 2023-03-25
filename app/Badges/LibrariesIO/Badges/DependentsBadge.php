@@ -52,7 +52,7 @@ final class DependentsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/libraries-io/dependents/npm/got'         => 'dependents',
+            '/libraries-io/dependents/npm/got' => 'dependents',
             '/libraries-io/dependents/npm/@babel/core' => 'dependents (scoped)',
         ];
     }

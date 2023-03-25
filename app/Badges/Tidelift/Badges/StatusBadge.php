@@ -20,18 +20,18 @@ final class StatusBadge extends AbstractBadge
     {
         if (empty($properties['location'])) {
             return [
-                'label'        => 'tidelift',
-                'message'      => 'not found',
+                'label' => 'tidelift',
+                'message' => 'not found',
                 'messageColor' => 'red.600',
             ];
         }
 
-        [, $status, $statusColor] = explode('-', parse_url(urldecode($properties['location']))['path']);
+        [, $status, $statusColor] = \explode('-', \parse_url(\urldecode($properties['location']))['path']);
 
         return [
-            'label'        => 'tidelift',
-            'message'      => str_replace('!', '', $status),
-            'messageColor' => str_replace('.svg', '', $statusColor),
+            'label' => 'tidelift',
+            'message' => \str_replace('!', '', $status),
+            'messageColor' => \str_replace('.svg', '', $statusColor),
         ];
     }
 
@@ -66,7 +66,7 @@ final class StatusBadge extends AbstractBadge
     {
         return [
             '/tidelift/status/npm/minimist' => 'subscription',
-            '/tidelift/status/npm/got'      => 'subscription',
+            '/tidelift/status/npm/got' => 'subscription',
         ];
     }
 }

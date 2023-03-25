@@ -20,8 +20,8 @@ final class OnlineMembersBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $response['guild']['name'] ?? 'discord',
-            'message'      => FormatNumber::execute($properties['count']).' online',
+            'label' => $response['guild']['name'] ?? 'discord',
+            'message' => FormatNumber::execute($properties['count']).' online',
             'messageColor' => '7289DA',
         ];
     }

@@ -12,7 +12,7 @@ final class EntitiesBadge extends AbstractBadge
     public function handle(string $type): array
     {
         return [
-            'type'  => $type,
+            'type' => $type,
             'count' => $this->client->entity($type)['count'],
         ];
     }
@@ -53,9 +53,9 @@ final class EntitiesBadge extends AbstractBadge
     {
         return [
             '/weblate/entities/components' => 'components',
-            '/weblate/entities/languages'  => 'languages',
-            '/weblate/entities/projects'   => 'projects',
-            '/weblate/entities/users'      => 'users',
+            '/weblate/entities/languages' => 'languages',
+            '/weblate/entities/projects' => 'projects',
+            '/weblate/entities/users' => 'users',
         ];
     }
 }

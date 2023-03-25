@@ -54,7 +54,6 @@ final class ClosedPullRequestsBadge extends AbstractBadge
     {
         return [
             '/github/closed-pull-requests/micromatch/micromatch' => 'closed PRs',
-
         ];
     }
 }

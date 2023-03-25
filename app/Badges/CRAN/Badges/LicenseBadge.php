@@ -12,7 +12,7 @@ final class LicenseBadge extends AbstractBadge
     public function handle(string $package): array
     {
         return [
-            'license' => preg_replace('/\s*\S\s+file\s+LICEN[CS]E$/i', '', $this->client->db($package)['License']),
+            'license' => \preg_replace('/\s*\S\s+file\s+LICEN[CS]E$/i', '', $this->client->db($package)['License']),
         ];
     }
 

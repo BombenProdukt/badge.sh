@@ -12,7 +12,7 @@ final class VersionBadge extends AbstractBadge
     public function handle(string $wheel): array
     {
         return [
-            'version' => array_key_first($this->client->get($wheel)['releases']),
+            'version' => \array_key_first($this->client->get($wheel)['releases']),
         ];
     }
 

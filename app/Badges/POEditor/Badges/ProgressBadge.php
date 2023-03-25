@@ -15,7 +15,7 @@ final class ProgressBadge extends AbstractBadge
         $language = collect($response['result'])->firstWhere('code', $languageCode);
 
         return [
-            'language'   => $language['name'],
+            'language' => $language['name'],
             'percentage' => $language['percentage'],
         ];
     }

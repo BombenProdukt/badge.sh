@@ -10,7 +10,6 @@ use Illuminate\Support\Arr;
 trait HasRequest
 {
     protected Request $request;
-
     protected array $requestData = [];
 
     public function setRequest(Request $request): void

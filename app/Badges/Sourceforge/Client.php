@@ -23,7 +23,7 @@ final class Client
 
         return $this->client->get("projects/{$project}/files/{$stats}", [
             'start_date' => ($days === 0 ? Carbon::createFromTimestamp(0) : Carbon::now()->subDays($days))->toDateString(),
-            'end_date'   => Carbon::now()->toDateString(),
+            'end_date' => Carbon::now()->toDateString(),
         ])->json();
     }
 }

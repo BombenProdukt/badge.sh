@@ -19,7 +19,7 @@ final class BadgeServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton('badge.service', fn () => new BadgeService);
+        $this->app->singleton('badge.service', fn () => new BadgeService());
     }
 
     /**
@@ -40,7 +40,7 @@ final class BadgeServiceProvider extends ServiceProvider
                             }
 
                             return MakeBadgeResponse::execute($request, $badge);
-                        })
+                        }),
                     );
                 }
             }

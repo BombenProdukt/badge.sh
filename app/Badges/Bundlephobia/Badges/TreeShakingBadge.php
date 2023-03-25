@@ -22,8 +22,8 @@ final class TreeShakingBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'tree shaking',
-            'message'      => $properties['isTreeShakeable'] ? 'supported' : 'not supported',
+            'label' => 'tree shaking',
+            'message' => $properties['isTreeShakeable'] ? 'supported' : 'not supported',
             'messageColor' => $properties['isTreeShakeable'] ? 'green.600' : 'red.600',
         ];
     }

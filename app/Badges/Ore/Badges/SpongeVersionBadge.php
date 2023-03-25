@@ -14,7 +14,7 @@ final class SpongeVersionBadge extends AbstractBadge
         return [
             'version' => collect($this->client->get($pluginId)['promoted_versions'])
                 ->flatMap(fn (array $version) => $version['tags'])
-                ->filter(fn (array $tag) => strtolower($tag['name']) === 'sponge')
+                ->filter(fn (array $tag) => \mb_strtolower($tag['name']) === 'sponge')
                 ->map(fn (array $tag) => $tag['display_data'])
                 ->first(),
         ];

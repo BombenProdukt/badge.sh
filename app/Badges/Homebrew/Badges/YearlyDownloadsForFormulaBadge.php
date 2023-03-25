@@ -20,8 +20,8 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'downloads',
-            'message'      => FormatNumber::execute($properties['downloads']).'/year',
+            'label' => 'downloads',
+            'message' => FormatNumber::execute($properties['downloads']).'/year',
             'messageColor' => 'green.600',
         ];
     }

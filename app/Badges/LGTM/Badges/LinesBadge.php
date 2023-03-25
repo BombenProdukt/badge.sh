@@ -15,7 +15,7 @@ final class LinesBadge extends AbstractBadge
         $response = $this->client->get($provider, $project, $language);
 
         return [
-            'lines' => $language ? $response['lines'] : array_reduce($response['languages'], fn ($accu, $curr) => $accu + $curr['lines'], 0),
+            'lines' => $language ? $response['lines'] : \array_reduce($response['languages'], fn ($accu, $curr) => $accu + $curr['lines'], 0),
         ];
     }
 

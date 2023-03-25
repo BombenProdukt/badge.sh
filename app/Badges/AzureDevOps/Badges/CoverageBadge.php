@@ -12,19 +12,19 @@ final class CoverageBadge extends AbstractBadge
     public function handle(string $organization, string $project, string $definition, ?string $environment = null): array
     {
         $buildId = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/builds", [
-            'api-version'  => '6.0',
-            '$top'         => '1',
+            'api-version' => '6.0',
+            '$top' => '1',
             'definitionId' => $definition,
             'statusFilter' => 'completed',
         ])->json('value.0.id');
 
         $coverageData = Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/test/codecoverage", [
             'api-version' => '6.0',
-            'buildId'     => $buildId,
+            'buildId' => $buildId,
         ])->json('coverageData');
 
         $covered = 0;
-        $total   = 0;
+        $total = 0;
 
         foreach ($coverageData as $cd) {
             foreach ($cd['coverageStats'] as $coverageStat) {

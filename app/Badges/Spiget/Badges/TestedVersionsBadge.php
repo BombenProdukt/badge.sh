@@ -15,7 +15,7 @@ final class TestedVersionsBadge extends AbstractBadge
 
         return [
             'earliest' => $testedVersions[0],
-            'latest'   => end($testedVersions),
+            'latest' => \end($testedVersions),
         ];
     }
 

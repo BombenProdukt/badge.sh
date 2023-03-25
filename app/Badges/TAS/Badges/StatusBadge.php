@@ -18,9 +18,9 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $this->service(),
-            'message'      => $properties['status'] === 'failed'
-                ? sprintf('%s passed, %s failed, %s skipped, %s total', $properties['passed'], $properties['failed'], $properties['skipped'], $properties['total_tests'])
+            'label' => $this->service(),
+            'message' => $properties['status'] === 'failed'
+                ? \sprintf('%s passed, %s failed, %s skipped, %s total', $properties['passed'], $properties['failed'], $properties['skipped'], $properties['total_tests'])
                 : $properties['status'],
             'messageColor' => DetermineColorByStatus::execute($properties['status']),
         ];

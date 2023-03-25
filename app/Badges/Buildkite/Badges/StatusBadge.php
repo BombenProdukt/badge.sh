@@ -51,7 +51,7 @@ final class StatusBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489'        => 'build status',
+            '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489' => 'build status',
             '/buildkite/status/3826789cf8890b426057e6fe1c4e683bdf04fa24d498885489/master' => 'build status',
         ];
     }

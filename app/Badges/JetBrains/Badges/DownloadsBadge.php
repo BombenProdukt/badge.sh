@@ -11,7 +11,7 @@ final class DownloadsBadge extends AbstractBadge
 {
     public function handle(string $pluginId): array
     {
-        if (is_numeric($pluginId)) {
+        if (\is_numeric($pluginId)) {
             return [
                 'downloads' => $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//@downloads')->text(),
             ];
@@ -56,7 +56,7 @@ final class DownloadsBadge extends AbstractBadge
     {
         return [
             '/jetbrains/downloads/13441-laravel-idea' => 'downloads',
-            '/jetbrains/downloads/9630'               => 'downloads (legacy plugin)',
+            '/jetbrains/downloads/9630' => 'downloads (legacy plugin)',
         ];
     }
 }

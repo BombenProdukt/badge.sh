@@ -49,7 +49,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/hackage/version/abt'   => 'version',
+            '/hackage/version/abt' => 'version',
             '/hackage/version/Cabal' => 'version',
         ];
     }

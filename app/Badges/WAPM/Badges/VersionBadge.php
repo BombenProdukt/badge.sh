@@ -51,7 +51,7 @@ final class VersionBadge extends AbstractBadge
     {
         return [
             '/wapm/version/zamfofex/greg' => 'version',
-            '/wapm/version/cowsay'        => 'version',
+            '/wapm/version/cowsay' => 'version',
         ];
     }
 }

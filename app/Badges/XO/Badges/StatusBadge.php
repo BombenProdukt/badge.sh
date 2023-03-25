@@ -29,15 +29,15 @@ final class StatusBadge extends AbstractBadge
     {
         if ($properties['status'] === 'disabled') {
             return [
-                'label'        => 'xo',
-                'message'      => 'not enabled',
+                'label' => 'xo',
+                'message' => 'not enabled',
                 'messageColor' => 'gray.600',
             ];
         }
 
         return [
-            'label'        => 'code style',
-            'message'      => 'XO',
+            'label' => 'code style',
+            'message' => 'XO',
             'messageColor' => '5ED9C7',
         ];
     }
@@ -70,8 +70,8 @@ final class StatusBadge extends AbstractBadge
     {
         return [
             [
-                'label'        => 'code style',
-                'message'      => 'XO',
+                'label' => 'code style',
+                'message' => 'XO',
                 'messageColor' => '5ED9C7',
             ],
         ];
@@ -80,7 +80,7 @@ final class StatusBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/xo/status/chalk'                 => 'status',
+            '/xo/status/chalk' => 'status',
             '/xo/status/@tusbar/cache-control' => 'status',
         ];
     }

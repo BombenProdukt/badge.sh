@@ -16,7 +16,7 @@ final class Client
             $client->withBasicAuth(config('services.team_city.username'), config('services.team_city.password'));
         }
 
-        return $client->get('app/rest/builds/'.urlencode("buildType:(id:{$buildId})"))->json();
+        return $client->get('app/rest/builds/'.\urlencode("buildType:(id:{$buildId})"))->json();
     }
 
     public function coverage(string $instance, string $buildId): array
@@ -27,6 +27,6 @@ final class Client
             $client->withBasicAuth(config('services.team_city.username'), config('services.team_city.password'));
         }
 
-        return $client->get('app/rest/builds/'.urlencode("buildType:(id:{$buildId})").'/statistics')->json('coverage');
+        return $client->get('app/rest/builds/'.\urlencode("buildType:(id:{$buildId})").'/statistics')->json('coverage');
     }
 }

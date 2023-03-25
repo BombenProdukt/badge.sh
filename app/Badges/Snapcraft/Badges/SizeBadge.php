@@ -16,8 +16,8 @@ final class SizeBadge extends AbstractBadge
 
         $channel = match (true) {
             $architecture && $channel => $channels->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture && Arr::get($item, 'channel.name') === $channel),
-            $architecture             => $channels->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture),
-            default                   => $channels->first(),
+            $architecture => $channels->firstWhere(fn (array $item) => Arr::get($item, 'channel.architecture') === $architecture),
+            default => $channels->first(),
         };
 
         return $channel['download'];
@@ -58,8 +58,8 @@ final class SizeBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/snapcraft/size/beekeeper-studio'            => 'distribution size',
-            '/snapcraft/size/beekeeper-studio/arm64'      => 'distribution size',
+            '/snapcraft/size/beekeeper-studio' => 'distribution size',
+            '/snapcraft/size/beekeeper-studio/arm64' => 'distribution size',
             '/snapcraft/size/beekeeper-studio/armhf/edge' => 'distribution size',
         ];
     }

@@ -46,7 +46,7 @@ final class DownloadsPerDayBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/downloads-daily/bbpress'        => 'daily downloads (plugin)',
+            '/wordpress/plugin/downloads-daily/bbpress' => 'daily downloads (plugin)',
             '/wordpress/theme/downloads-daily/twentyseventeen' => 'daily downloads (theme)',
         ];
     }

@@ -24,8 +24,8 @@ final class LabelsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => $properties['label'],
-            'message'      => FormatNumber::execute($properties['count'] ?? 0),
+            'label' => $properties['label'],
+            'message' => FormatNumber::execute($properties['count'] ?? 0),
             'messageColor' => $properties['color'] ? $properties['color'] : 'gray.600',
         ];
     }
@@ -61,15 +61,15 @@ final class LabelsBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/github/issues-by-label/nodejs/node/ES%20Modules'             => 'issues by label',
-            '/github/issues-by-label/atom/atom/help-wanted/open'           => 'open issues by label',
+            '/github/issues-by-label/nodejs/node/ES%20Modules' => 'issues by label',
+            '/github/issues-by-label/atom/atom/help-wanted/open' => 'open issues by label',
             '/github/issues-by-label/rust-lang/rust/B-RFC-approved/closed' => 'closed issues by label',
         ];
     }
 
     private function getQueryBody(string $label, string $states): string
     {
-        $issueFilter = $states ? '(states:['.strtoupper($states).'])' : '';
+        $issueFilter = $states ? '(states:['.\mb_strtoupper($states).'])' : '';
 
         return "label(name:\"{$label}\") { color, issues{$issueFilter} { totalCount } }";
     }

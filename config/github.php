@@ -12,7 +12,6 @@ declare(strict_types=1);
  */
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Connection Name
@@ -39,19 +38,17 @@ return [
     */
 
     'connections' => [
-
         'main' => [
-            'method'  => 'token',
-            'token'   => env('GITHUB_TOKEN'),
+            'method' => 'token',
+            'token' => env('GITHUB_TOKEN'),
             'version' => 'v3',
         ],
 
         'graphql' => [
-            'method'  => 'token',
-            'token'   => env('GITHUB_TOKEN'),
+            'method' => 'token',
+            'token' => env('GITHUB_TOKEN'),
             'version' => 'v4',
         ],
-
     ],
 
     /*
@@ -66,21 +63,18 @@ return [
     */
 
     'cache' => [
-
         'main' => [
-            'driver'    => 'illuminate',
+            'driver' => 'illuminate',
             'connector' => null, // null means use default driver
             // 'min'       => 43200,
             // 'max'       => 172800
         ],
 
         'bar' => [
-            'driver'    => 'illuminate',
+            'driver' => 'illuminate',
             'connector' => 'redis', // config/cache.php
             // 'min'       => 43200,
             // 'max'       => 172800
         ],
-
     ],
-
 ];

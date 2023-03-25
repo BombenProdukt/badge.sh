@@ -19,10 +19,9 @@ abstract class AbstractBadge implements Badge
     use HasRequest;
     use HasRoute;
     use HasTemplates;
-
     protected array $languages = [
-        'cpp'        => 'c/c++',
-        'csharp'     => 'c#',
+        'cpp' => 'c/c++',
+        'csharp' => 'c#',
         'javascript' => 'js/ts',
     ];
 
@@ -31,7 +30,7 @@ abstract class AbstractBadge implements Badge
         //
     }
 
-    public function service(): string
+    final public function service(): string
     {
         return 'LGTM';
     }

@@ -11,15 +11,15 @@ final class DeploymentBadge extends AbstractBadge
 {
     public function handle(string $organization, string $project, string $definition, ?string $environment = null): array
     {
-        $response = Http::get("https://vsrm.dev.azure.com/{$organization}/{$project}/_apis/release/deployments", array_merge([
-            'api-version'      => '6.0',
-            '$top'             => '1',
-            'definitionId'     => $definition,
+        $response = Http::get("https://vsrm.dev.azure.com/{$organization}/{$project}/_apis/release/deployments", \array_merge([
+            'api-version' => '6.0',
+            '$top' => '1',
+            'definitionId' => $definition,
             'deploymentStatus' => 'succedeed',
         ], $environment ? ['definitionenvironment' => 'environment'] : []))->json('value.0');
 
         return [
-            'status'  => $response['deploymentStatus'],
+            'status' => $response['deploymentStatus'],
             'version' => $response['release']['name'],
         ];
     }
@@ -27,12 +27,12 @@ final class DeploymentBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'Deployment Version',
-            'message'      => $properties['version'],
+            'label' => 'Deployment Version',
+            'message' => $properties['version'],
             'messageColor' => [
-                'succeeded'          => 'green.600',
+                'succeeded' => 'green.600',
                 'partiallySucceeded' => 'yellow.600',
-                'failed'             => 'red.600',
+                'failed' => 'red.600',
             ][$properties['status']],
         ];
     }

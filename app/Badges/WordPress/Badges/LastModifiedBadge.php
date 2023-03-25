@@ -46,7 +46,7 @@ final class LastModifiedBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/last-modified/bbpress'        => 'last modified (plugin)',
+            '/wordpress/plugin/last-modified/bbpress' => 'last modified (plugin)',
             '/wordpress/theme/last-modified/twentyseventeen' => 'last modified (theme)',
         ];
     }

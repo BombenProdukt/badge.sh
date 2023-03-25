@@ -12,12 +12,12 @@ final class MilestonesBadge extends AbstractBadge
 {
     public function handle(string $owner, string $repo, ?string $milestoneNumber = ''): array
     {
-        $milestone   = GitHub::api('issue')->milestones()->show($owner, $repo, $milestoneNumber);
-        $openIssues  = $milestone['open_issues'];
+        $milestone = GitHub::api('issue')->milestones()->show($owner, $repo, $milestoneNumber);
+        $openIssues = $milestone['open_issues'];
         $totalIssues = $openIssues + $milestone['closed_issues'];
 
         return [
-            'label'      => $milestone['title'],
+            'label' => $milestone['title'],
             'percentage' => $totalIssues === 0 ? 0 : 100 - (($openIssues / $totalIssues) * 100),
         ];
     }
@@ -58,7 +58,6 @@ final class MilestonesBadge extends AbstractBadge
     {
         return [
             '/github/milestones/chrislgarry/Apollo-11/1' => 'milestone percentage',
-
         ];
     }
 }

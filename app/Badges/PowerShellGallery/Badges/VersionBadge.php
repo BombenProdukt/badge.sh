@@ -51,8 +51,8 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/powershellgallery/version/Azure.Storage'        => 'version (stable channel)',
-            '/powershellgallery/version/Azure.Storage/pre'    => 'version (pre channel)',
+            '/powershellgallery/version/Azure.Storage' => 'version (stable channel)',
+            '/powershellgallery/version/Azure.Storage/pre' => 'version (pre channel)',
             '/powershellgallery/version/Azure.Storage/latest' => 'version (latest channel)',
         ];
     }

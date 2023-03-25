@@ -51,7 +51,6 @@ final class ClosedIssuesBadge extends AbstractBadge
     {
         return [
             '/gitlab/closed-issues/gitlab-org/gitlab-runner' => 'issues',
-
         ];
     }
 }

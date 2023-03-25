@@ -55,8 +55,8 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagist/version/monolog/monolog'        => 'version',
-            '/packagist/version/monolog/monolog/pre'    => 'version (pre)',
+            '/packagist/version/monolog/monolog' => 'version',
+            '/packagist/version/monolog/monolog/pre' => 'version (pre)',
             '/packagist/version/monolog/monolog/latest' => 'version (latest)',
         ];
     }

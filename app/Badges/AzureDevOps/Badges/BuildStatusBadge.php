@@ -11,9 +11,9 @@ final class BuildStatusBadge extends AbstractBadge
 {
     public function handle(string $organization, string $project, string $definition, ?string $branch = null): array
     {
-        return Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/builds", array_merge([
-            'api-version'  => '6.0',
-            '$top'         => '1',
+        return Http::get("https://dev.azure.com/{$organization}/{$project}/_apis/build/builds", \array_merge([
+            'api-version' => '6.0',
+            '$top' => '1',
             'definitionId' => $definition,
             'statusFilter' => 'completed',
         ], $branch ? ['branchName' => "refs/heads/{$branch}"] : []))->json('value.0');
@@ -22,13 +22,13 @@ final class BuildStatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'Build',
-            'message'      => $properties['status'],
+            'label' => 'Build',
+            'message' => $properties['status'],
             'messageColor' => [
-                'completed'          => 'green.600',
-                'succeeded'          => 'green.600',
+                'completed' => 'green.600',
+                'succeeded' => 'green.600',
                 'partiallySucceeded' => 'yellow.600',
-                'failed'             => 'red.600',
+                'failed' => 'red.600',
             ][$properties['status']],
         ];
     }

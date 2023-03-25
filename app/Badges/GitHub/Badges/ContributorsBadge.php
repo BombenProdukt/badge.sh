@@ -13,7 +13,7 @@ final class ContributorsBadge extends AbstractBadge
     public function handle(string $owner, string $repo): array
     {
         return [
-            'count' => count(GitHub::api('repo')->contributors($owner, $repo)),
+            'count' => \count(GitHub::api('repo')->contributors($owner, $repo)),
         ];
     }
 
@@ -53,7 +53,6 @@ final class ContributorsBadge extends AbstractBadge
     {
         return [
             '/github/contributors/micromatch/micromatch' => 'contributors',
-
         ];
     }
 }

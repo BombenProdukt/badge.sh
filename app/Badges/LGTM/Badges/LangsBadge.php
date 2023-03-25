@@ -14,18 +14,18 @@ final class LangsBadge extends AbstractBadge
     {
         $response = $this->client->get($provider, $project, $language);
 
-        usort($response['languages'], fn ($a, $b) => $b['lines'] - $a['lines']);
+        \usort($response['languages'], fn ($a, $b) => $b['lines'] - $a['lines']);
 
         return [
-            'languages' => array_map(fn ($x) => $langLabelOverrides[$x['language']] ?? $x['language'], $response['languages']),
+            'languages' => \array_map(fn ($x) => $langLabelOverrides[$x['language']] ?? $x['language'], $response['languages']),
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => 'languages',
-            'message'      => implode(' | ', $properties['languages']),
+            'label' => 'languages',
+            'message' => \implode(' | ', $properties['languages']),
             'messageColor' => 'blue.600',
         ];
     }

@@ -17,8 +17,8 @@ final class PointsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'popularity',
-            'message'      => $properties['grantedPoints'].'/'.$properties['maxPoints'],
+            'label' => 'popularity',
+            'message' => $properties['grantedPoints'].'/'.$properties['maxPoints'],
             'messageColor' => 'green.600',
         ];
     }

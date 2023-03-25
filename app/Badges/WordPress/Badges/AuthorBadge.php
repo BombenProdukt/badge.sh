@@ -46,7 +46,7 @@ final class AuthorBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/author/bbpress'        => 'version (plugin)',
+            '/wordpress/plugin/author/bbpress' => 'version (plugin)',
             '/wordpress/theme/author/twentyseventeen' => 'version (theme)',
         ];
     }

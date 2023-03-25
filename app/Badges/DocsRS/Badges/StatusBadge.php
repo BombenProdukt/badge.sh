@@ -13,13 +13,13 @@ final class StatusBadge extends AbstractBadge
     {
         if ($this->client->status($crate, $version)) {
             return [
-                'status'  => 'passing',
+                'status' => 'passing',
                 'version' => $version,
             ];
         }
 
         return [
-            'status'  => 'failing',
+            'status' => 'failing',
             'version' => $version,
         ];
     }

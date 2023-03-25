@@ -12,9 +12,9 @@ final class RepoBadge extends AbstractBadge
 {
     public function handle(string $group, string $artifact): array
     {
-        $response = $this->client->get(str_replace('.', '/', $group)."/{$artifact}/maven-metadata.xml");
+        $response = $this->client->get(\str_replace('.', '/', $group)."/{$artifact}/maven-metadata.xml");
 
-        preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
+        \preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
 
         return [
             'version' => $matches[1],

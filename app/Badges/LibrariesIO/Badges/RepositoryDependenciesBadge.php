@@ -16,7 +16,7 @@ final class RepositoryDependenciesBadge extends AbstractBadge
 
         return [
             'deprecatedCount' => collect($dependencies)->filter(fn ($dependency) => $dependency['deprecated'] === true)->count(),
-            'outdatedCount'   => collect($dependencies)->filter(fn ($dependency) => $dependency['outdated'] === true)->count(),
+            'outdatedCount' => collect($dependencies)->filter(fn ($dependency) => $dependency['outdated'] === true)->count(),
         ];
     }
 

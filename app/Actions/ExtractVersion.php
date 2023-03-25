@@ -12,7 +12,7 @@ final class ExtractVersion
             return 'unknown';
         }
 
-        if (substr($version, 0, 1) === 'v') {
+        if (\mb_substr($version, 0, 1) === 'v') {
             return $version;
         }
 

@@ -11,8 +11,8 @@ final class InstallationsBadge extends AbstractBadge
 {
     public function handle(string $variant, string $name): array
     {
-        $results   = $this->client->usage($variant, $name);
-        $resultKey = array_search("{$variant}:{$name}", array_map('strtolower', array_keys($results)), true);
+        $results = $this->client->usage($variant, $name);
+        $resultKey = \array_search("{$variant}:{$name}", \array_map('strtolower', \array_keys($results)), true);
 
         return [
             'count' => $results[$resultKey]['printouts']['Has website count'][0],

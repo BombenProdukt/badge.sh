@@ -15,7 +15,7 @@ final class SummaryBadge extends AbstractBadge
         $response = $this->client->get($projectId);
 
         return [
-            'level'      => $response['badge_level'],
+            'level' => $response['badge_level'],
             'percentage' => $response['tiered_percentage'],
         ];
     }
@@ -26,7 +26,7 @@ final class SummaryBadge extends AbstractBadge
             $properties['percentage'] < 100 => "in progress {$properties['percentage']}%",
             $properties['percentage'] < 200 => 'passing',
             $properties['percentage'] < 300 => 'silver',
-            default                         => 'gold',
+            default => 'gold',
         }, DetermineColorByStatus::execute($properties['level']));
     }
 

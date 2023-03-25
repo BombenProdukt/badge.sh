@@ -20,19 +20,19 @@ final class Client
     public function questions(string $site, string $query): array
     {
         return $this->client->get('questions', [
-            'filter'   => 'total',
+            'filter' => 'total',
             'fromdate' => Carbon::now()->submonth()->startOfMonth(),
-            'key'      => config('services.stack_exchange.token'),
-            'site'     => $site,
-            'tagged'   => $query,
-            'todate'   => Carbon::now()->submonth()->endOfMonth(),
+            'key' => config('services.stack_exchange.token'),
+            'site' => $site,
+            'tagged' => $query,
+            'todate' => Carbon::now()->submonth()->endOfMonth(),
         ])->json();
     }
 
     public function tags(string $site, string $query): array
     {
         return $this->client->get("tags/{$query}/info", [
-            'key'  => config('services.stack_exchange.token'),
+            'key' => config('services.stack_exchange.token'),
             'site' => $site,
         ])->json('items.0');
     }
@@ -40,7 +40,7 @@ final class Client
     public function user(string $site, string $query): array
     {
         return $this->client->get("users/{$query}", [
-            'key'  => config('services.stack_exchange.token'),
+            'key' => config('services.stack_exchange.token'),
             'site' => $site,
         ])->json('items.0');
     }

@@ -65,24 +65,24 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/nuget/version/Newtonsoft.Json'        => 'version (stable channel)',
-            '/nuget/version/Newtonsoft.Json/pre'    => 'version (pre channel)',
+            '/nuget/version/Newtonsoft.Json' => 'version (stable channel)',
+            '/nuget/version/Newtonsoft.Json/pre' => 'version (pre channel)',
             '/nuget/version/Newtonsoft.Json/latest' => 'version (latest channel)',
         ];
     }
 
     private function pre(array $versions): array
     {
-        return array_filter($versions, fn ($v) => strpos($v, '-') !== false);
+        return \array_filter($versions, fn ($v) => \str_contains($v, '-'));
     }
 
     private function stable(array $versions): array
     {
-        return array_filter($versions, fn ($v) => strpos($v, '-') === false);
+        return \array_filter($versions, fn ($v) => !\str_contains($v, '-'));
     }
 
     private function latest(array $versions): string|null
     {
-        return count($versions) > 0 ? end($versions) : null;
+        return \count($versions) > 0 ? \end($versions) : null;
     }
 }

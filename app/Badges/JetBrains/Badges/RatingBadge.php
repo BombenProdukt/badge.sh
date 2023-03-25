@@ -11,7 +11,7 @@ final class RatingBadge extends AbstractBadge
 {
     public function handle(string $pluginId): array
     {
-        if (is_numeric($pluginId)) {
+        if (\is_numeric($pluginId)) {
             return [
                 'rating' => $this->client->legacy($pluginId)->filterXPath('//plugin-repository//category//idea-plugin//rating')->text(),
             ];
@@ -58,7 +58,7 @@ final class RatingBadge extends AbstractBadge
     {
         return [
             '/jetbrains/rating/13441-laravel-idea' => 'rating',
-            '/jetbrains/rating/9630'               => 'rating (legacy plugin)',
+            '/jetbrains/rating/9630' => 'rating (legacy plugin)',
         ];
     }
 }

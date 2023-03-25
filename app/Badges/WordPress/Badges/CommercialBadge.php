@@ -44,7 +44,7 @@ final class CommercialBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/wordpress/plugin/commercial/bbpress'        => 'commercial status (plugin)',
+            '/wordpress/plugin/commercial/bbpress' => 'commercial status (plugin)',
             '/wordpress/theme/commercial/twentyseventeen' => 'commercial status (theme)',
         ];
     }

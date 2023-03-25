@@ -19,7 +19,7 @@ final class Client
     public function get(string $packageName): array
     {
         return $this->client->get('vaadincom/directory-service/components/search/findByUrlIdentifier', [
-            'projection'    => 'summary',
+            'projection' => 'summary',
             'urlIdentifier' => $packageName,
         ])->json();
     }

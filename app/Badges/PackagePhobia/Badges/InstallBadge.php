@@ -15,7 +15,7 @@ final class InstallBadge extends AbstractBadge
         $response = $this->client->get($name);
 
         return [
-            'size'  => $response['install']['pretty'],
+            'size' => $response['install']['pretty'],
             'color' => $response['install']['color'],
         ];
     }
@@ -23,9 +23,9 @@ final class InstallBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'install size',
-            'message'      => $properties['size'],
-            'messageColor' => str_replace('#', '', $properties['color']),
+            'label' => 'install size',
+            'message' => $properties['size'],
+            'messageColor' => \str_replace('#', '', $properties['color']),
         ];
     }
 
@@ -59,7 +59,7 @@ final class InstallBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/packagephobia/size/webpack'               => 'install size',
+            '/packagephobia/size/webpack' => 'install size',
             '/packagephobia/size/@tusbar/cache-control' => 'install size',
         ];
     }

@@ -13,7 +13,7 @@ final class TagInfoBadge extends AbstractBadge
     {
         return [
             'query' => $query,
-            'site'  => $site,
+            'site' => $site,
             'count' => $this->client->tags($site, $query)['count'],
         ];
     }

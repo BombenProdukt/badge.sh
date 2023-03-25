@@ -52,7 +52,7 @@ final class VersionBadge extends AbstractBadge
     {
         return [
             '/haxelib/version/tink_http' => 'version',
-            '/haxelib/version/nme'       => 'version',
+            '/haxelib/version/nme' => 'version',
         ];
     }
 }

@@ -20,7 +20,7 @@ final class Client
     {
         return $this->client->post('language/list', [
             'api_token' => $apiToken,
-            'id'        => $projectId,
+            'id' => $projectId,
         ])->json();
     }
 }

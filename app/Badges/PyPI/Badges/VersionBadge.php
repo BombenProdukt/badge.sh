@@ -49,7 +49,7 @@ final class VersionBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/pypi/version/pip'      => 'version',
+            '/pypi/version/pip' => 'version',
             '/pypi/version/docutils' => 'version',
         ];
     }

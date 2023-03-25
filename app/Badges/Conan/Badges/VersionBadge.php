@@ -13,7 +13,7 @@ final class VersionBadge extends AbstractBadge
     public function handle(string $packageName): array
     {
         return [
-            'version' => array_key_first($this->client->get($packageName)['versions']),
+            'version' => \array_key_first($this->client->get($packageName)['versions']),
         ];
     }
 

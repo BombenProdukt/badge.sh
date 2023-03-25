@@ -21,14 +21,15 @@ final class Client
     private function legacy(string $instance, string $metricName, string $component, string $branch): array
     {
         $response = Http::baseUrl($instance)->throw()->get('', [
-            'resource'      => $component,
-            'depth'         => 0,
-            'metrics'       => $metricName,
+            'resource' => $component,
+            'depth' => 0,
+            'metrics' => $metricName,
             'includeTrends' => true,
-            'branch'        => $branch,
+            'branch' => $branch,
         ])->json('0.mrs');
 
         $result = [];
+
         foreach ($response as $measure) {
             $result[$measure['key']] = $measure['val'];
         }
@@ -39,12 +40,13 @@ final class Client
     private function current(string $instance, string $sonarVersion, string $metricName, string $component, string $branch): array
     {
         $response = Http::baseUrl($instance)->throw()->get('', [
-            [floatval($sonarVersion) >= 6.6 ? 'component' : 'componentKey'] => $component,
-            'metricKeys'                                                    => $metricName,
-            'branch'                                                        => $branch,
+            [(float) $sonarVersion >= 6.6 ? 'component' : 'componentKey'] => $component,
+            'metricKeys' => $metricName,
+            'branch' => $branch,
         ])->json('component.measures');
 
         $result = [];
+
         foreach ($response as $measure) {
             $result[$measure['key']] = $measure['value'];
         }
@@ -55,7 +57,7 @@ final class Client
     private function isLegacyVersion(string $sonarVersion): bool
     {
         try {
-            return floatval($sonarVersion) < 5.4;
+            return (float) $sonarVersion < 5.4;
         } catch (Throwable) {
             return false;
         }

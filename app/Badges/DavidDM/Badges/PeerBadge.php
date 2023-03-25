@@ -18,8 +18,8 @@ final class PeerBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'peerDependencies',
-            'message'      => $this->statusInfo[$properties['status']][0],
+            'label' => 'peerDependencies',
+            'message' => $this->statusInfo[$properties['status']][0],
             'messageColor' => $this->statusInfo[$properties['status']][1],
         ];
     }

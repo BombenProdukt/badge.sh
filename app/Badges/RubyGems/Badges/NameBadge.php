@@ -17,8 +17,8 @@ final class NameBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return [
-            'label'        => 'name',
-            'message'      => $properties['name'],
+            'label' => 'name',
+            'message' => $properties['name'],
             'messageColor' => 'green.600',
         ];
     }

@@ -52,7 +52,7 @@ final class DependentRepositoriesBadge extends AbstractBadge
     public function dynamicPreviews(): array
     {
         return [
-            '/libraries-io/dependent-repositories/npm/got'         => 'dependent repositories',
+            '/libraries-io/dependent-repositories/npm/got' => 'dependent repositories',
             '/libraries-io/dependent-repositories/npm/@babel/core' => 'dependent repositories (scoped)',
         ];
     }

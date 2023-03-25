@@ -14,15 +14,15 @@ final class PGPBadge extends AbstractBadge
         $response = $this->client->get($username, 'public_keys');
 
         return [
-            'key' => strtoupper(implode(' ', str_split(substr($response['them']['public_keys']['primary']['key_fingerprint'], -16), 4))),
+            'key' => \mb_strtoupper(\implode(' ', \mb_str_split(\mb_substr($response['them']['public_keys']['primary']['key_fingerprint'], -16), 4))),
         ];
     }
 
     public function render(array $properties): array
     {
         return [
-            'label'        => 'PGP',
-            'message'      => $properties['key'],
+            'label' => 'PGP',
+            'message' => $properties['key'],
             'messageColor' => 'blue.600',
         ];
     }

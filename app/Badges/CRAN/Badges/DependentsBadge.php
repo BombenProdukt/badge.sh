@@ -12,7 +12,7 @@ final class DependentsBadge extends AbstractBadge
     public function handle(string $package): array
     {
         return [
-            'count' => count($this->client->db("/-/revdeps/{$package}")[$package]['Depends']),
+            'count' => \count($this->client->db("/-/revdeps/{$package}")[$package]['Depends']),
         ];
     }
 
