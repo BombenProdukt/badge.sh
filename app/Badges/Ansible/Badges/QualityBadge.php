@@ -33,7 +33,7 @@ final class QualityBadge extends AbstractBadge
     {
         return [
             new BadgePreviewData(
-                name: '',
+                name: 'quality',
                 path: '/ansible/quality/432',
                 data: $this->render(['score' => 0]),
             ),

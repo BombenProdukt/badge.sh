@@ -20,6 +20,7 @@
         "laravel/jetstream": "^3.0",
         "laravel/octane": "^1.5",
         "laravel/sanctum": "^3.2",
+        "laravel/telescope": "*",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.11",
         "moneyphp/money": "^4.1",

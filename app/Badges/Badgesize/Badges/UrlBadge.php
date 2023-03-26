@@ -55,12 +55,12 @@ final class UrlBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'arbitrary url',
                 path: '/badgesize/normal/file-url/https/unpkg.com/snarkdown/dist/snarkdown.js',
-                data: $this->render(['compression' => 'normal', 'size' => '1024', 'color' => '3487CE']),
+                data: $this->render(['compression' => 'normal', 'size' => '7.03 kB', 'color' => '3487CE']),
             ),
             new BadgePreviewData(
                 name: 'arbitrary url',
                 path: '/badgesize/normal/file-url/unpkg.com/snarkdown/dist/snarkdown.js',
-                data: $this->render(['compression' => 'normal', 'size' => '1024', 'color' => '3487CE']),
+                data: $this->render(['compression' => 'normal', 'size' => '7.03 kB', 'color' => '3487CE']),
             ),
         ];
     }

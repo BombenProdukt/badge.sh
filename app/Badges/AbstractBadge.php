@@ -327,10 +327,10 @@ abstract class AbstractBadge implements Badge
         ];
     }
 
-    protected function renderLicense(mixed $license): array
+    protected function renderLicense(mixed $license, ?string $label = null): array
     {
         return [
-            'label' => 'license',
+            'label' => $label ?? 'license',
             'message' => DetermineLicense::execute($license),
             'messageColor' => 'blue.600',
         ];
