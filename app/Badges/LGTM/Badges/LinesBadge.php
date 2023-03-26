@@ -42,6 +42,7 @@ final class LinesBadge extends AbstractBadge
                 name: 'lines (java)',
                 path: '/lgtm/lines/github/apache/cloudstack/java',
                 data: $this->render(['lines' => '100000']),
+                deprecated: true,
             ),
         ];
     }

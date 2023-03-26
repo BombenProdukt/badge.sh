@@ -40,6 +40,7 @@ final class LicenseBadge extends AbstractBadge
                 name: 'license',
                 path: '/apm/license/linter',
                 data: $this->render(['license' => 'MIT']),
+                deprecated: true,
             ),
         ];
     }

@@ -53,26 +53,31 @@ final class GradeBadge extends AbstractBadge
                 name: 'grade (java)',
                 path: '/lgtm/grade/github/apache/cloudstack/java',
                 data: $this->render(['language' => 'java', 'grade' => 'A+']),
+                deprecated: true,
             ),
             new BadgePreviewData(
                 name: 'grade (auto)',
                 path: '/lgtm/grade/github/apache/cloudstack',
                 data: $this->render(['language' => 'java', 'grade' => 'A+']),
+                deprecated: true,
             ),
             new BadgePreviewData(
                 name: 'grade (auto)',
                 path: '/lgtm/grade/github/systemd/systemd',
                 data: $this->render(['language' => 'java', 'grade' => 'A+']),
+                deprecated: true,
             ),
             new BadgePreviewData(
                 name: 'grade (auto)',
                 path: '/lgtm/grade/bitbucket/wegtam/bitbucket-youtrack-broker',
                 data: $this->render(['language' => 'java', 'grade' => 'A+']),
+                deprecated: true,
             ),
             new BadgePreviewData(
                 name: 'grade (auto)',
                 path: '/lgtm/grade/gitlab/nekokatt/hikari',
                 data: $this->render(['language' => 'java', 'grade' => 'A+']),
+                deprecated: true,
             ),
         ];
     }

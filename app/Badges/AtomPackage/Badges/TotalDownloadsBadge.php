@@ -38,6 +38,7 @@ final class TotalDownloadsBadge extends AbstractBadge
                 name: 'total downloads',
                 path: '/apm/downloads/linter',
                 data: $this->render(['downloads' => '1000000']),
+                deprecated: true,
             ),
         ];
     }

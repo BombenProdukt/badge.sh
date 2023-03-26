@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\View\Components;
 
+use App\Data\BadgePreviewData;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -14,7 +15,7 @@ final class BadgeComponent extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(private readonly array $code)
+    public function __construct(private readonly BadgePreviewData $badge)
     {
         //
     }
@@ -24,10 +25,14 @@ final class BadgeComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        try {
-            return Badger::from($this->code)->render();
-        } catch (\Throwable $th) {
-            dd($this->code, $th);
+        if ($this->badge->deprecated) {
+            return Badger::from([
+                'label' => $this->badge->name,
+                'message' => 'deprecated',
+                'messageColor' => 'red.600',
+            ])->render();
         }
+
+        return Badger::from($this->badge->data)->render();
     }
 }

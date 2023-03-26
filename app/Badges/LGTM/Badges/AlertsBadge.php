@@ -48,6 +48,7 @@ final class AlertsBadge extends AbstractBadge
                 name: 'alerts',
                 path: '/lgtm/alerts/github/apache/cloudstack',
                 data: $this->render(['alerts' => '100', 'language' => 'java']),
+                deprecated: true,
             ),
         ];
     }

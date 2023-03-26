@@ -40,6 +40,7 @@ final class VersionBadge extends AbstractBadge
                 name: 'version',
                 path: '/apm/version/linter',
                 data: $this->render(['version' => '1.0.0']),
+                deprecated: true,
             ),
         ];
     }

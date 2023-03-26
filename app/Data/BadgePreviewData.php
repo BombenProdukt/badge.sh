@@ -12,6 +12,7 @@ final class BadgePreviewData extends Data
         public readonly string $name,
         public readonly string $path,
         public readonly array $data,
+        public readonly bool $deprecated = false,
     ) {
         //
     }

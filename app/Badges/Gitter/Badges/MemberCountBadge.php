@@ -47,11 +47,13 @@ final class MemberCountBadge extends AbstractBadge
                 name: 'members',
                 path: '/gitter/members/redom/lobby',
                 data: $this->render(['count' => '100']),
+                deprecated: true,
             ),
             new BadgePreviewData(
                 name: 'members',
                 path: '/gitter/members/redom/redom',
                 data: $this->render(['count' => '100']),
+                deprecated: true,
             ),
         ];
     }

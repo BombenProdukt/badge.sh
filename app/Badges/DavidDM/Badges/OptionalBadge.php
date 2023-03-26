@@ -42,6 +42,7 @@ final class OptionalBadge extends AbstractBadge
                 name: 'optional dependencies',
                 path: '/david/optional/epoberezkin/ajv-keywords',
                 data: $this->render(['status' => 'uptodate']),
+                deprecated: true,
             ),
         ];
     }

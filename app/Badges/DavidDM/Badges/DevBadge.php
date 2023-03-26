@@ -42,6 +42,7 @@ final class DevBadge extends AbstractBadge
                 name: 'dev dependencies',
                 path: '/david/dev/zeit/pkg',
                 data: $this->render(['status' => 'uptodate']),
+                deprecated: true,
             ),
         ];
     }

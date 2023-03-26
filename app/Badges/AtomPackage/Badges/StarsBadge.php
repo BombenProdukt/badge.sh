@@ -40,6 +40,7 @@ final class StarsBadge extends AbstractBadge
                 name: 'stars',
                 path: '/apm/stars/linter',
                 data: $this->render(['stars' => '4.5']),
+                deprecated: true,
             ),
         ];
     }

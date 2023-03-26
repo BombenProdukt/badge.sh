@@ -46,11 +46,13 @@ final class FollowBadge extends AbstractBadge
                 name: 'followers count',
                 path: '/twitter/follow/rustlang',
                 data: $this->render(['username' => 'rustlang', 'count' => '1000']),
+                deprecated: true,
             ),
             new BadgePreviewData(
                 name: 'followers count',
                 path: '/twitter/follow/golang',
                 data: $this->render(['username' => 'golang', 'count' => '1000']),
+                deprecated: true,
             ),
         ];
     }

@@ -47,11 +47,13 @@ final class StatusBadge extends AbstractBadge
                 name: 'status',
                 path: '/dependabot/status/thepracticaldev/dev.to',
                 data: $this->render(['status' => 'success', 'statusColor' => 'green.600']),
+                deprecated: true,
             ),
             new BadgePreviewData(
                 name: 'status',
                 path: '/dependabot/status/dependabot/dependabot-core',
                 data: $this->render(['status' => 'success', 'statusColor' => 'green.600']),
+                deprecated: true,
             ),
         ];
     }

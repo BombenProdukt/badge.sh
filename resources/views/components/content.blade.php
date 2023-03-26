@@ -20,7 +20,7 @@
                     </td>
                     <td class="whitespace-nowrap px-2 py-2 text-gray-900">
                         <a href="{{ $example->path }}" target="_blank">
-                            <x-badge :code="$example->data" />
+                            <x-badge :badge="$example" />
                         </a>
                     </td>
                     <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right font-medium sm:pr-0">
