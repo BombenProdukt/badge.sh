@@ -6,22 +6,21 @@ namespace App\Badges\MavenMetadata\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
-final class UrlWithProtocolBadge extends AbstractBadge
+final class VersionBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/maven-metadata/version/{protocol}/{hostname}/{pathname:wildcard}',
+        '/maven-metadata/version/{hostname}/{pathname:wildcard}',
     ];
 
     protected array $keywords = [
         Category::VERSION,
     ];
 
-    public function handle(string $protocol, string $hostname, string $pathname): array
+    public function handle(string $hostname, string $pathname): array
     {
-        $response = Http::get("{$protocol}://{$hostname}/{$pathname}")->throw()->body();
+        $response = Http::get("https://{$hostname}/{$pathname}")->throw()->body();
 
         \preg_match('/<latest>(?<version>.+)<\/latest>/', $response, $matches);
 
@@ -35,17 +34,12 @@ final class UrlWithProtocolBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('protocol', 'https?:?');
-    }
-
     public function previews(): array
     {
         return [
             new BadgePreviewData(
-                name: 'version',
-                path: '/maven-metadata/version/https/repo1.maven.org/maven2/com/google/code/gson/gson/maven-metadata.xml',
+                name: 'version (maven metadata url)',
+                path: '/maven-metadata/version/repo1.maven.org/maven2/com/google/code/gson/gson/maven-metadata.xml',
                 data: $this->render(['version' => '1.0.0']),
             ),
         ];

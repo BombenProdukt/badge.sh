@@ -46,28 +46,20 @@ final class BadgeServiceProvider extends ServiceProvider
 
                     // These are parameters that define their type using the {parameter:type} syntax.
                     foreach ($schema['parameters'] as $parameter => $type) {
-                        if (\str_contains($type, ',')) {
-                            $route->whereIn($parameter, \explode(',', $type));
-                        }
-
-                        if (\in_array($type, ['string', 'alpha'], true)) {
-                            $route->whereAlpha($parameter);
-                        }
-
-                        if ($type === 'alphanumeric') {
-                            $route->whereAlphaNumeric($parameter);
-                        }
-
-                        if ($type === 'number') {
-                            $route->whereNumber($parameter);
-                        }
-
-                        if ($type === 'wildcard') {
-                            $route->where($parameter, '.*');
-                        }
+                        match (true) {
+                            $type === 'alpha' => $route->whereAlpha($parameter),
+                            $type === 'alphanumeric' => $route->whereAlphaNumeric($parameter),
+                            $type === 'number' => $route->whereNumber($parameter),
+                            $type === 'string' => $route->whereAlpha($parameter),
+                            $type === 'ulid' => $route->whereUlid($parameter),
+                            $type === 'uuid' => $route->whereUuid($parameter),
+                            $type === 'wildcard' => $route->where($parameter, '.*'),
+                            \str_contains($type, ',') => $route->whereIn($parameter, \explode(',', $type)),
+                            default => $route->where($parameter, $type),
+                        };
                     }
 
-                    // These are parameters that define their type using the {parameter:type} syntax.
+                    // These are parameters that define their constraints using `where` functions.
                     $badge->routeConstraints($route);
                 }
             }
@@ -84,11 +76,9 @@ final class BadgeServiceProvider extends ServiceProvider
             $group = $result->group(1);
 
             if (\str_contains($group, ':')) {
-                [$name, $type] = \explode(':', $group);
+                [$name, $type] = \explode(':', $group, 2);
 
                 $parameters[$name] = $type;
-            } else {
-                $parameters[$group] = 'string';
             }
         }
 
