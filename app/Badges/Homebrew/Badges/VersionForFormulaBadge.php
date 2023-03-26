@@ -6,26 +6,23 @@ namespace App\Badges\Homebrew\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class VersionForFormulaBadge extends AbstractBadge
 {
+    protected array $routes = [
+        '/homebrew/version/{type:cask,formula}/{package}',
+    ];
+
     protected array $keywords = [
         Category::VERSION,
     ];
 
-    public function handle(string $package): array
+    public function handle(string $type, string $package): array
     {
-        $response = $this->client->get('formula', $package);
-
-        if (isset($response['version'])) {
-            return [
-                'version' => $response['version'],
-            ];
-        }
+        $response = $this->client->get($type, $package);
 
         return [
-            'version' => $response['versions']['stable'],
+            'version' => $response['version'] ?? $response['versions']['stable'],
         ];
     }
 
@@ -34,31 +31,17 @@ final class VersionForFormulaBadge extends AbstractBadge
         return $this->renderVersion($properties['version']);
     }
 
-    public function routePaths(): array
-    {
-        return [
-            '/homebrew/version/{package}',
-            '/homebrew/version/{package}/formula',
-            '/homebrew/version/{package}/cask',
-        ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('type', ['cask', 'formula']);
-    }
-
     public function previews(): array
     {
         return [
             new BadgePreviewData(
                 name: 'version',
-                path: '/homebrew/version/fish',
+                path: '/homebrew/version/formula/fish',
                 data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version',
-                path: '/homebrew/version/cake',
+                path: '/homebrew/version/cask/1password',
                 data: $this->render(['version' => '1.0.0']),
             ),
         ];

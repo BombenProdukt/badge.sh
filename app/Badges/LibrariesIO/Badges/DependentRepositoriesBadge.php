@@ -6,13 +6,11 @@ namespace App\Badges\LibrariesIO\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class DependentRepositoriesBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/libraries-io/dependent-repositories/{platform}/{package}',
+        '/libraries-io/dependent-repositories/{platform}/{package:wildcard}',
     ];
 
     protected array $keywords = [
@@ -29,11 +27,6 @@ final class DependentRepositoriesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('dependent repositories', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

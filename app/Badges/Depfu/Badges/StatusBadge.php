@@ -6,13 +6,11 @@ namespace App\Badges\Depfu\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/depfu/status/{vcs}/{project}',
+        '/depfu/status/{vcs:github,gitlab}/{project:wildcard}',
     ];
 
     protected array $keywords = [
@@ -29,12 +27,6 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus($this->service(), $properties['status']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('vcs', ['github', 'gitlab']);
-        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

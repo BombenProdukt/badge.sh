@@ -6,11 +6,14 @@ namespace App\Badges\Badgesize\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class UrlBadge extends AbstractBadge
 {
+    protected array $routes = [
+        '/badgesize/{compression:brotli,gzip,normal}/file-url/{path:wildcard}',
+        '/badgesize/{compression:brotli,gzip,normal}/{path:wildcard}',
+    ];
+
     protected array $keywords = [
         Category::SIZE,
     ];
@@ -33,20 +36,6 @@ final class UrlBadge extends AbstractBadge
             'message' => $properties['size'],
             'messageColor' => $properties['color'],
         ];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/badgesize/{compression}/file-url/{path}',
-            '/badgesize/{compression}/{path}',
-        ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('compression', ['brotli', 'gzip', 'normal']);
-        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

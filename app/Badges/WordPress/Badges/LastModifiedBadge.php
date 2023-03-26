@@ -7,12 +7,11 @@ namespace App\Badges\WordPress\Badges;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Carbon\Carbon;
-use Illuminate\Routing\Route;
 
 final class LastModifiedBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/wordpress/{extensionType}/last-modified/{extension}',
+        '/wordpress/{extensionType:plugin,theme}/last-modified/{extension}',
     ];
 
     protected array $keywords = [
@@ -29,11 +28,6 @@ final class LastModifiedBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDateDiff('commercial', $properties['date']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('extensionType', ['plugin', 'theme']);
     }
 
     public function previews(): array

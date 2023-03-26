@@ -6,13 +6,11 @@ namespace App\Badges\XO\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class IndentBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/xo/indentation/{name}',
+        '/xo/indentation/{name:wildcard}',
     ];
 
     protected array $keywords = [
@@ -47,11 +45,6 @@ final class IndentBadge extends AbstractBadge
             'message' => $properties['indentation'],
             'messageColor' => 'teal.400',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

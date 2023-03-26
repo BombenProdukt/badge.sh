@@ -6,13 +6,11 @@ namespace App\Badges\Badgesize\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class GitHubBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/badgesize/{compression}/{repo}/{path}',
+        '/badgesize/{compression:brotli,gzip,normal}/{repo:wildcard}/{path:wildcard}',
     ];
 
     protected array $keywords = [
@@ -37,13 +35,6 @@ final class GitHubBadge extends AbstractBadge
             'message' => $properties['size'],
             'messageColor' => $properties['color'],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('compression', ['brotli', 'gzip', 'normal']);
-        $route->where('repo', RoutePattern::CATCH_ALL->value);
-        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

@@ -10,14 +10,18 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class YearlyDownloadsForFormulaBadge extends AbstractBadge
 {
+    protected array $routes = [
+        '/homebrew/downloads-yearly/{type:cask,formula}/{package}',
+    ];
+
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $package): array
+    public function handle(string $type, string $package): array
     {
         return [
-            'downloads' => $this->client->get('formula', $package)['analytics']['install']['365d'][$package],
+            'downloads' => $this->client->get($type, $package)['analytics']['install']['365d'][$package],
         ];
     }
 
@@ -30,21 +34,17 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
         ];
     }
 
-    public function routePaths(): array
-    {
-        return [
-            '/homebrew/downloads-yearly/{package}',
-            '/homebrew/downloads-yearly/formula/{package}',
-            '/homebrew/downloads-yearly/cask/{package}',
-        ];
-    }
-
     public function previews(): array
     {
         return [
             new BadgePreviewData(
                 name: 'yearly downloads',
-                path: '/homebrew/downloads-yearly/fish',
+                path: '/homebrew/downloads-yearly/formula/fish',
+                data: $this->render(['downloads' => '1000000']),
+            ),
+            new BadgePreviewData(
+                name: 'yearly downloads',
+                path: '/homebrew/downloads-yearly/cask/1password',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

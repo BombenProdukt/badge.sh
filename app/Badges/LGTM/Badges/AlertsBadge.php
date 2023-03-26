@@ -6,14 +6,12 @@ namespace App\Badges\LGTM\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class AlertsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/lgtm/alerts/{provider}/{project}/{language?}',
+        '/lgtm/alerts/{provider:bitbucket,github,gitlab}/{project:wildcard}/{language?}',
     ];
 
     protected array $keywords = [
@@ -41,12 +39,6 @@ final class AlertsBadge extends AbstractBadge
             'message' => FormatNumber::execute((float) $properties['alerts']),
             'messageColor' => $properties['alerts'] === 0 ? 'green.600' : 'yellow.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('provider', ['github', 'bitbucket', 'gitlab']);
-        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

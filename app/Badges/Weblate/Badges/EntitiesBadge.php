@@ -6,12 +6,11 @@ namespace App\Badges\Weblate\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class EntitiesBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/weblate/entities/{type}',
+        '/weblate/entities/{type:components,projects,users,languages}',
     ];
 
     protected array $keywords = [
@@ -29,11 +28,6 @@ final class EntitiesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber($properties['type'], $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('type', ['components', 'projects', 'users', 'languages']);
     }
 
     public function previews(): array

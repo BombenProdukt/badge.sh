@@ -6,13 +6,11 @@ namespace App\Badges\REUSE\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class ComplianceBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/reuse/compliance/{remote}',
+        '/reuse/compliance/{remote:wildcard}',
     ];
 
     protected array $keywords = [
@@ -27,11 +25,6 @@ final class ComplianceBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('reuse', $properties['status']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('remote', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

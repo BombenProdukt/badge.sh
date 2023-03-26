@@ -6,13 +6,11 @@ namespace App\Badges\Codecov\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/codecov/coverage/{service}/{repo}/{branch?}',
+        '/codecov/coverage/{service:bitbucket,github,gitlab}/{repo:wildcard}/{branch?}',
     ];
 
     protected array $keywords = [
@@ -29,12 +27,6 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderCoverage($properties['coverage']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('service', ['github', 'bitbucket', 'gitlab']);
-        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

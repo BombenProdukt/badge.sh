@@ -6,13 +6,11 @@ namespace App\Badges\NPM\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class TotalDownloadsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/npm/downloads/{package}',
+        '/npm/downloads/{package:wildcard}',
     ];
 
     protected array $keywords = [
@@ -29,11 +27,6 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloads($properties['downloads']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
     public function previews(): array

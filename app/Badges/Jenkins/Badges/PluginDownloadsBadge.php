@@ -6,8 +6,6 @@ namespace App\Badges\Jenkins\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
 final class PluginDownloadsBadge extends AbstractBadge
@@ -38,11 +36,6 @@ final class PluginDownloadsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('downloads', $properties['downloads']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('job', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

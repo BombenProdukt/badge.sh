@@ -6,13 +6,11 @@ namespace App\Badges\LibrariesIO\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class ProjectDependenciesBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/libraries-io/project-dependencies/{platform}/{package}/{version?}',
+        '/libraries-io/project-dependencies/{platform}/{package:wildcard}/{version?}',
     ];
 
     protected array $keywords = [
@@ -40,11 +38,6 @@ final class ProjectDependenciesBadge extends AbstractBadge
         }
 
         return $this->renderText('dependencies', 'up to date', 'green.600');
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

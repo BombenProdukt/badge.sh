@@ -6,13 +6,11 @@ namespace App\Badges\Jenkins\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class LastBuildBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/jenkins/last-build/{hostname}/{job}',
+        '/jenkins/last-build/{hostname}/{job:wildcard}',
     ];
 
     protected array $keywords = [
@@ -33,11 +31,6 @@ final class LastBuildBadge extends AbstractBadge
             'message' => $properties['status'],
             'messageColor' => \mb_strtolower($properties['status']) === 'success' ? 'green.600' : 'red.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('job', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

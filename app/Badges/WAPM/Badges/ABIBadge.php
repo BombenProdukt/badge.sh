@@ -6,13 +6,11 @@ namespace App\Badges\WAPM\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class ABIBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/wapm/abi/{package}',
+        '/wapm/abi/{package:wildcard}',
     ];
 
     protected array $keywords = [
@@ -33,11 +31,6 @@ final class ABIBadge extends AbstractBadge
             'message' => \implode(' | ', $properties['abis']),
             'messageColor' => $properties['abis'] ? 'blue.600' : 'green.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

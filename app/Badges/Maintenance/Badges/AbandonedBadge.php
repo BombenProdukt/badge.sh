@@ -6,12 +6,11 @@ namespace App\Badges\Maintenance\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class AbandonedBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/maintenance/abandoned/{year}',
+        '/maintenance/abandoned/{year:number}',
     ];
 
     protected array $keywords = [
@@ -26,11 +25,6 @@ final class AbandonedBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('abandoned', $properties['year'], 'red.600');
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereNumber('year');
     }
 
     public function previews(): array

@@ -6,13 +6,12 @@ namespace App\Badges\Jenkins\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
 final class CoverageBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/jenkins/coverage/{format}',
+        '/jenkins/coverage/{format:api,cobertura,jacoco}',
     ];
 
     protected array $keywords = [
@@ -45,11 +44,6 @@ final class CoverageBadge extends AbstractBadge
         return [
             'job' => ['required', 'url'],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('format', ['api', 'cobertura', 'jacoco']);
     }
 
     public function previews(): array

@@ -6,13 +6,11 @@ namespace App\Badges\Jenkins\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class FixTimeBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/jenkins/fix-time/{hostname}/{job}',
+        '/jenkins/fix-time/{hostname}/{job:wildcard}',
     ];
 
     protected array $keywords = [
@@ -67,11 +65,6 @@ final class FixTimeBadge extends AbstractBadge
                 default => 'red.600',
             },
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('job', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

@@ -6,13 +6,11 @@ namespace App\Badges\Bundlephobia\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class TreeShakingBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/bundlephobia/tree-shaking/{name}',
+        '/bundlephobia/tree-shaking/{name:wildcard}',
     ];
 
     protected array $keywords = [
@@ -35,11 +33,6 @@ final class TreeShakingBadge extends AbstractBadge
             'message' => $properties['isTreeShakeable'] ? 'supported' : 'not supported',
             'messageColor' => $properties['isTreeShakeable'] ? 'green.600' : 'red.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

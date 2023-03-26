@@ -6,13 +6,11 @@ namespace App\Badges\LibrariesIO\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class SourceRankBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/libraries-io/sourcerank/{platform}/{package}',
+        '/libraries-io/sourcerank/{platform}/{package:wildcard}',
     ];
 
     protected array $keywords = [
@@ -27,11 +25,6 @@ final class SourceRankBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('sourcerank', $properties['rank']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

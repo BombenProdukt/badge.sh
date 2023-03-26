@@ -6,13 +6,11 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class ContributorsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/gitlab/contributors/{repo}',
+        '/gitlab/contributors/{repo:wildcard}',
     ];
 
     protected array $keywords = [
@@ -29,11 +27,6 @@ final class ContributorsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('contributors', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

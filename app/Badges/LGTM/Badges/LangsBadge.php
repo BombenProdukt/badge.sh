@@ -6,13 +6,11 @@ namespace App\Badges\LGTM\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class LangsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/lgtm/languages/{provider}/{project}/{language?}',
+        '/lgtm/languages/{provider:bitbucket,github,gitlab}/{project:wildcard}/{language?}',
     ];
 
     protected array $keywords = [
@@ -41,12 +39,6 @@ final class LangsBadge extends AbstractBadge
             'message' => \implode(' | ', $properties['languages']),
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('provider', ['github', 'bitbucket', 'gitlab']);
-        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

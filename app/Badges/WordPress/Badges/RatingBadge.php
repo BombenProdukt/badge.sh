@@ -6,12 +6,11 @@ namespace App\Badges\WordPress\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class RatingBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/wordpress/{extensionType}/rating/{extension}',
+        '/wordpress/{extensionType:plugin,theme}/rating/{extension}',
     ];
 
     protected array $keywords = [
@@ -26,11 +25,6 @@ final class RatingBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderRating($properties['rating']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('extensionType', ['plugin', 'theme']);
     }
 
     public function previews(): array

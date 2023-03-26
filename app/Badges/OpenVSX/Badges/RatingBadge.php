@@ -6,13 +6,11 @@ namespace App\Badges\OpenVSX\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class RatingBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/open-vsx/rating/{extension}',
+        '/open-vsx/rating/{extension:wildcard}',
     ];
 
     protected array $keywords = [
@@ -35,11 +33,6 @@ final class RatingBadge extends AbstractBadge
             'message' => $properties['rating'].'/5',
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('extension', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

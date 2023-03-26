@@ -11,6 +11,12 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class MemberBadge extends AbstractBadge
 {
+    protected array $routes = [
+        '/matrix/members/{room}/gitter',
+        '/matrix/members/{room}/gitter.im',
+        '/matrix/members/{room}/{server?}',
+    ];
+
     protected array $keywords = [
         Category::SOCIAL,
     ];
@@ -30,15 +36,6 @@ final class MemberBadge extends AbstractBadge
             'label' => '#'.$properties['room'].':'.$properties['server'],
             'message' => FormatNumber::execute((float) $properties['count']).' '.Str::plural('member', $properties['count']),
             'messageColor' => 'blue.600',
-        ];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/matrix/members/{room}/gitter',
-            '/matrix/members/{room}/gitter.im',
-            '/matrix/members/{room}/{server?}',
         ];
     }
 

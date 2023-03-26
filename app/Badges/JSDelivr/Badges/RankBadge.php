@@ -6,13 +6,11 @@ namespace App\Badges\JSDelivr\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class RankBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/jsdelivr/rank/{platform}/{package}',
+        '/jsdelivr/rank/{platform}/{package:wildcard}',
     ];
 
     protected array $keywords = [
@@ -31,11 +29,6 @@ final class RankBadge extends AbstractBadge
             'message' => $properties['rank'] ? '#'.$properties['rank'] : 'none',
             'messageColor' => $properties['rank'] ? 'blue.600' : 'gray.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

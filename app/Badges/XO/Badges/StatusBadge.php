@@ -6,13 +6,11 @@ namespace App\Badges\XO\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/xo/status/{name}',
+        '/xo/status/{name:wildcard}',
     ];
 
     protected array $keywords = [
@@ -49,11 +47,6 @@ final class StatusBadge extends AbstractBadge
             'message' => 'XO',
             'messageColor' => 'teal.400',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

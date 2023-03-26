@@ -6,8 +6,6 @@ namespace App\Badges\Jenkins\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
 final class PluginPopularityBadge extends AbstractBadge
@@ -28,11 +26,6 @@ final class PluginPopularityBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('popularity', $properties['popularity']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('job', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

@@ -6,14 +6,12 @@ namespace App\Badges\Travis\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
 
 final class StatusBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/travis/status/{project}/{branch?}',
+        '/travis/status/{project:wildcard}/{branch?}',
     ];
 
     protected array $keywords = [
@@ -36,11 +34,6 @@ final class StatusBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('travis', $properties['status'], $properties['statusColor']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

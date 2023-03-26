@@ -6,14 +6,12 @@ namespace App\Badges\OpenVSX\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
 use Carbon\Carbon;
-use Illuminate\Routing\Route;
 
 final class ReleaseDateBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/open-vsx/release-date/{extension}',
+        '/open-vsx/release-date/{extension:wildcard}',
     ];
 
     protected array $keywords = [
@@ -30,11 +28,6 @@ final class ReleaseDateBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDate('release date', $properties['date']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('extension', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

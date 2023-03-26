@@ -6,13 +6,11 @@ namespace App\Badges\Packagist\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class FaversBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/packagist/favers/{package}',
+        '/packagist/favers/{package:wildcard}',
     ];
 
     protected array $keywords = [
@@ -27,11 +25,6 @@ final class FaversBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('favers', $properties['favers']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function previews(): array

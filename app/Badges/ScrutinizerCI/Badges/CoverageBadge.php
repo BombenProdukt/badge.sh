@@ -6,12 +6,11 @@ namespace App\Badges\ScrutinizerCI\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class CoverageBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/scrutinizer-ci/coverage/{vcs}/{user}/{repo}/{branch?}',
+        '/scrutinizer-ci/coverage/{vcs:b,g,gl}/{user}/{repo}/{branch?}',
     ];
 
     protected array $keywords = [
@@ -28,11 +27,6 @@ final class CoverageBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderCoverage($properties['percentage']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('vcs', ['g', 'gl', 'b']);
     }
 
     public function previews(): array

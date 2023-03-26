@@ -6,8 +6,6 @@ namespace App\Badges\GradlePluginPortal\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
@@ -29,11 +27,6 @@ final class VersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('pathname', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array
