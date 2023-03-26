@@ -17,9 +17,9 @@ final class BadgeList extends Component
 
         if ($this->query) {
             $badges = $badges->filter(function ($badge) {
-                $matchesService = \mb_strtolower($badge->service()) === $this->query;
-                $matchesTitle = \mb_strtolower($badge->title()) === $this->query;
-                $matchesKeyword = collect($badge->keywords())->contains(fn (BackedEnum $keyword) => $keyword->value === $this->query);
+                $matchesService = str_contains(\mb_strtolower($badge->service()), $this->query);
+                $matchesTitle = str_contains(\mb_strtolower($badge->title()), $this->query);
+                $matchesKeyword = collect($badge->keywords())->contains(fn (BackedEnum $keyword) => str_contains($keyword->value, $this->query));
 
                 return $matchesService || $matchesTitle || $matchesKeyword;
             });
