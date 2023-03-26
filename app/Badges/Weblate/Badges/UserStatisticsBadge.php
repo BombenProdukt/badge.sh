@@ -6,13 +6,12 @@ namespace App\Badges\Weblate\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use InvalidArgumentException;
 
 final class UserStatisticsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/weblate/statistics/{type}/{username}',
+        '/weblate/statistics/{type:translations,suggestions,languages,uploads,comments}/{username}',
     ];
 
     protected array $keywords = [
@@ -39,11 +38,6 @@ final class UserStatisticsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber($properties['type'], $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('type', ['translations', 'suggestions', 'languages', 'uploads', 'comments']);
     }
 
     public function previews(): array

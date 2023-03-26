@@ -6,13 +6,11 @@ namespace App\Badges\CircleCI\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/circleci/status/{vcs}/{repo}/{branch?}',
+        '/circleci/status/{vcs:github,gitlab}/{repo:wildcard}/{branch?}',
     ];
 
     protected array $keywords = [
@@ -31,12 +29,6 @@ final class StatusBadge extends AbstractBadge
             'message' => \str_replace('_', ' ', $properties['status']),
             'messageColor' => ['failed' => 'red.600', 'success' => 'green.600'][$properties['status']] ?? 'gray.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('vcs', ['github', 'gitlab']);
-        $route->where('repo', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function previews(): array

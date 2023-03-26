@@ -6,13 +6,12 @@ namespace App\Badges\Mastodon\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class UserIdBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/mastodon/follow/{userId}/{instance?}',
+        '/mastodon/follow/{userId:number}/{instance?}',
     ];
 
     protected array $keywords = [
@@ -37,11 +36,6 @@ final class UserIdBadge extends AbstractBadge
             'message' => FormatNumber::execute((float) $properties['count']),
             'messageColor' => '3487CE',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereNumber('userId');
     }
 
     public function previews(): array

@@ -6,13 +6,11 @@ namespace App\Badges\Dependabot\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class StatusBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/dependabot/status/{project}/{identifier?}',
+        '/dependabot/status/{project:wildcard}/{identifier?}',
     ];
 
     protected array $keywords = [
@@ -40,11 +38,6 @@ final class StatusBadge extends AbstractBadge
             'message' => $properties['status'],
             'messageColor' => $properties['statusColor'],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

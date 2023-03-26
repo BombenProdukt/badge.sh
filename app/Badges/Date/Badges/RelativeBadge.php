@@ -7,12 +7,11 @@ namespace App\Badges\Date\Badges;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Carbon\Carbon;
-use Illuminate\Routing\Route;
 
 final class RelativeBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/date/relative/{timestamp}',
+        '/date/relative/{timestamp:number}',
     ];
 
     protected array $keywords = [
@@ -29,11 +28,6 @@ final class RelativeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDateDiff('date', $properties['timestamp']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereNumber('timestamp');
     }
 
     public function previews(): array

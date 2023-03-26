@@ -6,13 +6,11 @@ namespace App\Badges\PackagePhobia\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class PublishBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/packagephobia/publish/{name}',
+        '/packagephobia/publish/{name:wildcard}',
     ];
 
     protected array $keywords = [
@@ -36,11 +34,6 @@ final class PublishBadge extends AbstractBadge
             'message' => $properties['size'],
             'messageColor' => \str_replace('#', '', $properties['color']),
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

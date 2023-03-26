@@ -6,12 +6,11 @@ namespace App\Badges\ScrutinizerCI\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class BuildBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/scrutinizer-ci/build/{vcs}/{user}/{repo}/{branch?}',
+        '/scrutinizer-ci/build/{vc:b,g,gl}/{user}/{repo}/{branch?}',
     ];
 
     protected array $keywords = [
@@ -26,11 +25,6 @@ final class BuildBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('build', $properties['status']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('vcs', ['g', 'gl', 'b']);
     }
 
     public function previews(): array

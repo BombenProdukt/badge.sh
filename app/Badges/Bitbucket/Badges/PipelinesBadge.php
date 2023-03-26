@@ -6,13 +6,11 @@ namespace App\Badges\Bitbucket\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class PipelinesBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/bitbucket/pipelines/{user}/{repo}/{branch?}',
+        '/bitbucket/pipelines/{user}/{repo}/{branch:wildcard?}',
     ];
 
     protected array $keywords = [
@@ -38,11 +36,6 @@ final class PipelinesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderStatus('build', $properties['status']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('branch', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

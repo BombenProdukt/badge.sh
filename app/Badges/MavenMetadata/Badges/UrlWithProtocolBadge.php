@@ -6,14 +6,13 @@ namespace App\Badges\MavenMetadata\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
 final class UrlWithProtocolBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/maven-metadata/version/{protocol}/{hostname}/{pathname}',
+        '/maven-metadata/version/{protocol}/{hostname}/{pathname:wildcard}',
     ];
 
     protected array $keywords = [
@@ -39,7 +38,6 @@ final class UrlWithProtocolBadge extends AbstractBadge
     public function routeConstraints(Route $route): void
     {
         $route->where('protocol', 'https?:?');
-        $route->where('pathname', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

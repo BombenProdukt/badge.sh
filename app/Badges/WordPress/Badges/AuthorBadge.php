@@ -6,12 +6,11 @@ namespace App\Badges\WordPress\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class AuthorBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/wordpress/{extensionType}/author/{extension}',
+        '/wordpress/{extensionType:plugin,theme}/author/{extension}',
     ];
 
     protected array $keywords = [
@@ -28,11 +27,6 @@ final class AuthorBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('author', $properties['author']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('extensionType', ['plugin', 'theme']);
     }
 
     public function previews(): array

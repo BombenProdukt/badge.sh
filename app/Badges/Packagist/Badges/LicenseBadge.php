@@ -7,15 +7,13 @@ namespace App\Badges\Packagist\Badges;
 use App\Badges\Packagist\Concerns\HandlesVersions;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class LicenseBadge extends AbstractBadge
 {
     use HandlesVersions;
 
     protected array $routes = [
-        '/packagist/license/{package}/{channel?}',
+        '/packagist/license/{package:wildcard}/{channel?}',
     ];
 
     protected array $keywords = [
@@ -34,11 +32,6 @@ final class LicenseBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderLicense($properties['license']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function previews(): array

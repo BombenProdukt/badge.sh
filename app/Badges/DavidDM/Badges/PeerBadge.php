@@ -6,13 +6,11 @@ namespace App\Badges\DavidDM\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class PeerBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/david/peer/{repo}/{path?}',
+        '/david/peer/{repo:wildcard}/{path:wildcard?}',
     ];
 
     protected array $keywords = [
@@ -35,12 +33,6 @@ final class PeerBadge extends AbstractBadge
             'message' => $this->statusInfo[$properties['status']][0],
             'messageColor' => $this->statusInfo[$properties['status']][1],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('repo', RoutePattern::CATCH_ALL->value);
-        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

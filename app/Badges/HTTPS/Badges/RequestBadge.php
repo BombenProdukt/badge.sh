@@ -6,13 +6,11 @@ namespace App\Badges\HTTPS\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class RequestBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/https/{host}/{path?}',
+        '/https/{host}/{path:wildcard?}',
     ];
 
     protected array $keywords = [
@@ -31,11 +29,6 @@ final class RequestBadge extends AbstractBadge
             'message' => $properties['message'],
             'messageColor' => $properties['messageColor'],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

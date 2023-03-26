@@ -6,8 +6,6 @@ namespace App\Badges\Composer\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class RequireDevBadge extends AbstractBadge
 {
@@ -33,11 +31,6 @@ final class RequireDevBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText($properties['name'], $properties['version']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

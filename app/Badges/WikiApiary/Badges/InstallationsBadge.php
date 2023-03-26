@@ -6,12 +6,11 @@ namespace App\Badges\WikiApiary\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class InstallationsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/wikiapiary/installations/{variant}/{name}',
+        '/wikiapiary/installations/{variant:extension,skin,farm,generator,host}/{name}',
     ];
 
     protected array $keywords = [
@@ -31,11 +30,6 @@ final class InstallationsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('installations', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('variant', ['extension', 'skin', 'farm', 'generator', 'host']);
     }
 
     public function previews(): array

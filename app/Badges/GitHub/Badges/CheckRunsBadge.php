@@ -7,15 +7,13 @@ namespace App\Badges\GitHub\Badges;
 use App\Badges\GitHub\Actions\CombineStates;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
 use GrahamCampbell\GitHub\Facades\GitHub;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Collection;
 
 final class CheckRunsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/github/check-runs/{owner}/{repo}/{reference?}/{context?}',
+        '/github/check-runs/{owner}/{repo}/{reference?}/{context:wildcard?}',
     ];
 
     protected array $keywords = [
@@ -73,12 +71,6 @@ final class CheckRunsBadge extends AbstractBadge
             'message' => 'unknown',
             'messageColor' => 'gray.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('context', RoutePattern::CATCH_ALL->value);
-        //
     }
 
     public function previews(): array

@@ -10,6 +10,12 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class YearlyDownloadsForFormulaBadge extends AbstractBadge
 {
+    protected array $routes = [
+        '/homebrew/downloads-yearly/{package}',
+        '/homebrew/downloads-yearly/formula/{package}',
+        '/homebrew/downloads-yearly/cask/{package}',
+    ];
+
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
@@ -27,15 +33,6 @@ final class YearlyDownloadsForFormulaBadge extends AbstractBadge
             'label' => 'downloads',
             'message' => FormatNumber::execute((float) $properties['downloads']).'/year',
             'messageColor' => 'green.600',
-        ];
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/homebrew/downloads-yearly/{package}',
-            '/homebrew/downloads-yearly/formula/{package}',
-            '/homebrew/downloads-yearly/cask/{package}',
         ];
     }
 

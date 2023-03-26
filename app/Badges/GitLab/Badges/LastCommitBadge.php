@@ -6,14 +6,12 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
 use Carbon\Carbon;
-use Illuminate\Routing\Route;
 
 final class LastCommitBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/gitlab/last-commit/{repo}/{ref?}',
+        '/gitlab/last-commit/{repo:wildcard}/{ref?}',
     ];
 
     protected array $keywords = [
@@ -30,11 +28,6 @@ final class LastCommitBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDateDiff('last commit', $properties['date']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

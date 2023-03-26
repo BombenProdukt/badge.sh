@@ -6,13 +6,12 @@ namespace App\Badges\WhatPulse\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
 final class DownloadBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/whatpulse/download/{userType}/{id}',
+        '/whatpulse/download/{userType:team,user}/{id}',
     ];
 
     protected array $keywords = [
@@ -29,11 +28,6 @@ final class DownloadBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloads($properties['downloads']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('userType', ['user', 'team']);
     }
 
     public function previews(): array

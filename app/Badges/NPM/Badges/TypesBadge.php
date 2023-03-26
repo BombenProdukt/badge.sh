@@ -6,13 +6,11 @@ namespace App\Badges\NPM\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class TypesBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/npm/types/{package}/{tag?}',
+        '/npm/types/{package:wildcard}/{tag?}',
     ];
 
     protected array $keywords = [
@@ -75,11 +73,6 @@ final class TypesBadge extends AbstractBadge
             'message' => $properties['types'],
             'messageColor' => 'cyan.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
     public function previews(): array

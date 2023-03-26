@@ -6,12 +6,11 @@ namespace App\Badges\Scoop\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class LicenseFromBucketBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/scoop/license/{bucket}/{app}',
+        '/scoop/license/{bucket:extras,version}/{app}',
     ];
 
     protected array $keywords = [
@@ -35,11 +34,6 @@ final class LicenseFromBucketBadge extends AbstractBadge
             'message' => $properties['license'],
             'messageColor' => 'blue.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('bucket', ['extras', 'versions']);
     }
 
     public function previews(): array

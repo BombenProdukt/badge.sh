@@ -6,13 +6,11 @@ namespace App\Badges\NPM\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/npm/version/{package}/{tag?}',
+        '/npm/version/{package:wildcard}/{tag?}',
     ];
 
     protected array $keywords = [
@@ -34,11 +32,6 @@ final class VersionBadge extends AbstractBadge
             $properties['tag'] === 'latest' ? 'npm' : 'npm@'.$properties['tag'],
             $properties['version'],
         );
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
     public function previews(): array

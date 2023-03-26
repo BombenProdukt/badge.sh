@@ -6,14 +6,12 @@ namespace App\Badges\Jenkins\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class BrokenBuildBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/jenkins/broken-build/{hostname}/{job}',
+        '/jenkins/broken-build/{hostname}/{job:wildcard}',
     ];
 
     protected array $keywords = [
@@ -38,11 +36,6 @@ final class BrokenBuildBadge extends AbstractBadge
                 default => 'red.600',
             },
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('job', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

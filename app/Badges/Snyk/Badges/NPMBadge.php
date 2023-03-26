@@ -6,13 +6,11 @@ namespace App\Badges\Snyk\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class NPMBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/snyk/npm/{project}/{targetFile?}',
+        '/snyk/npm/{project:wildcard}/{targetFile:wildcard?}',
     ];
 
     protected array $keywords = [
@@ -50,12 +48,6 @@ final class NPMBadge extends AbstractBadge
             'message' => $properties['message'],
             'messageColor' => $properties['messageColor'],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('targetFile', RoutePattern::CATCH_ALL->value);
-        $route->where('project', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

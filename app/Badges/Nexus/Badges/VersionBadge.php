@@ -6,12 +6,11 @@ namespace App\Badges\Nexus\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class VersionBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/nexus/version/{repo}/{groupId}/{artifactId}',
+        '/nexus/version/{repo:r,s}/{groupId}/{artifactId}',
     ];
 
     protected array $keywords = [
@@ -37,11 +36,6 @@ final class VersionBadge extends AbstractBadge
             'nexusVersion' => ['required', 'in:2,3'],
             'query' => ['nullable', 'string'],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('repo', ['r', 's']);
     }
 
     public function previews(): array

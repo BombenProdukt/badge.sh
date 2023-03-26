@@ -6,13 +6,11 @@ namespace App\Badges\Bit\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class TotalComponentsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/bit/components/{collection}',
+        '/bit/components/{collection:wildcard}',
     ];
 
     protected array $keywords = [
@@ -29,11 +27,6 @@ final class TotalComponentsBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('components', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('collection', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

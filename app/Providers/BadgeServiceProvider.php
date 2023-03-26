@@ -10,6 +10,7 @@ use App\Services\BadgeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Regex\Regex;
 use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 final class BadgeServiceProvider extends ServiceProvider
@@ -31,19 +32,69 @@ final class BadgeServiceProvider extends ServiceProvider
             /** @var Badge */
             foreach (app('badge.service')->all() as $badge) {
                 foreach ($badge->routePaths() as $path) {
-                    $badge->routeConstraints(
-                        Route::get($path, function (Request $request) use ($badge) {
-                            $badge->setRequest($request);
+                    $schema = $this->getRouteSchema($path);
 
-                            if ($badge->routeRules()) {
-                                $badge->setRequestData($request->validate($badge->routeRules()));
-                            }
+                    $route = Route::get($schema['path'], function (Request $request) use ($badge) {
+                        $badge->setRequest($request);
 
-                            return MakeBadgeResponse::execute($request, $badge);
-                        }),
-                    );
+                        if ($badge->routeRules()) {
+                            $badge->setRequestData($request->validate($badge->routeRules()));
+                        }
+
+                        return MakeBadgeResponse::execute($request, $badge);
+                    });
+
+                    // These are parameters that define their type using the {parameter:type} syntax.
+                    foreach ($schema['parameters'] as $parameter => $type) {
+                        if (\str_contains($type, ',')) {
+                            $route->whereIn($parameter, \explode(',', $type));
+                        }
+
+                        if (\in_array($type, ['string', 'alpha'], true)) {
+                            $route->whereAlpha($parameter);
+                        }
+
+                        if ($type === 'alphanumeric') {
+                            $route->whereAlphaNumeric($parameter);
+                        }
+
+                        if ($type === 'number') {
+                            $route->whereNumber($parameter);
+                        }
+
+                        if ($type === 'wildcard') {
+                            $route->where($parameter, '.*');
+                        }
+                    }
+
+                    // These are parameters that define their type using the {parameter:type} syntax.
+                    $badge->routeConstraints($route);
                 }
             }
         });
+    }
+
+    private function getRouteSchema(string $path): array
+    {
+        $parameters = [];
+
+        $regex = Regex::matchAll('/\{([a-zA-Z0-9_:,]+)\}/', $path);
+
+        foreach ($regex->results() as $result) {
+            $group = $result->group(1);
+
+            if (\str_contains($group, ':')) {
+                [$name, $type] = \explode(':', $group);
+
+                $parameters[$name] = $type;
+            } else {
+                $parameters[$group] = 'string';
+            }
+        }
+
+        return [
+            'path' => \preg_replace('/(:[a-z]+)/', '', $path),
+            'parameters' => $parameters,
+        ];
     }
 }

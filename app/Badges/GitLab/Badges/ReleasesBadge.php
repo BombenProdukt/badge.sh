@@ -6,13 +6,11 @@ namespace App\Badges\GitLab\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class ReleasesBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/gitlab/releases/{repo}',
+        '/gitlab/releases/{repo:wildcard}',
     ];
 
     protected array $keywords = [
@@ -29,11 +27,6 @@ final class ReleasesBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderNumber('releases', $properties['count']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

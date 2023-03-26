@@ -6,12 +6,11 @@ namespace App\Badges\WordPress\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 
 final class PhpVersionBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/wordpress/{extensionType}/php-version/{extension}',
+        '/wordpress/{extensionType:plugin,theme}/php-version/{extension}',
     ];
 
     protected array $keywords = [
@@ -28,11 +27,6 @@ final class PhpVersionBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version'], 'PHP');
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('extensionType', ['plugin', 'theme']);
     }
 
     public function previews(): array

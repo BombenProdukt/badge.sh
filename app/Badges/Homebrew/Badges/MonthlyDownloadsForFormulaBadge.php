@@ -9,6 +9,12 @@ use App\Enums\Category;
 
 final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
 {
+    protected array $routes = [
+        '/homebrew/downloads-monthly/{package}',
+        '/homebrew/downloads-monthly/formula/{package}',
+        '/homebrew/downloads-monthly/cask/{package}',
+    ];
+
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
@@ -23,15 +29,6 @@ final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderDownloadsPerMonth($properties['downloads']);
-    }
-
-    public function routePaths(): array
-    {
-        return [
-            '/homebrew/downloads-monthly/{package}',
-            '/homebrew/downloads-monthly/formula/{package}',
-            '/homebrew/downloads-monthly/cask/{package}',
-        ];
     }
 
     public function previews(): array

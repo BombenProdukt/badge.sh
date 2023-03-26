@@ -6,14 +6,12 @@ namespace App\Badges\CodeClimate\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class TechDebtBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/codeclimate/tech-debt/{project}',
+        '/codeclimate/tech-debt/{project:wildcard}',
     ];
 
     protected array $keywords = [
@@ -42,11 +40,6 @@ final class TechDebtBadge extends AbstractBadge
                 default => 'orange.600',
             },
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('project', RoutePattern::PACKAGE_WITH_VENDOR_ONLY->value);
     }
 
     public function previews(): array

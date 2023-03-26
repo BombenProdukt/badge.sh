@@ -6,13 +6,11 @@ namespace App\Badges\Localizely\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class ProgressBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/localizely/progress/{projectId}/{branch?}',
+        '/localizely/progress/{projectId:wildcard}/{branch?}',
     ];
 
     protected array $keywords = [
@@ -45,11 +43,6 @@ final class ProgressBadge extends AbstractBadge
             'languageCode' => ['nullable', 'string'],
             'token' => ['required', 'string'],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('projectId', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

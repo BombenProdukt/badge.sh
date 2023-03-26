@@ -6,13 +6,12 @@ namespace App\Badges\GitHub\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class LabelsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/github/issues-by-label/{owner}/{repo}/{label}/{states?}',
+        '/github/issues-by-label/{owner}/{repo}/{label}/{states:open,closed?}',
     ];
 
     protected array $keywords = [
@@ -37,12 +36,6 @@ final class LabelsBadge extends AbstractBadge
             'message' => FormatNumber::execute((float) $properties['count'] ?? 0),
             'messageColor' => $properties['color'] ? $properties['color'] : 'gray.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        //
-        $route->whereIn('states', ['open', 'closed']);
     }
 
     public function previews(): array

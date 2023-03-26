@@ -6,13 +6,12 @@ namespace App\Badges\WhatPulse\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
 final class UptimeBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/whatpulse/uptime/{userType}/{id}',
+        '/whatpulse/uptime/{userType:team,user}/{id}',
     ];
 
     protected array $keywords = [
@@ -29,11 +28,6 @@ final class UptimeBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderText('uptime', $properties['time'], 'green.600');
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('userType', ['user', 'team']);
     }
 
     public function previews(): array

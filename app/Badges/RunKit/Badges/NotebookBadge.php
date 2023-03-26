@@ -6,13 +6,11 @@ namespace App\Badges\RunKit\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class NotebookBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/runkit/{owner}/{notebook}/{path?}',
+        '/runkit/{owner}/{notebook}/{path:wildcard?}',
     ];
 
     protected array $keywords = [
@@ -31,11 +29,6 @@ final class NotebookBadge extends AbstractBadge
             'message' => $properties['message'],
             'messageColor' => $properties['messageColor'],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('path', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

@@ -6,14 +6,12 @@ namespace App\Badges\MavenMetadata\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Http;
 
 final class UrlBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/maven-metadata/version/{hostname}/{pathname}',
+        '/maven-metadata/version/{hostname}/{pathname:wildcard}',
     ];
 
     protected array $keywords = [
@@ -34,11 +32,6 @@ final class UrlBadge extends AbstractBadge
     public function render(array $properties): array
     {
         return $this->renderVersion($properties['version']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('pathname', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

@@ -6,13 +6,11 @@ namespace App\Badges\Pub\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class FlutterPlatformBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/pub/flutter-platform/{package}',
+        '/pub/flutter-platform/{package:wildcard}',
     ];
 
     protected array $keywords = [
@@ -35,11 +33,6 @@ final class FlutterPlatformBadge extends AbstractBadge
             'message' => $properties['platforms'] ? \implode('|', $properties['platforms']) : 'unknown',
             'messageColor' => $properties['platforms'] ? 'blue.600' : 'gray.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

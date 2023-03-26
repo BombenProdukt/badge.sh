@@ -6,14 +6,12 @@ namespace App\Badges\XO\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Keyword;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
 final class SemicolonBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/xo/semicolon/{name}',
+        '/xo/semicolon/{name:wildcard}',
     ];
 
     protected array $keywords = [
@@ -48,11 +46,6 @@ final class SemicolonBadge extends AbstractBadge
             'message' => $properties['semicolons'],
             'messageColor' => 'teal.400',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('name', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

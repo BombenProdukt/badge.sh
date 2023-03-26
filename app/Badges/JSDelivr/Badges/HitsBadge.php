@@ -6,14 +6,12 @@ namespace App\Badges\JSDelivr\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class HitsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/jsdelivr/hits/{platform}/{package}',
+        '/jsdelivr/hits/{platform}/{package:wildcard}',
     ];
 
     protected array $keywords = [
@@ -34,11 +32,6 @@ final class HitsBadge extends AbstractBadge
             'message' => FormatNumber::execute((float) $properties['count']).'/month',
             'messageColor' => 'green.600',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array

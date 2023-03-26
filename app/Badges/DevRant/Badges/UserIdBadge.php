@@ -6,13 +6,12 @@ namespace App\Badges\DevRant\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Routing\Route;
 use PreemStudio\Formatter\FormatNumber;
 
 final class UserIdBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/devrant/score/{userId}',
+        '/devrant/score/{userId:number}',
     ];
 
     protected array $keywords = [
@@ -31,11 +30,6 @@ final class UserIdBadge extends AbstractBadge
             'message' => FormatNumber::execute((float) $properties['score']),
             'messageColor' => 'f99a66',
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereNumber('userId');
     }
 
     public function previews(): array

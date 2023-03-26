@@ -6,14 +6,12 @@ namespace App\Badges\Node\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 
 final class VersionBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/node/version/{package}/{tag?}',
+        '/node/version/{package:wildcard}/{tag?}',
     ];
 
     protected array $keywords = [
@@ -42,11 +40,6 @@ final class VersionBadge extends AbstractBadge
         return [
             'registry' => ['nullable', 'url'],
         ];
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->where('package', RoutePattern::PACKAGE_WITH_SCOPE->value);
     }
 
     public function previews(): array

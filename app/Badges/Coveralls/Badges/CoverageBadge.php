@@ -6,13 +6,11 @@ namespace App\Badges\Coveralls\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use App\Enums\RoutePattern;
-use Illuminate\Routing\Route;
 
 final class CoverageBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/coveralls/coverage/{vcs}/{repo}/{branch?}',
+        '/coveralls/coverage/{vcs:github,bitbucket}/{repo:wildcard}/{branch?}',
     ];
 
     protected array $keywords = [
@@ -41,12 +39,6 @@ final class CoverageBadge extends AbstractBadge
         }
 
         return $this->renderCoverage($properties['percentage']);
-    }
-
-    public function routeConstraints(Route $route): void
-    {
-        $route->whereIn('vcs', ['github', 'bitbucket']);
-        $route->where('repo', RoutePattern::CATCH_ALL->value);
     }
 
     public function previews(): array
