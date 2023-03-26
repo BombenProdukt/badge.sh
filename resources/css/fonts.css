@@ -29,6 +29,17 @@
         url("../fonts/strawford-medium-webfont.woff2") format("woff2"),
         url("../fonts/strawford-medium-webfont.woff") format("woff"),
         url("../fonts/strawford-medium-webfont.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Strawford";
+    src: url("../fonts/strawford-medium-webfont.eot");
+    src: url("../fonts/strawford-medium-webfont.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/strawford-medium-webfont.woff2") format("woff2"),
+        url("../fonts/strawford-medium-webfont.woff") format("woff"),
+        url("../fonts/strawford-medium-webfont.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
 }

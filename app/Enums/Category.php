@@ -14,11 +14,11 @@ enum Category: string
 
     case CHAT = 'chat';
 
-    case CODE_FORMATTING = 'code-formatting';
+    case CODE_FORMATTING = 'code formatting';
 
     case COVERAGE = 'coverage';
 
-    case CRYPTO_CURRENCY = 'crypto-currency';
+    case CRYPTO_CURRENCY = 'crypto currency';
 
     case DEPENDENCIES = 'dependencies';
 
@@ -30,7 +30,7 @@ enum Category: string
 
     case FUNDING = 'funding';
 
-    case ISSUE_TRACKING = 'issue-tracking';
+    case ISSUE_TRACKING = 'issue tracking';
 
     case LICENSE = 'license';
 
@@ -40,7 +40,7 @@ enum Category: string
 
     case OTHER = 'other';
 
-    case PLATFORM_SUPPORT = 'platform-support';
+    case PLATFORM_SUPPORT = 'platform support';
 
     case RATING = 'rating';
 
@@ -48,7 +48,7 @@ enum Category: string
 
     case SOCIAL = 'social';
 
-    case TEST_RESULTS = 'test-results';
+    case TEST_RESULTS = 'test results';
 
     case VERSION = 'version';
 }
