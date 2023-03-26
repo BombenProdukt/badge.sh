@@ -17,12 +17,12 @@
         <main class="max-w-7xl mx-auto pt-16">
             <x-header />
 
-            {{-- todo: search component --}}
-
-            <x-content />
+            @livewire('badge-list')
 
             <x-footer />
         </main>
     </body>
+
+    @livewireScripts
 
 </html>

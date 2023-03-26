@@ -33,7 +33,7 @@ final class DownloadsBadge extends AbstractBadge
     {
         return [
             new BadgePreviewData(
-                name: '',
+                name: 'downloads',
                 path: '/conda/downloads/conda-forge/python',
                 data: $this->render(['downloads' => '1000000']),
             ),
