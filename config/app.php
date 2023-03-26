@@ -289,6 +289,7 @@ return [
         App\Badges\JitPack\BadgeServiceProvider::class,
         App\Badges\JSDelivr\BadgeServiceProvider::class,
         App\Badges\Keybase\BadgeServiceProvider::class,
+        App\Badges\LaravelForge\BadgeServiceProvider::class,
         App\Badges\LGTM\BadgeServiceProvider::class,
         App\Badges\Liberapay\BadgeServiceProvider::class,
         App\Badges\LibrariesIO\BadgeServiceProvider::class,
