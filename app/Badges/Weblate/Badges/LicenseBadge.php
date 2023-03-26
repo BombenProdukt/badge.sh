@@ -31,7 +31,7 @@ final class LicenseBadge extends AbstractBadge
     {
         return [
             new BadgePreviewData(
-                name: '',
+                name: 'license',
                 path: '/weblate/license/godot-engine/godot',
                 data: $this->render(['license' => 'MIT']),
             ),

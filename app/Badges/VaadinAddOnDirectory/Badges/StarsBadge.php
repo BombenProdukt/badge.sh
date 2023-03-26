@@ -33,7 +33,7 @@ final class StarsBadge extends AbstractBadge
     {
         return [
             new BadgePreviewData(
-                name: '',
+                name: 'stars',
                 path: '/vaadin/stars/vaadinvaadin-grid',
                 data: $this->render(['stars' => '4.5']),
             ),
