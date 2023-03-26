@@ -24,7 +24,7 @@ final class StatusBadge extends AbstractBadge
 
     public function render(array $properties): array
     {
-        return $this->renderText($properties['label'] ?: 'status', $properties['message'], $properties['color']);
+        return $this->renderText('status', $properties['message'], $properties['color']);
     }
 
     public function previews(): array
@@ -33,7 +33,7 @@ final class StatusBadge extends AbstractBadge
             new BadgePreviewData(
                 name: 'type',
                 path: '/laravel-forge/status/5a0806b6-667d-46fe-bdf5-8a19ac545912',
-                data: $this->render(['type' => 'project']),
+                data: $this->render(['message' => 'deployed', 'color' => '18B69B']),
             ),
         ];
     }
