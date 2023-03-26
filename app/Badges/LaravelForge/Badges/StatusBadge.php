@@ -10,7 +10,7 @@ use App\Enums\Category;
 final class StatusBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/laravel-forge/status/{site}',
+        '/laravel-forge/status/{site:uuid}',
     ];
 
     protected array $keywords = [
