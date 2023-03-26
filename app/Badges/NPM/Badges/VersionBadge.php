@@ -10,7 +10,7 @@ use App\Enums\Category;
 final class VersionBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/npm/version/{package:wildcard}/{tag?}',
+        '/npm/version/{package:packageWithScope}/{tag?}',
     ];
 
     protected array $keywords = [
@@ -22,7 +22,7 @@ final class VersionBadge extends AbstractBadge
         return [
             'package' => $package,
             'tag' => $tag,
-            'version' => $this->client->unpkg("{$package}@{$tag}/package.json"),
+            'version' => $this->client->unpkg("{$package}@{$tag}/package.json")['version'],
         ];
     }
 

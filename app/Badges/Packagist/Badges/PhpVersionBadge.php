@@ -14,7 +14,7 @@ final class PhpVersionBadge extends AbstractBadge
     use HandlesVersions;
 
     protected array $routes = [
-        '/packagist/php-version/{package:wildcard}/{channel?}',
+        '/packagist/php-version/{package:packageWithVendorOnly}/{channel?}',
     ];
 
     protected array $keywords = [

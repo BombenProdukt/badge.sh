@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 final class StatusBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/travis/status/{project:wildcard}/{branch?}',
+        '/travis/status/{project:packageWithVendorOnly}/{branch?}',
     ];
 
     protected array $keywords = [

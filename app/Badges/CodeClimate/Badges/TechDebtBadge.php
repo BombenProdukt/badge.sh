@@ -11,7 +11,7 @@ use PreemStudio\Formatter\FormatNumber;
 final class TechDebtBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/codeclimate/tech-debt/{project:wildcard}',
+        '/codeclimate/tech-debt/{project:packageWithVendorOnly}',
     ];
 
     protected array $keywords = [

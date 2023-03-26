@@ -10,7 +10,7 @@ use App\Enums\Category;
 final class DependentsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/npm/dependents/{package:wildcard}/{tag?}',
+        '/npm/dependents/{package:packageWithScope}/{tag?}',
     ];
 
     protected array $keywords = [

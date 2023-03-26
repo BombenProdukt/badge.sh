@@ -13,7 +13,7 @@ final class VersionBadge extends AbstractBadge
     use HandlesVersions;
 
     protected array $routes = [
-        '/packagist/version/{package:wildcard}/{channel?}',
+        '/packagist/version/{package:packageWithVendorOnly}/{channel?}',
     ];
 
     protected array $keywords = [

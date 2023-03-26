@@ -10,7 +10,7 @@ use App\Enums\Category;
 final class TotalDownloadsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/packagist/downloads/{package:wildcard}',
+        '/packagist/downloads/{package:packageWithVendorOnly}',
     ];
 
     protected array $keywords = [

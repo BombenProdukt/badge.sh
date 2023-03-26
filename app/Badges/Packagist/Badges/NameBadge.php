@@ -10,7 +10,7 @@ use App\Enums\Category;
 final class NameBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/packagist/name/{package:wildcard}',
+        '/packagist/name/{package:packageWithVendorOnly}',
     ];
 
     protected array $keywords = [

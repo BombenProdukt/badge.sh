@@ -10,7 +10,7 @@ use App\Enums\Category;
 final class WeeklyDownloadsBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/npm/downloads-weekly/{package:wildcard}/{tag?}',
+        '/npm/downloads-weekly/{package:packageWithScope}/{tag?}',
     ];
 
     protected array $keywords = [

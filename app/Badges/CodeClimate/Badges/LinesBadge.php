@@ -10,7 +10,7 @@ use App\Enums\Category;
 final class LinesBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/codeclimate/lines/{project:wildcard}',
+        '/codeclimate/lines/{project:packageWithVendorOnly}',
     ];
 
     protected array $keywords = [

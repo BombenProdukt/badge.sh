@@ -10,7 +10,7 @@ use App\Enums\Category;
 final class LicenseBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/npm/license/{package:wildcard}/{tag?}',
+        '/npm/license/{package:packageWithScope}/{tag?}',
     ];
 
     protected array $keywords = [

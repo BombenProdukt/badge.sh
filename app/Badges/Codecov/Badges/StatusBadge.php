@@ -10,7 +10,7 @@ use App\Enums\Category;
 final class StatusBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/codecov/coverage/{service:bitbucket,github,gitlab}/{repo:wildcard}/{branch?}',
+        '/codecov/coverage/{service:bitbucket,github,gitlab}/{repo:packageWithVendorOnly}/{branch?}',
     ];
 
     protected array $keywords = [

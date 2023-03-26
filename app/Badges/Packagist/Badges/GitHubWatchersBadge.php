@@ -10,7 +10,7 @@ use App\Enums\Category;
 final class GitHubWatchersBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/packagist/github-watchers/{package:wildcard}',
+        '/packagist/github-watchers/{package:packageWithVendorOnly}',
     ];
 
     protected array $keywords = [
