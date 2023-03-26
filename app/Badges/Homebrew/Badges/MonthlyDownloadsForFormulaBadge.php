@@ -10,19 +10,17 @@ use App\Enums\Category;
 final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/homebrew/downloads-monthly/{package}',
-        '/homebrew/downloads-monthly/formula/{package}',
-        '/homebrew/downloads-monthly/cask/{package}',
+        '/homebrew/downloads-monthly/{type:cask,formula}/{package}',
     ];
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $package): array
+    public function handle(string $type, string $package): array
     {
         return [
-            'downloads' => $this->client->get('formula', $package)['analytics']['install']['30d'][$package],
+            'downloads' => $this->client->get($type, $package)['analytics']['install']['30d'][$package],
         ];
     }
 
@@ -36,7 +34,12 @@ final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
         return [
             new BadgePreviewData(
                 name: 'monthly downloads',
-                path: '/homebrew/downloads-monthly/fish',
+                path: '/homebrew/downloads-monthly/formula/fish',
+                data: $this->render(['downloads' => '1000000']),
+            ),
+            new BadgePreviewData(
+                name: 'monthly downloads',
+                path: '/homebrew/downloads-monthly/cask/1password',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

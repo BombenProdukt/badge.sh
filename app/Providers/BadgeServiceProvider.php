@@ -83,7 +83,7 @@ final class BadgeServiceProvider extends ServiceProvider
         }
 
         return [
-            'path' => \preg_replace('/(:[a-z]+)/', '', $path),
+            'path' => \preg_replace('/(:[a-z,]+)/', '', $path),
             'parameters' => $parameters,
         ];
     }

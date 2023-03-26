@@ -10,27 +10,19 @@ use App\Enums\Category;
 final class VersionForFormulaBadge extends AbstractBadge
 {
     protected array $routes = [
-        '/homebrew/version/{package}',
-        '/homebrew/version/formula/{package}',
-        '/homebrew/version/cask/{package}',
+        '/homebrew/version/{type:cask,formula}/{package}',
     ];
 
     protected array $keywords = [
         Category::VERSION,
     ];
 
-    public function handle(string $package): array
+    public function handle(string $type, string $package): array
     {
-        $response = $this->client->get('formula', $package);
-
-        if (isset($response['version'])) {
-            return [
-                'version' => $response['version'],
-            ];
-        }
+        $response = $this->client->get($type, $package);
 
         return [
-            'version' => $response['versions']['stable'],
+            'version' => $response['version'] ?? $response['versions']['stable'],
         ];
     }
 
@@ -44,12 +36,12 @@ final class VersionForFormulaBadge extends AbstractBadge
         return [
             new BadgePreviewData(
                 name: 'version',
-                path: '/homebrew/version/fish',
+                path: '/homebrew/version/formula/fish',
                 data: $this->render(['version' => '1.0.0']),
             ),
             new BadgePreviewData(
                 name: 'version',
-                path: '/homebrew/version/cake',
+                path: '/homebrew/version/cask/1password',
                 data: $this->render(['version' => '1.0.0']),
             ),
         ];
