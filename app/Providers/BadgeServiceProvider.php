@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Actions\MakeBadgeResponse;
-use App\Contracts\Badge;
+use App\Badges\AbstractBadge;
 use App\Services\BadgeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Spatie\Regex\Regex;
 use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 final class BadgeServiceProvider extends ServiceProvider
@@ -29,10 +28,9 @@ final class BadgeServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Route::middleware(CacheResponse::class)->group(function (): void {
-            /** @var Badge */
+            /** @var AbstractBadge */
             foreach (app('badge.service')->all() as $badge) {
-                $path = $badge->routePath();
-                $schema = $this->getRouteSchema($path);
+                $schema = $badge->routeSchema();
 
                 $route = Route::get($schema['path'], function (Request $request) use ($badge) {
                     $badge->setRequest($request);
@@ -54,7 +52,7 @@ final class BadgeServiceProvider extends ServiceProvider
                         $type === 'packageWithScopeOnly' => $route->where($parameter, '(@[a-z]+\/[a-z]+)'),
                         $type === 'packageWithVendor' => $route->where($parameter, '([a-z]+)|([a-z]+\/[a-z]+)'),
                         $type === 'packageWithVendorOnly' => $route->where($parameter, '([a-z]+\/[a-z]+)'),
-                        $type === 'string' => $route->whereAlpha($parameter),
+                        $type === 'string' => null, // Strings can be anything
                         $type === 'ulid' => $route->whereUlid($parameter),
                         $type === 'uuid' => $route->whereUuid($parameter),
                         $type === 'wildcard' => $route->where($parameter, '.*'),
@@ -67,27 +65,5 @@ final class BadgeServiceProvider extends ServiceProvider
                 $badge->routeConstraints($route);
             }
         });
-    }
-
-    private function getRouteSchema(string $path): array
-    {
-        $parameters = [];
-
-        $regex = Regex::matchAll('/\{([a-zA-Z0-9_:,]+)\}/', $path);
-
-        foreach ($regex->results() as $result) {
-            $group = $result->group(1);
-
-            if (\str_contains($group, ':')) {
-                [$name, $type] = \explode(':', $group, 2);
-
-                $parameters[$name] = $type;
-            }
-        }
-
-        return [
-            'path' => \preg_replace('/(:[a-zA-Z,]+)/', '', $path),
-            'parameters' => $parameters,
-        ];
     }
 }
