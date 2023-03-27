@@ -2088,16 +2088,16 @@
         },
         {
             "name": "iconify/json",
-            "version": "2.2.39",
+            "version": "2.2.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iconify/icon-sets.git",
-                "reference": "b40f3acf98cc735743841459ee0eb96598b9cb9f"
+                "reference": "12204e7a5478084d3567c9c8dbb56f1942cf827b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iconify/icon-sets/zipball/b40f3acf98cc735743841459ee0eb96598b9cb9f",
-                "reference": "b40f3acf98cc735743841459ee0eb96598b9cb9f",
+                "url": "https://api.github.com/repos/iconify/icon-sets/zipball/12204e7a5478084d3567c9c8dbb56f1942cf827b",
+                "reference": "12204e7a5478084d3567c9c8dbb56f1942cf827b",
                 "shasum": ""
             },
             "type": "library",
@@ -2114,9 +2114,9 @@
             "homepage": "https://iconify.design/icon-sets/",
             "support": {
                 "issues": "https://github.com/iconify/icon-sets/issues",
-                "source": "https://github.com/iconify/icon-sets/tree/2.2.39"
+                "source": "https://github.com/iconify/icon-sets/tree/2.2.40"
             },
-            "time": "2023-03-24T07:07:51+00:00"
+            "time": "2023-03-27T07:00:46+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",
@@ -5973,16 +5973,16 @@
         },
         {
             "name": "preemstudio/laravel-badger",
-            "version": "1.1.0",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PreemStudio/laravel-badger.git",
-                "reference": "c0e4678c2f906efadb3370eb1daa9105f0b4136d"
+                "reference": "679ecba0d33d7150b010e1e264116ccfd4356b39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PreemStudio/laravel-badger/zipball/c0e4678c2f906efadb3370eb1daa9105f0b4136d",
-                "reference": "c0e4678c2f906efadb3370eb1daa9105f0b4136d",
+                "url": "https://api.github.com/repos/PreemStudio/laravel-badger/zipball/679ecba0d33d7150b010e1e264116ccfd4356b39",
+                "reference": "679ecba0d33d7150b010e1e264116ccfd4356b39",
                 "shasum": ""
             },
             "require": {
@@ -6039,9 +6039,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PreemStudio/laravel-badger/issues",
-                "source": "https://github.com/PreemStudio/laravel-badger/tree/1.1.0"
+                "source": "https://github.com/PreemStudio/laravel-badger/tree/1.0.6"
             },
-            "time": "2023-03-19T15:55:46+00:00"
+            "time": "2023-03-27T11:15:44+00:00"
         },
         {
             "name": "preemstudio/laravel-jetpack",
