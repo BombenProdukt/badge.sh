@@ -22,6 +22,7 @@ use PreemStudio\Formatter\FormatMoney;
 use PreemStudio\Formatter\FormatNumber;
 use PreemStudio\Formatter\FormatPercentage;
 use PreemStudio\Formatter\FormatStars;
+use Spatie\Regex\Regex;
 use Throwable;
 
 abstract class AbstractBadge implements Badge
@@ -83,6 +84,7 @@ abstract class AbstractBadge implements Badge
         return [];
     }
 
+    // TODO: replace with single route, we never use multiple routes (only during migration)
     public function routePaths(): array
     {
         return $this->routes ?? [];
@@ -98,11 +100,42 @@ abstract class AbstractBadge implements Badge
         //
     }
 
+    public function routeParameterKeys(): array
+    {
+        return \array_keys($this->routeSchema()['parameters']);
+    }
+
+    public function routeSchema(): array
+    {
+        $path = $this->routePaths()[0];
+
+        $parameters = [];
+
+        $regex = Regex::matchAll('/\{([a-zA-Z0-9_:,]+)\}/', $path);
+
+        foreach ($regex->results() as $result) {
+            $group = $result->group(1);
+
+            if (\str_contains($group, ':')) {
+                [$name, $type] = \explode(':', $group, 2);
+
+                $parameters[$name] = $type;
+            } else {
+                $parameters[$group] = 'string';
+            }
+        }
+
+        return [
+            'path' => \preg_replace('/(:[a-zA-Z,]+)/', '', $path),
+            'parameters' => $parameters,
+        ];
+    }
+
     public function allowedParameters(): array
     {
         return [
             'query' => \array_keys($this->routeRules()),
-            'route' => $this->request->route()->parameterNames(),
+            'route' => $this->routeSchema($this->routePaths()[0])['parameters'],
         ];
     }
 

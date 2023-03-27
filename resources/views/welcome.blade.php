@@ -17,7 +17,7 @@
         <main class="max-w-7xl mx-auto pt-16">
             <x-header />
 
-            @livewire('badge-list')
+            <livewire:badge-list />
 
             <x-footer />
         </main>
