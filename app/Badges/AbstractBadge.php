@@ -84,7 +84,6 @@ abstract class AbstractBadge implements Badge
         return [];
     }
 
-    // TODO: replace with single route, we never use multiple routes (only during migration)
     public function routePath(): string
     {
         return $this->route;
@@ -109,7 +108,7 @@ abstract class AbstractBadge implements Badge
     {
         $parameters = [];
 
-        $regex = Regex::matchAll('/\{([a-zA-Z0-9_:,]+)\}/', $this->route);
+        $regex = Regex::matchAll('/\{([a-zA-Z0-9_:,?]+)\}/', $this->route);
 
         foreach ($regex->results() as $result) {
             $group = $result->group(1);
@@ -124,7 +123,7 @@ abstract class AbstractBadge implements Badge
         }
 
         return [
-            'path' => \preg_replace('/(:[a-zA-Z,]+)/', '', $this->route),
+            'path' => \preg_replace('/(:[a-zA-Z,?]+)/', '', $this->route),
             'parameters' => $parameters,
         ];
     }
