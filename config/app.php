@@ -197,6 +197,7 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        App\Providers\BadgerServiceProvider::class,
         App\Providers\BadgeServiceProvider::class,
         App\Providers\IconServiceProvider::class,
 

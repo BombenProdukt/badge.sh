@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Actions\MakeBadge;
-use Illuminate\Http\Request;
+use App\Actions\MakeBadgeResponse;
+use App\Badger\Facades\Badger;
 use App\Badges\AbstractBadge;
 use App\Services\BadgeService;
-use App\Actions\MakeBadgeResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Spatie\ResponseCache\Middlewares\CacheResponse;
@@ -40,11 +41,24 @@ final class BadgeServiceProvider extends ServiceProvider
                         $badge->setRequestData($request->validate($badge->routeRules()));
                     }
 
+                    $result = MakeBadge::execute($request, $badge);
+
                     if ($request->isJson()) {
-                        return MakeBadge::execute($request, $badge)->toArray();
+                        return $result->toArray();
                     }
 
-                    return MakeBadgeResponse::execute($request, MakeBadge::execute($request, $badge));
+                    // return MakeBadgeResponse::execute(
+                    //     $request,
+                    //     Badger::generate(
+                    //         subject: 'license',
+                    //         subjectColor: 'slate.900',
+                    //         message: 'MIT',
+                    //         messageColor: 'blue.600',
+                    //         format: 'flat-square-with-icon',
+                    //     )->toString(),
+                    // );
+
+                    return MakeBadgeResponse::execute($request, $result->render());
                 });
 
                 // These are parameters that define their type using the {parameter:type} syntax.

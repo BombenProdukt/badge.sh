@@ -11,10 +11,10 @@ use Throwable;
 
 final class MakeBadgeResponse
 {
-    public static function execute(Request $request, Badger $badge): Response
+    public static function execute(Request $request, string $svg): Response
     {
         try {
-            return response($badge->render())
+            return response($svg)
                 ->setStatusCode(200)
                 ->header('Content-Type', 'image/svg+xml;charset=base64')
                 ->setPublic()
