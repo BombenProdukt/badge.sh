@@ -1,24 +1,15 @@
 <div class="mt-16">
     {{-- Search --}}
-    <input type="text"
-        class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-400"
-        placeholder="Search..."
-        wire:model="query" />
-
-    {{-- Filters --}}
-    <nav class="mt-4 grid grid-cols-8 gap-4">
-        @foreach(\App\Enums\Category::cases() as $case)
-            @if($category === $case->value)
-                <span wire:click="$set('category', '')" class="bg-teal-400 text-white rounded-md px-3 py-2 text-sm font-medium hover:cursor-pointer">
-                    {{ Str::title($case->value) }}
-                </span>
-            @else
-                <span wire:click="$set('category', '{{ $case->value }}')" class="bg-gray-100 text-gray-700 rounded-md px-3 py-2 text-sm font-medium hover:cursor-pointer">
-                    {{ Str::title($case->value) }}
-                </span>
-            @endif
-        @endforeach
-    </nav>
+    <div class="relative mt-2 rounded-md shadow-sm">
+        <div class="absolute inset-y-0 left-1 top-1 bottom-1 flex items-center">
+            <select wire:model="category" autocomplete="category" class="bg-slate-50 h-full rounded-md border-0 py-0 pl-3 pr-7 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-400 sm:text-sm">
+                @foreach(\App\Enums\Category::cases() as $case)
+                    <option value="{{ $case->value }}">{{ Str::title($case->value) }}</option>
+                @endforeach
+            </select>
+        </div>
+        <input type="text" wire:model="query" class="block w-full rounded-md border-0 py-1.5 pl-40 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-400 sm:text-sm sm:leading-6" placeholder="Search...">
+    </div>
 
     {{-- Badges --}}
     <table class="min-w-full divide-y divide-gray-100 mt-4">
