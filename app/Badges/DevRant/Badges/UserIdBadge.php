@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class UserIdBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/devrant/score/{userId:number}',
-    ];
+    protected string $route = '/devrant/score/{userId:number}';
 
     protected array $keywords = [
         Category::SOCIAL,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PerlBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/cpan/perl-version/{distribution}',
-    ];
+    protected string $route = '/cpan/perl-version/{distribution}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT, Category::VERSION,

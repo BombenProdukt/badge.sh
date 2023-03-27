@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class LastModifiedBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/wordpress/{extensionType:plugin,theme}/last-modified/{extension}',
-    ];
+    protected string $route = '/wordpress/{extensionType:plugin,theme}/last-modified/{extension}';
 
     protected array $keywords = [
         Category::VERSION,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/spiget/version/{resourceId}',
-    ];
+    protected string $route = '/spiget/version/{resourceId}';
 
     protected array $keywords = [
         Category::VERSION,

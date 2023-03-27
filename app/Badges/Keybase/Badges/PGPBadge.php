@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PGPBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/keybase/pgp/{username}',
-    ];
+    protected string $route = '/keybase/pgp/{username}';
 
     protected array $keywords = [
         Category::SOCIAL,

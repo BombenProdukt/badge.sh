@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/galaxy-tool-shed/downloads/{user}/{repo}',
-    ];
+    protected string $route = '/galaxy-tool-shed/downloads/{user}/{repo}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

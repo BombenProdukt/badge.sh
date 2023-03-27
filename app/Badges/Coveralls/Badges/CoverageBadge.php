@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CoverageBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/coveralls/coverage/{vcs:github,bitbucket}/{repo:packageWithVendorOnly}/{branch?}',
-    ];
+    protected string $route = '/coveralls/coverage/{vcs:github,bitbucket}/{repo:packageWithVendorOnly}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

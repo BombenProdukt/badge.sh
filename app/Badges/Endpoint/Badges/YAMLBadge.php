@@ -12,9 +12,7 @@ use Symfony\Component\Yaml\Yaml;
 
 final class YAMLBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/endpoint/yaml',
-    ];
+    protected string $route = '/endpoint/yaml';
 
     protected array $keywords = [
         Category::OTHER,

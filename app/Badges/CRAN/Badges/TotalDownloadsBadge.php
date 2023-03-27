@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class TotalDownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/cran/downloads/{package}',
-    ];
+    protected string $route = '/cran/downloads/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

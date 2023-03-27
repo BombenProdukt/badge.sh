@@ -10,9 +10,7 @@ use Illuminate\Support\Arr;
 
 final class UploadBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/whatpulse/upload/{userType:team,user}/{id}',
-    ];
+    protected string $route = '/whatpulse/upload/{userType:team,user}/{id}';
 
     protected array $keywords = [
         Category::ANALYSIS,

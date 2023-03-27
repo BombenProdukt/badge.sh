@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/spiget/downloads/{resourceId}',
-    ];
+    protected string $route = '/spiget/downloads/{resourceId}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

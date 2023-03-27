@@ -33,7 +33,7 @@ abstract class AbstractBadge implements Badge
 
     protected array $keywords = [];
 
-    protected array $routes = [];
+    protected string $route = '';
 
     protected Request $request;
 
@@ -85,9 +85,9 @@ abstract class AbstractBadge implements Badge
     }
 
     // TODO: replace with single route, we never use multiple routes (only during migration)
-    public function routePaths(): array
+    public function routePath(): string
     {
-        return $this->routes ?? [];
+        return $this->route;
     }
 
     public function routeRules(): array
@@ -107,11 +107,9 @@ abstract class AbstractBadge implements Badge
 
     public function routeSchema(): array
     {
-        $path = $this->routePaths()[0];
-
         $parameters = [];
 
-        $regex = Regex::matchAll('/\{([a-zA-Z0-9_:,]+)\}/', $path);
+        $regex = Regex::matchAll('/\{([a-zA-Z0-9_:,]+)\}/', $this->route);
 
         foreach ($regex->results() as $result) {
             $group = $result->group(1);
@@ -126,7 +124,7 @@ abstract class AbstractBadge implements Badge
         }
 
         return [
-            'path' => \preg_replace('/(:[a-zA-Z,]+)/', '', $path),
+            'path' => \preg_replace('/(:[a-zA-Z,]+)/', '', $this->route),
             'parameters' => $parameters,
         ];
     }
@@ -135,7 +133,7 @@ abstract class AbstractBadge implements Badge
     {
         return [
             'query' => \array_keys($this->routeRules()),
-            'route' => $this->routeSchema($this->routePaths()[0])['parameters'],
+            'route' => $this->routeSchema()['parameters'],
         ];
     }
 

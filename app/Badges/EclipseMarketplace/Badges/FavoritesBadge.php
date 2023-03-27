@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FavoritesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/eclipse-marketplace/favorites/{name}',
-    ];
+    protected string $route = '/eclipse-marketplace/favorites/{name}';
 
     protected array $keywords = [
         Category::SOCIAL,

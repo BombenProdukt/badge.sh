@@ -10,9 +10,7 @@ use Spatie\Regex\Regex;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/readthedocs/status/{project}/{version?}',
-    ];
+    protected string $route = '/readthedocs/status/{project}/{version?}';
 
     protected array $keywords = [
         Category::BUILD,

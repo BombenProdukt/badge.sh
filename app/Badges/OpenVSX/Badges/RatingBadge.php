@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class RatingBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/open-vsx/rating/{extension:wildcard}',
-    ];
+    protected string $route = '/open-vsx/rating/{extension:wildcard}';
 
     protected array $keywords = [
         Category::RATING,

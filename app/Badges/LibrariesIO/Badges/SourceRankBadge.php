@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class SourceRankBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/libraries-io/sourcerank/{platform}/{package:wildcard}',
-    ];
+    protected string $route = '/libraries-io/sourcerank/{platform}/{package:wildcard}';
 
     protected array $keywords = [
         Category::ANALYSIS,

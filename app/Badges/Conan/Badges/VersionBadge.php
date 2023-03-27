@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/conan/version/{packageName:wildcard}',
-    ];
+    protected string $route = '/conan/version/{packageName:wildcard}';
 
     protected array $keywords = [
         Category::VERSION,

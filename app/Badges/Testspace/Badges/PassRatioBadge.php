@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PassRatioBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/testspace/pass-ratio/{org}/{project}/{space}',
-    ];
+    protected string $route = '/testspace/pass-ratio/{org}/{project}/{space}';
 
     protected array $keywords = [
         Category::ANALYSIS,

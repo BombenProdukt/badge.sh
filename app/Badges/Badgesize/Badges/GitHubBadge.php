@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class GitHubBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/badgesize/{compression:brotli,gzip,normal}/{repo:wildcard}/{path:wildcard}',
-    ];
+    protected string $route = '/badgesize/{compression:brotli,gzip,normal}/{repo:wildcard}/{path:wildcard}';
 
     protected array $keywords = [
         Category::SIZE,

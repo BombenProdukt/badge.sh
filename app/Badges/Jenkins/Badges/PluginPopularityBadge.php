@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class PluginPopularityBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jenkins/plugin-popularity/{plugin}',
-    ];
+    protected string $route = '/jenkins/plugin-popularity/{plugin}';
 
     protected array $keywords = [
         Category::SOCIAL,

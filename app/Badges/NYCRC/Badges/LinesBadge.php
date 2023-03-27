@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LinesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/nycrc/lines/{user}/{repo}',
-    ];
+    protected string $route = '/nycrc/lines/{user}/{repo}';
 
     protected array $keywords = [
         Category::LICENSE,

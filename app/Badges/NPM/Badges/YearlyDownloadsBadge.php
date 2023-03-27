@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class YearlyDownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/npm/downloads-yearly/{package:packageWithScope}/{tag?}',
-    ];
+    protected string $route = '/npm/downloads-yearly/{package:packageWithScope}/{tag?}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

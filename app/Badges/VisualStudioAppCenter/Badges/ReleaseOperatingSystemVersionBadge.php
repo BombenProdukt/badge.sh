@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ReleaseOperatingSystemVersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/visual-studio-app-center/os-version/{owner}/{app}/{token}',
-    ];
+    protected string $route = '/visual-studio-app-center/os-version/{owner}/{app}/{token}';
 
     protected array $keywords = [
         Category::VERSION,

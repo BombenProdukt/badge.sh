@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FileSizeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/steam/file-size/{fileId}',
-    ];
+    protected string $route = '/steam/file-size/{fileId}';
 
     protected array $keywords = [
         Category::SIZE,

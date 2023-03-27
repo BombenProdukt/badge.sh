@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class RVersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/cran/r-version/{package}',
-    ];
+    protected string $route = '/cran/r-version/{package}';
 
     protected array $keywords = [
         Category::VERSION,

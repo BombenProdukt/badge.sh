@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/resharper/version/{project}/{channel?}',
-    ];
+    protected string $route = '/resharper/version/{project}/{channel?}';
 
     protected array $keywords = [
         Category::VERSION,

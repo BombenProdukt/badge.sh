@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/fedora/version/{packageName}/{branch?}',
-    ];
+    protected string $route = '/fedora/version/{packageName}/{branch?}';
 
     protected array $keywords = [
         Category::VERSION,

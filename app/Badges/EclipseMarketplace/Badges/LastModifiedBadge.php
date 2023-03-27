@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class LastModifiedBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/eclipse-marketplace/last-modified/{name}',
-    ];
+    protected string $route = '/eclipse-marketplace/last-modified/{name}';
 
     protected array $keywords = [
         Category::ACTIVITY,

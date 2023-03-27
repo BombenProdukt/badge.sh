@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CollectionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/ansible/collection/{collectionId}',
-    ];
+    protected string $route = '/ansible/collection/{collectionId}';
 
     protected array $keywords = [
         Category::OTHER,

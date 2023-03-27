@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class TypeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/composer/type/{service}/{user}/{repo}',
-    ];
+    protected string $route = '/composer/type/{service}/{user}/{repo}';
 
     protected array $keywords = [
         Category::OTHER,

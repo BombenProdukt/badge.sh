@@ -11,9 +11,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 final class RatingCountBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/chrome-web-store/rating-count/{itemId}',
-    ];
+    protected string $route = '/chrome-web-store/rating-count/{itemId}';
 
     protected array $keywords = [
         Category::RATING,

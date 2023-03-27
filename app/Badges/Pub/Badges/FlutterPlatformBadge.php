@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FlutterPlatformBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/pub/flutter-platform/{package:wildcard}',
-    ];
+    protected string $route = '/pub/flutter-platform/{package:wildcard}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

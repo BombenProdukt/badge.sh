@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class GitHubBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/snyk/github/{project:wildcard}/{targetFile:wildcard?}',
-    ];
+    protected string $route = '/snyk/github/{project:wildcard}/{targetFile:wildcard?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ScoreBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/mozilla-observatory/score/{host}',
-    ];
+    protected string $route = '/mozilla-observatory/score/{host}';
 
     protected array $keywords = [
         Category::ANALYSIS,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PriceBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/coincap/price/{assetId}',
-    ];
+    protected string $route = '/coincap/price/{assetId}';
 
     protected array $keywords = [
         Category::CRYPTO_CURRENCY,

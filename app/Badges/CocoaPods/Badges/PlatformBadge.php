@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PlatformBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/cocoapods/platform/{pod}',
-    ];
+    protected string $route = '/cocoapods/platform/{pod}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class EntitiesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/weblate/entities/{type:components,projects,users,languages}',
-    ];
+    protected string $route = '/weblate/entities/{type:components,projects,users,languages}';
 
     protected array $keywords = [
         Category::METRICS,

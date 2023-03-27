@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class SubscribersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/reddit/subscribers/{subreddit}',
-    ];
+    protected string $route = '/reddit/subscribers/{subreddit}';
 
     protected array $keywords = [
         Category::SOCIAL,

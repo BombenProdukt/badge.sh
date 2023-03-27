@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class DependabotStatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/dependabot/{owner}/{repo}',
-    ];
+    protected string $route = '/github/dependabot/{owner}/{repo}';
 
     protected array $keywords = [
         Category::ANALYSIS, Category::DEPENDENCIES,

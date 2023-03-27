@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PopularityScoreBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/npms/popularity-score/{package}',
-    ];
+    protected string $route = '/npms/popularity-score/{package}';
 
     protected array $keywords = [
         Category::ANALYSIS,

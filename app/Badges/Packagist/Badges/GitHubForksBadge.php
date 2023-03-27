@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class GitHubForksBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/packagist/github-forks/{package:packageWithVendorOnly}',
-    ];
+    protected string $route = '/packagist/github-forks/{package:packageWithVendorOnly}';
 
     protected array $keywords = [
         Category::SOCIAL,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class InstallBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/packagephobia/size/{name:wildcard}',
-    ];
+    protected string $route = '/packagephobia/size/{name:wildcard}';
 
     protected array $keywords = [
         Category::SIZE,

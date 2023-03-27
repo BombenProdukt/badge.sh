@@ -12,9 +12,7 @@ use Illuminate\Support\Collection;
 
 final class CheckRunsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/check-runs/{owner}/{repo}/{reference?}/{context:wildcard?}',
-    ];
+    protected string $route = '/github/check-runs/{owner}/{repo}/{reference?}/{context:wildcard?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

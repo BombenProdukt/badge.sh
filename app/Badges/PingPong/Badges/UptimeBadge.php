@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class UptimeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/pingpong/uptime/{apiKey}',
-    ];
+    protected string $route = '/pingpong/uptime/{apiKey}';
 
     protected array $keywords = [
         Category::MONITORING,

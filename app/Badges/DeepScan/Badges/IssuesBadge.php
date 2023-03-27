@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class IssuesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/deepscan/issues/team/{teamId}/project/{projectId}/branch/{branchId}',
-    ];
+    protected string $route = '/deepscan/issues/team/{teamId}/project/{projectId}/branch/{branchId}';
 
     protected array $keywords = [
         Category::ANALYSIS,

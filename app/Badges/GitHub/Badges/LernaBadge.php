@@ -10,9 +10,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class LernaBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/lerna/{owner}/{repo}',
-    ];
+    protected string $route = '/github/lerna/{owner}/{repo}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT, Category::VERSION,

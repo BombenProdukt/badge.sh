@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/factorio-mod-portal/downloads/{modName}',
-    ];
+    protected string $route = '/factorio-mod-portal/downloads/{modName}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

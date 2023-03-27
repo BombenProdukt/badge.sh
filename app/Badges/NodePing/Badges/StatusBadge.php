@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/nodeping/status/{uuid}',
-    ];
+    protected string $route = '/nodeping/status/{uuid}';
 
     protected array $keywords = [
         Category::MONITORING,

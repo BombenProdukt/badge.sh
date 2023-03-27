@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/clojars/downloads/{clojar}',
-    ];
+    protected string $route = '/clojars/downloads/{clojar}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

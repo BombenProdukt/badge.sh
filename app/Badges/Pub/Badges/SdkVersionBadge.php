@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class SdkVersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/pub/sdk-version/{package}',
-    ];
+    protected string $route = '/pub/sdk-version/{package}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ClosedPullRequestsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/closed-pull-requests/{owner}/{repo}',
-    ];
+    protected string $route = '/github/closed-pull-requests/{owner}/{repo}';
 
     protected array $keywords = [
         Category::ISSUE_TRACKING,

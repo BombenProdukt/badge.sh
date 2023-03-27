@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/netlify/status/{projectId}',
-    ];
+    protected string $route = '/netlify/status/{projectId}';
 
     protected array $keywords = [
         Category::BUILD,

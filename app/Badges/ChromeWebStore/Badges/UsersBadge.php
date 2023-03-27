@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class UsersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/chrome-web-store/users/{itemId}',
-    ];
+    protected string $route = '/chrome-web-store/users/{itemId}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

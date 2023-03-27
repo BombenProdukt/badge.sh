@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class RatingBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/amo/rating/{package}',
-    ];
+    protected string $route = '/amo/rating/{package}';
 
     protected array $keywords = [
         Category::RATING,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CarbonBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/ecologi/carbon/{username}',
-    ];
+    protected string $route = '/ecologi/carbon/{username}';
 
     protected array $keywords = [
         Category::OTHER,

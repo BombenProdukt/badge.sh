@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/open-vsx/downloads/{extension:wildcard}',
-    ];
+    protected string $route = '/open-vsx/downloads/{extension:wildcard}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

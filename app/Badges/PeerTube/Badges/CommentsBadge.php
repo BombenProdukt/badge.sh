@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class CommentsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/peertube/comments/{instance}/{video}',
-    ];
+    protected string $route = '/peertube/comments/{instance}/{video}';
 
     protected array $keywords = [
         Category::SOCIAL,

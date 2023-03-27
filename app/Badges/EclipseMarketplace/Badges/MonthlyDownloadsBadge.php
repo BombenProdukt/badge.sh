@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class MonthlyDownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/eclipse-marketplace/downloads-monthly/{name}',
-    ];
+    protected string $route = '/eclipse-marketplace/downloads-monthly/{name}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

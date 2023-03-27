@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DependentsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/npm/dependents/{package:packageWithScope}/{tag?}',
-    ];
+    protected string $route = '/npm/dependents/{package:packageWithScope}/{tag?}';
 
     protected array $keywords = [
         Category::SOCIAL,

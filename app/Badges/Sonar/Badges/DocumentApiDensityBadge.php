@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DocumentApiDensityBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/sonar/public_documented_api_density/{component}/{branch}',
-    ];
+    protected string $route = '/sonar/public_documented_api_density/{component}/{branch}';
 
     protected array $keywords = [
         Category::ANALYSIS,

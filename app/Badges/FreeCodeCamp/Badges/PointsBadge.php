@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PointsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/freecodecamp/points/{username}',
-    ];
+    protected string $route = '/freecodecamp/points/{username}';
 
     protected array $keywords = [
         Category::SOCIAL,

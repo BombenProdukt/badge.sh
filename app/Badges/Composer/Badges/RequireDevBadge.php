@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class RequireDevBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/composer/require-dev/{service}/{user}/{repo}/{package}',
-    ];
+    protected string $route = '/composer/require-dev/{service}/{user}/{repo}/{package}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

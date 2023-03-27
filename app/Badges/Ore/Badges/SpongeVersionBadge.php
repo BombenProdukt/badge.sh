@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class SpongeVersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/ore/sponge-version/{pluginId}',
-    ];
+    protected string $route = '/ore/sponge-version/{pluginId}';
 
     protected array $keywords = [
         Category::VERSION,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class MinzipBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/bundlephobia/minzip/{name:wildcard}',
-    ];
+    protected string $route = '/bundlephobia/minzip/{name:wildcard}';
 
     protected array $keywords = [
         Category::SIZE,

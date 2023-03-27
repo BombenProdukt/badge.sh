@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/powershellgallery/version/{project}/{channel?}',
-    ];
+    protected string $route = '/powershellgallery/version/{project}/{channel?}';
 
     protected array $keywords = [
         Category::VERSION,

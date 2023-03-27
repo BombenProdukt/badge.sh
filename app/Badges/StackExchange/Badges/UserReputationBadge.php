@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class UserReputationBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/stack-exchange/user/reputation/{site}/{query}',
-    ];
+    protected string $route = '/stack-exchange/user/reputation/{site}/{query}';
 
     protected array $keywords = [
         Category::SOCIAL,

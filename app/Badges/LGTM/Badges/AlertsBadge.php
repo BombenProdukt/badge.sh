@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class AlertsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/lgtm/alerts/{provider:bitbucket,github,gitlab}/{project:wildcard}/{language?}',
-    ];
+    protected string $route = '/lgtm/alerts/{provider:bitbucket,github,gitlab}/{project:wildcard}/{language?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

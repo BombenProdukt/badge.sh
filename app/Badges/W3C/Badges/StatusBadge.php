@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/w3c/status',
-    ];
+    protected string $route = '/w3c/status';
 
     protected array $keywords = [
         Category::ANALYSIS,

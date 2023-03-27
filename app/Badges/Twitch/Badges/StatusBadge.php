@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/twitch/status/{username}',
-    ];
+    protected string $route = '/twitch/status/{username}';
 
     protected array $keywords = [
         Category::SOCIAL,

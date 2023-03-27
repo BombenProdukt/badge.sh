@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class ReleaseDateBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/galaxy-tool-shed/release-date/{user}/{repo}',
-    ];
+    protected string $route = '/galaxy-tool-shed/release-date/{user}/{repo}';
 
     protected array $keywords = [
         Category::ACTIVITY,

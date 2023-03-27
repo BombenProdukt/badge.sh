@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/tidelift/status/{platform}/{name}',
-    ];
+    protected string $route = '/tidelift/status/{platform}/{name}';
 
     protected array $keywords = [
         Category::FUNDING,

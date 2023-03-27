@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/chrome-web-store/version/{itemId}',
-    ];
+    protected string $route = '/chrome-web-store/version/{itemId}';
 
     protected array $keywords = [
         Category::VERSION,

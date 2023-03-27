@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class CoverageBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/azure-devops/coverage/{organization}/{project}/{definition}',
-    ];
+    protected string $route = '/azure-devops/coverage/{organization}/{project}/{definition}';
 
     protected array $keywords = [
         Category::BUILD,

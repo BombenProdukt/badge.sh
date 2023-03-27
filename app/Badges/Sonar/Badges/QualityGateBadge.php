@@ -10,9 +10,7 @@ use Illuminate\Routing\Route;
 
 final class QualityGateBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/sonar/{metric}/{component}/{branch}',
-    ];
+    protected string $route = '/sonar/{metric}/{component}/{branch}';
 
     protected array $keywords = [
         Category::ANALYSIS,

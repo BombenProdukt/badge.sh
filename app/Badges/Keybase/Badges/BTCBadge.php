@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class BTCBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/keybase/btc/{address}',
-    ];
+    protected string $route = '/keybase/btc/{address}';
 
     protected array $keywords = [
         Category::SOCIAL,

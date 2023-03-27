@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FinalScoreBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/npms/final-score/{package}',
-    ];
+    protected string $route = '/npms/final-score/{package}';
 
     protected array $keywords = [
         Category::ANALYSIS,

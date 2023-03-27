@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class LikesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/peertube/likes/{instance}/{video}',
-    ];
+    protected string $route = '/peertube/likes/{instance}/{video}';
 
     protected array $keywords = [
         Category::SOCIAL,

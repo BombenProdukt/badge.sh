@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class NPMBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/snyk/npm/{project:wildcard}/{targetFile:wildcard?}',
-    ];
+    protected string $route = '/snyk/npm/{project:wildcard}/{targetFile:wildcard?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

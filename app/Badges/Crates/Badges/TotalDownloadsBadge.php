@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class TotalDownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/crates/downloads/{package}',
-    ];
+    protected string $route = '/crates/downloads/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

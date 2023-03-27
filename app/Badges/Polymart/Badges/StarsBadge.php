@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StarsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/polymart/stars/{resourceId}',
-    ];
+    protected string $route = '/polymart/stars/{resourceId}';
 
     protected array $keywords = [
         Category::SOCIAL,

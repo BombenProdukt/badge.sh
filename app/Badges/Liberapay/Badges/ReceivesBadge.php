@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatMoney;
 
 final class ReceivesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/liberapay/receives/{username}',
-    ];
+    protected string $route = '/liberapay/receives/{username}';
 
     protected array $keywords = [
         Category::FUNDING,

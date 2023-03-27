@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LabelsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/gitlab/issues-by-label/{repo:wildcard}/{label}/{state?}',
-    ];
+    protected string $route = '/gitlab/issues-by-label/{repo:wildcard}/{label}/{state?}';
 
     protected array $keywords = [
         Category::ISSUE_TRACKING,

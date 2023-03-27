@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class KarmaBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/hackernews/karma/{username}',
-    ];
+    protected string $route = '/hackernews/karma/{username}';
 
     protected array $keywords = [
         Category::SOCIAL,

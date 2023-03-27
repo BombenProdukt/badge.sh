@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ContributorsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/opencollective/contributors/{slug}',
-    ];
+    protected string $route = '/opencollective/contributors/{slug}';
 
     protected array $keywords = [
         Category::FUNDING,

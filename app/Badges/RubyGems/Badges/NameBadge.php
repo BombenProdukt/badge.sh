@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class NameBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/rubygems/name/{gem}',
-    ];
+    protected string $route = '/rubygems/name/{gem}';
 
     protected array $keywords = [
         Category::OTHER,

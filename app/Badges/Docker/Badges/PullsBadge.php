@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PullsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/docker/pulls/{scope}/{name}',
-    ];
+    protected string $route = '/docker/pulls/{scope}/{name}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

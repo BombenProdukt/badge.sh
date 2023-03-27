@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class OpenIssuesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/bitbucket/open-issues/{user}/{repo}',
-    ];
+    protected string $route = '/bitbucket/open-issues/{user}/{repo}';
 
     protected array $keywords = [
         Category::ACTIVITY,

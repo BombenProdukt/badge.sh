@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PhpVersion extends AbstractBadge
 {
-    protected array $routes = [
-        '/composer/php-version/{service}/{user}/{repo}',
-    ];
+    protected string $route = '/composer/php-version/{service}/{user}/{repo}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

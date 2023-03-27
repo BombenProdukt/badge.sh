@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ChannelSubscribersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/youtube/channel/subscribers/{channelId}',
-    ];
+    protected string $route = '/youtube/channel/subscribers/{channelId}';
 
     protected array $keywords = [
         Category::SOCIAL,

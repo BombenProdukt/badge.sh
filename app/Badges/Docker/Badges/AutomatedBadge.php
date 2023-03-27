@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class AutomatedBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/docker/build-automated/{scope}/{name}',
-    ];
+    protected string $route = '/docker/build-automated/{scope}/{name}';
 
     protected array $keywords = [
         Category::BUILD,

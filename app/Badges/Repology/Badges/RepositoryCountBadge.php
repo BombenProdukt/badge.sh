@@ -10,9 +10,7 @@ use Spatie\Regex\Regex;
 
 final class RepositoryCountBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/repology/repositories/{packageName}',
-    ];
+    protected string $route = '/repology/repositories/{packageName}';
 
     protected array $keywords = [
         Category::ANALYSIS,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CrystalBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/shardbox/crystal-version/{shard}',
-    ];
+    protected string $route = '/shardbox/crystal-version/{shard}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

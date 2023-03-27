@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/open-suse-build-service/status/{project}/{packageName}/{repository}/{arch}',
-    ];
+    protected string $route = '/open-suse-build-service/status/{project}/{packageName}/{repository}/{arch}';
 
     protected array $keywords = [
         Category::BUILD,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/gitter/status/{org}/{room}',
-    ];
+    protected string $route = '/gitter/status/{org}/{room}';
 
     protected array $keywords = [
         Category::SOCIAL,

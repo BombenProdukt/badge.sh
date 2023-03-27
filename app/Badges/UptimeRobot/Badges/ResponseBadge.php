@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ResponseBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/uptimerobot/response/{apiKey}',
-    ];
+    protected string $route = '/uptimerobot/response/{apiKey}';
 
     protected array $keywords = [
         Category::MONITORING,

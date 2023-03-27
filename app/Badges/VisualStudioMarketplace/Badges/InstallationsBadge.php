@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class InstallationsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/vs-marketplace/installations/{extension}',
-    ];
+    protected string $route = '/vs-marketplace/installations/{extension}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

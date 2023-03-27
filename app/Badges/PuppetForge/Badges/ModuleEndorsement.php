@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ModuleEndorsement extends AbstractBadge
 {
-    protected array $routes = [
-        '/puppetforge/module-endorsement/{user}/{module}',
-    ];
+    protected string $route = '/puppetforge/module-endorsement/{user}/{module}';
 
     protected array $keywords = [
         Category::SOCIAL,

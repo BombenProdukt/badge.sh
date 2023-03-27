@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ComplianceBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/reuse/compliance/{remote:wildcard}',
-    ];
+    protected string $route = '/reuse/compliance/{remote:wildcard}';
 
     protected array $keywords = [
         Category::LICENSE,

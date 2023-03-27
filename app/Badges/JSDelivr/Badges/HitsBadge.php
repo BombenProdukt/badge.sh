@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class HitsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jsdelivr/hits/{platform}/{package:wildcard}',
-    ];
+    protected string $route = '/jsdelivr/hits/{platform}/{package:wildcard}';
 
     protected array $keywords = [
         Category::SOCIAL,

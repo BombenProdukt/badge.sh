@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ReleaseSizeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/visual-studio-app-center/size/{owner}/{app}/{token}',
-    ];
+    protected string $route = '/visual-studio-app-center/size/{owner}/{app}/{token}';
 
     protected array $keywords = [
         Category::VERSION,

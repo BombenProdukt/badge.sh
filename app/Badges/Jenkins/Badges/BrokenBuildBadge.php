@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class BrokenBuildBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jenkins/broken-build/{hostname}/{job:wildcard}',
-    ];
+    protected string $route = '/jenkins/broken-build/{hostname}/{job:wildcard}';
 
     protected array $keywords = [
         Category::BUILD,

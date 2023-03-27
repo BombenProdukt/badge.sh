@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class MaintainerBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/aur/maintainer/{package}',
-    ];
+    protected string $route = '/aur/maintainer/{package}';
 
     protected array $keywords = [
         Category::OTHER,

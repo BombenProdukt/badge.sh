@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ArchitectureBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/snapcraft/architecture/{snap}',
-    ];
+    protected string $route = '/snapcraft/architecture/{snap}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

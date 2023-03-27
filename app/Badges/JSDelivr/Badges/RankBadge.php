@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class RankBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jsdelivr/rank/{platform}/{package:wildcard}',
-    ];
+    protected string $route = '/jsdelivr/rank/{platform}/{package:wildcard}';
 
     protected array $keywords = [
         Category::SOCIAL,

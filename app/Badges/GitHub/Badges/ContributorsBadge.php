@@ -10,9 +10,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class ContributorsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/contributors/{owner}/{repo}',
-    ];
+    protected string $route = '/github/contributors/{owner}/{repo}';
 
     protected array $keywords = [
         Category::SOCIAL,

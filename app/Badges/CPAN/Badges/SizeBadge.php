@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class SizeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/cpan/size/{distribution}',
-    ];
+    protected string $route = '/cpan/size/{distribution}';
 
     protected array $keywords = [
         Category::SIZE,

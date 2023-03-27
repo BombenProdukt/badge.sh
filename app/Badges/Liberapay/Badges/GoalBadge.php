@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatPercentage;
 
 final class GoalBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/liberapay/goal/{username}',
-    ];
+    protected string $route = '/liberapay/goal/{username}';
 
     protected array $keywords = [
         Category::FUNDING,

@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class YearlyDownloadsForFormulaBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/homebrew/downloads-yearly/{type:cask,formula}/{package}',
-    ];
+    protected string $route = '/homebrew/downloads-yearly/{type:cask,formula}/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

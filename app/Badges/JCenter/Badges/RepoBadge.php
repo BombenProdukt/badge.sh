@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class RepoBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jcenter/version/{group}/{artifact}',
-    ];
+    protected string $route = '/jcenter/version/{group}/{artifact}';
 
     protected array $keywords = [
         Category::VERSION,

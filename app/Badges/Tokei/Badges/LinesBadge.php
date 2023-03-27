@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LinesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/tokei/lines/{provider}/{user}/{repo}',
-    ];
+    protected string $route = '/tokei/lines/{provider}/{user}/{repo}';
 
     protected array $keywords = [
         Category::ANALYSIS,

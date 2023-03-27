@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ReviewsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/open-vsx/reviews/{extension:wildcard}',
-    ];
+    protected string $route = '/open-vsx/reviews/{extension:wildcard}';
 
     protected array $keywords = [
         Category::SOCIAL,

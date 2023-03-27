@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/eclipse-marketplace/version/{name}',
-    ];
+    protected string $route = '/eclipse-marketplace/version/{name}';
 
     protected array $keywords = [
         Category::VERSION,

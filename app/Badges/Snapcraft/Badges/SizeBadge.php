@@ -10,9 +10,7 @@ use Illuminate\Support\Arr;
 
 final class SizeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/snapcraft/size/{snap}/{architecture?}/{channel?}',
-    ];
+    protected string $route = '/snapcraft/size/{snap}/{architecture?}/{channel?}';
 
     protected array $keywords = [
         Category::SIZE,

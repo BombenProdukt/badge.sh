@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionForFormulaBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/homebrew/version/{type:cask,formula}/{package}',
-    ];
+    protected string $route = '/homebrew/version/{type:cask,formula}/{package}';
 
     protected array $keywords = [
         Category::VERSION,

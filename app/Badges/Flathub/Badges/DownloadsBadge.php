@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/flathub/downloads/{packageName}',
-    ];
+    protected string $route = '/flathub/downloads/{packageName}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

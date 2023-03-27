@@ -10,9 +10,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class CommitsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/commits/{owner}/{repo}/{reference?}',
-    ];
+    protected string $route = '/github/commits/{owner}/{repo}/{reference?}';
 
     protected array $keywords = [
         Category::ACTIVITY,

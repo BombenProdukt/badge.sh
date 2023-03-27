@@ -10,9 +10,7 @@ use InvalidArgumentException;
 
 final class UserStatisticsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/weblate/statistics/{type:translations,suggestions,languages,uploads,comments}/{username}',
-    ];
+    protected string $route = '/weblate/statistics/{type:translations,suggestions,languages,uploads,comments}/{username}';
 
     protected array $keywords = [
         Category::METRICS,

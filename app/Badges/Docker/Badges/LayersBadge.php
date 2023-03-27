@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LayersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/docker/layers/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
-    ];
+    protected string $route = '/docker/layers/{scope}/{name}/{tag?}/{architecture?}/{variant?}';
 
     protected array $keywords = [
         Category::BUILD,

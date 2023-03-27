@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class UserIdBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/mastodon/follow/{userId:number}/{instance?}',
-    ];
+    protected string $route = '/mastodon/follow/{userId:number}/{instance?}';
 
     protected array $keywords = [
         Category::SOCIAL,

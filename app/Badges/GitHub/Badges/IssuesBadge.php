@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class IssuesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/issues/{owner}/{repo}',
-    ];
+    protected string $route = '/github/issues/{owner}/{repo}';
 
     protected array $keywords = [
         Category::ISSUE_TRACKING,

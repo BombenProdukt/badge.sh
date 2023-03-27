@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/weblate/license/{project}/{component}',
-    ];
+    protected string $route = '/weblate/license/{project}/{component}';
 
     protected array $keywords = [
         Category::LICENSE,

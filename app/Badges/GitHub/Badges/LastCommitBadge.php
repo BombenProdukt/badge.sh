@@ -11,9 +11,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class LastCommitBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/last-commit/{owner}/{repo}/{reference?}',
-    ];
+    protected string $route = '/github/last-commit/{owner}/{repo}/{reference?}';
 
     protected array $keywords = [
         Category::ACTIVITY,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/pypi/version/{project}',
-    ];
+    protected string $route = '/pypi/version/{project}';
 
     protected array $keywords = [
         Category::VERSION,

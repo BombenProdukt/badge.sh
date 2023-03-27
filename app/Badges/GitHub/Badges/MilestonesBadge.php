@@ -10,9 +10,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class MilestonesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/milestones/{owner}/{repo}/{milestoneNumber}',
-    ];
+    protected string $route = '/github/milestones/{owner}/{repo}/{milestoneNumber}';
 
     protected array $keywords = [
         Category::ISSUE_TRACKING,

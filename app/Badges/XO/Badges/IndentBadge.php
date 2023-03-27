@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class IndentBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/xo/indentation/{name:wildcard}',
-    ];
+    protected string $route = '/xo/indentation/{name:wildcard}';
 
     protected array $keywords = [
         Category::CODE_FORMATTING,

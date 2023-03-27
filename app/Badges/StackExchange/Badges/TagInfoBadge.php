@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class TagInfoBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/stack-exchange/tag-info/{site}/{query}',
-    ];
+    protected string $route = '/stack-exchange/tag-info/{site}/{query}';
 
     protected array $keywords = [
         Category::SOCIAL,

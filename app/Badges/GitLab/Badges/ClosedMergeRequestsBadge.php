@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ClosedMergeRequestsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/gitlab/closed-merge-requests/{repo:wildcard}',
-    ];
+    protected string $route = '/gitlab/closed-merge-requests/{repo:wildcard}';
 
     protected array $keywords = [
         Category::ISSUE_TRACKING,

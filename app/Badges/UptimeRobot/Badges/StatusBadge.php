@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/uptimerobot/status/{apiKey}',
-    ];
+    protected string $route = '/uptimerobot/status/{apiKey}';
 
     protected array $keywords = [
         Category::CODE_FORMATTING,

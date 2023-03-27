@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class TypesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/npm/types/{package:packageWithScope}/{tag?}',
-    ];
+    protected string $route = '/npm/types/{package:packageWithScope}/{tag?}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

@@ -11,9 +11,7 @@ use Spatie\Regex\Regex;
 
 final class GoModBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/gomod/{owner}/{repo}',
-    ];
+    protected string $route = '/github/gomod/{owner}/{repo}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT, Category::VERSION,

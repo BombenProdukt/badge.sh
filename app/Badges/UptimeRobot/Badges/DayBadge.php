@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatPercentage;
 
 final class DayBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/uptimerobot/day/{apiKey}',
-    ];
+    protected string $route = '/uptimerobot/day/{apiKey}';
 
     protected array $keywords = [
         Category::MONITORING,

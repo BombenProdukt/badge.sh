@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/nexus/version/{repo:r,s}/{groupId}/{artifactId}',
-    ];
+    protected string $route = '/nexus/version/{repo:r,s}/{groupId}/{artifactId}';
 
     protected array $keywords = [
         Category::VERSION,

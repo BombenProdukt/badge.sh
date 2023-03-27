@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LastBuildBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jenkins/last-build/{hostname}/{job:wildcard}',
-    ];
+    protected string $route = '/jenkins/last-build/{hostname}/{job:wildcard}';
 
     protected array $keywords = [
         Category::BUILD,

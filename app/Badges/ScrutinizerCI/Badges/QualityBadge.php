@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class QualityBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/scrutinizer-ci/quality/{vcs:b,g,gl}/{user}/{repo}/{branch?}',
-    ];
+    protected string $route = '/scrutinizer-ci/quality/{vcs:b,g,gl}/{user}/{repo}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

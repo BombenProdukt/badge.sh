@@ -10,9 +10,7 @@ use Spatie\Regex\Regex;
 
 final class GradeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/codefactor/grade/{vcs}/{user}/{repo}/{branch?}',
-    ];
+    protected string $route = '/codefactor/grade/{vcs}/{user}/{repo}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

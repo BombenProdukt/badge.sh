@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ActivityBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/bountysource/activity/{team}',
-    ];
+    protected string $route = '/bountysource/activity/{team}';
 
     protected array $keywords = [
         Category::ACTIVITY,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/codeship/status/{projectId}/{branch?}',
-    ];
+    protected string $route = '/codeship/status/{projectId}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

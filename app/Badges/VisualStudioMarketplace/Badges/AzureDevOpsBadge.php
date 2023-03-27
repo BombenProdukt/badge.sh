@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class AzureDevOpsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/vs-marketplace/azure-devops-installations/{extension}/{measurement?}',
-    ];
+    protected string $route = '/vs-marketplace/azure-devops-installations/{extension}/{measurement?}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

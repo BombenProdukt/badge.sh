@@ -10,9 +10,7 @@ use Illuminate\Support\Arr;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/node/version/{package:wildcard}/{tag?}',
-    ];
+    protected string $route = '/node/version/{package:wildcard}/{tag?}';
 
     protected array $keywords = [
         Category::VERSION,

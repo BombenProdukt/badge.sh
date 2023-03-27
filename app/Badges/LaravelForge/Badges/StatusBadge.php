@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/laravel-forge/status/{site:uuid}',
-    ];
+    protected string $route = '/laravel-forge/status/{site:uuid}';
 
     protected array $keywords = [
         Category::OTHER,

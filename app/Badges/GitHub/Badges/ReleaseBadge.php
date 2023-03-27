@@ -11,9 +11,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class ReleaseBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/release/{owner}/{repo}/{channel?}',
-    ];
+    protected string $route = '/github/release/{owner}/{repo}/{channel?}';
 
     protected array $keywords = [
         Category::VERSION,

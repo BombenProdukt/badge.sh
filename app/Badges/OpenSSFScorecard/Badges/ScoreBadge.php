@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ScoreBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/ossf-scorecard/score/{host}/{orgName}/{repoName}',
-    ];
+    protected string $route = '/ossf-scorecard/score/{host}/{orgName}/{repoName}';
 
     protected array $keywords = [
         Category::SOCIAL,

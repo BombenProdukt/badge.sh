@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/rubygems/version/{gem}/{channel?}',
-    ];
+    protected string $route = '/rubygems/version/{gem}/{channel?}';
 
     protected array $keywords = [
         Category::VERSION,

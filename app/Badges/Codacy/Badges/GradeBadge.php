@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class GradeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/codacy/grade/{projectId}/{branch?}',
-    ];
+    protected string $route = '/codacy/grade/{projectId}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

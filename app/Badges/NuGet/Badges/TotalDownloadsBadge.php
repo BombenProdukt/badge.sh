@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class TotalDownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/nuget/downloads/{project}',
-    ];
+    protected string $route = '/nuget/downloads/{project}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

@@ -10,9 +10,7 @@ use Composer\Semver\Comparator;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/luarocks/version/{user}/{moduleName}/{version?}',
-    ];
+    protected string $route = '/luarocks/version/{user}/{moduleName}/{version?}';
 
     protected array $keywords = [
         Category::VERSION,

@@ -10,9 +10,7 @@ use Illuminate\Support\Arr;
 
 final class DocsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/cocoapods/doc-percent/{pod}',
-    ];
+    protected string $route = '/cocoapods/doc-percent/{pod}';
 
     protected array $keywords = [
         Category::ANALYSIS,

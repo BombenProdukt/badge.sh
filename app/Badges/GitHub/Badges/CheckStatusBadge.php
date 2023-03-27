@@ -12,9 +12,7 @@ use Illuminate\Support\Collection;
 
 final class CheckStatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/check-status/{owner}/{repo}/{reference?}/{context:wildcard?}',
-    ];
+    protected string $route = '/github/check-status/{owner}/{repo}/{reference?}/{context:wildcard?}';
 
     protected array $keywords = [
         Category::BUILD,

@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class LabelsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/issues-by-label/{owner}/{repo}/{label}/{states:open,closed?}',
-    ];
+    protected string $route = '/github/issues-by-label/{owner}/{repo}/{label}/{states:open,closed?}';
 
     protected array $keywords = [
         Category::ISSUE_TRACKING,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class TotalComponentsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/bit/components/{collection:wildcard}',
-    ];
+    protected string $route = '/bit/components/{collection:wildcard}';
 
     protected array $keywords = [
         Category::SIZE,

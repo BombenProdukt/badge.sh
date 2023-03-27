@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class KeywordsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/composer/keywords/{service}/{user}/{repo}',
-    ];
+    protected string $route = '/composer/keywords/{service}/{user}/{repo}';
 
     protected array $keywords = [
         Category::SOCIAL,

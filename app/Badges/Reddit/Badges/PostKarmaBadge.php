@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class PostKarmaBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/reddit/post-karma/{user}',
-    ];
+    protected string $route = '/reddit/post-karma/{user}';
 
     protected array $keywords = [
         Category::SOCIAL,

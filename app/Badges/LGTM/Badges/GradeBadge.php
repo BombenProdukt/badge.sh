@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class GradeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/lgtm/grade/{provider:bitbucket,github,gitlab}/{project:wildcard}/{language?}',
-    ];
+    protected string $route = '/lgtm/grade/{provider:bitbucket,github,gitlab}/{project:wildcard}/{language?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

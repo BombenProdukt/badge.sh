@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PipelinesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/bitbucket/pipelines/{user}/{repo}/{branch:wildcard?}',
-    ];
+    protected string $route = '/bitbucket/pipelines/{user}/{repo}/{branch:wildcard?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

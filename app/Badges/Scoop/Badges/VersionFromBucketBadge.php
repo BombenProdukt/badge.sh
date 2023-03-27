@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionFromBucketBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/scoop/version/{bucket:extras,versions}/{app}',
-    ];
+    protected string $route = '/scoop/version/{bucket:extras,versions}/{app}';
 
     protected array $keywords = [
         Category::VERSION,

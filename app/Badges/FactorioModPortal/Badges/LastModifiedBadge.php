@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class LastModifiedBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/factorio-mod-portal/last-modified/{modName}',
-    ];
+    protected string $route = '/factorio-mod-portal/last-modified/{modName}';
 
     protected array $keywords = [
         Category::ACTIVITY,

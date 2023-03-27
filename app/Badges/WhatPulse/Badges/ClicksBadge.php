@@ -10,9 +10,7 @@ use Illuminate\Support\Arr;
 
 final class ClicksBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/whatpulse/clicks/{userType:team,user}/{id}',
-    ];
+    protected string $route = '/whatpulse/clicks/{userType:team,user}/{id}';
 
     protected array $keywords = [
         Category::SOCIAL,

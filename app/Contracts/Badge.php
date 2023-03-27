@@ -24,7 +24,7 @@ interface Badge
 
     public function keywords(): array;
 
-    public function routePaths(): array;
+    public function routePath(): string;
 
     public function routeRules(): array;
 

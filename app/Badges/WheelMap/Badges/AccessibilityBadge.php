@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class AccessibilityBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/wheelmap/accessibility/{nodeId}',
-    ];
+    protected string $route = '/wheelmap/accessibility/{nodeId}';
 
     protected array $keywords = [
         Category::OTHER,

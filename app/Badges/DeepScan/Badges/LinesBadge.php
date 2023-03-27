@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LinesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/deepscan/lines/team/{teamId}/project/{projectId}/branch/{branchId}',
-    ];
+    protected string $route = '/deepscan/lines/team/{teamId}/project/{projectId}/branch/{branchId}';
 
     protected array $keywords = [
         Category::ANALYSIS,

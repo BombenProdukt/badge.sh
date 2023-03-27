@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/vaadin/status/{packageName}',
-    ];
+    protected string $route = '/vaadin/status/{packageName}';
 
     protected array $keywords = [
         Category::OTHER,

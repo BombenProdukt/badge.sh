@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ABIBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/wapm/abi/{package:wildcard}',
-    ];
+    protected string $route = '/wapm/abi/{package:wildcard}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

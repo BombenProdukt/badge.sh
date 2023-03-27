@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class MaintenanceScoreBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/npms/maintenance-score/{package}',
-    ];
+    protected string $route = '/npms/maintenance-score/{package}';
 
     protected array $keywords = [
         Category::ANALYSIS,

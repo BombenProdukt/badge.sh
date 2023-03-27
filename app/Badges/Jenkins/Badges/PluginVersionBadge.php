@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class PluginVersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jenkins/plugin-version/{plugin}',
-    ];
+    protected string $route = '/jenkins/plugin-version/{plugin}';
 
     protected array $keywords = [
         Category::VERSION,

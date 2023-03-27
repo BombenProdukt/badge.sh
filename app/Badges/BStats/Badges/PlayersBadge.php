@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PlayersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/bstats/players/{projectId}',
-    ];
+    protected string $route = '/bstats/players/{projectId}';
 
     protected array $keywords = [
         Category::METRICS,

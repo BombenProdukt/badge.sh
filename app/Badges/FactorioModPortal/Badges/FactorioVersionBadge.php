@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FactorioVersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/factorio-mod-portal/factorio-version/{modName}',
-    ];
+    protected string $route = '/factorio-mod-portal/factorio-version/{modName}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT, Category::VERSION,

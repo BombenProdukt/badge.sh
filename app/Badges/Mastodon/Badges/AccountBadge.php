@@ -8,9 +8,7 @@ use App\Data\BadgePreviewData;
 
 final class AccountBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/mastodon/follow/{account}',
-    ];
+    protected string $route = '/mastodon/follow/{account}';
 
     public function handle(string $account): array
     {

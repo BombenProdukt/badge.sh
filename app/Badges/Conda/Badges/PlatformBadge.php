@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PlatformBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/conda/platform/{channel}/{package}',
-    ];
+    protected string $route = '/conda/platform/{channel}/{package}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

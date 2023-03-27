@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ModuleDownloads extends AbstractBadge
 {
-    protected array $routes = [
-        '/puppetforge/module-downloads/{user}/{module}',
-    ];
+    protected string $route = '/puppetforge/module-downloads/{user}/{module}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

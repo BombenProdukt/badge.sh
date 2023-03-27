@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class ReleaseDateBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/vaadin/release-date/{packageName}',
-    ];
+    protected string $route = '/vaadin/release-date/{packageName}';
 
     protected array $keywords = [
         Category::ACTIVITY,

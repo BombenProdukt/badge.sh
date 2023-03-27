@@ -10,9 +10,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class SizeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/size/{owner}/{repo}',
-    ];
+    protected string $route = '/github/size/{owner}/{repo}';
 
     protected array $keywords = [
         Category::SIZE,

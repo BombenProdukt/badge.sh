@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class TopicsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/discourse/topics/{server}',
-    ];
+    protected string $route = '/discourse/topics/{server}';
 
     protected array $keywords = [
         Category::METRICS,

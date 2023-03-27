@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DependentsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/shardbox/dependents/{shard}',
-    ];
+    protected string $route = '/shardbox/dependents/{shard}';
 
     protected array $keywords = [
         Category::SOCIAL,

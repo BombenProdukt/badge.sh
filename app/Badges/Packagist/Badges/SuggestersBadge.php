@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class SuggestersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/packagist/suggesters/{package:packageWithVendorOnly}',
-    ];
+    protected string $route = '/packagist/suggesters/{package:packageWithVendorOnly}';
 
     protected array $keywords = [
         Category::SOCIAL,

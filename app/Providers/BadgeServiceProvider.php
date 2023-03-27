@@ -31,41 +31,40 @@ final class BadgeServiceProvider extends ServiceProvider
         Route::middleware(CacheResponse::class)->group(function (): void {
             /** @var Badge */
             foreach (app('badge.service')->all() as $badge) {
-                foreach ($badge->routePaths() as $path) {
-                    $schema = $this->getRouteSchema($path);
+                $path = $badge->routePath();
+                $schema = $this->getRouteSchema($path);
 
-                    $route = Route::get($schema['path'], function (Request $request) use ($badge) {
-                        $badge->setRequest($request);
+                $route = Route::get($schema['path'], function (Request $request) use ($badge) {
+                    $badge->setRequest($request);
 
-                        if ($badge->routeRules()) {
-                            $badge->setRequestData($request->validate($badge->routeRules()));
-                        }
-
-                        return MakeBadgeResponse::execute($request, $badge);
-                    });
-
-                    // These are parameters that define their type using the {parameter:type} syntax.
-                    foreach ($schema['parameters'] as $parameter => $type) {
-                        match (true) {
-                            $type === 'alpha' => $route->whereAlpha($parameter),
-                            $type === 'alphanumeric' => $route->whereAlphaNumeric($parameter),
-                            $type === 'number' => $route->whereNumber($parameter),
-                            $type === 'packageWithScope' => $route->where($parameter, '([a-z]+)|(@[a-z]+\/[a-z]+)'),
-                            $type === 'packageWithScopeOnly' => $route->where($parameter, '(@[a-z]+\/[a-z]+)'),
-                            $type === 'packageWithVendor' => $route->where($parameter, '([a-z]+)|([a-z]+\/[a-z]+)'),
-                            $type === 'packageWithVendorOnly' => $route->where($parameter, '([a-z]+\/[a-z]+)'),
-                            $type === 'string' => $route->whereAlpha($parameter),
-                            $type === 'ulid' => $route->whereUlid($parameter),
-                            $type === 'uuid' => $route->whereUuid($parameter),
-                            $type === 'wildcard' => $route->where($parameter, '.*'),
-                            \str_contains($type, ',') => $route->whereIn($parameter, \explode(',', $type)),
-                            default => $route->where($parameter, $type),
-                        };
+                    if ($badge->routeRules()) {
+                        $badge->setRequestData($request->validate($badge->routeRules()));
                     }
 
-                    // These are parameters that define their constraints using `where` functions.
-                    $badge->routeConstraints($route);
+                    return MakeBadgeResponse::execute($request, $badge);
+                });
+
+                // These are parameters that define their type using the {parameter:type} syntax.
+                foreach ($schema['parameters'] as $parameter => $type) {
+                    match (true) {
+                        $type === 'alpha' => $route->whereAlpha($parameter),
+                        $type === 'alphanumeric' => $route->whereAlphaNumeric($parameter),
+                        $type === 'number' => $route->whereNumber($parameter),
+                        $type === 'packageWithScope' => $route->where($parameter, '([a-z]+)|(@[a-z]+\/[a-z]+)'),
+                        $type === 'packageWithScopeOnly' => $route->where($parameter, '(@[a-z]+\/[a-z]+)'),
+                        $type === 'packageWithVendor' => $route->where($parameter, '([a-z]+)|([a-z]+\/[a-z]+)'),
+                        $type === 'packageWithVendorOnly' => $route->where($parameter, '([a-z]+\/[a-z]+)'),
+                        $type === 'string' => $route->whereAlpha($parameter),
+                        $type === 'ulid' => $route->whereUlid($parameter),
+                        $type === 'uuid' => $route->whereUuid($parameter),
+                        $type === 'wildcard' => $route->where($parameter, '.*'),
+                        \str_contains($type, ',') => $route->whereIn($parameter, \explode(',', $type)),
+                        default => $route->where($parameter, $type),
+                    };
                 }
+
+                // These are parameters that define their constraints using `where` functions.
+                $badge->routeConstraints($route);
             }
         });
     }

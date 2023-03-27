@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class FollowersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/peertube/followers/{instance}/{account}/{channel?}',
-    ];
+    protected string $route = '/peertube/followers/{instance}/{account}/{channel?}';
 
     protected array $keywords = [
         Category::SOCIAL,

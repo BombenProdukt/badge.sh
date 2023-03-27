@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 final class JSONBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/endpoint/json',
-    ];
+    protected string $route = '/endpoint/json';
 
     protected array $keywords = [
         Category::OTHER,

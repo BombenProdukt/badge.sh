@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ProgressBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/localizely/progress/{projectId:packageWithVendorOnly}/{branch?}',
-    ];
+    protected string $route = '/localizely/progress/{projectId:packageWithVendorOnly}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

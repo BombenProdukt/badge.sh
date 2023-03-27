@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PhpVersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/wordpress/{extensionType:plugin,theme}/php-version/{extension}',
-    ];
+    protected string $route = '/wordpress/{extensionType:plugin,theme}/php-version/{extension}';
 
     protected array $keywords = [
         Category::VERSION,

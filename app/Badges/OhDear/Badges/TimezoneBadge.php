@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class TimezoneBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/ohdear/timezone/{domain}',
-    ];
+    protected string $route = '/ohdear/timezone/{domain}';
 
     protected array $keywords = [
         Category::MONITORING,

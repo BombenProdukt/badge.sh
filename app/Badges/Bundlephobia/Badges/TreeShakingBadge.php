@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class TreeShakingBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/bundlephobia/tree-shaking/{name:wildcard}',
-    ];
+    protected string $route = '/bundlephobia/tree-shaking/{name:wildcard}';
 
     protected array $keywords = [
         Category::BUILD,

@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class SizeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/docker/size/{scope}/{name}/{tag?}/{architecture?}/{variant?}',
-    ];
+    protected string $route = '/docker/size/{scope}/{name}/{tag?}/{architecture?}/{variant?}';
 
     protected array $keywords = [
         Category::SIZE,

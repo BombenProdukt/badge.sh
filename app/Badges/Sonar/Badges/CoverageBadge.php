@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CoverageBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/sonar/coverage/{component}/{branch}',
-    ];
+    protected string $route = '/sonar/coverage/{component}/{branch}';
 
     protected array $keywords = [
         Category::COVERAGE,

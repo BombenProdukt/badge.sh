@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ModuleFeedback extends AbstractBadge
 {
-    protected array $routes = [
-        '/puppetforge/module-feedback/{user}/{module}',
-    ];
+    protected string $route = '/puppetforge/module-feedback/{user}/{module}';
 
     protected array $keywords = [
         Category::SOCIAL,

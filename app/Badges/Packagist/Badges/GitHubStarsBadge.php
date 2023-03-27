@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class GitHubStarsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/packagist/github-stars/{package:packageWithVendorOnly}',
-    ];
+    protected string $route = '/packagist/github-stars/{package:packageWithVendorOnly}';
 
     protected array $keywords = [
         Category::RATING,

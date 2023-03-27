@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/maven-metadata/version/{hostname}/{pathname:wildcard}',
-    ];
+    protected string $route = '/maven-metadata/version/{hostname}/{pathname:wildcard}';
 
     protected array $keywords = [
         Category::VERSION,

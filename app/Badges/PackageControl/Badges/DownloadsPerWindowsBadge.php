@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DownloadsPerWindowsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/package-control/downloads-windows/{packageName}',
-    ];
+    protected string $route = '/package-control/downloads-windows/{packageName}';
 
     protected array $keywords = [
         Category::LICENSE,

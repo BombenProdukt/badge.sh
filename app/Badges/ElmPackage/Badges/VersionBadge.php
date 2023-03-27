@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/elm-package/version/{project}',
-    ];
+    protected string $route = '/elm-package/version/{project}';
 
     protected array $keywords = [
         Category::VERSION,

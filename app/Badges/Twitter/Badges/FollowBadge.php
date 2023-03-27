@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class FollowBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/twitter/follow/{username}',
-    ];
+    protected string $route = '/twitter/follow/{username}';
 
     protected array $keywords = [
         Category::SOCIAL,

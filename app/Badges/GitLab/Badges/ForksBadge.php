@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ForksBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/gitlab/forks/{repo:wildcard}',
-    ];
+    protected string $route = '/gitlab/forks/{repo:wildcard}';
 
     protected array $keywords = [
         Category::SOCIAL,

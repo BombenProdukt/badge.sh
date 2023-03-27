@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class LastCommitBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/gitlab/last-commit/{repo:wildcard}/{ref?}',
-    ];
+    protected string $route = '/gitlab/last-commit/{repo:wildcard}/{ref?}';
 
     protected array $keywords = [
         Category::ACTIVITY,

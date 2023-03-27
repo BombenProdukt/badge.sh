@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class SprintBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jira/sprint/{sprint}',
-    ];
+    protected string $route = '/jira/sprint/{sprint}';
 
     protected array $keywords = [
         Category::ISSUE_TRACKING,

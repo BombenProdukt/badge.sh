@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class OpenPullRequestsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/bitbucket/open-pull-requests/{user}/{repo}',
-    ];
+    protected string $route = '/bitbucket/open-pull-requests/{user}/{repo}';
 
     protected array $keywords = [
         Category::ACTIVITY,

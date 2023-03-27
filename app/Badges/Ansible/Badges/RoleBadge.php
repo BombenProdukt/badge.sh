@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class RoleBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/ansible/role/{roleId}',
-    ];
+    protected string $route = '/ansible/role/{roleId}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

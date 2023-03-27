@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ProgressBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/poeditor/progress/{apiToken}/{projectId}/{languageCode}',
-    ];
+    protected string $route = '/poeditor/progress/{apiToken}/{projectId}/{languageCode}';
 
     protected array $keywords = [
         Category::ANALYSIS,

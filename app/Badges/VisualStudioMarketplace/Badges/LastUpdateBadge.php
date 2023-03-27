@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class LastUpdateBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/vs-marketplace/last-modified/{extension}',
-    ];
+    protected string $route = '/vs-marketplace/last-modified/{extension}';
 
     protected array $keywords = [
         Category::ACTIVITY,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class WatchersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/ore/watchers/{pluginId}',
-    ];
+    protected string $route = '/ore/watchers/{pluginId}';
 
     protected array $keywords = [
         Category::SOCIAL,

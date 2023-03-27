@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ProgressBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/weblate/progress/{project}',
-    ];
+    protected string $route = '/weblate/progress/{project}';
 
     protected array $keywords = [
         Category::METRICS,

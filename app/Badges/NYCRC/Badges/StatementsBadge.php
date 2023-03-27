@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatementsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/nycrc/statements/{user}/{repo}',
-    ];
+    protected string $route = '/nycrc/statements/{user}/{repo}';
 
     protected array $keywords = [
         Category::LICENSE,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PatronsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/liberapay/patrons/{username}',
-    ];
+    protected string $route = '/liberapay/patrons/{username}';
 
     protected array $keywords = [
         Category::FUNDING,

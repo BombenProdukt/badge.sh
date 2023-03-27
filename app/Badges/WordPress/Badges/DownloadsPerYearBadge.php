@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DownloadsPerYearBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/wordpress/{extensionType:plugin,theme}/downloads-yearly/{extension}',
-    ];
+    protected string $route = '/wordpress/{extensionType:plugin,theme}/downloads-yearly/{extension}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

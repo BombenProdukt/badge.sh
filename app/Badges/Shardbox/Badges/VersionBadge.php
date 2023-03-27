@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/shardbox/version/{shard}',
-    ];
+    protected string $route = '/shardbox/version/{shard}';
 
     protected array $keywords = [
         Category::VERSION,

@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class WatchersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/watchers/{owner}/{repo}',
-    ];
+    protected string $route = '/github/watchers/{owner}/{repo}';
 
     protected array $keywords = [
         Category::SOCIAL,

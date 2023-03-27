@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class SizeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/spiget/size/{resourceId}',
-    ];
+    protected string $route = '/spiget/size/{resourceId}';
 
     protected array $keywords = [
         Category::SIZE,

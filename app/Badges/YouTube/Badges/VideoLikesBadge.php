@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VideoLikesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/youtube/video/likes/{videoId}',
-    ];
+    protected string $route = '/youtube/video/likes/{videoId}';
 
     protected array $keywords = [
         Category::SOCIAL,

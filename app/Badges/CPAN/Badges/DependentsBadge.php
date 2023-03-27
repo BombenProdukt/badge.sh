@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DependentsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/cpan/dependents/{distribution}',
-    ];
+    protected string $route = '/cpan/dependents/{distribution}';
 
     protected array $keywords = [
         Category::ANALYSIS,

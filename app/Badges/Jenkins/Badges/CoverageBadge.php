@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class CoverageBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jenkins/coverage/{format:api,cobertura,jacoco}',
-    ];
+    protected string $route = '/jenkins/coverage/{format:api,cobertura,jacoco}';
 
     protected array $keywords = [
         Category::COVERAGE,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class GameVersionsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/modrinth/game-versions/{projectId}',
-    ];
+    protected string $route = '/modrinth/game-versions/{projectId}';
 
     protected array $keywords = [
         Category::VERSION,

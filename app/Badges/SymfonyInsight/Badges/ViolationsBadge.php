@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ViolationsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/symfony-insight/violations/{projectUuid}',
-    ];
+    protected string $route = '/symfony-insight/violations/{projectUuid}';
 
     protected array $keywords = [
         Category::ANALYSIS,

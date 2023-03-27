@@ -10,9 +10,7 @@ use Spatie\Regex\Regex;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/ros/version/{distro}/{repoName}',
-    ];
+    protected string $route = '/ros/version/{distro}/{repoName}';
 
     protected array $keywords = [
         Category::VERSION,

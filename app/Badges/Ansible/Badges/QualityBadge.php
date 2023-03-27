@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class QualityBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/ansible/quality/{projectId}',
-    ];
+    protected string $route = '/ansible/quality/{projectId}';
 
     protected array $keywords = [
         Category::ANALYSIS,

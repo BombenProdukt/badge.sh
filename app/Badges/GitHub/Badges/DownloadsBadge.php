@@ -10,9 +10,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class DownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/downloads/{owner}/{repo}/{tag?}',
-    ];
+    protected string $route = '/github/downloads/{owner}/{repo}/{tag?}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

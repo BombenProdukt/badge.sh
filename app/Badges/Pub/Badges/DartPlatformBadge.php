@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DartPlatformBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/pub/dart-platform/{package:wildcard}',
-    ];
+    protected string $route = '/pub/dart-platform/{package:wildcard}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

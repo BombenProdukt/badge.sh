@@ -10,9 +10,7 @@ use Illuminate\Support\Arr;
 
 final class SemicolonBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/xo/semicolon/{name:wildcard}',
-    ];
+    protected string $route = '/xo/semicolon/{name:wildcard}';
 
     protected array $keywords = [
         Keyword::CODE_STYLE,

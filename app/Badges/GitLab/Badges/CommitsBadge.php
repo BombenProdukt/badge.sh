@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CommitsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/gitlab/commits/{repo:wildcard}/{ref:wildcard?}',
-    ];
+    protected string $route = '/gitlab/commits/{repo:wildcard}/{ref:wildcard?}';
 
     protected array $keywords = [
         Category::SOCIAL,

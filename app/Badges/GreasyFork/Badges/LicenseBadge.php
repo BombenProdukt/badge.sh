@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/greasyfork/license/{scriptId}',
-    ];
+    protected string $route = '/greasyfork/license/{scriptId}';
 
     protected array $keywords = [
         Category::LICENSE,

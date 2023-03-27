@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/circleci/status/{vcs:github,gitlab}/{repo:packageWithVendorOnly}/{branch?}',
-    ];
+    protected string $route = '/circleci/status/{vcs:github,gitlab}/{repo:packageWithVendorOnly}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS,

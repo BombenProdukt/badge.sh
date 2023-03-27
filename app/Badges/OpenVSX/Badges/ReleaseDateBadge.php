@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class ReleaseDateBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/open-vsx/release-date/{extension:wildcard}',
-    ];
+    protected string $route = '/open-vsx/release-date/{extension:wildcard}';
 
     protected array $keywords = [
         Category::VERSION,

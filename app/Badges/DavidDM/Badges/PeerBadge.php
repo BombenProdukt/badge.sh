@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PeerBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/david/peer/{repo:wildcard}/{path:wildcard?}',
-    ];
+    protected string $route = '/david/peer/{repo:wildcard}/{path:wildcard?}';
 
     protected array $keywords = [
         Category::DEPENDENCIES,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ModulePdkVersion extends AbstractBadge
 {
-    protected array $routes = [
-        '/puppetforge/module-pdk-version/{user}/{module}',
-    ];
+    protected string $route = '/puppetforge/module-pdk-version/{user}/{module}';
 
     protected array $keywords = [
         Category::VERSION,

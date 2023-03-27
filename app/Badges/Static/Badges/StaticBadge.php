@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StaticBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/static/{label}/{message}/{messageColor?}',
-    ];
+    protected string $route = '/static/{label}/{message}/{messageColor?}';
 
     protected array $keywords = [
         Category::OTHER,

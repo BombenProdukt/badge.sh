@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class LatestVersionDownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/rubygems/downloads-recently/{gem}',
-    ];
+    protected string $route = '/rubygems/downloads-recently/{gem}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

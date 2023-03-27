@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PercentageBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/cii/percentage/{projectId}',
-    ];
+    protected string $route = '/cii/percentage/{projectId}';
 
     protected array $keywords = [
         Category::ANALYSIS,

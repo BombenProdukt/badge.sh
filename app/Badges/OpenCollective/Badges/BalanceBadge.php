@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class BalanceBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/opencollective/balance/{slug}',
-    ];
+    protected string $route = '/opencollective/balance/{slug}';
 
     protected array $keywords = [
         Category::FUNDING,

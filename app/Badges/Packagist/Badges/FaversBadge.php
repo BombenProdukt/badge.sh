@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FaversBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/packagist/favers/{package:packageWithVendorOnly}',
-    ];
+    protected string $route = '/packagist/favers/{package:packageWithVendorOnly}';
 
     protected array $keywords = [
         Category::SOCIAL,

@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class RelativeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/date/relative/{timestamp:number}',
-    ];
+    protected string $route = '/date/relative/{timestamp:number}';
 
     protected array $keywords = [
         Category::OTHER,

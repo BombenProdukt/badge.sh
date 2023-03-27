@@ -12,9 +12,7 @@ final class LicenseBadge extends AbstractBadge
 {
     use HandlesVersions;
 
-    protected array $routes = [
-        '/packagist/license/{package:packageWithVendorOnly}/{channel?}',
-    ];
+    protected string $route = '/packagist/license/{package:packageWithVendorOnly}/{channel?}';
 
     protected array $keywords = [
         Category::LICENSE,

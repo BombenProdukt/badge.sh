@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class MetadataBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/docker/metadata/{scope}/{name}/{type}/{tag?}/{architecture?}/{variant?}',
-    ];
+    protected string $route = '/docker/metadata/{scope}/{name}/{type}/{tag?}/{architecture?}/{variant?}';
 
     protected array $keywords = [
         Category::BUILD,

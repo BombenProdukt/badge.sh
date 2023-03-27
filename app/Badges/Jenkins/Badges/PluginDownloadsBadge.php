@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class PluginDownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jenkins/plugin-downloads/{plugin}/{version?}',
-    ];
+    protected string $route = '/jenkins/plugin-downloads/{plugin}/{version?}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

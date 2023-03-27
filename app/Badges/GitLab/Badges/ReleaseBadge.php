@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ReleaseBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/gitlab/latest-release/{repo:wildcard}',
-    ];
+    protected string $route = '/gitlab/latest-release/{repo:wildcard}';
 
     protected array $keywords = [
         Category::VERSION,

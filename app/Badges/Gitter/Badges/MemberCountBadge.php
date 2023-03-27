@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class MemberCountBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/gitter/members/{org}/{room}',
-    ];
+    protected string $route = '/gitter/members/{org}/{room}';
 
     protected array $keywords = [
         Category::SOCIAL,

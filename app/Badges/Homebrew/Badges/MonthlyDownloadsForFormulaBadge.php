@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/homebrew/downloads-monthly/{type:cask,formula}/{package}',
-    ];
+    protected string $route = '/homebrew/downloads-monthly/{type:cask,formula}/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

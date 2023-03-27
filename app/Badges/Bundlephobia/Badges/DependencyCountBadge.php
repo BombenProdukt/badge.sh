@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DependencyCountBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/bundlephobia/dependency-count/{name:wildcard}',
-    ];
+    protected string $route = '/bundlephobia/dependency-count/{name:wildcard}';
 
     protected array $keywords = [
         Category::DEPENDENCIES,

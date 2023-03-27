@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class OnlineMembersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/discord/online-members/{inviteCode}',
-    ];
+    protected string $route = '/discord/online-members/{inviteCode}';
 
     protected array $keywords = [
         Category::SOCIAL,

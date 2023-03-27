@@ -10,9 +10,7 @@ use Illuminate\Support\Arr;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/snapcraft/version/{snap}/{architecture?}/{channel?}',
-    ];
+    protected string $route = '/snapcraft/version/{snap}/{architecture?}/{channel?}';
 
     protected array $keywords = [
         Category::VERSION,

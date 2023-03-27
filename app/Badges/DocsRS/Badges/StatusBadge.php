@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/docsrs/version/{crate}/{version?}',
-    ];
+    protected string $route = '/docsrs/version/{crate}/{version?}';
 
     protected array $keywords = [
         Category::BUILD,

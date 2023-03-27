@@ -10,9 +10,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class TopLanguageBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/top-language/{owner}/{repo}',
-    ];
+    protected string $route = '/github/top-language/{owner}/{repo}';
 
     protected array $keywords = [
         Category::ANALYSIS,

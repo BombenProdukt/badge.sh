@@ -10,9 +10,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 final class PriceBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/chrome-web-store/price/{itemId}',
-    ];
+    protected string $route = '/chrome-web-store/price/{itemId}';
 
     protected array $keywords = [
         Category::OTHER,

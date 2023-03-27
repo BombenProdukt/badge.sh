@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class LastModifiedBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/ore/last-modified/{pluginId}',
-    ];
+    protected string $route = '/ore/last-modified/{pluginId}';
 
     protected array $keywords = [
         Category::ACTIVITY,

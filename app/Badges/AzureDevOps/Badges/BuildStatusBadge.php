@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class BuildStatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/azure-devops/build-status/{organization}/{project}/{definition}/{branch?}',
-    ];
+    protected string $route = '/azure-devops/build-status/{organization}/{project}/{definition}/{branch?}';
 
     protected array $keywords = [
         Category::BUILD,

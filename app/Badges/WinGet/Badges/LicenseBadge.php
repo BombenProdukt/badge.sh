@@ -10,9 +10,7 @@ use Symfony\Component\Yaml\Yaml;
 
 final class LicenseBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/winget/license/{appId}',
-    ];
+    protected string $route = '/winget/license/{appId}';
 
     protected array $keywords = [
         Category::LICENSE,

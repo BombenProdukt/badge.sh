@@ -10,9 +10,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class SponsorsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/sponsors/{username}',
-    ];
+    protected string $route = '/github/sponsors/{username}';
 
     protected array $keywords = [
         Category::FUNDING,

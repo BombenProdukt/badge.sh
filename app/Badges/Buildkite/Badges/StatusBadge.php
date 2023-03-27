@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/buildkite/status/{identifier}/{branch?}',
-    ];
+    protected string $route = '/buildkite/status/{identifier}/{branch?}';
 
     protected array $keywords = [
         Category::BUILD,

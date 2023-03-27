@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ExtensionVersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/twitch/extension-version/{appId}',
-    ];
+    protected string $route = '/twitch/extension-version/{appId}';
 
     protected array $keywords = [
         Category::VERSION,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VideoCommentsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/youtube/video/comments/{videoId}',
-    ];
+    protected string $route = '/youtube/video/comments/{videoId}';
 
     protected array $keywords = [
         Category::SOCIAL,

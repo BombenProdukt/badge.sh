@@ -10,9 +10,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 final class SearchBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/search/{owner}/{repo}/{query}',
-    ];
+    protected string $route = '/github/search/{owner}/{repo}/{query}';
 
     protected array $keywords = [
         Category::ANALYSIS,

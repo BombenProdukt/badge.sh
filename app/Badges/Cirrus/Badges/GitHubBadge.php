@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class GitHubBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/cirrus/github/{owner}/{repo}/{branch?}',
-    ];
+    protected string $route = '/cirrus/github/{owner}/{repo}/{branch?}';
 
     protected array $keywords = [
         Category::BUILD,

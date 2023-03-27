@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StaleBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/maintenance/stale/{year:number}',
-    ];
+    protected string $route = '/maintenance/stale/{year:number}';
 
     protected array $keywords = [
         Category::ACTIVITY,

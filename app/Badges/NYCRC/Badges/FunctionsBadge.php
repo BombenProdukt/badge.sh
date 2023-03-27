@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FunctionsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/nycrc/functions/{user}/{repo}',
-    ];
+    protected string $route = '/nycrc/functions/{user}/{repo}';
 
     protected array $keywords = [
         Category::LICENSE,

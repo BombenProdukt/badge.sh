@@ -10,9 +10,7 @@ use Illuminate\Support\Arr;
 
 final class DownloadBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/whatpulse/download/{userType:team,user}/{id}',
-    ];
+    protected string $route = '/whatpulse/download/{userType:team,user}/{id}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

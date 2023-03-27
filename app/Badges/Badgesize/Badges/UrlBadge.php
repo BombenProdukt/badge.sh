@@ -9,10 +9,7 @@ use App\Enums\Category;
 
 final class UrlBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/badgesize/{compression:brotli,gzip,normal}/file-url/{path:wildcard}',
-        '/badgesize/{compression:brotli,gzip,normal}/{path:wildcard}',
-    ];
+    protected string $route = '/badgesize/{compression:brotli,gzip,normal}/{path:wildcard}';
 
     protected array $keywords = [
         Category::SIZE,

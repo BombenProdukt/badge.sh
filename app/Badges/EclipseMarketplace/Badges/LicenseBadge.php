@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/eclipse-marketplace/license/{name}',
-    ];
+    protected string $route = '/eclipse-marketplace/license/{name}';
 
     protected array $keywords = [
         Category::LICENSE,

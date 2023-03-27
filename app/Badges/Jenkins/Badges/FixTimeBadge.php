@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FixTimeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jenkins/fix-time/{hostname}/{job:wildcard}',
-    ];
+    protected string $route = '/jenkins/fix-time/{hostname}/{job:wildcard}';
 
     protected array $keywords = [
         Category::BUILD,

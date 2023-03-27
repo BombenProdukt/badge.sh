@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CommercialBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/wordpress/{extensionType:plugin,theme}/commercial/{extension}',
-    ];
+    protected string $route = '/wordpress/{extensionType:plugin,theme}/commercial/{extension}';
 
     protected array $keywords = [
         Category::VERSION,

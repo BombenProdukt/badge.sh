@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CollectionSizeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/steam/collection-size/{collectionId}',
-    ];
+    protected string $route = '/steam/collection-size/{collectionId}';
 
     protected array $keywords = [
         Category::SIZE,

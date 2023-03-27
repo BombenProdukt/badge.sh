@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class RequestBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/https/{host}/{path:wildcard?}',
-    ];
+    protected string $route = '/https/{host}/{path:wildcard?}';
 
     protected array $keywords = [
         Category::OTHER,

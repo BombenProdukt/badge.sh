@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CommunityBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/wordpress/{extensionType:plugin,theme}/community/{extension}',
-    ];
+    protected string $route = '/wordpress/{extensionType:plugin,theme}/community/{extension}';
 
     protected array $keywords = [
         Category::VERSION,

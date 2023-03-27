@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PlatformsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/package-control/downloads/{packageName}',
-    ];
+    protected string $route = '/package-control/downloads/{packageName}';
 
     protected array $keywords = [
         Category::LICENSE,

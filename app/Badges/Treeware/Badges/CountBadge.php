@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CountBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/treeware/trees/{owner}/{packageName}',
-    ];
+    protected string $route = '/treeware/trees/{owner}/{packageName}';
 
     protected array $keywords = [
         Category::OTHER,

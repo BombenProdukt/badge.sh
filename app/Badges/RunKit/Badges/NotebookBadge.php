@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class NotebookBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/runkit/{owner}/{notebook}/{path:wildcard?}',
-    ];
+    protected string $route = '/runkit/{owner}/{notebook}/{path:wildcard?}';
 
     protected array $keywords = [
         Category::OTHER,

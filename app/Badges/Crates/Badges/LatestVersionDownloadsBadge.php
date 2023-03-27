@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class LatestVersionDownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/crates/downloads-recently/{package}',
-    ];
+    protected string $route = '/crates/downloads-recently/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

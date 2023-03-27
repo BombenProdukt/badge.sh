@@ -10,9 +10,7 @@ use Illuminate\Support\Collection;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/travis/status/{project:packageWithVendorOnly}/{branch?}',
-    ];
+    protected string $route = '/travis/status/{project:packageWithVendorOnly}/{branch?}';
 
     protected array $keywords = [
         Category::BUILD,

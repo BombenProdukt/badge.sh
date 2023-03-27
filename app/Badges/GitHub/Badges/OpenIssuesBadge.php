@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatNumber;
 
 final class OpenIssuesBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/open-issues/{owner}/{repo}',
-    ];
+    protected string $route = '/github/open-issues/{owner}/{repo}';
 
     protected array $keywords = [
         Category::ISSUE_TRACKING,

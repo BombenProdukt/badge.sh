@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class CoverageBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/codeclimate/coverage/{project:packageWithVendorOnly}',
-    ];
+    protected string $route = '/codeclimate/coverage/{project:packageWithVendorOnly}';
 
     protected array $keywords = [
         Category::ANALYSIS,

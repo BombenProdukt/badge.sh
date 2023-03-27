@@ -10,9 +10,7 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/tas/tests/{provider}/{org}/{repo}',
-    ];
+    protected string $route = '/tas/tests/{provider}/{org}/{repo}';
 
     protected array $keywords = [
         Category::TEST_RESULTS,

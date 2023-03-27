@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/license/{owner}/{repo}',
-    ];
+    protected string $route = '/github/license/{owner}/{repo}';
 
     protected array $keywords = [
         Category::LICENSE,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class RatingBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/greasyfork/rating/{scriptId}',
-    ];
+    protected string $route = '/greasyfork/rating/{scriptId}';
 
     protected array $keywords = [
         Category::SOCIAL,

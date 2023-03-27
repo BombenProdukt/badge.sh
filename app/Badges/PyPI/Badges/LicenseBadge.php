@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LicenseBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/pypi/license/{project}',
-    ];
+    protected string $route = '/pypi/license/{project}';
 
     protected array $keywords = [
         Category::LICENSE,

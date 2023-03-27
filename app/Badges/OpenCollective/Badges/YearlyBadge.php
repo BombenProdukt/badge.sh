@@ -10,9 +10,7 @@ use PreemStudio\Formatter\FormatMoney;
 
 final class YearlyBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/opencollective/yearly/{slug}',
-    ];
+    protected string $route = '/opencollective/yearly/{slug}';
 
     protected array $keywords = [
         Category::FUNDING,

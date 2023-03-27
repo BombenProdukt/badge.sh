@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FollowersBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/modrinth/followers/{projectId}',
-    ];
+    protected string $route = '/modrinth/followers/{projectId}';
 
     protected array $keywords = [
         Category::SOCIAL,

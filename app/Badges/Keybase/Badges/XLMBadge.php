@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class XLMBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/keybase/xlm/{address}',
-    ];
+    protected string $route = '/keybase/xlm/{address}';
 
     protected array $keywords = [
         Category::SOCIAL,

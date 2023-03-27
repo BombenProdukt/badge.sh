@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class FileLastModifiedBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/steam/file-last-modified/{fileId}',
-    ];
+    protected string $route = '/steam/file-last-modified/{fileId}';
 
     protected array $keywords = [
         Category::ACTIVITY,

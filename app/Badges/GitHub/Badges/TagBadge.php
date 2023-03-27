@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class TagBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/tag/{owner}/{repo}',
-    ];
+    protected string $route = '/github/tag/{owner}/{repo}';
 
     protected array $keywords = [
         Category::VERSION,

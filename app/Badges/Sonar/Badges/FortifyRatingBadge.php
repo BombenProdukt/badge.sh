@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FortifyRatingBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/sonar/fortify-security-rating/{component}/{branch}',
-    ];
+    protected string $route = '/sonar/fortify-security-rating/{component}/{branch}';
 
     protected array $keywords = [
         Category::COVERAGE,

@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 final class FileReleaseDateBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/steam/file-release-date/{fileId}',
-    ];
+    protected string $route = '/steam/file-release-date/{fileId}';
 
     protected array $keywords = [
         Category::ACTIVITY,

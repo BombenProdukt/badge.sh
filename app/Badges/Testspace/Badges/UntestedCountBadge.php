@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class UntestedCountBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/testspace/untested-count/{org}/{project}/{space}',
-    ];
+    protected string $route = '/testspace/untested-count/{org}/{project}/{space}';
 
     protected array $keywords = [
         Category::ANALYSIS,

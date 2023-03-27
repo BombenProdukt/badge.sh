@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DependentsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/sourcegraph/dependents/{repo:wildcard}',
-    ];
+    protected string $route = '/sourcegraph/dependents/{repo:wildcard}';
 
     protected array $keywords = [
         Category::SOCIAL,

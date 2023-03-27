@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PublishBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/packagephobia/publish/{name:wildcard}',
-    ];
+    protected string $route = '/packagephobia/publish/{name:wildcard}';
 
     protected array $keywords = [
         Category::SIZE,

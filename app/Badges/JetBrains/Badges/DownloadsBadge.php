@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jetbrains/downloads/{pluginId}',
-    ];
+    protected string $route = '/jetbrains/downloads/{pluginId}';
 
     protected array $keywords = [
         Category::RATING,

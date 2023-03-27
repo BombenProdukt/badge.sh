@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Cache;
 
 final class ShowBadgeBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/memo/{name}',
-    ];
+    protected string $route = '/memo/{name}';
 
     protected array $keywords = [
         Category::OTHER,

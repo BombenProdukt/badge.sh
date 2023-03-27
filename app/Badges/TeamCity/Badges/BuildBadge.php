@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class BuildBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/team-city/build/{buildId}',
-    ];
+    protected string $route = '/team-city/build/{buildId}';
 
     protected array $keywords = [
         Category::BUILD,

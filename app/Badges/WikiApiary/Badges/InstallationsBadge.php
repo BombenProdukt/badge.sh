@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class InstallationsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/wikiapiary/installations/{variant:extension,skin,farm,generator,host}/{name}',
-    ];
+    protected string $route = '/wikiapiary/installations/{variant:extension,skin,farm,generator,host}/{name}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

@@ -10,9 +10,7 @@ use App\Enums\Category;
 
 final class PackageDependentsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/github/dependents-package/{owner}/{repo}',
-    ];
+    protected string $route = '/github/dependents-package/{owner}/{repo}';
 
     protected array $keywords = [
         Category::SOCIAL,

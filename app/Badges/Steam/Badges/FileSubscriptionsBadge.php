@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class FileSubscriptionsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/steam/file-subscriptions/{fileId}',
-    ];
+    protected string $route = '/steam/file-subscriptions/{fileId}';
 
     protected array $keywords = [
         Category::SOCIAL,

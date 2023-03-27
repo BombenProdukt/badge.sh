@@ -10,9 +10,7 @@ use App\Enums\Category;
 
 final class LevelBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/cii/level/{projectId}',
-    ];
+    protected string $route = '/cii/level/{projectId}';
 
     protected array $keywords = [
         Category::ANALYSIS,

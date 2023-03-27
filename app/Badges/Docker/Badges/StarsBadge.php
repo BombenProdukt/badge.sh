@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class StarsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/docker/stars/{scope}/{name}',
-    ];
+    protected string $route = '/docker/stars/{scope}/{name}';
 
     protected array $keywords = [
         Category::RATING,

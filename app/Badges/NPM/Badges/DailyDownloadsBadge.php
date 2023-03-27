@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DailyDownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/npm/downloads-daily/{package:packageWithScope}/{tag?}',
-    ];
+    protected string $route = '/npm/downloads-daily/{package:packageWithScope}/{tag?}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

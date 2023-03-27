@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 final class DependencyBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/hackage/dependencies/{package}',
-    ];
+    protected string $route = '/hackage/dependencies/{package}';
 
     protected array $keywords = [
         Category::DEPENDENCIES,

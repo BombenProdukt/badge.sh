@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ZECBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/keybase/zec/{address}',
-    ];
+    protected string $route = '/keybase/zec/{address}';
 
     protected array $keywords = [
         Category::SOCIAL,

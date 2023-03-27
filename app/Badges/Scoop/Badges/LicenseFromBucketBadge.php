@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class LicenseFromBucketBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/scoop/license/{bucket:extras,version}/{app}',
-    ];
+    protected string $route = '/scoop/license/{bucket:extras,version}/{app}';
 
     protected array $keywords = [
         Category::LICENSE,

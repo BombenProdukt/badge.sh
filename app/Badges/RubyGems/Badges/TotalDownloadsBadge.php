@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class TotalDownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/rubygems/downloads/{gem}',
-    ];
+    protected string $route = '/rubygems/downloads/{gem}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PlatformBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/rubygems/platform/{gem}',
-    ];
+    protected string $route = '/rubygems/platform/{gem}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

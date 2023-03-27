@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/apple-music/version/{bundleId}',
-    ];
+    protected string $route = '/apple-music/version/{bundleId}';
 
     protected array $keywords = [
         Category::VERSION,

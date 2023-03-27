@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class ImplementationBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/pypi/implementation/{project}',
-    ];
+    protected string $route = '/pypi/implementation/{project}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,

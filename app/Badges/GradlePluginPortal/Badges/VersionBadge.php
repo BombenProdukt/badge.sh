@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/gradle-plugin-portal/version/{pluginId}',
-    ];
+    protected string $route = '/gradle-plugin-portal/version/{pluginId}';
 
     protected array $keywords = [
         Category::VERSION,

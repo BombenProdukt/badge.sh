@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class DownloadsBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/conda/downloads/{channel}/{package}',
-    ];
+    protected string $route = '/conda/downloads/{channel}/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,

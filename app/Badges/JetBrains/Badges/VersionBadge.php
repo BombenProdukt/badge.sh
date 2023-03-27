@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class VersionBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/jetbrains/version/{pluginId}',
-    ];
+    protected string $route = '/jetbrains/version/{pluginId}';
 
     protected array $keywords = [
         Category::VERSION,

@@ -9,9 +9,7 @@ use App\Enums\Category;
 
 final class PreloadBadge extends AbstractBadge
 {
-    protected array $routes = [
-        '/hsts/preload/{domain}',
-    ];
+    protected string $route = '/hsts/preload/{domain}';
 
     protected array $keywords = [
         Category::MONITORING,
