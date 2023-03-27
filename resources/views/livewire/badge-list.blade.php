@@ -3,6 +3,7 @@
     <div class="relative mt-2 rounded-md shadow-sm">
         <div class="absolute inset-y-0 left-1 top-1 bottom-1 flex items-center">
             <select wire:model="category" autocomplete="category" class="bg-slate-50 h-full rounded-md border-0 py-0 pl-3 pr-7 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-400 sm:text-sm">
+                <option value="">All</option>
                 @foreach(\App\Enums\Category::cases() as $case)
                     <option value="{{ $case->value }}">{{ Str::title($case->value) }}</option>
                 @endforeach
