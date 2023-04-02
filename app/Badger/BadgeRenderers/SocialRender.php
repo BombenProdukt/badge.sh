@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Badger\Render;
+namespace App\Badger\BadgeRenderers;
 
-final class PlasticRender extends AbstractRender
+final class SocialRender extends AbstractRender
 {
     public function getSupportedFormats(): array
     {
-        return ['plastic'];
+        return ['social'];
     }
 
     protected function getTemplate(): string
     {
-        return 'plastic';
+        return 'social';
     }
 }

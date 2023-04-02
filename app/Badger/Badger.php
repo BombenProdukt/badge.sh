@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Badger;
 
+use App\Badger\Contracts\BadgeRenderer;
 use App\Badger\Exceptions\InvalidRendererException;
-use App\Badger\Render\RenderInterface;
 
 final class Badger
 {
-    protected $renderers;
+    protected array $renderers = [];
 
     public function __construct(array $renderers)
     {
@@ -25,7 +25,7 @@ final class Badger
         return $this->getRendererForFormat($badge->getFormat())->render($badge);
     }
 
-    protected function addRenderFormat(RenderInterface $renderer): void
+    protected function addRenderFormat(BadgeRenderer $renderer): void
     {
         foreach ($renderer->getSupportedFormats() as $format) {
             $this->renderers[$format] = $renderer;

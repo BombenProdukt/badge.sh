@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Badger\Calculator;
 
+use App\Badger\Contracts\TextSizeCalculator;
 use Illuminate\Support\Arr;
 
-final class GDTextSizeCalculator implements TextSizeCalculatorInterface
+final class GDTextSizeCalculator implements TextSizeCalculator
 {
     public function calculateWidth(string $text): float
     {

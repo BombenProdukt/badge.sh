@@ -6,7 +6,6 @@ namespace App\Providers;
 
 use App\Actions\MakeBadge;
 use App\Actions\MakeBadgeResponse;
-use App\Badger\Facades\Badger;
 use App\Badges\AbstractBadge;
 use App\Services\BadgeService;
 use Illuminate\Http\Request;
@@ -46,17 +45,6 @@ final class BadgeServiceProvider extends ServiceProvider
                     if ($request->isJson()) {
                         return $result->toArray();
                     }
-
-                    // return MakeBadgeResponse::execute(
-                    //     $request,
-                    //     Badger::generate(
-                    //         subject: 'license',
-                    //         subjectColor: 'slate.900',
-                    //         message: 'MIT',
-                    //         messageColor: 'blue.600',
-                    //         format: 'flat-square-with-icon',
-                    //     )->toString(),
-                    // );
 
                     return MakeBadgeResponse::execute($request, $result->render());
                 });

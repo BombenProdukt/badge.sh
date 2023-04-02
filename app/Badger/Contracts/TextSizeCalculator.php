@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Badger\Calculator;
+namespace App\Badger\Contracts;
 
-interface TextSizeCalculatorInterface
+interface TextSizeCalculator
 {
     public function calculateWidth(string $text): float;
 }

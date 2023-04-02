@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Badger\Render;
+namespace App\Badger\BadgeRenderers;
 
 final class FlatSquareWithIconRender extends AbstractRender
 {

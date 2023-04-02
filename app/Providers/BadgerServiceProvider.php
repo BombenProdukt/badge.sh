@@ -6,12 +6,12 @@ namespace App\Providers;
 
 use App\Badger\Badger;
 use App\Badger\Calculator\GDTextSizeCalculator;
-use App\Badger\Calculator\TextSizeCalculatorInterface;
-use App\Badger\Render\FlatSquareRender;
-use App\Badger\Render\FlatSquareWithIconRender;
-use App\Badger\Render\PlasticFlatRender;
-use App\Badger\Render\PlasticRender;
-use App\Badger\Render\SocialRender;
+use App\Badger\Contracts\TextSizeCalculator;
+use App\Badger\BadgeRenderers\FlatSquareRender;
+use App\Badger\BadgeRenderers\FlatSquareWithIconRender;
+use App\Badger\BadgeRenderers\PlasticFlatRender;
+use App\Badger\BadgeRenderers\PlasticRender;
+use App\Badger\BadgeRenderers\SocialRender;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\ServiceProvider;
 
@@ -33,9 +33,8 @@ final class BadgerServiceProvider extends ServiceProvider
 
     protected function registerCalculator(): void
     {
-        $this->app->singleton(TextSizeCalculatorInterface::class, fn () => new GDTextSizeCalculator());
-
-        $this->app->singleton('badger.calculator', TextSizeCalculatorInterface::class);
+        $this->app->singleton(TextSizeCalculator::class, GDTextSizeCalculator::class);
+        $this->app->singleton('badger.calculator', TextSizeCalculator::class);
     }
 
     protected function registerBadger(): void

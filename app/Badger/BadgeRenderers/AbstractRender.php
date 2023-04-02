@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Badger\Render;
+namespace App\Badger\BadgeRenderers;
 
 use App\Badger\Badge;
 use App\Badger\BadgeImage;
-use App\Badger\Calculator\TextSizeCalculatorInterface;
+use App\Badger\Contracts\BadgeRenderer;
+use App\Badger\Contracts\TextSizeCalculator;
 
-abstract class AbstractRender implements RenderInterface
+abstract class AbstractRender implements BadgeRenderer
 {
     // TEMPORARY
     private ?string $icon = null;
@@ -19,7 +20,7 @@ abstract class AbstractRender implements RenderInterface
     // TEMPORARY
     private int $scale = 1;
 
-    public function __construct(private readonly TextSizeCalculatorInterface $calculator)
+    public function __construct(private readonly TextSizeCalculator $calculator)
     {
         //
     }
