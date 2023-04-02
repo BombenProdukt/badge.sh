@@ -9,7 +9,7 @@ use App\Enums\Category;
 
 final class TypeBadge extends AbstractBadge
 {
-    protected string $route = '/composer/type/{service}/{user}/{repo}';
+    protected string $route = '/composer/type/{service:bitbucket,github,gitlab}/{user}/{repo}';
 
     protected array $keywords = [
         Category::OTHER,
@@ -17,7 +17,7 @@ final class TypeBadge extends AbstractBadge
 
     public function handle(string $service, string $user, string $repo): array
     {
-        $response = $this->client->github($user, $repo);
+        $response = $this->client->get($service, $user, $repo);
 
         return [
             'name' => $response['name'],

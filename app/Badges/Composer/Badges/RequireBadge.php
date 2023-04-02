@@ -9,7 +9,7 @@ use App\Enums\Category;
 
 final class RequireBadge extends AbstractBadge
 {
-    protected string $route = '/composer/require/{service}/{user}/{repo}/{package:wildcard}';
+    protected string $route = '/composer/require/{service:bitbucket,github,gitlab}/{user}/{repo}/{package:wildcard}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,
@@ -18,7 +18,7 @@ final class RequireBadge extends AbstractBadge
 
     public function handle(string $service, string $user, string $repo, string $package): array
     {
-        $response = $this->client->github($user, $repo);
+        $response = $this->client->get($service, $user, $repo);
 
         return [
             'name' => $package,
