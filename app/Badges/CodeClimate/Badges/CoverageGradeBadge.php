@@ -9,16 +9,16 @@ use App\Enums\Category;
 
 final class CoverageGradeBadge extends AbstractBadge
 {
-    protected string $route = '/codeclimate/coverage-grade/{project:packageWithVendorOnly}';
+    protected string $route = '/codeclimate/coverage-grade/{user}/{repo}';
 
     protected array $keywords = [
         Category::ANALYSIS,
     ];
 
-    public function handle(string $project): array
+    public function handle(string $user, string $repo): array
     {
         return [
-            'letter' => $this->client->get($project, 'test_reports')['attributes']['rating']['letter'],
+            'letter' => $this->client->get($user, $repo, 'test_reports')['attributes']['rating']['letter'],
         ];
     }
 

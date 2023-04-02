@@ -9,15 +9,15 @@ use App\Enums\Category;
 
 final class CoverageBadge extends AbstractBadge
 {
-    protected string $route = '/coveralls/coverage/{vcs:github,bitbucket}/{repo:packageWithVendorOnly}/{branch?}';
+    protected string $route = '/coveralls/coverage/{vcs:github,bitbucket}/{user}/{repo}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS,
     ];
 
-    public function handle(string $vcs, string $repo, ?string $branch = null): array
+    public function handle(string $vcs, string $user, string $repo, ?string $branch = null): array
     {
-        $response = $this->client->get($vcs, $repo, $branch);
+        $response = $this->client->get($vcs, $user, $repo, $branch);
 
         \preg_match('/_(\d+)\.svg/', $response, $matches);
 

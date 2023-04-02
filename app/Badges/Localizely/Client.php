@@ -16,11 +16,11 @@ final class Client
         $this->client = Http::baseUrl('https://api.localizely.com/v1')->throw();
     }
 
-    public function get(string $apiToken, string $projectId): array
+    public function get(string $apiToken, string $user, string $repo): array
     {
         return $this->client
             ->withHeaders(['X-Api-Token' => $apiToken])
-            ->get("projects/{$projectId}/status")
+            ->get("projects/{$user}/{$repo}/status")
             ->json();
     }
 }

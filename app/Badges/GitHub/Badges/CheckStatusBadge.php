@@ -7,6 +7,7 @@ namespace App\Badges\GitHub\Badges;
 use App\Badges\GitHub\Actions\CombineStates;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Github\Client;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Support\Collection;
 
@@ -21,11 +22,14 @@ final class CheckStatusBadge extends AbstractBadge
     public function handle(string $owner, string $repo, ?string $reference = null, ?string $context = null): array
     {
         if (empty($reference)) {
-            $response = GitHub::connection('main')->api('repo')->show($owner, $repo);
+            $response = GitHub::connection()->api('repo')->show($owner, $repo);
             $reference = $response['default_branch'];
         }
 
-        $response = GitHub::connection('main')->api('repo')->statuses()->combined($owner, $repo, $reference);
+        /** @var Client */
+        $client = GitHub::connection();
+
+        $response = $client->repo()->statuses()->combined($owner, $repo, $reference);
 
         if (\is_string($context)) {
             $state = collect($response['statuses'])->filter(fn (array $check) => \str_contains(\mb_strtolower($check['context']), $context));

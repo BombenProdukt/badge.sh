@@ -116,14 +116,14 @@ abstract class AbstractBadge implements Badge
             if (\str_contains($group, ':')) {
                 [$name, $type] = \explode(':', $group, 2);
 
-                $parameters[$name] = $type;
+                $parameters[$name] = \preg_replace('/[^a-z0-9]+/', '', $type);
             } else {
                 $parameters[$group] = 'string';
             }
         }
 
         return [
-            'path' => \preg_replace('/(:[a-zA-Z,?]+)/', '', $this->route),
+            'path' => \preg_replace('/(:[a-zA-Z,]+)/', '', $this->route),
             'parameters' => $parameters,
         ];
     }

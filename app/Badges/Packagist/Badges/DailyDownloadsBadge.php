@@ -9,16 +9,16 @@ use App\Enums\Category;
 
 final class DailyDownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/packagist/downloads-daily/{package:packageWithVendorOnly}';
+    protected string $route = '/packagist/downloads-daily/{vendor}/{project}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $package, ?string $channel = null): array
+    public function handle(string $vendor, string $project): array
     {
         return [
-            'downloads' => $this->client->get($package)['downloads']['daily'],
+            'downloads' => $this->client->get($vendor, $project)['downloads']['daily'],
         ];
     }
 

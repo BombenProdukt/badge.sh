@@ -7,6 +7,7 @@ namespace App\Badges\GitHub\Badges;
 use App\Badges\GitHub\Actions\CombineStates;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Github\Client;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Support\Collection;
 
@@ -18,16 +19,17 @@ final class CheckRunsBadge extends AbstractBadge
         Category::ANALYSIS,
     ];
 
-    public function handle(string $owner, string $repo, ?string $reference = '', ?string $context = '')
+    public function handle(string $owner, string $repo, ?string $reference = null, ?string $context = null)
     {
         if (empty($reference)) {
-            $response = GitHub::connection('main')->api('repo')->show($owner, $repo);
+            $response = GitHub::connection()->api('repo')->show($owner, $repo);
             $reference = $response['default_branch'];
         }
 
-        $response = GitHub::connection('main')->api('repo')->checkRuns()->allForReference($owner, $repo, $reference);
+        /** @var Client */
+        $client = GitHub::connection();
 
-        $state = collect($response['check_runs']);
+        $state = collect($client->repo()->checkRuns()->allForReference($owner, $repo, $reference)['check_runs']);
 
         if (\is_string($context)) {
             $state = $state->filter(function (array $check) use ($context): bool {

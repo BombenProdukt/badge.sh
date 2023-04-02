@@ -20,7 +20,7 @@ final class LastCommitBadge extends AbstractBadge
     public function handle(string $owner, string $repo, ?string $reference = null): array
     {
         if (empty($reference)) {
-            $response = GitHub::connection('main')->api('repo')->show($owner, $repo);
+            $response = GitHub::connection()->api('repo')->show($owner, $repo);
             $reference = $response['default_branch'];
         }
 

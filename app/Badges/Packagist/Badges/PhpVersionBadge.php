@@ -13,15 +13,15 @@ final class PhpVersionBadge extends AbstractBadge
 {
     use HandlesVersions;
 
-    protected string $route = '/packagist/php-version/{package:packageWithVendorOnly}/{channel?}';
+    protected string $route = '/packagist/php-version/{vendor}/{project}/{channel?}';
 
     protected array $keywords = [
         Category::PLATFORM_SUPPORT,
     ];
 
-    public function handle(string $package, ?string $channel = null): array
+    public function handle(string $vendor, string $project, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
+        $packageMeta = $this->client->get($vendor, $project);
 
         $pkg = Arr::get($packageMeta['versions'], $this->getVersion($packageMeta, $channel));
 

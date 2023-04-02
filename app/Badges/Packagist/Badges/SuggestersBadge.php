@@ -9,15 +9,15 @@ use App\Enums\Category;
 
 final class SuggestersBadge extends AbstractBadge
 {
-    protected string $route = '/packagist/suggesters/{package:packageWithVendorOnly}';
+    protected string $route = '/packagist/suggesters/{vendor}/{project}';
 
     protected array $keywords = [
         Category::SOCIAL,
     ];
 
-    public function handle(string $package, ?string $channel = null): array
+    public function handle(string $vendor, string $project): array
     {
-        return $this->client->get($package);
+        return $this->client->get($vendor, $project);
     }
 
     public function render(array $properties): array

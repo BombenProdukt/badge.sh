@@ -18,11 +18,11 @@ final class Client
             ->throw();
     }
 
-    public function get(string $vcs, string $repo, ?string $branch): array
+    public function get(string $vcs, string $user, string $repo, ?string $branch): array
     {
         $branch = $branch ? "/tree/{$branch}" : '';
 
-        return $this->client->get("project/{$vcs}/{$repo}{$branch}", [
+        return $this->client->get("project/{$vcs}/{$user}/{$repo}{$branch}", [
             'filter' => 'completed',
             'limit' => 1,
             'shallow' => true,

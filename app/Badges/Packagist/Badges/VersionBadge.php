@@ -12,16 +12,16 @@ final class VersionBadge extends AbstractBadge
 {
     use HandlesVersions;
 
-    protected string $route = '/packagist/version/{package:packageWithVendorOnly}/{channel?}';
+    protected string $route = '/packagist/version/{vendor}/{project}/{channel?}';
 
     protected array $keywords = [
         Category::VERSION,
     ];
 
-    public function handle(string $package, ?string $channel = null): array
+    public function handle(string $vendor, string $project, ?string $channel = null): array
     {
         return [
-            'version' => $this->getVersion($this->client->get($package), $channel),
+            'version' => $this->getVersion($this->client->get($vendor, $project), $channel),
         ];
     }
 

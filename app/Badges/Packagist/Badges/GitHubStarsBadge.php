@@ -9,16 +9,16 @@ use App\Enums\Category;
 
 final class GitHubStarsBadge extends AbstractBadge
 {
-    protected string $route = '/packagist/github-stars/{package:packageWithVendorOnly}';
+    protected string $route = '/packagist/github-stars/{vendor}/{project}';
 
     protected array $keywords = [
         Category::RATING,
     ];
 
-    public function handle(string $package, ?string $channel = null): array
+    public function handle(string $vendor, string $project): array
     {
         return [
-            'stars' => $this->client->get($package)['github_stars'],
+            'stars' => $this->client->get($vendor, $project)['github_stars'],
         ];
     }
 

@@ -9,15 +9,15 @@ use App\Enums\Category;
 
 final class ProgressBadge extends AbstractBadge
 {
-    protected string $route = '/localizely/progress/{projectId:packageWithVendorOnly}/{branch?}';
+    protected string $route = '/localizely/progress/{user}/{repo}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS,
     ];
 
-    public function handle(string $projectId): array
+    public function handle(string $user, string $repo): array
     {
-        $response = $this->client->get($this->getRequestData('token'), $projectId);
+        $response = $this->client->get($this->getRequestData('token'), $user, $repo);
         $languageCode = $this->getRequestData('languageCode');
 
         if (empty($languageCode)) {

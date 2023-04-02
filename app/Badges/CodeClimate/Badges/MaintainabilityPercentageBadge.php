@@ -9,15 +9,15 @@ use App\Enums\Category;
 
 final class MaintainabilityPercentageBadge extends AbstractBadge
 {
-    protected string $route = '/codeclimate/maintainability-percentage/{project:packageWithVendorOnly}';
+    protected string $route = '/codeclimate/maintainability-percentage/{user}/{repo}';
 
     protected array $keywords = [
         Category::ANALYSIS,
     ];
 
-    public function handle(string $project): array
+    public function handle(string $user, string $repo): array
     {
-        $response = $this->client->get($project, 'snapshots');
+        $response = $this->client->get($user, $repo, 'snapshots');
 
         return [
             'percentage' => $response['attributes']['ratings'][0]['measure']['value'],

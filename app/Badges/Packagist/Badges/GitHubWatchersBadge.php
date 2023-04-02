@@ -9,16 +9,16 @@ use App\Enums\Category;
 
 final class GitHubWatchersBadge extends AbstractBadge
 {
-    protected string $route = '/packagist/github-watchers/{package:packageWithVendorOnly}';
+    protected string $route = '/packagist/github-watchers/{vendor}/{project}';
 
     protected array $keywords = [
         Category::SOCIAL,
     ];
 
-    public function handle(string $package, ?string $channel = null): array
+    public function handle(string $vendor, string $project): array
     {
         return [
-            'watchers' => $this->client->get($package)['github_watchers'],
+            'watchers' => $this->client->get($vendor, $project)['github_watchers'],
         ];
     }
 

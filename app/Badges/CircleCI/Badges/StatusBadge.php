@@ -9,15 +9,15 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected string $route = '/circleci/status/{vcs:github,gitlab}/{repo:packageWithVendorOnly}/{branch?}';
+    protected string $route = '/circleci/status/{vcs:github,gitlab}/{user}/{repo}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS,
     ];
 
-    public function handle(string $vcs, string $repo, ?string $branch = null): array
+    public function handle(string $vcs, string $user, string $repo, ?string $branch = null): array
     {
-        return $this->client->get($vcs, $repo, $branch)[0];
+        return $this->client->get($vcs, $user, $repo, $branch)[0];
     }
 
     public function render(array $properties): array

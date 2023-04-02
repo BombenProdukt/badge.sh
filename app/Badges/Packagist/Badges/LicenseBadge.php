@@ -12,15 +12,15 @@ final class LicenseBadge extends AbstractBadge
 {
     use HandlesVersions;
 
-    protected string $route = '/packagist/license/{package:packageWithVendorOnly}/{channel?}';
+    protected string $route = '/packagist/license/{vendor}/{project}/{channel?}';
 
     protected array $keywords = [
         Category::LICENSE,
     ];
 
-    public function handle(string $package, ?string $channel = null): array
+    public function handle(string $vendor, string $project, ?string $channel = null): array
     {
-        $packageMeta = $this->client->get($package);
+        $packageMeta = $this->client->get($vendor, $project);
 
         return [
             'license' => $packageMeta['versions'][$this->getVersion($packageMeta, $channel)]['license'][0],

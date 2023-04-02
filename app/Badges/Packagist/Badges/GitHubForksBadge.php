@@ -9,16 +9,16 @@ use App\Enums\Category;
 
 final class GitHubForksBadge extends AbstractBadge
 {
-    protected string $route = '/packagist/github-forks/{package:packageWithVendorOnly}';
+    protected string $route = '/packagist/github-forks/{vendor}/{project}';
 
     protected array $keywords = [
         Category::SOCIAL,
     ];
 
-    public function handle(string $package, ?string $channel = null): array
+    public function handle(string $vendor, string $project): array
     {
         return [
-            'forks' => $this->client->get($package)['github_forks'],
+            'forks' => $this->client->get($vendor, $project)['github_forks'],
         ];
     }
 

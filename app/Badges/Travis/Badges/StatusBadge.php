@@ -10,16 +10,16 @@ use Illuminate\Support\Collection;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected string $route = '/travis/status/{project:packageWithVendorOnly}/{branch?}';
+    protected string $route = '/travis/status/{user}/{repo}/{branch?}';
 
     protected array $keywords = [
         Category::BUILD,
     ];
 
-    public function handle(string $project, ?string $branch = null): array
+    public function handle(string $user, string $repo, ?string $branch = null): array
     {
-        $org = $this->client->org($project, $branch);
-        $com = $this->client->com($project, $branch);
+        $org = $this->client->org($user, $repo, $branch);
+        $com = $this->client->com($user, $repo, $branch);
 
         $result = $this->availableStates()->firstWhere(fn (array $state) => \str_contains($org, $state[0]) || \str_contains($com, $state[0]));
 

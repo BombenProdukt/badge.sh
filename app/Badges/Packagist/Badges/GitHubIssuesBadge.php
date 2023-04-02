@@ -9,16 +9,16 @@ use App\Enums\Category;
 
 final class GitHubIssuesBadge extends AbstractBadge
 {
-    protected string $route = '/packagist/github-open-issues/{package:packageWithVendorOnly}';
+    protected string $route = '/packagist/github-open-issues/{vendor}/{project}';
 
     protected array $keywords = [
         Category::ISSUE_TRACKING,
     ];
 
-    public function handle(string $package, ?string $channel = null): array
+    public function handle(string $vendor, string $project): array
     {
         return [
-            'issues' => $this->client->get($package)['github_open_issues'],
+            'issues' => $this->client->get($vendor, $project)['github_open_issues'],
         ];
     }
 

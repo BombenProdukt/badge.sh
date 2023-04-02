@@ -9,16 +9,16 @@ use App\Enums\Category;
 
 final class LinesBadge extends AbstractBadge
 {
-    protected string $route = '/codeclimate/lines/{project:packageWithVendorOnly}';
+    protected string $route = '/codeclimate/lines/{user}/{repo}';
 
     protected array $keywords = [
         Category::ANALYSIS,
     ];
 
-    public function handle(string $project): array
+    public function handle(string $user, string $repo): array
     {
         return [
-            'lines' => $this->client->get($project, 'snapshots')['attributes']['lines_of_code'],
+            'lines' => $this->client->get($user, $repo, 'snapshots')['attributes']['lines_of_code'],
         ];
     }
 

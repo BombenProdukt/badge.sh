@@ -9,16 +9,16 @@ use App\Enums\Category;
 
 final class IssuesBadge extends AbstractBadge
 {
-    protected string $route = '/codeclimate/issues/{project:packageWithVendorOnly}';
+    protected string $route = '/codeclimate/issues/{user}/{repo}';
 
     protected array $keywords = [
         Category::ANALYSIS,
     ];
 
-    public function handle(string $project): array
+    public function handle(string $user, string $repo): array
     {
         return [
-            'count' => $this->client->get($project, 'snapshots')['meta']['issues_count'],
+            'count' => $this->client->get($user, $repo, 'snapshots')['meta']['issues_count'],
         ];
     }
 

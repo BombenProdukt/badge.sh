@@ -9,16 +9,16 @@ use App\Enums\Category;
 
 final class StatusBadge extends AbstractBadge
 {
-    protected string $route = '/codecov/coverage/{service:bitbucket,github,gitlab}/{repo:packageWithVendorOnly}/{branch?}';
+    protected string $route = '/codecov/coverage/{service:bitbucket,github,gitlab}/{user}/{repo}/{branch?}';
 
     protected array $keywords = [
         Category::ANALYSIS, Category::COVERAGE,
     ];
 
-    public function handle(string $service, string $repo, ?string $branch = null): array
+    public function handle(string $service, string $user, string $repo, ?string $branch = null): array
     {
         return [
-            'coverage' => $this->client->get($service, $repo, $branch)['commit']['totals']['c'],
+            'coverage' => $this->client->get($service, $user, $repo, $branch)['commit']['totals']['c'],
         ];
     }
 

@@ -27,6 +27,10 @@ final class CombineStates
             return 'action_required';
         }
 
+        if ($states->firstWhere($stateKey, 'in_progress')) {
+            return 'in_progress';
+        }
+
         $succeeded = $states
             ->filter(fn (array $x) => $x[$stateKey] !== 'neutral')
             ->filter(fn (array $x) => $x[$stateKey] !== 'cancelled')
