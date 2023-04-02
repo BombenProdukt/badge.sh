@@ -73,7 +73,7 @@ final class BadgeList extends Component
 
         $this->selectedBadge['pathPattern'] = $selectedBadge->routeSchema()['path'];
         $this->selectedBadge['path'] = url($selectedBadge->routeSchema()['path']);
-        $this->selectedBadge['query'] = \array_fill_keys($selectedBadge->routeRules(), null);
+        $this->selectedBadge['query'] = \array_fill_keys(\array_keys($selectedBadge->routeRules()), null);
         $this->selectedBadge['route'] = \array_fill_keys($selectedBadge->routeParameterKeys(), null);
         $this->selectedBadge['overwrites'] = [
             'style' => 'flat',
@@ -90,6 +90,10 @@ final class BadgeList extends Component
             foreach ($this->selectedBadge['route'] as $routeKey => $routeValue) {
                 $this->selectedBadge['path'] = url(\preg_replace('/{'.$routeKey.'}/', $routeValue, $this->selectedBadge['pathPattern']));
             }
+        }
+
+        if (\is_string($key) && \str_starts_with($key, 'query.')) {
+            $this->selectedBadge['path'] = $this->selectedBadge['pathPattern'].'?'.\http_build_query($this->selectedBadge['query']);
         }
     }
 
