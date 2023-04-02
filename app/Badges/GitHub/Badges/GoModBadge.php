@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Badges\GitHub\Badges;
 
+use App\Actions\GetFileFromGitHub;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use GrahamCampbell\GitHub\Facades\GitHub;
 use Spatie\Regex\Regex;
 
 final class GoModBadge extends AbstractBadge
@@ -19,7 +19,7 @@ final class GoModBadge extends AbstractBadge
 
     public function handle(string $owner, string $repo): array
     {
-        $response = \base64_decode(GitHub::repos()->contents()->show($owner, $repo, 'src/go.mod')['content'], true);
+        $response = GetFileFromGitHub::raw($owner, $repo, 'src/go.mod');
 
         return [
             'version' => Regex::match('/go (.+)/', $response)->group(1),

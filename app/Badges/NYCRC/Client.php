@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Badges\NYCRC;
 
-use GrahamCampbell\GitHub\Facades\GitHub;
+use App\Actions\GetFileFromGitHub;
 
 // @todo: .nycrc.json
 // @todo: .nycrc.yaml
@@ -14,6 +14,6 @@ final class Client
 {
     public function get(string $user, string $repo)
     {
-        return \json_decode(\base64_decode(GitHub::repos()->contents()->show($user, $repo, '.nycrc')['content'], true), true, \JSON_THROW_ON_ERROR);
+        return GetFileFromGitHub::json($user, $repo, '.nycrc');
     }
 }

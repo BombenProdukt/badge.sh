@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Badger\Badger;
-use App\Badger\Calculator\GDTextSizeCalculator;
-use App\Badger\Contracts\TextSizeCalculator;
 use App\Badger\BadgeRenderers\FlatSquareRender;
 use App\Badger\BadgeRenderers\FlatSquareWithIconRender;
 use App\Badger\BadgeRenderers\PlasticFlatRender;
 use App\Badger\BadgeRenderers\PlasticRender;
 use App\Badger\BadgeRenderers\SocialRender;
+use App\Badger\Calculator\GDTextSizeCalculator;
+use App\Badger\Contracts\TextSizeCalculator;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\ServiceProvider;
 
