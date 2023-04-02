@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-use Illuminate\Http\Request;
+use App\Contracts\Badge;
+use App\Facades\BadgeService;
+use App\Http\Resources\BadgeResource;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +19,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/badges', function (): Collection {
+    return collect(BadgeService::all())
+        ->map(fn (Badge $badge): BadgeResource => BadgeResource::make($badge))
+        ->values();
+});
+
+Route::get('/badges/{service}', function (string $service): Collection {
+    return collect(BadgeService::all())
+        ->where(fn (Badge $badge): bool => \strcasecmp($badge->service(), $service) === 0)
+        ->map(fn (Badge $badge): BadgeResource => BadgeResource::make($badge))
+        ->values();
 });
