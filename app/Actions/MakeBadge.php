@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Actions;
 
 use App\Contracts\Badge;
-use BladeUI\Icons\Factory;
 use Iconify\IconsJSON\Finder;
 use Illuminate\Http\Request;
 use PreemStudio\Badger\Badger;
+use PreemStudio\BladeIcons\Facades\VectorFactory;
 
 final class MakeBadge
 {
@@ -34,19 +34,15 @@ final class MakeBadge
             $icon = $request->query('icon');
 
             if (\str_starts_with($icon, 'heroicon')) {
-                $icon = app(Factory::class)->svg($icon)->contents();
-                $icon = \str_replace('stroke="currentColor"', 'stroke="#fff"', $icon);
-                $icon = \base64_encode($icon);
+                $icon = VectorFactory::make(name: $icon, attributes: ['stroke' => '#fff'])->toBase64();
             }
 
-            if (\str_starts_with($icon, 'simpleicons')) {
-                $icon = app(Factory::class)->svg($icon)->contents();
-                $icon = \str_replace('role="img"', 'role="img" stroke="#fff" fill="#fff"', $icon);
-                $icon = \base64_encode($icon);
+            if (\str_starts_with($icon, 'simple-icons')) {
+                $icon = VectorFactory::make(name: $icon, attributes: ['stroke' => '#fff', 'fill' => '#fff'])->toBase64();
             }
 
             if (\str_starts_with($icon, 'iconify')) {
-                [,$set,$name] = \explode('-', $icon, 3);
+                [, $set, $name] = \explode('-', $icon, 3);
 
                 $icon = \json_decode(\file_get_contents(Finder::locate($set)), true, \JSON_THROW_ON_ERROR)['icons'][$name]['body'];
                 $icon = \str_replace('fill="currentColor"', 'fill="#fff"', $icon);
