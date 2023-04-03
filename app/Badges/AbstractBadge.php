@@ -116,7 +116,7 @@ abstract class AbstractBadge implements Badge
             if (\str_contains($group, ':')) {
                 [$name, $type] = \explode(':', $group, 2);
 
-                $parameters[$name] = \preg_replace('/[^a-z0-9]+/', '', $type);
+                $parameters[$name] = \preg_replace('/[^a-z0-9,]+/', '', $type);
             } else {
                 $parameters[$group] = 'string';
             }
