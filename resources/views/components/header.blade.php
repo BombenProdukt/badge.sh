@@ -1,6 +1,6 @@
 <header class="text-center">
     <h1 class="text-4xl font-bold sm:text-5xl lg:text-6xl p-1">
-        <span class="text-indigo-600">Sharp, Fast &amp; Hackable</span>
+        <span class="text-brand-600">Sharp, Fast &amp; Hackable</span>
         <span class="block text-gray-900">badge generation service</span>
     </h1>
 

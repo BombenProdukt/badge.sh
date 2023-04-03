@@ -3,7 +3,7 @@
     <div class="relative mt-2 rounded-md shadow-sm">
         <div class="absolute inset-y-0 left-1 top-1 bottom-1 flex items-center">
             <select wire:model="category" autocomplete="category"
-                class="bg-slate-50 h-full rounded-md border-0 py-0 pl-3 pr-7 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                class="bg-slate-50 h-full rounded-md border-0 py-0 pl-3 pr-7 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:text-sm">
                 <option value="">All</option>
                 @foreach (\App\Enums\Category::cases() as $case)
                     <option value="{{ $case->value }}">{{ Str::title($case->value) }}</option>
@@ -11,7 +11,7 @@
             </select>
         </div>
         <input type="text" wire:model="query"
-            class="block w-full rounded-md border-0 py-1.5 pl-40 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            class="block w-full rounded-md border-0 py-1.5 pl-40 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:text-sm sm:leading-6"
             placeholder="Search...">
     </div>
 
@@ -44,7 +44,7 @@
                             </a>
                         </td>
                         <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right font-medium sm:pr-0 text-sm">
-                            <button type="button" class="text-indigo-600 transition font-bold hover:text-indigo-900"
+                            <button type="button" class="text-brand-600 transition font-bold hover:text-brand-900"
                                 wire:click="customizeBadge({{ $badge['index'] }})">
                                 Customize
                             </button>
@@ -68,7 +68,7 @@
                             <form>
                                 <div class="mb-4">
                                     <input wire:model="selectedBadge.path" type="text"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 bg-gray-50 cursor-not-allowed shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 bg-gray-50 cursor-not-allowed shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:text-sm sm:leading-6"
                                         readonly>
 
                                     <div class="mt-2 flex justify-center">
@@ -87,7 +87,7 @@
                                                     <input type="text"
                                                         wire:model="selectedBadge.route.{{ $routeParam }}"
                                                         id="{{ $routeParam }}"
-                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:text-sm sm:leading-6">
                                                 </div>
                                             </div>
                                         @endforeach
@@ -102,7 +102,7 @@
                                                     <input type="text"
                                                         wire:model="selectedBadge.query.{{ $queryParam }}"
                                                         id="{{ $queryParam }}"
-                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:text-sm sm:leading-6">
                                                 </div>
                                             </div>
                                         @endforeach
@@ -114,7 +114,7 @@
                                         <div class="mt-2 sm:col-span-2 sm:mt-0">
                                             <select id="country" wire:model="selectedBadge.overwrites.style"
                                                 autocomplete="country-name"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:text-sm sm:leading-6">
                                                 <option value="classic">Classic</option>
                                                 <option value="flat">Flat</option>
                                             </select>
@@ -127,7 +127,7 @@
                                         <div class="mt-2 sm:col-span-2 sm:mt-0">
                                             <input type="text" wire:model="selectedBadge.overwrites.label"
                                                 id="first-name" autocomplete="given-name"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:text-sm sm:leading-6">
                                         </div>
                                     </div>
 
@@ -137,7 +137,7 @@
                                             Color</label>
                                         <div class="mt-2 sm:col-span-2 sm:mt-0">
                                             <input type="text" wire:model="selectedBadge.overwrites.labelColor"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:text-sm sm:leading-6">
                                         </div>
                                     </div>
 
@@ -147,7 +147,7 @@
                                         <div class="mt-2 sm:col-span-2 sm:mt-0">
                                             <input type="text" wire:model="selectedBadge.overwrites.message"
                                                 id="first-name" autocomplete="given-name"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:text-sm sm:leading-6">
                                         </div>
                                     </div>
 
@@ -157,7 +157,7 @@
                                             Color</label>
                                         <div class="mt-2 sm:col-span-2 sm:mt-0">
                                             <input type="text" wire:model="selectedBadge.overwrites.messageColor"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-600 sm:text-sm sm:leading-6">
                                         </div>
                                     </div>
                                 </div>
