@@ -32,7 +32,7 @@ final class PhpVersionBadge extends AbstractBadge
 
     public function render(array $properties): array
     {
-        return $this->renderVersion($properties['version'], 'php');
+        return $this->renderText('php', $properties['version']);
     }
 
     public function previews(): array
