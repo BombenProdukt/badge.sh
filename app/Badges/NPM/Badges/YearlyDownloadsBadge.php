@@ -9,13 +9,13 @@ use App\Enums\Category;
 
 final class YearlyDownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/npm/downloads-yearly/{package:packageWithScope}/{tag?}';
+    protected string $route = '/npm/downloads-yearly/{package:packageWithScope}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $package, string $tag = 'latest'): array
+    public function handle(string $package): array
     {
         return [
             'downloads' => $this->client->api("downloads/point/last-year/{$package}")['downloads'],

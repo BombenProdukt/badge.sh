@@ -9,13 +9,13 @@ use App\Enums\Category;
 
 final class DependentsBadge extends AbstractBadge
 {
-    protected string $route = '/npm/dependents/{package:packageWithScope}/{tag?}';
+    protected string $route = '/npm/dependents/{package:packageWithScope}';
 
     protected array $keywords = [
         Category::SOCIAL,
     ];
 
-    public function handle(string $package, string $tag = 'latest'): array
+    public function handle(string $package): array
     {
         $response = $this->client->web("package/{$package}");
 

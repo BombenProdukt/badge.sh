@@ -15,7 +15,7 @@ final class TotalDownloadsBadge extends AbstractBadge
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $package, string $tag = 'latest'): array
+    public function handle(string $package): array
     {
         return [
             'downloads' => collect($this->client->api('downloads/range/2005-01-01:'.\date('Y')."-01-01/{$package}")['downloads'])->sum('downloads'),
