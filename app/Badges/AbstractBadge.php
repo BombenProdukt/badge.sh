@@ -54,6 +54,11 @@ abstract class AbstractBadge implements Badge
         $this->requestData = $data;
     }
 
+    public function identifier(): string
+    {
+        return \str_replace('\\', '-', static::class);
+    }
+
     public function service(): string
     {
         return $this->service ?? '';
