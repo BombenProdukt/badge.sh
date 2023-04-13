@@ -81,9 +81,11 @@ export default function Welcome(
 		}
 
 		if (Object.keys(customBadge.route).length > 0) {
+			customBadge.path = customBadge.pathPattern;
+
 			for (const [routeKey, routeValue] of Object.entries(customBadge.route)) {
 				if (routeValue !== null) {
-					customBadge.path = customBadge.pathPattern.replaceAll(`{${routeKey}}`, routeValue);
+					customBadge.path = customBadge.path.replaceAll(`{${routeKey}}`, routeValue);
 				}
 			}
 		}
