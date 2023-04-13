@@ -11,8 +11,10 @@ final class BadgeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        BadgeService::add(Badges\DailyDownloadsBadge::class);
         BadgeService::add(Badges\DependentsBadge::class);
+        BadgeService::add(Badges\DownloadsBadge::class);
+        BadgeService::add(Badges\DownloadsPerDayBadge::class);
+        BadgeService::add(Badges\DownloadsPerMonthBadge::class);
         BadgeService::add(Badges\FaversBadge::class);
         BadgeService::add(Badges\GitHubForksBadge::class);
         BadgeService::add(Badges\GitHubIssuesBadge::class);
@@ -20,12 +22,10 @@ final class BadgeServiceProvider extends ServiceProvider
         BadgeService::add(Badges\GitHubWatchersBadge::class);
         BadgeService::add(Badges\LanguageBadge::class);
         BadgeService::add(Badges\LicenseBadge::class);
-        BadgeService::add(Badges\MonthlyDownloadsBadge::class);
         BadgeService::add(Badges\NameBadge::class);
         BadgeService::add(Badges\NameBadge::class);
         BadgeService::add(Badges\PhpVersionBadge::class);
         BadgeService::add(Badges\SuggestersBadge::class);
-        BadgeService::add(Badges\TotalDownloadsBadge::class);
         BadgeService::add(Badges\VersionBadge::class);
     }
 }

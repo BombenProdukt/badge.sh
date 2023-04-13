@@ -7,9 +7,9 @@ namespace App\Badges\CRAN\Badges;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class WeeklyDownloadsBadge extends AbstractBadge
+final class DownloadsPerMonthBadge extends AbstractBadge
 {
-    protected string $route = '/cran/downloads-weekly/{package}';
+    protected string $route = '/cran/downloads-monthly/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
@@ -17,22 +17,20 @@ final class WeeklyDownloadsBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return [
-            'downloads' => $this->client->logs("downloads/total/last-week/{$package}")[0]['downloads'],
-        ];
+        return $this->client->logs("downloads/total/last-month/{$package}")[0];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderDownloadsPerWeek($properties['downloads']);
+        return $this->renderDownloadsPerMonth($properties['downloads']);
     }
 
     public function previews(): array
     {
         return [
             new BadgePreviewData(
-                name: 'weekly downloads',
-                path: '/cran/downloads-weekly/Rcpp',
+                name: 'monthly downloads',
+                path: '/cran/downloads-monthly/Rcpp',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

@@ -2,23 +2,28 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\NPM\Badges;
+namespace App\Badges\NuGet\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Illuminate\Support\Facades\Http;
 
-final class TotalDownloadsBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/npm/downloads/{package:packageWithScope}';
+    protected string $route = '/nuget/downloads/{project}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $package): array
+    public function handle(string $project): array
     {
         return [
-            'downloads' => collect($this->client->api('downloads/range/2005-01-01:'.\date('Y')."-01-01/{$package}")['downloads'])->sum('downloads'),
+            'downloads' => Http::get('https://azuresearch-usnc.nuget.org/query', [
+                'q' => 'packageid:'.\mb_strtolower($project),
+                'prerelease' => 'true',
+                'semVerLevel' => 2,
+            ])->throw()->json('data.0.totalDownloads'),
         ];
     }
 
@@ -32,7 +37,7 @@ final class TotalDownloadsBadge extends AbstractBadge
         return [
             new BadgePreviewData(
                 name: 'total downloads',
-                path: '/npm/downloads/express',
+                path: '/nuget/downloads/Newtonsoft.Json',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

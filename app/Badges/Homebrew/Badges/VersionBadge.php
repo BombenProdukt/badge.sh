@@ -7,7 +7,7 @@ namespace App\Badges\Homebrew\Badges;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class VersionForFormulaBadge extends AbstractBadge
+final class VersionBadge extends AbstractBadge
 {
     protected string $route = '/homebrew/version/{type:cask,formula}/{package}';
 

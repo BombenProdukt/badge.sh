@@ -6,11 +6,10 @@ namespace App\Badges\CRAN\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Carbon\Carbon;
 
-final class TotalDownloadsBadge extends AbstractBadge
+final class DownloadsPerDayBadge extends AbstractBadge
 {
-    protected string $route = '/cran/downloads/{package}';
+    protected string $route = '/cran/downloads-daily/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
@@ -18,22 +17,20 @@ final class TotalDownloadsBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        $genesis = \explode('T', Carbon::createFromTimestamp(0)->toISOString())[0];
-
-        return $this->client->logs("downloads/total/{$genesis}:last-day/{$package}")[0];
+        return $this->client->logs("downloads/total/last-day/{$package}")[0];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderDownloads($properties['downloads']);
+        return $this->renderDownloadsPerDay($properties['downloads']);
     }
 
     public function previews(): array
     {
         return [
             new BadgePreviewData(
-                name: 'total downloads',
-                path: '/cran/downloads/Rcpp',
+                name: 'daily downloads',
+                path: '/cran/downloads-daily/Rcpp',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

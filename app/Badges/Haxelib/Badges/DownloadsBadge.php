@@ -2,29 +2,27 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\DUB\Badges;
+namespace App\Badges\Haxelib\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class TotalDownloadsBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/dub/downloads/{package}';
+    protected string $route = '/haxelib/downloads/{project}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $package): array
+    public function handle(string $project): array
     {
-        return [
-            'downloads' => $this->client->get("{$package}/stats")['downloads']['total'],
-        ];
+        return $this->client->get($project);
     }
 
     public function render(array $properties): array
     {
-        return $this->renderDownloads($properties['downloads']);
+        return $this->renderDownloads(0);
     }
 
     public function previews(): array
@@ -32,7 +30,7 @@ final class TotalDownloadsBadge extends AbstractBadge
         return [
             new BadgePreviewData(
                 name: 'total downloads',
-                path: '/dub/downloads/vibe-d',
+                path: '/haxelib/downloads/hxnodejs',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

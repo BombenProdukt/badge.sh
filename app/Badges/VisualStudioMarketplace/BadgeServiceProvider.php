@@ -14,7 +14,7 @@ final class BadgeServiceProvider extends ServiceProvider
         BadgeService::add(Badges\AzureDevOpsBadge::class);
         BadgeService::add(Badges\DownloadsBadge::class);
         BadgeService::add(Badges\InstallationsBadge::class);
-        BadgeService::add(Badges\LastUpdateBadge::class);
+        BadgeService::add(Badges\LastModifiedBadge::class);
         BadgeService::add(Badges\RatingBadge::class);
         BadgeService::add(Badges\ReleaseDateBadge::class);
         BadgeService::add(Badges\VersionBadge::class);

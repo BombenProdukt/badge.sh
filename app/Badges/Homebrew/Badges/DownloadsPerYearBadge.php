@@ -8,7 +8,7 @@ use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use PreemStudio\Formatter\FormatNumber;
 
-final class YearlyDownloadsForFormulaBadge extends AbstractBadge
+final class DownloadsPerYearBadge extends AbstractBadge
 {
     protected string $route = '/homebrew/downloads-yearly/{type:cask,formula}/{package}';
 

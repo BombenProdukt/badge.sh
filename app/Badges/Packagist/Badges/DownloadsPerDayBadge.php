@@ -2,22 +2,24 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\CRAN\Badges;
+namespace App\Badges\Packagist\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class DailyDownloadsBadge extends AbstractBadge
+final class DownloadsPerDayBadge extends AbstractBadge
 {
-    protected string $route = '/cran/downloads-daily/{package}';
+    protected string $route = '/packagist/downloads-daily/{vendor}/{project}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $package): array
+    public function handle(string $vendor, string $project): array
     {
-        return $this->client->logs("downloads/total/last-day/{$package}")[0];
+        return [
+            'downloads' => $this->client->get($vendor, $project)['downloads']['daily'],
+        ];
     }
 
     public function render(array $properties): array
@@ -30,7 +32,7 @@ final class DailyDownloadsBadge extends AbstractBadge
         return [
             new BadgePreviewData(
                 name: 'daily downloads',
-                path: '/cran/downloads-daily/Rcpp',
+                path: '/packagist/downloads-daily/monolog/monolog',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

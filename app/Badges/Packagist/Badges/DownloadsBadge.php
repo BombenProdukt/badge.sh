@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\MyGet\Badges;
+namespace App\Badges\Packagist\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class TotalDownloadsBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/myget/downloads/{feed}/{project}';
+    protected string $route = '/packagist/downloads/{vendor}/{project}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $feed, string $project): array
+    public function handle(string $vendor, string $project): array
     {
         return [
-            'downloads' => $this->client->get($feed, $project)['totaldownloads'],
+            'downloads' => $this->client->get($vendor, $project)['downloads']['total'],
         ];
     }
 
@@ -32,7 +32,7 @@ final class TotalDownloadsBadge extends AbstractBadge
         return [
             new BadgePreviewData(
                 name: 'total downloads',
-                path: '/myget/downloads/mongodb/MongoDB.Driver.Core',
+                path: '/packagist/downloads/monolog/monolog',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

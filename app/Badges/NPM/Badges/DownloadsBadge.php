@@ -7,9 +7,9 @@ namespace App\Badges\NPM\Badges;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class WeeklyDownloadsBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/npm/downloads-weekly/{package:packageWithScope}';
+    protected string $route = '/npm/downloads/{package:packageWithScope}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
@@ -17,20 +17,22 @@ final class WeeklyDownloadsBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return $this->client->api("downloads/point/last-week/{$package}");
+        return [
+            'downloads' => collect($this->client->api('downloads/range/2005-01-01:'.\date('Y')."-01-01/{$package}")['downloads'])->sum('downloads'),
+        ];
     }
 
     public function render(array $properties): array
     {
-        return $this->renderDownloadsPerWeek($properties['downloads']);
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function previews(): array
     {
         return [
             new BadgePreviewData(
-                name: 'weekly downloads',
-                path: '/npm/downloads-weekly/express',
+                name: 'total downloads',
+                path: '/npm/downloads/express',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

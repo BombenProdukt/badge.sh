@@ -7,7 +7,7 @@ namespace App\Badges\Homebrew\Badges;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class MonthlyDownloadsForFormulaBadge extends AbstractBadge
+final class DownloadsPerMonthBadge extends AbstractBadge
 {
     protected string $route = '/homebrew/downloads-monthly/{type:cask,formula}/{package}';
 

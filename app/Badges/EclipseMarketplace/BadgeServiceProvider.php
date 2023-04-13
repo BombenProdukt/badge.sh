@@ -15,7 +15,7 @@ final class BadgeServiceProvider extends ServiceProvider
         BadgeService::add(Badges\FavoritesBadge::class);
         BadgeService::add(Badges\LastModifiedBadge::class);
         BadgeService::add(Badges\LicenseBadge::class);
-        BadgeService::add(Badges\MonthlyDownloadsBadge::class);
+        BadgeService::add(Badges\DownloadsPerMonthBadge::class);
         BadgeService::add(Badges\VersionBadge::class);
     }
 }

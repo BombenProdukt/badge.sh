@@ -2,24 +2,25 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Chocolatey\Badges;
+namespace App\Badges\CRAN\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
+use Carbon\Carbon;
 
-final class TotalDownloadsBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/chocolatey/downloads/{project}/{channel?}';
+    protected string $route = '/cran/downloads/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $project, ?string $channel = 'latest'): array
+    public function handle(string $package): array
     {
-        return [
-            'downloads' => $this->client->get($project, $channel !== 'latest')['DownloadCount'],
-        ];
+        $genesis = \explode('T', Carbon::createFromTimestamp(0)->toISOString())[0];
+
+        return $this->client->logs("downloads/total/{$genesis}:last-day/{$package}")[0];
     }
 
     public function render(array $properties): array
@@ -32,7 +33,7 @@ final class TotalDownloadsBadge extends AbstractBadge
         return [
             new BadgePreviewData(
                 name: 'total downloads',
-                path: '/chocolatey/downloads/git',
+                path: '/cran/downloads/Rcpp',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

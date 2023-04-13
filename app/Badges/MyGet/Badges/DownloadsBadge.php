@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\PowerShellGallery\Badges;
+namespace App\Badges\MyGet\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class TotalDownloadsBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/powershellgallery/downloads/{project}/{channel?}';
+    protected string $route = '/myget/downloads/{feed}/{project}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $project, ?string $channel = 'latest'): array
+    public function handle(string $feed, string $project): array
     {
         return [
-            'downloads' => $this->client->get($project, $channel !== 'latest')->filterXPath('//m:properties/d:DownloadCount')->text(),
+            'downloads' => $this->client->get($feed, $project)['totaldownloads'],
         ];
     }
 
@@ -32,7 +32,7 @@ final class TotalDownloadsBadge extends AbstractBadge
         return [
             new BadgePreviewData(
                 name: 'total downloads',
-                path: '/powershellgallery/downloads/Azure.Storage',
+                path: '/myget/downloads/mongodb/MongoDB.Driver.Core',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

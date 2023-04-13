@@ -7,7 +7,7 @@ namespace App\Badges\GreasyFork\Badges;
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class DailyDownloadsBadge extends AbstractBadge
+final class DownloadsPerDayBadge extends AbstractBadge
 {
     protected string $route = '/greasyfork/downloads-daily/{package}';
 

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\ReSharper\Badges;
+namespace App\Badges\Chocolatey\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class TotalDownloadsBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/resharper/downloads/{project}/{channel?}';
+    protected string $route = '/chocolatey/downloads/{project}/{channel?}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
@@ -18,7 +18,7 @@ final class TotalDownloadsBadge extends AbstractBadge
     public function handle(string $project, ?string $channel = 'latest'): array
     {
         return [
-            'downloads' => $this->client->get($project, $channel !== 'latest')->filterXPath('//m:properties/d:DownloadCount')->text(),
+            'downloads' => $this->client->get($project, $channel !== 'latest')['DownloadCount'],
         ];
     }
 
@@ -32,7 +32,7 @@ final class TotalDownloadsBadge extends AbstractBadge
         return [
             new BadgePreviewData(
                 name: 'total downloads',
-                path: '/resharper/downloads/git',
+                path: '/chocolatey/downloads/git',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

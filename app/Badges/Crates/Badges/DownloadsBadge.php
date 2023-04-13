@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\NPM\Badges;
+namespace App\Badges\Crates\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class DailyDownloadsBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/npm/downloads-daily/{package:packageWithScope}';
+    protected string $route = '/crates/downloads/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
@@ -17,20 +17,20 @@ final class DailyDownloadsBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return $this->client->api("downloads/point/last-day/{$package}");
+        return $this->client->get($package);
     }
 
     public function render(array $properties): array
     {
-        return $this->renderDownloadsPerDay($properties['downloads']);
+        return $this->renderDownloads($properties['downloads']);
     }
 
     public function previews(): array
     {
         return [
             new BadgePreviewData(
-                name: 'daily downloads',
-                path: '/npm/downloads-daily/express',
+                name: 'total downloads',
+                path: '/crates/downloads/regex',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

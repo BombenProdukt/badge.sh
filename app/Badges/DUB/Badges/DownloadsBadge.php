@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\Packagist\Badges;
+namespace App\Badges\DUB\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class TotalDownloadsBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/packagist/downloads/{vendor}/{project}';
+    protected string $route = '/dub/downloads/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $vendor, string $project): array
+    public function handle(string $package): array
     {
         return [
-            'downloads' => $this->client->get($vendor, $project)['downloads']['total'],
+            'downloads' => $this->client->get("{$package}/stats")['downloads']['total'],
         ];
     }
 
@@ -32,7 +32,7 @@ final class TotalDownloadsBadge extends AbstractBadge
         return [
             new BadgePreviewData(
                 name: 'total downloads',
-                path: '/packagist/downloads/monolog/monolog',
+                path: '/dub/downloads/vibe-d',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

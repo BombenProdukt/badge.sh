@@ -13,7 +13,7 @@ final class BadgeServiceProvider extends ServiceProvider
     {
         BadgeService::add(Badges\LicenseBadge::class);
         BadgeService::add(Badges\StarsBadge::class);
-        BadgeService::add(Badges\TotalDownloadsBadge::class);
+        BadgeService::add(Badges\DownloadsBadge::class);
         BadgeService::add(Badges\VersionBadge::class);
     }
 }

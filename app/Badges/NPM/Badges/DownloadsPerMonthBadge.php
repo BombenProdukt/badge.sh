@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\DUB\Badges;
+namespace App\Badges\NPM\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class DailyDownloadsBadge extends AbstractBadge
+final class DownloadsPerMonthBadge extends AbstractBadge
 {
-    protected string $route = '/dub/downloads-daily/{package}';
+    protected string $route = '/npm/downloads-monthly/{package:packageWithScope}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
@@ -17,20 +17,20 @@ final class DailyDownloadsBadge extends AbstractBadge
 
     public function handle(string $package): array
     {
-        return $this->client->get("{$package}/stats");
+        return $this->client->api("downloads/point/last-month/{$package}");
     }
 
     public function render(array $properties): array
     {
-        return $this->renderDownloadsPerDay($properties['downloads']);
+        return $this->renderDownloadsPerMonth($properties['downloads']);
     }
 
     public function previews(): array
     {
         return [
             new BadgePreviewData(
-                name: 'daily downloads',
-                path: '/dub/downloads-daily/vibe-d',
+                name: 'monthly downloads',
+                path: '/npm/downloads-monthly/express',
                 data: $this->render(['downloads' => '1000000']),
             ),
         ];

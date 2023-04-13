@@ -2,24 +2,26 @@
 
 declare(strict_types=1);
 
-namespace App\Badges\EclipseMarketplace\Badges;
+namespace App\Badges\AtomPackage\Badges;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
 
-final class MonthlyDownloadsBadge extends AbstractBadge
+final class DownloadsBadge extends AbstractBadge
 {
-    protected string $route = '/eclipse-marketplace/downloads-monthly/{name}';
+    protected string $route = '/apm/downloads/{package}';
 
     protected array $keywords = [
         Category::DOWNLOADS,
     ];
 
-    public function handle(string $name): array
+    protected array $deprecated = [
+        '2023-03-18' => 'Deprecated due to the deprecation of required APIs.',
+    ];
+
+    public function handle(string $package): array
     {
-        return [
-            'downloads' => $this->client->get($name)->filterXPath('//installsrecent')->text(),
-        ];
+        return $this->client->get($package);
     }
 
     public function render(array $properties): array
@@ -31,9 +33,10 @@ final class MonthlyDownloadsBadge extends AbstractBadge
     {
         return [
             new BadgePreviewData(
-                name: 'monthly downloads',
-                path: '/eclipse-marketplace/downloads-monthly/notepad4e',
+                name: 'total downloads',
+                path: '/apm/downloads/linter',
                 data: $this->render(['downloads' => '1000000']),
+                deprecated: true,
             ),
         ];
     }

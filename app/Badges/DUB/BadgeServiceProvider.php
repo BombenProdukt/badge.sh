@@ -14,10 +14,10 @@ final class BadgeServiceProvider extends ServiceProvider
         BadgeService::add(Badges\VersionBadge::class);
         BadgeService::add(Badges\VersionBadge::class);
         BadgeService::add(Badges\LicenseBadge::class);
-        BadgeService::add(Badges\DailyDownloadsBadge::class);
-        BadgeService::add(Badges\WeeklyDownloadsBadge::class);
-        BadgeService::add(Badges\MonthlyDownloadsBadge::class);
-        BadgeService::add(Badges\TotalDownloadsBadge::class);
+        BadgeService::add(Badges\DownloadsPerDayBadge::class);
+        BadgeService::add(Badges\DownloadsPerWeekBadge::class);
+        BadgeService::add(Badges\DownloadsPerMonthBadge::class);
+        BadgeService::add(Badges\DownloadsBadge::class);
         BadgeService::add(Badges\RatingBadge::class);
         BadgeService::add(Badges\StarsBadge::class);
     }

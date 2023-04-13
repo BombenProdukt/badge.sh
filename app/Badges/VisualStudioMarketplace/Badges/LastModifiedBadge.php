@@ -8,7 +8,7 @@ use App\Data\BadgePreviewData;
 use App\Enums\Category;
 use Carbon\Carbon;
 
-final class LastUpdateBadge extends AbstractBadge
+final class LastModifiedBadge extends AbstractBadge
 {
     protected string $route = '/vs-marketplace/last-modified/{extension}';
 
