@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use JsonSerializable;
 use PreemStudio\Formatter\FormatBytes;
 use PreemStudio\Formatter\FormatMoney;
 use PreemStudio\Formatter\FormatNumber;
@@ -25,7 +26,7 @@ use PreemStudio\Formatter\FormatStars;
 use Spatie\Regex\Regex;
 use Throwable;
 
-abstract class AbstractBadge implements Badge
+abstract class AbstractBadge implements Badge, JsonSerializable
 {
     protected string $service = '';
 
@@ -138,6 +139,23 @@ abstract class AbstractBadge implements Badge
         return [
             'query' => \array_keys($this->routeRules()),
             'route' => $this->routeSchema()['parameters'],
+        ];
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'identifier' => $this->identifier(),
+            'service' => $this->service(),
+            'title' => $this->title(),
+            'deprecated' => $this->deprecated(),
+            'keywords' => $this->keywords(),
+            'previews' => $this->previews(),
+            'routePath' => $this->routePath(),
+            'routeRules' => $this->routeRules(),
+            'routeParameterKeys' => $this->routeParameterKeys(),
+            'routeSchema' => $this->routeSchema(),
+            'allowedParameters' => $this->allowedParameters(),
         ];
     }
 
