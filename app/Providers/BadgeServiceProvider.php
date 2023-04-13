@@ -8,6 +8,7 @@ use App\Actions\MakeBadge;
 use App\Actions\MakeBadgeResponse;
 use App\Badges\AbstractBadge;
 use App\Services\BadgeService;
+use App\StructureDiscoverer\BadgeStructureScout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +29,10 @@ final class BadgeServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        collect(BadgeStructureScout::create()->get())
+            ->sort()
+            ->each(fn (string $badge) => app('badge.service')->add($badge));
+
         Route::middleware(CacheResponse::class)->group(function (): void {
             /** @var AbstractBadge */
             foreach (app('badge.service')->all() as $badge) {

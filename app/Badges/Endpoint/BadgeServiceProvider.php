@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Badges\Endpoint;
 
-use App\Facades\BadgeService;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use SimpleXMLElement;
@@ -14,10 +13,6 @@ final class BadgeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        BadgeService::add(Badges\JSONBadge::class);
-        BadgeService::add(Badges\XMLBadge::class);
-        BadgeService::add(Badges\YAMLBadge::class);
-
         Route::get('/endpoint/demo/json', fn () => [
             'schemaVersion' => 1,
             'label' => 'is it monday',

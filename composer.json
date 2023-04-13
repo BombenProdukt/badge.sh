@@ -30,6 +30,7 @@
 		"preemstudio/laravel-badger": "^1.0",
 		"spatie/laravel-data": "^3.2",
 		"spatie/laravel-responsecache": "^7.4",
+		"spatie/php-structure-discoverer": "^1.1",
 		"spatie/regex": "^3.1",
 		"spiral/roadrunner": "^2.8.2",
 		"symfony/dom-crawler": "^6.2",
