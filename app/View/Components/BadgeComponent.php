@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\View\Components;
 
 use App\Data\BadgePreviewData;
+use BombenProdukt\Badger\Badger;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use BombenProdukt\Badger\Badger;
 
 final class BadgeComponent extends Component
 {

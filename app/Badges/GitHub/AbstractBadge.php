@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Badges\GitHub;
 
 use App\Badges\AbstractBadge as Badge;
+use BombenProdukt\Formatter\FormatNumber;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use InvalidArgumentException;
-use BombenProdukt\Formatter\FormatNumber;
 
 abstract class AbstractBadge extends Badge
 {

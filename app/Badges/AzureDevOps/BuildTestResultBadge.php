@@ -6,8 +6,8 @@ namespace App\Badges\AzureDevOps;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Support\Facades\Http;
 use BombenProdukt\Formatter\FormatNumber;
+use Illuminate\Support\Facades\Http;
 
 final class BuildTestResultBadge extends AbstractBadge
 {

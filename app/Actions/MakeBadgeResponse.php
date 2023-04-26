@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
+use BombenProdukt\Badger\Badger;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use BombenProdukt\Badger\Badger;
 use Throwable;
 
 final class MakeBadgeResponse

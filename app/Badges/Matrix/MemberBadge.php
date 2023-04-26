@@ -6,8 +6,8 @@ namespace App\Badges\Matrix;
 
 use App\Data\BadgePreviewData;
 use App\Enums\Category;
-use Illuminate\Support\Str;
 use BombenProdukt\Formatter\FormatNumber;
+use Illuminate\Support\Str;
 
 final class MemberBadge extends AbstractBadge
 {

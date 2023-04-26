@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use BombenProdukt\Badger\Badger;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 

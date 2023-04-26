@@ -6,8 +6,8 @@ namespace App\Actions;
 
 use App\Badger\IconFactory;
 use App\Contracts\Badge;
-use Illuminate\Http\Request;
 use BombenProdukt\Badger\Badger;
+use Illuminate\Http\Request;
 
 final class MakeBadge
 {
