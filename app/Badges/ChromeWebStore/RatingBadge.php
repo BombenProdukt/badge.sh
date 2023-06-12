@@ -43,6 +43,7 @@ final class RatingBadge extends AbstractBadge
                 name: 'rating',
                 path: '/chrome-web-store/rating/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
                 data: $this->render(['rating' => '4.5']),
+                deprecated: true,
             ),
         ];
     }

@@ -36,6 +36,7 @@ final class VersionBadge extends AbstractBadge
                 name: 'version',
                 path: '/chrome-web-store/version/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
                 data: $this->render(['version' => '1.0.0']),
+                deprecated: true,
             ),
         ];
     }

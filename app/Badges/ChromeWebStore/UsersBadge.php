@@ -36,6 +36,7 @@ final class UsersBadge extends AbstractBadge
                 name: 'users',
                 path: '/chrome-web-store/users/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
                 data: $this->render(['users' => '1000000']),
+                deprecated: true,
             ),
         ];
     }

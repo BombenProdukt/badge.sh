@@ -47,6 +47,7 @@ final class RatingCountBadge extends AbstractBadge
                 name: 'rating count',
                 path: '/chrome-web-store/rating-count/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
                 data: $this->render(['count' => '4.5']),
+                deprecated: true,
             ),
         ];
     }

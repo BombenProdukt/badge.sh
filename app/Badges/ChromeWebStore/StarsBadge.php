@@ -32,6 +32,7 @@ final class StarsBadge extends AbstractBadge
                 name: 'stars',
                 path: '/chrome-web-store/stars/ckkdlimhmcjmikdlpkmbgfkaikojcbjk',
                 data: $this->render(['score' => '4.5']),
+                deprecated: true,
             ),
         ];
     }
