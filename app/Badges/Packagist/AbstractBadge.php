@@ -63,6 +63,6 @@ abstract class AbstractBadge extends Badge
 
     protected function latest(Collection $versions): string
     {
-        return $versions->last();
+        return $versions->first();
     }
 }
