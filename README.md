@@ -37,7 +37,7 @@ If you've found a bug regarding security please mail [security@bombenprodukt.com
 
 ## Credits
 
-- [BombenProdukt](https://github.com/BombenProdukt)
+- [Brian Faust](https://github.com/faustbrian)
 - [All Contributors](../../contributors)
 
 ## License
